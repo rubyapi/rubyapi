@@ -208,11 +208,6 @@ GEM
     selenium-webdriver (3.141.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2, >= 1.2.2)
-    spring (2.0.2)
-      activesupport (>= 4.2)
-    spring-watcher-listen (2.0.1)
-      listen (>= 2.7, < 4.0)
-      spring (>= 1.2, < 3.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -275,8 +270,6 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   searchkick
   selenium-webdriver
-  spring
-  spring-watcher-listen (~> 2.0.0)
   sqlite3
   standard
   turbolinks (~> 5)
