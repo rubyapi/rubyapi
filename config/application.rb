@@ -18,5 +18,9 @@ module RubyApi
 
     # default ruby version documentation
     config.default_ruby_version = '2.6'
+
+    config.ruby_versions = %w[
+      2.6 2.5 2.4 2.3
+    ]
   end
 end
