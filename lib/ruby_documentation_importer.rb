@@ -1,5 +1,5 @@
-require 'rdoc'
-require_relative 'rubyapi_rdoc_generator'
+require "rdoc"
+require_relative "rubyapi_rdoc_generator"
 
 class RubyDocumentationImpoter
   attr_reader :version, :path
@@ -21,7 +21,7 @@ class RubyDocumentationImpoter
     @rdoc_options.tap do |r|
       r.generator = StudyRubyRDocGenerator
       r.files = Dir[path]
-      r.template = ''
+      r.template = ""
       r.quiet = true
       r.generator_options = [version]
     end

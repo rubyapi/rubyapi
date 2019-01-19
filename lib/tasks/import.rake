@@ -1,5 +1,5 @@
-require_relative '../ruby_downloader'
-require_relative '../ruby_documentation_importer'
+require_relative "../ruby_downloader"
+require_relative "../ruby_documentation_importer"
 
 namespace :import do
   desc "import Ruby documentation for given version"

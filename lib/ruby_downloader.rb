@@ -8,16 +8,16 @@ class RubyDownloader
   end
 
   def self.download(version)
-   downloader = new(version)
-   downloader.download
-   downloader
+    downloader = new(version)
+    downloader.download
+    downloader
   end
 
   def download
     setup
 
     if already_fetched?
-      puts 'Found previously extracted download for ' \
+      puts "Found previously extracted download for " \
         "#{version}, skipping"
       return
     end
@@ -27,7 +27,7 @@ class RubyDownloader
   end
 
   def rubies_download_path
-    Rails.root.join 'tmp', 'rubies'
+    Rails.root.join "tmp", "rubies"
   end
 
   def download_path
@@ -43,10 +43,10 @@ class RubyDownloader
   def fetch_ruby_archive
     puts "Downloading Ruby #{version} from #{ruby_uri}"
 
-    file = File.new download_path, 'wb'
+    file = File.new download_path, "wb"
     request = HTTP.get ruby_uri
 
-    while chunk = request.readpartial
+    while (chunk = request.readpartial)
       file.write chunk
     end
 
@@ -56,7 +56,7 @@ class RubyDownloader
   end
 
   def already_fetched?
-    File.exist? extracted_download_path.join 'README.md'
+    File.exist? extracted_download_path.join "README.md"
   end
 
   def unpack
@@ -64,8 +64,8 @@ class RubyDownloader
   end
 
   def ruby_uri
-    base_version = Gem::Version.new(version).segments[0..1].join('.')
-    RUBY_HOST % { base: base_version, version: version }
+    base_version = Gem::Version.new(version).segments[0..1].join(".")
+    RUBY_HOST % {base: base_version, version: version}
   end
 
   def setup
