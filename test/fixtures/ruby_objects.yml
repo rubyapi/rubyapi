@@ -1,17 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+string:
   object_type: 1
-  name: MyString
-  description: MyText
-  version: MyString
-  path: MyString
-  constant: MyString
+  name: String
+  description: A String object holds and manipulates an arbitrary sequence of bytes, typically representing characters
+  version: <%= Rails.configuration.default_ruby_version %>
+  constant: String
 
-two:
+integer:
   object_type: 1
-  name: MyString
-  description: MyText
-  version: MyString
-  path: MyString
-  constant: MyString
+  name: Integer
+  description: Holds Integer values.
+  version: <%= Rails.configuration.default_ruby_version %>
+  constant: Integer
+
+mjit:
+  object_type: 0
+  name: MJIT
+  description:
+  version: <%= Rails.configuration.default_ruby_version %>
+  constant: RubyVM::MJIT
