@@ -1,6 +1,9 @@
 class StudyRubyRDocGenerator
-  def class_dir; end
-  def file_dir; end
+  def class_dir
+  end
+
+  def file_dir
+  end
 
   # manually trigger the indexing of models
   Searchkick.disable_callbacks

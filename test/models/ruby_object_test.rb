@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class RubyObjectTest < ActiveSupport::TestCase
   test "requried attributes" do
