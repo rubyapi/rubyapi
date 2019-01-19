@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  method_type: 1
+  description: MyText
+  version: MyString
+
+two:
+  name: 
+  method_type: 1
+  description: MyText
+  version: MyString
