@@ -140,6 +140,7 @@ GEM
     parallel (1.13.0)
     parser (2.6.0.0)
       ast (~> 2.4.0)
+    pg (1.1.4)
     powerpack (0.1.2)
     public_suffix (3.0.3)
     puma (3.12.0)
@@ -215,7 +216,6 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.3.13)
     standard (0.0.24)
       rubocop (>= 0.60)
     thor (0.20.3)
@@ -264,13 +264,13 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   oj
+  pg
   puma (~> 3.11)
   rails (~> 5.2.2)
   redis (~> 4.0)
   sass-rails (~> 5.0)
   searchkick
   selenium-webdriver
-  sqlite3
   standard
   turbolinks (~> 5)
   typhoeus
