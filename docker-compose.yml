@@ -1,0 +1,16 @@
+version: '3'
+services:
+  database:
+    image: postgres:10
+    ports:
+      - "5432:5432"
+  cache:
+    image: redis:3
+    ports:
+      - "6379:6379"
+  search:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.4
+    ports:
+      - "9200:9200"
+    environment:
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
