@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  object_type: 1
+  name: MyString
+  description: MyText
+  version: MyString
+  path: MyString
+  constant: MyString
+
+two:
+  object_type: 1
+  name: MyString
+  description: MyText
+  version: MyString
+  path: MyString
+  constant: MyString
