@@ -1,2 +1,10 @@
-<h1>Objects#show</h1>
-<p>Find me in app/views/objects/show.html.erb</p>
+<content class="ruby-documentation">
+  <div class="sidebar"></div>
+  <div class="hero">
+    <h1><%= @object.name %></h1>
+    <%= raw @object.description %>
+  </div>
+  <div class="methods">
+    <%= render partial: 'objects/method', collection: @object.ruby_methods, cache: true %>
+  </div>
+</div>
