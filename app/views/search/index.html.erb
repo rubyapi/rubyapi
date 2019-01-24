@@ -1,0 +1,8 @@
+<h1>Search: <%= search_query %> </h1>
+
+<% @search.results.each do |result| %>
+  <div class="result">
+    <h2><%= result.name %></h2>
+    <%= raw result.description %>
+  </div>
+<% end %>
