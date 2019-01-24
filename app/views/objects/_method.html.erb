@@ -1,0 +1,8 @@
+<div class="method">
+  <h3><%= method.name %></h2>
+  <% if method.description.empty? %>
+    <div class="empty-description"></div>
+  <% else %>
+    <%= raw method.description %>
+  <% end %>
+</div>

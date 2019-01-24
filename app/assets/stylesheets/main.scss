@@ -1,3 +1,7 @@
+$background-color: #FDFFFC;
+$font-color: #393E41;
+$font-family: proxima-nova, sans-serif; 
+
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
@@ -5,9 +9,12 @@
 @import "_browser_notice";
 @import "_navbar";
 @import "_footer";
+@import "_hero";
 
 body {
-  font-family: proxima-nova, sans-serif;
+  background-color: $background-color;
+  color: $font-color;
+  font-family: $font-family;
   font-size: 1em;
   line-height: 1.5;
   margin: 0;
@@ -16,6 +23,7 @@ body {
 
 a {
   text-decoration: none;
+  color: $font-color;
 }
 
 h1, h2, h3, h4, h5, h6 {
