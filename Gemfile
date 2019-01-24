@@ -47,6 +47,8 @@ gem "searchkick"
 # Fast JSON serialization
 gem "fast_jsonapi"
 gem "oj"
+# Awesome Font
+gem 'font-awesome-sass', '~> 5.6.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
