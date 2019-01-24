@@ -1,0 +1,23 @@
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+@import "_layout";
+@import "_browser_notice";
+@import "_navbar";
+@import "_footer";
+
+body {
+  font-family: proxima-nova, sans-serif;
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}

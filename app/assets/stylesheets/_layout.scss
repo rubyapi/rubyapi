@@ -1,0 +1,16 @@
+.container {
+  display: grid;
+  height: 100vh;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
+  grid-template-rows: auto 3fr auto;
+
+  .with-sidebar {
+    grid-template-areas:
+      "header header header"
+      "sidebar content content"
+      "footer footer footer";
+  }
+}
