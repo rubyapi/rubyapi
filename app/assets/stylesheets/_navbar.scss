@@ -1,0 +1,18 @@
+.navbar {
+  grid-area: header;
+  padding: 15px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+
+  .logo {
+    margin: 0 20px;
+  }
+
+  .menu {
+    .menu-item {
+      display: inline-block;
+      margin: 0 15px;
+    }
+  }
+}

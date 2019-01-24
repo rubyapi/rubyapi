@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 15px;
+
+  .fas {
+    font-size: .75em;
+  }
+
+  .links {
+    list-style: none;
+
+    li {
+      display: inline-block;
+      margin: 0 10px;
+    }
+  }
+}
