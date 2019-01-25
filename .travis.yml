@@ -10,4 +10,6 @@ services:
   - elasticsearch
   - postgresql
 
-script: bin/rake test
+script:
+  - bin/standardrb --no-fix
+  - bin/rake test
