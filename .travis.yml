@@ -10,7 +10,4 @@ services:
   - elasticsearch
   - postgresql
 
-env:
-  DATABASE_URL=postgres://postgres@127.0.0.1/ruby_api
-
 script: bin/rake test
