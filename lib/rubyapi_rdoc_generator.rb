@@ -1,4 +1,10 @@
 class StudyRubyRDocGenerator
+  SKIP_NAMESPACES = [
+    /Bundler\:\:.*/,
+    /RDoc\:\:.*/,
+    /IRB\:\:.*/
+  ].freeze
+
   def class_dir
   end
 
@@ -20,7 +26,12 @@ class StudyRubyRDocGenerator
     RubyMethod.where(version: @version).destroy_all
     RubyObject.where(version: @version).destroy_all
 
+    skip_namespace = Regexp.union(SKIP_NAMESPACES)
+
     @documentation.each do |object_rdoc|
+
+      next unless skip_namespace.match(object_rdoc.full_name).nil?
+
       obj = RubyObject.new(
         name: object_rdoc.name,
         constant: object_rdoc.full_name,
