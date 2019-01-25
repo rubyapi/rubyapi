@@ -2,7 +2,7 @@ class StudyRubyRDocGenerator
   SKIP_NAMESPACES = [
     /Bundler\:\:.*/,
     /RDoc\:\:.*/,
-    /IRB\:\:.*/
+    /IRB\:\:.*/,
   ].freeze
 
   def class_dir
@@ -29,7 +29,6 @@ class StudyRubyRDocGenerator
     skip_namespace = Regexp.union(SKIP_NAMESPACES)
 
     @documentation.each do |object_rdoc|
-
       next unless skip_namespace.match(object_rdoc.full_name).nil?
 
       obj = RubyObject.new(
