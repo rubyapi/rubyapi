@@ -34,3 +34,6 @@
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+
+# Ignore code coverage reports
+/coverage
