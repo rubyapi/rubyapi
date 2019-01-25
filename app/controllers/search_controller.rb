@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
 
-  RESULTS_PER_PAGE = 50
+  RESULTS_PER_PAGE = 25
 
   before_action :index, -> { redirect_to root_path unless search_query.present? }
 
