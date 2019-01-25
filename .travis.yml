@@ -11,5 +11,5 @@ services:
   - postgresql
 
 script:
-  - bin/standardrb --no-fix
+  - bundle exec standardrb --no-fix
   - bin/rake test
