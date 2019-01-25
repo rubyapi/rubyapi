@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for?(:title) ? yield(:title) : "Ruby API" %></title>
+    <title><%= content_for?(:title) ? "Ruby API - #{yield(:title)} (v#{ruby_version})" : "Ruby API (v#{ruby_version})" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
