@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class SearchControllerTest < ActionDispatch::IntegrationTest
   def setup
@@ -14,7 +14,7 @@ class SearchControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get search_url params: { q: "test" }
+    get search_url params: {q: "test"}
     assert_response :success
   end
 
