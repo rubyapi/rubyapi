@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 168 106" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <polygon class="shape" id="top" fill="#DE004A" fill-rule="nonzero" points="83.5 54 34 2 133 2"></polygon>
+    <path class="shape" d="M31.7837838,18 L84,72.7027027 L136.216216,18 L168,18 L84,106 L0,18 L31.7837838,18 Z" id="bottom" fill="#DE004A" fill-rule="nonzero"></path>
+  </g>
+</svg>
