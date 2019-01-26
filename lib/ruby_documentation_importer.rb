@@ -23,6 +23,7 @@ class RubyDocumentationImpoter
       r.files = Dir[path]
       r.template = ""
       r.quiet = true
+      r.op_dir = Rails.root.join("tmp", "rdoc")
       r.generator_options = [version]
     end
 
