@@ -8,5 +8,4 @@ class ApplicationController < ActionController::Base
     params[:q]
   end
   helper_method :search_query
-
 end
