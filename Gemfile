@@ -53,6 +53,8 @@ gem "font-awesome-sass", "~> 5.6.1"
 gem "kaminari", "~> 1.1.1"
 # Inline SVGs
 gem "inline_svg"
+# Rbuy VM metrics
+gem "barnes", require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
