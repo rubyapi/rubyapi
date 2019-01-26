@@ -1,5 +1,8 @@
 <div class="search <%= defined?(header) && header ? "search-header" : "" %>">
   <%= form_tag search_url, method: :get do %>
     <input name="q" value="<%= search_query %>" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Ruby Modules, Classes & Methods" aria-label="Search" title="Search"/>
+    <button type="submit" aria-label="Submit search">
+      <i class="fas fa-search"></i>
+    </button>
   <% end %>
 </div>
