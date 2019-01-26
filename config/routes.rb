@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   ruby_versions = Rails.configuration.ruby_versions.collect { |v| Regexp.escape(v) }
 
   scope "(:version)", constraints: { version: /#{ruby_versions.join("|")}/ } do
-    root to: "home#index"
+    root to: "home#index", as: :versioned_root
     get "s", to: "search#index", as: :search
     get "o/*object", to: "objects#show", as: :object
   end

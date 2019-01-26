@@ -1,7 +1,19 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
-  <%= link_to root_path do %>
+  <%= link_to home_path do %>
     <%= inline_svg "logo.svg", class: "logo logo-header" %>
     <h1>Ruby API</h1>
   <% end %>
-  <%= render "layouts/search", header: true unless current_page?(root_path) %>
+  <%= render "layouts/search", header: true unless current_page?(root_path) || current_page?(versioned_root_path(version: ruby_version)) %>
+  <ul class="version-container">
+    <li>
+      <a href="#" class="version-switch">
+        <span><%= ruby_version %>&nbsp;&nbsp;<i class="fas fa-angle-down"></i></span>
+      </a>
+      <ul class="version-list">
+        <% available_ruby_versions.each do |version| %>
+          <li class="version"><%= link_to version, route_for_version(version), "data-turbolinks-action" => "replace" %></li>
+        <% end %>
+      </ul>
+    <li>
+  </ul>
 </nav>
