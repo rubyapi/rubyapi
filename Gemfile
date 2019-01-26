@@ -51,6 +51,8 @@ gem "oj"
 gem "font-awesome-sass", "~> 5.6.1"
 # Pagination
 gem "kaminari", "~> 1.1.1"
+# Inline SVGs
+gem "inline_svg"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

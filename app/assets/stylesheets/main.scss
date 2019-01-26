@@ -1,4 +1,4 @@
-$background-color: #FDFFFC;
+$primary-red: #DE004A;
 $font-color: #393E41;
 $font-family: proxima-nova, sans-serif; 
 
@@ -10,9 +10,10 @@ $font-family: proxima-nova, sans-serif;
 @import "_navbar";
 @import "_footer";
 @import "_hero";
+@import "_search";
+@import "_logo";
 
 body {
-  background-color: $background-color;
   color: $font-color;
   font-family: $font-family;
   font-size: 1em;
@@ -28,4 +29,8 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
+}
+
+h1 {
+  font-weight: 500;
 }

@@ -1,18 +1,11 @@
 .navbar {
   grid-area: header;
   padding: 15px;
-  justify-content: space-between;
   align-items: center;
   display: flex;
+  background: $primary-red;
+  color: white;
 
-  .logo {
-    margin: 0 20px;
-  }
-
-  .menu {
-    .menu-item {
-      display: inline-block;
-      margin: 0 15px;
-    }
-  }
+  a { color: white; display: inherit }
+  h1 { display: inline-block; margin: 0 15px; }
 }

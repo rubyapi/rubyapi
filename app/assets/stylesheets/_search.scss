@@ -1,0 +1,23 @@
+.search {
+  display: inline-block;
+
+  &.search-header { margin: 0 20px; }
+
+  input[type="text"] {
+    background-color: #C30041;
+    border-radius: 20px;
+    width: 570px;
+    border: none;
+    padding: 13px 22px;
+    color: white;
+    font-size: 1em;
+  }
+
+  input:focus {
+    outline-width: 0;
+  }
+
+  input::placeholder {
+    color: darken(white, 10%);
+  }
+}

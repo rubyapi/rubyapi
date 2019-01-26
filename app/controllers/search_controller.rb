@@ -7,11 +7,6 @@ class SearchController < ApplicationController
     @search = search_results
   end
 
-  def search_query
-    params[:q]
-  end
-  helper_method :search_query
-
   private
 
   def search_results
