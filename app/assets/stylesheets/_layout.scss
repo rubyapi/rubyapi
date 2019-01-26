@@ -5,7 +5,7 @@
     "header"
     "content"
     "footer";
-  grid-template-rows: auto 3fr auto;
+  grid-template-rows: 75px 3fr auto;
 
   .with-sidebar {
     grid-template-areas:
