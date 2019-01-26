@@ -18,7 +18,8 @@ class ApplicationController < ActionController::Base
 
   def route_for_version(version)
     route = Rails.application.routes.recognize_path request.url
-    route.merge! only_path: true, version: version
+    route[:only_path] = true
+    route[:version] = version
     route.merge! request.query_parameters
 
     url_for route
@@ -30,5 +31,4 @@ class ApplicationController < ActionController::Base
     versioned_root_path(version: ruby_version)
   end
   helper_method :home_path
-
 end
