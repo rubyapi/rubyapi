@@ -1,19 +1,13 @@
 .footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 15px;
+  padding: 15px 30px;
+  text-align: right;
 
-  .fas {
-    font-size: .75em;
-  }
+  i {
+    font-size: 1.5em;
+    margin: 0 5px;
 
-  .links {
-    list-style: none;
-
-    li {
-      display: inline-block;
-      margin: 0 10px;
+    &:last-child {
+      margin-right: 0;
     }
   }
 }
