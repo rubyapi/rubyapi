@@ -3,7 +3,8 @@ require_relative "../config/environment"
 require "rails/test_help"
 
 require "coveralls"
-SimpleCov.add_filter "lib", "test"
+require "simplecov"
+SimpleCov.add_filter ["lib", "test"]
 Coveralls.wear! "rails"
 
 class ActiveSupport::TestCase
