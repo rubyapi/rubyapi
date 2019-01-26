@@ -1,0 +1,13 @@
+.page {
+
+  &.page-home {
+    height:100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .content { text-align: center; }
+    h1 { font-size: 4em; line-height: 1.2; }
+  }
+}

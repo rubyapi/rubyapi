@@ -1,10 +1,15 @@
 .search {
-  display: inline-block;
 
-  &.search-header { margin: 0 20px; }
+  &.search-header {
+    margin: 0 20px;
+
+    input[type="text"] {
+      background-color: #C30041;
+    }
+  }
 
   input[type="text"] {
-    background-color: #C30041;
+    background-color: $primary-red;
     border-radius: 20px;
     width: 570px;
     border: none;
@@ -27,6 +32,6 @@
   }
 
   input::placeholder {
-    color: darken(white, 10%);
+    color: darken(white, 5%);
   }
 }
