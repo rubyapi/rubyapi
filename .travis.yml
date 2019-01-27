@@ -5,6 +5,7 @@ sudo: false
 before_script:
   - gem install bundler -v '~> 1.17.0'
   - bundle install --deployment
+  - yarn install
   - bin/rake db:setup
   - bin/webpack
 
