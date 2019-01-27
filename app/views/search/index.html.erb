@@ -1,10 +1,16 @@
-<h1>Results For: "<%= search_query %>"</h1>
-
-<% @search.results.each do |result| %>
-  <div class="result">
-    <h2><%= result.name %></h2>
-    <%= raw result.description %>
+<div class="page page-search">
+  <div class="search-header">
+    <h1>Results For: "<%= search_query %>"</h1>
   </div>
-<% end %>
 
-<%= paginate @search %>
+  <% @search.results.each do |result| %>
+    <div class="result">
+      <h2><%= result.name %></h2>
+      <%= raw result.description %>
+    </div>
+  <% end %>
+
+  <div class="pagination">
+    <%= paginate @search %>
+  </div>
+</div>

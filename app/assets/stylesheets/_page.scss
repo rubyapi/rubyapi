@@ -1,13 +1,23 @@
 .page {
+  height:100%;
 
   &.page-home {
-    height:100%;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    text-align: center;
     justify-content: center;
 
-    .content { text-align: center; }
     h1 { font-size: 4em; line-height: 1.2; }
+  }
+
+  &.page-search {
+    padding: 60px 100px;
+
+    .search-header {
+      padding-bottom: 35px;
+      margin-bottom: 35px;
+
+       border-bottom: 1px solid #efefef;
+    }
   }
 }
