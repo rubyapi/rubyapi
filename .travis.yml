@@ -6,6 +6,7 @@ before_script:
   - gem install bundler -v '~> 1.17.0'
   - bundle install --deployment
   - bin/rake db:setup
+  - bin/webpack
 
 services:
   - elasticsearch
