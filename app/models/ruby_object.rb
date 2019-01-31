@@ -8,4 +8,8 @@ class RubyObject < ApplicationRecord
   validates :name, :constant, :object_type, :version, presence: true
 
   has_many :ruby_methods
+
+  def to_param
+    path
+  end
 end

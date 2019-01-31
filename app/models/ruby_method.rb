@@ -6,4 +6,12 @@ class RubyMethod < ApplicationRecord
   validates :name, :method_type, :version, presence: true
 
   belongs_to :ruby_object
+
+  def anchor
+    if instance_method?
+      "method-i-#{name}"
+    elsif class_method?
+      "method-c-#{name}"
+    end
+  end
 end

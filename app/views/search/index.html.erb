@@ -1,12 +1,14 @@
 <div class="page page-search">
   <div class="search-header">
-    <h1>Results For: "<%= search_query %>"</h1>
+    <h1>Results for: "<%= search_query %>"</h1>
   </div>
 
   <% @search.results.each do |result| %>
     <div class="result">
-      <h2><%= result.name %></h2>
-      <%= raw result.description %>
+      <h2><%= link_to result.name, result_url(result) %></h2>
+      <div class="description">
+        <%= raw result.description %>
+      </div>
     </div>
   <% end %>
 
