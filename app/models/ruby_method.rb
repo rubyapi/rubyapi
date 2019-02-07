@@ -7,6 +7,8 @@ class RubyMethod < ApplicationRecord
 
   belongs_to :ruby_object
 
+  scope :ordered, -> { order :name }
+
   def anchor
     if instance_method?
       "method-i-#{name}"

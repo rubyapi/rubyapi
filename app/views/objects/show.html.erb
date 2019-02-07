@@ -7,6 +7,6 @@
     </div>
   </div>
   <div class="methods">
-    <%= render partial: 'objects/method', collection: @object.ruby_methods, cache: true %>
+    <%= render partial: 'objects/method', collection: @object.ruby_methods.ordered, cache: true %>
   </div>
 </div>
