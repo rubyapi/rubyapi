@@ -16,8 +16,41 @@
     .search-header {
       padding-bottom: 35px;
       margin-bottom: 35px;
+      border-bottom: 1px solid #efefef;
+    }
+  }
 
-       border-bottom: 1px solid #efefef;
+  &.page-object {
+    padding: 60px 100px;
+
+    .object-header {
+      padding-bottom: 35px;
+      margin-bottom: 35px;
+      border-bottom: 1px solid #efefef;
+    }
+
+    .method {
+      margin:0 0 30px 0;
+    }
+
+    .empty-description {
+      margin: 20px 0;
+      padding:30px 60px;
+      background: #efefef;
+      border-radius: 5px;
+      color: #7d7a68;
+    }
+  }
+
+  &.page-object, &.page-search {
+    a {
+      padding: 1px 4px;
+      border-radius: 5px;
+      background: #efefef;
+
+      &:hover {
+        background: darken(#efefef, 5%);
+      }
     }
   }
 }

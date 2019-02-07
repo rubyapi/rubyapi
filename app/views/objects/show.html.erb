@@ -1,9 +1,10 @@
 <% content_for(:title) { @object.name } %>
-<content class="ruby-documentation">
-  <div class="sidebar"></div>
-  <div class="hero">
+<div class="page page-object">
+  <div class="object-header">
     <h1><%= @object.name %></h1>
-    <%= raw @object.description %>
+    <div class="object-description">
+      <%= raw @object.description %>
+    </div>
   </div>
   <div class="methods">
     <%= render partial: 'objects/method', collection: @object.ruby_methods, cache: true %>

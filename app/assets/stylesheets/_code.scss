@@ -1,0 +1,23 @@
+// Theme adapted from: https://atelierbram.github.io/syntax-highlighting/atelier-schemes/dune/
+
+code {
+  padding: 2px 4px;
+  background: #efefef;
+  border-radius: 5px;
+}
+
+pre {
+  background: #efefef;
+  padding: 30px 40px;
+  border-radius: 5px;
+
+  &.ruby {
+    .ruby-string { color: #60ac39; }
+    .ruby-comment { color: #7d7a68; }
+    .ruby-constant { color: #ae9513; }
+    .ruby-identifier { color: #6684e1; }
+    .ruby-value { color: #b65611; }
+    .ruby-regexp { color: #1fad83; }
+    .ruby-operator { color: #6e6b5e; }
+  }
+}

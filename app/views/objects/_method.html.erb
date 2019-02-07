@@ -1,7 +1,7 @@
 <div class="method" id="<%= method.anchor %>">
   <h3><%= method.name %></h2>
   <% if method.description.empty? %>
-    <div class="empty-description"></div>
+    <div class="empty-description">No documentation available</div>
   <% else %>
     <%= raw method.description %>
   <% end %>
