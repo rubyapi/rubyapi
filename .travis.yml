@@ -6,8 +6,8 @@ before_script:
   - gem install bundler -v '~> 1.17.0'
   - bundle install --deployment
   - yarn install
-  - bin/rake db:setup
-  - bin/webpack
+  - bundle exec rake db:setup
+  - bundle exec webpacker:compile
 
 services:
   - elasticsearch
