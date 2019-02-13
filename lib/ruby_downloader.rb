@@ -41,8 +41,6 @@ class RubyDownloader
   private
 
   def fetch_ruby_archive
-    puts "Downloading Ruby #{version} from #{ruby_uri}"
-
     file = File.new download_path, "wb"
     request = HTTP.get ruby_uri
 
@@ -51,8 +49,6 @@ class RubyDownloader
     end
 
     file.close
-
-    puts "Downloaded #{version} to #{download_path}"
   end
 
   def already_fetched?

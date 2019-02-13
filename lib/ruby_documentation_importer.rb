@@ -15,9 +15,12 @@ class RubyDocumentationImpoter
     @path = path
     @rdoc = RDoc::RDoc.new
     @rdoc_options = @rdoc.load_options
+    @spinner = TTY::Spinner.new ":spinner Importing Ruby #{version} documentation"
   end
 
   def import
+    @spinner.auto_spin
+
     @rdoc_options.tap do |r|
       r.generator = StudyRubyRDocGenerator
       r.files = Dir[path]
@@ -27,7 +30,8 @@ class RubyDocumentationImpoter
       r.generator_options = [version]
     end
 
-    puts "Importing Ruby #{version} documentation"
     @rdoc.document @rdoc_options
+    @spinner.stop
+    puts "Done."
   end
 end

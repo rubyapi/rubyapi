@@ -57,7 +57,6 @@ class StudyRubyRDocGenerator
       obj.save!
     end
 
-    puts "Indexing Objects and Methods"
     Searchkick.models.each { |m| m.reindex }
   end
 end
