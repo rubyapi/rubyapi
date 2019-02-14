@@ -1,6 +1,9 @@
 $primary-red: #DE004A;
 $font-color: #393E41;
-$font-family: proxima-nova, sans-serif; 
+$background-color: #ffffff;
+$background-alt-color: #F7F7F7;
+$font-family: proxima-nova, sans-serif;
+$border-radius-width: 5px;
 
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -17,6 +20,7 @@ $font-family: proxima-nova, sans-serif;
 body {
   color: $font-color;
   font-family: $font-family;
+  background: $background-color;
   font-size: 1em;
   line-height: 1.5;
   margin: 0;
@@ -28,7 +32,11 @@ a {
   color: $font-color;
 }
 
-ul { margin: 0; padding: 0; list-style: none; }
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;

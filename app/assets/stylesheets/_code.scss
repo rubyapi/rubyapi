@@ -1,15 +1,16 @@
 // Theme adapted from: https://atelierbram.github.io/syntax-highlighting/atelier-schemes/dune/
 
+code, pre {
+  background: $background-alt-color;
+  border-radius: $border-radius-width;
+}
+
 code {
   padding: 2px 4px;
-  background: #efefef;
-  border-radius: 5px;
 }
 
 pre {
-  background: #efefef;
-  padding: 30px 40px;
-  border-radius: 5px;
+  padding: 15px 20px;
 
   &.ruby {
     .ruby-string { color: #60ac39; }
