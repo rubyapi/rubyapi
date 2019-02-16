@@ -56,7 +56,7 @@ gem "inline_svg"
 # Rbuy VM metrics
 gem "barnes", require: false
 # CLI Progress Bar
-gem 'tty-spinner'
+gem "tty-spinner"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
