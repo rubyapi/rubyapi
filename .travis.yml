@@ -15,4 +15,4 @@ services:
 
 script:
   - bundle exec standardrb --no-fix
-  - bin/rake test
+  - bundle exec rake test
