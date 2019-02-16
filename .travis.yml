@@ -7,7 +7,7 @@ before_script:
   - bundle install --deployment
   - yarn install
   - bundle exec rake db:setup
-  - bundle exec webpacker:compile
+  - bundle exec rake webpacker:compile
 
 services:
   - elasticsearch
