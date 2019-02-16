@@ -1,0 +1,9 @@
+<% if object.kind_of?(RubyObject) && object.class_object? %>
+<a class="type type--class-object" data-tippy="Class Object" data-tippy-arrow="true"></a>
+<% elsif object.kind_of?(RubyObject) && object.module_object? %>
+<a class="type type--module-object" data-tippy="Module Object" data-tippy-arrow="true"></a>
+<% elsif object.kind_of?(RubyMethod) && object.instance_method? %>
+<a class="type type--instance-method" data-tippy="Instance Method" data-tippy-arrow="true"></a>
+<% elsif object.kind_of?(RubyMethod) && object.class_method? %>
+<a class="type type--class-method" data-tippy="Class Method" data-tippy-arrow="true"></a>
+<% end %>

@@ -1,7 +1,7 @@
 $primary-red: #DE004A;
 $font-color: #393E41;
 $background-color: #ffffff;
-$background-alt-color: #F7F7F7;
+$background-alt-color: #eaeaea;
 $font-family: proxima-nova, sans-serif;
 $border-radius-width: 5px;
 
@@ -10,6 +10,7 @@ $border-radius-width: 5px;
 
 @import "_layout";
 @import "_browser_notice";
+@import "_type";
 @import "_navbar";
 @import "_footer";
 @import "_search";
@@ -40,6 +41,7 @@ ul {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
+  display: inline-block;
 }
 
 h1 {

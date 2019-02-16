@@ -1,0 +1,32 @@
+// $class-object-background-color: #BE2376;
+// $module-object-background-color: #8D408D;
+// $instance-method-background-color: #584D8C;
+// $class-method-background-color: #324E76;
+
+.type {
+  padding: 0 5px;
+  color: $background-color;
+  border-radius: $border-radius-width;
+  display: inline-block;
+  width: 13px;
+  text-align: center;
+  background: $background-alt-color;
+  color: darken($background-alt-color, 20%);
+  font-weight: bold;
+
+  &.type--class-object:before {
+    content: "C";
+  }
+
+  &.type--module-object:before {
+    content: "M"
+  }
+
+  &.type--instance-method:before {
+    content: "I"
+  }
+
+  &.type--class-method:before {
+    content: "C"
+  }
+}

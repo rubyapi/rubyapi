@@ -1,7 +1,14 @@
 <% content_for(:title) { @object.name } %>
 <div class="page page-object">
   <div class="object-header">
-    <h1><%= @object.name %></h1>
+    <h1>
+      <%= link_to @object.name, object_url(version: ruby_version, object: @object) %>
+      <% if @object.class_object? %>
+        <a class="meta meta--class-object" data-tippy="Class"></a>
+      <% elsif @object.module_object? %>
+        <a class="meta meta--module-object" data-tippy="Module"></a>
+      <% end %>
+    </h1>
     <div class="object-description">
       <%= raw @object.description %>
     </div>

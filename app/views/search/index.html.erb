@@ -5,7 +5,10 @@
 
   <% @search.results.each do |result| %>
     <div class="result">
-      <h2><%= link_to result.name, result_url(result) %></h2>
+      <div class="result-header">
+        <h2><%= link_to result.name, result_url(result) %></h2>
+        <%= render partial: 'layouts/type', locals: { object: result } %>
+      </div>
       <div class="description">
         <%= raw result.description %>
       </div>

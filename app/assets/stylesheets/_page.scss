@@ -1,3 +1,20 @@
+%description-links {
+  a {
+    padding: 1px 4px;
+    border-radius: 5px;
+    background: #efefef;
+
+    code {
+      background: none;
+      padding: 0;
+    }
+
+    &:hover {
+      background: darken(#efefef, 5%);
+    }
+  }
+}
+
 .page {
   height:100%;
 
@@ -21,7 +38,7 @@
   }
 
   &.page-object {
-    padding: 60px 100px;
+    padding: 60px 100px 0 100px;
 
     .object-header {
       padding-bottom: 35px;
@@ -40,17 +57,9 @@
       border-radius: 5px;
       color: #7d7a68;
     }
-  }
 
-  &.page-object, &.page-search {
-    a {
-      padding: 1px 4px;
-      border-radius: 5px;
-      background: #efefef;
-
-      &:hover {
-        background: darken(#efefef, 5%);
-      }
+    .object-description { 
+      @extend %description-links
     }
   }
 }
