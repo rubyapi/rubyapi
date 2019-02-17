@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: 
+to_i:
+  name: to_i
   method_type: 1
-  description: MyText
-  version: MyString
+  description: Returns the result of interpreting leading characters in str
+  version: 2.6
 
-two:
-  name: 
+to_s:
+  name: to_s
   method_type: 1
-  description: MyText
-  version: MyString
+  description: Returns a string containing the place-value representation of int
+  version: 2.6
