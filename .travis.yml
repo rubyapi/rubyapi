@@ -1,10 +1,7 @@
 language: ruby
 cache: bundler
-sudo: false
 
 before_script:
-  - gem install bundler -v '~> 1.17.0'
-  - bundle install --deployment
   - yarn install
   - bundle exec rake db:setup
   - bundle exec rake webpacker:compile
