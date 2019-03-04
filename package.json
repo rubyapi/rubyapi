@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
-    "tippy.js": "^3.4.1"
+    "tippy.js": "^4.0.4"
   },
   "devDependencies": {
     "webpack-dev-server": "3.2.1"
