@@ -1,6 +1,10 @@
 language: ruby
 cache: bundler
 
+before_install:
+  - gem update --system
+  - gem install bundler
+
 before_script:
   - yarn install
   - bundle exec rake db:setup
