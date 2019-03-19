@@ -2,10 +2,10 @@
   "name": "ruby-api",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "3.5",
+    "@rails/webpacker": "^4.0.2",
     "tippy.js": "^4.2.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "3.2.1"
+    "webpack-dev-server": "^3.2.1"
   }
 }
