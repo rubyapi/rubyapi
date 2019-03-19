@@ -8,4 +8,3 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import tippy from 'tippy.js'
-import 'tippy.js/dist/tippy.css'
