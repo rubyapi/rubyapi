@@ -1,19 +1,16 @@
 <% content_for(:title) { @object.name } %>
-<div class="page page-object">
-  <div class="object-header">
-    <h1>
+
+<section class="page page--object">
+  <header class="page__header">
+    <h3 class="page__title">
       <%= link_to @object.name, object_url(version: ruby_version, object: @object) %>
-      <% if @object.class_object? %>
-        <a class="meta meta--class-object" data-tippy="Class"></a>
-      <% elsif @object.module_object? %>
-        <a class="meta meta--module-object" data-tippy="Module"></a>
-      <% end %>
-    </h1>
+      <%= render partial: 'layouts/type', locals: { object: @object } %>
+    </h3>
     <div class="object-description">
       <%= raw @object.description %>
     </div>
-  </div>
+  </header>
   <div class="methods">
     <%= render partial: 'objects/method', collection: @object.ruby_methods.ordered, cache: true %>
   </div>
-</div>
+</section>

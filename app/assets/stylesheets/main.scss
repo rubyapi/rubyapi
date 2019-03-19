@@ -8,6 +8,7 @@ $border-radius-width: 5px;
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+@import "_typeface";
 @import "_layout";
 @import "_browser_notice";
 @import "_type";
@@ -17,6 +18,8 @@ $border-radius-width: 5px;
 @import "_code";
 @import "_logo";
 @import "_page";
+@import "_method";
+@import "_search_result";
 
 body {
   color: $font-color;
@@ -37,13 +40,4 @@ ul {
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  display: inline-block;
-}
-
-h1 {
-  font-weight: 500;
 }

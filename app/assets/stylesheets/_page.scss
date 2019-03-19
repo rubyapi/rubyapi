@@ -1,65 +1,16 @@
-%description-links {
-  a {
-    padding: 1px 4px;
-    border-radius: 5px;
-    background: #efefef;
-
-    code {
-      background: none;
-      padding: 0;
-    }
-
-    &:hover {
-      background: darken(#efefef, 5%);
-    }
-  }
-}
-
 .page {
   height:100%;
+  width: 100%;
+  max-width: 760px;
+  margin:0 auto;
+}
 
-  &.page-home {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
+.page--title {
+  margin: 20px 0;
+}
 
-    h1 { font-size: 4em; line-height: 1.2; }
-  }
-
-  &.page-search {
-    padding: 60px 100px;
-
-    .search-header {
-      padding-bottom: 35px;
-      margin-bottom: 35px;
-      border-bottom: 1px solid #efefef;
-    }
-  }
-
-  &.page-object {
-    padding: 60px 100px 0 100px;
-
-    .object-header {
-      padding-bottom: 35px;
-      margin-bottom: 35px;
-      border-bottom: 1px solid #efefef;
-    }
-
-    .method {
-      margin:0 0 30px 0;
-    }
-
-    .empty-description {
-      margin: 20px 0;
-      padding:30px 60px;
-      background: #efefef;
-      border-radius: 5px;
-      color: #7d7a68;
-    }
-
-    .object-description { 
-      @extend %description-links
-    }
-  }
+.page__header {
+  margin-bottom: 30px;
+  padding: 30px 0;
+  border-bottom: 1px solid #efefef;
 }

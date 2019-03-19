@@ -27,7 +27,9 @@
   <body>
     <div class="container">
       <%= render 'layouts/header' %>
-      <%= yield %>
+      <main role="main">
+        <%= yield %>
+      </main>
       <%= render 'layouts/footer' %>
     </div>
   </body>

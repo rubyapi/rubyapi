@@ -1,0 +1,12 @@
+.search-result {
+  padding: 10px 20px;
+  border-radius: 5px;
+
+  &:last-child {
+    margin-bottom: 20px;
+  }
+
+  &:hover {
+    background: darken($background-color, 3%);
+  }
+}

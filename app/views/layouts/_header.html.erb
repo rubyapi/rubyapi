@@ -1,7 +1,7 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <%= link_to home_path do %>
-    <%= inline_svg "logo.svg", class: "logo logo-header" %>
-    <h1>Ruby API</h1>
+    <%= inline_svg "logo.svg", class: "logo" %>
+    <h1 class="logo__title">Ruby API</h1>
   <% end %>
   <%= render "layouts/search" unless homepage? %>
   <ul class="version-container">

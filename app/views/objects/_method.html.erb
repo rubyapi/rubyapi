@@ -1,12 +1,10 @@
 <div class="method" id="<%= method.anchor %>">
-  <div class="method-header">
-    <h3>
-      <%= link_to method.name, object_path(version: ruby_version, anchor: method.anchor) %>
-    </h3>
+  <div class="method__header">
+    <h4><%= link_to method.name, object_path(version: ruby_version, anchor: method.anchor) %></h4>
     <%= render partial: 'layouts/type', locals: { object: method } %>
   </div>
   <% if method.description.empty? %>
-    <div class="empty-description">No documentation available</div>
+    <div class="method__description--empty">No documentation available</div>
   <% else %>
     <%= raw method.description %>
   <% end %>

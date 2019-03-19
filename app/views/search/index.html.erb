@@ -1,19 +1,21 @@
-<div class="page page-search">
-  <div class="search-header">
-    <h1>Results for: "<%= search_query %>"</h1>
-  </div>
+<div class="page page--search">
+  <header class="page__header">
+    <h3>Results for: "<%= search_query %>"</h3>
+  </header>
 
+  <section class="search-results">
   <% @search.results.each do |result| %>
-    <div class="result">
-      <div class="result-header">
-        <h2><%= link_to result.name, result_url(result) %></h2>
+    <div class="search-result">
+      <header class="search-result__header">
+        <h4><%= link_to result.name, result_url(result) %></h4>
         <%= render partial: 'layouts/type', locals: { object: result } %>
-      </div>
-      <div class="description">
+      </header>
+      <div class="search_result__description">
         <%= raw result.description %>
       </div>
     </div>
   <% end %>
+  </section>
 
   <div class="pagination">
     <%= paginate @search %>
