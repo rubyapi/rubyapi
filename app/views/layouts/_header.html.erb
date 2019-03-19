@@ -3,7 +3,7 @@
     <%= inline_svg "logo.svg", class: "logo logo-header" %>
     <h1>Ruby API</h1>
   <% end %>
-  <%= render "layouts/search", header: true unless current_page?(root_path) || current_page?(versioned_root_path(version: ruby_version)) %>
+  <%= render "layouts/search" unless homepage? %>
   <ul class="version-container">
     <li>
       <a href="#" class="version-switch">

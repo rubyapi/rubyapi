@@ -1,21 +1,20 @@
 .search {
-
-  &.search-header {
-    margin: 0 20px;
-
-    input[type="text"] {
-      background-color: #C30041;
-    }
-  }
-
   input[type="text"] {
-    background-color: $primary-red;
+    background: $primary-red;
     border-radius: 5px;
     width: 570px;
     border: none;
     padding: 13px 22px;
     color: white;
     font-size: 1em;
+
+    &:focus {
+      outline-width: 0;
+    }
+
+    &::placeholder {
+      color: darken(white, 5%);
+    }
   }
 
   button[type="submit"] {
@@ -26,12 +25,8 @@
     font-size: 1.25em;
     color: white;
   }
+}
 
-  input:focus {
-    outline-width: 0;
-  }
-
-  input::placeholder {
-    color: darken(white, 5%);
-  }
+.search--header input[type="text"] {
+  background: darken($primary-red, 8%);
 }

@@ -1,4 +1,4 @@
-<div class="search <%= defined?(header) && header ? "search-header" : "" %>">
+<div class="search <%= homepage? ? "" : "search--header" %>">
   <%= form_tag search_url(version: ruby_version), method: :get do %>
     <input name="q" value="<%= search_query %>" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="<%= defined?(empty) && empty ? "" : "Search Ruby Modules, Classes & Methods" %>" aria-label="Search" title="Search"/>
     <button type="submit" aria-label="Submit search">
