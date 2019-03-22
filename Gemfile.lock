@@ -104,7 +104,7 @@ GEM
     fast_jsonapi (1.5)
       activesupport (>= 4.2)
     ffi (1.10.0)
-    font-awesome-sass (5.8.0)
+    font-awesome-sass (5.8.1)
       sassc (>= 1.11)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -301,7 +301,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   coveralls
   fast_jsonapi
-  font-awesome-sass (~> 5.8.0)
+  font-awesome-sass (~> 5.8.1)
   hiredis
   http
   inline_svg
