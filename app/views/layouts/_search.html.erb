@@ -1,6 +1,6 @@
-<div class="search <%= homepage? ? "" : "search--header" %>">
+<div class="search <%= "search--homepage" if homepage? %>">
   <%= form_tag search_url(version: ruby_version), method: :get do %>
-    <input name="q" value="<%= search_query %>" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="<%= defined?(empty) && empty ? "" : "Search Ruby Modules, Classes & Methods" %>" aria-label="Search" title="Search"/>
+    <input name="q" value="<%= search_query %>" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Ruby Documentation" aria-label="Search" title="Search"/>
     <button type="submit" aria-label="Submit search">
       <i class="fas fa-search"></i>
     </button>

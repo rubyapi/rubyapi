@@ -1,7 +1,18 @@
-<div class="page page-home">
-  <div class="content">
-    <h1>Find &amp; browse Ruby<br/> documentation</h1>
-    <br/>
-    <%= render 'layouts/search', empty: true %>
+<div class="page">
+  <div class="logo-home">
+    <%= render "layouts/logo" %>
+  </div>
+  <%= render 'layouts/search', empty: true %>
+  <div class="note note--red note--inline">
+    <i class="note__icon fas fa-info-circle"></i>
+    <div class="message">
+      <h4>Hello World!</h4>
+      <p>Thanks for checking out RubyAPI. This project aims to make Ruby's documentation more easy to search and find what you're looking for. Note that this project is currently a work in progress and will often change without warning. If you have any queries, questions, or bug reports. Feel free to reach Colby via Github or Twitter:</p>
+      <p>
+      <a href="https://github.com/colby-swandale/ruby-api"><i class="fab fa-github"></i> colby-swandale/ruby-api</a>
+      <br/>
+      <a href="https://twitter.com/oceanicpanda"><i class="fab fa-twitter"></i> @oceanicpanda</a>
+      </p>
+    </div>
   </div>
 </div>

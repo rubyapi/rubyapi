@@ -5,12 +5,13 @@
     "header"
     "content"
     "footer";
-  grid-template-rows: 75px 3fr auto;
+}
 
-  .with-sidebar {
-    grid-template-areas:
-      "header header header"
-      "sidebar content content"
-      "footer footer footer";
-  }
+.container--homepage {
+  background: $primary-red;
+  color: white;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }

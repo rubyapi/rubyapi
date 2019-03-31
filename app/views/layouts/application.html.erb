@@ -13,12 +13,12 @@
   </head>
 
   <body>
-    <div class="container">
-      <%= render 'layouts/header' %>
+    <div class="container <%= "container--homepage" if homepage? %>">
+      <%= render 'layouts/header' unless homepage? %>
       <main role="main">
         <%= yield %>
       </main>
-      <%= render 'layouts/footer' %>
+      <%= render 'layouts/footer' unless homepage? %>
     </div>
   </body>
 </html>

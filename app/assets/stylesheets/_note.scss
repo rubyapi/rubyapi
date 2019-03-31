@@ -1,0 +1,31 @@
+.note {
+  width: auto;
+  padding: 1rem 1rem 1rem 3rem;
+  text-align: left;
+  margin:3rem 1rem;
+  border-radius: $border-radius-width;
+  position: relative;
+
+  .message {
+    display: inline-block;
+    margin-left: 1rem;
+  }
+}
+
+.note--inline {
+  display: inline-block;
+}
+
+.note__icon {
+  font-size: 1.5em;
+  position: absolute;
+  top: 1.3rem;
+  left: 1.5rem;
+}
+
+.note--red {
+  background-color: darken($primary-red, 8%);
+  color: $background-color;
+
+  a { color: $background-color; }
+}

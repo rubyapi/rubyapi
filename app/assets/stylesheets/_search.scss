@@ -1,6 +1,6 @@
 .search {
   input[type="text"] {
-    background: $primary-red;
+    background: darken($primary-red, 8%);
     border-radius: 5px;
     width: 570px;
     border: none;
@@ -31,6 +31,18 @@
   }
 }
 
-.search--header input[type="text"] {
-  background: darken($primary-red, 8%);
+.search--homepage {
+  input[type="text"] {
+    background: $background-color;
+    box-shadow: 0 5px 8px darken($primary-red, 8%);
+    color: $font-color;
+
+    &::placeholder {
+      color: $font-color;
+    }
+  }
+
+  .fas {
+    color: $font-color;
+  }
 }
