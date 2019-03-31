@@ -5,9 +5,12 @@ to_i:
   method_type: 1
   description: Returns the result of interpreting leading characters in str
   version: 2.6
+  source_location: "2.6.2:foo/bar.c:123"
 
 to_s:
   name: to_s
   method_type: 1
   description: Returns a string containing the place-value representation of int
   version: 2.6
+  source_location: "2.6.2:foo/bar.c:456"
+

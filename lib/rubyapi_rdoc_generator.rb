@@ -17,8 +17,8 @@ class StudyRubyRDocGenerator
   def initialize(store, options)
     @store = store
     @options = options
-    version = options.generator_options.pop
-    @version = Gem::Version.new(version).segments[0..1].join(".")
+    @full_version = options.generator_options.pop
+    @version = Gem::Version.new(@full_version).segments[0..1].join(".")
     @documentation = store.all_classes_and_modules.uniq(&:full_name)
   end
 
@@ -44,11 +44,17 @@ class StudyRubyRDocGenerator
       object_rdoc.method_list.each do |method|
         next if methods.find { |m| m.name == method.name }
 
+        base_ruby_dir = Pathname.new @options.files.first
+        method_file = Pathname.new Rails.root.join(method.file.relative_name)
+
+        source_location = method_file.relative_path_from(base_ruby_dir).to_s
+
         method_doc = RubyMethod.new(
           name: method.name,
           description: method.description,
           method_type: "#{method.type}_method".to_sym,
           version: @version,
+          source_location: "#{@full_version}:#{source_location}:#{method.line}"
         )
 
         if method.call_seq

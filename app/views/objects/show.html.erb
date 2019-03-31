@@ -5,9 +5,8 @@
     <h1 class="page__title">
       <%= link_to @object.name, object_url(version: ruby_version, object: @object) %>
     </h1>
-    <%= render partial: 'layouts/type', locals: { object: @object } %>
-    <div class="object-description">
-      <%= raw @object.description %>
+    <div class="decorators">
+      <%= render partial: 'layouts/type', locals: { object: @object } %>
     </div>
   </header>
   <div class="page__description">

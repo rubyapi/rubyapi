@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_30_141743) do
+ActiveRecord::Schema.define(version: 2019_03_31_061312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_03_30_141743) do
     t.datetime "updated_at", null: false
     t.bigint "ruby_object_id"
     t.text "call_sequence", default: [], array: true
+    t.string "source_location", default: "", null: false
     t.index ["ruby_object_id"], name: "index_ruby_methods_on_ruby_object_id"
   end
 
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_03_30_141743) do
     t.string "constant"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "source_location", default: ""
     t.index ["path", "version"], name: "index_ruby_objects_on_path_and_version"
   end
 

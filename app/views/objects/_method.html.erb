@@ -11,6 +11,7 @@
     </div>
     <div class="method__decorators">
       <%= render partial: 'layouts/type', locals: { object: method } %>
+      <a href="<%= github_url(method) %>" target="_blank" class="type type--github" data-tippy="View source on Github" data-tippy-arrow="true"/><i class="fab fa-github"></i></a>
     </div>
   </div>
   <% if method.description.empty? %>
