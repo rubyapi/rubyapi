@@ -6,11 +6,19 @@
 }
 
 .page--title {
-  margin: 20px 0;
+  margin: 1rem 0;
 }
 
 .page__header {
-  margin: 20px 0;
-  padding: 10px 20px;
-  border-bottom: 1px solid #efefef;
+  display: flex;
+  justify-content: space-between;
+}
+
+.page__header{
+  margin: 1rem 0;
+  padding: 1rem;
+}
+
+.page__description {
+  padding: 0 1rem;
 }

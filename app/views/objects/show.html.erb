@@ -10,6 +10,10 @@
       <%= raw @object.description %>
     </div>
   </header>
+  <div class="page__description">
+    <%= raw @object.description %>
+  </div>
+  <hr/>
   <div class="methods">
     <%= render partial: 'objects/method', collection: @object.ruby_methods.ordered, cache: true %>
   </div>

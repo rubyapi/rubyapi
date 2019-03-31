@@ -41,3 +41,10 @@ ul {
   padding: 0;
   list-style: none;
 }
+
+hr {
+  margin: 1rem;
+  height: 1px;
+  border: 0;
+  background: $background-alt-color;
+}
