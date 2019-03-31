@@ -44,12 +44,20 @@ class StudyRubyRDocGenerator
       object_rdoc.method_list.collect do |method|
         next if methods.find { |m| m.name == method.name }
 
-        methods << RubyMethod.new(
+        method_doc = RubyMethod.new(
           name: method.name,
           description: method.description,
           method_type: "#{method.type}_method".to_sym,
-          version: @version
+          version: @version,
         )
+
+        if method.call_seq
+          method_doc[:call_sequence] = method.call_seq.strip.split("\n").map { |seq|
+            seq.gsub "->", "→"
+          }
+        end
+
+        methods << method_doc
       end
 
       obj.ruby_methods = methods

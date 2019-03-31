@@ -1,7 +1,17 @@
 <div class="method" id="<%= method.anchor %>">
   <div class="method__header">
-    <h4><%= link_to method.name, object_path(version: ruby_version, anchor: method.anchor) %></h4>
-    <%= render partial: 'layouts/type', locals: { object: method } %>
+    <div class="method__sequence">
+      <% unless method.call_sequence.empty? %>
+        <% method.call_sequence.each do |seq| %>
+          <h4><%= link_to seq, object_path(version: ruby_version, anchor: method.anchor) %></h4/><br/>
+        <% end %>
+      <% else %>
+        <h4><%= link_to method.name, object_path(version: ruby_version, anchor: method.anchor) %></h4>
+      <% end %>
+    </div>
+    <div class="method__decorators">
+      <%= render partial: 'layouts/type', locals: { object: method } %>
+    </div>
   </div>
   <% if method.description.empty? %>
     <div class="method__description--empty">No documentation available</div>

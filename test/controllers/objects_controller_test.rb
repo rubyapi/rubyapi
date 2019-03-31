@@ -33,4 +33,32 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
       get object_url object: object.path, version: "2.6"
     end
   end
+
+  test "show method sequence" do
+    object = ruby_objects(:string)
+    method = ruby_methods(:to_i)
+
+    method.call_sequence = [
+      "to_i -> new_int",
+    ]
+
+    object.ruby_methods << method
+    object.save
+
+    get object_url object: object.path
+
+    assert_select "div.method__sequence", "to_i -> new_int"
+  end
+
+  test "show method name" do
+    object = ruby_objects(:string)
+    method = ruby_methods(:to_i)
+
+    object.ruby_methods << method
+    object.save
+
+    get object_url object: object.path
+
+    assert_select "div.method__sequence", "to_i"
+  end
 end

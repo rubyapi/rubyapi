@@ -2,9 +2,9 @@
 
 <section class="page page--object">
   <header class="page__header">
-    <h3 class="page__title">
+    <h1 class="page__title">
       <%= link_to @object.name, object_url(version: ruby_version, object: @object) %>
-    </h3>
+    </h1>
     <%= render partial: 'layouts/type', locals: { object: @object } %>
     <div class="object-description">
       <%= raw @object.description %>

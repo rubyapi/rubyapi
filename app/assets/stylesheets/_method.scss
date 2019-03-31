@@ -11,3 +11,12 @@
     background: darken($background-color, 3%);
   }
 }
+
+.method__header h4 {
+  font-weight: bold;
+}
+
+.method__header {
+  display: flex;
+  justify-content: space-between
+}
