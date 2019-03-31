@@ -12,6 +12,11 @@
   }
 }
 
-.search-result__header h4 {
-  font-weight: bold;
+.search-result__header {
+  display: flex;
+  justify-content: space-between;
+
+  h4 {
+    font-weight: bold;
+  }
 }
