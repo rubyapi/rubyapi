@@ -41,7 +41,7 @@ class StudyRubyRDocGenerator
 
       methods = []
 
-      object_rdoc.method_list.collect do |method|
+      object_rdoc.method_list.each do |method|
         next if methods.find { |m| m.name == method.name }
 
         method_doc = RubyMethod.new(
