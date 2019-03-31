@@ -10,7 +10,7 @@
         <div class="search-result__method-sequence">
           <% if result.try(:call_sequence) && !result.call_sequence.empty? %>
             <% result.call_sequence.each do |seq| %>
-              <h4><%= link_to seq, result_url(result) %></h4/><br/>
+              <h4><%= link_to seq, result_url(result) %></h4/>
             <% end %>
           <% else %>
             <h4><%= link_to result.name, result_url(result) %></h4>

@@ -3,7 +3,7 @@
     <div class="method__sequence">
       <% unless method.call_sequence.empty? %>
         <% method.call_sequence.each do |seq| %>
-          <h4><%= link_to seq, object_path(version: ruby_version, anchor: method.anchor) %></h4/><br/>
+          <h4><%= link_to seq, object_path(version: ruby_version, anchor: method.anchor) %></h4/>
         <% end %>
       <% else %>
         <h4><%= link_to method.name, object_path(version: ruby_version, anchor: method.anchor) %></h4>
