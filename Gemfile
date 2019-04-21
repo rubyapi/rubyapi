@@ -61,6 +61,8 @@ gem "tty-spinner"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  # Dotfile configuration
+  gem 'dotenv-rails', require: 'dotenv/rails-now'
 end
 
 group :development do
