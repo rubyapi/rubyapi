@@ -8,7 +8,7 @@ gem "rails", "~> 5.2.3"
 # Use postgresql as the database for Active Record
 gem "pg"
 # Use Falcon as the app server
-gem "falcon"
+gem "puma"
 # Use SCSS for stylesheets
 gem "sassc-rails"
 # Use Uglifier as compressor for JavaScript assets
