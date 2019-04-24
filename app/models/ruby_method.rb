@@ -1,5 +1,5 @@
 class RubyMethod < ApplicationRecord
-  searchkick searchable: [:name, :description], filterable: [:version]
+  searchkick searchable: [:name, :description, :method_parent], filterable: [:version, :name, :method_parent]
 
   enum method_type: %i[instance_method class_method]
 
@@ -8,6 +8,12 @@ class RubyMethod < ApplicationRecord
   belongs_to :ruby_object
 
   scope :ordered, -> { order :name }
+
+  attribute :method_parent, :string
+
+  def method_parent
+    ruby_object.name
+  end
 
   def anchor
     if instance_method?

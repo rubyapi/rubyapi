@@ -1,7 +1,7 @@
 class RubyObject < ApplicationRecord
   include PathGenerator
 
-  searchkick searchable: [:name, :description], filterable: [:version]
+  searchkick searchable: [:name, :description], filterable: [:version, :name]
 
   enum object_type: %i[module_object class_object]
 
