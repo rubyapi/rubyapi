@@ -41,8 +41,6 @@ gem "font-awesome-sass", "~> 5.8.1"
 gem "kaminari", "~> 1.1.1"
 # Inline SVGs
 gem "inline_svg"
-# Rbuy VM metrics
-gem "barnes", require: false
 # CLI Progress Bar
 gem "tty-spinner"
 
