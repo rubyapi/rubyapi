@@ -189,7 +189,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    redis (4.1.0)
+    redis (4.1.1)
     regexp_parser (1.4.0)
     rubocop (0.67.2)
       jaro_winkler (~> 1.5.1)
@@ -281,7 +281,7 @@ DEPENDENCIES
   pg
   puma
   rails (~> 5.2.3)
-  redis (~> 4.0)
+  redis (~> 4.1)
   sassc-rails
   searchkick
   selenium-webdriver
