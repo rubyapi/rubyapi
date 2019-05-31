@@ -74,12 +74,12 @@ GEM
     dotenv-rails (2.7.2)
       dotenv (= 2.7.2)
       railties (>= 3.2, < 6.1)
-    elasticsearch (6.3.0)
-      elasticsearch-api (= 6.3.0)
-      elasticsearch-transport (= 6.3.0)
-    elasticsearch-api (6.3.0)
+    elasticsearch (7.1.0)
+      elasticsearch-api (= 7.1.0)
+      elasticsearch-transport (= 7.1.0)
+    elasticsearch-api (7.1.0)
       multi_json
-    elasticsearch-transport (6.3.0)
+    elasticsearch-transport (7.1.0)
       faraday
       multi_json
     erubi (1.8.0)
@@ -143,7 +143,7 @@ GEM
     minitest (5.11.3)
     msgpack (1.2.10)
     multi_json (1.13.1)
-    multipart-post (2.0.0)
+    multipart-post (2.1.1)
     nio4r (2.3.1)
     nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
@@ -211,7 +211,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    searchkick (4.0.0)
+    searchkick (4.0.1)
       activemodel (>= 5)
       elasticsearch (>= 6)
       hashie
