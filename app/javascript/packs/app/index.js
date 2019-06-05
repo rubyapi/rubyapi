@@ -1,1 +1,1 @@
-import "./app.css"
+require("./application.css")
