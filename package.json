@@ -6,6 +6,8 @@
     "tippy.js": "^4.2.1"
   },
   "devDependencies": {
+    "postcss-cssnext": "^3.1.0",
+    "tailwindcss": "^1.0.3",
     "webpack-dev-server": "^3.4.1"
   }
 }
