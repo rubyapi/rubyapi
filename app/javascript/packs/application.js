@@ -8,3 +8,4 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import tippy from 'tippy.js'
+const app = require("./app")
