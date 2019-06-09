@@ -2,6 +2,7 @@
   "name": "ruby-api",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.9.0",
     "@rails/webpacker": "^4.0.2",
     "tippy.js": "^4.2.1"
   },
