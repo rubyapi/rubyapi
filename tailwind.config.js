@@ -1,10 +1,16 @@
 module.exports = {
   theme: {
     fontFamily: {
-      body: ["proxima-nova", "sans-serif"],
-      display: ["proxima-nova", "sans-serif"]
+      'sans': ["proxima-nova", "sans-serif"],
     },
-    extend: {}
+    extend: {
+      colors: {
+        red: {
+          default: "#DE004A",
+          dark: "#b5003c"
+        }
+      }
+    }
   },
   variants: {},
   plugins: []
