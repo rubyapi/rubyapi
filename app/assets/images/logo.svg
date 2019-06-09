@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 168 106" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-    <polygon fill="#FFFFFF" fill-rule="nonzero" points="83.5 54 34 2 133 2"></polygon>
-    <path fill="#FFFFFF" d="M31.7837838,18 L84,72.7027027 L136.216216,18 L168,18 L84,106 L0,18 L31.7837838,18 Z" fill-rule="nonzero"></path>
-  </g>
+<svg viewBox="0 0 168 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>Logo White Text</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Logo-White-Text" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M16,14 L26,24 L36,14 L42,14 L26,30 L10,14 L16,14 Z" id="Combined-Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+        <polygon id="Triangle" fill="#FFFFFF" fill-rule="nonzero" points="26 20 16 10 36 10"></polygon>
+        <text id="ruby-api" font-family="ProximaNova-Regular, Proxima Nova" font-size="30" font-weight="normal" line-spacing="30" fill="#FFFFFF">
+            <tspan x="50" y="28">ruby api</tspan>
+        </text>
+    </g>
 </svg>

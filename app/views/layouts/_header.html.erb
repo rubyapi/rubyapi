@@ -1,18 +1,24 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <%= link_to home_path do %>
-    <%= render "layouts/logo", small: true %>
-  <% end %>
-  <%= render "layouts/search" unless homepage? %>
-  <ul class="version-container">
-    <li>
-      <a href="#" class="version-switch">
+<header id="header" class="text-white bg-red flex items-center fixed top-0 inset-x-0 z-100 h-16">
+  <nav class="w-full px-6" role="navigation" aria-label="main navigation">
+    <div class="flex items-center justify-between">
+      <div class="xl:w-2/12 px-6">
+        <a href="<%= root_path %>" class="block">
+          <%= inline_svg "logo.svg" %>
+        </a>
+      </div>
+      <div class="xl:w-5/12">
+        <div class="relative">
+          <%= form_tag search_url(version: ruby_version), method: :get do %>
+            <input id="header-search" class="bg-red-dark rounded-lg px-3 py-2 w-full" name="q" value="<%= search_query %>" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Ruby Documentation" aria-label="Search" title="Search" />
+            <button type="submit" class="absolute right-0 inset-y-0 px-4">
+              <span class="fa fa-search"></span>
+            </button>
+          <% end %>
+        </div>
+      </div>
+      <div class="xl:w-1/12 text-right px-6">
         <span><%= ruby_version %>&nbsp;&nbsp;<i class="fas fa-angle-down"></i></span>
-      </a>
-      <ul class="version-list">
-        <% available_ruby_versions.each do |version| %>
-          <li class="version"><%= link_to version, route_for_version(version), "data-turbolinks-action" => "replace" %></li>
-        <% end %>
-      </ul>
-    <li>
-  </ul>
-</nav>
+      </div>
+    </div>
+  </nav>
+</header>

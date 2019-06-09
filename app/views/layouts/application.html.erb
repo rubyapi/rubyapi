@@ -11,13 +11,7 @@
     <%= javascript_pack_tag 'application' %>
   </head>
 
-  <body>
-    <div class="container <%= "container--homepage" if homepage? %>">
-      <%= render 'layouts/header' unless homepage? %>
-      <main role="main">
-        <%= yield %>
-      </main>
-      <%= render 'layouts/footer' unless homepage? %>
-    </div>
+  <body class="font-sans">
+    <%= render 'layouts/header' %>
   </body>
 </html>
