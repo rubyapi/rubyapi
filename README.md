@@ -1,19 +1,19 @@
-# RubyAPI: Easily search and find Ruby documentation
+# Ruby API: Easily search and find Ruby documentation
 
-RubyAPI is a Rails application that consumes Ruby's documentation and makes it easy for developers to find and explore Ruby's documentation.
+Ruby API is a Ruby on Rails application that consumes Ruby's documentation and makes it easy for developers to search and explore documentation for Ruby.
 
 ## Why?
 
-Trying to find documentation about that one method or class that you're currently thinking about is much harder that it should be for developers. Ruby documentation sites like http://ruby-doc.org and http://docs.ruby-lang.org do not optimise for SEO or mobile devices resulting in a poor experience for users. Other applications that index Ruby's documentation such as Dash, while a much better experience, is a paid application (for the full experience) and is only available on limited devices.
+Trying to find documentation about that one method or class that your wondering about is much harder that it should be for developers. The current goto documentation sites for Ruby like http://ruby-doc.org and http://docs.ruby-lang.org do not optimise for SEO or mobile devices, resulting in a poor experience for users. Other applications that index Ruby's documentation such as Dash, while a much better experience, is a paid application (for the full experience) and is only available on a limited set of devices.
 
-Our mission aims to improve the ruby ecosystem by providing an application that can:
+Our mission aims to improve the Ruby ecosystem by providing an application that is:
 
-  * No ads. No paywall. ever.
   * Available to any device with a web browser
-  * Provide documentation for all supported versions of Ruby
-  * Optimize the page for displaying documentation on many different types of devices
-  * Optimize searching for common Ruby classes/methods
-  * Optimize SEO to allow Google to understand how to index developer documentation.
+  * Provides documentation for all supported versions of Ruby
+  * Designed for many different device types
+  * Optimized search results for common Ruby classes/methods
+  * Optimized SEO to allow Google to understand how to index Ruby's documentation.
+  * No ads. No paywall. ever.
 
 ## Getting started
 
@@ -21,7 +21,7 @@ Install dependencies:
 
     $ bundle install && yarn install --check-files
 
-Start services:
+Start services such as Postgresql and ElasticSearch:
 
     $ docker-compose up -d
 
@@ -47,4 +47,4 @@ Everyone interacting with the source code, issue trackers, chat rooms, and maili
 
 ## License
 
-RubyAPI is licensed under the [MIT license](https://github.com/colby-swandale/ruby-api/blob/master/LICENSE.md).
+Ruby API is licensed under the [MIT license](https://github.com/colby-swandale/ruby-api/blob/master/LICENSE.md).
