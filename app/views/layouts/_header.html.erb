@@ -1,23 +1,32 @@
-<header id="header" class="text-white bg-red flex items-center fixed top-0 inset-x-0 z-100 h-16">
-  <nav class="w-full px-6" role="navigation" aria-label="main navigation">
-    <div class="flex items-center justify-between">
-      <div class="xl:w-2/12 px-6">
+<header id="header" class="text-white bg-red-600 flex items-center fixed top-0 inset-x-0 z-50 h-16">
+  <nav class="w-full max-w-screen-xl mx-auto" role="navigation" aria-label="main navigation">
+    <div class="flex items-center justify-between md:px-6 px-3">
+      <div class="lg:w-2/12 w-2/12">
         <a href="<%= root_path %>" class="block">
-          <%= inline_svg "logo.svg" %>
+          <%= inline_svg "logo-plain.svg", class: "md:hidden w-10 h-10" %>
+          <%= inline_svg "logo.svg", class: "hidden md:block" %>
         </a>
       </div>
-      <div class="xl:w-5/12">
+      <div class="lg:w-5/12 md:w-6/12 w-8/12">
         <div class="relative">
           <%= form_tag search_url(version: ruby_version), method: :get do %>
-            <input id="header-search" class="bg-red-dark rounded-lg px-3 py-2 w-full" name="q" value="<%= search_query %>" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Ruby Documentation" aria-label="Search" title="Search" />
+            <input id="header-search" name="q" class="bg-red-900 rounded px-3 py-2 w-full" name="q" value="<%= search_query %>" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Ruby Documentation" aria-label="Search" title="Search" />
             <button type="submit" class="absolute right-0 inset-y-0 px-4">
               <span class="fa fa-search"></span>
             </button>
           <% end %>
         </div>
       </div>
-      <div class="xl:w-1/12 text-right px-6">
-        <span><%= ruby_version %>&nbsp;&nbsp;<i class="fas fa-angle-down"></i></span>
+      <div class="lg:w-1/12 w-2/12 text-right">
+        <div class="relative">
+          <select class="bg-red-600 md:text-xl text-l pl-2 pr-5 appearance-none" onchange="document.location.href=this.value">
+            <option><%= ruby_version %></option>
+            <% available_ruby_versions.sort.reverse.each do |version| %>
+              <option value="<%= route_for_version version %>"><%= version %></option>
+            <% end %>
+          </select>
+          <span class="absolute right-0 inset-y-0 px-2 pointer-events-none"><i class="fas fa-angle-down pt-2"></i></span>
+        </div>
       </div>
     </div>
   </nav>

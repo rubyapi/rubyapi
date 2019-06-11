@@ -1,0 +1,8 @@
+<svg width="120px" height="80px" viewBox="0 0 120 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(10.000000, 10.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <path d="M19,11.6129032 L50,41.6129032 L81,11.6129032 L100,11.6129032 L50,60 L0,11.6129032 L19,11.6129032 Z"></path>
+            <polygon points="50.5050505 30 19.1919192 6.98894494e-15 81.8181818 0"></polygon>
+        </g>
+    </g>
+</svg>
