@@ -10,7 +10,7 @@ Rails.application.config.content_security_policy do |policy|
    policy.img_src     :self
    policy.object_src  :none
    policy.script_src  :self
-   policy.style_src   :self, "https://use.typekit.net"
+   policy.style_src   :self, "https://use.typekit.net", "https://p.typekit.net"
 
 #   # Specify URI for violation reports
 #   # policy.report_uri "/csp-violation-report-endpoint"
