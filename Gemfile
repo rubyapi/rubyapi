@@ -35,8 +35,6 @@ gem "searchkick"
 # Fast JSON serialization
 gem "fast_jsonapi"
 gem "oj"
-# Awesome Font
-gem "font-awesome-sass", "~> 5.8.1"
 # Pagination
 gem "kaminari", "~> 1.1.1"
 # Inline SVGs

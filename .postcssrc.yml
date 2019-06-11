@@ -1,3 +1,6 @@
 plugins:
   postcss-import: {}
   postcss-cssnext: {}
+  tailwindcss: {}
+  autoprefixer: {}
+

@@ -1,33 +1,33 @@
-<div class="page page--search">
-  <header class="page__header">
-    <h3>Results for: "<%= search_query %>"</h3>
-  </header>
-
-  <section class="search-results">
-  <% @search.results.each do |result| %>
-    <div class="search-result">
-      <header class="search-result__header">
-        <div class="search-result__method-sequence">
-          <% if result.try(:call_sequence) && !result.call_sequence.empty? %>
-            <% result.call_sequence.each do |seq| %>
-              <h4><%= link_to seq, result_url(result) %></h4/>
+<div class="max-w-screen-xl mx-auto md:px-6 px-3 pt-20">
+  <div class="p-3 pb-5 border-b border-gray-200"> 
+    <h1 class="lg:text-3xl text-2xl font-bold">Results for: "<%= search_query %>"</h1>
+  </div>
+  <div class="pt-3">
+   <% @search.results.each do |result| %>
+      <div class="p-3 my-1 rounded hover:bg-gray-100">
+        <div class="flex">
+          <div class="w-11/12">
+            <% if result.try(:call_sequence) && !result.call_sequence.empty? %>
+              <% result.call_sequence.each do |seq| %>
+                <h4 class="lg:text-2xl text-lg font-bold"><%= link_to seq, result_url(result) %></h4/>
+              <% end %>
+            <% else %>
+              <h4 class="lg:text-2xl text-lg font-bold"><%= link_to result.name, result_url(result) %></h4>
             <% end %>
+          </div>
+          <div class="w-1/12">
+
+          </div>
+        </div>
+        <div class="py-3">
+          <% if result.description.empty? %>
+            <div>No documentation available</div>
           <% else %>
-            <h4><%= link_to result.name, result_url(result) %></h4>
+            <%= raw result.description %>
           <% end %>
         </div>
-        <div class="search-result__decorators">
-          <%= render partial: 'layouts/type', locals: { object: result } %>
-        </div>
-      </header>
-      <div class="search_result__description">
-        <%= raw result.description %>
       </div>
-    </div>
-  <% end %>
-  </section>
-
-  <div class="pagination">
-    <%= paginate @search %>
+    <% end %>
   </div>
+  <%= paginate @search %>
 </div>

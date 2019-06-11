@@ -1,19 +1,38 @@
 <% content_for(:title) { @object.name } %>
 
-<section class="page page--object">
-  <header class="page__header">
-    <h1 class="page__title">
-      <%= link_to @object.name, object_url(version: ruby_version, object: @object) %>
-    </h1>
-    <div class="decorators">
-      <%= render partial: 'layouts/type', locals: { object: @object } %>
+<div class="max-w-screen-xl mx-auto md:px-6 px-3 pt-20">
+  <div class="flex flex-col">
+    <div class="p-3 pb-5 border-b border-gray-200">
+      <h1 class="lg:text-3xl text-2xl font-bold"><%= link_to @object.name, object_url(version: ruby_version, object: @object) %></h1>
+      <div class="">
+        <%= raw @object.description %>
+      </div>
     </div>
-  </header>
-  <div class="page__description">
-    <%= raw @object.description %>
+    <% @object.ruby_methods.ordered.each do |m| %>
+      <div class="p-3 my-6 rounded hover:bg-gray-100 relative z-0">
+        <a style="left:0; top: -80px; position: absolute;" id="<%= m.anchor %>"> </a>
+        <div class="flex">
+          <div class="w-11/12">
+            <% if m.call_sequence.empty? %>
+              <h4 class="lg:text-2xl text-lg font-bold"><%= link_to m.name, object_path(version: ruby_version, anchor: m.anchor) %></h4/>
+            <% else %>
+              <% m.call_sequence.each do |seq| %>
+                <h4 class="lg:text-2xl text-lg font-bold"><%= link_to seq, object_path(version: ruby_version, anchor: m.anchor) %></h4/>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="w-1/12 text-right">
+            <span class="py-1 px-2 rounded bg-gray-100"><a href="<%= github_url m %>" target="_blank"><i class="fab fa-github"></i></a></span>
+          </div>
+        </div>
+        <div class="py-1">
+          <% if m.description.empty? %>
+            <div>No documentation available</div>
+          <% else %>
+            <%= raw m.description %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <hr/>
-  <div class="methods">
-    <%= render partial: 'objects/method', collection: @object.ruby_methods.ordered, cache: true %>
-  </div>
-</section>
+</div>
