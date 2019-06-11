@@ -47,7 +47,7 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
 
     get object_url object: object.path
 
-    assert_select "div.method__sequence", "to_i -> new_int"
+    assert_select "h4", "to_i -> new_int"
   end
 
   test "show method name" do
@@ -59,6 +59,6 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
 
     get object_url object: object.path
 
-    assert_select "div.method__sequence", "to_i"
+    assert_select "h4", "to_i"
   end
 end

@@ -11,7 +11,8 @@
     <%= javascript_pack_tag 'application' %>
   </head>
 
-  <body class="font-sans">
-    <%= render 'layouts/header' %>
+  <body class="<%= "bg-red-600" if homepage? %>">
+    <%= render "layouts/header" unless homepage? %>
+    <%= yield %>
   </body>
 </html>
