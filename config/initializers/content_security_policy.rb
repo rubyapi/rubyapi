@@ -5,12 +5,12 @@
 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
 
 Rails.application.config.content_security_policy do |policy|
-#   policy.default_src :self, :https
-#   policy.font_src    :self, :https, :data
-#   policy.img_src     :self, :https, :data
-#   policy.object_src  :none
-#   policy.script_src  :self, :https
-#   policy.style_src   :self, :https
+   policy.default_src :self
+   policy.font_src    :self, "https://use.typekit.net"
+   policy.img_src     :self
+   policy.object_src  :none
+   policy.script_src  :self
+   policy.style_src   :self, "https://use.typekit.net"
 
 #   # Specify URI for violation reports
 #   # policy.report_uri "/csp-violation-report-endpoint"
