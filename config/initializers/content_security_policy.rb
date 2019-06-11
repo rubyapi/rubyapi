@@ -10,14 +10,14 @@ Rails.application.config.content_security_policy do |policy|
    policy.img_src     :self
    policy.object_src  :none
    policy.script_src  :self, :unsafe_inline
-   policy.style_src   :self, "https://use.typekit.net", "https://p.typekit.net"
+   policy.style_src   :self, :unsafe_inline, "https://use.typekit.net", "https://p.typekit.net"
 
 #   # Specify URI for violation reports
 #   # policy.report_uri "/csp-violation-report-endpoint"
 
    if Rails.env.development?
      policy.connect_src :self, :https, "http://localhost:3035", "ws://localhost:3035"
-     policy.style_src   :self, :blob, "https://use.typekit.net", "https://p.typekit.net"
+     policy.style_src   :self, :blob, :unsafe_inline, "https://use.typekit.net", "https://p.typekit.net"
      policy.script_src  :self, :blob, :unsafe_inline
    end
 end
