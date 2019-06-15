@@ -10,7 +10,7 @@
       <div class="lg:w-5/12 md:w-6/12 w-8/12">
         <div class="relative">
           <%= form_tag search_url(version: ruby_version), method: :get do %>
-            <input id="header-search" name="q" class="bg-red-900 rounded px-3 py-2 w-full" name="q" value="<%= search_query %>" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Ruby Documentation" aria-label="Search" title="Search" />
+            <input id="search" name="q" class="bg-red-900 rounded px-3 py-2 w-full" name="q" value="<%= search_query %>" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Ruby Documentation" aria-label="Search" title="Search" />
             <button type="submit" class="absolute right-0 inset-y-0 px-4">
               <span class="fa fa-search bg-red-900"></span>
             </button>
