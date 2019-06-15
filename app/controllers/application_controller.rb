@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :ruby_version
 
   def search_query
-    params[:q]
+    params[:q] || ""
   end
   helper_method :search_query
 

@@ -22,4 +22,10 @@ class SearchControllerTest < ActionDispatch::IntegrationTest
     get search_url
     assert_redirected_to root_url
   end
+
+  test "max query length" do
+    get search_url, params: {q: ("a" * 255)}
+
+    assert_response :bad_request
+  end
 end

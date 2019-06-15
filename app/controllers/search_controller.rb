@@ -1,7 +1,9 @@
 class SearchController < ApplicationController
   RESULTS_PER_PAGE = 25
+  MAX_SEARCH_QUERY_LENGTH = 255
 
   before_action :index, -> { redirect_to root_path unless search_query.present? }
+  before_action :index, -> { head :bad_request if search_query.length >= MAX_SEARCH_QUERY_LENGTH }
 
   CORE_CLASSES = {
     "String" => 5,
