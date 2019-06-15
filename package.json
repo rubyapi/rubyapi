@@ -10,7 +10,6 @@
     "tippy.js": "^4.2.1"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^1.2.0",
     "webpack-dev-server": "^3.7.1"
   }
 }
