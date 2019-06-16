@@ -16,8 +16,10 @@
             <% if m.call_sequence.empty? %>
               <h4 class="lg:text-2xl text-lg font-bold"><%= link_to m.name, object_path(version: ruby_version, anchor: m.anchor) %></h4/>
             <% else %>
-              <% m.call_sequence.each do |seq| %>
-                <h4 class="lg:text-2xl text-lg font-bold"><%= link_to seq, object_path(version: ruby_version, anchor: m.anchor) %></h4/>
+              <%= link_to object_path(version: ruby_version, anchor: m.anchor) do %>
+                <% m.call_sequence.each do |seq| %>
+                  <h4 class="lg:text-2xl text-lg font-bold"><%= seq %></h4/>
+                <% end %>
               <% end %>
             <% end %>
           </div>

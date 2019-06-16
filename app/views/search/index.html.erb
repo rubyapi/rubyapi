@@ -8,8 +8,10 @@
         <div class="flex">
           <div class="w-11/12">
             <% if result.try(:call_sequence) && !result.call_sequence.empty? %>
-              <% result.call_sequence.each do |seq| %>
-                <h4 class="lg:text-2xl text-lg font-bold"><%= link_to seq, result_url(result) %></h4/>
+              <%= link_to result_url(result) do %>
+                <% result.call_sequence.each do |seq| %>
+                  <h4 class="lg:text-2xl text-lg font-bold"><%= seq %></h4/>
+                <% end %>
               <% end %>
             <% else %>
               <h4 class="lg:text-2xl text-lg font-bold"><%= link_to result.name, result_url(result) %></h4>
