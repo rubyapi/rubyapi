@@ -41,3 +41,7 @@ pre:not(.ruby) {
 .ruby-value { color: #b65611; }
 .ruby-regexp { color: #1fad83; }
 .ruby-operator { color: #6e6b5e; }
+
+.ruby-documentation h3 {
+  @apply font-bold text-lg;
+}
