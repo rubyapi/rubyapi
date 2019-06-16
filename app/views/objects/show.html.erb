@@ -3,10 +3,10 @@
 <div class="max-w-screen-xl mx-auto md:px-6 px-3 pt-20">
   <div class="p-3 pb-5 border-b border-gray-200">
     <div class="flex flex-wrap">
-      <div class="w-full md:w-11/12">
+      <div class="w-full md:w-6/12">
         <h1 class="lg:text-3xl text-2xl font-bold"><%= link_to @object.name, object_url(version: ruby_version, object: @object) %></h1>
       </div>
-      <div class="w-full md:w-1/12 md:text-right mt-2 md:mt-0">
+      <div class="w-full md:w-6/12 md:text-right mt-2 md:mt-0">
         <% if @object.class_object? %>
         <span class="py-1 px-2 rounded bg-gray-100 text-gray-600 text-sm">Instance Method</span>
         <% elsif @object.module_object? %>
