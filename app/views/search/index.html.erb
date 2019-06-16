@@ -30,4 +30,9 @@
     <% end %>
   </div>
   <%= paginate @search %>
+  <div class="border-t border-gray-200 mt-1 py-2">
+    <span class="text-gray-500">Search took: <%= @search.took %>ms</span>
+    <span>&nbsp;&#183;&nbsp;</span>
+    <span class="text-gray-500">Total Resutls: <%= @search.total_count %></span>
+  </div>
 </div>
