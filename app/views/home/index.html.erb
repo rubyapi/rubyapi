@@ -1,24 +1,26 @@
 <div class="h-screen flex flex-col md:justify-center items-center">
-  <div class="block md:w-64 w-48 mt-5 md:mt-0 ">
-    <a href="<%= root_path %>" >
-      <%= inline_svg "logo.svg" %>
-    </a>
-  </div>
-  <div class="my-5 mb-10 lg:w-5/12 w-10/12">
-    <div class="relative">
-      <%= form_tag search_url(version: ruby_version), method: :get do %>
-        <input id="search" class="bg-white shadow-md rounded px-3 py-3 w-full" name="q" value="<%= search_query %>" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Ruby Documentation" aria-label="Search" title="Search" />
-        <button type="submit" class="absolute right-0 inset-y-0 px-4">
-          <span class="fa fa-search"></span>
-        </button>
-      <% end %>
+  <div class="flex flex-col items-center max-w-screen-md">
+    <div class="block md:w-64 w-48 mt-5 md:mt-0">
+      <a href="<%= root_path %>" >
+        <%= inline_svg "logo.svg" %>
+      </a>
     </div>
-  </div>
-  <div class="xl:w-4/12 lg:w-6/12 w-10/12 px-5 py-3 bg-red-900 text-white rounded">
-    <h2 class="md:text-3xl text-2xl">Hello World!</h2>
-    <p>Thanks for checking out Ruby API. This project aims to make Ruby's documentation more easy to search and find what you're looking for. This project is currently a work in progress, so most search queries will return odd results and things will often change without warning. If you have any queries, questions, or bug reports, feel free to reach Colby via Github or Twitter:</p>
-    <a href="https://github.com/colby-swandale/ruby-api"><i class="fab fa-github"></i> colby-swandale/ruby-api</a>
-    <br/>
-    <a href="https://twitter.com/oceanicpanda"><i class="fab fa-twitter"></i> @oceanicpanda</a>
+    <div class="my-5 mb-10 w-10/12">
+      <div class="relative">
+        <%= form_tag search_url(version: ruby_version), method: :get do %>
+          <input id="search" class="bg-white shadow-md rounded px-3 py-3 w-full" name="q" value="<%= search_query %>" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Ruby Documentation" aria-label="Search" title="Search" />
+          <button type="submit" class="absolute right-0 inset-y-0 px-4">
+            <span class="fa fa-search"></span>
+          </button>
+        <% end %>
+      </div>
+    </div>
+    <div class="xl:w-full px-5 py-3 bg-red-900 w-10/12 md:w-full text-white rounded">
+      <h2 class="md:text-3xl text-2xl">Hello World!</h2>
+      <p>Thanks for checking out Ruby API. This project aims to make Ruby's documentation more easy to search and find what you're looking for. This project is currently a work in progress, so most search queries will return odd results and things will often change without warning. If you have any queries, questions, or bug reports, feel free to reach Colby via Github or Twitter:</p>
+      <a href="https://github.com/colby-swandale/ruby-api"><i class="fab fa-github"></i> colby-swandale/ruby-api</a>
+      <br/>
+      <a href="https://twitter.com/oceanicpanda"><i class="fab fa-twitter"></i> @oceanicpanda</a>
+    </div>
   </div>
 </div>
