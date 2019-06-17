@@ -8,9 +8,9 @@
       </div>
       <div class="w-full md:w-6/12 md:text-right mt-2 md:mt-0">
         <% if @object.class_object? %>
-        <span class="py-1 px-2 rounded bg-gray-100 text-gray-600 text-sm">Instance Method</span>
+        <span class="py-1 px-2 rounded bg-gray-100 text-gray-600 text-sm">Class</span>
         <% elsif @object.module_object? %>
-        <span class="py-1 px-3 rounded bg-gray-100 text-gray-600 text-sm">Class</span>
+        <span class="py-1 px-3 rounded bg-gray-100 text-gray-600 text-sm">Module</span>
         <% end %>
       </div>
     </div>
