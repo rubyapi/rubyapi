@@ -7,14 +7,14 @@
       <div class="p-3 my-1 rounded hover:bg-gray-100">
         <div class="flex">
           <div class="w-11/12">
-            <% if result.try(:call_sequence) && !result.call_sequence.empty? %>
-              <%= link_to result_url(result) do %>
-                <% result.call_sequence.each do |seq| %>
-                  <h4 class="lg:text-2xl text-lg font-bold"><%= seq %></h4/>
+            <% if result.is_a? RubyMethod %>
+              <h4 class="lg:text-2xl text-lg font-bold">
+                <%= link_to result_url(result) do %>
+                  <%= result.ruby_object.constant %><%= result.instance_method? ? "#" : "::" %><%= result.name %>
                 <% end %>
-              <% end %>
+              </h4>
             <% else %>
-              <h4 class="lg:text-2xl text-lg font-bold"><%= link_to result.name, result_url(result) %></h4>
+              <h4 class="lg:text-2xl text-lg font-bold"><%= link_to result.constant, result_url(result) %></h4>
             <% end %>
           </div>
           <div class="w-1/12">
