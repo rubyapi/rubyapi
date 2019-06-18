@@ -20,6 +20,12 @@ module RubyApi
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    # Disable Sprokets
+    config.assets.enabled = false
+    config.generators do |g|
+      g.assets false
+    end
+
     # default ruby version documentation
     config.default_ruby_version = '2.6'
 
