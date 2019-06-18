@@ -13,4 +13,8 @@ module ApplicationHelper
 
     URI.join(GITHUB_REPO, path, "#L#{line}").to_s
   end
+
+  def method_anchor(method)
+    "method-#{method.instance_method? ? "i" : "c"}-#{method.name}"
+  end
 end
