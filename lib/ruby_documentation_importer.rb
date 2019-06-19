@@ -22,7 +22,7 @@ class RubyDocumentationImpoter
     @spinner.auto_spin
 
     @rdoc_options.tap do |r|
-      r.generator = StudyRubyRDocGenerator
+      r.generator = RubyAPIRDocGenerator
       r.files = Dir[path]
       r.template = ""
       r.quiet = true

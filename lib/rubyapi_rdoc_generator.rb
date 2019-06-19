@@ -1,4 +1,4 @@
-class StudyRubyRDocGenerator
+class RubyAPIRDocGenerator
   SKIP_NAMESPACES = [
     /Bundler\:\:.*/,
     /RDoc\:\:.*/,
