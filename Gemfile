@@ -35,6 +35,8 @@ gem "kaminari", "~> 1.1.1"
 gem "inline_svg"
 # CLI Progress Bar
 gem "tty-spinner"
+# Proformance tracking
+gem "skylight", group: :production
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
