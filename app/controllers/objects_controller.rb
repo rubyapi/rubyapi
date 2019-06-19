@@ -6,6 +6,6 @@ class ObjectsController < ApplicationController
   private
 
   def object
-    params[:object]
+    params[:object].try(:downcase)
   end
 end

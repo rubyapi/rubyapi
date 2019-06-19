@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   scope "(:version)", constraints: { version: /#{ruby_versions.join("|")}/ } do
     root to: "home#index", as: :versioned_root
-    get "s", to: "search#index", as: :search
+    # We need the search path to be prefixed with `o/` so that the RDOc links will
+    # function correctly
+    get "o/s", to: "search#index", as: :search
     get "o/*object", to: "objects#show", as: :object
   end
 end

@@ -2,7 +2,7 @@ require "test_helper"
 
 class SearchFlowTest < ActionDispatch::IntegrationTest
   test "search redirect with no query" do
-    get "/s"
+    get "/o/s"
 
     assert_response :redirect
 
