@@ -1,3 +1,6 @@
+[![View performance data on Skylight](https://badges.skylight.io/status/k1noEyWLdXuJ.svg)](https://oss.skylight.io/app/applications/k1noEyWLdXuJ)
+[![Travis CI status](https://travis-ci.com/colby-swandale/ruby-api.svg?branch=master)](https://travis-ci.com/colby-swandale/ruby-api)
+
 # Ruby API: Easily search and find Ruby documentation
 
 Ruby API is a Ruby on Rails application that consumes Ruby's documentation and makes it easy for developers to search and explore documentation for Ruby.
