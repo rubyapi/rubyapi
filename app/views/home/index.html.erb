@@ -6,9 +6,9 @@
       </a>
     </div>
     <div class="my-5 mb-10 w-10/12">
-      <div class="relative">
+      <div class="relative" data-controller="search">
         <%= form_tag search_url(version: ruby_version), method: :get do %>
-          <input id="search" class="bg-white shadow-md rounded px-3 py-3 w-full" name="q" value="<%= search_query %>" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Ruby Documentation" aria-label="Search" title="Search" />
+          <input id="search" class="bg-white shadow-md rounded px-3 py-3 w-full" data-target="search.input" name="q" value="<%= search_query %>" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Ruby Documentation" aria-label="Search" title="Search" />
           <button type="submit" class="absolute right-0 inset-y-0 px-4">
             <span class="fa fa-search"></span>
           </button>
