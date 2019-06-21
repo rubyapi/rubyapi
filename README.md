@@ -31,19 +31,19 @@ Start services such as Postgresql and ElasticSearch:
 
 Start rails server
 
-    $ bundle exec rake db:setup
+    $ ./bin/rake db:setup
 
 ## Importing Documentation
 
 Ruby's documentation can be imported very easily. There's a rake task that will let you import a given versions' documentation:
 
-    $ rake import:ruby[2.6.2]
+    $ ./bin/rake import:ruby[2.6.2]
 
 ## Running tests
 
 Tests are written with Minitest and can be executed with:
 
-    $ rake test
+    $ ./bin/rake test
 
 ## Code Of Conduct
 
