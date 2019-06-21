@@ -1,5 +1,6 @@
 [![View performance data on Skylight](https://badges.skylight.io/status/k1noEyWLdXuJ.svg)](https://oss.skylight.io/app/applications/k1noEyWLdXuJ)
 [![Travis CI status](https://travis-ci.com/colby-swandale/ruby-api.svg?branch=master)](https://travis-ci.com/colby-swandale/ruby-api)
+[![Uptime](https://img.shields.io/uptimerobot/ratio/7/m782951343-0a858156b820ef4d7d40a1f0.svg)](https://ruby-api.org)
 
 # Ruby API: Easily search and find Ruby documentation
 
