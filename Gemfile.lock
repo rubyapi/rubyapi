@@ -44,8 +44,6 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
-    archive-zip (0.12.0)
-      io-like (~> 0.3.0)
     arel (9.0.0)
     ast (2.4.0)
     bindex (0.5.0)
@@ -63,9 +61,6 @@ GEM
       xpath (~> 3.2)
     childprocess (1.0.1)
       rake (< 13.0)
-    chromedriver-helper (2.1.1)
-      archive-zip (~> 0.10)
-      nokogiri (~> 1.8)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
     domain_name (0.5.20180417)
@@ -108,7 +103,6 @@ GEM
     inline_svg (1.5.2)
       activesupport (>= 3.0)
       nokogiri (>= 1.6)
-    io-like (0.3.0)
     jaro_winkler (1.5.2)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
@@ -237,6 +231,10 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
+    webdrivers (4.0.1)
+      nokogiri (~> 1.6)
+      rubyzip (~> 1.0)
+      selenium-webdriver (>= 3.0, < 4.0)
     webpacker (4.0.7)
       activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
@@ -254,7 +252,6 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
-  chromedriver-helper
   dotenv-rails
   fast_jsonapi
   hiredis
@@ -275,6 +272,7 @@ DEPENDENCIES
   typhoeus
   tzinfo-data
   web-console (>= 3.3.0)
+  webdrivers
   webpacker (~> 4.0)
 
 RUBY VERSION
