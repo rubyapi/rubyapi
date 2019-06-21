@@ -4,26 +4,26 @@
 
 # Ruby API: Easily search and find Ruby documentation
 
-Ruby API is a Ruby on Rails application that consumes Ruby's documentation and makes it easy for developers to search and explore documentation for Ruby.
+Ruby API is a Ruby on Rails that makes searching and browsing Ruby's documentation fast and smooth for users.
 
 ## Why?
 
-Trying to find documentation about that one method or class that your wondering about is much harder that it should be for developers. The current goto documentation sites for Ruby like http://ruby-doc.org and http://docs.ruby-lang.org do not optimise for SEO or mobile devices, resulting in a poor experience for users. Other applications that index Ruby's documentation such as Dash, while a much better experience, is a paid application (for the full experience) and is only available on a limited set of devices.
+Trying to find documentation about that one method or class that you're looking for can be pretty tedious. The current goto places for Ruby documentation, [ruby-doc.org](https://ruby-doc.org) & [docs.ruby-lang.org](http://docs.ruby-lang.org) are not built with SEO or the many different types of devices used in mind, and result in a poor experience for many users. Other applications that index Ruby's documentation such as Dash, while a much better experience, is a paid application (for the full experience) and is only available on MacOS & iOS.
 
 Our mission aims to improve the Ruby ecosystem by providing an application that is:
 
   * Available to any device with a web browser
   * Provides documentation for all supported versions of Ruby
   * Designed for many different device types
-  * Optimized search results for common Ruby classes/methods
-  * Optimized SEO to allow Google to understand how to index Ruby's documentation.
-  * No ads. No paywall. ever.
+  * Optimised for searching common Ruby classes/methods
+  * Optimised for Google/Search engines to understand how to index Ruby's documentation.
+  * Free. No ads. No paywall. ever.
 
 ## Getting started
 
 Install dependencies:
 
-    $ bundle install && yarn install --check-files
+    $ bundle install && yarn install
 
 Start services such as Postgresql and ElasticSearch:
 
@@ -35,13 +35,13 @@ Start rails server
 
 ## Importing Documentation
 
-Documentation can be imported very easily. There is a rake task that will let you import documentation for a given version:
+Ruby's documentation can be imported very easily. There's a rake task that will let you import a given versions' documentation:
 
     $ rake import:ruby[2.6.2]
 
 ## Running tests
 
-Tests are written with minitest and can be executed with:
+Tests are written with Minitest and can be executed with:
 
     $ rake test
 
