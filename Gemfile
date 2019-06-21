@@ -23,7 +23,7 @@ gem "bootsnap", ">= 1.1.0", require: false
 # HTTP library
 gem "http"
 # Persistent HTTP connections
-gem "typhoeus"
+# gem "typhoeus"
 # ElasticSearch Client
 gem "searchkick"
 # Fast JSON serialization
