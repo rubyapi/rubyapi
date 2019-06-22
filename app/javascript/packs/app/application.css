@@ -1,7 +1,10 @@
+/* purgecss start ignore */
 @import "tailwindcss/base";
+/* purgecss end ignore */
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* purgecss start ignore */
 #header-search::placeholder {
   @apply text-white;
   @apply opacity-75;
@@ -45,3 +48,4 @@ pre:not(.ruby) {
 .ruby-documentation h3 {
   @apply font-bold text-lg;
 }
+/* purgecss end ignore */
