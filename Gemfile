@@ -37,6 +37,8 @@ gem "inline_svg"
 gem "tty-spinner"
 # Proformance tracking
 gem "skylight", group: :production
+# Template Engine
+gem "slim"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

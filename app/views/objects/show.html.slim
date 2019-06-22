@@ -1,0 +1,47 @@
+- content_for(:title) { @object.name }
+
+div class="max-w-screen-xl mx-auto md:px-6 px-3 pt-20"
+  div class="p-3 pb-5 border-b border-gray-200"
+    div class="flex flex-wrap"
+      div class="w-full md:w-6/12"
+        h1 class="lg:text-3xl text-2xl font-bold"
+          = link_to @object.name, object_url(version: ruby_version, object: @object)
+      div class="w-full md:w-6/12 md:text-right mt-2 md:mt-0"
+        - if @object.class_object?
+          span class="py-1 px-2 rounded bg-gray-100 text-gray-600 text-sm"
+            | Class
+        - elsif @object.module_object?
+          span class="py-1 px-3 rounded bg-gray-100 text-gray-600 text-sm"
+            | Module
+    == @object.description
+
+  - @object.ruby_methods.ordered.each do |m|
+    div class="p-3 my-6 rounded hover:bg-gray-100 relative z-0"
+      a style="left:0; top: -80px; position: absolute;" id="#{method_anchor m}"
+      div class="flex flex-wrap"
+        div class="w-full md:w-6/12"
+          - if m.call_sequence.empty?
+            h4 class="lg:text-2xl text-lg font-bold"
+              = link_to m.name, object_path(version: ruby_version, anchor: method_anchor(m))
+          - else
+            = link_to object_path(version: ruby_version, anchor: method_anchor(m)) do 
+              - m.call_sequence.each do |seq|
+                h4 class="lg:text-2xl text-lg font-bold"
+                  = seq
+        div class="w-full md:w-6/12 md:text-right mt-3 md:mt-0"
+          - if m.instance_method?
+            span class="py-1 px-2 rounded bg-gray-100 text-gray-600 text-sm"
+              | Instance Method
+          - elsif m.class_method?
+            span class="py-1 px-3 rounded bg-gray-100 text-gray-600 text-sm"
+              | Class Method
+          span class="py-1 px-2 rounded bg-gray-100 text-gray-600 text-sm"
+            a href="#{github_url m}" target="_blank"
+              i class="fas fa-link"
+              |  View on Github
+      div class="ruby-documentation py-1"
+        - if m.description.empty?
+          div
+            | No documentation available
+        - else
+          == m.description
