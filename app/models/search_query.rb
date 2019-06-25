@@ -31,7 +31,7 @@ class SearchQuery
 
   def parse_search_query
     @query.strip.split(" ").each do |token|
-      if token =~ QUERY_OPTION_PATTERN
+      if QUERY_OPTION_PATTERN.match?(token)
         @options << token
       else
         @terms << token

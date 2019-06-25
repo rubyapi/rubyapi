@@ -49,5 +49,4 @@ module Search
   def ruby_core_object_method_boost
     CORE_CLASSES.map { |klass, factor| {value: klass, factor: factor} }
   end
-
 end

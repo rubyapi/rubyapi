@@ -13,6 +13,6 @@ class SearchQueryTest < ActiveSupport::TestCase
 
   test "search filters" do
     search = SearchQuery.new "hello is:class world has:to_s"
-    assert_equal search.filters, { is: "class", has: "to_s" }
+    assert_equal search.filters, {is: "class", has: "to_s"}
   end
 end
