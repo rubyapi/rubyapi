@@ -7,7 +7,7 @@ class SearchController < ApplicationController
   before_action :index, -> { head :bad_request if search_query.length >= MAX_SEARCH_QUERY_LENGTH }
 
   def index
-    @search = search_results
+    @search = search_docs(search_query)
   end
 
   def current_page
