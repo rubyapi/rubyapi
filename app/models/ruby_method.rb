@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class RubyMethod < ApplicationRecord
-  searchkick searchable: [:name, :description, :method_parent], filterable: [:version, :name, :method_parent, :method_type]
+  searchkick searchable: [:name, :description, :parent_name], filterable: [:version, :name, :parent_name, :method_type]
 
   enum method_type: %i[instance_method class_method]
 
@@ -10,4 +10,10 @@ class RubyMethod < ApplicationRecord
   belongs_to :ruby_object
 
   scope :ordered, -> { order :name }
+
+  attribute :parent_name, :string
+
+  def parent_name
+    ruby_object.name
+  end
 end
