@@ -6,6 +6,7 @@ to_i:
   description: Returns the result of interpreting leading characters in str
   version: 2.6
   source_location: "2.6.2:foo/bar.c:123"
+  ruby_object: string
 
 to_s:
   name: to_s
@@ -13,4 +14,5 @@ to_s:
   description: Returns a string containing the place-value representation of int
   version: 2.6
   source_location: "2.6.2:foo/bar.c:456"
+  ruby_object: integer
 
