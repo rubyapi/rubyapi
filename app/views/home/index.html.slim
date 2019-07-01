@@ -6,7 +6,7 @@ div class="h-screen flex flex-col md:justify-center items-center"
     div class="my-5 mb-10 w-10/12"
       div class="relative" data-controller="search"
         = form_tag search_url(version: ruby_version), method: :get, id: "search" do
-          input class="bg-white shadow-md rounded px-3 py-3 w-full" data-target="search.input" name="q" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Ruby Documentation" aria-label="Search" title="Search"
+          input class="bg-white shadow-md rounded px-3 py-3 w-full" data-target="search.input" name="q" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Ruby Documentation" aria-label="Search" title="Search" autofocus="yes"
           button type="submit" name="submit" class="absolute right-0 inset-y-0 px-4"
             span class="fa fa-search"
     div class="xl:w-full px-5 py-3 bg-red-900 w-10/12 md:w-full text-white rounded"
