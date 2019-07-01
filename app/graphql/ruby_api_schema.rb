@@ -1,4 +1,3 @@
 class RubyApiSchema < GraphQL::Schema
-  mutation(Types::MutationType)
-  query(Types::QueryType)
+  query Types::QueryType
 end
