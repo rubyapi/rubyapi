@@ -61,7 +61,6 @@ class DocSearch
     settings
   end
 
-
   def search_boost
     boosts = {}
     boosts[:method_parent] = ruby_core_object_method_boost
