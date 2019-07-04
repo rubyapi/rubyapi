@@ -1,8 +1,4 @@
-# frozen_string_literal: true
-
-module Search
-  extend ActiveSupport::Concern
-
+class DocSearch
   CORE_CLASSES = {
     "String" => 5,
     "Integer" => 5,
@@ -20,14 +16,38 @@ module Search
 
   RESULTS_PER_PAGE = 25
 
-  def search_docs(search_text)
-    query = SearchQuery.new(search_text)
-    options = search_options(filters: query.filters)
-
-    Searchkick.search(query.terms.join(" ").to_s, options)
+  def self.perform(query, version:, page: 1)
+    new(query, version: version, page: page).search
   end
 
-  def search_options(filters: {})
+  def initialize(query, version:, page:)
+    @query = SearchQuery.new(query)
+    @version = version
+    @page = page || 1
+    @options = parse_search_options(filters: @query.filters)
+  end
+
+  def search
+    Searchkick.search(@query.terms.join(" ").to_s, @options)
+  end
+
+  protected
+
+  def default_search_options
+    {
+      index_name: [RubyObject, RubyMethod],
+      where: {version: @version},
+      page: @page,
+      per_page: RESULTS_PER_PAGE,
+      fields: ["name^4", "description"], # Favor name of classes, methods over the descriptions
+      boost_where: search_boost,
+      indices_boost: {RubyMethod => 2, RubyObject => 1}, # Favor methods over objects
+    }
+  end
+
+  private
+
+  def parse_search_options(filters: {})
     settings = default_search_options
     return settings if filters.empty?
 
@@ -41,17 +61,6 @@ module Search
     settings
   end
 
-  def default_search_options
-    {
-      index_name: [RubyObject, RubyMethod],
-      where: {version: ruby_version},
-      page: current_page,
-      per_page: RESULTS_PER_PAGE,
-      fields: ["name^4", "description"], # Favor name of classes, methods over the descriptions
-      boost_where: search_boost,
-      indices_boost: {RubyMethod => 2, RubyObject => 1}, # Favor methods over objects
-    }
-  end
 
   def search_boost
     boosts = {}
