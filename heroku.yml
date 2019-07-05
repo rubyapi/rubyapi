@@ -1,5 +1,0 @@
-build:
-  buildpacks:
-    - heroku/metrics
-    - heroku/nodejs
-    - heroku/ruby
