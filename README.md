@@ -1,5 +1,5 @@
 [![View performance data on Skylight](https://badges.skylight.io/status/k1noEyWLdXuJ.svg)](https://oss.skylight.io/app/applications/k1noEyWLdXuJ)
-[![Travis CI status](https://travis-ci.com/colby-swandale/ruby-api.svg?branch=master)](https://travis-ci.com/colby-swandale/ruby-api)
+[![Travis CI status](https://travis-ci.com/rubyapi/rubyapi.svg?branch=master)](https://travis-ci.com/rubyapi/rubyapi)
 
 # Ruby API: Easily search and find Ruby documentation
 
@@ -46,8 +46,8 @@ Tests are written with Minitest and can be executed with:
 
 ## Code Of Conduct
 
-Everyone interacting with the source code, issue trackers, chat rooms, and mailing lists is expected to follow the [Code Of Conduct](https://github.com/colby-swandale/ruby-api/blob/master/CODE_OF_CONDUCT.md)
+Everyone interacting with the source code, issue trackers, chat rooms, and mailing lists is expected to follow the [Code Of Conduct](https://github.com/rubyapi/rubyapi/blob/master/CODE_OF_CONDUCT.md)
 
 ## License
 
-Ruby API is licensed under the [MIT license](https://github.com/colby-swandale/ruby-api/blob/master/LICENSE.md).
+Ruby API is licensed under the [MIT license](https://github.com/rubyapi/rubyapi/blob/master/LICENSE.md).
