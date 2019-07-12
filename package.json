@@ -10,7 +10,7 @@
     "hotkeys-js": "^3.6.11",
     "postcss-cssnext": "^3.1.0",
     "stimulus": "^1.1.1",
-    "tailwindcss": "^1.0.4",
+    "tailwindcss": "^1.0.5",
     "tippy.js": "^4.3.4"
   },
   "devDependencies": {
