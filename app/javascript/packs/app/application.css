@@ -31,10 +31,6 @@ code {
   @apply bg-gray-200 rounded leading-relaxed text-sm;
 }
 
-pre.ruby {
-  @apply p-3 bg-gray-200 rounded overflow-auto;
-}
-
 pre:not(.ruby) {
   @apply break-all whitespace-pre-wrap text-xs;
 }
@@ -43,17 +39,25 @@ pre:not(.ruby) {
 .pagination .page { @apply px-2 inline-block text-center py-0 bg-gray-100 rounded }
 .page.current { @apply text-white bg-red-500 }
 
-/* Theme adapted from: https://atelierbram.github.io/syntax-highlighting/atelier-schemes/dune/ */
-.ruby-string { color: #60ac39; }
-.ruby-keyword { color: #b854d4; }
-.ruby-comment { color: #7d7a68; }
-.ruby-constant { color: #ae9513; }
-.ruby-identifier { color: #6684e1; }
-.ruby-value { color: #b65611; }
-.ruby-regexp { color: #1fad83; }
-.ruby-operator { color: #6e6b5e; }
-
 .ruby-documentation h3 {
   @apply font-bold text-lg;
 }
+
+/* Oceanic-Theme: https://labs.voronianski.com/oceanic-next-color-scheme/ */
+
+pre.ruby {
+  @apply p-3 rounded overflow-auto;
+  background: #1b2b34;
+  color: #d8dee9;
+}
+
+.ruby-string { color: #99C794; }
+.ruby-keyword { color: #C594C5; }
+.ruby-comment { color: #65737e; }
+.ruby-constant { color: #fac863; }
+.ruby-identifier { color: #ec5f67; }
+.ruby-value { color: #F99157; }
+.ruby-regexp { color: #5FB3B3; }
+.ruby-operator { color: #5FB3B3; }
+
 /* purgecss end ignore */
