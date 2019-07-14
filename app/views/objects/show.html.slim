@@ -43,7 +43,7 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
       div class="p-3 my-6 rounded hover:bg-gray-100 relative z-0" data-controller="method"
         a style="left:0; top: -80px; position: absolute;" id="#{method_anchor m}"
         div class="flex flex-wrap"
-          div class="w-full md:w-11/12"
+          div class="w-full md:w-10/12"
             - if m.call_sequence.empty?
               h4 class="lg:text-2xl text-lg font-bold"
                 = link_to m.name, object_path(version: ruby_version, anchor: method_anchor(m))
@@ -52,7 +52,7 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
                 - m.call_sequence.each do |seq|
                   h4 class="lg:text-2xl text-lg font-bold"
                     = seq
-          div class="w-full md:w-1/12 md:text-right mt-3 md:mt-0"
+          div class="w-full md:w-2/12 md:text-right mt-3 md:mt-0"
             - if m.instance_method?
               span class="py-1 px-2 rounded bg-gray-100 text-gray-600 text-sm cursor-default font-bold" data-target="method.objectType" data-tippy-content="Instance Method"
                 | #
