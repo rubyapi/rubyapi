@@ -49,6 +49,7 @@ pre.ruby {
   @apply p-3 rounded overflow-auto;
   background: #1b2b34;
   color: #d8dee9;
+  font-family: "Source Code Pro", monospace;
 }
 
 .ruby-string { color: #99C794; }

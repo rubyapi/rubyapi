@@ -3,8 +3,8 @@ const _ = require('lodash')
 module.exports = {
   theme: {
     fontFamily: {
-      diaply: ["proxima-nova", "sans-serif"],
-      body: ["proxima-nova", "sans-serif"],
+      diaply: ["Source Sans Pro", "sans-serif"],
+      body: ["Source Sans Pro", "sans-serif"],
     },
     extend: {
       colors: {
