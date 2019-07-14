@@ -32,7 +32,8 @@ code {
 }
 
 pre:not(.ruby) {
-  @apply break-all whitespace-pre-wrap text-xs;
+  @apply overflow-auto;
+  font-family: "Source Code Pro", monospace;
 }
 
 .pagination { @apply py-5 }
