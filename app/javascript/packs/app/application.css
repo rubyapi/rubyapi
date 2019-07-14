@@ -10,6 +10,14 @@
   @apply opacity-75;
 }
 
+.top-6 {
+  top: 6rem!important;
+}
+
+.h-93 {
+  height: calc(100vh - 7rem)!important;
+}
+
 html {
   @apply bg-white text-gray-800 font-body;
 }
