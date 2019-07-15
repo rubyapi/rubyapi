@@ -30,4 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  views:
+    pagination:
+      first: "<i class=\"fas fa-fast-backward\"></i>"
+      last: "<i class=\"fas fa-fast-forward\"></i>"
+      previous: "<i class=\"fas fa-backward\"></i>"
+      next: "<i class=\"fas fa-forward\"></i>"
+      truncate: "<span class=\"font-bold\">...</span>"
