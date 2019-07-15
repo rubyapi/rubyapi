@@ -4,7 +4,7 @@ div class="max-w-screen-xl mx-auto md:px-6 px-3 pt-20"
       | Results for: "#{search_query}"
   div class="pt-3"
    - @search.results.each do |result|
-      div class="p-3 my-1 rounded hover:bg-gray-100"
+      div class="p-3 my-1 rounded"
         div class="flex"
           div class="w-full"
             - if result.is_a? RubyMethod 
