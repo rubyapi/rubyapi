@@ -37,7 +37,8 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
           - elsif @object.module_object?
             span class="py-1 px-3 rounded bg-gray-100 text-gray-600 text-sm"
               | Module
-      == @object.description
+      div class="ruby-documentation"
+        == @object.description
 
     - @object.ruby_methods.ordered.each do |m|
       div class="p-3 my-6 rounded relative z-0" data-controller="method"

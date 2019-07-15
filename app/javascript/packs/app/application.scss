@@ -40,8 +40,10 @@ pre:not(.ruby) {
 .pagination .page { @apply px-2 inline-block text-center py-0 bg-gray-100 rounded }
 .page.current { @apply text-white bg-red-500 }
 
-.ruby-documentation h3 {
-  @apply font-bold text-lg;
+.ruby-documentation {
+  h1, h2, h3, h4, h5 {
+    @apply font-bold text-lg py-1;
+  }
 }
 
 /* Oceanic-Theme: https://labs.voronianski.com/oceanic-next-color-scheme/ */

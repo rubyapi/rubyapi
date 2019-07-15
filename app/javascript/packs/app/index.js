@@ -1,4 +1,4 @@
 import "./icons.js"
-import "./application.css"
+import "./application.scss"
 import "./logo.svg"
 import "./logo-plain.svg"
