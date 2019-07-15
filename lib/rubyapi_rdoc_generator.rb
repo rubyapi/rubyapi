@@ -31,10 +31,11 @@ class RubyAPIRDocGenerator
     @documentation.each do |object_rdoc|
       next unless skip_namespace.match(object_rdoc.full_name).nil?
 
+      description = clean_description(object_rdoc.description)
       obj = RubyObject.new(
         name: object_rdoc.name,
         constant: object_rdoc.full_name,
-        description: object_rdoc.description,
+        description: description,
         object_type: "#{object_rdoc.type}_object".to_sym,
         version: @version
       )
@@ -48,10 +49,11 @@ class RubyAPIRDocGenerator
         method_file = Pathname.new Rails.root.join(method.file.relative_name)
 
         source_location = method_file.relative_path_from(base_ruby_dir).to_s
+        description = clean_description(method.description)
 
         method_doc = RubyMethod.new(
           name: method.name,
-          description: method.description,
+          description: description,
           method_type: "#{method.type}_method".to_sym,
           version: @version,
           source_location: "#{@full_version}:#{source_location}:#{method.line}"
@@ -72,5 +74,9 @@ class RubyAPIRDocGenerator
     end
 
     Searchkick.models.each { |m| m.reindex }
+  end
+
+  def clean_description(description)
+    description.gsub(/(\<a.*\&para\;\<\/a>)/, "").gsub(/(\<a.*\&uarr\;\<\/a>)/, "")
   end
 end
