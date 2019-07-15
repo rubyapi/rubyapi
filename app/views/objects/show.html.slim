@@ -4,26 +4,28 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
   div class="hidden lg:block lg:static w-1/4"
     div class="hidden lg:block lg:sticky top-0 h-auto w-full top-6 p-6 pt-0"
       div class="overflow-y-auto h-93"
-        div class="mb-3"
-          h3 class="font-bold text-gray-600 p-1 px-2"
-            | Class Methods
-          ul
-            - @object.ruby_methods.select(&:class_method?).sort_by(&:name).each do |m|
-              li
-                = link_to object_path(version: ruby_version, anchor: method_anchor(m)), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-100" do
-                  span class="font-bold"
-                    | ::
-                  |  #{m.name}
-        div class="mb-3"
-          h3 class="font-bold text-gray-600 p-1 px-2"
-            | Instance Methods
-          ul
-            - @object.ruby_methods.select(&:instance_method?).sort_by(&:name).each do |m|
-              li
-                = link_to object_path(version: ruby_version, anchor: method_anchor(m)), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-100" do
-                  span class="font-bold"
-                    | #
-                  |  #{m.name}
+        - unless @object.ruby_methods.select(&:class_method?).empty?
+          div class="mb-3"
+            h3 class="font-bold text-gray-600 p-1 px-2"
+              | Class Methods
+            ul
+              - @object.ruby_methods.select(&:class_method?).sort_by(&:name).each do |m|
+                li
+                  = link_to object_path(version: ruby_version, anchor: method_anchor(m)), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-100" do
+                    span class="font-bold"
+                      | ::
+                    |  #{m.name}
+        - unless @object.ruby_methods.select(&:instance_method?).empty?
+          div class="mb-3"
+            h3 class="font-bold text-gray-600 p-1 px-2"
+              | Instance Methods
+            ul
+              - @object.ruby_methods.select(&:instance_method?).sort_by(&:name).each do |m|
+                li
+                  = link_to object_path(version: ruby_version, anchor: method_anchor(m)), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-100" do
+                    span class="font-bold"
+                      | #
+                    |  #{m.name}
   div class="w-full mt-16 lg:mt-20 lg:w-3/4"
     div class="p-3 pb-5 border-b border-gray-200"
       div class="flex flex-wrap"
