@@ -13,6 +13,14 @@ class RubyMethod < ApplicationRecord
 
   attribute :parent_name, :string
 
+  def type_identifier
+    if instance_method?
+      "#"
+    elsif class_method?
+      "::"
+    end
+  end
+
   def parent_name
     ruby_object.name
   end
