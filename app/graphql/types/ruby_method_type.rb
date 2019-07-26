@@ -4,7 +4,7 @@ module Types
 
     field :name, String, null: false
     field :description, String, null: true
-    field :type, String, null: false
+    field :type, String, null: false, method: :method_type
     field :parent_object, [Types::RubyMethodType], null: false
     field :version, String, null: false
   end
