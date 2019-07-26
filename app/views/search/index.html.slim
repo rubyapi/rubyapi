@@ -2,24 +2,21 @@ div class="max-w-screen-xl mx-auto md:px-6 px-3 pt-20"
   div class="p-3 pb-5 border-b border-gray-200"
     h1 class="lg:text-3xl text-2xl font-bold"
       | Results for: "#{search_query}"
-  div class="pt-3"
-   - @search.results.each do |result|
-      div class="p-3 my-1 rounded"
-        div class="flex"
-          div class="w-full"
-            - if result.is_a? RubyMethod 
-              h4 class="lg:text-2xl text-lg font-bold"
-                = link_to result_url(result) do
-                  = "#{result.ruby_object.constant}#{result.instance_method? ? "#" : "::"}#{result.name}"
-            - else
-              h4 class="lg:text-2xl text-lg font-bold"
-                = link_to result.constant, result_url(result)
-        div class="py-3"
-          - if result.description.empty?
-            div
-              | No documentation available
+  - @search.results.each do |result|
+    div class="p-3 my-1 rounded"
+      div class="flex"
+        div class="w-full"
+          - if result.is_a? RubyMethod
+            h4 class="lg:text-2xl text-lg font-bold"
+              = link_to result_url(result) do
+                = "#{result.ruby_object.constant}#{result.instance_method? ? "#" : "::"}#{result.name}"
           - else
-            == result.description
+            h4 class="lg:text-2xl text-lg font-bold"
+              = link_to result.constant, result_url(result)
+      - if result.description.empty?
+        div No documentation available
+      - else
+        == result.description
 
   div class="text-center"
     div
