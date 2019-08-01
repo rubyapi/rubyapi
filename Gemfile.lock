@@ -77,12 +77,12 @@ GEM
     dotenv-rails (2.7.5)
       dotenv (= 2.7.5)
       railties (>= 3.2, < 6.1)
-    elasticsearch (7.1.0)
-      elasticsearch-api (= 7.1.0)
-      elasticsearch-transport (= 7.1.0)
-    elasticsearch-api (7.1.0)
+    elasticsearch (7.3.0)
+      elasticsearch-api (= 7.3.0)
+      elasticsearch-transport (= 7.3.0)
+    elasticsearch-api (7.3.0)
       multi_json
-    elasticsearch-transport (7.1.0)
+    elasticsearch-transport (7.3.0)
       faraday
       multi_json
     erubi (1.8.0)
@@ -206,7 +206,7 @@ GEM
     ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
     rubyzip (1.2.3)
-    searchkick (4.0.2)
+    searchkick (4.1.0)
       activemodel (>= 5)
       elasticsearch (>= 6)
       hashie
