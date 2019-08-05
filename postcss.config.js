@@ -1,5 +1,6 @@
 const purgecss = require('@fullhuman/postcss-purgecss')({
   content: [
+    './app/javascript/controllers/search_controller.js',
     './app/**/*.html.slim',
   ],
   // Include any special characters you're using in this regular expression
