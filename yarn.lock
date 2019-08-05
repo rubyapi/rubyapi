@@ -7382,10 +7382,10 @@ timsort@^0.3.0:
   resolved "https://registry.yarnpkg.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
 
-tippy.js@^4.3.4:
-  version "4.3.4"
-  resolved "https://registry.yarnpkg.com/tippy.js/-/tippy.js-4.3.4.tgz#9a91fd5ce8c401f181b7adaa6b2c27f3d105f3ba"
-  integrity sha512-O2ukxHOJTLVYZ/TfHjNd8WgAWoefX9uk5QiWRdHfX2PR2lBpUU4BJQLl7U2Ykc8K7o16gTeHEElpuRfgD5b0aA==
+tippy.js@^4.3.5:
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/tippy.js/-/tippy.js-4.3.5.tgz#882bff8d92f09bb0546d2826d5668c0560006f54"
+  integrity sha512-NDq3efte8nGK6BOJ1dDN1/WelAwfmh3UtIYXXck6+SxLzbIQNZE/cmRSnwScZ/FyiKdIcvFHvYUgqmoGx8CcyA==
   dependencies:
     popper.js "^1.14.7"
 
