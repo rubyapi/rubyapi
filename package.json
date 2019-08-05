@@ -7,7 +7,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.9.0",
     "@fullhuman/postcss-purgecss": "^1.2.0",
     "@rails/webpacker": "^4.0.7",
-    "hotkeys-js": "^3.6.12",
+    "hotkeys-js": "^3.6.13",
     "mustache": "^3.0.1",
     "postcss-cssnext": "^3.1.0",
     "stimulus": "^1.1.1",
