@@ -18,6 +18,18 @@
   height: calc(100vh - 7rem)!important;
 }
 
+.outline-none {
+  outline-width: 0;
+}
+
+.overflow-wrap-break-word {
+  overflow-wrap: break-word;
+}
+
+.autocomplete {
+  margin-top: -2px;
+}
+
 html {
   @apply bg-white text-gray-800 font-body;
 }
