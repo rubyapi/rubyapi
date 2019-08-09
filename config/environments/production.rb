@@ -88,4 +88,19 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Format Rails logs
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Logstash.new
+  config.lograge.custom_options = lambda do |event|
+    { search: event.payload[:searchkick_runtime] } if event.payload[:searchkick_runtime].to_f.positive?
+  end
+
+  config.lograge.custom_payload do |controller|
+    {
+      params: controller.request.filtered_parameters.except('controller', 'action', 'q'),
+      client_ip: controller.request.ip,
+      user_agent: controller.request.user_agent,
+    }
+  end
 end
