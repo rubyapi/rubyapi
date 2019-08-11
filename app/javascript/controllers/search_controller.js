@@ -58,6 +58,11 @@ export default class extends Controller {
     const version = this.data.get("version")
     const path = this.data.get("url")
 
+    if (query.length == 0) {
+      this.autocompleteTarget.innerHTML = ""
+      return
+    }
+
     fetch(path, {
       method: "post",
       headers: {
