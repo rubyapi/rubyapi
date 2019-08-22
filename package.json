@@ -11,7 +11,7 @@
     "mustache": "^3.0.1",
     "postcss-cssnext": "^3.1.0",
     "stimulus": "^1.1.1",
-    "tailwindcss": "^1.0.5",
+    "tailwindcss": "^1.1.2",
     "tippy.js": "^4.3.5"
   },
   "devDependencies": {
