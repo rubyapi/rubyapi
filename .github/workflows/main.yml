@@ -1,11 +1,8 @@
-name: Ruby
-
-on: [push]
-
+name: CI
+on: [push,pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v1
     - name: Set up Ruby 2.6
@@ -14,6 +11,8 @@ jobs:
         ruby-version: 2.6.x
     - name: Start services
       run: docker-compose up -d
+    - name: Update RubyGems
+      run: gem update --system
     - name: Install dependencies
       run: |
         bundle install --jobs 4 --retry 3
