@@ -1,5 +1,4 @@
 [![View performance data on Skylight](https://badges.skylight.io/status/k1noEyWLdXuJ.svg)](https://oss.skylight.io/app/applications/k1noEyWLdXuJ)
-[![Travis CI status](https://travis-ci.com/rubyapi/rubyapi.svg?branch=master)](https://travis-ci.com/rubyapi/rubyapi)
 
 # Ruby API: Easily search and find Ruby documentation
 
