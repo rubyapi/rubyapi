@@ -17,13 +17,11 @@ jobs:
         bundle install --jobs 4 --retry 3
     - name: Start services
       run: docker-compose up -d
-    - name: Setup database
+    - name: Setup Application
       run: |
-        bundle exec db:setup
-    - name: Compile Webpack
-      run: |
+        bundle exec rake db:setup
         bundle exec webpacker:compile
-    - name: Build and test with Rake
+    - name: Run Tests & Linting
       run: |
         bundle exec standardrb --no-fix
         bundle exec rake test
