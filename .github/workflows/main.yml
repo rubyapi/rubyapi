@@ -9,13 +9,14 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
-    - name: Start services
-      run: docker-compose up -d
-    - name: Update Bundler
-      run: gem install bundler --no-doc
     - name: Install dependencies
       run: |
+        apt-get update -qq
+        apt-get install -y libpq-dev
+        gem install bundler --no-doc
         bundle install --jobs 4 --retry 3
+    - name: Start services
+      run: docker-compose up -d
     - name: Setup database
       run: |
         bundle exec db:setup
