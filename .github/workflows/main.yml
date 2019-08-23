@@ -11,8 +11,8 @@ jobs:
         ruby-version: 2.6.x
     - name: Start services
       run: docker-compose up -d
-    - name: Update RubyGems
-      run: gem update --system
+    - name: Update Bundler
+      run: gem install bundler --no-doc
     - name: Install dependencies
       run: |
         bundle install --jobs 4 --retry 3
