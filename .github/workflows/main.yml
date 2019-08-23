@@ -11,8 +11,8 @@ jobs:
         ruby-version: 2.6.x
     - name: Install dependencies
       run: |
-        apt-get update -qq
-        apt-get install -y libpq-dev
+        sudo apt-get update -qq
+        sudo apt-get install -y libpq-dev
         gem install bundler --no-doc
         bundle install --jobs 4 --retry 3
     - name: Start services
