@@ -1,6 +1,6 @@
-[![View performance data on Skylight](https://badges.skylight.io/status/k1noEyWLdXuJ.svg)](https://oss.skylight.io/app/applications/k1noEyWLdXuJ)
+# Ruby API: Easily Find Ruby documentation 
 
-# Ruby API: Easily search and find Ruby documentation
+[![View performance data on Skylight](https://badges.skylight.io/status/k1noEyWLdXuJ.svg)](https://oss.skylight.io/app/applications/k1noEyWLdXuJ) 
 
 Ruby API is a Ruby on Rails app that makes browsing and searching Ruby's documentation fast and smooth for users.
 
