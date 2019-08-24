@@ -2,7 +2,7 @@
   "name": "ruby-api",
   "private": true,
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.21",
+    "@fortawesome/fontawesome-svg-core": "^1.2.22",
     "@fortawesome/free-brands-svg-icons": "^5.10.1",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
     "@fullhuman/postcss-purgecss": "^1.2.0",
