@@ -5,9 +5,13 @@
 @import "tailwindcss/utilities";
 
 /* purgecss start ignore */
-#header-search::placeholder {
+#header #search::placeholder {
   @apply text-white;
   @apply opacity-75;
+}
+
+p {
+  @apply py-3;
 }
 
 .top-6 {
@@ -34,13 +38,9 @@ html {
   @apply bg-white text-gray-800 font-body;
 }
 
-p {
-  @apply py-3;
-}
-
 code {
   padding: 0.15rem;
-  @apply bg-gray-200 rounded leading-relaxed text-sm;
+  @apply bg-gray-300 rounded leading-relaxed text-sm;
 }
 
 pre:not(.ruby) {

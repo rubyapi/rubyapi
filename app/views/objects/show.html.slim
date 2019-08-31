@@ -6,38 +6,38 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
       div class="overflow-y-auto h-93"
         - unless @object.ruby_methods.select(&:class_method?).empty?
           div class="mb-3"
-            h3 class="font-bold text-gray-600 p-1 px-2"
+            h3 class="font-bold text-gray-700 p-1 px-2"
               | Class Methods
             ul
               - @object.ruby_methods.select(&:class_method?).sort_by(&:name).each do |m|
                 li
-                  = link_to object_path(version: ruby_version, anchor: method_anchor(m)), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-100" do
+                  = link_to object_path(version: ruby_version, anchor: method_anchor(m)), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200" do
                     span class="font-bold"
                       | ::
                     |  #{m.name}
         - unless @object.ruby_methods.select(&:instance_method?).empty?
           div class="mb-3"
-            h3 class="font-bold text-gray-600 p-1 px-2"
+            h3 class="font-bold text-gray-700 p-1 px-2"
               | Instance Methods
             ul
               - @object.ruby_methods.select(&:instance_method?).sort_by(&:name).each do |m|
                 li
-                  = link_to object_path(version: ruby_version, anchor: method_anchor(m)), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-100" do
+                  = link_to object_path(version: ruby_version, anchor: method_anchor(m)), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200" do
                     span class="font-bold"
                       | #
                     |  #{m.name}
   div class="w-full mt-16 lg:mt-20 lg:w-3/4"
-    div class="p-3 pb-5 border-b border-gray-200"
+    div class="p-3"
       div class="flex flex-wrap"
         div class="w-full md:w-6/12"
           h1 class="lg:text-3xl text-2xl font-bold"
             = link_to @object.name, object_url(version: ruby_version, object: @object)
         div class="w-full md:w-6/12 md:text-right mt-2 md:mt-0"
           - if @object.class_object?
-            span class="py-1 px-2 rounded bg-gray-100 text-gray-600 text-sm"
+            span class="py-1 px-2 rounded bg-gray-200 text-gray-700 text-sm"
               | Class
           - elsif @object.module_object?
-            span class="py-1 px-3 rounded bg-gray-100 text-gray-600 text-sm"
+            span class="py-1 px-3 rounded bg-gray-200 text-gray-700 text-sm"
               | Module
       div class="ruby-documentation"
         == @object.description
@@ -57,14 +57,14 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
                     = seq
           div class="w-full md:w-2/12 md:text-right mt-3 md:mt-0"
             - if m.instance_method?
-              span class="py-1 px-2 rounded bg-gray-100 text-gray-600 text-sm cursor-default font-bold" data-target="method.objectType" data-tippy-content="Instance Method"
+              span class="py-1 px-2 rounded bg-gray-200 text-gray-700 text-sm cursor-default font-bold" data-target="method.objectType" data-tippy-content="Instance Method"
                 | #
             - elsif m.class_method?
-              span class="py-1 px-3 rounded bg-gray-100 text-gray-600 text-sm cursor-default font-bold" data-target="method.objectType" data-tippy-content="Class Method"
+              span class="py-1 px-3 rounded bg-gray-200 text-gray-700 text-sm cursor-default font-bold" data-target="method.objectType" data-tippy-content="Class Method"
                 | ::
             span
               | &nbsp;
-            span class="py-1 px-2 rounded bg-gray-100 text-gray-600 text-sm"
+            span class="py-1 px-2 rounded bg-gray-200 text-gray-700 text-sm"
               a href="#{github_url m}" target="_blank" data-target="method.githubLink" data-tippy-content="View source on Github" 
                 i class="fab fa-github"
         div class="ruby-documentation py-1"
