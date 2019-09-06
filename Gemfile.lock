@@ -173,7 +173,6 @@ GEM
     parallel (1.17.0)
     parser (2.6.4.0)
       ast (~> 2.4.0)
-    pg (1.1.4)
     public_suffix (4.0.1)
     puma (4.1.0)
       nio4r (~> 2.0)
@@ -309,7 +308,6 @@ DEPENDENCIES
   lograge
   logstash-event
   oj
-  pg
   puma
   rails (~> 6.0.0)
   redis (~> 4.1)
