@@ -11,69 +11,88 @@ class RubyAPIRDocGenerator
   def file_dir
   end
 
-  # manually trigger the indexing of models
-  Searchkick.disable_callbacks
-
   def initialize(store, options)
     @store = store
     @options = options
     @full_version = options.generator_options.pop
     @version = Gem::Version.new(@full_version).segments[0..1].join(".")
-    @documentation = store.all_classes_and_modules.uniq(&:full_name)
+    @documentation = store.all_classes_and_modules
   end
 
   def generate
-    RubyMethod.where(version: @version).destroy_all
-    RubyObject.where(version: @version).destroy_all
+    reset_indexes!
 
-    skip_namespace = Regexp.union(SKIP_NAMESPACES)
+    generate_objects.compact.each do |object|
+      index_object(object)
+    end
+  end
 
-    @documentation.each do |object_rdoc|
-      next unless skip_namespace.match(object_rdoc.full_name).nil?
+  def generate_objects
+    objects = []
 
-      description = clean_description(object_rdoc.description)
-      obj = RubyObject.new(
-        name: object_rdoc.name,
-        constant: object_rdoc.full_name,
-        description: description,
-        object_type: "#{object_rdoc.type}_object".to_sym,
-        version: @version
-      )
-
+    @documentation.each do |doc|
+      next if skip_namespace? doc.full_name
       methods = []
 
-      object_rdoc.method_list.each do |method|
-        next if methods.find { |m| m.name == method.name }
+      doc.method_list.each do |method_doc|
+        next if methods.find { |m| m[:name] == method_doc.name }
 
-        base_ruby_dir = Pathname.new @options.files.first
-        method_file = Pathname.new Rails.root.join(method.file.relative_name)
-
-        source_location = method_file.relative_path_from(base_ruby_dir).to_s
-        description = clean_description(method.description)
-
-        method_doc = RubyMethod.new(
-          name: method.name,
-          description: description,
-          method_type: "#{method.type}_method".to_sym,
-          version: @version,
-          source_location: "#{@full_version}:#{source_location}:#{method.line}"
-        )
-
-        if method.call_seq
-          method_doc[:call_sequence] = method.call_seq.strip.split("\n").map { |seq|
-            seq.gsub "->", "→"
+        methods << {
+          name: method_doc.name,
+          description: clean_description(method_doc.description),
+          metadata: {
+            parent_constant: doc.full_name,
+            method_type: "#{method_doc.type}_method",
+            source_location: "#{@full_version}:#{method_path(method_doc)}:#{method_doc.line}",
+            call_sequence: method_doc.call_seq ? method_doc.call_seq.strip.split("\n").map { |s| s.gsub "->", "→" } : ""
           }
-        end
-
-        methods << method_doc
+        }
       end
 
-      obj.ruby_methods = methods
-
-      obj.save!
+      objects << RubyObject.new(
+        name: doc.name,
+        description: clean_description(doc.description),
+        metadata: {
+          constant: doc.full_name,
+          object_type: "#{doc.type}_object",
+          methods: methods
+        }
+      )
     end
 
-    Searchkick.models.each { |m| m.reindex }
+    objects
+  end
+
+  private
+
+  def index_object(object)
+    object_repository.save(object)
+  end
+
+  def index_search
+  end
+
+  def object_repository
+    @object_repo ||= RubyObjectRepository.repository_for_version(@version)
+  end
+
+  def reset_indexes!
+    object_repository.create_index! force: true
+  end
+
+  def method_path(method_doc)
+    base_ruby_dir = Pathname.new @options.files.first
+    method_file = Pathname.new Rails.root.join(method_doc.file.relative_name)
+
+    method_file.relative_path_from(base_ruby_dir).to_s
+  end
+
+  def skip_namespace?(constant)
+    !skip_namespace_regex.match(constant).nil?
+  end
+
+  def skip_namespace_regex
+    Regexp.union(SKIP_NAMESPACES)
   end
 
   def clean_description(description)

@@ -1,17 +1,67 @@
 # frozen_string_literal: true
 
-class RubyMethod < ApplicationRecord
-  searchkick searchable: [:name, :description, :parent_name], filterable: [:version, :name, :parent_name, :method_type]
+class RubyMethod
+  attr_reader :body
 
-  enum method_type: %i[instance_method class_method]
+  def initialize(body)
+    @body = HashWithIndifferentAccess.new(body)
+  end
 
-  validates :name, :method_type, :version, presence: true
+  def name
+    body[:name]
+  end
 
-  belongs_to :ruby_object
+  def description
+    body[:description]
+  end
 
-  scope :ordered, -> { order :name }
+  def metadata
+    body[:metadata]
+  end
 
-  attribute :parent_name, :string
+  def method_type
+    metadata[:method_type]
+  end
+
+  def parent_constant
+    metadata[:parent_constant]
+  end
+
+  def instance_method?
+    method_type == "instance_method"
+  end
+
+  def class_method?
+    method_type == "class_method"
+  end
+
+  def identifier
+    [parent_constant, type_identifier, name].join
+  end
+
+  def source_location
+    metadata[:source_location]
+  end
+
+  def call_sequence
+    metadata[:call_sequence]
+  end
+
+  def to_elasticsearch
+    {
+      name: name,
+      description: description,
+      type: :method,
+      metadata: {
+        identifier: identifier,
+        method_type: method_type,
+        source_location: source_location,
+        call_sequence: call_sequence
+      }
+    }
+  end
+
+  private
 
   def type_identifier
     if instance_method?

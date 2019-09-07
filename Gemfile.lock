@@ -95,6 +95,16 @@ GEM
       elasticsearch-transport (= 7.3.0)
     elasticsearch-api (7.3.0)
       multi_json
+    elasticsearch-model (7.0.0)
+      activesupport (> 3)
+      elasticsearch (> 1)
+      hashie
+    elasticsearch-persistence (7.0.0)
+      activemodel (> 4)
+      activesupport (> 4)
+      elasticsearch (~> 7)
+      elasticsearch-model (= 7.0.0)
+      hashie
     elasticsearch-transport (7.3.0)
       faraday
       multi_json
@@ -297,6 +307,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   dotenv-rails
+  elasticsearch-persistence
   fast_jsonapi
   graphiql-rails
   graphql

@@ -16,6 +16,8 @@ gem "webpacker", "~> 4.0"
 gem "redis", "~> 4.1"
 gem "hiredis"
 
+gem "elasticsearch-persistence"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
 # HTTP library

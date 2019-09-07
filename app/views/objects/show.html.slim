@@ -42,7 +42,7 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
       div class="ruby-documentation"
         == @object.description
 
-    - @object.ruby_methods.ordered.each do |m|
+    - @object.ruby_methods.sort_by(&:name).each do |m|
       div class="p-3 my-6 rounded relative z-0" data-controller="method"
         a style="left:0; top: -80px; position: absolute;" id="#{method_anchor m}"
         div class="flex flex-wrap"

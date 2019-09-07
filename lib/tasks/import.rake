@@ -6,9 +6,6 @@ namespace :import do
   task :ruby, [:version] => :environment do |t, args|
     args.with_defaults version: Rails.configuration.default_ruby_version
 
-    RubyMethod.where(version: args.version).delete_all
-    RubyObject.where(version: args.version).delete_all
-
     downloader = RubyDownloader.download(args.version)
     RubyDocumentationImpoter.import(args.version, downloader.extracted_download_path)
   end
