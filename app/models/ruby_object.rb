@@ -43,6 +43,10 @@ class RubyObject
     body[:description]
   end
 
+  def autocomplete
+    constant
+  end
+
   # This is be empty in search pages
   def ruby_methods
     @ruby_methods ||= metadata[:methods].collect { |m| RubyMethod.new(m) }
@@ -54,6 +58,7 @@ class RubyObject
       name: name,
       type: :object,
       description: description,
+      autocomplete: autocomplete,
       metadata: {
         constant: constant,
         object_type: object_type,

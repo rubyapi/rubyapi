@@ -47,12 +47,22 @@ class RubyMethod
     metadata[:call_sequence]
   end
 
+  def autocomplete
+    identifier
+  end
+
+  def object_path
+    parent_constant&.downcase&.gsub(/\:\:/, "/")
+  end
+
   def to_elasticsearch
     {
       name: name,
       description: description,
       type: :method,
+      autocomplete: autocomplete,
       metadata: {
+        parent_constant: parent_constant,
         identifier: identifier,
         method_type: method_type,
         source_location: source_location,
@@ -69,9 +79,5 @@ class RubyMethod
     elsif class_method?
       "::"
     end
-  end
-
-  def parent_name
-    ruby_object.name
   end
 end

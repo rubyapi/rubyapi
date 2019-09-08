@@ -26,8 +26,8 @@ module Types
     end
 
     def autocomplete(query:, version:)
-      search = DocSearch.perform(query, version: version)
-      search.results.first(5)
+      results = Autocomplete.search(query, version: version).first(5)
+      results.map { |r| AutocompleteResult.new(r, version: version) }
     end
   end
 end

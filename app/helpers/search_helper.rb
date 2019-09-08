@@ -6,12 +6,12 @@ module SearchHelper
     "method-#{method.instance_method? ? "i" : "c"}-#{method_name}"
   end
 
-  def result_url(object_or_method)
+  def result_url(result, version:)
     routes = Rails.application.routes.url_helpers
-    if object_or_method.is_a?(RubyMethod)
-      routes.object_path version: object_or_method.version, object: object_or_method.ruby_object, anchor: method_anchor(object_or_method)
-    elsif object_or_method.is_a?(RubyObject)
-      routes.object_path version: object_or_method.version, object: object_or_method
+    if result.is_a?(RubyMethod)
+      routes.object_path version: version, object: result.object_path, anchor: method_anchor(result)
+    elsif result.is_a?(RubyObject)
+      routes.object_path version: version, object: result.path
     end
   end
 end

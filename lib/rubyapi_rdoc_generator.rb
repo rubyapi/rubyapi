@@ -67,17 +67,22 @@ class RubyAPIRDocGenerator
 
   def index_object(object)
     object_repository.save(object)
-  end
+    search_repository.save(object)
 
-  def index_search
+    object.ruby_methods.each { |m| search_repository.save m }
   end
 
   def object_repository
-    @object_repo ||= RubyObjectRepository.repository_for_version(@version)
+    @object_repository ||= RubyObjectRepository.repository_for_version(@version)
+  end
+
+  def search_repository
+    @search_repository ||= SearchRepository.repository_for_version(@version)
   end
 
   def reset_indexes!
     object_repository.create_index! force: true
+    search_repository.create_index! force: true
   end
 
   def method_path(method_doc)
