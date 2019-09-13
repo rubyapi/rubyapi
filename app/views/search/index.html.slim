@@ -2,30 +2,30 @@ div class="max-w-screen-xl mx-auto md:px-6 px-3 pt-20"
   div class="p-3 pb-5 border-b border-gray-200"
     h1 class="lg:text-3xl text-2xl font-bold"
       | Results for: "#{search_query}"
-  - @search.results.each do |result|
+  - @search.each do |r|
     div class="p-3 my-1 rounded"
       div class="flex"
         div class="w-full"
-          - if result.is_a? RubyMethod
+          - if r.is_a? RubyMethod
             h4 class="lg:text-2xl overflow-wrap-break-word text-lg font-bold"
-              = link_to result_url(result) do
-                = "#{result.ruby_object.constant}#{result.instance_method? ? "#" : "::"}#{result.name}"
+              = link_to result_url(r, version: ruby_version) do
+                = r.identifier
           - else
             h4 class="lg:text-2xl text-lg font-bold"
-              = link_to result.constant, result_url(result)
-      - if result.description.empty?
+              = link_to r.constant, result_url(r, version: ruby_version)
+      - if r.description.empty?
         div No documentation available
       - else
-        == result.description
+        == r.description
 
   div class="text-center"
     div
-      = paginate @search
+      = paginate Kaminari.paginate_array([], total_count: @search.total).page(current_page).per(results_per_page)
 
   div class="border-t border-gray-200 mt-1 py-2"
     span class="text-gray-700"
-      | Search took: #{@search.took}ms
+      | Search took: #{@search.response["took"]}ms
     span 
       | &nbsp;&#183;&nbsp;
     span class="text-gray-700"
-      | Total Results: #{@search.total_count}
+      | Total Results: #{@search.total}

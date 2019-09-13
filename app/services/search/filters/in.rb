@@ -9,9 +9,8 @@
 module Search
   module Filters
     class In
-      def self.filter(options, value)
-        options[:where][:parent_name] = value
-        options
+      def self.filter_for(value)
+        { "type" => "method", "metadata.parent_constant" => value }
       end
     end
   end
