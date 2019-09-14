@@ -8,18 +8,20 @@ class SearchRepository
       number_of_shards: 5,
       analysis: {
         analyzer: {
-          camel: {
+          autocomplete: {
             type: :pattern,
-            pattern: "([^\\p{L}\\d]+)|(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)|(?<=[\\p{L}&&[^\\p{Lu}]])(?=\\p{Lu})|(?<=\\p{Lu})(?=\\p{Lu}[\\p{L}&&[^\\p{Lu}]])"
+            pattern: "(\:\:)|(#)|(_)"
           }
         }
       }) do
     mapping do
       indexes :type, type: :keyword
-      indexes :autocomplete, type: :search_as_you_type, analyzer: :camel
+      indexes :autocomplete, type: :search_as_you_type, analyzer: :autocomplete
       indexes :name, type: :keyword
-      indexes :description, type: :text, index: false
-      indexes :metadata, type: :nested
+      indexes :object_constant, type: :text
+      indexes :method_identifier, type: :text
+      indexes :object_type, type: :keyword
+      indexes :method_type, type: :keyword
     end
   end
 

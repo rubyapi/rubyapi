@@ -15,16 +15,12 @@ class RubyObject
     body[:name]
   end
 
-  def metadata
-    body[:metadata]
-  end
-
   def path
     constant&.downcase&.gsub(/\:\:/, "/")
   end
 
   def object_type
-    metadata[:object_type]
+    body[:object_type]
   end
 
   def class_object?
@@ -36,7 +32,7 @@ class RubyObject
   end
 
   def constant
-    metadata[:constant]
+    body[:object_constant]
   end
 
   def description
@@ -49,7 +45,7 @@ class RubyObject
 
   # This is be empty in search pages
   def ruby_methods
-    @ruby_methods ||= metadata[:methods].collect { |m| RubyMethod.new(m) }
+    @ruby_methods ||= body[:object_methods].collect { |m| RubyMethod.new(m) }
   end
 
   def to_elasticsearch
@@ -59,11 +55,9 @@ class RubyObject
       type: :object,
       description: description,
       autocomplete: autocomplete,
-      metadata: {
-        constant: constant,
-        object_type: object_type,
-        methods: ruby_methods.collect(&:to_elasticsearch),
-      }
+      object_methods: ruby_methods.collect(&:to_elasticsearch),
+      object_constant: constant,
+      object_object_type: object_type
     }
   end
 end

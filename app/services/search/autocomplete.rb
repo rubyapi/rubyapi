@@ -1,6 +1,6 @@
 module Search
   class Autocomplete
-    def self.search(query, version: version)
+    def self.search(query, version:)
       new(query, version: version).perform
     end
 
@@ -22,17 +22,38 @@ module Search
     def elasticsearch_query
       {
         query: {
-          multi_match: {
-            query: @query.terms,
-            type: :most_fields,
-            fields: [
-              "name^3",
-              "autocomplete",
-              "autocomplete.2gram"
-            ]
+          function_score: {
+            functions: boost_functions,
+            query: {
+              bool: {
+                should: {
+                  match: { "autocomplete": @query.terms.downcase }
+                },
+                must: {
+                  multi_match: {
+                    query: @query.terms.downcase,
+                    type: :bool_prefix,
+                    fields: [
+                      "autocomplete",
+                      "autocomplete.2gram",
+                      "autocomplete.3gram",
+                    ]
+                  }
+                }
+              }
+            }
           }
         }
       }
+    end
+
+    def boost_functions
+      Ruby::CORE_CLASSES.map do |constant, weight|
+        {
+          filter: { term: { "object_constant" => constant.downcase } },
+          weight: weight
+        }
+      end
     end
   end
 end

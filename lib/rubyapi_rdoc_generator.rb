@@ -40,23 +40,19 @@ class RubyAPIRDocGenerator
         methods << {
           name: method_doc.name,
           description: clean_description(method_doc.description),
-          metadata: {
-            parent_constant: doc.full_name,
-            method_type: "#{method_doc.type}_method",
-            source_location: "#{@full_version}:#{method_path(method_doc)}:#{method_doc.line}",
-            call_sequence: method_doc.call_seq ? method_doc.call_seq.strip.split("\n").map { |s| s.gsub "->", "→" } : ""
-          }
+          object_constant: doc.full_name,
+          method_type: "#{method_doc.type}_method",
+          method_source_location: "#{@full_version}:#{method_path(method_doc)}:#{method_doc.line}",
+          method_call_sequence: method_doc.call_seq ? method_doc.call_seq.strip.split("\n").map { |s| s.gsub "->", "→" } : ""
         }
       end
 
       objects << RubyObject.new(
         name: doc.name,
         description: clean_description(doc.description),
-        metadata: {
-          constant: doc.full_name,
-          object_type: "#{doc.type}_object",
-          methods: methods
-        }
+        object_methods: methods,
+        object_constant: doc.full_name,
+        object_type: "#{doc.type}_object"
       )
     end
 

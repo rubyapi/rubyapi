@@ -1,20 +1,5 @@
 module Search
   class Documentation
-    CORE_CLASSES = {
-      "String" => 5,
-      "Integer" => 5,
-      "Float" => 5,
-      "Symbol" => 5,
-      "Time" => 4,
-      "Regex" => 4,
-      "Numeric" => 4,
-      "Object" => 4,
-      "Struct" => 3,
-      "Thread" => 2,
-      "Signal" => 2,
-      "IO" => 2,
-    }.freeze
-
     RESULTS_PER_PAGE = 25
 
     def self.search(query, version:, page:)
@@ -28,6 +13,7 @@ module Search
     end
 
     def search
+      print elasticsearch_options.to_json
       search_repository.search(elasticsearch_options)
     end
 
@@ -49,10 +35,9 @@ module Search
                 must: {
                   multi_match: {
                     query: @query.terms,
-                    type: :most_fields,
+                    type: :bool_prefix,
                     fields: [
                       "name",
-                      "constant"
                     ]
                   }
                 },
@@ -68,9 +53,9 @@ module Search
     private
 
     def boost_functions
-      CORE_CLASSES.map do |constant, weight|
+      Ruby::CORE_CLASSES.map do |constant, weight|
         {
-          filter: { match: { constant: constant } },
+          filter: { term: { "object_constant" => constant.downcase } },
           weight: weight
         }
       end

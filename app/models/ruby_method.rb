@@ -15,16 +15,12 @@ class RubyMethod
     body[:description]
   end
 
-  def metadata
-    body[:metadata]
-  end
-
   def method_type
-    metadata[:method_type]
+    body[:method_type]
   end
 
   def parent_constant
-    metadata[:parent_constant]
+    body[:object_constant]
   end
 
   def instance_method?
@@ -40,11 +36,11 @@ class RubyMethod
   end
 
   def source_location
-    metadata[:source_location]
+    body[:method_source_location]
   end
 
   def call_sequence
-    metadata[:call_sequence]
+    body[:method_call_sequence]
   end
 
   def autocomplete
@@ -61,13 +57,11 @@ class RubyMethod
       description: description,
       type: :method,
       autocomplete: autocomplete,
-      metadata: {
-        parent_constant: parent_constant,
-        identifier: identifier,
-        method_type: method_type,
-        source_location: source_location,
-        call_sequence: call_sequence
-      }
+      object_constant: parent_constant,
+      method_identifier: identifier,
+      method_type: method_type,
+      method_source_location: source_location,
+      method_call_sequence: call_sequence
     }
   end
 

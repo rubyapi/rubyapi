@@ -10,6 +10,7 @@ class RubyObjectRepository
     mapping do
       indexes :name, type: :text
       indexes :description, type: :text, index: false
+      indexes :methods, type: :nested
       indexes :metadata, type: :nested
     end
   end
