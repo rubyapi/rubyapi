@@ -7,7 +7,45 @@ class SearchRepository
   settings(
       number_of_shards: 5,
       analysis: {
+        normalizer: {
+          lowercase: {
+            filter: [:lowercase]
+          }
+        },
+        filter: {
+          "2gram" => {
+            type: :ngram,
+            min_gram: 2,
+            max_gram: 2
+          },
+          "3gram" => {
+            type: :ngram,
+            min_gram: 3,
+            max_gram: 3
+          }
+        },
+        tokenizer: {
+          method_name: {
+            type: :pattern,
+            pattern: "(_)"
+          }
+        },
         analyzer: {
+          name: {
+            type: :custom,
+            tokenizer: :method_name,
+            filter: [:lowercase]
+          },
+          "name2gram" => {
+            type: :custom,
+            tokenizer: :method_name,
+            filter: [:lowercase, "2gram"]
+          },
+          "name3gram" => {
+            type: :custom,
+            tokenizer: :method_name,
+            filter: [:lowercase, "3gram"]
+          },
           autocomplete: {
             type: :pattern,
             pattern: "(\:\:)|(#)|(_)"
@@ -17,9 +55,22 @@ class SearchRepository
     mapping do
       indexes :type, type: :keyword
       indexes :autocomplete, type: :search_as_you_type, analyzer: :autocomplete
-      indexes :name, type: :keyword
-      indexes :object_constant, type: :text
-      indexes :method_identifier, type: :text
+      indexes :name, type: :text, analyzer: :name, fields: {
+        keyword: {
+          type: :keyword,
+          normalizer: :lowercase
+        },
+        "2gram" => {
+          type: :text,
+          analyzer: "name2gram"
+        },
+        "3gram" => {
+          type: :text,
+          analyzer: "name3gram"
+        }
+      }
+      indexes :object_constant, type: :text, analyzer: :keyword
+      indexes :method_identifier, type: :keyword, normalizer: :lowercase
       indexes :object_type, type: :keyword
       indexes :method_type, type: :keyword
     end

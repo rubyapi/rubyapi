@@ -28,19 +28,22 @@ module Search
         query: {
           function_score: {
             functions: boost_functions,
-            boost_mode: :multiply,
             query: {
               bool: {
-                filter: filters,
+                should: [
+                  { term: { method_identifier: { value: @query.terms.downcase, boost: 2 } } }
+                ],
                 must: {
                   multi_match: {
-                    query: @query.terms,
+                    query: @query.terms.downcase,
                     type: :bool_prefix,
                     fields: [
                       "name",
+                      "name.2gram",
+                      "name.3gram"
                     ]
                   }
-                },
+                }
               }
             }
           }
@@ -53,12 +56,20 @@ module Search
     private
 
     def boost_functions
-      Ruby::CORE_CLASSES.map do |constant, weight|
-        {
-          filter: { term: { "object_constant" => constant.downcase } },
+      boosts = []
+      Ruby::CORE_CLASSES.each do |constant, weight|
+        boosts << {
+          filter: { term: { object_constant: constant } },
           weight: weight
         }
       end
+
+      boosts << {
+        filter: { term: { type: :object } },
+        weight: 1.5
+      }
+
+      boosts
     end
 
     def filters

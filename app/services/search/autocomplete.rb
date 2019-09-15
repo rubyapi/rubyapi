@@ -27,7 +27,7 @@ module Search
             query: {
               bool: {
                 should: {
-                  match: { "autocomplete": @query.terms.downcase }
+                  match: { autocomplete: @query.terms.downcase }
                 },
                 must: {
                   multi_match: {

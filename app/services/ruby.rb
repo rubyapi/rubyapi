@@ -7,6 +7,7 @@ module Ruby
     "Time" => 4,
     "Regex" => 4,
     "Numeric" => 4,
+    "StringIO" => 4,
     "Object" => 4,
     "Struct" => 3,
     "Thread" => 2,
