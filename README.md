@@ -26,23 +26,19 @@ Start Postgresql and ElasticSearch:
 
     $ docker-compose up -d
 
-Run database migrations
-
-    $ ./bin/rake db:setup
-
 Start the Rails Server
 
     $ ./bin/rails server
 
 Optionally, you also may want to start the webpack dev server
 
-    $ ./bin/webpack-dev-server
+    $ ./bin/webpack
 
 ## Importing Documentation
 
 Ruby's documentation can be imported very easily. There's a rake task that will let you import a given versions' documentation:
 
-    $ ./bin/rake import:ruby[2.6.2]
+    $ ./bin/rake import:ruby[2.6.4]
 
 ## Running tests
 
