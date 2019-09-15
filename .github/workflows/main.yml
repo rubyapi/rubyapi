@@ -12,7 +12,6 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update -qq
-        sudo apt-get install -y libpq-dev
         gem install bundler --no-doc
         yarn install
         bundle install --jobs 4 --retry 3
@@ -20,7 +19,6 @@ jobs:
       run: docker-compose up -d
     - name: Setup Application
       run: |
-        bundle exec rake db:setup
         bundle exec rake webpacker:compile
     - name: Run Tests & Linting
       run: |
