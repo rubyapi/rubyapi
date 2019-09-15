@@ -1,15 +1,11 @@
 version: '3'
 services:
-  database:
-    image: postgres:11
-    ports:
-      - "5432:5432"
-  cache:
-    image: redis:3
-    ports:
-      - "6379:6379"
-  search:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.0
+  kibana:
+    image: kibana:7.3.1
+    ports: 
+      - "5601:5601"
+  elasticsearch:
+    image: elasticsearch:7.3.1
     ports:
       - "9200:9200"
     environment:
