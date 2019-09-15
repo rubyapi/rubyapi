@@ -61,7 +61,7 @@ class RubyMethod
       method_identifier: identifier,
       method_type: method_type,
       method_source_location: source_location,
-      method_call_sequence: call_sequence
+      method_call_sequence: call_sequence,
     }
   end
 

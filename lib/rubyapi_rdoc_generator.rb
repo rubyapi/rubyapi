@@ -43,7 +43,7 @@ class RubyAPIRDocGenerator
           object_constant: doc.full_name,
           method_type: "#{method_doc.type}_method",
           method_source_location: "#{@full_version}:#{method_path(method_doc)}:#{method_doc.line}",
-          method_call_sequence: method_doc.call_seq ? method_doc.call_seq.strip.split("\n").map { |s| s.gsub "->", "→" } : ""
+          method_call_sequence: method_doc.call_seq ? method_doc.call_seq.strip.split("\n").map { |s| s.gsub "->", "→" } : "",
         }
       end
 

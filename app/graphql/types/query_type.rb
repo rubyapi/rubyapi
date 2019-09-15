@@ -22,7 +22,7 @@ module Types
     end
 
     def search(query:, version:, page:)
-      results = Search::Documentation.search(query, version: version, page: page)
+      Search::Documentation.search(query, version: version, page: page)
     end
 
     def autocomplete(query:, version:)

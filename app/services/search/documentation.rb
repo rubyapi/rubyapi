@@ -31,7 +31,7 @@ module Search
             query: {
               bool: {
                 should: [
-                  { term: { method_identifier: { value: @query.terms.downcase, boost: 2 } } }
+                  {term: {method_identifier: {value: @query.terms.downcase, boost: 2}}},
                 ],
                 must: {
                   multi_match: {
@@ -40,16 +40,16 @@ module Search
                     fields: [
                       "name",
                       "name.2gram",
-                      "name.3gram"
-                    ]
-                  }
-                }
-              }
-            }
-          }
+                      "name.3gram",
+                    ],
+                  },
+                },
+              },
+            },
+          },
         },
         from: (@page - 1) * RESULTS_PER_PAGE,
-        size: RESULTS_PER_PAGE
+        size: RESULTS_PER_PAGE,
       }
     end
 
@@ -59,14 +59,14 @@ module Search
       boosts = []
       Ruby::CORE_CLASSES.each do |constant, weight|
         boosts << {
-          filter: { term: { object_constant: constant } },
-          weight: weight
+          filter: {term: {object_constant: constant}},
+          weight: weight,
         }
       end
 
       boosts << {
-        filter: { term: { type: :object } },
-        weight: 1.5
+        filter: {term: {type: :object}},
+        weight: 1.5,
       }
 
       boosts
@@ -78,7 +78,7 @@ module Search
       filters = []
       @query.filters.each do |filter, value|
         next unless filter? filter
-        filters << { term: filter_klass_for(filter).filter_for(value) }
+        filters << {term: filter_klass_for(filter).filter_for(value)}
       end
 
       filters

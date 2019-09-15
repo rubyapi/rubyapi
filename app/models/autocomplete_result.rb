@@ -18,4 +18,3 @@ class AutocompleteResult
     result_url result, version: version
   end
 end
-

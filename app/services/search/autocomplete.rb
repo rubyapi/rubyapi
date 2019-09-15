@@ -27,7 +27,7 @@ module Search
             query: {
               bool: {
                 should: {
-                  match: { autocomplete: @query.terms.downcase }
+                  match: {autocomplete: @query.terms.downcase},
                 },
                 must: {
                   multi_match: {
@@ -37,21 +37,21 @@ module Search
                       "autocomplete",
                       "autocomplete.2gram",
                       "autocomplete.3gram",
-                    ]
-                  }
-                }
-              }
-            }
-          }
-        }
+                    ],
+                  },
+                },
+              },
+            },
+          },
+        },
       }
     end
 
     def boost_functions
       Ruby::CORE_CLASSES.map do |constant, weight|
         {
-          filter: { term: { "object_constant" => constant.downcase } },
-          weight: weight
+          filter: {term: {"object_constant" => constant.downcase}},
+          weight: weight,
         }
       end
     end

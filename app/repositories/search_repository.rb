@@ -5,69 +5,70 @@ class SearchRepository
   include Elasticsearch::Persistence::Repository::DSL
 
   settings(
-      number_of_shards: 5,
-      analysis: {
-        normalizer: {
-          lowercase: {
-            filter: [:lowercase]
-          }
+    number_of_shards: 5,
+    analysis: {
+      normalizer: {
+        lowercase: {
+          filter: [:lowercase],
         },
-        filter: {
-          "2gram" => {
-            type: :ngram,
-            min_gram: 2,
-            max_gram: 2
-          },
-          "3gram" => {
-            type: :ngram,
-            min_gram: 3,
-            max_gram: 3
-          }
+      },
+      filter: {
+        "2gram" => {
+          type: :ngram,
+          min_gram: 2,
+          max_gram: 2,
         },
-        tokenizer: {
-          method_name: {
-            type: :pattern,
-            pattern: "(_)"
-          }
+        "3gram" => {
+          type: :ngram,
+          min_gram: 3,
+          max_gram: 3,
         },
-        analyzer: {
-          name: {
-            type: :custom,
-            tokenizer: :method_name,
-            filter: [:lowercase]
-          },
-          "name2gram" => {
-            type: :custom,
-            tokenizer: :method_name,
-            filter: [:lowercase, "2gram"]
-          },
-          "name3gram" => {
-            type: :custom,
-            tokenizer: :method_name,
-            filter: [:lowercase, "3gram"]
-          },
-          autocomplete: {
-            type: :pattern,
-            pattern: "(\:\:)|(#)|(_)"
-          }
-        }
-      }) do
+      },
+      tokenizer: {
+        method_name: {
+          type: :pattern,
+          pattern: "(_)",
+        },
+      },
+      analyzer: {
+        :name => {
+          type: :custom,
+          tokenizer: :method_name,
+          filter: [:lowercase],
+        },
+        "name2gram" => {
+          type: :custom,
+          tokenizer: :method_name,
+          filter: [:lowercase, "2gram"],
+        },
+        "name3gram" => {
+          type: :custom,
+          tokenizer: :method_name,
+          filter: [:lowercase, "3gram"],
+        },
+        :autocomplete => {
+          type: :pattern,
+          pattern: "(\:\:)|(#)|(_)",
+        },
+      },
+    }
+  ) do
     mapping do
       indexes :type, type: :keyword
       indexes :autocomplete, type: :search_as_you_type, analyzer: :autocomplete
       indexes :name, type: :text, analyzer: :name, fields: {
-        keyword: {
+        :keyword => {
           type: :keyword,
-          normalizer: :lowercase
+          normalizer: :lowercase,
         },
         "2gram" => {
           type: :text,
-          analyzer: "name2gram"
+          analyzer: "name2gram",
         },
         "3gram" => {
           type: :text,
-          analyzer: "name3gram"
-        }
+          analyzer: "name3gram",
+        },
       }
       indexes :object_constant, type: :text, analyzer: :keyword
       indexes :method_identifier, type: :keyword, normalizer: :lowercase
