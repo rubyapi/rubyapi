@@ -31,7 +31,7 @@ module Search
             query: {
               bool: {
                 should: [
-                  {term: {method_identifier: {value: @query.terms.downcase, boost: 2}}},
+                  {term: {method_identifier: {value: @query.terms.downcase, boost: 3}}},
                 ],
                 must: {
                   multi_match: {

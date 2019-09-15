@@ -50,7 +50,7 @@ module Search
     def boost_functions
       Ruby::CORE_CLASSES.map do |constant, weight|
         {
-          filter: {term: {"object_constant" => constant.downcase}},
+          filter: {term: {"object_constant" => constant}},
           weight: weight,
         }
       end
