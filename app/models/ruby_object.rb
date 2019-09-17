@@ -57,7 +57,7 @@ class RubyObject
       autocomplete: autocomplete,
       object_methods: ruby_methods.collect(&:to_elasticsearch),
       object_constant: constant,
-      object_object_type: object_type,
+      object_type: object_type,
     }
   end
 end

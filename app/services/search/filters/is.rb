@@ -6,17 +6,17 @@ module Search
       def self.filter_for(value)
         case value
         when "object"
-          {type: :object}
+          [{term: {type: {value: :object}}}]
         when "module"
-          {"type" => "object", "metadata.object_type" => "module_object"}
+          [{term: {object_type: {value: :module_object}}}]
         when "class"
-          {"type" => "object", "metadata.object_type" => "class_object"}
+          [{term: {object_type: {value: :class_object}}}]
         when "method"
-          {type: :method}
+          [{term: {type: {value: :method}}}]
         when "class-method", "class-method", "cmethod"
-          {"type" => "method", "metadata.method_type" => "class_method"}
+          [{term: {method_type: {value: :class_method}}}]
         when "instance-method", "instance-method", "imethod", "#"
-          {"type" => "method", "metadata.method_type" => "instance_method"}
+          [{term: {method_type: {value: :instance_method}}}]
         end
       end
     end

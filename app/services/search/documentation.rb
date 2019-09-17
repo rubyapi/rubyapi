@@ -13,7 +13,6 @@ module Search
     end
 
     def search
-      print elasticsearch_options.to_json
       search_repository.search(elasticsearch_options)
     end
 
@@ -33,17 +32,19 @@ module Search
                 should: [
                   {term: {method_identifier: {value: @query.terms.downcase, boost: 3}}},
                 ],
-                must: {
-                  multi_match: {
-                    query: @query.terms.downcase,
-                    type: :bool_prefix,
-                    fields: [
-                      "name",
-                      "name.2gram",
-                      "name.3gram",
-                    ],
+                must: [
+                  {
+                    multi_match: {
+                      query: @query.terms.downcase,
+                      type: :bool_prefix,
+                      fields: [
+                        "name",
+                        "name.2gram",
+                        "name.3gram",
+                      ],
+                    },
                   },
-                },
+                ] + filters,
               },
             },
           },
@@ -78,7 +79,7 @@ module Search
       filters = []
       @query.filters.each do |filter, value|
         next unless filter? filter
-        filters << {term: filter_klass_for(filter).filter_for(value)}
+        filters.concat filter_klass_for(filter).filter_for(value)
       end
 
       filters

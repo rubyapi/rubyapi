@@ -10,7 +10,10 @@ module Search
   module Filters
     class In
       def self.filter_for(value)
-        {"type" => "method", "metadata.parent_constant" => value}
+        [
+          {term: {object_constant: {value: value}}},
+          {term: {type: {value: :method}}},
+        ]
       end
     end
   end
