@@ -17,6 +17,8 @@ module Search
           [{term: {method_type: {value: :class_method}}}]
         when "instance-method", "instance-method", "imethod", "#"
           [{term: {method_type: {value: :instance_method}}}]
+        else
+          []
         end
       end
     end
