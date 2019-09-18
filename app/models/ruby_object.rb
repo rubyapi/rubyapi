@@ -8,7 +8,7 @@ class RubyObject
   end
 
   def id
-    Base64.encode64(path)
+    Base64.strict_encode64(path)
   end
 
   def name

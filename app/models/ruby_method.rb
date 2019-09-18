@@ -19,7 +19,7 @@ class RubyMethod
     body[:method_type]
   end
 
-  def parent_constant
+  def object_constant
     body[:object_constant]
   end
 
@@ -32,15 +32,15 @@ class RubyMethod
   end
 
   def identifier
-    [parent_constant, type_identifier, name].join
+    [object_constant, type_identifier, name].join
   end
 
   def source_location
-    body[:method_source_location]
+    body[:source_location]
   end
 
   def call_sequence
-    body[:method_call_sequence]
+    body[:call_sequence]
   end
 
   def autocomplete
@@ -48,7 +48,7 @@ class RubyMethod
   end
 
   def object_path
-    parent_constant&.downcase&.gsub(/\:\:/, "/")
+    object_constant&.downcase&.gsub(/\:\:/, "/")
   end
 
   def to_elasticsearch
@@ -57,7 +57,7 @@ class RubyMethod
       description: description,
       type: :method,
       autocomplete: autocomplete,
-      object_constant: parent_constant,
+      object_constant: object_constant,
       method_identifier: identifier,
       method_type: method_type,
       method_source_location: source_location,
