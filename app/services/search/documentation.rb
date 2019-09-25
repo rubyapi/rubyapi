@@ -1,5 +1,4 @@
 module Search
-
   class Results
     attr_reader :query
 

@@ -55,7 +55,7 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
       method_type: "instance_method",
       object_constant: "String",
       source_location: "2.6.4:string.c:L1",
-      call_sequence: []
+      call_sequence: [],
     }
 
     string = RubyObject.new(string_info)

@@ -38,26 +38,26 @@ class ActiveSupport::TestCase
     attributes = {
       name: name,
       description: "<h1>Hello Object: #{name}</h1>",
-      object_type: "#{object_type.to_s}_object",
+      object_type: "#{object_type}_object",
       constant: constant.to_s,
       methods: [{
-          name: "empty?",
-          description: "<h1>Hello World!</h1>",
-          method_type: "instance_method",
-          object_constant: constant.to_s,
-          source_location: "2.6.4:string.c:76",
-          call_sequence: []
-        },
-        {
-          name: "to_i",
-          description: "<h1>Hello World</h1>",
-          method_type: "instance_method",
-          object_constant: constant.to_s,
-          source_location: "2.6.4:string.c:54",
-          call_sequence: [
-            "str.to_i # => 1"
-          ]
-      }]
+        name: "empty?",
+        description: "<h1>Hello World!</h1>",
+        method_type: "instance_method",
+        object_constant: constant.to_s,
+        source_location: "2.6.4:string.c:76",
+        call_sequence: [],
+      },
+                {
+                  name: "to_i",
+                  description: "<h1>Hello World</h1>",
+                  method_type: "instance_method",
+                  object_constant: constant.to_s,
+                  source_location: "2.6.4:string.c:54",
+                  call_sequence: [
+                    "str.to_i # => 1",
+                  ],
+                },],
     }
 
     RubyObject.new(attributes)

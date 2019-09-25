@@ -6,7 +6,7 @@ class ObjectsController < ApplicationController
   end
 
   def not_found
-    render plain: 'Not found', status: :not_found
+    render plain: "Not found", status: :not_found
   end
 
   private

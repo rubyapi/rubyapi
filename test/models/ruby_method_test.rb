@@ -8,7 +8,7 @@ class RubyMethodTest < ActiveSupport::TestCase
       method_type: "instance_method",
       object_constant: "String",
       source_location: "2.6.4:string.c:L54",
-      call_sequence: <<~G
+      call_sequence: <<~G,
         str.to_i # => 1
       G
     }
@@ -50,7 +50,7 @@ class RubyMethodTest < ActiveSupport::TestCase
       identifier: "String#to_i",
       method_type: "instance_method",
       source_location: "2.6.4:string.c:L54",
-      call_sequence: <<~G
+      call_sequence: <<~G,
         str.to_i # => 1
       G
     }
