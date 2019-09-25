@@ -3,24 +3,41 @@ on: [push,pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
+    services:
+      elasticsearch:
+        image: elasticsearch:7.3.2
+        ports:
+          - 9200:9200
+        env:
+          "discovery.type": "single-node"
+        options: >-
+          --health-cmd "curl --silent --fail localhost:9200/_cluster/health || exit 1"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
-    - uses: actions/checkout@v1
-    - name: Set up Ruby 2.6
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.6.x
-    - name: Install dependencies
-      run: |
-        sudo apt-get update -qq
-        gem install bundler --no-doc
-        yarn install
-        bundle install --jobs 4 --retry 3
-    - name: Start services
-      run: docker-compose up -d
-    - name: Setup Application
-      run: |
-        bundle exec rake webpacker:compile
-    - name: Run Tests & Linting
-      run: |
-        bundle exec standardrb --no-fix
-        bundle exec rake test
+      - uses: actions/checkout@v1
+
+      - name: Set Up Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.x
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get -yqq install chromium-chromedriver
+          gem install bundler --no-doc
+          yarn install
+          bundle install --jobs 4 --retry 3
+
+      - name: Compile Assets
+        run: |
+          bundle exec rake webpacker:compile
+
+      - name: Run Tests & Linting
+        env:
+          ELASTICSEARCH_URL: "http://localhost:9200"
+        run: |
+          bundle exec standardrb --no-fix
+          bundle exec rake test
