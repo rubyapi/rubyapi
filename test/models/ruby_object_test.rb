@@ -6,8 +6,8 @@ class RubyObjectTest < ActiveSupport::TestCase
       name: "String",
       description: "<h1>Hello World</h1>",
       object_type: "class_object",
-      object_constant: "String",
-      object_methods: [
+      constant: "String",
+      methods: [
         {
           name: "to_i",
           description: "<h1>Hello World</h1>",
@@ -50,25 +50,25 @@ class RubyObjectTest < ActiveSupport::TestCase
     assert_equal method.class, RubyMethod
   end
 
-  test "#to_elasticsearch" do
-    assert_equal @object.to_elasticsearch, {
+  test "#to_hash" do
+    assert_equal @object.to_hash, {
       id: "c3RyaW5n",
       name: "String",
       type: :object,
       autocomplete: "String",
-      object_constant: "String",
+      constant: "String",
       object_type: "class_object",
       description: "<h1>Hello World</h1>",
-      object_methods: [{
+      methods: [{
         name: "to_i",
         description: "<h1>Hello World</h1>",
         type: :method,
         autocomplete: "String#to_i",
         object_constant: "String",
-        method_identifier: "String#to_i",
+        identifier: "String#to_i",
         method_type: "instance_method",
-        method_source_location: "2.6.4:string.c:L54",
-        method_call_sequence: <<~G
+        source_location: "2.6.4:string.c:L54",
+        call_sequence: <<~G
           str.to_i # => 1
         G
       }]

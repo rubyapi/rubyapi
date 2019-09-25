@@ -1,64 +1,69 @@
 require "test_helper"
 
 class ObjectsControllerTest < ActionDispatch::IntegrationTest
-  test "should get show" do
-    object = ruby_objects(:string)
-    object.save!
+  def setup
+    create_index_for_version! default_ruby_version
+  end
 
-    get object_url object: object.path
+  test "should get show" do
+    string = ruby_object String
+    index_object string
+
+    get object_url object: string.path
     assert_response :success
   end
 
   test "object not found" do
-    assert_raises ActiveRecord::RecordNotFound do
-      get object_url object: "invalid"
-    end
+    get object_url object: "invalid"
+    assert_response :not_found
   end
 
   test "different ruby version" do
-    object = ruby_objects :string
-    object.version = "2.5"
-    object.save
+    create_index_for_version! "2.5"
 
-    get object_url object: object.path, version: "2.5"
+    string = ruby_object String
+    index_object string, version: "2.5"
+
+    get object_url object: string.path, version: "2.5"
     assert_response :success
   end
 
   test "object not found on different ruby version" do
-    object = ruby_objects :integer
-    object.version = "2.3"
-    object.save
+    create_index_for_version! "2.3"
 
-    assert_raises ActiveRecord::RecordNotFound do
-      get object_url object: object.path, version: "2.6"
-    end
+    string = ruby_object String
+    index_object string, version: "2.3"
+
+    get object_url object: string.path
+    assert_response :not_found
   end
 
   test "show method sequence" do
-    object = ruby_objects(:string)
-    method = ruby_methods(:to_i)
+    string = ruby_object String
+    index_object string
 
-    method.call_sequence = [
-      "to_i -> new_int",
-    ]
+    get object_url object: string.path
 
-    object.ruby_methods << method
-    object.save
-
-    get object_url object: object.path
-
-    assert_select "h4", "to_i -> new_int"
+    assert_select "h4", "str.to_i # => 1"
   end
 
   test "show method name" do
-    object = ruby_objects(:string)
-    method = ruby_methods(:to_i)
+    string_info = ruby_object(String).to_hash
+    string_info[:methods] << {
+      name: "foo",
+      description: "<h1>Hello World</h1>",
+      method_type: "instance_method",
+      object_constant: "String",
+      source_location: "2.6.4:string.c:L1",
+      call_sequence: []
+    }
 
-    object.ruby_methods << method
-    object.save
+    string = RubyObject.new(string_info)
 
-    get object_url object: object.path
+    index_object string
 
-    assert_select "h4", "to_i"
+    get object_url object: string.path
+
+    assert_select "h4", "foo"
   end
 end

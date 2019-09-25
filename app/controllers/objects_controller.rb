@@ -1,6 +1,12 @@
 class ObjectsController < ApplicationController
+  rescue_from Elasticsearch::Persistence::Repository::DocumentNotFound, with: :not_found
+
   def show
     @object = object_repository.find(document_id)
+  end
+
+  def not_found
+    render plain: 'Not found', status: :not_found
   end
 
   private
@@ -10,7 +16,7 @@ class ObjectsController < ApplicationController
   end
 
   def document_id
-    Base64.encode64(object)
+    RubyObject.id_from_path(object)
   end
 
   def object

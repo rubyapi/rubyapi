@@ -7,8 +7,12 @@ class RubyObject
     @body = HashWithIndifferentAccess.new(body)
   end
 
-  def id
+  def self.id_from_path(path)
     Base64.strict_encode64(path)
+  end
+
+  def id
+    self.class.id_from_path(path)
   end
 
   def name
@@ -32,7 +36,7 @@ class RubyObject
   end
 
   def constant
-    body[:object_constant]
+    body[:constant]
   end
 
   def description
@@ -45,18 +49,18 @@ class RubyObject
 
   # This is be empty in search pages
   def ruby_methods
-    @ruby_methods ||= body[:object_methods].collect { |m| RubyMethod.new(m) }
+    @ruby_methods ||= body[:methods].collect { |m| RubyMethod.new(m) }
   end
 
-  def to_elasticsearch
+  def to_hash
     {
       id: id,
       name: name,
       type: :object,
       description: description,
       autocomplete: autocomplete,
-      object_methods: ruby_methods.collect(&:to_elasticsearch),
-      object_constant: constant,
+      methods: ruby_methods.collect(&:to_hash),
+      constant: constant,
       object_type: object_type,
     }
   end

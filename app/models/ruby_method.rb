@@ -51,17 +51,17 @@ class RubyMethod
     object_constant&.downcase&.gsub(/\:\:/, "/")
   end
 
-  def to_elasticsearch
+  def to_hash
     {
       name: name,
       description: description,
       type: :method,
       autocomplete: autocomplete,
       object_constant: object_constant,
-      method_identifier: identifier,
+      identifier: identifier,
       method_type: method_type,
-      method_source_location: source_location,
-      method_call_sequence: call_sequence,
+      source_location: source_location,
+      call_sequence: call_sequence,
     }
   end
 

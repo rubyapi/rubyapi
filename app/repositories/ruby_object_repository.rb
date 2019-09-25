@@ -18,8 +18,4 @@ class RubyObjectRepository
   def self.repository_for_version(version)
     new(index_name: "ruby_objects_#{version}_#{Rails.env}")
   end
-
-  def serialize(object)
-    object.to_elasticsearch
-  end
 end

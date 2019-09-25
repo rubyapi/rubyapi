@@ -1,4 +1,19 @@
 module Search
+
+  class Results
+    attr_reader :query
+
+    def initialize(response:, query:)
+      @response = response
+      @query = query
+    end
+
+    delegate :raw_response, to: :@response
+    delegate :results, to: :@response
+    delegate :total, to: :@response
+    delegate :response, to: :@response
+  end
+
   class Documentation
     RESULTS_PER_PAGE = 25
 
@@ -13,7 +28,8 @@ module Search
     end
 
     def search
-      search_repository.search(elasticsearch_options)
+      response = search_repository.search(elasticsearch_options)
+      Results.new(response: response, query: elasticsearch_options)
     end
 
     private

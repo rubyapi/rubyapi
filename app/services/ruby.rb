@@ -9,6 +9,7 @@ module Ruby
     "Numeric" => 4,
     "StringIO" => 4,
     "Object" => 4,
+    "Base64" => 4,
     "Struct" => 3,
     "Thread" => 2,
     "Signal" => 2,

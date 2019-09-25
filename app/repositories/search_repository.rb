@@ -84,10 +84,6 @@ class SearchRepository
   def self.elasticsearch_settings
   end
 
-  def serialize(document)
-    document.to_elasticsearch
-  end
-
   def deserialize(document)
     @klass = klass_for_document(document)
     super

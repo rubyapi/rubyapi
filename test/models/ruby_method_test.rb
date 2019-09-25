@@ -40,17 +40,17 @@ class RubyMethodTest < ActiveSupport::TestCase
     assert_equal @method.identifier, "String#to_i"
   end
 
-  test "#to_elasticsearch" do
-    assert_equal @method.to_elasticsearch, {
+  test "#to_hash" do
+    assert_equal @method.to_hash, {
       name: "to_i",
       description: "<h1>Hello World</h1>",
       type: :method,
       autocomplete: "String#to_i",
       object_constant: "String",
-      method_identifier: "String#to_i",
+      identifier: "String#to_i",
       method_type: "instance_method",
-      method_source_location: "2.6.4:string.c:L54",
-      method_call_sequence: <<~G
+      source_location: "2.6.4:string.c:L54",
+      call_sequence: <<~G
         str.to_i # => 1
       G
     }
