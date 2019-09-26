@@ -22,7 +22,7 @@ Install dependencies:
 
     $ bundle install && yarn install
 
-Start Postgresql and ElasticSearch:
+Start ElasticSearch:
 
     $ docker-compose up -d
 
@@ -49,6 +49,7 @@ The test suite can be executed with:
 ## Code Of Conduct
 
 Everyone interacting with the source code, issue trackers, chat rooms, and mailing lists is expected to follow the [Code Of Conduct](https://github.com/rubyapi/rubyapi/blob/master/CODE_OF_CONDUCT.md)
+
 ## License
 
 Ruby API is licensed under the [MIT license](https://github.com/rubyapi/rubyapi/blob/master/LICENSE.md).
