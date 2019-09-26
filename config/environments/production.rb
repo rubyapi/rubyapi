@@ -100,4 +100,6 @@ Rails.application.configure do
       user_agent: controller.request.user_agent,
     }
   end
+
+  config.skylight.probes += %w(elasticsearch)
 end
