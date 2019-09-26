@@ -70,13 +70,13 @@ export default class extends Controller {
       },
       body: JSON.stringify({
         query: `
-          {
-            autocomplete(query: "${query}", version: "${version}") {
-              text
-              path
-            }
+        query GetAutocompleteResults($query: String!, $version: String = "2.6") {
+          autocomplete(query: $query, version: $version) {
+            text
+            path
           }
-        `
+        }`,
+        variables: { query, version }
       })
     })
       .then((response) => { return response.json() })
