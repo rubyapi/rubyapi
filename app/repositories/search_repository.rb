@@ -81,9 +81,6 @@ class SearchRepository
     new(index_name: "search_#{version}_#{Rails.env}")
   end
 
-  def self.elasticsearch_settings
-  end
-
   def deserialize(document)
     @klass = klass_for_document(document)
     super
