@@ -31,7 +31,7 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
       div class="flex flex-wrap"
         div class="w-full md:w-6/12"
           h1 class="lg:text-3xl text-2xl font-bold"
-            = link_to @object.name, object_url(version: ruby_version, object: @object)
+            = link_to @object.name, object_url(version: ruby_version, object: @object.path)
         div class="w-full md:w-6/12 md:text-right mt-2 md:mt-0"
           - if @object.class_object?
             span class="py-1 px-2 rounded bg-gray-200 text-gray-700 text-sm"
