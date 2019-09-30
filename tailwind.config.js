@@ -2,10 +2,6 @@ const _ = require('lodash')
 
 module.exports = {
   theme: {
-    fontFamily: {
-      diaply: ["Source Sans Pro", "sans-serif"],
-      body: ["Source Sans Pro", "sans-serif"],
-    },
     extend: {
       colors: {
         gray: {

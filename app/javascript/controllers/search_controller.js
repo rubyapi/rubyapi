@@ -34,12 +34,12 @@ export default class extends Controller {
     })
 
     this.inputTarget.addEventListener("focusin", () => {
-      this.buttonTarget.classList.add("text-gray-800")
+      this.buttonTarget.classList.add("text-gray-700")
       this.autocompleteTarget.hidden = false
     })
 
     this.inputTarget.addEventListener("blur", (e) => {
-      this.buttonTarget.classList.remove("text-gray-800")
+      this.buttonTarget.classList.remove("text-gray-700")
 
       setTimeout(() => {
         this.autocompleteTarget.hidden = true

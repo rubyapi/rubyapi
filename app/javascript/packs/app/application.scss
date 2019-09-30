@@ -5,10 +5,7 @@
 @import "tailwindcss/utilities";
 
 /* purgecss start ignore */
-#header #search::placeholder {
-  @apply text-white;
-  @apply opacity-75;
-}
+#header #search::placeholder { @apply text-white opacity-75; }
 
 p {
   @apply py-3;
@@ -35,17 +32,16 @@ p {
 }
 
 html {
-  @apply bg-white text-gray-800 font-body;
+  @apply bg-white text-gray-700;
 }
 
 code {
   padding: 0.15rem;
-  @apply bg-gray-300 rounded leading-relaxed text-sm;
+  @apply bg-gray-300 rounded leading-relaxed text-sm text-gray-700;
 }
 
 pre:not(.ruby) {
-  @apply overflow-auto;
-  font-family: "Source Code Pro", monospace;
+  @apply overflow-auto font-mono;
 }
 
 .pagination {
@@ -70,10 +66,9 @@ pre:not(.ruby) {
 /* Oceanic-Theme: https://labs.voronianski.com/oceanic-next-color-scheme/ */
 
 pre.ruby {
-  @apply p-3 rounded overflow-auto;
+  @apply p-3 rounded overflow-auto font-mono;
   background: #1b2b34;
   color: #d8dee9;
-  font-family: "Source Code Pro", monospace;
 }
 
 .ruby-string { color: #99C794; }
