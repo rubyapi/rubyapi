@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
-  GITHUB_REPO = "https://github.com/ruby/ruby/blob/".freeze
+  GITHUB_REPO = "https://github.com/ruby/ruby/blob/"
+  MASTER = "master"
 
   def master?
-    ruby_version == "master"
+    ruby_version == MASTER
   end
 
   def homepage?
@@ -13,7 +16,7 @@ module ApplicationHelper
   def github_url(ruby_doc)
     version, file, line = ruby_doc.source_location.split(":")
 
-    if master?
+    if version == MASTER
       path = File.join version, file
     else
       github_version = version.tr(".", "_")

@@ -71,9 +71,9 @@ class RubyDownloader
 
   def unpack
     if master?
-      system "tar -xf #{download_path} -C #{rubies_download_path}"
-    else
       system "unzip #{download_path} -d #{rubies_download_path}"
+    else
+      system "tar -xf #{download_path} -C #{rubies_download_path}"
     end
   end
 
