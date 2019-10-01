@@ -15,7 +15,7 @@ class RubyAPIRDocGenerator
     @store = store
     @options = options
     @full_version = options.generator_options.pop
-    @version = Gem::Version.new(@full_version).segments[0..1].join(".")
+    @version = @full_version == "master" ? "master" : Gem::Version.new(@full_version).segments[0..1].join(".")
     @documentation = store.all_classes_and_modules
   end
 

@@ -1,10 +1,10 @@
 doctype html
-html
+html lang="en"
   head
-    title= content_for?(:title) ? "#{yield(:title)} (v#{ruby_version}) - Ruby API" : "Ruby API (v#{ruby_version})"
+    title= content_for?(:title) ? "#{yield(:title)} (#{master? ? "master" : "v" + ruby_version}) - Ruby API" : "Ruby API (#{master? ? "master" : "v" + ruby_version})"
     =csrf_meta_tags 
     =csp_meta_tag
-    meta name="description" content="Easily find and browse Ruby classes, modules and methods"
+    meta name="description" content="#{content_for?(:description) ? yield(:description) : "Easily find and browse Ruby classes, modules and methods"}"
     meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
     = stylesheet_pack_tag 'application'
     = javascript_pack_tag 'application', defer: true

@@ -1,5 +1,6 @@
 class RubyDownloader
   RUBY_HOST = "https://cache.ruby-lang.org/pub/ruby/%{base}/ruby-%{version}.tar.gz".freeze
+  RUBY_MASTER_URL = "https://codeload.github.com/ruby/ruby/zip/master"
 
   attr_reader :version
 
@@ -31,11 +32,19 @@ class RubyDownloader
   end
 
   def download_path
-    rubies_download_path.join "ruby-#{version}.tar.gz"
+    if master?
+      rubies_download_path.join "ruby-master.zip"
+    else
+      rubies_download_path.join "ruby-#{version}.tar.gz"
+    end
   end
 
   def extracted_download_path
-    rubies_download_path.join "ruby-#{version}"
+    if master?
+      rubies_download_path.join "ruby-master"
+    else
+      rubies_download_path.join "ruby-#{version}"
+    end
   end
 
   private
@@ -51,15 +60,26 @@ class RubyDownloader
     file.close
   end
 
+  def master?
+    version == "master"
+  end
+
   def already_fetched?
+    return false if master?
     File.exist? extracted_download_path.join "README.md"
   end
 
   def unpack
-    system "tar -xf #{download_path} -C #{rubies_download_path}"
+    if master?
+      system "tar -xf #{download_path} -C #{rubies_download_path}"
+    else
+      system "unzip #{download_path} -d #{rubies_download_path}"
+    end
   end
 
   def ruby_uri
+    return RUBY_MASTER_URL if master?
+
     base_version = Gem::Version.new(version).segments[0..1].join(".")
     RUBY_HOST % {base: base_version, version: version}
   end

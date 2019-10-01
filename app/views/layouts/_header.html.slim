@@ -15,7 +15,7 @@ header id="header" class="text-white bg-red-600 flex items-center fixed top-0 in
 
       div class="lg:w-1/12 w-2/12 text-right"
         div class="flex flex-row-reverse content-center relative"
-          select class="bg-red-600 md:text-xl text-l pl-2 md:pr-5 pr-3 appearance-none" onblur="window.location=(this.options[this.selectedIndex].value)"
+          select class="bg-red-600 md:text-xl text-l text-right pl-2 md:pr-5 pr-3 appearance-none" onblur="window.location=(this.options[this.selectedIndex].value)"
             option value="#{route_for_version ruby_version}"
               = ruby_version
             - available_ruby_versions.sort.reverse.each do |version|
