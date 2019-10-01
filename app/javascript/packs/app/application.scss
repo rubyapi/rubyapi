@@ -5,7 +5,8 @@
 @import "tailwindcss/utilities";
 
 /* purgecss start ignore */
-#header #search::placeholder { @apply text-white opacity-75; }
+#search::placeholder { @apply text-gray-600 opacity-100 }
+#header #search::placeholder { @apply text-white opacity-100; }
 
 p {
   @apply py-3;
