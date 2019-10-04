@@ -26,6 +26,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
+          sudo apt-get update -qq
           sudo apt-get -yqq install chromium-chromedriver
           gem install bundler --no-doc
           yarn install
