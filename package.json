@@ -15,6 +15,6 @@
     "tippy.js": "^5.0.1"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.8.1"
+    "webpack-dev-server": "^3.8.2"
   }
 }
