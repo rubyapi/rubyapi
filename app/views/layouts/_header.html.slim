@@ -15,7 +15,7 @@ header id="header" class="text-white bg-red-600 flex items-center fixed top-0 in
 
       div class="flex flex-row-reverse lg:w-1/12 w-2/12"
         div class="relative" data-controller="ruby-version"
-          button class="relative z-20 md:text-xl text-l pl-2" data-action="click->ruby-version#in"
+          button class="relative z-20 md:text-xl text-l pl-2" data-action="click->ruby-version#toggle"
             | #{ruby_version}
             i class="ml-2 fas fa-caret-down"
           button class="fixed inset-0 w-full h-full bg-black opacity-25 cursor-default invisible" data-target="ruby-version.versionOverlay" tabindex="-1" data-action="click->ruby-version#out"

@@ -6,23 +6,34 @@ export default class extends Controller {
 
   connect() {
     hotkeys("escape", () => { this.hideOverlay() })
+    this.listActive = false
   }
 
   disconnect() {
     hotkeys.unbind("escpae")
   }
 
-  hideOverlay() {
+  hideList() {
     this.versionListTarget.classList.add("invisible")
     this.versionOverlayTarget.classList.add("invisible") 
+    this.listActive = false
   }
 
-  in() {
+  showList() {
     this.versionListTarget.classList.remove("invisible")
     this.versionOverlayTarget.classList.remove("invisible")
+    this.listActive = true
   }
 
   out() {
-    this.hideOverlay()
+    this.hideList()
+  }
+
+  toggle() {
+    if(this.listActive) {
+      this.hideList()
+    } else {
+      this.showList()
+    }
   }
 }
