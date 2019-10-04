@@ -39,7 +39,7 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
         == @object.description
     hr
     - @object.ruby_methods.sort_by(&:name).each do |m|
-      div class="p-3 my-3" data-controller="method"
+      div class="p-3 my-3"
         a style="display: block; position: relative; top: -80px; visibility: hidden;" id="#{method_anchor m}"
         div class="flex flex-wrap"
           div class="w-full md:w-10/12"
@@ -53,14 +53,14 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
                     = seq
           div class="flex md:justify-end w-full md:w-2/12 mt-3 md:mt-0 font-mono"
             - if m.instance_method?
-              span class="px-2 h-6 inline-block rounded bg-gray-200 text-gray-600 algin-middle cursor-default" data-target="method.objectType" data-tippy-content="Instance Method"
+              a class="px-2 h-6 inline-block rounded bg-gray-200 text-gray-600 algin-middle cursor-default" title="Instance Method"
                 | #
             - elsif m.class_method?
-              span class="px-2 h-6 inline-block rounded bg-gray-200 text-gray-600 algin-middle cursor-default" data-target="method.objectType" data-tippy-content="Class Method"
+              a class="px-2 h-6 inline-block rounded bg-gray-200 text-gray-600 algin-middle cursor-default" title="Class Method"
                 | ::
             div
               | &nbsp;
-            a class="px-2 h-6 inline-block rounded bg-gray-200 text-gray-600 align-middle" href="#{github_url m}" target="_blank" rel="noopener" data-target="method.githubLink" data-tippy-content="View source on Github"
+            a class="px-2 h-6 inline-block rounded bg-gray-200 text-gray-600 align-middle" href="#{github_url m}" target="_blank" rel="noopener" title="View source on Github"
               i class="fab fa-github"
         div class="ruby-documentation py-1"
           - if m.description.empty?
