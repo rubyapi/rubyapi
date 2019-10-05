@@ -10,12 +10,12 @@ header id="header" class="text-white bg-red-600 flex items-center fixed top-0 in
           = form_tag search_url(version: ruby_version), method: :get do
             button type="submit" class="absolute left inset-y-0 px-4"
               span data-target="search.button" class="fa fa-search"
-            input id="search" name="q" data-target="search.input" data-action="keyup->search#autocomplete" class="bg-red-900 rounded px-3 pl-10 py-2 w-full outline-none focus:bg-white focus:text-black" value="#{search_query}" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Ruby Documentation" aria-label="Search" title="Search"
+            input id="search" name="q" data-target="search.input" data-action="keyup->search#autocomplete" class="bg-red-800 rounded px-3 pl-10 py-2 w-full outline-none focus:bg-white focus:text-black" value="#{search_query}" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Ruby Documentation" aria-label="Search" title="Search"
             div data-target="search.autocomplete" class="autocomplete w-full bg-white absolute shadow-lg rounded-bl rounded-br"
       div class="lg:w-1/12 w-2/12"
         div class="flex flex-row-reverse"
           div class="hidden md:block relative ml-4" data-controller="github-links"
-            button class="relative z-20 text-xl hover:text-red-200" data-action="click->github-links#toggle"
+            button class="relative z-20 text-xl hover:text-red-100" data-action="click->github-links#toggle"
               i class="fab fa-github hover:fill-current"
             button class="fixed inset-0 w-full h-full bg-black opacity-25 cursor-default invisible" data-target="github-links.linksOverlay" tabindex="-1" data-action="click->github-links#out"
             div class="absolute w-64 bg-white shadow-xl rounded py-2 right-0 invisible text-gray-700 p-2" data-target="github-links.linksList"
@@ -32,7 +32,7 @@ header id="header" class="text-white bg-red-600 flex items-center fixed top-0 in
                   p class="text-xs text-gray-700 py-1" Ruby API is a Ruby on Rails app that makes browsing and searching Ruby's documentation easy and fast for users.
 
           div class="relative" data-controller="ruby-version"
-            button class="relative z-20 md:text-xl text-l pl-2 hover:text-red-200 hover:fill-current" data-action="click->ruby-version#toggle"
+            button class="relative z-20 md:text-xl text-l pl-2 hover:text-red-100 hover:fill-current" data-action="click->ruby-version#toggle"
               | #{ruby_version}
               i class="ml-2 fas fa-caret-down"
             button class="fixed inset-0 w-full h-full bg-black opacity-25 cursor-default invisible" data-target="ruby-version.versionOverlay" tabindex="-1" data-action="click->ruby-version#out"
