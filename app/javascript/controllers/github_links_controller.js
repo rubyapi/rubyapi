@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["linksList", "linksOverlay"]
 
   connect() {
-    hotkeys("escape", () => { this.hideOverlay() })
+    hotkeys("escape", () => { this.hideList() })
     this.listActive = false
   }
 
