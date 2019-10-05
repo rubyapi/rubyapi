@@ -2,19 +2,19 @@
 
 [![View performance data on Skylight](https://badges.skylight.io/status/k1noEyWLdXuJ.svg)](https://oss.skylight.io/app/applications/k1noEyWLdXuJ) 
 
-Ruby API is a Ruby on Rails app that makes browsing and searching Ruby's documentation fast and smooth for users.
+Ruby API is a Ruby on Rails app that makes browsing and searching Ruby's documentation easy and fast for users.
 
 ## Why?
 
-Trying to find documentation about that one method or class you're looking for can be pretty tedious. The current goto places for Ruby documentation, [ruby-doc.org](https://ruby-doc.org) & [docs.ruby-lang.org](http://docs.ruby-lang.org) offer only basic searching and are not designed for mobile devices, which result in a poor experience for users. Other applications that index Ruby's documentation such as Dash, while a much better experience, is a paid application (for the full experience) and is only available on MacOS & iOS.
+Trying to find documentation about that one Ruby method or class you're looking for can be pretty tedious. The current goto places for Ruby documentation - [ruby-doc.org](https://ruby-doc.org) & [docs.ruby-lang.org](http://docs.ruby-lang.org) offer only basic searching and are not designed for mobile devices. Other apps for searching Ruby's documentation such as Dash, while a much better experience, is a paid application (for the full experience) and is only available on devices running MacOS & iOS.
 
 Ruby API aims to improve the Ruby ecosystem by providing an application that is:
 
-  * Available to any device with a web browser
-  * A UI designed for mobile devices in mind
+  * Available to any device with a web browser and internet connection
+  * Designed for mobile devices in mind
   * Optimised for searching common Ruby classes/methods
   * Optimised for Google/Search engines to understand how to index Ruby's documentation.
-  * Free. No ads. No paywall. ever.
+  * Free. No ads. ever.
 
 ## Getting started
 
