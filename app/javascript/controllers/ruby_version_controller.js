@@ -10,7 +10,7 @@ export default class extends Controller {
   }
 
   disconnect() {
-    hotkeys.unbind("escpae")
+    hotkeys.unbind("escape")
   }
 
   hideList() {
