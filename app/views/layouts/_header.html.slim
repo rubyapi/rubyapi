@@ -4,7 +4,7 @@ header id="header" class="text-white bg-red-600 flex items-center fixed top-0 in
       div class="lg:w-2/12 w-2/12"
         a href="#{root_path}" class="block"
           = inline_svg "media/packs/app/logo-plain.svg", class: "md:hidden w-10 h-10"
-          = inline_svg "media/packs/app/logo.svg", class: "hidden md:block"
+          = inline_svg "media/packs/app/logo.svg", class: "hidden md:block w-48"
       div class="lg:w-5/12 md:w-6/12 w-8/12"
         div class="relative" data-controller="search" data-search-version="#{ruby_version}" data-search-url="#{graphql_path}"
           = form_tag search_url(version: ruby_version), method: :get do
