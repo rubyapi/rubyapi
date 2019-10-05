@@ -28,7 +28,7 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
         div class="w-full md:w-6/12"
           h1 class="lg:text-3xl text-xl text-gray-800 font-medium"
             = link_to @object.name, object_url(version: ruby_version, object: @object.path)
-        div class="w-full md:w-6/12 md:text-right mt-2 md:mt-0"
+        div class="w-full md:w-6/12 md:text-right mt-2 md:mt-0 cursor-default"
           - if @object.class_object?
             span class="py-1 px-2 rounded bg-gray-200 text-sm"
               | Class
@@ -53,14 +53,12 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
                     = seq
           div class="flex md:justify-end w-full md:w-2/12 mt-3 md:mt-0 font-mono"
             - if m.instance_method?
-              a class="px-2 h-6 inline-block rounded bg-gray-200 text-gray-600 algin-middle cursor-default" title="Instance Method"
+              a class="px-2 h-6 inline-block rounded bg-gray-200 text-gray-600 algin-middle cursor-default hover:bg-gray-300 hover:text-gray-800 hover:fill-current" title="Instance Method"
                 | #
             - elsif m.class_method?
-              a class="px-2 h-6 inline-block rounded bg-gray-200 text-gray-600 algin-middle cursor-default" title="Class Method"
+              a class="px-2 h-6 inline-block rounded bg-gray-200 text-gray-600 algin-middle cursor-default hover:bg-gray-300 hover:text-gray-800 hover:fill-current" title="Class Method"
                 | ::
-            div
-              | &nbsp;
-            a class="px-2 h-6 inline-block rounded bg-gray-200 text-gray-600 align-middle" href="#{github_url m}" target="_blank" rel="noopener" title="View source on Github"
+            a class="px-1 ml-2 h-6 inline-block rounded bg-gray-200 text-gray-600 align-middle hover:bg-gray-300 hover:text-gray-800 hover:fill-current" href="#{github_url m}" target="_blank" rel="noopener" title="View source on Github"
               i class="fab fa-github"
         div class="ruby-documentation py-1"
           - if m.description.empty?
