@@ -97,6 +97,9 @@ class RubyAPIRDocGenerator
   end
 
   def clean_description(description)
-    description.gsub(/(\<a.*\&para\;\<\/a>)/, "").gsub(/(\<a.*\&uarr\;\<\/a>)/, "")
+    description
+      .gsub(/(\<a.*\&para\;\<\/a>)/, "")
+      .gsub(/(\<a.*\&uarr\;\<\/a>)/, "")
+      .gsub("<pre class=\"ruby\">", "<div class=\"ruby\" data-controller=\"code-example\" data-target=\"code-example.block\"></div><pre class=\"ruby\">")
   end
 end

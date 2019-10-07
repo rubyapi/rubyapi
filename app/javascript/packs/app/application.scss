@@ -58,7 +58,7 @@ pre:not(.ruby) {
   }
 }
 
-.ruby-documentation {
+.ruby-documentation pre {
   h1, h2, h3, h4, h5 {
     @apply font-bold text-lg py-1;
   }
@@ -67,9 +67,7 @@ pre:not(.ruby) {
 /* Oceanic-Theme: https://labs.voronianski.com/oceanic-next-color-scheme/ */
 
 pre.ruby {
-  @apply p-3 rounded overflow-auto font-mono;
-  background: #1b2b34;
-  color: #d8dee9;
+  @apply p-3 rounded-b overflow-auto font-mono bg-code-background text-code-text;
 }
 
 .ruby-string { color: #99C794; }
