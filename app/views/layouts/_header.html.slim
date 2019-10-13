@@ -2,7 +2,7 @@ header id="header" class="text-white bg-red-600 flex items-center fixed top-0 in
   nav class="w-full max-w-screen-xl mx-auto" role="navigation" aria-label="main navigation"
     div class="flex items-center justify-between md:px-6 px-3"
       div class="lg:w-2/12 w-2/12"
-        a href="#{root_path}" class="block"
+        = link_to root_path, class: "block" do
           = inline_svg "media/packs/app/logo-plain.svg", class: "md:hidden w-10 h-10"
           = inline_svg "media/packs/app/logo.svg", class: "hidden md:block w-48"
       div class="lg:w-5/12 md:w-6/12 w-8/12"
