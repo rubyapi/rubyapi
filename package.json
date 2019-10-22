@@ -16,6 +16,6 @@
     "tailwindcss": "^1.1.2"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.8.2"
+    "webpack-dev-server": "^3.9.0"
   }
 }
