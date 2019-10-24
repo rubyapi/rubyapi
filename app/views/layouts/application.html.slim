@@ -9,6 +9,6 @@ html lang="en"
     = stylesheet_pack_tag 'application'
     = javascript_pack_tag 'application', defer: true
 
-  body class="#{"bg-red-600" if homepage?}"
+  body class="#{"bg-red-600" if homepage?} bg-white text-gray-700"
     = render "layouts/header" unless homepage?
     = yield

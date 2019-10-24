@@ -3,6 +3,9 @@ const _ = require('lodash')
 module.exports = {
   theme: {
     extend: {
+      screens: {
+        dark: {'raw': '(prefers-color-scheme: dark)'},
+      },
       colors: {
         code: {
           "header": "#2f3e46",
@@ -25,7 +28,7 @@ module.exports = {
   },
   variants: {},
   plugins: [
-    ({ addUtilities, config, e }) => {
+    ({ addUtilities, config, e, theme }) => {
       const maxScreenSizeUtilities = _.map(config('theme.screens'), (value, key) => {
         return {
           [`.${e(`max-w-screen-${key}`)}`]: {
@@ -35,6 +38,19 @@ module.exports = {
       })
 
       addUtilities(maxScreenSizeUtilities)
+
+      const placeholderOpacity = _.fromPairs(
+        _.map(theme('opacity'), (value, modifier) => {
+          return [
+            `.${e(`placeholder-opacity-${modifier}`)}::placeholder`,
+            {
+              opacity: value,
+            },
+          ]
+        })
+      )
+
+      addUtilities(placeholderOpacity)
     }
   ]
 }

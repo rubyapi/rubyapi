@@ -2,7 +2,7 @@
 
 div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
   div class="hidden lg:block lg:static w-1/4"
-    div class="hidden lg:block lg:sticky top-0 h-auto w-full top-6 p-6 pt-0"
+    div class="hidden lg:block lg:sticky h-auto w-full mt-24 p-6 pt-0"
       div class="overflow-y-auto pr-6 h-93"
         - unless @object.ruby_methods.select(&:class_method?).empty?
           div class="mb-3"
@@ -26,7 +26,7 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
     div class="p-3"
       div class="flex flex-wrap"
         div class="w-full md:w-6/12"
-          h1 class="lg:text-3xl text-xl text-gray-800 font-medium"
+          h1 class="lg:text-3xl text-xl text-gray-800 font-bold"
             = link_to @object.name, object_url(version: ruby_version, object: @object.path)
         div class="w-full md:w-6/12 md:text-right mt-2 md:mt-0 cursor-default"
           - if @object.class_object?
@@ -44,12 +44,12 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
         div class="flex flex-wrap"
           div class="w-full md:w-10/12"
             - if m.call_sequence.empty?
-              h4 class="lg:text-2xl text-lg text-gray-900 font-medium"
+              h4 class="lg:text-2xl text-lg text-gray-900 font-bold"
                 = link_to m.name, object_path(version: ruby_version, anchor: method_anchor(m))
             - else
               = link_to object_path(version: ruby_version, anchor: method_anchor(m)) do
                 - m.call_sequence.each do |seq|
-                  h4 class="lg:text-2xl text-lg text-gray-900 font-medium"
+                  h4 class="lg:text-2xl text-lg text-gray-900 font-bold"
                     = seq
           div class="flex md:justify-end w-full md:w-2/12 mt-3 md:mt-0 font-mono"
             - if m.instance_method?

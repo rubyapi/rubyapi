@@ -20,6 +20,12 @@ export default class extends Controller {
   }
 
   showList() {
+    ["dropdown", "dropdown-overlay"].forEach(c => {
+      Array.from(document.getElementsByClassName(c)).forEach(e => {
+        e.classList.add("invisible")
+      })
+    })
+
     this.versionListTarget.classList.remove("invisible")
     this.versionOverlayTarget.classList.remove("invisible")
     this.listActive = true
