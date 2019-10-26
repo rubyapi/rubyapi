@@ -22,6 +22,8 @@ gem "graphql"
 gem "graphiql-rails", group: :development
 gem "lograge"
 gem "logstash-event"
+gem "aws-sdk-s3"
+gem "sitemap_generator"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

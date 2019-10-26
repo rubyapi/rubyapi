@@ -59,6 +59,22 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.0)
+    aws-eventstream (1.0.3)
+    aws-partitions (1.228.0)
+    aws-sdk-core (3.72.0)
+      aws-eventstream (~> 1.0, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.228.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.25.0)
+      aws-sdk-core (~> 3, >= 3.71.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.51.0)
+      aws-sdk-core (~> 3, >= 3.71.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.1)
+    aws-sigv4 (1.1.0)
+      aws-eventstream (~> 1.0, >= 1.0.2)
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
@@ -128,6 +144,7 @@ GEM
       activesupport (>= 3.0)
       nokogiri (>= 1.6)
     jaro_winkler (1.5.3)
+    jmespath (1.4.0)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.1.1)
@@ -227,6 +244,8 @@ GEM
     selenium-webdriver (3.142.6)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    sitemap_generator (6.0.2)
+      builder (~> 3.0)
     skylight (4.1.2)
       skylight-core (= 4.1.2)
     skylight-core (4.1.2)
@@ -283,6 +302,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk-s3
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
@@ -301,6 +321,7 @@ DEPENDENCIES
   rails (~> 6.0.0)
   redis (~> 4.1)
   selenium-webdriver
+  sitemap_generator
   skylight
   slim
   standard
