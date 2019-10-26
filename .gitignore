@@ -41,6 +41,7 @@ yarn-debug.log*
 /public/packs
 /public/packs-test
 /public/sitemaps
+/public/sitemap*
 /node_modules
 /yarn-error.log
 yarn-debug.log*
