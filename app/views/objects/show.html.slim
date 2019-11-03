@@ -27,7 +27,7 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
     div class="p-3"
       div class="flex flex-wrap"
         div class="w-full md:w-6/12"
-          h1 class="lg:text-3xl text-xl text-gray-800 font-bold"
+          h1 class="lg:text-3xl text-xl text-gray-800 font-semibold"
             = link_to @object.name, object_url(version: ruby_version, object: @object.path)
         div class="w-full md:w-6/12 md:text-right mt-2 md:mt-0 cursor-default"
           - if @object.class_object?
@@ -45,12 +45,12 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
         div class="flex flex-wrap"
           div class="w-full md:w-10/12"
             - if m.call_sequence.empty?
-              h4 class="lg:text-2xl text-lg text-gray-900 font-bold"
+              h4 class="lg:text-2xl text-lg text-gray-900 font-semibold"
                 = link_to m.name, object_path(version: ruby_version, anchor: method_anchor(m))
             - else
               = link_to object_path(version: ruby_version, anchor: method_anchor(m)) do
                 - m.call_sequence.each do |seq|
-                  h4 class="lg:text-2xl text-lg text-gray-900 font-bold"
+                  h4 class="lg:text-2xl text-lg text-gray-900 font-semibold"
                     = seq
           div class="flex md:justify-end w-full md:w-2/12 mt-3 md:mt-0 font-mono"
             - if m.instance_method?
