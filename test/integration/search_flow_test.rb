@@ -10,6 +10,6 @@ class SearchFlowTest < ActionDispatch::IntegrationTest
 
     assert_response :success
 
-    assert_select "h2", "Hello World!"
+    assert_select "h2", "Search and Explore Ruby Documentation"
   end
 end
