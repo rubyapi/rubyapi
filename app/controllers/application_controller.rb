@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :ruby_version
 
+  def default_ruby_version
+    Rails.configuration.default_ruby_version
+  end
+  helper_method :default_ruby_version
+
   def search_query
     params[:q] || ""
   end
