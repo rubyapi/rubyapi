@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   post "/graphql", to: "graphql#execute"
 
+  get "sitemap.xml.gz", to: redirect("https://#{ENV["AWS_BUCKET_NAME"]}.s3-us-west-2.amazonaws.com/sitemap.xml.gz")
+
   if Rails.env.development?
     mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
   end
