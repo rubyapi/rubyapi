@@ -14,6 +14,10 @@ p {
   overflow-wrap: break-word;
 }
 
+.h-93 {
+  height: calc(100vh - 7rem)!important;
+}
+
 code {
   padding: 0.15rem;
   @apply bg-gray-300 rounded leading-relaxed text-sm text-gray-700;
