@@ -4,7 +4,7 @@
 div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
   div class="hidden lg:block w-1/4"
     div class="hidden lg:block lg:sticky pt-1 top-0"
-      div class="overflow-y-auto mt-24 pr-6 h-93"
+      div class="overflow-y-auto mt-24 pl-3 pr-6 h-93"
         - unless @object.ruby_methods.select(&:class_method?).empty?
           div class="mb-3"
             h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2"
@@ -24,7 +24,7 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
                   = link_to object_path(version: ruby_version, anchor: method_anchor(m)), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" do
                     | # #{m.name}
   div class="w-full mt-16 lg:mt-20 lg:w-3/4"
-    div class="p-3"
+    div class="md:p-3 py-3"
       div class="flex flex-wrap"
         div class="w-full md:w-6/12"
           h1 class="lg:text-3xl text-xl text-gray-800 dark:text-gray-200 font-semibold"
@@ -40,7 +40,7 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
         == @object.description
     hr
     - @object.ruby_methods.sort_by(&:name).each do |m|
-      div class="p-3 my-3"
+      div class="md:p-3 py-3 my-3"
         a style="display: block; position: relative; top: -80px; visibility: hidden;" id="#{method_anchor m}"
         div class="flex flex-wrap"
           div class="w-full md:w-10/12"
