@@ -144,7 +144,7 @@ GEM
       ffi-compiler (>= 1.0, < 2.0)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
-    inline_svg (1.5.2)
+    inline_svg (1.6.0)
       activesupport (>= 3.0)
       nokogiri (>= 1.6)
     jaro_winkler (1.5.3)
@@ -188,7 +188,7 @@ GEM
     multi_json (1.13.1)
     multipart-post (2.1.1)
     nio4r (2.5.2)
-    nokogiri (1.10.4)
+    nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     parallel (1.18.0)
     parser (2.6.5.0)
@@ -302,7 +302,7 @@ GEM
     websocket-extensions (0.1.4)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.2.0)
+    zeitwerk (2.2.1)
 
 PLATFORMS
   ruby
