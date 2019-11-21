@@ -32,7 +32,7 @@ Start the Rails Server
 
 Optionally, you also may want to start the webpack dev server
 
-    $ ./bin/webpack
+    $ ./bin/webpack-dev-server
 
 ## Importing Documentation
 
