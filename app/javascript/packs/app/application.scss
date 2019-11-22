@@ -6,6 +6,19 @@
 
 /* purgecss start ignore */
 
+pre.ruby {
+  @apply p-3 rounded-b overflow-auto font-mono bg-code-background text-code-text;
+}
+
+.ruby-string { color: #99C794; }
+.ruby-keyword { color: #C594C5; }
+.ruby-comment { color: #65737e; }
+.ruby-constant { color: #fac863; }
+.ruby-identifier { color: #ec5f67; }
+.ruby-value { color: #F99157; }
+.ruby-regexp { color: #5FB3B3; }
+.ruby-operator { color: #5FB3B3; }
+
 p {
   @apply py-3;
 }
@@ -57,20 +70,5 @@ pre:not(.ruby) {
     @apply font-semibold text-lg py-1;
   }
 }
-
-/* Oceanic-Theme: https://labs.voronianski.com/oceanic-next-color-scheme/ */
-
-pre.ruby {
-  @apply p-3 rounded-b overflow-auto font-mono bg-code-background text-code-text;
-}
-
-.ruby-string { color: #99C794; }
-.ruby-keyword { color: #C594C5; }
-.ruby-comment { color: #65737e; }
-.ruby-constant { color: #fac863; }
-.ruby-identifier { color: #ec5f67; }
-.ruby-value { color: #F99157; }
-.ruby-regexp { color: #5FB3B3; }
-.ruby-operator { color: #5FB3B3; }
 
 /* purgecss end ignore */
