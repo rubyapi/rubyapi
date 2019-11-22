@@ -4,6 +4,7 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
     './app/javascript/controllers/code_example_controller.js',
     './app/**/*.html.slim',
   ],
+  whitelistPatterns: [/ruby/],
   // Include any special characters you're using in this regular expression
   defaultExtractor: content => content.match(/[A-Za-z0-9-_:/]+/g) || []
 })
