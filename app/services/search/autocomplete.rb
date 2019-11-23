@@ -32,7 +32,6 @@ module Search
                 must: {
                   multi_match: {
                     query: @query.terms.downcase,
-                    type: :bool_prefix,
                     fields: [
                       "autocomplete",
                       "autocomplete.2gram",
