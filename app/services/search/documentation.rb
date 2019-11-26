@@ -45,19 +45,18 @@ module Search
             query: {
               bool: {
                 should: [
-                  {term: {method_identifier: {value: @query.terms.downcase, boost: 3}}},
+                  {match: {type: {query: :object, boost: 3.4}}},
+                  {match: {identifier: @query.terms}},
                 ],
                 must: [
-                  {
-                    multi_match: {
-                      query: @query.terms.downcase,
-                      type: :bool_prefix,
-                      fields: [
-                        "name",
-                        "name.2gram",
-                        "name.3gram",
-                      ],
-                    },
+                  multi_match: {
+                    query: @query.terms,
+                    type: :bool_prefix,
+                    fields: [
+                      "identifier",
+                      "name",
+                      "name.2gram",
+                    ],
                   },
                 ] + filters,
               },
