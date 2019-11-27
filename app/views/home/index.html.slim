@@ -1,4 +1,16 @@
 - description "Easily find and browse Ruby classes, modules and methods"
+- content_for :head do
+  script type="application/ld+json"
+      | {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "url": "#{request.base_url}",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "#{search_url}?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
 
 div class="bg-red-600 dark:bg-gray-700 text-white md:pt-3 md:pb-6"
   header id="header" class="text-white flex items-center h-16"
