@@ -129,7 +129,7 @@ GEM
     graphiql-rails (1.7.0)
       railties
       sprockets-rails
-    graphql (1.9.15)
+    graphql (1.9.16)
     hashie (3.6.0)
     hiredis (0.6.3)
     http (4.2.0)
