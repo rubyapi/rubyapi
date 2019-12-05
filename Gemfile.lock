@@ -194,7 +194,7 @@ GEM
     parser (2.6.5.0)
       ast (~> 2.4.0)
     public_suffix (4.0.1)
-    puma (4.3.0)
+    puma (4.3.1)
       nio4r (~> 2.0)
     rack (2.0.7)
     rack-proxy (0.6.5)
