@@ -40,6 +40,10 @@ Ruby's documentation can be imported very easily. There's a rake task that will 
 
     $ ./bin/rake import:ruby[2.6.4]
 
+or you can easily import the latest versions of all currently supported versions of ruby:
+
+    $ ./bin/rake import:ruby:all
+
 ## Running tests
 
 The test suite can be executed with:

@@ -1,6 +1,9 @@
 ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
+require "webmock/minitest"
+
+WebMock.disable!
 
 class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
