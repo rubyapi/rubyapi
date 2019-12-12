@@ -44,6 +44,9 @@ class RubyAPIRDocGenerator
           method_type: "#{method_doc.type}_method",
           source_location: "#{@full_version}:#{method_path(method_doc)}:#{method_doc.line}",
           call_sequence: method_doc.call_seq ? method_doc.call_seq.strip.split("\n").map { |s| s.gsub "->", "→" } : "",
+          metadata: {
+            depth: constant_depth(doc.full_name),
+          },
         }
       end
 
@@ -52,7 +55,10 @@ class RubyAPIRDocGenerator
         description: clean_description(doc.description),
         methods: methods,
         constant: doc.full_name,
-        object_type: "#{doc.type}_object"
+        object_type: "#{doc.type}_object",
+        metadata: {
+          depth: constant_depth(doc.full_name),
+        }
       )
     end
 
@@ -90,6 +96,10 @@ class RubyAPIRDocGenerator
 
   def skip_namespace?(constant)
     !skip_namespace_regex.match(constant).nil?
+  end
+
+  def constant_depth(constant)
+    constant.split("::").size
   end
 
   def skip_namespace_regex

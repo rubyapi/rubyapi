@@ -51,6 +51,10 @@ class RubyMethod
     object_constant&.downcase&.gsub(/\:\:/, "/")
   end
 
+  def metadata
+    body[:metadata]
+  end
+
   def to_hash
     {
       name: name,
@@ -62,6 +66,7 @@ class RubyMethod
       method_type: method_type,
       source_location: source_location,
       call_sequence: call_sequence,
+      metadata: metadata,
     }
   end
 

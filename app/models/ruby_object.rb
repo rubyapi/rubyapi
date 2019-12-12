@@ -47,6 +47,10 @@ class RubyObject
     constant
   end
 
+  def metadata
+    body[:metadata]
+  end
+
   # This is be empty in search pages
   def ruby_methods
     @ruby_methods ||= body[:methods].collect { |m| RubyMethod.new(m) }
@@ -62,6 +66,7 @@ class RubyObject
       methods: ruby_methods.collect(&:to_hash),
       constant: constant,
       object_type: object_type,
+      metadata: metadata,
     }
   end
 end

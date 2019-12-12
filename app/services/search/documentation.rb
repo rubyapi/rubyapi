@@ -45,8 +45,8 @@ module Search
             query: {
               bool: {
                 should: [
-                  {match: {type: {query: :object, boost: 3.4}}},
-                  {match: {identifier: @query.terms}},
+                  {match: {type: {query: :object, boost: 3.7}}},
+                  {match: {identifier: {query: @query.terms, boost: 5}}},
                 ],
                 must: [
                   multi_match: {
@@ -82,6 +82,15 @@ module Search
       boosts << {
         filter: {term: {type: :object}},
         weight: 1.5,
+      }
+
+      boosts << {
+        linear: {
+          "metadata.depth" => {
+            origin: 1,
+            scale: 10,
+          },
+        },
       }
 
       boosts
