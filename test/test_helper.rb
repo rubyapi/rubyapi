@@ -63,12 +63,12 @@ class ActiveSupport::TestCase
         object_constant: constant.to_s,
         source_location: "2.6.4:string.c:54",
         metadata: {
-          depth: 1
+          depth: 1,
         },
         call_sequence: [
           "str.to_i # => 1",
         ],
-      }],
+      },],
     }
 
     RubyObject.new(attributes)
