@@ -7,6 +7,9 @@ class RubyObjectTest < ActiveSupport::TestCase
       description: "<h1>Hello World</h1>",
       object_type: "class_object",
       constant: "String",
+      metadata: {
+        depth: 1,
+      },
       methods: [
         {
           name: "to_i",
@@ -14,6 +17,9 @@ class RubyObjectTest < ActiveSupport::TestCase
           method_type: "instance_method",
           object_constant: "String",
           source_location: "2.6.4:string.c:L54",
+          metadata: {
+            depth: 1,
+          },
           call_sequence: <<~G,
             str.to_i # => 1
           G
@@ -59,6 +65,9 @@ class RubyObjectTest < ActiveSupport::TestCase
       constant: "String",
       object_type: "class_object",
       description: "<h1>Hello World</h1>",
+      metadata: {
+        depth: 1,
+      },
       methods: [{
         name: "to_i",
         description: "<h1>Hello World</h1>",
@@ -68,6 +77,9 @@ class RubyObjectTest < ActiveSupport::TestCase
         identifier: "String#to_i",
         method_type: "instance_method",
         source_location: "2.6.4:string.c:L54",
+        metadata: {
+          depth: 1,
+        },
         call_sequence: <<~G,
           str.to_i # => 1
         G

@@ -4,7 +4,7 @@ class RubyMethod
   attr_reader :body
 
   def initialize(body)
-    @body = HashWithIndifferentAccess.new(body)
+    @body = HashWithIndifferentAccess.new(body).deep_symbolize_keys
   end
 
   def name

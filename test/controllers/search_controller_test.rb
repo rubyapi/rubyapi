@@ -3,6 +3,9 @@ require "test_helper"
 class SearchControllerTest < ActionDispatch::IntegrationTest
   def setup
     create_index_for_version! default_ruby_version
+
+    string = ruby_object String
+    index_search string
   end
 
   test "should get index" do
