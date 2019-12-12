@@ -254,6 +254,8 @@ GEM
     selenium-webdriver (3.142.6)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    sentry-raven (2.12.3)
+      faraday (>= 0.7.6, < 1.0)
     sitemap_generator (6.0.2)
       builder (~> 3.0)
     skylight (4.2.0)
@@ -336,6 +338,7 @@ DEPENDENCIES
   rails (~> 6.0.1)
   redis (~> 4.1)
   selenium-webdriver
+  sentry-raven
   sitemap_generator
   skylight
   slim
