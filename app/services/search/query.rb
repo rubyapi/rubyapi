@@ -15,7 +15,7 @@ module Search
     end
 
     def terms
-      @terms.uniq.join(" ")
+      @cached_terms ||= @terms.uniq.join(" ").gsub(".", "::")
     end
 
     def filters
