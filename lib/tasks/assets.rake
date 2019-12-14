@@ -1,4 +1,4 @@
-namespace :asset do
+namespace :assets do
   task :clean do
     # intentionally empty
   end
