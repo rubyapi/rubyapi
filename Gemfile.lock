@@ -237,7 +237,7 @@ GEM
       protocol-hpack (~> 1.4)
       protocol-http (~> 0.2)
     public_suffix (4.0.1)
-    rack (2.0.7)
+    rack (2.0.8)
     rack-attack (6.2.1)
       rack (>= 1.0, < 3)
     rack-proxy (0.6.5)
