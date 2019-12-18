@@ -26,8 +26,11 @@ export default class extends Controller {
       }),
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
         'X-CSRF-Token': csrfToken,
-      }
+      },
+      cache: 'no-cache',
+      credentials: "same-origin"
     })
       .then((response) => response.json())
       .then((data) => {
