@@ -26,6 +26,7 @@ group :preload, :default do
   gem "sitemap_generator"
   gem "meta-tags"
   gem "sentry-raven"
+  gem "rack-attack"
 end
 
 gem "slim"
