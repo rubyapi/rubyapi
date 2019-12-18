@@ -27,6 +27,7 @@ export default class extends Controller {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
         'X-CSRF-Token': csrfToken,
       },
       cache: 'no-cache',
