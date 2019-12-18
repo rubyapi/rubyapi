@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     # function correctly
     get "o/s", to: "search#index", as: :search
     get "o/*object", to: "objects#show", as: :object
+
+    post "/run", to: "execute#post"
   end
 
   post "/graphql", to: "graphql#execute"

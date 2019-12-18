@@ -110,6 +110,6 @@ class RubyAPIRDocGenerator
     description
       .gsub(/(\<a.*\&para\;\<\/a>)/, "")
       .gsub(/(\<a.*\&uarr\;\<\/a>)/, "")
-      .gsub("<pre class=\"ruby\">", "<div class=\"ruby\" data-controller=\"code-example\" data-target=\"code-example.block\"></div><pre class=\"ruby\">")
+      .gsub("<pre class=\"ruby\">", "<div class=\"ruby\" data-controller=\"code-example\" data-target=\"code-example.block\" data-code-example-version=\"#{@version}\"></div><pre class=\"ruby\">")
   end
 end
