@@ -27,22 +27,33 @@ export default class extends Controller {
   }
 
   connect() {
-    const element = this.inputTarget
     hotkeys(this.searchHotKey, (event, handler) => {
       event.preventDefault()
-      element.focus()
+      this.inputTarget.focus()
     })
 
     this.inputTarget.addEventListener("focusin", () => {
       this.buttonTarget.classList.add("text-gray-700")
-      this.autocompleteTarget.hidden = false
+      this.autocompleteTarget.classList.remove("hidden")
     })
 
-    this.inputTarget.addEventListener("blur", (e) => {
+    this.inputTarget.addEventListener("focusout", () => {
+      this.autocompleteTarget.classList.add("hidden")
       this.buttonTarget.classList.remove("text-gray-700")
-      setTimeout(() => {
-        this.autocompleteTarget.hidden = true
-      }, 90)
+    })
+
+    window.addEventListener("mousedown", (e) => {
+      if(!this.autocompleteTarget.contains(e.target))
+        return
+
+      let link = e.target
+      if (link.tagName != "A")
+        link = e.target.parentElement
+
+      if(link.tagName != "A")
+        return
+
+      window.location.assign(link.href);
     })
   }
 
@@ -50,6 +61,7 @@ export default class extends Controller {
     hotkeys.unbind(this.searchHotKey)
     this.inputTarget.removeEventListener("focusin")
     this.inputTarget.removeEventListener("blur")
+    window.removeEventListener("mousedown")
   }
 
   async autocomplete() {
