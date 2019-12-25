@@ -19,10 +19,10 @@ module RubyApi
     # the framework and any gems in your application.
 
     # default ruby version documentation
-    config.default_ruby_version = '2.6'
+    config.default_ruby_version = '2.7'
 
     config.ruby_versions = %w[
-      2.6 2.5 2.4 2.3 master
+      2.7 2.6 2.5 2.4 2.3 master
     ]
   end
 end
