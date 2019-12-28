@@ -294,7 +294,7 @@ GEM
     samovar (2.1.2)
       console (~> 1.0)
       mapping (~> 1.0)
-    selenium-webdriver (3.142.6)
+    selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     sentry-raven (2.13.0)
