@@ -1,5 +1,7 @@
 name: CI
 on: [push,pull_request]
+env:
+  BUNDLE_PATH: vendor/bundle
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,6 +25,14 @@ jobs:
         uses: eregon/use-ruby-action@v1
         with:
           ruby-version: 2.6.5
+
+      - name: Cache Gems
+        uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: bundler-cache-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            bundler-cache-
 
       - name: Install Dependencies
         run: |
