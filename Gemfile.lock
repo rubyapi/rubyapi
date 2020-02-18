@@ -161,7 +161,7 @@ GEM
     graphiql-rails (1.7.0)
       railties
       sprockets-rails
-    graphql (1.10.2)
+    graphql (1.10.3)
     hashdiff (1.0.0)
     hashie (3.6.0)
     hiredis (0.6.3)
