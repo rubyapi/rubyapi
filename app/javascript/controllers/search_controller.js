@@ -10,7 +10,7 @@ export default class extends Controller {
     this.autocompleteTemplate = `
     <ul class="lg:px-2 py-2 text-gray-800 overflow-auto">
       {{#results}}
-      <li class="my-2 py-1 px-2 rounded hover:bg-gray-200">
+      <li class="my-2 py-1 px-2 rounded autocomplete-list-item">
         <a href="{{path}}" class="w-full inline-block whitespace-no-wrap">
           <i class="fas fa-search h-3"></i>
           <span class="lg:pl-2">{{text}}</span>

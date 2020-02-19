@@ -9,6 +9,11 @@ html lang="en"
     = javascript_pack_tag 'application', defer: true
     = content_for(:head)
 
-  body class="bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-400"
-    = render "layouts/header" unless homepage?
-    = yield
+  body
+    input id="darkmode" type="checkbox" name="darkmode" aria-hidden="true"
+    label class="darkmode-label font-bold" for="darkmode" aria-label="Click to toggle darkmode"
+      span class="darkmode-text" aria-hidden="true"
+
+    main class="main-container"
+      = render "layouts/header" unless homepage?
+      = yield

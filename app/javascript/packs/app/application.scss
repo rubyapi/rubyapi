@@ -36,7 +36,7 @@ code {
   @apply bg-gray-300 rounded leading-relaxed text-sm text-gray-700;
 }
 
-@screen dark {
+#darkmode:checked ~ .main-container {
   code { @apply bg-gray-700 text-gray-400; }
 }
 
@@ -49,17 +49,21 @@ pre:not(.ruby) {
 
   .current {
     & { @apply text-white bg-red-500; }
-
-    @screen dark {
-      & { @apply bg-gray-700 text-gray-200; }
-    }
   }
 
   .page a, .next a, .prev  a, .last a, .first a, .current {
     & { @apply px-2 inline-block text-center py-0 rounded; }
     &:hover { @apply text-white bg-red-600; }
+  }
+}
 
-    @screen dark {
+#darkmode:checked ~ .main-container {
+  .pagination {
+    .current {
+      & { @apply bg-gray-700 text-gray-200; }
+    }
+
+    .page a, .next a, .prev  a, .last a, .first a, .current {
       &:hover { @apply bg-gray-900 text-gray-200; }
     }
   }
@@ -68,6 +72,317 @@ pre:not(.ruby) {
 .ruby-documentation pre {
   h1, h2, h3, h4, h5 {
     @apply font-semibold text-lg py-1;
+  }
+}
+
+#darkmode {
+  position: absolute;
+  top: -9999em;
+}
+
+.darkmode-label {
+  @apply h-4 block text-center cursor-pointer;
+  @apply text-white bg-red-600;
+}
+
+.darkmode-text::before {
+  content: '☀️';
+}
+
+#darkmode:checked + .darkmode-label {
+  @apply bg-gray-700;
+
+  .darkmode-text::before {
+    content: '🌙'
+  }
+}
+
+.code-header {
+  @apply bg-code-header;
+}
+
+.runnable-notice {
+  @apply bg-gray-400;
+}
+
+.runnable-result {
+  @apply bg-gray-300 text-gray-700;
+}
+
+.autocomplete-list-istem:hover {
+  @apply bg-gray-200;
+}
+
+.search-title {
+  @apply text-gray-800;
+}
+
+.search-result {
+  .search-result-title {
+    @apply text-gray-800;
+  }
+}
+
+#darkmode:checked ~ {
+  & .main-container {
+    .code-header {
+      @apply bg-gray-700;
+    }
+
+    .runnable-notice {
+      @apply bg-gray-800 text-gray-200
+    }
+
+    .runnable-result {
+      @apply bg-gray-900 text-gray-200
+    }
+
+    .search-title {
+      @apply text-gray-200;
+    }
+
+    .search-result {
+      @apply text-gray-500;
+
+      .search-result-title {
+        @apply text-white;
+      }
+    }
+  }
+}
+
+.main-container {
+  @apply bg-white text-gray-700;
+}
+
+.home-container {
+  @apply bg-red-600 text-white;
+
+  .github-links-button:hover {
+    @apply text-red-100
+  }
+
+  .github-links-list {
+    @apply text-gray-700 bg-white;
+
+    .github-repo {
+      @apply text-gray-800;
+    }
+
+    .github-repo-link:hover {
+      @apply bg-gray-200;
+    }
+  }
+
+  .ruby-version-button:hover {
+    @apply text-red-100;
+  }
+
+  .ruby-version-link:hover {
+    @apply bg-gray-200;
+  }
+
+  .ruby-version-list {
+    @apply bg-white text-gray-700;
+  }
+}
+
+.core-classes {
+  .core-class {
+    @apply border-gray-300;
+  }
+
+  .core-class-name {
+    @apply text-gray-800;
+  }
+}
+
+.dev-search-query {
+  @apply bg-gray-100 border-gray-200;
+}
+
+#darkmode:checked ~ {
+  & .main-container {
+    @apply bg-gray-800 text-gray-400;
+
+    .home-container {
+      @apply bg-gray-700 text-white;
+
+      .github-links-button:hover {
+        @apply text-gray-400;
+      }
+
+      .github-links-list {
+        @apply text-gray-400 bg-gray-900;
+
+        .github-repo-link:hover {
+          @apply bg-gray-800;
+        }
+
+        .github-repo {
+          @apply text-gray-200;
+        }
+      }
+
+      .ruby-version-button:hover {
+        @apply text-gray-400;
+      }
+
+      .ruby-version-link:hover {
+        @apply bg-gray-800;
+      }
+
+      .ruby-version-list {
+        @apply bg-gray-900 text-gray-400;
+      }
+    }
+
+    .core-classes {
+      .core-class {
+        @apply border-gray-700;
+      }
+
+      .core-class .core-class-name {
+        @apply text-gray-200;
+      }
+
+      .core-class .core-class-description {
+        @apply text-gray-500;
+      }
+    }
+
+    .dev-search-query {
+      @apply bg-gray-900 border-gray-800;
+    }
+  }
+}
+
+/* Darkmode: Object page */
+.header-container {
+  @apply text-white bg-red-600;
+
+  .search-input {
+    @apply bg-red-800;
+  }
+
+  .search-input:focus {
+    @apply bg-white text-black;
+  }
+
+  .github-links-list {
+    @apply text-gray-700 bg-white;
+
+    .github-repo-link {
+      @apply text-gray-700 bg-white;
+    }
+
+    .github-repo-link:hover {
+      @apply bg-gray-200;
+    }
+
+    .github-repo {
+      @apply text-gray-800;
+    }
+  }
+
+  .ruby-version-list {
+    @apply bg-white text-gray-700;
+
+    .ruby-version-link:hover {
+      @apply bg-gray-200;
+    }
+  }
+}
+
+.method-title {
+  @apply text-gray-700;
+}
+
+.ruby-object-link:hover {
+  @apply bg-gray-200;
+}
+
+.object-title {
+  @apply text-gray-800;
+}
+
+.object-type {
+  @apply bg-gray-200;
+}
+
+.object-type:hover {
+  @apply bg-gray-300 text-gray-800;
+}
+
+.call-sequence {
+  @apply text-gray-900;
+}
+
+#darkmode:checked ~ {
+  & .main-container {
+    .header-container {
+      @apply bg-gray-700;
+
+      .search-input {
+        @apply bg-gray-800;
+      }
+
+      .search-input:focus {
+        @apply bg-white text-black;
+      }
+
+      .github-toggle-link:hover {
+        @apply text-gray-400;
+      }
+
+      .github-links-list {
+        @apply bg-gray-900 text-gray-400;
+
+        .github-repo-link {
+          @apply text-gray-400 bg-gray-900;
+        }
+
+        .github-repo-link:hover {
+          @apply bg-gray-800;
+        }
+
+        .github-repo {
+          @apply text-gray-200;
+        }
+      }
+
+      .ruby-version-list {
+        @apply bg-gray-900 text-gray-400;
+
+        .ruby-version-link:hover {
+          @apply bg-gray-800;
+        }
+      }
+    }
+
+    .method-title {
+      @apply text-gray-200;
+    }
+
+    .ruby-object-link:hover {
+      @apply bg-gray-700;
+    }
+
+    .object-title {
+      @apply text-gray-200;
+    }
+
+    .object-type {
+      @apply bg-gray-700;
+    }
+
+    .object-type:hover {
+      @apply bg-gray-900 text-gray-400;
+    }
+
+    .call-sequence {
+      @apply text-gray-200;
+    }
   }
 }
 
