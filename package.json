@@ -10,7 +10,7 @@
     "@rails/webpacker": "^4.2.2",
     "clipboard-copy": "^3.1.0",
     "hotkeys-js": "^3.7.3",
-    "mustache": "^3.1.0",
+    "mustache": "^4.0.0",
     "postcss-cssnext": "^3.1.0",
     "stimulus": "^1.1.1",
     "tailwindcss": "^1.1.4"
