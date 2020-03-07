@@ -1,0 +1,13 @@
+== paginator.render do
+  div class="sm:hidden py-3 flex items-center justify-center"
+    == prev_page_tag unless current_page.first?
+    == next_page_tag unless current_page.last?
+  div class="hidden sm:flex sm:py-3 sm:flex sm:items-center sm:justify-center"
+    span class="relative z-0 inline-flex shadow-sm"
+      == first_page_tag
+      - each_page do |page|
+        - if page.display_tag?
+          == page_tag page
+        - elsif !page.was_truncated?
+          == gap_tag
+      == last_page_tag

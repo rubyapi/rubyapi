@@ -44,27 +44,6 @@ pre:not(.ruby) {
   @apply overflow-auto font-mono;
 }
 
-.pagination {
-  & { @apply py-5 text-lg; }
-
-  .current {
-    & { @apply text-white bg-red-500; }
-
-    @screen dark {
-      & { @apply bg-gray-700 text-gray-200; }
-    }
-  }
-
-  .page a, .next a, .prev  a, .last a, .first a, .current {
-    & { @apply px-2 inline-block text-center py-0 rounded; }
-    &:hover { @apply text-white bg-red-600; }
-
-    @screen dark {
-      &:hover { @apply bg-gray-900 text-gray-200; }
-    }
-  }
-}
-
 .ruby-documentation pre {
   h1, h2, h3, h4, h5 {
     @apply font-semibold text-lg py-1;

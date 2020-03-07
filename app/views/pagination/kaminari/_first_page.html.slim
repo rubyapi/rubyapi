@@ -1,0 +1,6 @@
+- if current_page.first?
+  span class="relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-500"
+    i class="fas fa-backward"
+- else
+  == link_to url, remote: remote, class: "relative inline-flex items-center px-4 py-2 rounded-l-md border border-gray-300 bg-white text-sm leading-5 font-medium hover:text-gray-600 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue transition ease-in-out duration-150" do
+    i class="fas fa-backward"
