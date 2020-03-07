@@ -9,48 +9,48 @@ class SearchRepository
     analysis: {
       normalizer: {
         lowercase: {
-          filter: [:lowercase],
-        },
+          filter: [:lowercase]
+        }
       },
       filter: {
         "2gram" => {
           type: :ngram,
           min_gram: 2,
-          max_gram: 2,
+          max_gram: 2
         },
         "3gram" => {
           type: :ngram,
           min_gram: 3,
-          max_gram: 3,
-        },
+          max_gram: 3
+        }
       },
       tokenizer: {
         method_name: {
           type: :pattern,
-          pattern: "(_)",
-        },
+          pattern: "(_)"
+        }
       },
       analyzer: {
         :name => {
           type: :custom,
           tokenizer: :method_name,
-          filter: [:lowercase],
+          filter: [:lowercase]
         },
         "name2gram" => {
           type: :custom,
           tokenizer: :method_name,
-          filter: [:lowercase, "2gram"],
+          filter: [:lowercase, "2gram"]
         },
         "name3gram" => {
           type: :custom,
           tokenizer: :method_name,
-          filter: [:lowercase, "3gram"],
+          filter: [:lowercase, "3gram"]
         },
         :autocomplete => {
           type: :pattern,
-          pattern: "(\:\:)|(#)|(_)",
-        },
-      },
+          pattern: "(\:\:)|(#)|(_)"
+        }
+      }
     }
   ) do
     mapping do
@@ -59,16 +59,16 @@ class SearchRepository
       indexes :name, type: :text, analyzer: :name, fields: {
         :keyword => {
           type: :keyword,
-          normalizer: :lowercase,
+          normalizer: :lowercase
         },
         "2gram" => {
           type: :text,
-          analyzer: "name2gram",
+          analyzer: "name2gram"
         },
         "3gram" => {
           type: :text,
-          analyzer: "name3gram",
-        },
+          analyzer: "name3gram"
+        }
       }
       indexes :object_constant, type: :text, analyzer: :keyword
       indexes :method_identifier, type: :keyword, normalizer: :lowercase

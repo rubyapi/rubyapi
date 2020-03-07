@@ -8,7 +8,7 @@ class RubyObjectTest < ActiveSupport::TestCase
       object_type: "class_object",
       constant: "String",
       metadata: {
-        depth: 1,
+        depth: 1
       },
       methods: [
         {
@@ -18,13 +18,13 @@ class RubyObjectTest < ActiveSupport::TestCase
           object_constant: "String",
           source_location: "2.6.4:string.c:L54",
           metadata: {
-            depth: 1,
+            depth: 1
           },
-          call_sequence: <<~G,
+          call_sequence: <<~G
             str.to_i # => 1
           G
-        },
-      ],
+        }
+      ]
     }
 
     @object = RubyObject.new attributes
@@ -66,7 +66,7 @@ class RubyObjectTest < ActiveSupport::TestCase
       object_type: "class_object",
       description: "<h1>Hello World</h1>",
       metadata: {
-        depth: 1,
+        depth: 1
       },
       methods: [{
         name: "to_i",
@@ -78,12 +78,12 @@ class RubyObjectTest < ActiveSupport::TestCase
         method_type: "instance_method",
         source_location: "2.6.4:string.c:L54",
         metadata: {
-          depth: 1,
+          depth: 1
         },
-        call_sequence: <<~G,
+        call_sequence: <<~G
           str.to_i # => 1
         G
-      }],
+      }]
     }
   end
 end

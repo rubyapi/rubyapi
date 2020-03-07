@@ -44,7 +44,7 @@ class ActiveSupport::TestCase
       object_type: "#{object_type}_object",
       constant: constant.to_s,
       metadata: {
-        depth: 1,
+        depth: 1
       },
       methods: [{
         name: "empty?",
@@ -53,9 +53,9 @@ class ActiveSupport::TestCase
         object_constant: constant.to_s,
         source_location: "2.6.4:string.c:76",
         metadata: {
-          depth: 1,
+          depth: 1
         },
-        call_sequence: [],
+        call_sequence: []
       }, {
         name: "to_i",
         description: "<h1>Hello World</h1>",
@@ -63,12 +63,12 @@ class ActiveSupport::TestCase
         object_constant: constant.to_s,
         source_location: "2.6.4:string.c:54",
         metadata: {
-          depth: 1,
+          depth: 1
         },
         call_sequence: [
-          "str.to_i # => 1",
-        ],
-      },],
+          "str.to_i # => 1"
+        ]
+      }]
     }
 
     RubyObject.new(attributes)

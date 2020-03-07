@@ -16,6 +16,6 @@ module Ruby
     "Thread" => 1.1,
     "Signal" => 1.1,
     "Range" => 1.1,
-    "IO" => 1.1,
+    "IO" => 1.1
   }.freeze
 end

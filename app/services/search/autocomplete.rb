@@ -28,7 +28,7 @@ module Search
               bool: {
                 should: [
                   {match: {autocomplete: @query.terms}},
-                  {match: {type: {query: :object, boost: 1.5}}},
+                  {match: {type: {query: :object, boost: 1.5}}}
                 ],
                 must: {
                   multi_match: {
@@ -36,14 +36,14 @@ module Search
                     type: :bool_prefix,
                     fields: [
                       "autocomplete",
-                      "autocomplete._2gram",
-                    ],
-                  },
-                },
-              },
-            },
-          },
-        },
+                      "autocomplete._2gram"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     end
 
@@ -51,7 +51,7 @@ module Search
       Ruby::CORE_CLASSES.map do |constant, weight|
         {
           filter: {term: {"object_constant" => constant}},
-          weight: weight,
+          weight: weight
         }
       end
     end
