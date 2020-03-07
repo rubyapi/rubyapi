@@ -12,7 +12,7 @@ module Search
       def self.filter_for(value)
         [
           {term: {object_constant: {value: value}}},
-          {term: {type: {value: :method}}},
+          {term: {type: {value: :method}}}
         ]
       end
     end

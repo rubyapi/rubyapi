@@ -66,7 +66,7 @@ class RubyMethod
       method_type: method_type,
       source_location: source_location,
       call_sequence: call_sequence,
-      metadata: metadata,
+      metadata: metadata
     }
   end
 

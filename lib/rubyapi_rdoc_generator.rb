@@ -2,7 +2,7 @@ class RubyAPIRDocGenerator
   SKIP_NAMESPACES = [
     /Bundler\:\:.*/,
     /RDoc\:\:.*/,
-    /IRB\:\:.*/,
+    /IRB\:\:.*/
   ].freeze
 
   def class_dir
@@ -45,8 +45,8 @@ class RubyAPIRDocGenerator
           source_location: "#{@full_version}:#{method_path(method_doc)}:#{method_doc.line}",
           call_sequence: method_doc.call_seq ? method_doc.call_seq.strip.split("\n").map { |s| s.gsub "->", "→" } : "",
           metadata: {
-            depth: constant_depth(doc.full_name),
-          },
+            depth: constant_depth(doc.full_name)
+          }
         }
       end
 
@@ -57,7 +57,7 @@ class RubyAPIRDocGenerator
         constant: doc.full_name,
         object_type: "#{doc.type}_object",
         metadata: {
-          depth: constant_depth(doc.full_name),
+          depth: constant_depth(doc.full_name)
         }
       )
     end

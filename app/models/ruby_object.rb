@@ -66,7 +66,7 @@ class RubyObject
       methods: ruby_methods.collect(&:to_hash),
       constant: constant,
       object_type: object_type,
-      metadata: metadata,
+      metadata: metadata
     }
   end
 end

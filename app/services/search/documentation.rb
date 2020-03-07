@@ -46,7 +46,7 @@ module Search
               bool: {
                 should: [
                   {match: {type: {query: :object, boost: 3.7}}},
-                  {match: {identifier: {query: @query.terms, boost: 5}}},
+                  {match: {identifier: {query: @query.terms, boost: 5}}}
                 ],
                 must: [
                   multi_match: {
@@ -55,16 +55,16 @@ module Search
                     fields: [
                       "identifier",
                       "name",
-                      "name.2gram",
-                    ],
-                  },
-                ] + filters,
-              },
-            },
-          },
+                      "name.2gram"
+                    ]
+                  }
+                ] + filters
+              }
+            }
+          }
         },
         from: (@page - 1) * RESULTS_PER_PAGE,
-        size: RESULTS_PER_PAGE,
+        size: RESULTS_PER_PAGE
       }
     end
 
@@ -75,22 +75,22 @@ module Search
       Ruby::CORE_CLASSES.each do |constant, weight|
         boosts << {
           filter: {term: {object_constant: constant}},
-          weight: weight,
+          weight: weight
         }
       end
 
       boosts << {
         filter: {term: {type: :object}},
-        weight: 1.5,
+        weight: 1.5
       }
 
       boosts << {
         linear: {
           "metadata.depth" => {
             origin: 1,
-            scale: 10,
-          },
-        },
+            scale: 10
+          }
+        }
       }
 
       boosts
