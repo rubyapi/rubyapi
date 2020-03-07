@@ -50,5 +50,5 @@ jobs:
         env:
           ELASTICSEARCH_URL: "http://localhost:9200"
         run: |
-          bundle exec standardrb --no-fix
-          bundle exec rake test
+          ./bin/standardrb --no-fix
+          ./bin/rake test
