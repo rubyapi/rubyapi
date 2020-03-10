@@ -306,9 +306,9 @@ GEM
       faraday (>= 1.0)
     sitemap_generator (6.1.0)
       builder (~> 3.0)
-    skylight (4.2.2)
-      skylight-core (= 4.2.2)
-    skylight-core (4.2.2)
+    skylight (4.2.3)
+      skylight-core (= 4.2.3)
+    skylight-core (4.2.3)
       activesupport (>= 4.2.0)
     slim (4.0.1)
       temple (>= 0.7.6, < 0.9)
@@ -361,7 +361,7 @@ GEM
     websocket-extensions (0.1.4)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.2.2)
+    zeitwerk (2.3.0)
 
 PLATFORMS
   ruby
