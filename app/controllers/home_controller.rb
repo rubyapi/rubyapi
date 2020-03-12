@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
+  before_action :enable_public_cache
+
   def index
-    expires_in 30.minutes, public: true
   end
 end

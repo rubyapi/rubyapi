@@ -36,4 +36,13 @@ class ApplicationController < ActionController::Base
     versioned_root_path(version: ruby_version)
   end
   helper_method :home_path
+
+  def skip_session
+    request.session_options[:skip] = true
+  end
+
+  def enable_public_cache
+    skip_session
+    expires_in 30.minutes, public: true
+  end
 end
