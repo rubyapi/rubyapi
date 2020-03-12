@@ -24,5 +24,9 @@ module RubyApi
     config.ruby_versions = %w[
       2.7 2.6 2.5 2.4 2.3 master
     ]
+
+    # Disable cookies:
+    config.middleware.delete ActionDispatch::Cookies
+    config.middleware.delete ActionDispatch::Session::CookieStore
   end
 end
