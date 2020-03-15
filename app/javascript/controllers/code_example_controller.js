@@ -6,7 +6,7 @@ export default class extends Controller {
 
   connect() {
     const codeBar = document.createElement("div")
-    codeBar.classList.add("w-full", "px-3", "py-2", "bg-code-header", "dark:bg-gray-700", "items-center", "flex", "justify-between", "font-mono", "rounded-t")
+    codeBar.classList.add("w-full", "px-3", "py-2", "bg-code-header", "items-center", "flex", "justify-between", "font-mono", "rounded-t")
     codeBar.innerHTML = "<h4 class=\"text-gray-300 text-sm\">Example</h4><div><button class=\"px-2\" data-action=\"click->code-example#run\"><span class=\"text-gray-300 fill-current hover:text-gray-500\" data-target=\"code-example.run\"><i class=\"fas fa-play\"></i></span></button><button tilte=\"Copy to clipboard\" class=\"pl-2\" data-action=\"click->code-example#copy\" aria-label=\"Copy to clipboard\"><span data-target=\"code-example.copy\" class=\"text-gray-300 fill-current hover:text-gray-500\"><i class=\"far fa-copy\"></i></span></button></div>"
 
     this.blockTarget.append(codeBar)
@@ -36,8 +36,8 @@ export default class extends Controller {
       .then((response) => response.json())
       .then((data) => {
         const resultDiv = document.createElement("pre")
-        const output = `<span class="absolute top-0 right-0 m-2 px-2 py-1 bg-gray-400 dark:bg-gray-800 dark:text-gray-200 rounded text-sm"><i class="fas fa-info-circle"></i> Experimental Feature</span>`
-        resultDiv.classList.add("w-full", "my-2", "p-3", "rounded", "bg-gray-300", "text-gray-700", "dark:bg-gray-900", "dark:text-gray-200", "font-mono", "relative")
+        const output = `<span class="absolute top-0 right-0 m-2 px-2 py-1 text-experiment-notice bg-experiment-notice-background rounded text-sm"><i class="fas fa-info-circle"></i> Experimental Feature</span>`
+        resultDiv.classList.add("w-full", "my-2", "p-3", "rounded", "text-executed-result", "bg-executed-result-background", "font-mono", "relative")
 
         resultDiv.innerHTML = output.concat(data.output)
         snippet.insertAdjacentElement('afterend', resultDiv)

@@ -36,10 +36,6 @@ code {
   @apply bg-gray-300 rounded leading-relaxed text-sm text-gray-700;
 }
 
-@screen dark {
-  code { @apply bg-gray-700 text-gray-400; }
-}
-
 pre:not(.ruby) {
   @apply overflow-auto font-mono;
 }
@@ -49,19 +45,23 @@ pre:not(.ruby) {
 
   .current {
     & { @apply text-white bg-red-500; }
-
-    @screen dark {
-      & { @apply bg-gray-700 text-gray-200; }
-    }
   }
 
   .page a, .next a, .prev  a, .last a, .first a, .current {
     & { @apply px-2 inline-block text-center py-0 rounded; }
     &:hover { @apply text-white bg-red-600; }
+  }
+}
 
-    @screen dark {
-      &:hover { @apply bg-gray-900 text-gray-200; }
-    }
+[data-theme="dark"] {
+  code { @apply bg-gray-700 text-gray-400; }
+
+  .pagination .current {
+    @apply bg-gray-700 text-gray-200;
+  }
+
+  .page a, .next a, .prev  a, .last a, .first a, .current {
+    &:hover { @apply bg-gray-900 text-gray-200; }
   }
 }
 
@@ -69,6 +69,19 @@ pre:not(.ruby) {
   h1, h2, h3, h4, h5 {
     @apply font-semibold text-lg py-1;
   }
+}
+
+.light-switch:before {
+  content: '☾';
+}
+
+.dark-switch:before {
+  content: '☼';
+}
+
+.dev-search-query {
+  @apply bg-gray-900 border-gray-800;
+  color: #5FB3B3;
 }
 
 /* purgecss end ignore */

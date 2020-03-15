@@ -13,7 +13,7 @@
           }
         }
 
-div class="bg-red-600 dark:bg-gray-700 text-white md:pt-3 md:pb-6"
+div class="bg-home-container-background text-white md:pt-3 md:pb-6"
   header id="header" class="text-white flex items-center h-16"
     nav class="w-full max-w-screen-xl mx-auto" role="navigation" aria-label="main navigation"
       div class="flex items-center justify-between px-6"
@@ -23,31 +23,34 @@ div class="bg-red-600 dark:bg-gray-700 text-white md:pt-3 md:pb-6"
             = inline_svg_pack_tag "media/packs/app/logo.svg", class: "hidden md:block w-48"
         div class="md:w-2/12 w-6/12"
           div class="flex flex-row-reverse"
+            div class="block relative ml-4" data-controller="theme-switch"
+              button id="darkmode-toggle" class="relative z-20 text-xl" data-action="theme-switch#toggle" aria-label="Toggle theme" title="Toggle theme"
+                div.light-switch data-target="theme-switch.switch"
             div class="block relative ml-4" data-controller="github-links"
-              button class="relative z-20 text-xl hover:text-red-100 dark:hover:text-gray-400" data-action="click->github-links#toggle"
+              button class="relative z-20 text-xl hover:text-github-links-hover" data-action="click->github-links#toggle"
                 i class="fab fa-github hover:fill-current"
               button class="dropdown-overlay fixed inset-0 w-full h-full bg-black opacity-25 cursor-default invisible z-50" data-target="github-links.linksOverlay" tabindex="-1" data-action="click->github-links#out"
-              div class="dropdown absolute z-50 w-64 text-gray-700 bg-white dark:bg-gray-900 dark:text-gray-400 shadow-xl rounded py-2 right-0 invisible p-2 z-50" data-target="github-links.linksList"
-                a class="block p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800" href="https://github.com/ruby/ruby" target="_blank" rel="noopener"
-                    div class="text-gray-800 dark:text-gray-200 fill-current"
+              div class="dropdown absolute z-50 w-64 text-github-links bg-github-links-background shadow-xl rounded py-2 right-0 invisible p-2 z-50" data-target="github-links.linksList"
+                a class="block p-2 rounded hover:bg-github-link-hover-background" href="https://github.com/ruby/ruby" target="_blank" rel="noopener"
+                    div class="text-github-link fill-current"
                       i class="fab fa-github inline-block mr-2"
                       h1 class="inline text-lg font-semibold" ruby/ruby
                     p class="text-xs py-1" Ruby is an interpreted object-oriented programming language often used for web development. It also offers many scripting features to process plain text and serialized files, or manage system tasks. It is simple, straightforward, and extensible.
                 hr class="my-2"
-                a class="block p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800" href="https://github.com/rubyapi/rubyapi" target="_blank" rel="noopener"
-                    div class="text-gray-800 dark:text-gray-200 fill-current"
+                a class="block p-2 rounded hover:bg-github-link-hover-background" href="https://github.com/rubyapi/rubyapi" target="_blank" rel="noopener"
+                    div class="text-github-link fill-current"
                       i class="fab fa-github inline-block mr-2"
                       h1 class="inline text-lg font-semibold" rubyapi/rubyapi
                     p class="text-xs py-1" Ruby API is a Ruby on Rails app that makes browsing and searching Ruby's documentation easy and fast for users.
 
             div class="relative" data-controller="ruby-version"
-              button class="relative z-20 text-xl pl-2 hover:text-red-100 dark:hover:text-gray-400 hover:fill-current" data-action="click->ruby-version#toggle"
+              button class="relative z-20 text-xl pl-2 hover:text-ruby-version-hover hover:fill-current" data-action="click->ruby-version#toggle"
                 | #{ruby_version}
                 i class="ml-2 fas fa-caret-down"
               button class="dropdown-overlay fixed inset-0 w-full h-full bg-black opacity-25 cursor-default invisible z-50" data-target="ruby-version.versionOverlay" tabindex="-1" data-action="click->ruby-version#out"
-              div class="dropdown absolute w-32 bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-400 shadow-xl rounded py-2 right-0 invisible z-50" data-target="ruby-version.versionList"
+              div class="dropdown text-ruby-version-list bg-ruby-version-list-background absolute w-32 shadow-xl rounded py-2 right-0 invisible z-50" data-target="ruby-version.versionList"
                 - available_ruby_versions.each do |version|
-                  a class="block px-4 py-1 text-l hover:bg-gray-200 dark:hover:bg-gray-800" href="#{route_for_version version}"
+                  a class="block px-4 py-1 text-l hover:bg-ruby-version-list-item-hover-background" href="#{route_for_version version}"
                     | #{version}
   div class="flex flex-col justify-center items-center p-6 md:pt-6 pt-0 text-center"
       h2 class="md:text-3xl text-2xl font-light my-3" Search and Explore Ruby Documentation
@@ -61,33 +64,33 @@ div class="bg-red-600 dark:bg-gray-700 text-white md:pt-3 md:pb-6"
 div class="p-6 max-w-screen-xl mx-auto"
   div class="flex flex-wrap"
     div class="block w-full md:w-6/12 md:p-3 py-3"
-      div class="p-3 h-full  border border-gray-300 dark:border-gray-700 rounded"
-        h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200" String
-        p class="py-1 dark:text-gray-500" A String object holds and manipulates an arbitrary sequence of bytes, typically representing characters.
+      div class="p-3 h-full border border-core-class-border rounded"
+        h2 class="text-xl font-semibold text-core-class-title" String
+        p class="py-1 text-core-class" A String object holds and manipulates an arbitrary sequence of bytes, typically representing characters.
         = link_to "Read more", object_path(object: "string", version: ruby_version), class: "text-blue-400 hover:underline"
     div class="block w-full md:w-6/12 md:p-3 py-3"
-      div class="p-3 h-full border border-gray-300 dark:border-gray-700 rounded"
-        h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200" Integer
-        p class="py-1 dark:text-gray-500" Represent whole numbers in Ruby
+      div class="p-3 h-full border border-core-class-border rounded"
+        h2 class="text-xl font-semibold text-core-class-title" Integer
+        p class="py-1 text-core-class" Represent whole numbers in Ruby
         br
         = link_to "Read more", object_path(object: "integer", version: ruby_version), class: "text-blue-400 hover:underline"
     div class="block w-full md:w-6/12 md:p-3 py-3"
-      div class="p-3 h-full border border-gray-300 dark:border-gray-700 rounded"
-        h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200" Array
-        p class="py-1 dark:text-gray-500" Arrays are ordered, integer-indexed collections of any object.
+      div class="p-3 h-full border border-core-class-border rounded"
+        h2 class="text-xl font-semibold text-core-class-title" Array
+        p class="py-1 text-core-class" Arrays are ordered, integer-indexed collections of any object.
         = link_to "Read more", object_path(object: "array", version: ruby_version), class: "text-blue-400 hover:underline"
     div class="block w-full md:w-6/12 md:p-3 py-3"
-      div class="p-3 h-full border border-gray-300 dark:border-gray-700 rounded"
-        h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200" Hash
-        p class="py-1 dark:text-gray-500" A Hash is a dictionary-like collection of unique keys and their values.
+      div class="p-3 h-full border border-core-class-border rounded"
+        h2 class="text-xl font-semibold text-core-class-title" Hash
+        p class="py-1 text-core-class" A Hash is a dictionary-like collection of unique keys and their values.
         = link_to "Read more", object_path(object: "hash", version: ruby_version), class: "text-blue-400 hover:underline"
     div class="block w-full md:w-6/12 md:p-3 py-3"
-      div class="p-3 h-full border border-gray-300 dark:border-gray-700 rounded"
-        h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200" Symbol
-        p class="py-1 dark:text-gray-500" Symbol objects represent names and some strings inside the Ruby interpreter.
+      div class="p-3 h-full border border-core-class-border rounded"
+        h2 class="text-xl font-semibold text-core-class-title" Symbol
+        p class="py-1 text-core-class" Symbol objects represent names and some strings inside the Ruby interpreter.
         = link_to "Read more", object_path(object: "symbol", version: ruby_version), class: "text-blue-400 hover:underline"
     div class="block w-full md:w-6/12 md:p-3 py-3"
-      div class="p-3 h-full border border-gray-300 dark:border-gray-700 rounded"
-        h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200" Kernel
-        p class="py-1 dark:text-gray-500" The Kernel module is included by class Object, so its methods are available in every Ruby object.
+      div class="p-3 h-full border border-core-class-border rounded"
+        h2 class="text-xl font-semibold text-core-class-title" Kernel
+        p class="py-1 text-core-class" The Kernel module is included by class Object, so its methods are available in every Ruby object.
         = link_to "Read more", object_path(object: "kernel", version: ruby_version), class: "text-blue-400 hover:underline"

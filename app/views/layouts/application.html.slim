@@ -10,6 +10,6 @@ html lang="en"
     = javascript_pack_tag 'application', defer: true
     = content_for(:head)
 
-  body class="bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-400"
+  body class="text-body bg-background" data-theme="light"
     = render "layouts/header" unless homepage?
     = yield
