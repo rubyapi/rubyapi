@@ -22,9 +22,9 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Set Up Ruby
-        uses: eregon/use-ruby-action@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.6.5
+          ruby-version: 2.7.0
 
       - name: Cache Gems
         uses: actions/cache@v1
