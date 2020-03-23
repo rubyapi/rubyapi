@@ -6,7 +6,7 @@ group :preload, :default do
   gem "rails", "~> 6.0.2"
   gem "bootsnap", ">= 1.1.0", require: false
   gem "falcon"
-  gem "webpacker", "~> 4.2"
+  gem "webpacker", "~> 5.0"
   gem "redis", "~> 4.1"
   gem "hiredis"
 
