@@ -324,7 +324,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    standard (0.2.1)
+    standard (0.2.2)
       rubocop (~> 0.79.0)
       rubocop-performance (~> 1.5.1)
     temple (0.8.2)
