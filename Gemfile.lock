@@ -375,6 +375,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
+  concurrent-ruby
   dotenv-rails
   elasticsearch-persistence
   falcon

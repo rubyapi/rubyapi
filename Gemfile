@@ -27,6 +27,7 @@ group :preload, :default do
   gem "meta-tags"
   gem "sentry-raven"
   gem "rack-attack"
+  gem "concurrent-ruby"
 end
 
 gem "slim"
