@@ -4,7 +4,7 @@ class RubyObject
   attr_reader :body
 
   def initialize(body)
-    @body = HashWithIndifferentAccess.new(body).deep_symbolize_keys
+    @body = body
   end
 
   def self.id_from_path(path)

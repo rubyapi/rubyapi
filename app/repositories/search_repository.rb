@@ -82,14 +82,14 @@ class SearchRepository
   end
 
   def deserialize(document)
-    @klass = klass_for_document(document)
-    super
+    document.deep_symbolize_keys!
+    klass_for_document(document).new(document[:_source])
   end
 
   private
 
   def klass_for_document(document)
-    case document["_source"]["type"].to_sym
+    case document[:_source][:type].to_sym
     when :method
       RubyMethod
     when :object
