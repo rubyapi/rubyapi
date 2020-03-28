@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Search
   class Autocomplete
     def self.search(query, version:)

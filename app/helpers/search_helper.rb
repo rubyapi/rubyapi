@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SearchHelper
   def method_anchor(method)
     # See https://github.com/ruby/rdoc/blob/c64210219ec6c0f447b4c66c2c3556cfe462993f/lib/rdoc/method_attr.rb#L294

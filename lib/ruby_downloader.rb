@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RubyDownloader
   RUBY_HOST = "https://cache.ruby-lang.org/pub/ruby/%{base}/ruby-%{version}.tar.gz".freeze
   RUBY_MASTER_URL = "https://codeload.github.com/ruby/ruby/zip/master"

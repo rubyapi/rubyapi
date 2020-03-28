@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationHelperTest < ActionView::TestCase
   test "github_url" do
     method = ruby_object(String).ruby_methods.first

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Ruby
   CORE_CLASSES = {
     "String" => 1.5,

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Search
   class Results
     attr_reader :query
