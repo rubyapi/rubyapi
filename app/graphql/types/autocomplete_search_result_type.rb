@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class AutocompleteSearchResultType < Types::BaseObject
     field :text, String, null: false

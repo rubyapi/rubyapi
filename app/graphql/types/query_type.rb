@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Types
   class QueryType < Types::BaseObject
     field :rubyObject, Types::RubyObjectType, null: true, method: :ruby_object do

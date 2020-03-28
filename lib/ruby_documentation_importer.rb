@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rdoc"
 require_relative "rubyapi_rdoc_generator"
 

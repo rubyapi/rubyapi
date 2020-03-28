@@ -18,4 +18,9 @@ class RubyObjectRepository
   def self.repository_for_version(version)
     new(index_name: "ruby_objects_#{version}_#{Rails.env}")
   end
+
+  def deserialize(document)
+    document.deep_symbolize_keys!
+    klass.new(document[:_source])
+  end
 end

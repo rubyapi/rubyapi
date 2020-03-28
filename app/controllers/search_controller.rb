@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SearchController < ApplicationController
   MAX_SEARCH_QUERY_LENGTH = 255
 

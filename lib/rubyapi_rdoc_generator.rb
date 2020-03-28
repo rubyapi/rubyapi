@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RubyAPIRDocGenerator
   SKIP_NAMESPACES = [
     /Bundler\:\:.*/,

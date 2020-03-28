@@ -1,3 +1,4 @@
+-# frozen_string_literal: true
 - title @object.name
 - set_meta_tags canonical: object_url(object: @object.path, version: default_ruby_version) if default_ruby_version != ruby_version
 
@@ -12,7 +13,7 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
             ul class="font-mono text-sm"
               - @object.ruby_methods.select(&:class_method?).sort_by(&:name).each do |m|
                 li
-                  = link_to object_path(version: ruby_version, anchor: method_anchor(m)), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" do
+                  = link_to "##{method_anchor(m)}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" do
                     | :: #{m.name}
         - unless @object.ruby_methods.select(&:instance_method?).empty?
           div class="mb-3"
@@ -21,7 +22,7 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
             ul class="font-mono text-sm"
               - @object.ruby_methods.select(&:instance_method?).sort_by(&:name).each do |m|
                 li
-                  = link_to object_path(version: ruby_version, anchor: method_anchor(m)), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" do
+                  = link_to "##{method_anchor(m)}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" do
                     | # #{m.name}
   div class="w-full mt-16 lg:mt-20 lg:w-3/4"
     div class="md:p-3 py-3"
@@ -46,9 +47,9 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
           div class="w-full md:w-10/12"
             - if m.call_sequence.empty?
               h4 class="lg:text-2xl text-lg text-gray-900 dark:text-gray-200 font-semibold"
-                = link_to m.name, object_path(version: ruby_version, anchor: method_anchor(m))
+                = link_to m.name, "##{method_anchor(m)}"
             - else
-              = link_to object_path(version: ruby_version, anchor: method_anchor(m)) do
+              = link_to "##{method_anchor(m)}" do
                 - m.call_sequence.each do |seq|
                   h4 class="lg:text-2xl text-lg text-gray-900 dark:text-gray-200 font-semibold"
                     = seq

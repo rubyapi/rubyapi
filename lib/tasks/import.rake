@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative "../ruby_downloader"
 require_relative "../ruby_documentation_importer"
 
