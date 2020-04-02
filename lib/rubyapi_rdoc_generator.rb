@@ -18,8 +18,8 @@ class RubyAPIRDocGenerator
   def initialize(store, options)
     @store = store
     @options = options
-    @full_version = options.generator_options.pop
-    @version = @full_version == "master" ? "master" : Gem::Version.new(@full_version).segments[0..1].join(".")
+    @release = options.generator_options.pop
+    @version = @release.minor_version
     @documentation = store.all_classes_and_modules
   end
 
@@ -46,7 +46,7 @@ class RubyAPIRDocGenerator
           description: clean_description(method_doc.description),
           object_constant: doc.full_name,
           method_type: "#{method_doc.type}_method",
-          source_location: "#{@full_version}:#{method_path(method_doc)}:#{method_doc.line}",
+          source_location: "#{@release.version}:#{method_path(method_doc)}:#{method_doc.line}",
           call_sequence: method_doc.call_seq ? method_doc.call_seq.strip.split("\n").map { |s| s.gsub "->", "→" } : "",
           metadata: {
             depth: constant_depth(doc.full_name)

@@ -1,27 +1,22 @@
 # frozen_string_literal: true
 
 class RubyDownloader
-  RUBY_HOST = "https://cache.ruby-lang.org/pub/ruby/%{base}/ruby-%{version}.tar.gz"
-  RUBY_MASTER_URL = "https://codeload.github.com/ruby/ruby/zip/master"
+  attr_reader :release
 
-  attr_reader :version
-
-  def initialize(version)
-    @version = version
+  def initialize(release)
+    @release = release
   end
 
-  def self.download(version)
-    downloader = new(version)
-    downloader.download
-    downloader
+  def self.download(release)
+    new(release).tap(&:download)
   end
 
   def download
-    setup
+    setup_paths
 
     if already_fetched?
       puts "Found previously extracted download for " \
-        "#{version}, skipping"
+        "#{release.version}, skipping"
       return
     end
 
@@ -34,18 +29,14 @@ class RubyDownloader
   end
 
   def download_path
-    if master?
-      rubies_download_path.join "ruby-master.zip"
-    else
-      rubies_download_path.join "ruby-#{version}.tar.gz"
-    end
+    rubies_download_path.join File.basename(release.url.path)
   end
 
   def extracted_download_path
-    if master?
+    if release.master?
       rubies_download_path.join "ruby-master"
     else
-      rubies_download_path.join "ruby-#{version}"
+      rubies_download_path.join File.basename(release.url.path, ".zip")
     end
   end
 
@@ -53,7 +44,7 @@ class RubyDownloader
 
   def fetch_ruby_archive
     file = File.new download_path, "wb"
-    request = HTTP.get ruby_uri
+    request = HTTP.get release.url.to_s
 
     while (chunk = request.readpartial)
       file.write chunk
@@ -62,31 +53,16 @@ class RubyDownloader
     file.close
   end
 
-  def master?
-    version == "master"
-  end
-
   def already_fetched?
-    return false if master?
     File.exist? extracted_download_path.join "README.md"
   end
 
   def unpack
-    if master?
-      system "unzip #{download_path} -d #{rubies_download_path}"
-    else
-      system "tar -xf #{download_path} -C #{rubies_download_path}"
-    end
+    system "unzip #{download_path} -d #{rubies_download_path} > #{File::NULL}"
   end
 
-  def ruby_uri
-    return RUBY_MASTER_URL if master?
-
-    base_version = Gem::Version.new(version).segments[0..1].join(".")
-    RUBY_HOST % {base: base_version, version: version}
-  end
-
-  def setup
-    FileUtils.mkdir(rubies_download_path) unless File.directory?(rubies_download_path)
+  def setup_paths
+    FileUtils.mkdir(rubies_download_path)
+  rescue Errno::EEXIST
   end
 end
