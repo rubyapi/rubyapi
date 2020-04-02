@@ -13,7 +13,7 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
             ul class="font-mono text-sm"
               - @object.ruby_methods.select(&:class_method?).sort_by(&:name).each do |m|
                 li
-                  = link_to "##{method_anchor(m)}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" do
+                  a href="##{method_anchor(m)}" class="inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
                     | :: #{m.name}
         - unless @object.ruby_methods.select(&:instance_method?).empty?
           div class="mb-3"
@@ -22,14 +22,15 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
             ul class="font-mono text-sm"
               - @object.ruby_methods.select(&:instance_method?).sort_by(&:name).each do |m|
                 li
-                  = link_to "##{method_anchor(m)}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" do
+                  a href="##{method_anchor(m)}" class="inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
                     | # #{m.name}
   div class="w-full mt-16 lg:mt-20 lg:w-3/4"
     div class="md:p-3 py-3"
       div class="flex flex-wrap"
         div class="w-full md:w-6/12"
           h1 class="lg:text-3xl text-xl text-gray-800 dark:text-gray-200 font-semibold"
-            = link_to @object.name, object_url(version: ruby_version, object: @object.path)
+            a href="#{object_url(version: ruby_version, object: @object.path)}"
+              | #{@object.name}
         div class="w-full md:w-6/12 md:text-right mt-2 md:mt-0 cursor-default"
           - if @object.class_object?
             span class="py-1 px-2 rounded bg-gray-200 dark:bg-gray-700 text-sm"
@@ -47,9 +48,10 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
           div class="w-full md:w-10/12"
             - if m.call_sequence.empty?
               h4 class="lg:text-2xl text-lg text-gray-900 dark:text-gray-200 font-semibold"
-                = link_to m.name, "##{method_anchor(m)}"
+                a href="##{method_anchor(m)}"
+                | #{m.name}
             - else
-              = link_to "##{method_anchor(m)}" do
+              a href="##{method_anchor(m)}"
                 - m.call_sequence.each do |seq|
                   h4 class="lg:text-2xl text-lg text-gray-900 dark:text-gray-200 font-semibold"
                     = seq
