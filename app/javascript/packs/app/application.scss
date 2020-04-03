@@ -53,6 +53,10 @@ pre:not(.ruby) {
   }
 }
 
+.switch-in-dark {
+  display: none;
+}
+
 [data-theme="dark"] {
   code { @apply bg-gray-700 text-gray-400; }
 
@@ -63,25 +67,22 @@ pre:not(.ruby) {
   .page a, .next a, .prev  a, .last a, .first a, .current {
     &:hover { @apply bg-gray-900 text-gray-200; }
   }
+
+  #darkmode-toggle {
+    .switch-in-dark {
+      display: initial;
+    }
+
+    .switch-in-light {
+      display: none;
+    }
+  }
 }
 
 .ruby-documentation pre {
   h1, h2, h3, h4, h5 {
     @apply font-semibold text-lg py-1;
   }
-}
-
-.light-switch:before {
-  content: '☾';
-}
-
-.dark-switch:before {
-  content: '☼';
-}
-
-.dev-search-query {
-  @apply bg-gray-900 border-gray-800;
-  color: #5FB3B3;
 }
 
 /* purgecss end ignore */
