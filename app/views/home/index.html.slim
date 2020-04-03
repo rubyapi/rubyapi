@@ -51,7 +51,7 @@ div class="bg-red-600 dark:bg-gray-700 text-white md:pt-3 md:pb-6"
                     | #{version}
   div class="flex flex-col justify-center items-center p-6 md:pt-6 pt-0 text-center"
       h2 class="md:text-3xl text-2xl font-semibold my-3" Search and Explore Ruby Documentation
-      div class="relative md:w-6/12 w-full" data-controller="search" data-search-version="#{ruby_version}" data-search-url="#{graphql_path}"
+      div class="relative xxl:w-4/12 md:w-6/12 w-full" data-controller="search" data-search-version="#{ruby_version}" data-search-url="#{graphql_path}"
         = form_tag search_url(version: ruby_version), method: :get, id: "search" do
           div class="relative"
             button type="submit" class="absolute left inset-y-0 px-4 text-gray-700 fill-current"
