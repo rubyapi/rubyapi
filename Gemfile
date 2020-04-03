@@ -12,6 +12,7 @@ group :preload, :default do
 
   gem "elasticsearch-persistence"
 
+  gem "actionpack-action_caching"
   gem "http"
   gem "typhoeus"
   gem "kaminari", "~> 1.2.0"
