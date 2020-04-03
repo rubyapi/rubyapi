@@ -7,6 +7,8 @@ class RubyAPIRDocGenerator
     /IRB\:\:.*/
   ].freeze
 
+  SKIP_NAMESPACE_REGEX = Regexp.union(SKIP_NAMESPACES).freeze
+
   def class_dir
   end
 
@@ -97,15 +99,11 @@ class RubyAPIRDocGenerator
   end
 
   def skip_namespace?(constant)
-    !skip_namespace_regex.match(constant).nil?
+    SKIP_NAMESPACE_REGEX.match?(constant)
   end
 
   def constant_depth(constant)
     constant.split("::").size
-  end
-
-  def skip_namespace_regex
-    Regexp.union(SKIP_NAMESPACES)
   end
 
   def clean_description(description)
