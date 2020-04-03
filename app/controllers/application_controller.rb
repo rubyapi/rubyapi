@@ -45,6 +45,6 @@ class ApplicationController < ActionController::Base
 
   def enable_public_cache
     skip_session
-    expires_in 30.minutes, public: true
+    expires_in 24.hours, public: true
   end
 end
