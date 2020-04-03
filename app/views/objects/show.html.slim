@@ -3,27 +3,7 @@
 - set_meta_tags canonical: object_url(object: @object.path, version: default_ruby_version) if default_ruby_version != ruby_version
 
 div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
-  div class="hidden lg:block w-1/4"
-    div class="hidden lg:block lg:sticky pt-1 top-0"
-      div class="overflow-y-auto mt-24 pl-3 pr-6 h-93"
-        - unless @object.ruby_methods.select(&:class_method?).empty?
-          div class="mb-3"
-            h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2"
-              | Class Methods
-            ul class="font-mono text-sm"
-              - @object.ruby_methods.select(&:class_method?).sort_by(&:name).each do |m|
-                li
-                  a href="##{method_anchor(m)}" class="inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
-                    | :: #{m.name}
-        - unless @object.ruby_methods.select(&:instance_method?).empty?
-          div class="mb-3"
-            h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2"
-              | Instance Methods
-            ul class="font-mono text-sm"
-              - @object.ruby_methods.select(&:instance_method?).sort_by(&:name).each do |m|
-                li
-                  a href="##{method_anchor(m)}" class="inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
-                    | # #{m.name}
+  = render "objects/sidebar"
   div class="w-full mt-16 lg:mt-20 lg:w-3/4"
     div class="md:p-3 py-3"
       div class="flex flex-wrap"

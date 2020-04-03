@@ -11,6 +11,8 @@ class RubyObjectRepository
       indexes :name, type: :text
       indexes :description, type: :text, index: false
       indexes :methods, type: :nested
+      indexes :superclass, type: :text
+      indexes :included_modules, type: :text
       indexes :metadata, type: :nested
     end
   end

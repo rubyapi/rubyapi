@@ -52,12 +52,23 @@ class RubyAPIRDocGenerator
         }
       end
 
+      superclass =
+        if doc.type == "class"
+          case doc.superclass
+          when NilClass then nil
+          when String then doc.superclass
+          else doc.superclass.name
+          end
+        end
+
       objects << RubyObject.new(
         name: doc.name,
         description: clean_description(doc.description),
         methods: methods,
         constant: doc.full_name,
         object_type: "#{doc.type}_object",
+        superclass: superclass,
+        included_modules: doc.includes.map(&:name),
         metadata: {
           depth: constant_depth(doc.full_name)
         }
