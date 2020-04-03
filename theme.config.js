@@ -113,7 +113,6 @@ const darkTheme = new Theme()
     'background':'#2d3748',
     'body': '#cbd5e0',
 
-    'home-container-background': '#4a5568',
     'github-links-hover': '#cbd5e0',
     'github-links': '#cbd5e0',
     'github-links-background': '#1a202c',
@@ -126,8 +125,6 @@ const darkTheme = new Theme()
     'core-class-border': '#4a5568',
     'core-class-title': '#edf2f7',
     'core-class': '#a0aec0',
-    'header-background': '#4a5568',
-    'header-autocomplete-background': '#2d3748',
     'header-github-link-hover': '#cbd5e0',
     'header-github-links': '#cbd5e0',
     'header-github-links-background': '#1a202c',
