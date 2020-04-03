@@ -9,7 +9,7 @@ namespace :import do
     args.with_defaults version: Rails.configuration.default_ruby_version
 
     downloader = RubyDownloader.download(args.version)
-    RubyDocumentationImpoter.import(args.version, downloader.extracted_download_path)
+    RubyDocumentationImporter.import(args.version, downloader.extracted_download_path)
   end
 
   namespace :ruby do
@@ -25,7 +25,7 @@ namespace :import do
 
       versions.each do |v|
         downloader = RubyDownloader.download(v)
-        RubyDocumentationImpoter.import(v, downloader.extracted_download_path)
+        RubyDocumentationImporter.import(v, downloader.extracted_download_path)
       end
     end
   end

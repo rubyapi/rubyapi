@@ -3,7 +3,7 @@
 require "rdoc"
 require_relative "rubyapi_rdoc_generator"
 
-class RubyDocumentationImpoter
+class RubyDocumentationImporter
   attr_reader :version, :path
 
   def self.import(version, path)
