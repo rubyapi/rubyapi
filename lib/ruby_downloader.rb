@@ -29,14 +29,14 @@ class RubyDownloader
   end
 
   def download_path
-    rubies_download_path.join File.basename(release.url.path)
+    rubies_download_path.join File.basename(release.source_url.path)
   end
 
   def extracted_download_path
     if release.master?
       rubies_download_path.join "ruby-master"
     else
-      rubies_download_path.join File.basename(release.url.path, ".zip")
+      rubies_download_path.join File.basename(release.source_url.path, ".zip")
     end
   end
 
@@ -44,7 +44,7 @@ class RubyDownloader
 
   def fetch_ruby_archive
     file = File.new download_path, "wb"
-    request = HTTP.get release.url.to_s
+    request = HTTP.get release.source_url.to_s
 
     while (chunk = request.readpartial)
       file.write chunk

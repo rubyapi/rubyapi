@@ -31,7 +31,7 @@ module RubyReleases
           end
         end
 
-        releases << RubyVersion.new(version, sha512: l["sha512"], url: l["url"]) if supported_release_format?(l["url"])
+        releases << RubyVersion.new(version, sha512: l["sha512"], source_url: l["url"]) if supported_release_format?(l["url"])
       rescue ArgumentError
       end
 
@@ -39,7 +39,7 @@ module RubyReleases
     end
 
     def master
-      RubyVersion.new("master", sha512: "", url: RUBY_MASTER_ZIP_URL)
+      RubyVersion.new("master", sha512: "", source_url: RUBY_MASTER_ZIP_URL)
     end
 
     def supported_release_format?(url)

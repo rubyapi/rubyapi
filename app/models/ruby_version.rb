@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class RubyVersion
-  attr_accessor :version, :sha512, :url
-  def initialize(version, sha512: nil, url: nil)
+  attr_accessor :version, :sha512, :source_url
+  def initialize(version, sha512: nil, source_url: nil)
     if version == "master"
       @version = "master"
     else
@@ -11,7 +11,7 @@ class RubyVersion
     end
 
     @sha512 = sha512
-    @url = URI(url)
+    @source_url = URI(source_url) if source_url.present?
   end
 
   def minor_version
