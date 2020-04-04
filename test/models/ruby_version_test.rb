@@ -9,9 +9,9 @@ class RubyVersionTest < ActiveSupport::TestCase
     end
   end
 
-  test "#minor_release" do
+  test "#minor_version" do
     version = RubyVersion.new("2.4.0")
-    assert_equal version.minor_release, "2.4"
+    assert_equal version.minor_version, "2.4"
   end
 
   test "#prerelease?" do
