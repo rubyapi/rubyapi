@@ -4,6 +4,7 @@ html lang="en"
   head
     = display_meta_tags site: "Ruby API (#{master? ? "master" : "v" + ruby_version})", reverse: true
     meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    link rel="mask-icon" href="#{asset_pack_path('media/packs/app/safari-pinned-tab.svg')}" color="#e1175a"
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_pack_tag 'application'
