@@ -28,6 +28,8 @@ group :preload, :default do
   gem "meta-tags"
   gem "sentry-raven"
   gem "rack-attack"
+  gem "rdoc"
+  gem "trenni-sanitize"
 end
 
 gem "slim"
