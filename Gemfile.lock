@@ -67,7 +67,7 @@ GEM
       async (~> 1.0)
       async-io (~> 1.26)
       process-group
-    async-http (0.51.0)
+    async-http (0.51.2)
       async (~> 1.23)
       async-io (~> 1.28)
       async-pool (~> 0.2)
@@ -76,6 +76,9 @@ GEM
       protocol-http2 (~> 0.13.0)
     async-http-cache (0.2.0)
       async-http (~> 0.51)
+    async-http-faraday (0.9.0)
+      async-http (~> 0.42)
+      faraday
     async-io (1.28.0)
       async (~> 1.14)
     async-pool (0.2.0)
@@ -372,6 +375,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  async-http-faraday (~> 0.9.0)
   aws-sdk-s3
   bootsnap (>= 1.1.0)
   byebug
