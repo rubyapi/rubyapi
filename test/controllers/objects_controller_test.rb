@@ -56,6 +56,8 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
       description: "<h1>Hello World</h1>",
       method_type: "instance_method",
       object_constant: "String",
+      superclass: "Object",
+      included_modules: [],
       source_location: "2.6.4:string.c:L1",
       call_sequence: []
     }
