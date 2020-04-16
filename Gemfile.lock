@@ -130,15 +130,15 @@ GEM
       elasticsearch-transport (= 7.6.0)
     elasticsearch-api (7.6.0)
       multi_json
-    elasticsearch-model (7.0.0)
+    elasticsearch-model (7.1.0)
       activesupport (> 3)
       elasticsearch (> 1)
       hashie
-    elasticsearch-persistence (7.0.0)
+    elasticsearch-persistence (7.1.0)
       activemodel (> 4)
       activesupport (> 4)
       elasticsearch (~> 7)
-      elasticsearch-model (= 7.0.0)
+      elasticsearch-model (= 7.1.0)
       hashie
     elasticsearch-transport (7.6.0)
       faraday (~> 1)
