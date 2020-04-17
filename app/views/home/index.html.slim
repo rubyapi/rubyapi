@@ -18,13 +18,8 @@ div class="bg-red-600 dark:bg-gray-700 text-white md:pb-6"
 
   div class="flex flex-col justify-center items-center p-6 md:pt-6 pt-0 text-center"
       h2 class="md:text-3xl text-2xl font-semibold my-3" Search and Explore Ruby Documentation
-      div class="relative xxl:w-4/12 md:w-6/12 w-full" data-controller="search" data-search-version="#{ruby_version}" data-search-url="#{graphql_path}"
-        = form_tag search_url(version: ruby_version), method: :get, id: "search" do
-          div class="relative"
-            button type="submit" class="absolute left inset-y-0 px-4 text-gray-700 fill-current"
-              span data-target="search.button" class="fa fa-search"
-            input id="search" class="bg-white shadow-md rounded pl-10 px-3 py-3 w-full outline-none z-0 text-gray-800 placeholder-gray-600 placeholder-opacity-100" data-target="search.input" data-action="keyup->search#autocomplete"  name="q" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Ruby Documentation" aria-label="Search" title="Search" autofocus="yes"
-            div data-target="search.autocomplete" class="w-full bg-white absolute shadow-lg rounded-bl rounded-br -mt-1 text-left"
+      div class="xxl:w-4/12 md:w-6/12 w-full"
+        = render 'layouts/search_form'
 div class="p-6 max-w-screen-xl mx-auto"
   div class="flex flex-wrap"
     div class="block w-full md:w-6/12 md:p-3 py-3"
