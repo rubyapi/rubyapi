@@ -1,7 +1,7 @@
 -# frozen_string_literal: true
 header id="header" class="flex items-center inset-x-0 z-50 h-16#{' text-white bg-red-600 dark:bg-gray-700 fixed top-0' unless homepage?}"
   nav class="w-full max-w-screen-xl mx-auto" role="navigation" aria-label="main navigation"
-    div class="flex items-center justify-between px-3"
+    div class="flex items-center justify-between #{homepage? ? 'px-6' : 'px-3'}"
       div class="lg:w-2/12 w-2/12"
         = render 'layouts/logo'
       div class="lg:w-5/12 md:w-6/12 w-8/12"
