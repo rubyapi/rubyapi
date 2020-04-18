@@ -1,5 +1,5 @@
 -# frozen_string_literal: true
-- title @object.name
+- title @object.constant
 - set_meta_tags canonical: object_url(object: @object.path, version: default_ruby_version) if default_ruby_version != ruby_version
 
 div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
@@ -10,7 +10,7 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
         div class="w-full md:w-6/12"
           h1 class="lg:text-3xl text-xl text-gray-800 dark:text-gray-200 font-semibold"
             a href="#{object_url(version: ruby_version, object: @object.path)}"
-              | #{@object.name}
+              | #{@object.constant}
         div class="w-full md:w-6/12 md:text-right mt-2 md:mt-0 cursor-default"
           - if @object.class_object?
             span class="py-1 px-2 rounded bg-gray-200 dark:bg-gray-700 text-sm"
