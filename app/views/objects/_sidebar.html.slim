@@ -6,14 +6,15 @@ div class="hidden lg:block w-1/4"
           = render "objects/sidebar/section/link",
               additional_classes: "font-mono text-sm",
               title: @object.superclass.constant,
-              href: @object.superclass.path
+              href: object_path(object: @object.superclass.path)
       - unless @object.included_modules.empty?
         = render "objects/sidebar/section", title: 'Included Modules' do
           ul class="font-mono text-sm"
             - @object.included_modules.each do |included_module|
               li
                 = render "objects/sidebar/section/link",
-                    title: included_module.constant, href: included_module.path
+                    title: included_module.constant,
+                    href: object_path(object: included_module.path)
       - unless @object.ruby_methods.select(&:class_method?).empty?
         = render "objects/sidebar/section", title: 'Class Methods' do
           ul class="font-mono text-sm"
