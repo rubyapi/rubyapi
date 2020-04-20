@@ -50,6 +50,17 @@ The test suite can be executed with:
 
     $ ./bin/rake test
 
+## Linting code
+
+This project uses [StandardRB](https://github.com/testdouble/standard) for linting.
+
+StandardRB can be executed with:
+
+    $ ./bin/standardrb
+
+_Note: This command may make changes to your code, to make it conform to the formatting rules of
+this project._
+
 ## Code Of Conduct
 
 Everyone interacting with the source code, issue trackers, chat rooms, and mailing lists is expected to follow the [Code Of Conduct](https://github.com/rubyapi/rubyapi/blob/master/CODE_OF_CONDUCT.md)
