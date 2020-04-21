@@ -61,6 +61,8 @@ StandardRB can be executed with:
 _Note: This command may make changes to your code, to make it conform to the formatting rules of
 this project._
 
+For instructions on running StandardRB in your editor, [check out StandardRB's Documentation](https://github.com/testdouble/standard#how-do-i-run-standard-in-my-editor).
+
 ## Code Of Conduct
 
 Everyone interacting with the source code, issue trackers, chat rooms, and mailing lists is expected to follow the [Code Of Conduct](https://github.com/rubyapi/rubyapi/blob/master/CODE_OF_CONDUCT.md)
