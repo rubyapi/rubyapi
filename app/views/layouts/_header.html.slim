@@ -2,12 +2,15 @@
 header id="header" class="flex items-center inset-x-0 z-50 h-16 #{'text-white bg-red-600 dark:bg-gray-700 fixed top-0' unless homepage?}"
   nav class="w-full max-w-screen-xl mx-auto" role="navigation" aria-label="main navigation"
     div class="flex items-center justify-between #{homepage? ? 'px-6' : 'px-3'}"
-      div class="flex-shrink-0"
+      div class="flex lg:w-2/12 md:w-3/12 w-4/12"
+        - if object_page?
+          button type="button" class="sidebar-toggle lg:hidden py-2 px-3 mr-2 self-center" data-controller="sidebar-toggle" data-action="sidebar-toggle#toggle"
+            i class="fas fa-bars"
         = render 'layouts/logo'
       - unless homepage?
-        div class="lg:w-5/12 md:w-6/12 w-8/12"
-            = render 'layouts/search_form'
-      div class="#{homepage? ? 'md:w-2/12 w-6/12' : 'w-2/12'}"
+        div class="lg:w-5/12 md:w-6/12 w-6/12"
+          = render 'layouts/search_form'
+      div class="#{homepage? ? 'md:w-3/12 w-6/12' : 'w-3/12'}"
         div class="flex flex-row-reverse"
           = render 'layouts/theme_selector'
           = render 'layouts/github_links'

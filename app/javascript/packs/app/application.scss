@@ -43,8 +43,8 @@ p {
   overflow-wrap: break-word;
 }
 
-.h-93 {
-  height: calc(100vh - 7rem)!important;
+.h-96 {
+  height: calc(100vh - 4rem)!important;
 }
 
 code {
@@ -105,5 +105,35 @@ pre:not(.ruby) {
 
   h1, h2, h3, h4, h5 {
     @apply font-semibold text-lg py-1;
+  }
+}
+
+body {
+  .sidebar-wrapper {
+    background: rgba(black, 0.5);
+
+    @screen lg {
+      background: transparent;
+    }
+  }
+
+  &:not(.sidebar-opened) {
+    .sidebar-wrapper {
+      display: none;
+
+      @screen lg {
+        display: block;
+      }
+    }
+  }
+
+  &.sidebar-opened {
+    overflow: hidden;
+    height: 100vh;
+
+    @screen lg {
+      overflow: initial;
+      height: initial;
+    }
   }
 }
