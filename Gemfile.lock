@@ -313,7 +313,7 @@ GEM
     semantic_range (2.3.0)
     sentry-raven (3.0.0)
       faraday (>= 1.0)
-    sitemap_generator (6.1.0)
+    sitemap_generator (6.1.1)
       builder (~> 3.0)
     skylight (4.3.0)
       skylight-core (= 4.3.0)
