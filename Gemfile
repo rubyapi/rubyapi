@@ -15,7 +15,7 @@ group :preload, :default do
 
   gem "http"
   gem "typhoeus"
-  gem "kaminari", "~> 1.2.0"
+  gem "kaminari", "~> 1.2.1"
   gem "inline_svg"
   gem "tty-spinner"
   gem "skylight", group: :production
