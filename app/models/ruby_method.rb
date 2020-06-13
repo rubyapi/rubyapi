@@ -48,7 +48,7 @@ class RubyMethod
   end
 
   def object_path
-    object_constant&.downcase&.gsub(/\:\:/, "/")
+    object_constant&.downcase&.gsub(/::/, "/")
   end
 
   def metadata
