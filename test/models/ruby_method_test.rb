@@ -23,6 +23,7 @@ class RubyMethodTest < ActiveSupport::TestCase
     }
 
     @method = RubyMethod.new(attributes)
+    @class_method = RubyMethod.new(method_type: "class_method")
   end
 
   test "required attribues" do
@@ -38,11 +39,12 @@ class RubyMethodTest < ActiveSupport::TestCase
 
   test "#instance_method?" do
     assert_equal @method.instance_method?, true
+    assert_equal @class_method.instance_method?, false
   end
 
   test "#class_method?" do
-    method = RubyMethod.new(method_type: "class_method")
-    assert_equal method.class_method?, true
+    assert_equal @class_method.class_method?, true
+    assert_equal @method.class_method?, false
   end
 
   test "#identifier" do
