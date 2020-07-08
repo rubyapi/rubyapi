@@ -60,6 +60,10 @@ Rails.application.configure do
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
 
+  # Site doesn't have a login, so the CSRF protection isn't helpful
+  # In fact, it's problematic because the varying CSRF tokens means you can't get a consistent ETag
+  config.action_controller.allow_forgery_protection = false
+
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
@@ -95,5 +99,5 @@ Rails.application.configure do
     config.dsn = ENV["SENTRY_DSN"]
   end  
 
-  config.skylight.probes += %w(elasticsearch)
+  config.skylight.probes += %w(elasticsearch redis)
 end

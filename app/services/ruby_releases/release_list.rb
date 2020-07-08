@@ -5,7 +5,8 @@ require "csv"
 module RubyReleases
   class ReleaseList
     RELEASE_INDEX_URL = "https://cache.ruby-lang.org/pub/ruby/index.txt"
-    SUPPORTED_RELEASE_FORMAT = %w[tar.gz]
+    RUBY_MASTER_ZIP_URL = "https://codeload.github.com/ruby/ruby/zip/master"
+    SUPPORTED_RELEASE_FORMAT = "zip"
 
     def self.fetch
       new.releases
@@ -13,7 +14,7 @@ module RubyReleases
 
     attr_accessor :releases
     def initialize
-      @releases = parse_index(release_index)
+      @releases = parse_index(release_index).push(master)
     end
 
     private
@@ -30,15 +31,19 @@ module RubyReleases
           end
         end
 
-        releases << RubyVersion.new(version, sha512: l["sha512"], url: l["url"]) if supported_release_format?(l["url"])
+        releases << RubyVersion.new(version, sha512: l["sha512"], source_url: l["url"]) if supported_release_format?(l["url"])
       rescue ArgumentError
       end
 
       releases
     end
 
+    def master
+      RubyVersion.new("master", sha512: "", source_url: RUBY_MASTER_ZIP_URL)
+    end
+
     def supported_release_format?(url)
-      SUPPORTED_RELEASE_FORMAT.any? { |format| url.end_with?(format) }
+      url.end_with?(SUPPORTED_RELEASE_FORMAT)
     end
 
     def release_index

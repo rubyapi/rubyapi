@@ -4,9 +4,17 @@ html lang="en"
   head
     = display_meta_tags site: "Ruby API (#{master? ? "master" : "v" + ruby_version})", reverse: true
     meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+
+    link rel="mask-icon" href="#{asset_pack_path('media/packs/app/safari-pinned-tab.svg')}" color="#e1175a"
+    link rel="apple-touch-icon" sizes="180x180" href="#{asset_pack_path('media/packs/app/apple-touch-icon.png')}"
+    meta name="msapplication-TileColor" content="#e1175a"
+    link rel="manifest" href="/site.webmanifest"
+    meta name="theme-color" content="#e1175a"
+
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_pack_tag 'application'
+    = javascript_pack_tag 'icons'
     = javascript_pack_tag 'application', defer: true
     = content_for(:head)
 

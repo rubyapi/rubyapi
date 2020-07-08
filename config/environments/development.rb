@@ -31,6 +31,10 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  # Site doesn't have a login, so the CSRF protection isn't helpful
+  # In fact, it's problematic because the varying CSRF tokens means you can't get a consistent ETag
+  config.action_controller.allow_forgery_protection = false
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

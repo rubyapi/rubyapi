@@ -1,0 +1,17 @@
+-# frozen_string_literal: true
+div class="#{homepage? ? 'block' : 'hidden md:block'} relative ml-4" data-controller="github-links"
+  button class="relative z-20 text-xl hover:text-red-100 dark:hover:text-gray-400" data-action="click->github-links#toggle"
+    i class="fab fa-github hover:fill-current"
+  button class="dropdown-overlay fixed inset-0 w-full h-full bg-black opacity-25 cursor-default invisible z-50" data-target="github-links.linksOverlay" tabindex="-1" data-action="click->github-links#out"
+  div class="dropdown absolute z-50 w-64 text-gray-700 bg-white dark:bg-gray-900 dark:text-gray-400 shadow-xl rounded py-2 right-0 invisible p-2 z-50" data-target="github-links.linksList"
+    a class="block p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800" href="https://github.com/ruby/ruby" target="_blank" rel="noopener"
+        div class="text-gray-800 dark:text-gray-200 fill-current"
+          i class="fab fa-github inline-block mr-2"
+          h1 class="inline text-lg font-semibold" ruby/ruby
+        p class="text-xs py-1" Ruby is an interpreted object-oriented programming language often used for web development. It also offers many scripting features to process plain text and serialized files, or manage system tasks. It is simple, straightforward, and extensible.
+    hr class="my-2 dark:border-gray-600"
+    a class="block p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800" href="https://github.com/rubyapi/rubyapi" target="_blank" rel="noopener"
+        div class="text-gray-800 dark:text-gray-200 fill-current"
+          i class="fab fa-github inline-block mr-2"
+          h1 class="inline text-lg font-semibold" rubyapi/rubyapi
+        p class="text-xs py-1" Ruby API is a Ruby on Rails app that makes browsing and searching Ruby's documentation easy and fast for users.

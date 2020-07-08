@@ -9,7 +9,10 @@ module ApplicationHelper
   end
 
   def homepage?
-    current_page?(root_path) || current_page?(versioned_root_path(version: ruby_version))
+    return(@is_homepage) if defined?(@is_homepage)
+    @is_homepage = begin
+      current_page?(root_path) || current_page?(versioned_root_path(version: ruby_version))
+    end
   end
 
   # Map a method source file into a url to Github.com

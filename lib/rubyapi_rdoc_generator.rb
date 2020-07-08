@@ -2,10 +2,12 @@
 
 class RubyAPIRDocGenerator
   SKIP_NAMESPACES = [
-    /Bundler\:\:.*/,
-    /RDoc\:\:.*/,
-    /IRB\:\:.*/
+    /Bundler::.*/,
+    /RDoc::.*/,
+    /IRB::.*/
   ].freeze
+
+  SKIP_NAMESPACE_REGEX = Regexp.union(SKIP_NAMESPACES).freeze
 
   def class_dir
   end
@@ -16,8 +18,8 @@ class RubyAPIRDocGenerator
   def initialize(store, options)
     @store = store
     @options = options
-    @full_version = options.generator_options.pop
-    @version = @full_version == "master" ? "master" : Gem::Version.new(@full_version).segments[0..1].join(".")
+    @release = options.generator_options.pop
+    @version = @release.minor_version
     @documentation = store.all_classes_and_modules
   end
 
@@ -44,7 +46,7 @@ class RubyAPIRDocGenerator
           description: clean_description(method_doc.description),
           object_constant: doc.full_name,
           method_type: "#{method_doc.type}_method",
-          source_location: "#{@full_version}:#{method_path(method_doc)}:#{method_doc.line}",
+          source_location: "#{@release.version}:#{method_path(method_doc)}:#{method_doc.line}",
           call_sequence: method_doc.call_seq ? method_doc.call_seq.strip.split("\n").map { |s| s.gsub "->", "→" } : "",
           metadata: {
             depth: constant_depth(doc.full_name)
@@ -52,12 +54,23 @@ class RubyAPIRDocGenerator
         }
       end
 
+      superclass =
+        if doc.type == "class"
+          case doc.superclass
+          when NilClass then nil
+          when String then doc.superclass
+          else doc.superclass.name
+          end
+        end
+
       objects << RubyObject.new(
         name: doc.name,
         description: clean_description(doc.description),
         methods: methods,
         constant: doc.full_name,
         object_type: "#{doc.type}_object",
+        superclass: superclass,
+        included_modules: doc.includes.map(&:name),
         metadata: {
           depth: constant_depth(doc.full_name)
         }
@@ -97,21 +110,17 @@ class RubyAPIRDocGenerator
   end
 
   def skip_namespace?(constant)
-    !skip_namespace_regex.match(constant).nil?
+    SKIP_NAMESPACE_REGEX.match?(constant)
   end
 
   def constant_depth(constant)
     constant.split("::").size
   end
 
-  def skip_namespace_regex
-    Regexp.union(SKIP_NAMESPACES)
-  end
-
   def clean_description(description)
     description
-      .gsub(/(\<a.*\&para\;\<\/a>)/, "")
-      .gsub(/(\<a.*\&uarr\;\<\/a>)/, "")
+      .gsub(/(<a.*&para;<\/a>)/, "")
+      .gsub(/(<a.*&uarr;<\/a>)/, "")
       .gsub("<pre class=\"ruby\">", "<div class=\"ruby\" data-controller=\"code-example\" data-target=\"code-example.block\" data-code-example-version=\"#{@version}\"></div><pre class=\"ruby\">")
   end
 end

@@ -45,6 +45,8 @@ class ActiveSupport::TestCase
       description: "<h1>Hello Object: #{name}</h1>",
       object_type: "#{object_type}_object",
       constant: constant.to_s,
+      superclass: constant.superclass.to_s,
+      included_modules: constant.included_modules.map(&:to_s),
       metadata: {
         depth: 1
       },

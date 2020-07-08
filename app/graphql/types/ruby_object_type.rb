@@ -8,6 +8,8 @@ module Types
     field :type, String, null: false
     field :description, String, null: true
     field :constant, String, null: false
+    field :superclass, String, null: true
+    field :included_modules, [String], null: false
     field :version, String, null: false
     field :ruby_methods, [Types::RubyMethodType], null: false
     field :path, String, null: false

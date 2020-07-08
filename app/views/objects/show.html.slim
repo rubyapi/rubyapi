@@ -1,36 +1,16 @@
 -# frozen_string_literal: true
-- title @object.name
+- title @object.constant
 - set_meta_tags canonical: object_url(object: @object.path, version: default_ruby_version) if default_ruby_version != ruby_version
 
 div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
-  div class="hidden lg:block w-1/4"
-    div class="hidden lg:block lg:sticky pt-1 top-0"
-      div class="overflow-y-auto mt-24 pl-3 pr-6 h-93"
-        - unless @object.ruby_methods.select(&:class_method?).empty?
-          div class="mb-3"
-            h3 class="font-bold text-object-method-title p-1 px-2"
-              | Class Methods
-            ul class="font-mono text-sm"
-              - @object.ruby_methods.select(&:class_method?).sort_by(&:name).each do |m|
-                li
-                  a href="##{method_anchor(m)}" class="inline-block w-full py-1 px-2 rounded hover:bg-object-method-link-hover-background"
-                    | :: #{m.name}
-        - unless @object.ruby_methods.select(&:instance_method?).empty?
-          div class="mb-3"
-            h3 class="font-bold text-object-method-title p-1 px-2"
-              | Instance Methods
-            ul class="font-mono text-sm"
-              - @object.ruby_methods.select(&:instance_method?).sort_by(&:name).each do |m|
-                li
-                  a href="##{method_anchor(m)}" class="inline-block w-full py-1 px-2 rounded hover:bg-object-method-link-hover-background"
-                    | # #{m.name}
+  = render "objects/sidebar"
   div class="w-full mt-16 lg:mt-20 lg:w-3/4"
     div class="md:p-3 py-3"
       div class="flex flex-wrap"
         div class="w-full md:w-6/12"
           h1 class="lg:text-3xl text-xl text-object-title font-semibold"
             a href="#{object_url(version: ruby_version, object: @object.path)}"
-              | #{@object.name}
+              | #{@object.constant}
         div class="w-full md:w-6/12 md:text-right mt-2 md:mt-0 cursor-default"
           - if @object.class_object?
             span class="py-1 px-2 rounded bg-object-label-background text-sm"
@@ -57,10 +37,10 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
                     = seq
           div class="flex md:justify-end w-full md:w-2/12 mt-3 md:mt-0 font-mono"
             - if m.instance_method?
-              a class="px-2 h-6 inline-block rounded bg-object-type-background algin-middle cursor-default hover:text-object-type-hover hover:bg-object-type-hover-background hover:fill-current" title="Instance Method"
+              span class="px-2 h-6 inline-block rounded bg-gray-200 dark:bg-gray-700 algin-middle cursor-default" title="Instance Method"
                 | #
             - elsif m.class_method?
-              a class="px-2 h-6 inline-block rounded bg-object-type-background algin-middle cursor-default hover:text-object-type-hover hover:bg-object-type-hover-background hover:fill-current" title="Class Method"
+              span class="px-2 h-6 inline-block rounded bg-gray-200 dark:bg-gray-700 algin-middle cursor-default" title="Class Method"
                 | ::
             a class="px-1 ml-2 h-6 inline-block rounded bg-object-type-background align-middle hover:text-object-type-hover hover:bg-object-type-hover-background hover:fill-current" href="#{github_url m}" target="_blank" rel="noopener" title="View source on Github"
               i class="fab fa-github"

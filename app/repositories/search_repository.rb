@@ -5,7 +5,8 @@ class SearchRepository
   include Elasticsearch::Persistence::Repository::DSL
 
   settings(
-    number_of_shards: 5,
+    number_of_shards: Rails.configuration.elasticsearch_shards,
+    number_of_replicas: Rails.configuration.elasticsearch_replicas,
     analysis: {
       normalizer: {
         lowercase: {

@@ -4,11 +4,15 @@ require "test_helper"
 
 class RubyObjectTest < ActiveSupport::TestCase
   def setup
+    @constant = "String"
+
     attributes = {
       name: "String",
       description: "<h1>Hello World</h1>",
       object_type: "class_object",
-      constant: "String",
+      constant: @constant,
+      superclass: "Object",
+      included_modules: ["Kernel"],
       metadata: {
         depth: 1
       },
@@ -36,7 +40,13 @@ class RubyObjectTest < ActiveSupport::TestCase
     assert_equal @object.name, "String"
     assert_equal @object.object_type, "class_object"
     assert_equal @object.constant, "String"
+    assert_equal @object.superclass, RubyObject.new(constant: "Object")
+    assert_equal @object.included_modules, [RubyObject.new(constant: "Kernel")]
     assert_equal @object.description, "<h1>Hello World</h1>"
+  end
+
+  test "#==" do
+    assert_equal @object, RubyObject.new(constant: @constant)
   end
 
   test "#id" do
@@ -67,6 +77,8 @@ class RubyObjectTest < ActiveSupport::TestCase
       constant: "String",
       object_type: "class_object",
       description: "<h1>Hello World</h1>",
+      superclass: "Object",
+      included_modules: ["Kernel"],
       metadata: {
         depth: 1
       },
