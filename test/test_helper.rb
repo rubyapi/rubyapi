@@ -5,6 +5,8 @@ require_relative "../config/environment"
 require "rails/test_help"
 require "webmock/minitest"
 
+Dir.glob(Rails.root.join("lib/*.rb")).each { |f| require_relative f }
+
 WebMock.disable!
 
 class ActiveSupport::TestCase
