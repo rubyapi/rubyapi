@@ -12,6 +12,7 @@ Rails.application.config.content_security_policy do |policy|
    policy.object_src  :none
    policy.script_src  :self, :unsafe_inline, "https://plausible.io"
    policy.style_src   :self, :unsafe_inline
+   policy.connect_src "https://plausible.io"
 
 #   # Specify URI for violation reports
 #   # policy.report_uri "/csp-violation-report-endpoint"
