@@ -4,17 +4,17 @@
 
 div class="max-w-screen-xl mx-auto md:px-6 px-3 pt-20"
   div class="md:p-3 py-3 pb-5 border-b border-gray-200"
-    h1 class="md:text-3xl text-xl font-semibold text-search-title"
+    h1 class="md:text-3xl text-xl font-semibold text-gray-800 dark:text-gray-200"
       | Results for: "#{search_query}"
   - @search.results.each do |r|
-    div class="md:p-3 py-3 my-1 rounded text-result-text"
+    div class="md:p-3 py-3 my-1 rounded dark:text-gray-500"
       div class="flex"
         div class="w-full"
           - if r.is_a? RubyMethod
-            h4 class="md:text-2xl text-lg overflow-wrap-break-word font-semibold text-result-title"
+            h4 class="md:text-2xl text-lg overflow-wrap-break-word font-semibold text-gray-800 dark:text-white"
               = link_to r.identifier, result_url(r, version: ruby_version)
           - else
-            h4 class="md:text-2xl text-lg overflow-wrap-break-word font-semibold text-result-title"
+            h4 class="md:text-2xl text-lg overflow-wrap-break-word font-semibold text-gray-800 dark:text-white"
               = link_to r.constant, result_url(r, version: ruby_version)
       - if r.description.empty?
         div No documentation available
@@ -28,11 +28,11 @@ div class="max-w-screen-xl mx-auto md:px-6 px-3 pt-20"
   div class="border-t border-gray-200 mt-1 py-2"
     span class="text-gray-600"
       | Search took: #{@search.response["took"]}ms
-    span
+    span 
       | &nbsp;&#183;&nbsp;
     span class="text-gray-600"
       | Total Results: #{@search.total}
     - if Rails.env.development?
-      div class="border p-3 mt-1 dev-search-query"
-        pre class="json"
+      div class="border border-gray-200 p-3 mt-1 bg-gray-100"
+        pre
           = JSON.pretty_generate @search.query

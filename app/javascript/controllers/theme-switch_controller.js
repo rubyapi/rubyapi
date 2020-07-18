@@ -1,15 +1,5 @@
 import { Controller } from "stimulus"
 
-function setLightMode(target) {
-  target.classList.replace("dark-switch", "light-switch")
-  document.body.dataset.theme = 'light'
-}
-
-function setDarkMode(target) {
-  target.classList.replace("light-switch", "dark-switch")
-  document.body.dataset.theme = 'dark'
-}
-
 export default class extends Controller {
   static targets = ["switch"]
 
@@ -21,20 +11,30 @@ export default class extends Controller {
       const darkMode = localStorage.getItem('rubyapi-darkMode')
 
       if (darkMode !== null && darkMode === '1') {
-        setDarkMode(this.switchTarget)
+        this.setDarkMode(this.switchTarget)
       } else if (osDarkMode && darkMode === null) {
-        setDarkMode(this.switchTarget)
+        this.setDarkMode(this.switchTarget)
       }
     }
   }
 
+  setLightMode(target) {
+    target.classList.replace("fa-moon", "fa-sun")
+    document.documentElement.classList.remove("mode-dark")
+    localStorage.setItem('rubyapi-darkMode', '0')
+  }
+
+  setDarkMode(target) {
+    target.classList.replace("fa-sun", "fa-moon")
+    document.documentElement.classList.add("mode-dark")
+    localStorage.setItem('rubyapi-darkMode', '1')
+  }
+
   toggle() {
-    if (this.switchTarget.classList.contains('light-switch')) {
-      setDarkMode(this.switchTarget)
-      localStorage.setItem('rubyapi-darkMode', '1')
+    if (this.switchTarget.classList.contains('fa-sun')) {
+      this.setDarkMode(this.switchTarget)
     } else {
-      setLightMode(this.switchTarget)
-      localStorage.setItem('rubyapi-darkMode', '0')
+      this.setLightMode(this.switchTarget)
     }
   }
 }

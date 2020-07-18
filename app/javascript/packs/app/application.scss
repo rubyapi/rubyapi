@@ -36,8 +36,20 @@ code {
   @apply bg-gray-300 rounded leading-relaxed text-sm text-gray-700;
 }
 
+.mode-dark {
+  code { @apply bg-gray-700 text-gray-400; }
+}
+
 pre:not(.ruby) {
   @apply overflow-auto font-mono;
+}
+
+.mode-dark .pagination .current {
+  @apply bg-gray-700 text-gray-200;
+}
+
+.mode-dark .pagination .page a, .next a, .prev  a, .last a, .first a, .current {
+  &:hover { @apply bg-gray-900 text-gray-200; }
 }
 
 .pagination {
@@ -53,35 +65,10 @@ pre:not(.ruby) {
   }
 }
 
-[data-theme="dark"] {
-  code { @apply bg-gray-700 text-gray-400; }
-
-  .pagination .current {
-    @apply bg-gray-700 text-gray-200;
-  }
-
-  .page a, .next a, .prev  a, .last a, .first a, .current {
-    &:hover { @apply bg-gray-900 text-gray-200; }
-  }
-}
-
 .ruby-documentation pre {
   h1, h2, h3, h4, h5 {
     @apply font-semibold text-lg py-1;
   }
-}
-
-.light-switch:before {
-  content: '☾';
-}
-
-.dark-switch:before {
-  content: '☼';
-}
-
-.dev-search-query {
-  @apply bg-gray-900 border-gray-800;
-  color: #5FB3B3;
 }
 
 /* purgecss end ignore */
