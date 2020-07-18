@@ -27,9 +27,13 @@ module.exports = {
       }
     }
   },
-  variants: {},
+  variants: {
+    backgroundColor: ['dark', 'dark-focus', 'dark-hover', 'dark-group-hover', 'dark-even', 'dark-odd'],
+    borderColor: ['dark', 'dark-focus', 'dark-focus-within'],
+    textColor: ['dark', 'dark-focus', 'dark-hover', 'dark-active', 'dark-placeholder']
+  },
   plugins: [
-    require('./theme.config'),
+    require('tailwindcss-dark-mode')(),
     ({ addUtilities, addVariant, config, e, theme }) => {
       addUtilities(_.map(config('theme.screens'), (value, key) => {
         return {
