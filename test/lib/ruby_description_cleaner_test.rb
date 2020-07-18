@@ -36,7 +36,9 @@ class RubyDescriptionCleanerTest < ActiveSupport::TestCase
       <p>If options is true, then an attempt will be made to use SSL (now TLS) to connect to the server.  For this to work <a href="/2.6/o/openssl"><code>OpenSSL</code></a> [OSSL] and the Ruby <a href="/2.6/o/openssl"><code>OpenSSL</code></a> [RSSL] extensions need to be installed.  If options is a hash, it's passed to <a href="/2.6/o/openssl/ssl/sslcontext#method-i-set_params"><code>OpenSSL::SSL::SSLContext#set_params</code></a> as parameters.</p>
     HTML
 
-    assert_equal RubyDescriptionCleaner.clean("2.6", "Net::FTP", input), output
+    capture_io do
+      assert_equal RubyDescriptionCleaner.clean("2.6", "Net::FTP", input), output
+    end
   end
 
   test "doubled up quotes" do
@@ -49,7 +51,9 @@ class RubyDescriptionCleanerTest < ActiveSupport::TestCase
       <p>After you have selected a mailbox, you may retrieve the number of items in that mailbox from @responses[-1], and the number of recent messages from @responses[-1]. Note that these values can change if new messages arrive during a session; see <a href="/2.7/o/imap#method-i-add_response_handler"><code>add_response_handler()</code></a> for a way of detecting this event.</p>
     HTML
 
-    assert_equal RubyDescriptionCleaner.clean("2.7", "IMAP", input), output
+    capture_io do
+      assert_equal RubyDescriptionCleaner.clean("2.7", "IMAP", input), output
+    end
   end
 
   test "unparsable HTML" do
@@ -61,6 +65,8 @@ class RubyDescriptionCleanerTest < ActiveSupport::TestCase
     # https://github.com/ruby/rdoc/issues/763
     output = input
 
-    assert_equal RubyDescriptionCleaner.clean("2.4", "REXML::DTD::ElementDecl", input), output
+    capture_io do
+      assert_equal RubyDescriptionCleaner.clean("2.4", "REXML::DTD::ElementDecl", input), output
+    end
   end
 end
