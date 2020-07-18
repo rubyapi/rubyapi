@@ -17,7 +17,7 @@ group :preload, :default do
   gem "typhoeus"
   gem "kaminari", "~> 1.2.1"
   gem "inline_svg"
-  gem "tty-spinner"
+  gem "tty-spinner", require: false
   gem "skylight", group: :production
   gem "graphql"
   gem "graphiql-rails", group: :development
@@ -28,8 +28,9 @@ group :preload, :default do
   gem "meta-tags"
   gem "sentry-raven"
   gem "rack-attack"
-  gem "rdoc"
-  gem "trenni-sanitize"
+  gem "rdoc", require: false
+  gem "trenni-sanitize", require: false
+  gem "pastel", require: false
 end
 
 gem "slim"

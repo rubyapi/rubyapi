@@ -2,6 +2,7 @@
 
 require "rdoc"
 require_relative "rubyapi_rdoc_generator"
+require_relative "import_ui"
 
 class RubyDocumentationImporter
   attr_reader :release
@@ -14,13 +15,14 @@ class RubyDocumentationImporter
     @release = release
     @rdoc = RDoc::RDoc.new
     @rdoc_options = @rdoc.load_options
-    @spinner = TTY::Spinner.new ":spinner Importing Ruby #{release.version} documentation"
+
+    ImportUI.reset
   end
 
   def import
     path = fetch_ruby_src_for_release(release).extracted_download_path
 
-    @spinner.auto_spin
+    ImportUI.start ":spinner Importing Ruby #{release.version} documentation"
 
     @rdoc_options.tap do |r|
       r.generator = RubyAPIRDocGenerator
@@ -33,8 +35,7 @@ class RubyDocumentationImporter
 
     @rdoc.document @rdoc_options
 
-    @spinner.stop
-    puts "Done."
+    ImportUI.finish
   end
 
   private
