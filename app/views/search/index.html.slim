@@ -7,8 +7,8 @@ div class="max-w-screen-xl mx-auto md:px-6 px-3 pt-20"
     h1 class="md:text-3xl text-xl font-semibold text-gray-800 dark:text-gray-200"
       | Results for: "#{search_query}"
     - if Rails.env.development?
-      details class="border border-gray-200 p-3 mt-1 bg-gray-100"
-        summary ElasticSearch Query
+      details class="border border-gray-200 p-3 mt-1 bg-gray-100 dark:bg-gray-700 dark:border-gray-500"
+        summary class="focus:outline-none" ElasticSearch Query
         pre
           = JSON.pretty_generate @search.query
 
