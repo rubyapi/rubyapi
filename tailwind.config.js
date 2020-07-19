@@ -5,7 +5,6 @@ module.exports = {
     extend: {
       screens: {
         xxl: '1680px',
-        dark: {'raw': '(prefers-color-scheme: dark)'},
       },
       colors: {
         code: {
@@ -55,5 +54,15 @@ module.exports = {
         })
       ))
     }
-  ]
+  ],
+  purge: {
+    options: {
+      whitelist: ['mode-dark']
+    },
+    content: [
+      './app/javascript/controllers/search_controller.js',
+      './app/javascript/controllers/code_example_controller.js',
+      './app/**/*.html.slim',
+    ],
+  }
 }

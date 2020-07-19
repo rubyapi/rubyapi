@@ -1,10 +1,6 @@
-/* purgecss start ignore */
 @tailwind base;
-/* purgecss end ignore */
 @tailwind components;
 @tailwind utilities;
-
-/* purgecss start ignore */
 
 pre.ruby {
   @apply p-3 rounded-b overflow-auto font-mono bg-code-background text-code-text;
@@ -70,5 +66,3 @@ pre:not(.ruby) {
     @apply font-semibold text-lg py-1;
   }
 }
-
-/* purgecss end ignore */
