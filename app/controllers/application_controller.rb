@@ -16,12 +16,18 @@ class ApplicationController < ActionController::Base
   end
   helper_method :search_query
 
-  def available_ruby_versions
+  def supported_ruby_versions
     ruby_versions = Rails.configuration.ruby_versions.dup
-    ruby_versions.delete(ruby_version)
-    ruby_versions
+    other_versions = eol_ruby_versions.dup.push(ruby_version)
+
+    ruby_versions - other_versions
   end
-  helper_method :available_ruby_versions
+  helper_method :supported_ruby_versions
+
+  def eol_ruby_versions
+    Rails.configuration.eol_ruby_versions
+  end
+  helper_method :eol_ruby_versions
 
   def route_for_version(version)
     route = Rails.application.routes.recognize_path request.url

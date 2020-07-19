@@ -10,8 +10,9 @@ Rails.application.config.content_security_policy do |policy|
    policy.default_src :self
    policy.img_src     :self
    policy.object_src  :none
-   policy.script_src  :self, :unsafe_inline
+   policy.script_src  :self, :unsafe_inline, "https://plausible.io"
    policy.style_src   :self, :unsafe_inline
+   policy.connect_src :self, "https://plausible.io"
 
 #   # Specify URI for violation reports
 #   # policy.report_uri "/csp-violation-report-endpoint"
@@ -19,7 +20,7 @@ Rails.application.config.content_security_policy do |policy|
    if Rails.env.development?
      policy.connect_src :self, :https, "http://localhost:3035", "ws://localhost:3035"
      policy.style_src   :self, :blob, :unsafe_inline
-     policy.script_src  :self, :blob, :unsafe_inline
+     policy.script_src  :self, :blob, :unsafe_inline, "https://plausible.io"
    end
 end
 

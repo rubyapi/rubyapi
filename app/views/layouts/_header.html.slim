@@ -1,43 +1,14 @@
 -# frozen_string_literal: true
-header id="header" class="text-white bg-red-600 dark:bg-gray-700 flex items-center fixed top-0 inset-x-0 z-50 h-16"
+header id="header" class="flex items-center inset-x-0 z-50 h-16 #{'text-white bg-red-600 dark:bg-gray-700 fixed top-0' unless homepage?}"
   nav class="w-full max-w-screen-xl mx-auto" role="navigation" aria-label="main navigation"
-    div class="flex items-center justify-between px-3"
-      div class="lg:w-2/12 w-2/12"
-        = link_to root_path, class: "block" do
-          = inline_svg_pack_tag "media/packs/app/logo-plain.svg", class: "md:hidden w-10 h-10"
-          = inline_svg_pack_tag "media/packs/app/logo.svg", class: "hidden md:block w-48"
-      div class="lg:w-5/12 md:w-6/12 w-8/12"
-        div class="relative" data-controller="search" data-search-version="#{ruby_version}" data-search-url="#{graphql_path}"
-          = form_tag search_url(version: ruby_version), method: :get do
-            button type="submit" class="absolute left inset-y-0 px-4" aria-label="search"
-              span data-target="search.button" class="fa fa-search"
-            input id="search" name="q" data-target="search.input" data-action="keyup->search#autocomplete" class="bg-red-800 dark:bg-gray-800 rounded px-3 pl-10 py-2 w-full outline-none placeholder-white placeholder-opacity-100 focus:bg-white focus:text-black" value="#{search_query}" type="text" autocapitalize="off" autocorrect="off" autocomplete="off" placeholder="Search Ruby Documentation" aria-label="Search" title="Search"
-            div data-target="search.autocomplete" class="w-full bg-white absolute shadow-lg rounded-bl rounded-br -mt-1"
-      div class="w-2/12"
+    div class="flex items-center justify-between #{homepage? ? 'px-6' : 'px-3'}"
+      div class="flex-shrink-0"
+        = render 'layouts/logo'
+      - unless homepage?
+        div class="lg:w-5/12 md:w-6/12 w-8/12"
+            = render 'layouts/search_form'
+      div class="#{homepage? ? 'md:w-2/12 w-6/12' : 'w-2/12'}"
         div class="flex flex-row-reverse"
-          div class="hidden md:block relative ml-4" data-controller="github-links"
-            button class="relative z-20 text-xl hover:text-red-100 dark:hover:text-gray-400" data-action="click->github-links#toggle"
-              i class="fab fa-github hover:fill-current"
-            button class="dropdown-overlay fixed inset-0 w-full h-full bg-black opacity-25 cursor-default invisible z-50" data-target="github-links.linksOverlay" tabindex="-1" data-action="click->github-links#out"
-            div class="dropdown absolute z-50 w-64 text-gray-700 bg-white dark:bg-gray-900 dark:text-gray-400 shadow-xl rounded py-2 right-0 invisible p-2 z-50" data-target="github-links.linksList"
-              a class="block p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800" href="https://github.com/ruby/ruby" target="_blank" rel="noopener"
-                  div class="text-gray-800 dark:text-gray-200 fill-current"
-                    i class="fab fa-github inline-block mr-2"
-                    h1 class="inline text-lg font-semibold" ruby/ruby
-                  p class="text-xs py-1" Ruby is an interpreted object-oriented programming language often used for web development. It also offers many scripting features to process plain text and serialized files, or manage system tasks. It is simple, straightforward, and extensible.
-              hr class="my-2"
-              a class="block p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-800" href="https://github.com/rubyapi/rubyapi" target="_blank" rel="noopener"
-                  div class="text-gray-800 dark:text-gray-200 fill-current"
-                    i class="fab fa-github inline-block mr-2"
-                    h1 class="inline text-lg font-semibold" rubyapi/rubyapi
-                  p class="text-xs py-1" Ruby API is a Ruby on Rails app that makes browsing and searching Ruby's documentation easy and fast for users.
-
-          div class="relative" data-controller="ruby-version"
-            button class="relative z-20 md:text-xl text-l pl-2 hover:text-red-100 dark:hover:text-gray-400 hover:fill-current" data-action="click->ruby-version#toggle" aria-label="Show github links"
-              | #{ruby_version}
-              i class="ml-2 fas fa-caret-down"
-            button class="dropdown-overlay fixed inset-0 w-full h-full bg-black opacity-25 cursor-default invisible z-50" data-target="ruby-version.versionOverlay" tabindex="-1" data-action="click->ruby-version#out"
-            div class="dropdown absolute w-32 bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-400 shadow-xl rounded py-2 right-0 invisible z-50" data-target="ruby-version.versionList"
-              - available_ruby_versions.each do |version|
-                a class="block px-4 py-1 text-l hover:bg-gray-200 dark:hover:bg-gray-800" href="#{route_for_version version}"
-                  | #{version}
+          = render 'layouts/theme_selector'
+          = render 'layouts/github_links'
+          = render 'layouts/version_selector'

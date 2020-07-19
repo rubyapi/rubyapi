@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
+require_relative "ruby_description_cleaner"
+
 class RubyAPIRDocGenerator
   SKIP_NAMESPACES = [
-    /Bundler\:\:.*/,
-    /RDoc\:\:.*/,
-    /IRB\:\:.*/
+    /Bundler::.*/,
+    /RDoc::.*/,
+    /IRB::.*/
   ].freeze
 
   SKIP_NAMESPACE_REGEX = Regexp.union(SKIP_NAMESPACES).freeze
@@ -43,7 +45,7 @@ class RubyAPIRDocGenerator
 
         methods << {
           name: method_doc.name,
-          description: clean_description(method_doc.description),
+          description: clean_description(doc.full_name, method_doc.description),
           object_constant: doc.full_name,
           method_type: "#{method_doc.type}_method",
           source_location: "#{@release.version}:#{method_path(method_doc)}:#{method_doc.line}",
@@ -65,7 +67,7 @@ class RubyAPIRDocGenerator
 
       objects << RubyObject.new(
         name: doc.name,
-        description: clean_description(doc.description),
+        description: clean_description(doc.full_name, doc.description),
         methods: methods,
         constant: doc.full_name,
         object_type: "#{doc.type}_object",
@@ -117,10 +119,7 @@ class RubyAPIRDocGenerator
     constant.split("::").size
   end
 
-  def clean_description(description)
-    description
-      .gsub(/(\<a.*\&para\;\<\/a>)/, "")
-      .gsub(/(\<a.*\&uarr\;\<\/a>)/, "")
-      .gsub("<pre class=\"ruby\">", "<div class=\"ruby\" data-controller=\"code-example\" data-target=\"code-example.block\" data-code-example-version=\"#{@version}\"></div><pre class=\"ruby\">")
+  def clean_description(method_class, description)
+    RubyDescriptionCleaner.clean(@version, method_class, description)
   end
 end

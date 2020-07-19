@@ -3,11 +3,11 @@ source "https://rubygems.org"
 ruby "~> 2.7.1"
 
 group :preload, :default do
-  gem "rails", "~> 6.0.2"
+  gem "rails", "~> 6.0.3"
   gem "bootsnap", ">= 1.1.0", require: false
   gem "falcon"
-  gem "webpacker", "~> 5.0"
-  gem "redis", "~> 4.1"
+  gem "webpacker", "~> 5.1"
+  gem "redis", "~> 4.2"
   gem "hiredis"
 
   gem "async-http-faraday", "~> 0.9.0"
@@ -15,9 +15,9 @@ group :preload, :default do
 
   gem "http"
   gem "typhoeus"
-  gem "kaminari", "~> 1.2.0"
+  gem "kaminari", "~> 1.2.1"
   gem "inline_svg"
-  gem "tty-spinner"
+  gem "tty-spinner", require: false
   gem "skylight", group: :production
   gem "graphql"
   gem "graphiql-rails", group: :development
@@ -28,6 +28,9 @@ group :preload, :default do
   gem "meta-tags"
   gem "sentry-raven"
   gem "rack-attack"
+  gem "rdoc", require: false
+  gem "trenni-sanitize", require: false
+  gem "pastel", require: false
 end
 
 gem "slim"

@@ -6,16 +6,17 @@
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-regular-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
-    "@fullhuman/postcss-purgecss": "^2.1.2",
-    "@rails/webpacker": "^5.0.1",
+    "@fullhuman/postcss-purgecss": "^2.3.0",
+    "@rails/webpacker": "^5.1.1",
     "clipboard-copy": "^3.1.0",
-    "hotkeys-js": "^3.7.6",
+    "hotkeys-js": "^3.8.1",
     "mustache": "^4.0.1",
     "postcss-cssnext": "^3.1.0",
     "stimulus": "^1.1.1",
-    "tailwindcss": "^1.2.0"
+    "tailwindcss": "^1.5.1",
+    "tailwindcss-dark-mode": "^1.1.4"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.11.0"
   }
 }

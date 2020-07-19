@@ -27,6 +27,8 @@ module RubyApi
       2.7 2.6 2.5 2.4 2.3 master
     ]
 
+    config.eol_ruby_versions = %w[2.4 2.3]
+
     config.elasticsearch_shards = ENV.fetch('ELASTICSEARCH_SHARDS', 5).to_i
     config.elasticsearch_replicas = ENV.fetch('ELASTICSEARCH_REPLICAS', 1).to_i
   end

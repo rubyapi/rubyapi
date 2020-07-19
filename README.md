@@ -1,6 +1,7 @@
 # Ruby API: Easily Find Ruby documentation 
 
 [![View performance data on Skylight](https://badges.skylight.io/status/k1noEyWLdXuJ.svg)](https://oss.skylight.io/app/applications/k1noEyWLdXuJ) 
+[![CI](https://github.com/rubyapi/rubyapi/workflows/CI/badge.svg?branch=master)](https://github.com/rubyapi/rubyapi/actions?query=workflow%3ACI+branch%3Amaster)
 
 Ruby API makes it easy and fast to search or browse the Ruby language API docs.
 
@@ -49,6 +50,19 @@ or you can easily import the latest versions of all currently supported versions
 The test suite can be executed with:
 
     $ ./bin/rake test
+
+## Linting code
+
+This project uses [StandardRB](https://github.com/testdouble/standard) for linting.
+
+StandardRB can be executed with:
+
+    $ ./bin/standardrb
+
+_Note: This command may make changes to your code, to make it conform to the formatting rules of
+this project._
+
+For instructions on running StandardRB in your editor, [check out StandardRB's Documentation](https://github.com/testdouble/standard#how-do-i-run-standard-in-my-editor).
 
 ## Code Of Conduct
 

@@ -5,7 +5,6 @@ module.exports = {
     extend: {
       screens: {
         xxl: '1680px',
-        dark: {'raw': '(prefers-color-scheme: dark)'},
       },
       colors: {
         code: {
@@ -27,8 +26,13 @@ module.exports = {
       }
     }
   },
-  variants: {},
+  variants: {
+    backgroundColor: ['focus', 'hover', 'dark', 'dark-focus', 'dark-hover', 'dark-group-hover', 'dark-even', 'dark-odd'],
+    borderColor: ['focus', 'hover', 'dark', 'dark-focus', 'dark-focus-within'],
+    textColor: ['focus', 'hover', 'dark', 'dark-focus', 'dark-hover', 'dark-active', 'dark-placeholder']
+  },
   plugins: [
+    require('tailwindcss-dark-mode')(),
     ({ addUtilities, addVariant, config, e, theme }) => {
       addUtilities(_.map(config('theme.screens'), (value, key) => {
         return {
@@ -50,5 +54,15 @@ module.exports = {
         })
       ))
     }
-  ]
+  ],
+  purge: {
+    options: {
+      whitelist: ['mode-dark']
+    },
+    content: [
+      './app/javascript/controllers/search_controller.js',
+      './app/javascript/controllers/code_example_controller.js',
+      './app/**/*.html.slim',
+    ],
+  }
 }

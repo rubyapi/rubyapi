@@ -19,7 +19,7 @@ jobs:
           --health-retries 5
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
       - name: Set Up Ruby
         uses: ruby/setup-ruby@v1
@@ -32,12 +32,24 @@ jobs:
           restore-keys: |
             bundler-cache-
 
+      - name: Get Yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache Yarn
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
       - name: Install Dependencies
         run: |
           sudo apt-get update -qq
           sudo apt-get -yqq install chromium-chromedriver
           gem install bundler --no-doc
-          yarn install
+          yarn install --frozen-lockfile
           bundle install --jobs 4 --retry 3
 
       - name: Compile Assets

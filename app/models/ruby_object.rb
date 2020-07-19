@@ -20,7 +20,7 @@ class RubyObject
   end
 
   def path
-    constant&.downcase&.gsub(/\:\:/, "/")
+    constant&.downcase&.gsub(/::/, "/")
   end
 
   def object_type
