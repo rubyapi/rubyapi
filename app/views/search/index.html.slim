@@ -29,7 +29,7 @@ div class="max-w-screen-xl mx-auto md:px-6 px-3 pt-20"
 
   div class="text-center"
     div
-      = paginate Kaminari.paginate_array([], total_count: @search.total).page(current_page).per(results_per_page)
+      = paginate pagination, views_prefix: "pagination", window: 3
 
   div class="border-t border-gray-200 mt-1 py-2"
     span class="text-gray-600"
