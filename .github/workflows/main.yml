@@ -25,7 +25,7 @@ jobs:
         uses: ruby/setup-ruby@v1
 
       - name: Cache Gems
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: vendor/bundle
           key: bundler-cache-${{ hashFiles('**/Gemfile.lock') }}
@@ -37,7 +37,7 @@ jobs:
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
       - name: Cache Yarn
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
