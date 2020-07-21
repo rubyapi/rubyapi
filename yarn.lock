@@ -7666,14 +7666,14 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-tailwindcss-dark-mode@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/tailwindcss-dark-mode/-/tailwindcss-dark-mode-1.1.4.tgz#730f03022dc132c56d5716170520520bf4b1b2cc"
-  integrity sha512-e0zgg6V5wc+pUHLdjc7oxnbetcPv0hqvUPMfK3tvugwyEZtG8n8FhDu3kkPbu7KwAqB7NQ8aONITv+jB2TVpRA==
+tailwindcss-dark-mode@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/tailwindcss-dark-mode/-/tailwindcss-dark-mode-1.1.5.tgz#3e6ed526b6970a21a7f1ba810e727aba6a74576c"
+  integrity sha512-wbzwCR4GNoXA8Vk0dja0Tecp3yNZdqIjFv2YIt/unXz9yl42bbliMiTfbdnzo8RSM5qSWcoaq6mGlQRxjfxIlg==
   dependencies:
-    tailwindcss "^1.2.0"
+    tailwindcss "^1.5.1"
 
-tailwindcss@^1.2.0, tailwindcss@^1.5.1:
+tailwindcss@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-1.5.1.tgz#a3eb10024f8e10786b8b6badcf9665b013bd03ee"
   integrity sha512-mBOxIk+U+9xECC6wllWiupPVfLuwTDvHb4d+8XTdZ8oYrZEH+NpFSlbATF5xWuCJQxDOZ1Dz7C0KN5tylcFhFg==
