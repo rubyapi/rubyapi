@@ -52,7 +52,7 @@ class RubyAPIRDocGenerator
             depth: constant_depth(doc.full_name)
           }
         }
-        
+
         next if methods.find { |m| m[:name] == method[:name] && m[:method_type] == method[:method_type] }
 
         methods << method
