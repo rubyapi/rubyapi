@@ -41,9 +41,7 @@ class RubyAPIRDocGenerator
       methods = []
 
       doc.method_list.each do |method_doc|
-        next if methods.find { |m| m[:name] == method_doc.name }
-
-        methods << {
+        method = {
           name: method_doc.name,
           description: clean_description(doc.full_name, method_doc.description),
           object_constant: doc.full_name,
@@ -54,6 +52,10 @@ class RubyAPIRDocGenerator
             depth: constant_depth(doc.full_name)
           }
         }
+        
+        next if methods.find { |m| m[:name] == method[:name] && m[:method_type] == method[:method_type] }
+
+        methods << method
       end
 
       superclass =
