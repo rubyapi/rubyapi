@@ -1,6 +1,6 @@
 -# frozen_string_literal: true
 div class="relative" data-controller="ruby-version"
-  button class="relative z-20 #{homepage? ? 'text-xl' : 'md:text-xl text-l'} pl-2 hover:text-red-100 dark:hover:text-gray-400 hover:fill-current" data-action="click->ruby-version#toggle" aria-label="Show github links"
+  button class="relative z-20 #{homepage? ? 'text-xl' : 'md:text-xl text-l'} pl-2 hover:text-red-100 dark-hover:text-gray-400 hover:fill-current" data-action="click->ruby-version#toggle" aria-label="Show github links"
     | #{ruby_version}
     i class="ml-2 fas fa-caret-down"
   button class="dropdown-overlay fixed inset-0 w-full h-full bg-black opacity-25 cursor-default invisible z-50" data-target="ruby-version.versionOverlay" tabindex="-1" data-action="click->ruby-version#out"
