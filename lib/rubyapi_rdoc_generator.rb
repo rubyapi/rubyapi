@@ -53,7 +53,7 @@ class RubyAPIRDocGenerator
           }
         }
 
-        next if methods.find { |m| m[:name] == method[:name] && m[:method_type] == method[:method_type] }
+        next if methods.any? { |m| m[:name] == method[:name] && m[:method_type] == method[:method_type] }
 
         methods << method
       end
