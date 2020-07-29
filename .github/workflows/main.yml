@@ -1,7 +1,21 @@
 name: CI
-on: [push,pull_request]
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    types:
+      - opened
+      - synchronize
+    paths-ignore:
+      - '**.md'
+
 env:
   BUNDLE_PATH: vendor/bundle
+
 jobs:
   build:
     runs-on: ubuntu-latest
