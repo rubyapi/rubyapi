@@ -52,6 +52,9 @@ class ActiveSupport::TestCase
       metadata: {
         depth: 1
       },
+      constants: [
+        { name: "HELLO_WORLD", description: "<p>Hello World!</p>" }
+      ],
       methods: [{
         name: "empty?",
         description: "<h1>Hello World!</h1>",

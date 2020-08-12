@@ -16,6 +16,10 @@ class RubyObjectTest < ActiveSupport::TestCase
       metadata: {
         depth: 1
       },
+      constants: [{
+        name: "HELLO_WORLD",
+        description: "<p>Hello world!</p>"
+      }],
       methods: [
         {
           name: "to_i",
@@ -69,35 +73,36 @@ class RubyObjectTest < ActiveSupport::TestCase
   end
 
   test "#to_hash" do
-    assert_equal @object.to_hash, {
-      id: "c3RyaW5n",
-      name: "String",
-      type: :object,
+    assert_equal Hash[@object.to_hash.sort], {
       autocomplete: "String",
       constant: "String",
-      object_type: "class_object",
+      constants: [{ name: "HELLO_WORLD", description: "<p>Hello world!</p>" }],
       description: "<h1>Hello World</h1>",
-      superclass: "Object",
+      id: "c3RyaW5n",
       included_modules: ["Kernel"],
       metadata: {
         depth: 1
       },
       methods: [{
-        name: "to_i",
-        description: "<h1>Hello World</h1>",
-        type: :method,
         autocomplete: "String#to_i",
-        object_constant: "String",
+        call_sequence: <<~G,
+          str.to_i # => 1
+        G
+        description: "<h1>Hello World</h1>",
         identifier: "String#to_i",
-        method_type: "instance_method",
-        source_location: "2.6.4:string.c:L54",
         metadata: {
           depth: 1
         },
-        call_sequence: <<~G
-          str.to_i # => 1
-        G
-      }]
+        method_type: "instance_method",
+        name: "to_i",
+        object_constant: "String",
+        source_location: "2.6.4:string.c:L54",
+        type: :method,
+      }],
+      name: "String",
+      object_type: "class_object",
+      superclass: "Object",
+      type: :object,
     }
   end
 end
