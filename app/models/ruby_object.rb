@@ -43,7 +43,7 @@ class RubyObject
     body[:description]
   end
 
-  def constants
+  def ruby_constants
     @constants ||= body[:constants].collect { |c| RubyConstant.new(c) }
   end
 
@@ -87,7 +87,7 @@ class RubyObject
       autocomplete: autocomplete,
       methods: ruby_methods.collect(&:to_hash),
       constant: constant,
-      constants: constants.collect(&:to_hash),
+      constants: ruby_constants.collect(&:to_hash),
       superclass: superclass&.constant,
       included_modules: included_modules.map(&:constant),
       object_type: object_type,
