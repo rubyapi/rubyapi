@@ -44,7 +44,10 @@ class RubyObject
   end
 
   def ruby_constants
-    @constants ||= body[:constants].collect { |c| RubyConstant.new(c) }
+    @constants ||= begin
+      constants = body[:constants].collect { |c| RubyConstant.new(c) }
+      constants.sort_by(&:name)
+    end
   end
 
   def autocomplete
