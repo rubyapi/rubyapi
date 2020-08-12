@@ -45,7 +45,10 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
             a class="px-1 ml-2 h-6 inline-block rounded bg-gray-200 dark:bg-gray-700 align-middle hover:bg-gray-300 hover:text-gray-800 dark-hover:bg-gray-900 dark-hover:text-gray-400 hover:fill-current" href="#{github_url m}" target="_blank" rel="noopener" title="View source on Github"
               i class="fab fa-github"
         div class="ruby-documentation py-1"
-          - if m.description.empty?
+          - if m.alias?
+            div
+              | An alias for <a href="#{m.alias_path}" class="font-bold">#{m.alias_name}</a>
+          - elsif m.description.empty?
             div
               | No documentation available
           - else
