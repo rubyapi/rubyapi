@@ -47,6 +47,10 @@ class RubyAPIRDocGenerator
           object_constant: doc.full_name,
           method_type: "#{method_doc.type}_method",
           source_location: "#{@release.version}:#{method_path(method_doc)}:#{method_doc.line}",
+          alias: {
+            path: clean_path(method_doc.is_alias_for&.path, constant: doc.full_name),
+            name: method_doc.is_alias_for&.name
+          },
           call_sequence: method_doc.call_seq ? method_doc.call_seq.strip.split("\n").map { |s| s.gsub "->", "→" } : "",
           metadata: {
             depth: constant_depth(doc.full_name)
@@ -123,5 +127,11 @@ class RubyAPIRDocGenerator
 
   def clean_description(method_class, description)
     RubyDescriptionCleaner.clean(@version, method_class, description)
+  end
+
+  def clean_path(path, constant:)
+    return nil unless path.present?
+
+    PathCleaner.clean(URI(path), constant: constant, version: @version)
   end
 end
