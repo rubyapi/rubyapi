@@ -76,7 +76,7 @@ class RubyObjectTest < ActiveSupport::TestCase
     assert_equal Hash[@object.to_hash.sort], {
       autocomplete: "String",
       constant: "String",
-      constants: [{ name: "HELLO_WORLD", description: "<p>Hello world!</p>" }],
+      constants: [{name: "HELLO_WORLD", description: "<p>Hello world!</p>"}],
       description: "<h1>Hello World</h1>",
       id: "c3RyaW5n",
       included_modules: ["Kernel"],
@@ -97,12 +97,12 @@ class RubyObjectTest < ActiveSupport::TestCase
         name: "to_i",
         object_constant: "String",
         source_location: "2.6.4:string.c:L54",
-        type: :method,
+        type: :method
       }],
       name: "String",
       object_type: "class_object",
       superclass: "Object",
-      type: :object,
+      type: :object
     }
   end
 end

@@ -53,7 +53,7 @@ class ActiveSupport::TestCase
         depth: 1
       },
       constants: [
-        { name: "HELLO_WORLD", description: "<p>Hello World!</p>" }
+        {name: "HELLO_WORLD", description: "<p>Hello World!</p>"}
       ],
       methods: [{
         name: "empty?",

@@ -1,5 +1,4 @@
 class RubyConstant
-
   attr_reader :body
 
   def initialize(body = {})
@@ -17,7 +16,7 @@ class RubyConstant
   def to_hash
     {
       name: name,
-      description: description,
+      description: description
     }
   end
 end
