@@ -28,8 +28,12 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
           div class="w-full md:w-10/12"
             h4 class="lg:text-2xl text-lg text-gray-900 dark:text-gray-200 font-semibold"
               a href="##{c.name}"= c.name
-        div class="ruby-documentation py-1"
-          == c.description
+        - if c.description.empty?
+          div class="ruby-documentation py-1"
+            | No documentation available
+        - else
+          div class="ruby-documentation py-1"
+            == c.description
 
     - @object.ruby_methods.sort_by(&:name).each do |m|
       div class="md:p-3 py-3 my-3"
