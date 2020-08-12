@@ -15,6 +15,13 @@ div class="hidden lg:block w-1/4"
                 = render "objects/sidebar/section/link",
                     title: included_module.constant,
                     href: object_path(object: included_module.path)
+      - unless @object.constants.empty?
+        = render "objects/sidebar/section", title: 'Constants' do
+          ul class="font-mono text-sm"
+            - @object.constants.each do |constant|
+              li
+                = render "objects/sidebar/section/link",
+                    title: constant.name, href: "##{constant.name}"
       - unless @object.ruby_methods.select(&:class_method?).empty?
         = render "objects/sidebar/section", title: 'Class Methods' do
           ul class="font-mono text-sm"

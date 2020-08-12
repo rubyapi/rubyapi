@@ -21,6 +21,16 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
       div class="ruby-documentation"
         == @object.description
     hr
+    - @object.constants.sort_by(&:name).each do |c|
+      div class="md:p-3 py-3 my-3"
+        a style="display: block; position: relative; top: -80px; visibility: hidden;" id="#{c.name}"
+        div class="flex flex-wrap"
+          div class="w-full md:w-10/12"
+            h4 class="lg:text-2xl text-lg text-gray-900 dark:text-gray-200 font-semibold"
+              a href="##{c.name}"= c.name
+        div class="ruby-documentation py-1"
+          == c.description
+
     - @object.ruby_methods.sort_by(&:name).each do |m|
       div class="md:p-3 py-3 my-3"
         a style="display: block; position: relative; top: -80px; visibility: hidden;" id="#{method_anchor m}"
