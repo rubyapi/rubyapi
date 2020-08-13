@@ -51,6 +51,7 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "show method name" do
     string_info = ruby_object(String).to_hash
+
     string_info[:methods] << {
       name: "foo",
       description: "<h1>Hello World</h1>",
@@ -59,7 +60,7 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
       superclass: "Object",
       included_modules: [],
       source_location: "2.6.4:string.c:L1",
-      call_sequence: []
+      call_sequence: "foo(a,b)"
     }
 
     string = RubyObject.new(string_info)
@@ -68,6 +69,33 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
 
     get object_url object: string.path
 
-    assert_select "h4", "foo"
+    assert_select "h4", "foo(a,b)"
+  end
+
+  test "multiline call sequence" do
+    string_info = ruby_object(String).to_hash
+
+    string_info[:methods] << {
+      name: "foo",
+      description: "<h1>Hello World</h1>",
+      method_type: "instance_method",
+      object_constant: "String",
+      superclass: "Object",
+      included_modules: [],
+      source_location: "2.6.4:string.c:L1",
+      call_sequence: [
+        "foo(a,b)",
+        "foo(arg1, arg2)"
+      ]
+    }
+
+    string = RubyObject.new(string_info)
+
+    index_object string
+
+    get object_url object: string.path
+
+    assert_select "h4", "foo(a,b)"
+    assert_select "h4", "foo(arg1, arg2)"
   end
 end
