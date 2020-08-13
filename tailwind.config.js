@@ -33,15 +33,6 @@ module.exports = {
   },
   plugins: [
     require('tailwindcss-dark-mode')(),
-    ({ addUtilities, addVariant, config, e, theme }) => {
-      addUtilities(_.map(config('theme.screens'), (value, key) => {
-        return {
-          [`.${e(`max-w-screen-${key}`)}`]: {
-            "max-width": `${value} !important`
-          }
-        }
-      }))
-    },
     ({ addUtilities, e, theme, }) => {
       addUtilities(_.fromPairs(
         _.map(theme('opacity'), (value, modifier) => {
