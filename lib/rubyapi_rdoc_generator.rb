@@ -51,7 +51,7 @@ class RubyAPIRDocGenerator
             path: clean_path(method_doc.is_alias_for&.path, constant: doc.full_name),
             name: method_doc.is_alias_for&.name
           },
-          call_sequence: method_doc.call_seq ? method_doc.call_seq.strip.split("\n").map { |s| s.gsub "->", "→" } : "",
+          call_sequence: call_sequence_for_method_doc(method_doc),
           metadata: {
             depth: constant_depth(doc.full_name)
           }
@@ -133,5 +133,15 @@ class RubyAPIRDocGenerator
     return nil unless path.present?
 
     PathCleaner.clean(URI(path), constant: constant, version: @version)
+  end
+
+  def call_sequence_for_method_doc(doc)
+    if doc.call_seq.present?
+      doc.call_seq.strip.split("\n").map { |s| s.gsub "->", "→" }
+    elsif doc.arglists.present?
+      doc.arglists.strip
+    else
+      ""
+    end
   end
 end
