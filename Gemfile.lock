@@ -315,7 +315,7 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (2.3.0)
-    sentry-raven (3.0.0)
+    sentry-raven (3.0.3)
       faraday (>= 1.0)
     sitemap_generator (6.1.2)
       builder (~> 3.0)
