@@ -20,7 +20,7 @@ class ExecuteController < ApplicationController
   end
 
   def repl_path
-    REPL_PATH % { engine: "mri", version: version }
+    REPL_PATH % {engine: "mri", version: version}
   end
 
   def version
