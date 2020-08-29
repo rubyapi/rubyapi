@@ -16,6 +16,8 @@ updates:
   labels:
   - javascript
   - dependencies
+  ignore:
+  - dependency-name: "@fortawesome/fontawesome-*"
 - package-ecosystem: "github-actions"
   directory: "/"
   schedule:
