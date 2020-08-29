@@ -10,7 +10,7 @@ class RubyDescriptionCleaner < Trenni::Sanitize::Filter
 
     description = description.gsub(/(<a.*&para;<\/a>)/, "")
       .gsub(/(<a.*&uarr;<\/a>)/, "")
-      .gsub("<pre class=\"ruby\">", "<div class=\"ruby\" data-controller=\"code-example\" data-target=\"code-example.block\" data-code-example-version=\"#{@version}\"></div><pre class=\"ruby\">")
+      .gsub("<pre class=\"ruby\">", "<div class=\"ruby\" data-controller=\"code-example\" data-target=\"code-example.block\" data-code-example-version=\"#{version}\"></div><pre class=\"ruby\">")
       .gsub(/<a.*?href=""\w+"".*?>(.+?)<\/a>/, "\\1")
 
     input = Trenni::Buffer(description)

@@ -14,7 +14,6 @@ export default class extends Controller {
 
   run() {
     const snippet = this.element.nextElementSibling
-    const csrfToken = document.head.querySelector("[name~=csrf-token]").getAttribute("content")
     const version = this.data.get("version")
     this.runTarget.innerHTML = '<i class=\"fas fa-sync fa-spin\"></i>'
 
@@ -28,7 +27,6 @@ export default class extends Controller {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'X-Requested-With': 'XMLHttpRequest',
-        'X-CSRF-Token': csrfToken,
       },
       cache: 'no-cache',
       credentials: "same-origin"
