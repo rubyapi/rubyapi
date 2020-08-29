@@ -68,7 +68,7 @@ class RubyMethod
   end
 
   def method_alias
-    body[:alias]
+    body[:alias] || {}
   end
 
   def to_hash
