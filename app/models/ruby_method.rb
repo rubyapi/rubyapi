@@ -55,6 +55,22 @@ class RubyMethod
     body[:metadata]
   end
 
+  def alias?
+    method_alias.values.any?
+  end
+
+  def alias_path
+    method_alias[:path]
+  end
+
+  def alias_name
+    method_alias[:name]
+  end
+
+  def method_alias
+    body[:alias] || {}
+  end
+
   def to_hash
     {
       name: name,
@@ -66,6 +82,7 @@ class RubyMethod
       method_type: method_type,
       source_location: source_location,
       call_sequence: call_sequence,
+      alias: method_alias,
       metadata: metadata
     }
   end
