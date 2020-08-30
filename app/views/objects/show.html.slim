@@ -26,12 +26,11 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
         a style="display: block; position: relative; top: -80px; visibility: hidden;" id="#{method_anchor m}"
         div class="flex flex-wrap"
           div class="w-full md:w-10/12"
-            - if m.call_sequence.empty?
-              h4 class="lg:text-2xl text-lg text-gray-900 dark:text-gray-200 font-semibold"
-                a href="##{method_anchor(m)}"
-                | #{m.name}
-            - else
-              a href="##{method_anchor(m)}"
+            a href="##{method_anchor(m)}"
+              - if m.call_sequence.empty?
+                h4 class="lg:text-2xl text-lg text-gray-900 dark:text-gray-200 font-semibold"
+                  | #{m.name}
+              - else
                 - m.call_sequence.each do |seq|
                   h4 class="lg:text-2xl text-lg text-gray-900 dark:text-gray-200 font-semibold"
                     = seq
