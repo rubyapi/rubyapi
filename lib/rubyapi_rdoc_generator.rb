@@ -4,9 +4,9 @@ require_relative "ruby_description_cleaner"
 
 class RubyAPIRDocGenerator
   SKIP_NAMESPACES = [
-    /Bundler::.*/,
-    /RDoc::.*/,
-    /IRB::.*/
+    /Bundler.*/,
+    /RDoc.*/,
+    /IRB.*/
   ].freeze
 
   SKIP_NAMESPACE_REGEX = Regexp.union(SKIP_NAMESPACES).freeze
