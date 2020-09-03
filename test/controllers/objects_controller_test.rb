@@ -60,7 +60,7 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
       superclass: "Object",
       included_modules: [],
       source_location: "2.6.4:string.c:L1",
-      call_sequence: "foo(a,b)"
+      call_sequence: ["foo(a,b)"]
     }
 
     string = RubyObject.new(string_info)
