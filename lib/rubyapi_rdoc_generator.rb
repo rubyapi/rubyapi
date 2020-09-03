@@ -138,10 +138,10 @@ class RubyAPIRDocGenerator
   def call_sequence_for_method_doc(doc)
     if doc.call_seq.present?
       doc.call_seq.strip.split("\n").map { |s| s.gsub "->", "→" }
-    elsif doc.arglists.present?
-      doc.arglists.strip
+    elsif doc.arglists.present? && doc.arglists != "#{doc.name}()"
+      [doc.arglists.strip]
     else
-      ""
+      [doc.name]
     end
   end
 end
