@@ -3,7 +3,11 @@
 @tailwind utilities;
 
 pre.ruby {
-  @apply p-3 rounded-b overflow-auto font-mono bg-code-background text-code-text;
+  @apply p-3 rounded-b rounded-t-none overflow-auto font-mono bg-code-background text-code-text;
+}
+
+pre {
+  @apply p-3 rounded bg-gray-300;
 }
 
 .ruby-string { color: #99C794; }
@@ -40,7 +44,49 @@ pre:not(.ruby) {
   @apply overflow-auto font-mono;
 }
 
-.ruby-documentation pre {
+.ruby-documentation {
+  ul {
+    @apply pl-4;
+
+    li {
+      list-style-type: disc;
+    }
+  }
+
+  dd, dt {
+    @apply w-full text-center;
+  }
+
+  dl {
+    @apply flex flex-wrap border-2 border-gray-300;
+  }
+
+  dd {
+    @apply px-3;
+  }
+
+  dt {
+    @apply py-3 bg-gray-300;
+  }
+
+  dt:last-of-type, dd:last-of-type {
+    @apply border-0;
+  }
+
+  @screen lg {
+    dt, dd {
+      @apply border-b-2 border-gray-400 text-center;
+    }
+
+    dd {
+      @apply w-10/12 px-3;
+    }
+
+    dt {
+      @apply w-2/12 p-3;
+    }
+  }
+
   h1, h2, h3, h4, h5 {
     @apply font-semibold text-lg py-1;
   }
