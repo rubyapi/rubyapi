@@ -6,6 +6,10 @@ pre.ruby {
   @apply p-3 rounded-b overflow-auto font-mono bg-code-background text-code-text;
 }
 
+pre {
+  @apply p-3 rounded bg-gray-300;
+}
+
 .ruby-string { color: #99C794; }
 .ruby-keyword { color: #C594C5; }
 .ruby-comment { color: #65737e; }
