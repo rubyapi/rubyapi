@@ -44,7 +44,15 @@ pre:not(.ruby) {
   @apply overflow-auto font-mono;
 }
 
-.ruby-documentation pre {
+.ruby-documentation {
+  ul {
+    @apply pl-4;
+
+    li {
+      list-style-type: disc;
+    }
+  }
+
   h1, h2, h3, h4, h5 {
     @apply font-semibold text-lg py-1;
   }
