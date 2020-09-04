@@ -10,6 +10,22 @@ pre {
   @apply p-3 rounded bg-gray-300;
 }
 
+.mode-dark {
+  pre {
+    @apply bg-gray-900;
+  }
+
+  .ruby-documentation {
+    dt {
+      @apply bg-gray-900;
+    }
+
+    dl, dt, dd {
+      @apply border-gray-700;
+    }
+  }
+}
+
 .ruby-string { color: #99C794; }
 .ruby-keyword { color: #C594C5; }
 .ruby-comment { color: #65737e; }
@@ -49,7 +65,7 @@ pre:not(.ruby) {
     @apply pl-4;
 
     li {
-      list-style-type: disc;
+      @apply list-disc;
     }
   }
 
@@ -58,7 +74,7 @@ pre:not(.ruby) {
   }
 
   dl {
-    @apply flex flex-wrap border-2 border-gray-300;
+    @apply flex flex-wrap border-2 border-gray-400;
   }
 
   dd {
