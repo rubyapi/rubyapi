@@ -15,6 +15,14 @@ module ApplicationHelper
     end
   end
 
+  def object_page?
+    return(@is_object_page) if defined?(@is_object_page)
+
+    @is_object_page = begin
+      params[:controller] == "objects" && params[:action] == "show"
+    end
+  end
+
   # Map a method source file into a url to Github.com
   def github_url(ruby_doc)
     version, file, line = ruby_doc.source_location.split(":")
