@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 pre.ruby {
-  @apply p-3 rounded-b rounded-t-none overflow-auto font-mono bg-code-background text-code-text;
+  @apply p-3 mb-3 rounded-b rounded-t-none overflow-auto font-mono bg-code-background text-code-text;
 }
 
 pre {
