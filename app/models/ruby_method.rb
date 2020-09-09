@@ -23,12 +23,19 @@ class RubyMethod
     body[:object_constant]
   end
 
+  def class_method?
+    method_type == "class_method"
+  end
+
   def instance_method?
     method_type == "instance_method"
   end
 
-  def class_method?
-    method_type == "class_method"
+  def type_identifier
+    if class_method? then "::"
+    elsif instance_method? then "#"
+    else raise "Unknown type of method: #{method_type}"
+    end
   end
 
   def identifier
@@ -85,15 +92,5 @@ class RubyMethod
       alias: method_alias,
       metadata: metadata
     }
-  end
-
-  private
-
-  def type_identifier
-    if instance_method?
-      "#"
-    elsif class_method?
-      "::"
-    end
   end
 end

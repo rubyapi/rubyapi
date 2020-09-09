@@ -15,17 +15,17 @@ div class="hidden lg:block w-1/4"
                 = render "objects/sidebar/section/link",
                     title: included_module.constant,
                     href: object_path(object: included_module.path)
-      - unless @object.ruby_methods.select(&:class_method?).empty?
+      - unless @object.ruby_class_methods.empty?
         = render "objects/sidebar/section", title: 'Class Methods' do
           ul class="font-mono text-sm"
-            - @object.ruby_methods.select(&:class_method?).sort_by(&:name).each do |m|
+            - @object.ruby_class_methods.each do |m|
               li
                 = render "objects/sidebar/section/link",
                     title: ":: #{m.name}", href: "##{method_anchor(m)}"
-      - unless @object.ruby_methods.select(&:instance_method?).empty?
+      - unless @object.ruby_instance_methods.empty?
         = render "objects/sidebar/section", title: 'Instance Methods' do
           ul class="font-mono text-sm"
-            - @object.ruby_methods.select(&:instance_method?).sort_by(&:name).each do |m|
+            - @object.ruby_instance_methods.each do |m|
               li
                 = render "objects/sidebar/section/link",
                     title: "# #{m.name}", href: "##{method_anchor(m)}"

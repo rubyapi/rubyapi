@@ -60,6 +60,16 @@ class RubyObject
     @ruby_methods ||= body[:methods].collect { |m| RubyMethod.new(m) }
   end
 
+  def ruby_class_methods
+    @ruby_class_methods ||=
+      ruby_methods.select(&:class_method?).sort_by(&:name)
+  end
+
+  def ruby_instance_methods
+    @ruby_instance_methods ||=
+      ruby_methods.select(&:instance_method?).sort_by(&:name)
+  end
+
   def superclass
     return @superclass if defined?(@superclass)
 

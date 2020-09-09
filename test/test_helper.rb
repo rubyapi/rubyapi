@@ -52,29 +52,41 @@ class ActiveSupport::TestCase
       metadata: {
         depth: 1
       },
-      methods: [{
-        name: "empty?",
-        description: "<h1>Hello World!</h1>",
-        method_type: "instance_method",
-        object_constant: constant.to_s,
-        source_location: "2.6.4:string.c:76",
-        metadata: {
-          depth: 1
-        },
-        call_sequence: []
-      }, {
-        name: "to_i",
-        description: "<h1>Hello World</h1>",
-        method_type: "instance_method",
-        object_constant: constant.to_s,
-        source_location: "2.6.4:string.c:54",
-        metadata: {
-          depth: 1
-        },
-        call_sequence: [
-          "str.to_i # => 1"
-        ]
-      }]
+      methods: [
+        {
+          name: "new",
+          description: "<h1>Hello World!</h1>",
+          method_type: "class_method",
+          object_constant: constant.to_s,
+          source_location: "2.6.4:string.c:3",
+          metadata: {
+            depth: 1
+          },
+          call_sequence: []
+        }, {
+          name: "empty?",
+          description: "<h1>Hello World!</h1>",
+          method_type: "instance_method",
+          object_constant: constant.to_s,
+          source_location: "2.6.4:string.c:76",
+          metadata: {
+            depth: 1
+          },
+          call_sequence: []
+        }, {
+          name: "to_i",
+          description: "<h1>Hello World</h1>",
+          method_type: "instance_method",
+          object_constant: constant.to_s,
+          source_location: "2.6.4:string.c:54",
+          metadata: {
+            depth: 1
+          },
+          call_sequence: [
+            "str.to_i # => 1"
+          ]
+        }
+      ]
     }
 
     RubyObject.new(attributes)
