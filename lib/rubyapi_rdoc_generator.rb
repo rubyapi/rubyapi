@@ -3,13 +3,13 @@
 require_relative "ruby_description_cleaner"
 
 class RubyAPIRDocGenerator
-  SKIP_NAMESPACES = [
-    /Bundler.*/,
-    /RDoc.*/,
-    /IRB.*/
+  SKIP_NAMESPACES = %w[
+    Bundler
+    RDoc
+    IRB
   ].freeze
 
-  SKIP_NAMESPACE_REGEX = Regexp.union(SKIP_NAMESPACES).freeze
+  SKIP_NAMESPACE_REGEX = /^(#{SKIP_NAMESPACES.join('|')})($|::.+)/.freeze
 
   def class_dir
   end
@@ -37,7 +37,11 @@ class RubyAPIRDocGenerator
     objects = []
 
     @documentation.each do |doc|
-      next if skip_namespace? doc.full_name
+      if skip_namespace? doc.full_name
+        ImportUI.warn "Skipping #{doc.full_name}"
+        next
+      end
+
       methods = []
 
       doc.method_list.each do |method_doc|
