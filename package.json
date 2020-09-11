@@ -13,7 +13,7 @@
     "mustache": "^4.0.1",
     "postcss-cssnext": "^3.1.0",
     "stimulus": "^1.1.1",
-    "tailwindcss": "^1.8.5",
+    "tailwindcss": "^1.8.7",
     "tailwindcss-dark-mode": "^1.1.6"
   },
   "devDependencies": {
