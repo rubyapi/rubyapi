@@ -26,9 +26,12 @@ class RubyObjectTest < ActiveSupport::TestCase
           metadata: {
             depth: 1
           },
-          call_sequence: <<~G
+          call_sequence: <<~G,
             String.new # => ""
           G
+          source_body: <<~SRC
+            puts "Hello world!"
+          SRC
         },
         {
           name: "to_i",
@@ -42,6 +45,9 @@ class RubyObjectTest < ActiveSupport::TestCase
           call_sequence: <<~G,
             str.to_i # => 1
           G
+          source_body: <<~SRC,
+            puts "Hello world!"
+          SRC
           alias: {
             path: "String.html#to_integer",
             name: "to_integer"
@@ -127,6 +133,9 @@ class RubyObjectTest < ActiveSupport::TestCase
           call_sequence: <<~G,
             String.new # => ""
           G
+          source_body: <<~SRC,
+            puts "Hello world!"
+          SRC
           alias: {}
         },
         {
@@ -144,6 +153,9 @@ class RubyObjectTest < ActiveSupport::TestCase
           call_sequence: <<~G,
             str.to_i # => 1
           G
+          source_body: <<~SRC,
+            puts "Hello world!"
+          SRC
           alias: {
             path: "String.html#to_integer",
             name: "to_integer"

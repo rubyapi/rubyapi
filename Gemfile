@@ -31,6 +31,7 @@ group :preload, :default do
   gem "rdoc", require: false
   gem "trenni-sanitize", require: false
   gem "pastel", require: false
+  gem "rouge", require: false
 end
 
 gem "slim"

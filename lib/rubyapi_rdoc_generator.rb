@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "ruby_description_cleaner"
+require "rouge"
 
 class RubyAPIRDocGenerator
   SKIP_NAMESPACES = %w[
@@ -56,6 +57,7 @@ class RubyAPIRDocGenerator
             name: method_doc.is_alias_for&.name
           },
           call_sequence: call_sequence_for_method_doc(method_doc),
+          source_body: format_method_source_body(method_doc),
           metadata: {
             depth: constant_depth(doc.full_name)
           }
@@ -135,7 +137,6 @@ class RubyAPIRDocGenerator
 
   def clean_path(path, constant:)
     return nil unless path.present?
-
     PathCleaner.clean(URI(path), constant: constant, version: @version)
   end
 
@@ -147,5 +148,15 @@ class RubyAPIRDocGenerator
     else
       [doc.name]
     end
+  end
+
+  def format_method_source_body(method_doc)
+    return method_doc.markup_code if method_doc.token_stream&.any? { |t| t.class.to_s == "RDoc::Parser::RipperStateLex::Token" }
+
+    lexer = Rouge::Lexers::C.new
+    html_formatter = Rouge::Formatters::HTML.new
+    formatter = Rouge::Formatters::HTMLLinewise.new(html_formatter, class: "line")
+
+    formatter.format(lexer.lex(method_doc.markup_code))
   end
 end

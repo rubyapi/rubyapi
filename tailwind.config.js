@@ -9,8 +9,8 @@ module.exports = {
       colors: {
         code: {
           "header": "#2f3e46",
-          "background": "#1b2b34",
-          "text": "#d8dee9"
+          "background": "#282c34",
+          "text": "#dcdfe4"
         }, 
         red: {
           "100": "#f2d7d8",

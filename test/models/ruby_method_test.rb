@@ -17,9 +17,12 @@ class RubyMethodTest < ActiveSupport::TestCase
         path: "String.html#to_integer",
         name: "to_integer"
       },
-      call_sequence: <<~G
+      call_sequence: <<~G,
         str.to_i # => 1
       G
+      source_body: <<~SRC
+        puts "Hello world!"
+      SRC
     }
 
     @method = RubyMethod.new(attributes)
@@ -35,6 +38,9 @@ class RubyMethodTest < ActiveSupport::TestCase
     assert_equal @method.call_sequence, <<~G
       str.to_i # => 1
     G
+    assert_equal @method.source_body, <<~SRC
+      puts "Hello world!"
+    SRC
   end
 
   test "#instance_method?" do
@@ -85,6 +91,9 @@ class RubyMethodTest < ActiveSupport::TestCase
       method_type: "instance_method",
       name: "to_i",
       object_constant: "String",
+      source_body: <<~SRC,
+        puts "Hello world!"
+      SRC
       source_location: "2.6.4:string.c:L54",
       type: :method
     }
