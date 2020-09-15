@@ -29,7 +29,9 @@ module.exports = {
   variants: {
     backgroundColor: ['focus', 'hover', 'dark', 'dark-focus', 'dark-hover', 'dark-group-hover', 'dark-even', 'dark-odd'],
     borderColor: ['focus', 'hover', 'dark', 'dark-focus', 'dark-focus-within'],
-    textColor: ['focus', 'hover', 'dark', 'dark-focus', 'dark-hover', 'dark-active', 'dark-placeholder']
+    textColor: ['focus', 'hover', 'dark', 'dark-focus', 'dark-hover', 'dark-active', 'dark-placeholder'],
+    opacity: ['responsive', 'hover', 'focus', 'disabled'],
+    cursor: ['responsive', 'hover', 'focus', 'disabled'],
   },
   plugins: [
     require('tailwindcss-dark-mode')(),
