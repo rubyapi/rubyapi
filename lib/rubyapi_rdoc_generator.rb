@@ -151,12 +151,15 @@ class RubyAPIRDocGenerator
   end
 
   def format_method_source_body(method_doc)
-    return method_doc.markup_code if method_doc.token_stream&.any? { |t| t.class.to_s == "RDoc::Parser::RipperStateLex::Token" }
+    method_src = CGI.unescapeHTML(method_doc.markup_code)
+
+    # if the method src is written in Ruby - instead of C, RDoc has already parsed it & turned it into HTML.
+    return method_src if method_doc.token_stream&.any? { |t| t.class.to_s == "RDoc::Parser::RipperStateLex::Token" }
 
     lexer = Rouge::Lexers::C.new
     html_formatter = Rouge::Formatters::HTML.new
     formatter = Rouge::Formatters::HTMLLinewise.new(html_formatter, class: "line")
 
-    formatter.format(lexer.lex(method_doc.markup_code))
+    formatter.format(lexer.lex(method_src))
   end
 end
