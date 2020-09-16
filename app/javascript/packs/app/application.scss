@@ -69,6 +69,10 @@ code {
   }
 }
 
+.mode-dark .method-src-body {
+  background: none;
+}
+
 .mode-dark {
   code { @apply bg-gray-700 text-gray-400; }
 }

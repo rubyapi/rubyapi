@@ -9,6 +9,7 @@ export default class extends Controller {
     this.showSrcBodyButtonTarget.classList.toggle("text-white")
     this.showSrcBodyButtonTarget.classList.toggle("hover:bg-blue-700")
     this.showSrcBodyButtonTarget.classList.toggle("hover:text-white-300")
+    this.showSrcBodyButtonTarget.classList.toggle("dark:bg-gray-900")
     this.srcBodyTarget.classList.toggle("hidden")
   }
 }
