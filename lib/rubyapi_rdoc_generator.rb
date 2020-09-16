@@ -161,7 +161,6 @@ class RubyAPIRDocGenerator
       end
     end
 
-    
     html_formatter = Rouge::Formatters::HTML.new
     formatter = Rouge::Formatters::HTMLLinewise.new(html_formatter, class: "line")
 
