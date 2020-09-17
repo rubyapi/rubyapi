@@ -27,13 +27,13 @@ pre {
 }
 
 .ruby-string { color: #99C794; }
-.ruby-keyword { color: #C594C5; }
-.ruby-comment { color: #65737e; }
-.ruby-constant { color: #fac863; }
-.ruby-identifier { color: #ec5f67; }
+.ruby-keyword, .k, .kt { color: #c678dd; }
+.ruby-comment, .c1 { color: #65737e; }
+.ruby-constant, .mi { color: #e5c07b; }
+.ruby-identifier, .o { color: #ec5f67; }
 .ruby-value { color: #F99157; }
-.ruby-regexp { color: #5FB3B3; }
-.ruby-operator { color: #5FB3B3; }
+.ruby-regexp, .sr { color: #98c379; }
+.ruby-operator, .nf { color: #61afef; }
 
 p {
   @apply my-3;
@@ -50,6 +50,27 @@ p {
 code {
   padding: 0.15rem;
   @apply bg-gray-300 rounded leading-relaxed text-sm text-gray-700;
+}
+
+.method-src-body {
+  padding: 0;
+  background: none;
+  counter-reset: listing;
+
+  .line {
+    counter-increment: listing;
+  }
+
+  .line:before {
+    @apply pr-2 mr-3 w-8 text-center border-r-2 border-gray-600 text-gray-600;
+    user-select: none;
+    display: inline-block;
+    content: counter(listing);
+  }
+}
+
+.mode-dark .method-src-body {
+  background: none;
 }
 
 .mode-dark {

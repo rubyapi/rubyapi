@@ -78,6 +78,18 @@ class RubyMethod
     body[:alias] || {}
   end
 
+  def source_body
+    body[:source_body]
+  end
+
+  def source_file
+    source_properties[1]
+  end
+
+  def source_line
+    source_properties[2]
+  end
+
   def to_hash
     {
       name: name,
@@ -90,7 +102,14 @@ class RubyMethod
       source_location: source_location,
       call_sequence: call_sequence,
       alias: method_alias,
+      source_body: source_body,
       metadata: metadata
     }
+  end
+
+  private
+
+  def source_properties
+    source_location.split(":")
   end
 end
