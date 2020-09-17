@@ -1,2 +1,2 @@
 ignored_endpoints:
-  - HeartbeatController#index
+  - HealthcheckController
