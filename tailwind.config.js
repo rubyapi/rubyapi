@@ -11,7 +11,7 @@ module.exports = {
           "header": "#2f3e46",
           "background": "#282c34",
           "text": "#dcdfe4"
-        }, 
+        },
         red: {
           "100": "#f2d7d8",
           "200": "#f3b8bc",
