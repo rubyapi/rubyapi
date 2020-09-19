@@ -1,6 +1,6 @@
-# Ruby API: Easily Find Ruby documentation 
+# Ruby API: Easily Find Ruby documentation
 
-[![View performance data on Skylight](https://badges.skylight.io/status/k1noEyWLdXuJ.svg)](https://oss.skylight.io/app/applications/k1noEyWLdXuJ) 
+[![View performance data on Skylight](https://badges.skylight.io/status/k1noEyWLdXuJ.svg)](https://oss.skylight.io/app/applications/k1noEyWLdXuJ)
 [![CI](https://github.com/rubyapi/rubyapi/workflows/CI/badge.svg?branch=master)](https://github.com/rubyapi/rubyapi/actions?query=workflow%3ACI+branch%3Amaster)
 
 Ruby API makes it easy and fast to search or browse the Ruby language API docs.
@@ -11,45 +11,59 @@ The existing websites for Ruby documentation are hard to search, and impossible 
 
 We aim to improve the Ruby ecosystem by being:
 
-  * Readable on any size device
-  * Fast on any speed internet connection
-  * Relevant search results that surface useful APIs
-  * Search engine optimized pages for every API method
-  * Free, with no ads. Ever.
+* Readable on any size device
+* Fast on any speed internet connection
+* Relevant search results that surface useful APIs
+* Search engine optimized pages for every API method
+* Free, with no ads. Ever.
 
 ## Getting started
 
 Install dependencies:
 
-    $ bundle install && yarn install
+```sh
+$ bundle install && yarn install
+```
 
 Start ElasticSearch:
 
-    $ docker-compose up -d
+```sh
+$ docker-compose up -d
+```
 
 Start the Rails Server
 
-    $ ./bin/rails server
+```sh
+$ ./bin/rails server
+```
 
 Optionally, you also may want to start the webpack dev server
 
-    $ ./bin/webpack-dev-server
+```sh
+$ ./bin/webpack-dev-server
+```
 
 ## Importing Documentation
 
 Ruby's documentation can be imported very easily. There's a rake task that will let you import a given versions' documentation:
 
-    $ ./bin/rake import:ruby[2.6.4]
+```sh
+$ ./bin/rake import:ruby[2.6.4]
+```
 
 or you can easily import the latest versions of all currently supported versions of ruby:
 
-    $ ./bin/rake import:ruby:all
+```sh
+$ ./bin/rake import:ruby:all
+```
 
 ## Running tests
 
 The test suite can be executed with:
 
-    $ ./bin/rake test
+```sh
+$ ./bin/rake test
+```
 
 ## Linting code
 
@@ -57,7 +71,9 @@ This project uses [StandardRB](https://github.com/testdouble/standard) for linti
 
 StandardRB can be executed with:
 
-    $ ./bin/standardrb
+```sh
+$ ./bin/standardrb
+```
 
 _Note: This command may make changes to your code, to make it conform to the formatting rules of
 this project._
