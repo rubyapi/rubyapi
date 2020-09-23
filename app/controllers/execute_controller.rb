@@ -25,6 +25,7 @@ class ExecuteController < ApplicationController
 
   def version
     v = params[:version].present? ? params[:version] : default_ruby_version
+    return "30" if v == "master"
     Gem::Version.new(v).canonical_segments.join
   end
 
