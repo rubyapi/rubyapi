@@ -33,7 +33,7 @@ class RubyDownloader
   end
 
   def extracted_download_path
-    if release.master?
+    if release.dev?
       rubies_download_path.join "ruby-master"
     else
       rubies_download_path.join File.basename(release.source_url.path, ".zip")

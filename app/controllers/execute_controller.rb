@@ -20,13 +20,17 @@ class ExecuteController < ApplicationController
   end
 
   def repl_path
-    REPL_PATH % {engine: "mri", version: version}
+    REPL_PATH % {engine: engine, version: version}
   end
 
   def version
     v = params[:version].present? ? params[:version] : default_ruby_version
-    return "30" if v == "master"
+    return "30" if v == "dev"
     Gem::Version.new(v).canonical_segments.join
+  end
+
+  def engine
+    params[:engine].present? ? params[:engine] : "mri"
   end
 
   def repl_host
