@@ -10,6 +10,10 @@ namespace :import do
 
     release = RubyReleases::ReleaseList.fetch.find { |r| r.version.to_s == args.version }
 
+    if ENV["FORCE_RUBY_DOWNLOAD_URL"].present?
+      release = RubyVersion.new(args.version, source_url: ENV["FORCE_RUBY_DOWNLOAD_URL"])
+    end
+
     unless release
       puts "Could not find MRI release for version #{args.version}"
       exit 1
