@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ExecuteController < ApplicationController
+class CodeExecuteController < ApplicationController
   REPL_PATH = "exec/%{engine}/%{version}"
 
   def post
@@ -25,8 +25,7 @@ class ExecuteController < ApplicationController
 
   def version
     v = params[:version].present? ? params[:version] : default_ruby_version
-    return "30" if v == "dev"
-    Gem::Version.new(v).canonical_segments.join
+    v.include?(".") ? Gem::Version.new(v).canonical_segments.join : v
   end
 
   def engine
