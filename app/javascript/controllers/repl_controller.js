@@ -16,7 +16,7 @@ export default class extends Controller {
     })
 
     this.editor = monaco.editor.create(this.editorContainerTarget, {
-      value: "puts \"Hello World!\"",
+      value: "puts \"Hello from #{RUBY_ENGINE} #{RUBY_VERSION} 👋\"",
       language: 'ruby',
       minimap: {
         enabled: false
