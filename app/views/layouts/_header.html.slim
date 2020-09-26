@@ -7,7 +7,7 @@ header id="header" class="flex items-center inset-x-0 z-50 h-16 #{'text-white bg
       - unless homepage?
         div class="lg:w-5/12 md:w-6/12 w-8/12"
             = render 'layouts/search_form'
-      div class="#{homepage? ? 'md:w-2/12 w-6/12' : 'w-3/12'}"
+      div class="#{homepage? ? 'md:w-3/12 w-6/12' : 'w-2/12'}"
         div class="flex flex-row-reverse"
           = render 'layouts/theme_selector'
           = render 'layouts/github_links'
