@@ -7,14 +7,13 @@ export default class extends Controller {
   connect() {
     const codeBar = document.createElement("div")
     codeBar.classList.add("w-full", "px-3", "py-2", "bg-code-header", "dark:bg-gray-700", "items-center", "flex", "justify-between", "font-mono", "rounded-t")
-    codeBar.innerHTML = "<h4 class=\"text-gray-300 text-sm\">Example</h4><div><button class=\"px-2\" data-action=\"click->code-example#run\"><span class=\"text-gray-300 fill-current hover:text-gray-500\" data-target=\"code-example.run\"><i class=\"fas fa-play\"></i></span></button><button tilte=\"Copy to clipboard\" class=\"pl-2\" data-action=\"click->code-example#copy\" aria-label=\"Copy to clipboard\"><span data-target=\"code-example.copy\" class=\"text-gray-300 fill-current hover:text-gray-500\"><i class=\"far fa-copy\"></i></span></button></div>"
+    codeBar.innerHTML = "<span class=\"text-gray-300 text-sm\">Example</span><div><button class=\"px-2\" data-action=\"click->code-example#run\"><span class=\"text-gray-300 fill-current hover:text-gray-500\" data-target=\"code-example.run\"><i class=\"fas fa-play\"></i></span></button><button tilte=\"Copy to clipboard\" class=\"pl-2\" data-action=\"click->code-example#copy\" aria-label=\"Copy to clipboard\"><span data-target=\"code-example.copy\" class=\"text-gray-300 fill-current hover:text-gray-500\"><i class=\"far fa-copy\"></i></span></button></div>"
 
     this.blockTarget.append(codeBar)
   }
 
   run() {
     const snippet = this.element.nextElementSibling
-    const csrfToken = document.head.querySelector("[name~=csrf-token]").getAttribute("content")
     const version = this.data.get("version")
     this.runTarget.innerHTML = '<i class=\"fas fa-sync fa-spin\"></i>'
 
@@ -28,7 +27,6 @@ export default class extends Controller {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'X-Requested-With': 'XMLHttpRequest',
-        'X-CSRF-Token': csrfToken,
       },
       cache: 'no-cache',
       credentials: "same-origin"

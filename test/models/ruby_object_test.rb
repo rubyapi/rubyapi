@@ -22,6 +22,22 @@ class RubyObjectTest < ActiveSupport::TestCase
       }],
       methods: [
         {
+          name: "new",
+          description: "<h1>Hello World</h1>",
+          method_type: "class_method",
+          object_constant: "String",
+          source_location: "2.6.4:string.c:L28",
+          metadata: {
+            depth: 1
+          },
+          call_sequence: <<~G,
+            String.new # => ""
+          G
+          source_body: <<~SRC
+            puts "Hello world!"
+          SRC
+        },
+        {
           name: "to_i",
           description: "<h1>Hello World</h1>",
           method_type: "instance_method",
@@ -30,9 +46,16 @@ class RubyObjectTest < ActiveSupport::TestCase
           metadata: {
             depth: 1
           },
-          call_sequence: <<~G
+          call_sequence: <<~G,
             str.to_i # => 1
           G
+          source_body: <<~SRC,
+            puts "Hello world!"
+          SRC
+          alias: {
+            path: "String.html#to_integer",
+            name: "to_integer"
+          }
         }
       ]
     }
@@ -68,12 +91,28 @@ class RubyObjectTest < ActiveSupport::TestCase
   end
 
   test "ruby_methods" do
-    method = @object.ruby_methods.first
-    assert_equal method.class, RubyMethod
+    assert_equal @object.ruby_methods.all? { |m| m.is_a?(RubyMethod) }, true
+  end
+
+  test "ruby_class_methods" do
+    assert_equal(
+      @object.ruby_class_methods.all? { |m| m.is_a?(RubyMethod) },
+      true
+    )
+    assert_equal @object.ruby_class_methods.all?(&:class_method?), true
+  end
+
+  test "ruby_instance_methods" do
+    assert_equal(
+      @object.ruby_instance_methods.all? { |m| m.is_a?(RubyMethod) },
+      true
+    )
+    assert_equal @object.ruby_instance_methods.all?(&:instance_method?), true
   end
 
   test "#to_hash" do
-    assert_equal Hash[@object.to_hash.sort], {
+    object_hash = @object.to_hash
+    assert_equal object_hash.sort.to_h, {
       autocomplete: "String",
       constant: "String",
       constants: [{name: "HELLO_WORLD", description: "<p>Hello world!</p>"}],
@@ -83,22 +122,51 @@ class RubyObjectTest < ActiveSupport::TestCase
       metadata: {
         depth: 1
       },
-      methods: [{
-        autocomplete: "String#to_i",
-        call_sequence: <<~G,
-          str.to_i # => 1
-        G
-        description: "<h1>Hello World</h1>",
-        identifier: "String#to_i",
-        metadata: {
-          depth: 1
+      methods: [
+        {
+          name: "new",
+          description: "<h1>Hello World</h1>",
+          type: :method,
+          autocomplete: "String::new",
+          object_constant: "String",
+          identifier: "String::new",
+          method_type: "class_method",
+          source_location: "2.6.4:string.c:L28",
+          metadata: {
+            depth: 1
+          },
+          call_sequence: <<~G,
+            String.new # => ""
+          G
+          source_body: <<~SRC,
+            puts "Hello world!"
+          SRC
+          alias: {}
         },
-        method_type: "instance_method",
-        name: "to_i",
-        object_constant: "String",
-        source_location: "2.6.4:string.c:L54",
-        type: :method
-      }],
+        {
+          name: "to_i",
+          description: "<h1>Hello World</h1>",
+          type: :method,
+          autocomplete: "String#to_i",
+          object_constant: "String",
+          identifier: "String#to_i",
+          method_type: "instance_method",
+          source_location: "2.6.4:string.c:L54",
+          metadata: {
+            depth: 1
+          },
+          call_sequence: <<~G,
+            str.to_i # => 1
+          G
+          source_body: <<~SRC,
+            puts "Hello world!"
+          SRC
+          alias: {
+            path: "String.html#to_integer",
+            name: "to_integer"
+          }
+        }
+      ],
       name: "String",
       object_type: "class_object",
       superclass: "Object",

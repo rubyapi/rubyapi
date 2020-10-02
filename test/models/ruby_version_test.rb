@@ -22,11 +22,11 @@ class RubyVersionTest < ActiveSupport::TestCase
     assert_equal version.prerelease?, false
   end
 
-  test "#master?" do
-    version = RubyVersion.new("master")
-    assert_equal version.master?, true
+  test "#dev?" do
+    version = RubyVersion.new("dev")
+    assert_equal version.dev?, true
 
     version = RubyVersion.new("2.4.0")
-    assert_equal version.master?, false
+    assert_equal version.dev?, false
   end
 end

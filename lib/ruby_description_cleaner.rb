@@ -10,7 +10,7 @@ class RubyDescriptionCleaner < Trenni::Sanitize::Filter
 
     description = description.gsub(/(<a.*&para;<\/a>)/, "")
       .gsub(/(<a.*&uarr;<\/a>)/, "")
-      .gsub("<pre class=\"ruby\">", "<div class=\"ruby\" data-controller=\"code-example\" data-target=\"code-example.block\" data-code-example-version=\"#{@version}\"></div><pre class=\"ruby\">")
+      .gsub("<pre class=\"ruby\">", "<div class=\"ruby\" data-controller=\"code-example\" data-target=\"code-example.block\" data-code-example-version=\"#{version}\"></div><pre class=\"ruby\">")
       .gsub(/<a.*?href=""\w+"".*?>(.+?)<\/a>/, "\\1")
 
     input = Trenni::Buffer(description)
@@ -36,7 +36,7 @@ class RubyDescriptionCleaner < Trenni::Sanitize::Filter
       uri = URI(url)
       if uri.host.nil? && uri.path.present?
         # Only edit relative paths, but skip anchor-only paths.
-        node.tag.attributes["href"] = cleaned_href(uri)
+        node.tag.attributes["href"] = PathCleaner.clean(uri, constant: object_constant, version: version)
       end
     end
 
@@ -46,23 +46,5 @@ class RubyDescriptionCleaner < Trenni::Sanitize::Filter
     # Not a valid URL, so get rid of the <a> and just return the content.
     # EG: '<a href=":ssl">options</a>' becomes 'options'
     node.skip!(TAG)
-  end
-
-  def cleaned_href(uri)
-    class_parts = object_constant.split("::")[0..-2]
-
-    uri.path.delete_suffix(".html").split("/").each do |path_part|
-      if path_part == ".."
-        class_parts.pop
-      else
-        class_parts.push(path_part)
-      end
-    end
-
-    Rails.application.routes.url_helpers.object_path({
-      version: version,
-      object: class_parts.join("/").downcase,
-      anchor: uri.fragment
-    })
   end
 end

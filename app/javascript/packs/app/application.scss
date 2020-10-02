@@ -3,20 +3,40 @@
 @tailwind utilities;
 
 pre.ruby {
-  @apply p-3 rounded-b overflow-auto font-mono bg-code-background text-code-text;
+  @apply p-3 mb-3 rounded-b rounded-t-none overflow-auto font-mono bg-code-background text-code-text;
+}
+
+pre {
+  @apply p-3 rounded bg-gray-300;
+}
+
+.mode-dark {
+  pre {
+    @apply bg-gray-900;
+  }
+
+  .ruby-documentation {
+    dt {
+      @apply bg-gray-900;
+    }
+
+    dl, dt, dd {
+      @apply border-gray-700;
+    }
+  }
 }
 
 .ruby-string { color: #99C794; }
-.ruby-keyword { color: #C594C5; }
-.ruby-comment { color: #65737e; }
-.ruby-constant { color: #fac863; }
-.ruby-identifier { color: #ec5f67; }
+.ruby-keyword, .k, .kt { color: #c678dd; }
+.ruby-comment, .c1 { color: #65737e; }
+.ruby-constant, .mi { color: #e5c07b; }
+.ruby-identifier, .o { color: #ec5f67; }
 .ruby-value { color: #F99157; }
-.ruby-regexp { color: #5FB3B3; }
-.ruby-operator { color: #5FB3B3; }
+.ruby-regexp, .sr { color: #98c379; }
+.ruby-operator, .nf { color: #61afef; }
 
 p {
-  @apply py-3;
+  @apply my-3;
 }
 
 .overflow-wrap-break-word {
@@ -27,9 +47,34 @@ p {
   height: calc(100vh - 7rem)!important;
 }
 
+.h-94 {
+  height: calc(100vh - 6rem)!important;
+}
+
 code {
   padding: 0.15rem;
   @apply bg-gray-300 rounded leading-relaxed text-sm text-gray-700;
+}
+
+.method-src-body {
+  padding: 0;
+  background: none;
+  counter-reset: listing;
+
+  .line {
+    counter-increment: listing;
+  }
+
+  .line:before {
+    @apply pr-2 mr-3 w-8 text-center border-r-2 border-gray-600 text-gray-600;
+    user-select: none;
+    display: inline-block;
+    content: counter(listing);
+  }
+}
+
+.mode-dark .method-src-body {
+  background: none;
 }
 
 .mode-dark {
@@ -40,7 +85,49 @@ pre:not(.ruby) {
   @apply overflow-auto font-mono;
 }
 
-.ruby-documentation pre {
+.ruby-documentation {
+  ul {
+    @apply pl-4;
+
+    li {
+      @apply list-disc;
+    }
+  }
+
+  dd, dt {
+    @apply w-full text-center;
+  }
+
+  dl {
+    @apply flex flex-wrap border-2 border-gray-400;
+  }
+
+  dd {
+    @apply px-3;
+  }
+
+  dt {
+    @apply py-3 bg-gray-300;
+  }
+
+  dt:last-of-type, dd:last-of-type {
+    @apply border-0;
+  }
+
+  @screen lg {
+    dt, dd {
+      @apply border-b-2 border-gray-400 text-center;
+    }
+
+    dd {
+      @apply w-10/12 px-3;
+    }
+
+    dt {
+      @apply w-2/12 p-3;
+    }
+  }
+
   h1, h2, h3, h4, h5 {
     @apply font-semibold text-lg py-1;
   }

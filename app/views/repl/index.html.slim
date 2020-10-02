@@ -1,0 +1,22 @@
+div class="mt-16" data-controller="repl"
+  div class="pt-2 grid md:grid-cols-3 gap-6"
+    div class="col-span-2 relative"
+      div class="ml-2 mt-2 h-94" data-target="repl.editorContainer"
+      div class="z-50 absolute top-0 right-0"
+        div class="flex"
+          select class="appearance-none bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded-lg shadow py-2 mx-2 -ml-2" data-target="repl.versionSelector"
+            option value="mri-30" MRI Ruby 3.0 Preview 1
+            option value="mri-27" selected="selected" MRI Ruby 2.7
+            option value="mri-26" MRI Ruby 2.6
+            option value="mri-25" MRI Ruby 2.5
+            option value="mri-24" MRI Ruby 2.4
+            option value="mri-23" MRI Ruby 2.3
+            option value="mri-dev" MRI Ruby Dev
+            option value="jruby-latest" JRuby
+            option value="mruby-latest" MRuby
+            option value="mruby-dev" MRuby Dev
+            option value="artichokeruby-latest" Artichoke Ruby
+          button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded-lg shadow py-2 mx-2 -mr-2" data-target="repl.playButton" data-action="click->repl#execute"
+            <i class="fas fa-play"></i>
+    div class="col-span-1"
+      pre class="mr-2 p-4 h-94 rounded-lg font-mono whitespace-pre-wrap break-word bg-gray-200 dark:bg-gray-900" data-target="repl.resultsWindow"

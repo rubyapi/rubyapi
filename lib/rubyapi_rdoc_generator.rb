@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 require_relative "ruby_description_cleaner"
+require "rouge"
 
 class RubyAPIRDocGenerator
-  SKIP_NAMESPACES = [
-    /Bundler::.*/,
-    /RDoc::.*/,
-    /IRB::.*/
+  SKIP_NAMESPACES = %w[
+    Bundler
+    RDoc
+    IRB
   ].freeze
 
-  SKIP_NAMESPACE_REGEX = Regexp.union(SKIP_NAMESPACES).freeze
+  SKIP_NAMESPACE_REGEX = /^(#{SKIP_NAMESPACES.join('|')})($|::.+)/.freeze
 
   def class_dir
   end
@@ -37,7 +38,11 @@ class RubyAPIRDocGenerator
     objects = []
 
     @documentation.each do |doc|
-      next if skip_namespace? doc.full_name
+      if skip_namespace? doc.full_name
+        ImportUI.warn "Skipping #{doc.full_name}"
+        next
+      end
+
       methods = []
 
       doc.method_list.each do |method_doc|
@@ -47,7 +52,12 @@ class RubyAPIRDocGenerator
           object_constant: doc.full_name,
           method_type: "#{method_doc.type}_method",
           source_location: "#{@release.version}:#{method_path(method_doc)}:#{method_doc.line}",
-          call_sequence: method_doc.call_seq ? method_doc.call_seq.strip.split("\n").map { |s| s.gsub "->", "→" } : "",
+          alias: {
+            path: clean_path(method_doc.is_alias_for&.path, constant: doc.full_name),
+            name: method_doc.is_alias_for&.name
+          },
+          call_sequence: call_sequence_for_method_doc(method_doc),
+          source_body: format_method_source_body(method_doc),
           metadata: {
             depth: constant_depth(doc.full_name)
           }
@@ -124,5 +134,37 @@ class RubyAPIRDocGenerator
 
   def clean_description(method_class, description)
     RubyDescriptionCleaner.clean(@version, method_class, description)
+  end
+
+  def clean_path(path, constant:)
+    return nil unless path.present?
+    PathCleaner.clean(URI(path), constant: constant, version: @version)
+  end
+
+  def call_sequence_for_method_doc(doc)
+    if doc.call_seq.present?
+      doc.call_seq.strip.split("\n").map { |s| s.gsub "->", "→" }
+    elsif doc.arglists.present? && doc.arglists != "#{doc.name}()"
+      [doc.arglists.strip]
+    else
+      [doc.name]
+    end
+  end
+
+  def format_method_source_body(method_doc)
+    method_src = CGI.unescapeHTML(ActionView::Base.full_sanitizer.sanitize(method_doc.markup_code))
+
+    lexer = begin
+      if method_doc.token_stream&.any? { |t| t.class.to_s == "RDoc::Parser::RipperStateLex::Token" }
+        Rouge::Lexers::Ruby.new
+      else
+        Rouge::Lexers::C.new
+      end
+    end
+
+    html_formatter = Rouge::Formatters::HTML.new
+    formatter = Rouge::Formatters::HTMLLinewise.new(html_formatter, class: "line")
+
+    formatter.format(lexer.lex(method_src))
   end
 end

@@ -6,7 +6,7 @@ group :preload, :default do
   gem "rails", "~> 6.0.3"
   gem "bootsnap", ">= 1.1.0", require: false
   gem "falcon"
-  gem "webpacker", "~> 5.1"
+  gem "webpacker", "~> 5.2"
   gem "redis", "~> 4.2"
   gem "hiredis"
 
@@ -31,6 +31,7 @@ group :preload, :default do
   gem "rdoc", require: false
   gem "trenni-sanitize", require: false
   gem "pastel", require: false
+  gem "rouge", require: false
 end
 
 gem "slim"

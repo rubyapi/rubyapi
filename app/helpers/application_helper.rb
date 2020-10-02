@@ -2,10 +2,10 @@
 
 module ApplicationHelper
   GITHUB_REPO = "https://github.com/ruby/ruby/blob"
-  MASTER = "master"
+  DEV = "dev"
 
-  def master?
-    ruby_version == MASTER
+  def dev?
+    ruby_version == DEV
   end
 
   def homepage?
@@ -18,7 +18,7 @@ module ApplicationHelper
   # Map a method source file into a url to Github.com
   def github_url(ruby_doc)
     version, file, line = ruby_doc.source_location.split(":")
-    version = "v#{version.tr(".", "_")}" unless version == MASTER
+    version = "v#{version.tr(".", "_")}" unless version == DEV
 
     # Not using URI.join, for a performance optimization. URI.join does A LOT of allocations.
     # We know that our source_location is safe, because we make it in the importer.

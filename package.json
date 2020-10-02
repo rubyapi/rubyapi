@@ -7,14 +7,16 @@
     "@fortawesome/free-regular-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fullhuman/postcss-purgecss": "^2.3.0",
-    "@rails/webpacker": "^5.1.1",
+    "@rails/webpacker": "^5.2.1",
     "clipboard-copy": "^3.1.0",
     "hotkeys-js": "^3.8.1",
+    "monaco-editor": "^0.21.1",
+    "monaco-editor-webpack-plugin": "^2.0.0",
     "mustache": "^4.0.1",
     "postcss-cssnext": "^3.1.0",
     "stimulus": "^1.1.1",
-    "tailwindcss": "^1.5.2",
-    "tailwindcss-dark-mode": "^1.1.5"
+    "tailwindcss": "^1.8.10",
+    "tailwindcss-dark-mode": "^1.1.6"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.11.0"
