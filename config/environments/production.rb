@@ -97,7 +97,7 @@ Rails.application.configure do
 
   Raven.configure do |config|
     config.dsn = ENV["SENTRY_DSN"]
-  end  
+  end
 
   config.skylight.probes += %w(elasticsearch redis)
 end
