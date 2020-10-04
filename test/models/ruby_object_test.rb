@@ -16,6 +16,10 @@ class RubyObjectTest < ActiveSupport::TestCase
       metadata: {
         depth: 1
       },
+      constants: [{
+        name: "HELLO_WORLD",
+        description: "<p>Hello world!</p>"
+      }],
       methods: [
         {
           name: "new",
@@ -111,6 +115,7 @@ class RubyObjectTest < ActiveSupport::TestCase
     assert_equal object_hash.sort.to_h, {
       autocomplete: "String",
       constant: "String",
+      constants: [{name: "HELLO_WORLD", description: "<p>Hello world!</p>"}],
       description: "<h1>Hello World</h1>",
       id: "c3RyaW5n",
       included_modules: ["Kernel"],

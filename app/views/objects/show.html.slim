@@ -20,6 +20,10 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
               | Module
       div class="ruby-documentation"
         == @object.description
+    hr
+    - unless @object.ruby_constants.empty?
+      = render "objects/show/constants",
+          constants: @object.ruby_constants, title: "Constants"
     - unless @object.ruby_class_methods.empty?
       = render "objects/show/methods",
           methods: @object.ruby_class_methods, title: "Class Methods"
