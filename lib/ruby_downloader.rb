@@ -4,6 +4,7 @@ class RubyDownloader
   attr_reader :release
 
   def initialize(release)
+    raise ArgumentError unless release.is_a?(RubyVersion)
     @release = release
   end
 
