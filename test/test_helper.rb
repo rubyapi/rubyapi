@@ -52,6 +52,9 @@ class ActiveSupport::TestCase
       metadata: {
         depth: 1
       },
+      attributes: [
+        {name: "path", description: "<p>Path description</p>", access: "read"}
+      ],
       constants: [
         {name: "HELLO_WORLD", description: "<p>Hello World!</p>"}
       ],
