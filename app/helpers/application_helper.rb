@@ -25,4 +25,8 @@ module ApplicationHelper
     # Inspiration: https://github.com/rack/rack/pull/1202
     %(#{GITHUB_REPO}/#{version}/#{file}#{"#L#{line}" if line})
   end
+
+  def dark_mode?
+    cookies[:'rubyapi-darkMode'] == "1"
+  end
 end

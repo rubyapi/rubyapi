@@ -1,6 +1,6 @@
 -# frozen_string_literal: true
 doctype html
-html lang="en"
+html lang="en" class=("mode-dark" if dark_mode?)
   head
     = display_meta_tags site: "Ruby API (#{dev? ? "dev" : "v" + ruby_version})", reverse: true
     meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
