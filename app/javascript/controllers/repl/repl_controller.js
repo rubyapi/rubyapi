@@ -1,5 +1,5 @@
 import { Controller } from "stimulus"
-import * as monaco from "monaco-editor"
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api.js'
 import hotkeys from "hotkeys-js"
 
 export default class extends Controller {

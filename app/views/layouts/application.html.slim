@@ -16,7 +16,12 @@ html lang="en"
     = csp_meta_tag
     = stylesheet_pack_tag 'application'
     = javascript_pack_tag 'icons'
-    = javascript_pack_tag 'application', defer: true
+
+    - if content_for? :javascript_packs
+      = yield :javascript_packs
+    - else
+      = javascript_pack_tag 'application', defer: true
+      
     = content_for(:head)
 
   body class="bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-400"
