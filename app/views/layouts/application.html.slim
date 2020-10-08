@@ -17,6 +17,7 @@ html lang="en"
     = stylesheet_pack_tag 'application'
     = javascript_pack_tag 'icons'
     = javascript_pack_tag 'application', defer: true
+    = yield(:javascript_packs) if content_for?(:javascript_packs)
     = content_for(:head)
 
   body class="bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-400"
