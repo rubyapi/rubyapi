@@ -176,7 +176,7 @@ class RubyAPIRDocGenerator
     when "W"
       "write"
     when "RW"
-      "read/write"
+      "readwrite"
     end
   end
 end
