@@ -1,6 +1,6 @@
 require "test_helper"
 
-class RubyObjectTest < ActiveSupport::TestCase
+class RubyConstantTest < ActiveSupport::TestCase
   def setup
     @constant = RubyConstant.new(name: "HELLO_WORLD", description: "<p>Hello World!</p>")
   end
