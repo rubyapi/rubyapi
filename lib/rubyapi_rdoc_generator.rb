@@ -85,8 +85,8 @@ class RubyAPIRDocGenerator
         object_type: "#{doc.type}_object",
         superclass: superclass,
         included_modules: doc.includes.map(&:name),
-        constants: doc.constants.each_with_object([]) { |c, arr| arr << {name: c.name, description: clean_description(doc.full_name, c.description)} },
-        attributes: doc.attributes.each_with_object([]) { |a, arr| arr << {name: a.name, description: clean_description(doc.full_name, a.description), access: readwrite_string(a.rw)} },
+        constants: doc.constants.map { |c| {name: c.name, description: clean_description(doc.full_name, c.description)} },
+        attributes: doc.attributes.map { |a| {name: a.name, description: clean_description(doc.full_name, a.description), access: readwrite_string(a.rw)} },
         metadata: {
           depth: constant_depth(doc.full_name)
         }
