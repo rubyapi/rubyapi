@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RubyAttribute
   attr_reader :body
 
