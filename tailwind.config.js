@@ -53,9 +53,7 @@ module.exports = {
       whitelist: ['mode-dark']
     },
     content: [
-      './app/javascript/controllers/app/search_controller.js',
-      './app/javascript/controllers/app/code_example_controller.js',
-      './app/javascript/controllers/app/method_controller.js',
+      './app/javascript/**/*_controller.js',
       './app/**/*.html.slim',
     ],
   }
