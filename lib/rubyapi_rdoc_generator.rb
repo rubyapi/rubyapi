@@ -10,6 +10,12 @@ class RubyAPIRDocGenerator
     IRB
   ].freeze
 
+  READWIRTE_MAPPING = {
+    "R" => "Read",
+    "W" => "Write",
+    "RW" => "Read & Write"
+  }.freeze
+
   SKIP_NAMESPACE_REGEX = /^(#{SKIP_NAMESPACES.join('|')})($|::.+)/.freeze
 
   def class_dir
@@ -86,7 +92,7 @@ class RubyAPIRDocGenerator
         superclass: superclass,
         included_modules: doc.includes.map(&:name),
         constants: doc.constants.map { |c| {name: c.name, description: clean_description(doc.full_name, c.description)} },
-        attributes: doc.attributes.map { |a| {name: a.name, description: clean_description(doc.full_name, a.description), access: readwrite_string(a.rw)} },
+        attributes: doc.attributes.map { |a| {name: a.name, description: clean_description(doc.full_name, a.description), access: READWIRTE_MAPPING[a.rw]} },
         metadata: {
           depth: constant_depth(doc.full_name)
         }
@@ -167,16 +173,5 @@ class RubyAPIRDocGenerator
     formatter = Rouge::Formatters::HTMLLinewise.new(html_formatter, class: "line")
 
     formatter.format(lexer.lex(method_src))
-  end
-
-  def readwrite_string(symbol)
-    case symbol
-    when "R"
-      "read"
-    when "W"
-      "write"
-    when "RW"
-      "readwrite"
-    end
   end
 end
