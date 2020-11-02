@@ -28,10 +28,7 @@ class RubyAPIRDocGenerator
 
   def generate
     reset_indexes!
-
-    generate_objects.compact.each do |object|
-      index_object(object)
-    end
+    index generate_objects
   end
 
   def generate_objects
@@ -97,11 +94,8 @@ class RubyAPIRDocGenerator
 
   private
 
-  def index_object(object)
-    object_repository.save(object)
-    search_repository.save(object)
-
-    object.ruby_methods.each { |m| search_repository.save m }
+  def index(objects)
+    [object_repository, search_repository].each { |repo| repo.bulk_import(objects) }
   end
 
   def object_repository
