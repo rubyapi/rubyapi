@@ -115,4 +115,8 @@ export default class extends Controller {
 
       })
   }
+
+  clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value))
+  }
 }
