@@ -28,6 +28,7 @@ export default class extends Controller {
 
     this.autocomplete = throttle(this.autocomplete, 300)
     this.lastQuery = ""
+    this.suggestionIndex = 0
   }
 
   connect() {
@@ -78,6 +79,11 @@ export default class extends Controller {
       return
     }
 
+    if (event.key.startsWith("Arrow")) {
+      this.handleArrowKey(event)
+      return
+    }
+
     if (this.lastQuery === query) {
       return
     }
@@ -87,7 +93,20 @@ export default class extends Controller {
     await this.autocomplete(query, version, path)
   }
 
+  handleArrowKey(event) {
+    if (event.key === "ArrowUp") {
+      this.suggestionIndex -= 1
+    } else if (event.key === "ArrowDown") {
+      this.suggestionIndex += 1
+    }
+
+    const max = this.suggestionsLength()
+    this.suggestionIndex = this.clamp(this.suggestionIndex, 0, max)
+  }
+
   async autocomplete(query, version, path) {
+    this.suggestionIndex = 0
+
     fetch(path, {
       method: "post",
       headers: {
@@ -118,5 +137,9 @@ export default class extends Controller {
 
   clamp(value, min, max) {
     return Math.min(max, Math.max(min, value))
+  }
+
+  suggestionsLength() {
+    return this.autocompleteTarget.querySelectorAll("li").length
   }
 }
