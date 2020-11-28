@@ -1,4 +1,5 @@
 import { Controller } from "stimulus"
+import throttle from "lodash"
 import hotkeys from "hotkeys-js"
 import mustache from "mustache"
 
@@ -24,6 +25,8 @@ export default class extends Controller {
       {{/results}}
     </ul>
   `
+
+    this.throttledAutocomplete = _.throttle(this.autocomplete, 300)
   }
 
   connect() {
