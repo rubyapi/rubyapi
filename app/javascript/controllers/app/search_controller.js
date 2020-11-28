@@ -68,7 +68,7 @@ export default class extends Controller {
     window.removeEventListener("mousedown")
   }
 
-  async autocomplete() {
+  async on_keyup(event) {
     const query = this.inputTarget.value
     const version = this.data.get("version")
     const path = this.data.get("url")
@@ -84,6 +84,10 @@ export default class extends Controller {
 
     this.lastQuery = query
 
+    await this.autocomplete(query, version, path)
+  }
+
+  async autocomplete(query, version, path) {
     fetch(path, {
       method: "post",
       headers: {
