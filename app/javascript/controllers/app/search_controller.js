@@ -75,7 +75,7 @@ export default class extends Controller {
     window.removeEventListener("mousedown")
   }
 
-  async on_keyup(event) {
+  async on_keydown(event) {
     const query = this.inputTarget.value
     const version = this.data.get("version")
     const path = this.data.get("url")
