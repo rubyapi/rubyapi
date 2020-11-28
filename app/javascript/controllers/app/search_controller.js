@@ -90,6 +90,11 @@ export default class extends Controller {
       return
     }
 
+    if (event.key === "Enter" && this.suggestionIndex !== 0) {
+      event.preventDefault()
+      this.getSelectedSuggestion().querySelector('a').click()
+    }
+
     if (this.lastQuery === query) {
       return
     }
