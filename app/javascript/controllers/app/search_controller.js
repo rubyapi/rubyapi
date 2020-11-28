@@ -47,6 +47,10 @@ export default class extends Controller {
       this.buttonTarget.classList.remove("text-gray-700")
     })
 
+    this.autocompleteTarget.addEventListener("mousemove", () => {
+      this.suggestionIndex = 0
+    })
+
     window.addEventListener("mousedown", (e) => {
       if(!this.autocompleteTarget.contains(e.target))
         return
@@ -66,6 +70,7 @@ export default class extends Controller {
     hotkeys.unbind(this.searchHotKey)
     this.inputTarget.removeEventListener("focusin")
     this.inputTarget.removeEventListener("blur")
+    this.autocompleteTarget.removeEventListener("mousemove")
     window.removeEventListener("mousedown")
   }
 
