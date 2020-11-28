@@ -48,6 +48,7 @@ export default class extends Controller {
     })
 
     this.autocompleteTarget.addEventListener("mousemove", () => {
+      this.clearSelectedSuggestion()
       this.suggestionIndex = 0
     })
 
@@ -99,6 +100,8 @@ export default class extends Controller {
   }
 
   handleArrowKey(event) {
+    this.clearSelectedSuggestion()
+
     if (event.key === "ArrowUp") {
       this.suggestionIndex -= 1
     } else if (event.key === "ArrowDown") {
@@ -107,6 +110,8 @@ export default class extends Controller {
 
     const max = this.suggestionsLength()
     this.suggestionIndex = this.clamp(this.suggestionIndex, 0, max)
+
+    this.highlightSelectedSuggestion()
   }
 
   async autocomplete(query, version, path) {
@@ -146,5 +151,23 @@ export default class extends Controller {
 
   suggestionsLength() {
     return this.autocompleteTarget.querySelectorAll("li").length
+  }
+
+  getSelectedSuggestion() {
+    return this.autocompleteTarget.querySelector(`li:nth-child(${this.suggestionIndex})`)
+  }
+
+  clearSelectedSuggestion() {
+    const suggestion = this.getSelectedSuggestion()
+    if (suggestion) {
+      suggestion.classList.remove("bg-gray-200")
+    }
+  }
+
+  highlightSelectedSuggestion() {
+    const suggestion = this.getSelectedSuggestion()
+    if (suggestion) {
+      suggestion.classList.add("bg-gray-200")
+    }
   }
 }
