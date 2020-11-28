@@ -27,6 +27,7 @@ export default class extends Controller {
   `
 
     this.throttledAutocomplete = _.throttle(this.autocomplete, 300)
+    this.lastQuery = ""
   }
 
   connect() {
@@ -76,6 +77,12 @@ export default class extends Controller {
       this.autocompleteTarget.innerHTML = ""
       return
     }
+
+    if (this.lastQuery === query) {
+      return
+    }
+
+    this.lastQuery = query
 
     fetch(path, {
       method: "post",
