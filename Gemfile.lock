@@ -199,7 +199,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    listen (3.2.1)
+    listen (3.3.3)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     localhost (1.1.6)
@@ -283,7 +283,7 @@ GEM
     rake (13.0.1)
     rake-compiler (1.1.1)
       rake
-    rb-fsevent (0.10.3)
+    rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rdoc (6.2.1)
@@ -401,7 +401,7 @@ DEPENDENCIES
   http
   inline_svg
   kaminari (~> 1.2.1)
-  listen (>= 3.0.5, < 3.3)
+  listen (>= 3.0.5, < 3.4)
   lograge
   logstash-event
   meta-tags
