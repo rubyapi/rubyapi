@@ -342,9 +342,9 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.10)
     timers (4.3.2)
-    trenni (3.13.0)
+    trenni (3.13.1)
       rake-compiler
-    trenni-sanitize (0.6.0)
+    trenni-sanitize (0.6.1)
       trenni (~> 3.5)
     tty-color (0.5.1)
     tty-cursor (0.7.1)
