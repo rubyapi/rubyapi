@@ -10,7 +10,7 @@
     "clipboard-copy": "^3.1.0",
     "hotkeys-js": "^3.8.1",
     "monaco-editor": "^0.21.2",
-    "monaco-editor-webpack-plugin": "^2.0.0",
+    "monaco-editor-webpack-plugin": "^2.1.0",
     "mustache": "^4.1.0",
     "postcss-cssnext": "^3.1.0",
     "stimulus": "^1.1.1",
