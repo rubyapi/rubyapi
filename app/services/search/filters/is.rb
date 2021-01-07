@@ -13,9 +13,9 @@ module Search
           [{term: {object_type: {value: :class_object}}}]
         when "method"
           [{term: {type: {value: :method}}}]
-        when "class-method", "class-method", "cmethod"
+        when "class-method", "cmethod"
           [{term: {method_type: {value: :class_method}}}]
-        when "instance-method", "instance-method", "imethod", "#"
+        when "instance-method", "imethod", "#"
           [{term: {method_type: {value: :instance_method}}}]
         else
           []
