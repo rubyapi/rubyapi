@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "~> 2.7.1"
 
 group :preload, :default do
-  gem "rails", "~> 6.1.0"
+  gem "rails", "~> 6.1.1"
   gem "bootsnap", ">= 1.1.0", require: false
   gem "falcon"
   gem "webpacker", "~> 5.2"
