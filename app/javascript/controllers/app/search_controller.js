@@ -26,7 +26,7 @@ export default class extends Controller {
     </ul>
   `
 
-    this.throttledAutocomplete = throttle(this.autocomplete, 300)
+    this.autocomplete = throttle(this.autocomplete, 300)
     this.lastQuery = ""
   }
 
