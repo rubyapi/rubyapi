@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "~> 2.7.1"
+ruby "~> 3.0"
 
 group :preload, :default do
   gem "rails", "~> 6.1.1"
