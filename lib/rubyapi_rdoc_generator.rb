@@ -10,7 +10,7 @@ class RubyAPIRDocGenerator
     IRB
   ].freeze
 
-  SKIP_NAMESPACE_REGEX = /^(#{SKIP_NAMESPACES.join('|')})($|::.+)/.freeze
+  SKIP_NAMESPACE_REGEX = /^(#{SKIP_NAMESPACES.join('|')})($|::.+)/
 
   def class_dir
   end
