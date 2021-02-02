@@ -1,9 +1,9 @@
 source "https://rubygems.org"
 
-ruby "~> 2.7.1"
+ruby "~> 3.0"
 
 group :preload, :default do
-  gem "rails", "~> 6.1.0"
+  gem "rails", "~> 6.1.1"
   gem "bootsnap", ">= 1.1.0", require: false
   gem "falcon"
   gem "webpacker", "~> 5.2"
@@ -14,7 +14,7 @@ group :preload, :default do
   gem "elasticsearch-persistence"
 
   gem "http"
-  gem "typhoeus"
+  gem "typhoeus", require: false
   gem "kaminari", "~> 1.2.1"
   gem "inline_svg"
   gem "tty-spinner", require: false

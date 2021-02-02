@@ -2,7 +2,7 @@
 
 module Search
   class Query
-    QUERY_OPTION_PATTERN = /\w+:\w+/.freeze
+    QUERY_OPTION_PATTERN = /\w+:\w+/
 
     attr_reader :query
 
