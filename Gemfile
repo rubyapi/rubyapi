@@ -14,7 +14,7 @@ group :preload, :default do
   gem "elasticsearch-persistence"
 
   gem "http"
-  gem "typhoeus"
+  gem "typhoeus", require: false
   gem "kaminari", "~> 1.2.1"
   gem "inline_svg"
   gem "tty-spinner", require: false
