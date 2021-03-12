@@ -2027,22 +2027,7 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0:
-  version "1.0.30001183"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001183.tgz"
-  integrity sha512-7JkwTEE1hlRKETbCFd8HDZeLiQIUcl8rC6JgNjvHCNaxOeNmQ9V4LvQXRUsKIV2CC73qKxljwVhToaA3kLRqTw==
-
-caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000805:
-  version "1.0.30001183"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001183.tgz"
-  integrity sha512-7JkwTEE1hlRKETbCFd8HDZeLiQIUcl8rC6JgNjvHCNaxOeNmQ9V4LvQXRUsKIV2CC73qKxljwVhToaA3kLRqTw==
-
-caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001006:
-  version "1.0.30001183"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001183.tgz"
-  integrity sha512-7JkwTEE1hlRKETbCFd8HDZeLiQIUcl8rC6JgNjvHCNaxOeNmQ9V4LvQXRUsKIV2CC73qKxljwVhToaA3kLRqTw==
-
-caniuse-lite@^1.0.30001043:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000805, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001006, caniuse-lite@^1.0.30001043:
   version "1.0.30001183"
   resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001183.tgz"
   integrity sha512-7JkwTEE1hlRKETbCFd8HDZeLiQIUcl8rC6JgNjvHCNaxOeNmQ9V4LvQXRUsKIV2CC73qKxljwVhToaA3kLRqTw==
@@ -3795,10 +3780,10 @@ hosted-git-info@^2.1.4:
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.7.1.tgz#97f236977bd6e125408930ff6de3eec6281ec047"
   integrity sha512-7T/BxH19zbcCTa8XkMlbK5lTo1WtgkFi3GvdWEyNuc4Vex7/9Dqbnpsf4JMydcfj9HCg4zUWFTL3Za6lapg5/w==
 
-hotkeys-js@^3.8.2:
-  version "3.8.2"
-  resolved "https://registry.yarnpkg.com/hotkeys-js/-/hotkeys-js-3.8.2.tgz#177c3e7dc19279c881e69983177849bed76e4747"
-  integrity sha512-HZZ9RVNr3nBbs2nW968o4rp3xXSdPjJ4B7GTXE375WwboltDJMsP9mcHfAAv+igsTeVxetr10mEbnoac/1U+oQ==
+hotkeys-js@^3.8.3:
+  version "3.8.3"
+  resolved "https://registry.yarnpkg.com/hotkeys-js/-/hotkeys-js-3.8.3.tgz#0331c2cde770e62d51d5d023133f7c4395f59008"
+  integrity sha512-rUmoryG4lEAtkjF5tcYaihrVoE86Fdw1BLqO/UiBWOOF56h32a6ax8oV4urBlinVtNNtArLlBq8igGfZf2tQnw==
 
 hpack.js@^2.1.6:
   version "2.1.6"
