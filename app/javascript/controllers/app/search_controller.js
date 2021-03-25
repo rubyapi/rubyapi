@@ -1,4 +1,5 @@
 import { Controller } from "stimulus"
+import throttle from "lodash/throttle"
 import hotkeys from "hotkeys-js"
 import mustache from "mustache"
 
@@ -24,6 +25,9 @@ export default class extends Controller {
       {{/results}}
     </ul>
   `
+
+    this.autocomplete = throttle(this.autocomplete, 300)
+    this.lastQuery = ""
   }
 
   connect() {
@@ -73,6 +77,12 @@ export default class extends Controller {
       this.autocompleteTarget.innerHTML = ""
       return
     }
+
+    if (this.lastQuery === query) {
+      return
+    }
+
+    this.lastQuery = query
 
     fetch(path, {
       method: "post",

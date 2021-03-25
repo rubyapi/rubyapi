@@ -9,6 +9,7 @@
     "@rails/webpacker": "^5.2.1",
     "clipboard-copy": "^4.0.1",
     "hotkeys-js": "^3.8.3",
+    "lodash.throttle": "^4.1.1",
     "monaco-editor": "^0.21.3",
     "monaco-editor-webpack-plugin": "^2.1.0",
     "mustache": "^4.1.0",
