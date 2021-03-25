@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "rake",
+      "task": "test",
+      "group": {
+      "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "label": "rake: test"
+    },
+    {
+      "label": "rails: server",
+      "type": "shell",
+      "command": "./bin/rails server"
+    },
+    {
+      "label": "rails: webpack-dev-server",
+      "type": "shell",
+      "command": "./bin/webpack-dev-server"
+    },
+    {
+      "label": "rake: import:ruby",
+      "type": "shell",
+      "command": "./bin/rake \"import:ruby[${input:ruby_version}]\"",
+    }
+  ],
+  "inputs": [
+    {
+      "id": "ruby_version",
+      "description": "Ruby Version",
+      "default": "3.0.0",
+      "type": "promptString"
+    }
+  ]
+}
