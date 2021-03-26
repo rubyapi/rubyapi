@@ -43,7 +43,7 @@ module RubyReleases
     end
 
     def ruby_3
-      RubyVersion.new("3.0-preview1", source_url: "https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.0-preview1.zip")
+      RubyVersion.new("3.0.0", source_url: "https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.0.zip")
     end
 
     def supported_release_format?(url)
