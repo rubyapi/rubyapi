@@ -10,7 +10,7 @@ pre {
   @apply p-3 rounded bg-gray-300;
 }
 
-.mode-dark {
+.dark {
   pre {
     @apply bg-gray-900;
   }
@@ -73,11 +73,11 @@ code {
   }
 }
 
-.mode-dark .method-src-body {
+.dark .method-src-body {
   background: none;
 }
 
-.mode-dark {
+.dark {
   code { @apply bg-gray-700 text-gray-400; }
 }
 
