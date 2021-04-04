@@ -28,6 +28,7 @@ export default class extends Controller {
 
     this.autocomplete = throttle(this.autocomplete, 300)
     this.lastQuery = ""
+    this.suggestionIndex = 0
   }
 
   connect() {
@@ -44,6 +45,11 @@ export default class extends Controller {
     this.inputTarget.addEventListener("focusout", () => {
       this.autocompleteTarget.classList.add("hidden")
       this.buttonTarget.classList.remove("text-gray-700")
+    })
+
+    this.autocompleteTarget.addEventListener("mousemove", () => {
+      this.clearSelectedSuggestion()
+      this.suggestionIndex = 0
     })
 
     window.addEventListener("mousedown", (e) => {
@@ -65,10 +71,11 @@ export default class extends Controller {
     hotkeys.unbind(this.searchHotKey)
     this.inputTarget.removeEventListener("focusin")
     this.inputTarget.removeEventListener("blur")
+    this.autocompleteTarget.removeEventListener("mousemove")
     window.removeEventListener("mousedown")
   }
 
-  async autocomplete() {
+  async onKeydown(event) {
     const query = this.inputTarget.value
     const version = this.data.get("version")
     const path = this.data.get("url")
@@ -78,11 +85,44 @@ export default class extends Controller {
       return
     }
 
+    if (event.key.startsWith("Arrow")) {
+      this.handleArrowKey(event)
+      return
+    }
+
+    if (event.key === "Enter" && this.suggestionIndex !== 0) {
+      event.preventDefault()
+      this.getSelectedSuggestion().querySelector('a').click()
+    }
+
     if (this.lastQuery === query) {
       return
     }
 
     this.lastQuery = query
+
+    await this.autocomplete(query, version, path)
+  }
+
+  handleArrowKey(event) {
+    this.clearSelectedSuggestion()
+
+    if (event.key === "ArrowUp") {
+      event.preventDefault()
+      this.suggestionIndex -= 1
+    } else if (event.key === "ArrowDown") {
+      event.preventDefault()
+      this.suggestionIndex += 1
+    }
+
+    const max = this.suggestionsLength()
+    this.suggestionIndex = this.clamp(this.suggestionIndex, 0, max)
+
+    this.highlightSelectedSuggestion()
+  }
+
+  async autocomplete(query, version, path) {
+    this.suggestionIndex = 0
 
     fetch(path, {
       method: "post",
@@ -110,5 +150,31 @@ export default class extends Controller {
       .catch(() => {
 
       })
+  }
+
+  clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value))
+  }
+
+  suggestionsLength() {
+    return this.autocompleteTarget.querySelectorAll("li").length
+  }
+
+  getSelectedSuggestion() {
+    return this.autocompleteTarget.querySelector(`li:nth-child(${this.suggestionIndex})`)
+  }
+
+  clearSelectedSuggestion() {
+    const suggestion = this.getSelectedSuggestion()
+    if (suggestion) {
+      suggestion.classList.remove("bg-gray-200")
+    }
+  }
+
+  highlightSelectedSuggestion() {
+    const suggestion = this.getSelectedSuggestion()
+    if (suggestion) {
+      suggestion.classList.add("bg-gray-200")
+    }
   }
 }
