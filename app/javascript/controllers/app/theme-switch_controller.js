@@ -17,13 +17,13 @@ export const setTheme = (switchTarget) => {
 
 const setDarkMode = (target) => {
   if (target) target.classList.replace("fa-sun", "fa-moon")
-  document.documentElement.classList.add("mode-dark")
+  document.documentElement.classList.add("dark")
   localStorage.setItem('rubyapi-darkMode', '1')
 }
 
 const setLightMode = (target) => {
   if (target) target.classList.replace("fa-moon", "fa-sun")
-  document.documentElement.classList.remove("mode-dark")
+  document.documentElement.classList.remove("dark")
   localStorage.setItem('rubyapi-darkMode', '0')
 }
 export default class extends Controller {
