@@ -26,7 +26,8 @@ group :preload, :default do
   gem "aws-sdk-s3"
   gem "sitemap_generator"
   gem "meta-tags"
-  gem "sentry-raven"
+  gem "sentry-ruby"
+  gem "sentry-rails"
   gem "rack-attack"
   gem "rdoc", require: false
   gem "trenni-sanitize", require: false
