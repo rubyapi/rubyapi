@@ -95,9 +95,5 @@ Rails.application.configure do
     }
   end
 
-  Sentry.init do |config|
-    config.dsn = ENV["SENTRY_DSN"]
-  end
-
   config.skylight.probes += %w(elasticsearch redis)
 end
