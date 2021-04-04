@@ -95,7 +95,7 @@ Rails.application.configure do
     }
   end
 
-  Raven.configure do |config|
+  Sentry.init do |config|
     config.dsn = ENV["SENTRY_DSN"]
   end
 
