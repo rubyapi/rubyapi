@@ -5,11 +5,19 @@
       "type": "rake",
       "task": "test",
       "group": {
-      "kind": "test",
+        "kind": "test",
         "isDefault": true
       },
       "problemMatcher": [],
       "label": "rake: test"
+    },
+    {
+      "label": "app: start",
+      "dependsOn": [
+        "rails: server",
+        "rails: webpack-dev-server"
+      ],
+      "problemMatcher": []
     },
     {
       "label": "rails: server",
@@ -24,7 +32,7 @@
     {
       "label": "rake: import:ruby",
       "type": "shell",
-      "command": "./bin/rake \"import:ruby[${input:ruby_version}]\"",
+      "command": "./bin/rake \"import:ruby[${input:ruby_version}]\""
     }
   ],
   "inputs": [
