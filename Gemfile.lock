@@ -236,7 +236,7 @@ GEM
     multi_json (1.15.0)
     multipart-post (2.1.1)
     nio4r (2.5.7)
-    nokogiri (1.11.2)
+    nokogiri (1.11.3)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     parallel (1.20.1)
@@ -443,7 +443,7 @@ DEPENDENCIES
   webpacker (~> 5.2)
 
 RUBY VERSION
-   ruby 3.0.0p0
+   ruby 3.0.1p64
 
 BUNDLED WITH
-   2.2.9
+   2.2.15
