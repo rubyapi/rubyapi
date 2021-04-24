@@ -97,10 +97,7 @@ export default class extends Controller {
   async onKeydown(event) {
     if (event.key.startsWith("Arrow")) {
       this.handleArrowKey(event)
-      return
-    }
-
-    if (event.key === "Enter" && this.suggestionIndex !== 0) {
+    } else if (event.key === "Enter" && this.suggestionIndex !== 0) {
       event.preventDefault()
       this.getSelectedSuggestion().querySelector('a').click()
     }
