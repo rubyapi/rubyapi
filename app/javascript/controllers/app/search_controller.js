@@ -75,7 +75,7 @@ export default class extends Controller {
     window.removeEventListener("mousedown")
   }
 
-  async onKeydown(event) {
+  async onKeyup(event) {
     const query = this.inputTarget.value
     const version = this.data.get("version")
     const path = this.data.get("url")
@@ -85,6 +85,16 @@ export default class extends Controller {
       return
     }
 
+    if (this.lastQuery === query) {
+      return
+    }
+
+    this.lastQuery = query
+
+    await this.autocomplete(query, version, path)
+  }
+
+  async onKeydown(event) {
     if (event.key.startsWith("Arrow")) {
       this.handleArrowKey(event)
       return
@@ -94,14 +104,6 @@ export default class extends Controller {
       event.preventDefault()
       this.getSelectedSuggestion().querySelector('a').click()
     }
-
-    if (this.lastQuery === query) {
-      return
-    }
-
-    this.lastQuery = query
-
-    await this.autocomplete(query, version, path)
   }
 
   handleArrowKey(event) {
