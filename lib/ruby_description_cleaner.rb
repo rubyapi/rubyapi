@@ -8,8 +8,8 @@ class RubyDescriptionCleaner < Trenni::Sanitize::Filter
     # Most of this method is copy/pasted from Trenni::Sanitize::Filter.parse
     # https://github.com/ioquatix/trenni-sanitize/blob/c8e08d2717b98a2268da89f8196fdb1eb93725bf/lib/trenni/sanitize/filter.rb#L40
 
-    description = description.gsub(/(<a.*&para;<\/a>)/, "")
-      .gsub(/(<a.*&uarr;<\/a>)/, "")
+    description = description.gsub(/(<a[^>]*>&para;<\/a>)/, "")
+      .gsub(/(<a[^>]*>&uarr;<\/a>)/, "")
       .gsub("<pre class=\"ruby\">", "<div class=\"ruby\" data-controller=\"code-example\" data-target=\"code-example.block\" data-code-example-version=\"#{version}\"></div><pre class=\"ruby\">")
       .gsub(/<a.*?href=""\w+"".*?>(.+?)<\/a>/, "\\1")
 
