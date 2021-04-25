@@ -115,7 +115,7 @@ export default class extends Controller {
     }
 
     const max = this.suggestionsLength()
-    this.suggestionIndex = this.clamp(this.suggestionIndex, 0, max)
+    this.suggestionIndex = this.wrap(this.suggestionIndex, max + 1)
 
     this.highlightSelectedSuggestion()
   }
@@ -151,8 +151,9 @@ export default class extends Controller {
       })
   }
 
-  clamp(value, min, max) {
-    return Math.min(max, Math.max(min, value))
+  wrap(value, max) {
+    const mod = value % max;
+    return mod < 0 ? mod + max : mod
   }
 
   suggestionsLength() {
