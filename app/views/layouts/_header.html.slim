@@ -1,14 +1,20 @@
 -# frozen_string_literal: true
-header id="header" class="flex items-center inset-x-0 z-50 h-16 #{'text-white bg-red-600 dark:bg-gray-700 fixed top-0' unless homepage?}"
-  nav class="w-full max-w-screen-xl mx-auto" role="navigation" aria-label="main navigation"
-    div class="flex items-center justify-between #{homepage? ? 'px-6' : 'px-3'}"
-      div class="flex-shrink-0"
-        = render 'layouts/logo'
+header data-controller="header" class="flex items-center h-16 text-white bg-red-600 dark:bg-gray-700 #{'fixed inset-x-0 z-50 top-0' unless homepage? }"
+  nav class="w-full max-w-screen-xl mx-auto px-3" role="navigation" aria-label="main navigation"
+    div class="flex items-center justify-between space-x-4"
+      div class="flex-none"
+        = link_to root_path do
+          span class="sr-only" Ruby API
+          = inline_svg_pack_tag "media/packs/app/logo-plain.svg", class: "h-8 w-auto"
       - unless homepage?
-        div class="lg:w-5/12 md:w-6/12 w-8/12"
+        div class="flex-auto md:max-w-lg"
             = render 'layouts/search_form'
-      div class="#{homepage? ? 'md:w-3/12 w-6/12' : 'w-3/12'}"
-        div class="flex flex-row-reverse"
+      div class="flex-none"
+        div class="block md:hidden"
+          button data-action="click->header#toggleMobileMenu" data-target="header.mobileMenuButton" class="group p-2 curser-pointer rounded inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 hover:bg-red-800 active:bg-red-800"
+            i class="fa fa-bars fa-lg group-hover:text-red-100"
+        div class="hidden md:flex md:flex-row-reverse"
           = render 'layouts/theme_selector'
-          = render 'layouts/github_links'
           = render 'layouts/version_selector'
+  div data-target="header.mobileMenu" class="hidden fixed z-50 inset-0 backdrop-filter backdrop-blur-3xl backdrop-saturate-150 bg-black bg-opacity-40"
+    h2 Hello World
