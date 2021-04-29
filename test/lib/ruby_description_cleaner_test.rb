@@ -69,4 +69,18 @@ class RubyDescriptionCleanerTest < ActiveSupport::TestCase
       assert_equal RubyDescriptionCleaner.clean("2.4", "REXML::DTD::ElementDecl", input), output
     end
   end
+
+  test "trim paragraph and up arrow links" do
+    input = <<~HTML
+      <h2 id="class-Array-label-Obtaining+Information+about+an+Array">Obtaining Information about an <a href="Array.html"><code>Array</code></a><span><a href="#class-Array-label-Obtaining+Information+about+an+Array">&para;</a> <a href="#top">&uarr;</a></span></h2>
+    HTML
+
+    expected_output = <<~HTML
+      <h2 id="class-Array-label-Obtaining+Information+about+an+Array">Obtaining Information about an <a href="/2.7/o/array"><code>Array</code></a><span> </span></h2>
+    HTML
+
+    capture_io do
+      assert_equal expected_output, RubyDescriptionCleaner.clean("2.7", "Array", input)
+    end
+  end
 end
