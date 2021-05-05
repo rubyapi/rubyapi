@@ -11,10 +11,25 @@ header data-controller="header" class="flex items-center h-16 text-white bg-red-
             = render 'layouts/search_form'
       div class="flex-none"
         div class="block md:hidden"
-          button data-action="click->header#toggleMobileMenu" data-target="header.mobileMenuButton" class="group p-2 curser-pointer rounded inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 hover:bg-red-800 active:bg-red-800"
-            i class="fa fa-bars fa-lg group-hover:text-red-100"
+          button data-action="click->header#toggleMobileMenu" data-target="header.mobileMenuButton" class="group p-2 curser-pointer rounded inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 hover:bg-red-800 active:bg-red-800 dark:hover:bg-gray-800 dark:active:bg-gray-800"
+            i class="fa fa-bars fa-lg"
         div class="hidden md:flex md:flex-row-reverse"
           = render 'layouts/theme_selector'
+          = render 'layouts/github_links'
           = render 'layouts/version_selector'
-  div data-target="header.mobileMenu" class="hidden fixed z-50 inset-0 backdrop-filter backdrop-blur-3xl backdrop-saturate-150 bg-black bg-opacity-40"
-    h2 Hello World
+  div data-target="header.mobileMenu" class="hidden absolute p-2 top-0 inset-x-0"
+    div class="rounded shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-gray-800"
+      div class="py-4 px-2 flex items-center justify-between border-b border-solid border-gray-700"
+        div class="flex-none"
+          = link_to root_path do
+            span class="sr-only" Ruby API
+            = inline_svg_pack_tag "media/packs/app/logo-plain.svg", class: "h-8 w-auto fill-current text-red-600"
+        div class="flex"
+          = render 'layouts/version_selector'
+          = render 'layouts/github_links'
+          = render 'layouts/theme_selector'
+          div class="ml-8"
+            button data-action="click->header#toggleMobileMenu" class="group border-gray-500 text-xl curser-pointer rounded inline-flex items-center justify-center focus:outline-none hover:text-red-100 dark:hover:text-gray-400"
+              i class="fas fa-times fa-lg"
+      div class="py-4 px-2"
+        = yield(:mobile_menu) if content_for?(:mobile_menu)

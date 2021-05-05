@@ -1,3 +1,42 @@
+- content_for :mobile_menu do
+  div class="sticky"
+    - if @object.superclass
+      = render "objects/sidebar/section", title: 'Parent' do
+        = render "objects/sidebar/section/link",
+            additional_classes: "font-mono text-sm",
+            title: @object.superclass.constant,
+            href: object_path(object: @object.superclass.path)
+    - unless @object.included_modules.empty?
+      = render "objects/sidebar/section", title: 'Included Modules' do
+        ul class="font-mono text-sm"
+          - @object.included_modules.each do |included_module|
+            li
+              = render "objects/sidebar/section/link",
+                  title: included_module.constant,
+                  href: object_path(object: included_module.path)
+    - unless @object.ruby_constants.empty?
+      = render "objects/sidebar/section", title: 'Constants' do
+        ul class="font-mono text-sm"
+          - @object.ruby_constants.each do |constant|
+            li
+              = render "objects/sidebar/section/link",
+                  title: constant.name, href: "##{constant.name}"
+    - unless @object.ruby_class_methods.empty?
+      = render "objects/sidebar/section", title: 'Class Methods' do
+        ul class="font-mono text-sm"
+          - @object.ruby_class_methods.each do |m|
+            li
+              = render "objects/sidebar/section/link",
+                  title: ":: #{m.name}", href: "##{method_anchor(m)}"
+    - unless @object.ruby_instance_methods.empty?
+      = render "objects/sidebar/section", title: 'Instance Methods' do
+        ul class="font-mono text-sm"
+          - @object.ruby_instance_methods.each do |m|
+            li
+              = render "objects/sidebar/section/link",
+                  title: "# #{m.name}", href: "##{method_anchor(m)}"
+
+
 div class="hidden lg:block w-1/4"
   div class="hidden lg:block lg:sticky pt-1 top-0"
     div class="overflow-y-auto mt-24 pl-3 pr-6 h-93"
