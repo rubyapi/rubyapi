@@ -14,7 +14,7 @@
     "monaco-editor": "^0.21.3",
     "monaco-editor-webpack-plugin": "^2.1.0",
     "mustache": "^4.2.0",
-    "postcss": "^7",
+    "postcss": "^8",
     "postcss-cssnext": "^3.1.0",
     "stimulus": "^2.0.0",
     "tailwindcss": "^2.0.1-compat"
