@@ -2,10 +2,10 @@
 header data-controller="header" class="flex items-center h-16 text-white bg-red-600 dark:bg-gray-700 #{'fixed inset-x-0 z-50 top-0' unless homepage? }"
   nav class="w-full max-w-screen-xl mx-auto px-3" role="navigation" aria-label="main navigation"
     div class="flex items-center justify-between space-x-4"
-      div class="flex-none"
+      div class="flex-none -mx-1"
         = link_to root_path do
           span class="sr-only" Ruby API
-          = inline_svg_pack_tag "media/packs/app/logo-plain.svg", class: "h-8 w-auto"
+          = inline_svg_pack_tag "media/packs/app/logo-plain.svg", class: "h-8 w-auto text-white fill-current"
       - unless homepage?
         div class="flex-auto md:max-w-lg"
             = render 'layouts/search_form'
@@ -13,23 +13,24 @@ header data-controller="header" class="flex items-center h-16 text-white bg-red-
         div class="block md:hidden"
           button data-action="click->header#toggleMobileMenu" data-target="header.mobileMenuButton" class="group p-2 curser-pointer rounded inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 hover:bg-red-800 active:bg-red-800 dark:hover:bg-gray-800 dark:active:bg-gray-800"
             i class="fa fa-bars fa-lg"
-        div class="hidden md:flex md:flex-row-reverse"
-          = render 'layouts/theme_selector'
-          = render 'layouts/github_links'
+        div class="hidden md:flex md:space-x-4 md:justify-inbetween md:items-center"
           = render 'layouts/version_selector'
-  div data-target="header.mobileMenu" class="hidden absolute p-2 top-0 inset-x-0"
-    div class="rounded shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-gray-800"
-      div class="py-4 px-2 flex items-center justify-between border-b border-solid border-gray-700"
+          = render 'layouts/github_links'
+          = render 'layouts/theme_selector'
+  div data-target="header.mobileMenu" class="hidden absolute p-2 inset-x-0 top-0"
+    div class="px-2 py-4 rounded shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-gray-600 text-white"
+      div class="flex items-center justify-between text-gray-600 dark:text-gray-200"
         div class="flex-none"
           = link_to root_path do
             span class="sr-only" Ruby API
-            = inline_svg_pack_tag "media/packs/app/logo-plain.svg", class: "h-8 w-auto fill-current text-red-600"
-        div class="flex"
-          = render 'layouts/version_selector'
-          = render 'layouts/github_links'
-          = render 'layouts/theme_selector'
-          div class="ml-8"
-            button data-action="click->header#toggleMobileMenu" class="group border-gray-500 text-xl curser-pointer rounded inline-flex items-center justify-center focus:outline-none hover:text-red-100 dark:hover:text-gray-400"
-              i class="fas fa-times fa-lg"
-      div class="py-4 px-2"
-        = yield(:mobile_menu) if content_for?(:mobile_menu)
+            = inline_svg_pack_tag "media/packs/app/logo-plain.svg", class: "h-8 w-auto text-red-600 dark:text-white fill-current"
+        div class="flex justify-between space-x-4 items-center"
+          div class="flex justify-between space-x-4"
+            = render 'layouts/version_selector'
+            = render 'layouts/github_links'
+            = render 'layouts/theme_selector'
+          button data-action="click->header#toggleMobileMenu" class="group px-2 py-1 -my-1 border border-solid border-gray-300 dark:border-gray-500 text-xl curser-pointer rounded-lg inline-flex items-center justify-center focus:outline-none hover:bg-gray-200 dark:hover:bg-gray-500"
+            i class="fas fa-times fa-lg"
+      - if content_for(:mobile_menu)
+        div class="mt-4 pt-2 h-96 overflow-y-auto border-t border-solid text-gray-600 dark:text-gray-200 border-gray-300 dark:border-gray-700"
+          = yield(:mobile_menu)
