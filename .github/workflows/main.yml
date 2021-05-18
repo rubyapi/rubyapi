@@ -17,6 +17,18 @@ env:
   BUNDLE_PATH: vendor/bundle
 
 jobs:
+  lint:
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set Up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      
+      - name: Run linting
+        run: ./bin/standardrb --no-fix
+          
   build:
     runs-on: ubuntu-latest
     services:
@@ -62,9 +74,7 @@ jobs:
         run: |
           bundle exec rake webpacker:compile
 
-      - name: Run Tests & Linting
+      - name: Run Tests
         env:
           ELASTICSEARCH_URL: "http://localhost:9200"
-        run: |
-          ./bin/standardrb --no-fix
-          ./bin/rake test
+        run: ./bin/rake test
