@@ -37,14 +37,8 @@ jobs:
 
       - name: Set Up Ruby
         uses: ruby/setup-ruby@v1
-
-      - name: Cache Gems
-        uses: actions/cache@v2
         with:
-          path: vendor/bundle
-          key: bundler-cache-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            bundler-cache-
+          bundler-cache: true
 
       - name: Get Yarn cache directory path
         id: yarn-cache-dir-path
