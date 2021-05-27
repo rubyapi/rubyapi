@@ -22,7 +22,7 @@ We aim to improve the Ruby ecosystem by being:
 Install dependencies:
 
 ```sh
-$ bundle install && yarn install
+$ ./bin/setup
 ```
 
 Start ElasticSearch:
