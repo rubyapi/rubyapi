@@ -53,27 +53,14 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Get Yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Cache Yarn
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
       - name: Install Dependencies
         run: |
           sudo apt-get update -qq
           sudo apt-get -yqq install chromium-chromedriver
-          yarn install --frozen-lockfile
+          yarn install --immutable
 
       - name: Compile Assets
-        run: |
-          bundle exec rake webpacker:compile
+        run: bundle exec rake webpacker:compile
 
       - name: Run Tests
         env:
