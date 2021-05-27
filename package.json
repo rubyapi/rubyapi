@@ -20,7 +20,19 @@
     "tailwindcss": "^2.0.1-compat"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.14.2",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+    "@babel/plugin-transform-destructuring": "^7.13.17",
+    "@babel/plugin-transform-regenerator": "^7.13.15",
+    "@babel/plugin-transform-runtime": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/runtime": "^7.14.0",
+    "babel-plugin-macros": "^3.1.0",
     "chokidar": "^3.5.1",
+    "lodash": "^4.17.21",
+    "webpack": "^4.0.0",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.2"
   }
 }
