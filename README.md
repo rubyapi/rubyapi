@@ -28,7 +28,7 @@ $ ./bin/setup
 Start ElasticSearch:
 
 ```sh
-$ docker-compose up -d
+$ docker compose up -d
 ```
 
 Start the Rails Server
