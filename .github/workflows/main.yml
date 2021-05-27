@@ -4,20 +4,53 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - '**.md'
   pull_request:
     types:
       - opened
       - synchronize
-    paths-ignore:
-      - '**.md'
 
 env:
   BUNDLE_PATH: vendor/bundle
 
 jobs:
-  lint:
+  lint-markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            markdown:
+              - '**.md'
+              - '.remark*'
+              - 'package.json'
+              - 'yarn.lock'
+
+      - name: Get Yarn cache directory path
+        id: yarn-cache-dir-path
+        if: steps.changes.outputs.markdown == 'true'
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache Yarn
+        uses: actions/cache@v2
+        if: steps.changes.outputs.markdown == 'true'
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install Node.js packages
+        if: steps.changes.outputs.markdown == 'true'
+        run: yarn install --frozen-lockfile
+
+      - name: Run Markdown linting
+        if: steps.changes.outputs.markdown == 'true'
+        run: yarn run remark
+
+  lint-ruby:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -26,10 +59,10 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      
-      - name: Run linting
+
+      - name: Run Ruby linting
         run: ./bin/standardrb --no-fix
-          
+
   build:
     runs-on: ubuntu-latest
     services:

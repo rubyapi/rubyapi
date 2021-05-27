@@ -1,6 +1,9 @@
 {
   "name": "ruby-api",
   "private": true,
+  "scripts": {
+    "remark": "remark ."
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
@@ -21,6 +24,10 @@
   },
   "devDependencies": {
     "chokidar": "^3.5.1",
+    "remark": "^13.0.0",
+    "remark-cli": "^9.0.0",
+    "remark-gfm": "^1.0.0",
+    "remark-preset-lint-markdown-style-guide": "^4.0.0",
     "webpack-dev-server": "^3.11.2"
   }
 }

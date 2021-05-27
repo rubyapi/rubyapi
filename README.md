@@ -7,7 +7,9 @@ Ruby API makes it easy and fast to search or browse the Ruby language API docs.
 
 ## Why?
 
-The existing websites for Ruby documentation are hard to search, and impossible to read on mobile devices. Ruby API provides instant search results, inspired by [Dash](http://kapeli.com/dash), and a responsive design that's easy to read on any size device.
+The existing websites for Ruby documentation are hard to search, and impossible to read on mobile devices.
+Ruby API provides instant search results, inspired by [Dash](http://kapeli.com/dash),
+and a responsive design that's easy to read on any size device.
 
 We aim to improve the Ruby ecosystem by being:
 
@@ -22,39 +24,40 @@ We aim to improve the Ruby ecosystem by being:
 Install dependencies:
 
 ```sh
-$ bundle install && yarn install
+bundle install && yarn install
 ```
 
-Start ElasticSearch:
+Start ElasticSearch (can require root privilages on some systems):
 
 ```sh
-$ docker-compose up -d
+docker-compose up -d
 ```
 
 Start the Rails Server
 
 ```sh
-$ ./bin/rails server
+./bin/rails server
 ```
 
 Optionally, you also may want to start the webpack dev server
 
 ```sh
-$ ./bin/webpack-dev-server
+./bin/webpack-dev-server
 ```
 
 ## Importing Documentation
 
-Ruby's documentation can be imported very easily. There's a rake task that will let you import a given versions' documentation:
+Ruby's documentation can be imported very easily.
+There's a rake task that will let you import a given versions' documentation:
 
 ```sh
-$ ./bin/rake import:ruby[3.0.0]
+./bin/rake import:ruby[3.0.0]
 ```
 
 or you can easily import the latest versions of all currently supported versions of ruby:
 
 ```sh
-$ ./bin/rake import:ruby:all
+./bin/rake import:ruby:all
 ```
 
 ## Running tests
@@ -62,7 +65,7 @@ $ ./bin/rake import:ruby:all
 The test suite can be executed with:
 
 ```sh
-$ ./bin/rake test
+./bin/rake test
 ```
 
 ## Linting code
@@ -72,11 +75,11 @@ This project uses [StandardRB](https://github.com/testdouble/standard) for linti
 StandardRB can be executed with:
 
 ```sh
-$ ./bin/standardrb
+./bin/standardrb
 ```
 
-_Note: This command may make changes to your code, to make it conform to the formatting rules of
-this project._
+Note: This command may make changes to your code, to make it conform to the formatting rules of
+this project.
 
 For instructions on running StandardRB in your editor, [check out StandardRB's Documentation](https://github.com/testdouble/standard#how-do-i-run-standard-in-my-editor).
 

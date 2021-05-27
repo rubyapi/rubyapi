@@ -1,0 +1,11 @@
+plugins:
+  - remark-preset-lint-markdown-style-guide
+  - remark-gfm
+  - - lint-maximum-line-length
+    - 120
+  - - lint-unordered-list-marker-style
+    - consistent
+  - - lint-no-file-name-irregular-characters
+    - '\\.a-zA-Z0-9-_'
+  - - lint-no-shell-dollars
+    - - error
