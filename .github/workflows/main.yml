@@ -53,7 +53,7 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Run Tests
+      - name: Test Importing Ruby Documentation
         env:
           ELASTICSEARCH_URL: "http://localhost:9200"
         run: ./bin/rake "import:ruby[dev]"
