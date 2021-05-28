@@ -114,20 +114,6 @@ pre:not(.ruby) {
     @apply border-0;
   }
 
-  @screen lg {
-    dt, dd {
-      @apply border-b-2 border-gray-400 text-center;
-    }
-
-    dd {
-      @apply w-10/12 px-3;
-    }
-
-    dt {
-      @apply w-2/12 p-3;
-    }
-  }
-
   h1, h2, h3, h4, h5 {
     @apply font-semibold text-lg py-1;
   }
