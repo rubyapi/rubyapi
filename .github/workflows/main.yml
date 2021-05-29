@@ -29,8 +29,36 @@ jobs:
       
       - name: Run linting
         run: ./bin/standardrb --no-fix
-          
-  build:
+
+  test-import:
+    runs-on: ubuntu-latest
+    services:
+      elasticsearch:
+        image: elasticsearch:7.3.2
+        ports:
+          - 9200:9200
+        env:
+          "discovery.type": "single-node"
+        options: >-
+          --health-cmd "curl --silent --fail localhost:9200/_cluster/health || exit 1"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set Up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Test Importing Ruby Documentation
+        env:
+          ELASTICSEARCH_URL: "http://localhost:9200"
+        run: ./bin/rake "import:ruby[dev]"
+
+  test:
     runs-on: ubuntu-latest
     services:
       elasticsearch:
