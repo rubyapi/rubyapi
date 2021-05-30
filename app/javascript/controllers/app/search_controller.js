@@ -75,7 +75,7 @@ export default class extends Controller {
     window.removeEventListener("mousedown")
   }
 
-  async onKeydown(event) {
+  async onKeyup(event) {
     const query = this.inputTarget.value
     const version = this.data.get("version")
     const path = this.data.get("url")
@@ -85,16 +85,6 @@ export default class extends Controller {
       return
     }
 
-    if (event.key.startsWith("Arrow")) {
-      this.handleArrowKey(event)
-      return
-    }
-
-    if (event.key === "Enter" && this.suggestionIndex !== 0) {
-      event.preventDefault()
-      this.getSelectedSuggestion().querySelector('a').click()
-    }
-
     if (this.lastQuery === query) {
       return
     }
@@ -102,6 +92,15 @@ export default class extends Controller {
     this.lastQuery = query
 
     await this.autocomplete(query, version, path)
+  }
+
+  async onKeydown(event) {
+    if (event.key.startsWith("Arrow")) {
+      this.handleArrowKey(event)
+    } else if (event.key === "Enter" && this.suggestionIndex !== 0) {
+      event.preventDefault()
+      this.getSelectedSuggestion().querySelector('a').click()
+    }
   }
 
   handleArrowKey(event) {
@@ -116,7 +115,7 @@ export default class extends Controller {
     }
 
     const max = this.suggestionsLength()
-    this.suggestionIndex = this.clamp(this.suggestionIndex, 0, max)
+    this.suggestionIndex = this.wrap(this.suggestionIndex, max)
 
     this.highlightSelectedSuggestion()
   }
@@ -152,8 +151,8 @@ export default class extends Controller {
       })
   }
 
-  clamp(value, min, max) {
-    return Math.min(max, Math.max(min, value))
+  wrap(value, max) {
+    return value < 0 ? max : (value > max ? 0 : value)
   }
 
   suggestionsLength() {
