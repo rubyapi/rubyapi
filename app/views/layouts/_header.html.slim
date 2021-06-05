@@ -14,7 +14,7 @@ header data-controller="header" class="flex items-center h-16 text-white bg-red-
           button data-action="click->header#toggleMobileMenu" data-header-target="mobileMenuButton" class="group p-2 curser-pointer rounded inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 hover:bg-red-800 active:bg-red-800 dark:hover:bg-gray-800 dark:active:bg-gray-800"
             svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
               path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"
-        div class="hidden md:flex md:space-x-4 justify-inbetween items-center"
+        div class="hidden md:flex md:space-x-4"
           = render 'layouts/version_selector'
           = render 'layouts/github_links'
           = render 'layouts/theme_selector'
