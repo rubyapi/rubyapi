@@ -1,8 +1,9 @@
 -# frozen_string_literal: true
 div class="relative" data-controller="ruby-version"
-  button class="relative z-20 pl-2 text-xl hover:opacity-70" data-action="click->ruby-version#toggle" aria-label="Show github links"
+  button class="relative inline z-20 pl-2 text-lg hover:opacity-70" data-action="click->ruby-version#toggle" aria-label="Show github links"
     | #{ruby_version}
-    i class="ml-2 fas fa-caret-down"
+    svg xmlns="http://www.w3.org/2000/svg" class="inline h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
+      path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"
   button class="dropdown-overlay fixed inset-0 w-full h-full bg-black opacity-25 cursor-default invisible z-50" data-ruby-version-target="versionOverlay" tabindex="-1" data-action="click->ruby-version#out"
   div class="dropdown absolute w-56 bg-white text-gray-700 dark:bg-gray-900 dark:text-gray-400 shadow-xl rounded p-2 right-0 invisible z-50" data-ruby-version-target="versionList"
     div

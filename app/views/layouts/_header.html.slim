@@ -11,13 +11,14 @@ header data-controller="header" class="flex items-center h-16 text-white bg-red-
             = render 'layouts/search_form'
       div class="flex-none"
         div class="block md:hidden"
-          button data-action="click->header#toggleMobileMenu" data-target="header.mobileMenuButton" class="group p-2 curser-pointer rounded inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 hover:bg-red-800 active:bg-red-800 dark:hover:bg-gray-800 dark:active:bg-gray-800"
-            i class="fa fa-bars fa-lg"
-        div class="hidden md:flex md:space-x-4 md:justify-inbetween md:items-center"
+          button data-action="click->header#toggleMobileMenu" data-header-target="mobileMenuButton" class="group p-2 curser-pointer rounded inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 hover:bg-red-800 active:bg-red-800 dark:hover:bg-gray-800 dark:active:bg-gray-800"
+            svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
+              path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"
+        div class="hidden md:flex md:space-x-4 justify-inbetween items-center"
           = render 'layouts/version_selector'
           = render 'layouts/github_links'
           = render 'layouts/theme_selector'
-  div data-target="header.mobileMenu" class="hidden absolute p-2 inset-x-0 top-0"
+  div data-header-target="mobileMenu" class="hidden absolute p-2 inset-x-0 top-0"
     div class="px-2 py-4 rounded shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-gray-600 text-white"
       div class="flex items-center justify-between text-gray-600 dark:text-gray-200"
         div class="flex-none"
@@ -25,12 +26,13 @@ header data-controller="header" class="flex items-center h-16 text-white bg-red-
             span class="sr-only" Ruby API
             = inline_svg_pack_tag "media/packs/app/logo-plain.svg", class: "h-8 w-auto text-red-600 dark:text-white fill-current"
         div class="flex justify-between space-x-4 items-center"
-          div class="flex justify-between space-x-4"
+          div class="flex justify-between items-center space-x-4"
             = render 'layouts/version_selector'
             = render 'layouts/github_links'
             = render 'layouts/theme_selector'
           button data-action="click->header#toggleMobileMenu" class="group px-2 py-1 -my-1 border border-solid border-gray-300 dark:border-gray-500 text-xl curser-pointer rounded-lg inline-flex items-center justify-center focus:outline-none hover:bg-gray-200 dark:hover:bg-gray-500"
-            i class="fas fa-times fa-lg"
+            svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
+              path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"
       - if content_for(:mobile_menu)
         div class="mt-4 pt-2 h-96 overflow-y-auto border-t border-solid text-gray-600 dark:text-gray-200 border-gray-300 dark:border-gray-700"
           = yield(:mobile_menu)
