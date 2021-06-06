@@ -7,7 +7,7 @@ export default class extends Controller {
   connect() {
     const codeBar = document.createElement("div")
     codeBar.classList.add("w-full", "px-3", "py-2", "bg-code-header", "dark:bg-gray-700", "items-center", "flex", "justify-between", "font-mono", "rounded-t")
-    codeBar.innerHTML = `<span class="text-gray-300 text-sm">Example</span><div><button class="px-2" data-action="click->code-example#run"><span class="text-gray-300 fill-current hover:text-gray-500" data-code-example-target="run"></span></button><button tilte="Copy to clipboard" class="pl-2" data-action="click->code-example#copy" aria-label="Copy to clipboard"><span data-code-example-target="copy" class="text-gray-300 fill-current hover:text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" /><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" /></svg></span></button></div>`
+    codeBar.innerHTML = `<span class="text-gray-300 text-sm">Example</span><div><button class="px-2" data-action="click->code-example#run"><span class="text-gray-300 fill-current hover:text-gray-500" data-code-example-target="run"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" /></svg></span></button><button tilte="Copy to clipboard" class="pl-2" data-action="click->code-example#copy" aria-label="Copy to clipboard"><span data-code-example-target="copy" class="text-gray-300 fill-current hover:text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" /><path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" /></svg></span></button></div>`
 
     this.blockTarget.append(codeBar)
   }
@@ -34,7 +34,7 @@ export default class extends Controller {
       .then((response) => response.json())
       .then((data) => {
         const resultDiv = document.createElement("pre")
-        const output = `<span class="absolute top-0 right-0 m-2 px-2 py-1 bg-gray-400 dark:bg-gray-800 dark:text-gray-200 rounded text-sm"><i class="fas fa-info-circle"></i> Experimental Feature</span>`
+        const output = `<span class="absolute top-0 right-0 m-2 px-2 py-1 bg-gray-400 dark:bg-gray-800 dark:text-gray-200 rounded text-sm"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg> Experimental Feature</span>`
         resultDiv.classList.add("w-full", "my-2", "p-3", "rounded", "bg-gray-300", "text-gray-700", "dark:bg-gray-900", "dark:text-gray-200", "font-mono", "relative")
 
         resultDiv.innerHTML = output.concat(data.output)
