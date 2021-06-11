@@ -5,7 +5,7 @@
     "@rails/webpacker": "^5.4.0",
     "autoprefixer": "^9",
     "clipboard-copy": "^4.0.1",
-    "hotkeys-js": "^3.8.5",
+    "hotkeys-js": "^3.8.6",
     "lodash.throttle": "^4.1.1",
     "monaco-editor": "^0.21.3",
     "monaco-editor-webpack-plugin": "^2.1.0",
