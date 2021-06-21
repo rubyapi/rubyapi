@@ -16,7 +16,6 @@ header data-controller="header" class="flex items-center h-16 text-white bg-red-
               path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"
         div class="hidden md:flex md:space-x-4"
           = render 'layouts/version_selector'
-          = render 'layouts/github_links'
           = render 'layouts/theme_selector'
   div data-header-target="mobileMenu" class="hidden absolute p-2 inset-x-0 top-0"
     div class="px-2 py-4 rounded shadow-lg ring-1 ring-black ring-opacity-5 bg-white dark:bg-gray-600 text-white"
@@ -28,7 +27,6 @@ header data-controller="header" class="flex items-center h-16 text-white bg-red-
         div class="flex justify-between space-x-4 items-center"
           div class="flex justify-between items-center space-x-4"
             = render 'layouts/version_selector'
-            = render 'layouts/github_links'
             = render 'layouts/theme_selector'
           button data-action="click->header#toggleMobileMenu" class="group px-2 py-1 -my-1 border border-solid border-gray-300 dark:border-gray-500 text-xl curser-pointer rounded-lg inline-flex items-center justify-center focus:outline-none hover:bg-gray-200 dark:hover:bg-gray-500"
             svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
