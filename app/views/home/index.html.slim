@@ -25,8 +25,7 @@ div class="p-6 max-w-screen-xl mx-auto"
         div class="p-3 h-full border border-gray-300 dark:border-gray-700 rounded flex flex-col justify-between"
           div
             h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200"
-              = tile[:class_name]
+              = tile.name
             p class="py-1 dark:text-gray-400"
-              = tile[:description]
-          div
-            = link_to "Read more", object_path(object: tile[:object_path], version: ruby_version), class: "text-blue-400 hover:underline"
+              = group_classes(tile.classes)
+
