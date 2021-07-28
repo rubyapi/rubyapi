@@ -310,7 +310,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     rdoc (6.3.2)
-    redis (4.3.1)
+    redis (4.4.0)
     regexp_parser (2.1.1)
     request_store (1.5.0)
       rack (>= 1.4)
@@ -438,7 +438,7 @@ DEPENDENCIES
   rack-attack
   rails (~> 6.1.4)
   rdoc
-  redis (~> 4.3)
+  redis (~> 4.4)
   rouge
   selenium-webdriver
   sentry-rails
