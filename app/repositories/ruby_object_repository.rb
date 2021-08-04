@@ -22,7 +22,7 @@ class RubyObjectRepository
   end
 
   def bulk_import(objects)
-    payload = objects.flat_map { |o| [{"index": {"_id" => o.id}}, o.to_hash] }
+    payload = objects.flat_map { |o| [{index: {"_id" => o.id}}, o.to_hash] }
     client.bulk(body: payload, index: index_name)
   end
 

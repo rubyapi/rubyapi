@@ -23,12 +23,10 @@ module RubyReleases
       releases = []
 
       CSV.parse(index, col_sep: "\t", headers: true).map do |l|
-        version = begin
-          if l["name"].start_with?("ruby-")
-            l["name"].match(/ruby-(.+)/)[1]
-          else
-            l["name"]
-          end
+        version = if l["name"].start_with?("ruby-")
+          l["name"].match(/ruby-(.+)/)[1]
+        else
+          l["name"]
         end
 
         releases << RubyVersion.new(version, sha512: l["sha512"], source_url: l["url"]) if supported_release_format?(l["url"])

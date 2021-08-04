@@ -148,12 +148,10 @@ class RubyAPIRDocGenerator
   def format_method_source_body(method_doc)
     method_src = CGI.unescapeHTML(ActionView::Base.full_sanitizer.sanitize(method_doc.markup_code))
 
-    lexer = begin
-      if method_doc.token_stream&.any? { |t| t.class.to_s == "RDoc::Parser::RipperStateLex::Token" }
-        Rouge::Lexers::Ruby.new
-      else
-        Rouge::Lexers::C.new
-      end
+    lexer = if method_doc.token_stream&.any? { |t| t.class.to_s == "RDoc::Parser::RipperStateLex::Token" }
+      Rouge::Lexers::Ruby.new
+    else
+      Rouge::Lexers::C.new
     end
 
     html_formatter = Rouge::Formatters::HTML.new
