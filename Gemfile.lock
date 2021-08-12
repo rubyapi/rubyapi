@@ -79,9 +79,6 @@ GEM
       protocol-http2 (~> 0.14.0)
     async-http-cache (0.4.2)
       async-http (~> 0.56)
-    async-http-faraday (0.11.0)
-      async-http (~> 0.42)
-      faraday
     async-io (1.32.2)
       async
     async-pool (0.3.8)
@@ -129,22 +126,22 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
-    elasticsearch (7.9.0)
-      elasticsearch-api (= 7.9.0)
-      elasticsearch-transport (= 7.9.0)
-    elasticsearch-api (7.9.0)
+    elasticsearch (7.14.0)
+      elasticsearch-api (= 7.14.0)
+      elasticsearch-transport (= 7.14.0)
+    elasticsearch-api (7.14.0)
       multi_json
-    elasticsearch-model (7.1.1)
+    elasticsearch-model (7.2.0)
       activesupport (> 3)
-      elasticsearch (> 1)
+      elasticsearch (~> 7)
       hashie
-    elasticsearch-persistence (7.1.1)
+    elasticsearch-persistence (7.2.0)
       activemodel (> 4)
       activesupport (> 4)
       elasticsearch (~> 7)
-      elasticsearch-model (= 7.1.1)
+      elasticsearch-model (= 7.2.0)
       hashie
-    elasticsearch-transport (7.9.0)
+    elasticsearch-transport (7.14.0)
       faraday (~> 1)
       multi_json
     erubi (1.10.0)
@@ -162,7 +159,7 @@ GEM
       process-metrics (~> 0.2.0)
       rack (>= 1.0)
       samovar (~> 2.1)
-    faraday (1.5.1)
+    faraday (1.7.0)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -170,6 +167,7 @@ GEM
       faraday-net_http (~> 1.0)
       faraday-net_http_persistent (~> 1.1)
       faraday-patron (~> 1.0)
+      faraday-rack (~> 1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords (>= 0.0.4)
     faraday-em_http (1.0.0)
@@ -179,6 +177,7 @@ GEM
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.2.0)
     faraday-patron (1.0.0)
+    faraday-rack (1.0.0)
     ffi (1.15.3)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
@@ -416,7 +415,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  async-http-faraday (~> 0.11.0)
   aws-sdk-s3
   bootsnap (>= 1.1.0)
   byebug
@@ -459,4 +457,4 @@ RUBY VERSION
    ruby 3.0.1p64
 
 BUNDLED WITH
-   2.2.15
+   2.2.22

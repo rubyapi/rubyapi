@@ -10,7 +10,6 @@ group :preload, :default do
   gem "redis", "~> 4.4"
   gem "hiredis"
 
-  gem "async-http-faraday", "~> 0.11.0"
   gem "elasticsearch-persistence"
 
   gem "http"
