@@ -79,9 +79,6 @@ GEM
       protocol-http2 (~> 0.14.0)
     async-http-cache (0.4.2)
       async-http (~> 0.56)
-    async-http-faraday (0.11.0)
-      async-http (~> 0.42)
-      faraday
     async-io (1.32.2)
       async
     async-pool (0.3.8)
@@ -418,7 +415,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  async-http-faraday (~> 0.11.0)
   aws-sdk-s3
   bootsnap (>= 1.1.0)
   byebug
@@ -461,4 +457,4 @@ RUBY VERSION
    ruby 3.0.1p64
 
 BUNDLED WITH
-   2.2.15
+   2.2.22
