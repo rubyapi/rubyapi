@@ -185,7 +185,7 @@ GEM
     fiber-local (1.0.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    graphiql-rails (1.7.0)
+    graphiql-rails (1.8.0)
       railties
       sprockets-rails
     graphql (1.12.14)
