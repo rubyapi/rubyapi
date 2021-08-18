@@ -5,7 +5,7 @@
         = render "objects/sidebar/section/link",
             additional_classes: "font-mono text-sm",
             title: @object.superclass.constant,
-            href: object_path(object: @object.superclass.path)
+            href: object_exists?(@object.superclass) ? object_path(object: @object.superclass.path) : "#"
     - unless @object.included_modules.empty?
       = render "objects/sidebar/section", title: 'Included Modules' do
         ul class="font-mono text-sm"
@@ -13,7 +13,7 @@
             li
               = render "objects/sidebar/section/link",
                   title: included_module.constant,
-                  href: object_path(object: included_module.path)
+                  href: object_exists?(included_module) ? object_path(object: included_module.path) : "#"
     - unless @object.ruby_constants.empty?
       = render "objects/sidebar/section", title: 'Constants' do
         ul class="font-mono text-sm"
@@ -45,7 +45,7 @@ div class="hidden lg:block w-1/4"
           = render "objects/sidebar/section/link",
               additional_classes: "font-mono text-sm",
               title: @object.superclass.constant,
-              href: object_path(object: @object.superclass.path)
+              href: object_exists?(@object.superclass) ? object_path(object: @object.superclass.path) : "#"
       - unless @object.included_modules.empty?
         = render "objects/sidebar/section", title: 'Included Modules' do
           ul class="font-mono text-sm"
@@ -53,7 +53,7 @@ div class="hidden lg:block w-1/4"
               li
                 = render "objects/sidebar/section/link",
                     title: included_module.constant,
-                    href: object_path(object: included_module.path)
+                    href: object_exists?(included_module) ? object_path(object: included_module.path) : "#"
       - unless @object.ruby_constants.empty?
         = render "objects/sidebar/section", title: 'Constants' do
           ul class="font-mono text-sm"

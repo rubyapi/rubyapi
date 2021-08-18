@@ -45,6 +45,14 @@ class ApplicationController < ActionController::Base
   end
   helper_method :home_path
 
+  def object_exists?(klass)
+    path = klass.is_a?(RubyObject) ? klass.id : RubyObject.id_from_path(klass)
+    !!RubyObjectRepository.repository_for_version(ruby_version).find(path)
+  rescue Elasticsearch::Persistence::Repository::DocumentNotFound
+    false
+  end
+  helper_method :object_exists?
+
   def skip_session
     request.session_options[:skip] = true
   end
