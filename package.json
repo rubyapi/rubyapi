@@ -13,7 +13,7 @@
     "postcss": "^7",
     "postcss-cssnext": "^3.1.0",
     "stimulus": "^2.0.0",
-    "tailwindcss": "^2.0.1-compat"
+    "tailwindcss": "^2.2.16"
   },
   "devDependencies": {
     "chokidar": "^3.5.2",
