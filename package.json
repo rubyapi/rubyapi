@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^5.4.3",
-    "autoprefixer": "^9",
+    "autoprefixer": "^10",
     "clipboard-copy": "^4.0.1",
     "hotkeys-js": "^3.8.7",
     "lodash.throttle": "^4.1.1",
