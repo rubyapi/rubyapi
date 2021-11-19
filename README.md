@@ -22,13 +22,13 @@ We aim to improve the Ruby ecosystem by being:
 Install dependencies:
 
 ```sh
-$ bundle install && yarn install
+$ ./bin/setup
 ```
 
 Start ElasticSearch:
 
 ```sh
-$ docker-compose up -d
+$ docker compose up -d
 ```
 
 Start the Rails Server
