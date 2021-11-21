@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       elasticsearch:
-        image: elasticsearch:7.13.4
+        image: elasticsearch:7.15.2
         ports:
           - 9200:9200
         env:
@@ -62,7 +62,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       elasticsearch:
-        image: elasticsearch:7.3.2
+        image: elasticsearch:7.15.2
         ports:
           - 9200:9200
         env:
