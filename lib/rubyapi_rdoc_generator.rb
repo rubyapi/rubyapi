@@ -10,6 +10,12 @@ class RubyAPIRDocGenerator
     IRB
   ].freeze
 
+  READWIRTE_MAPPING = {
+    "R" => "Read",
+    "W" => "Write",
+    "RW" => "Read & Write"
+  }.freeze
+
   SKIP_NAMESPACE_REGEX = /^(#{SKIP_NAMESPACES.join('|')})($|::.+)/
 
   def class_dir
@@ -82,7 +88,8 @@ class RubyAPIRDocGenerator
         object_type: "#{doc.type}_object",
         superclass: superclass,
         included_modules: doc.includes.map(&:name),
-        constants: doc.constants.each_with_object([]) { |c, arr| arr << {name: c.name, description: clean_description(doc.full_name, c.description)} },
+        constants: doc.constants.map { |c| {name: c.name, description: clean_description(doc.full_name, c.description)} },
+        attributes: doc.attributes.map { |a| {name: a.name, description: clean_description(doc.full_name, a.description), access: READWIRTE_MAPPING[a.rw]} },
         metadata: {
           depth: constant_depth(doc.full_name)
         }

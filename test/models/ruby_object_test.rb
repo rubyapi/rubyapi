@@ -16,6 +16,11 @@ class RubyObjectTest < ActiveSupport::TestCase
       metadata: {
         depth: 1
       },
+      attributes: [{
+        name: "path",
+        description: "<p>Path description</p>",
+        access: "read"
+      }],
       constants: [{
         name: "HELLO_WORLD",
         description: "<p>Hello world!</p>"
@@ -114,6 +119,11 @@ class RubyObjectTest < ActiveSupport::TestCase
     object_hash = @object.to_hash
     assert_equal object_hash.sort.to_h, {
       autocomplete: "String",
+      attributes: [{
+        name: "path",
+        description: "<p>Path description</p>",
+        access: "read"
+      }],
       constant: "String",
       constants: [{name: "HELLO_WORLD", description: "<p>Hello world!</p>"}],
       description: "<h1>Hello World</h1>",

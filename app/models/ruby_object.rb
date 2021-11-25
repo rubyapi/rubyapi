@@ -50,6 +50,13 @@ class RubyObject
     end
   end
 
+  def ruby_attributes
+    @attributes ||= begin
+      attributes = body[:attributes].collect { |a| RubyAttribute.new(a) }
+      attributes.sort_by(&:name)
+    end
+  end
+
   def autocomplete
     constant
   end
@@ -101,6 +108,7 @@ class RubyObject
       methods: ruby_methods.collect(&:to_hash),
       constant: constant,
       constants: ruby_constants.collect(&:to_hash),
+      attributes: ruby_attributes.collect(&:to_hash),
       superclass: superclass&.constant,
       included_modules: included_modules.map(&:constant),
       object_type: object_type,
