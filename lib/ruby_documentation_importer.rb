@@ -31,6 +31,7 @@ class RubyDocumentationImporter
       r.files = Dir[path]
       r.template = ""
       r.quiet = true
+      r.visibility = :private
       r.op_dir = Rails.root.join("tmp", "rdoc")
       r.generator_options = [release]
     end

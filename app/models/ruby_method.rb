@@ -34,7 +34,8 @@ class RubyMethod
   def type_identifier
     if class_method? then "::"
     elsif instance_method? then "#"
-    else raise "Unknown type of method: #{method_type}"
+    else
+      raise "Unknown type of method: #{method_type}"
     end
   end
 

@@ -16,7 +16,7 @@ class RubyAPIRDocGenerator
     "RW" => "Read & Write"
   }.freeze
 
-  SKIP_NAMESPACE_REGEX = /^(#{SKIP_NAMESPACES.join('|')})($|::.+)/.freeze
+  SKIP_NAMESPACE_REGEX = /^(#{SKIP_NAMESPACES.join('|')})($|::.+)/
 
   def class_dir
   end
@@ -34,10 +34,7 @@ class RubyAPIRDocGenerator
 
   def generate
     reset_indexes!
-
-    generate_objects.compact.each do |object|
-      index_object(object)
-    end
+    index generate_objects
   end
 
   def generate_objects
@@ -104,11 +101,8 @@ class RubyAPIRDocGenerator
 
   private
 
-  def index_object(object)
-    object_repository.save(object)
-    search_repository.save(object)
-
-    object.ruby_methods.each { |m| search_repository.save m }
+  def index(objects)
+    [object_repository, search_repository].each { |repo| repo.bulk_import(objects) }
   end
 
   def object_repository
@@ -161,12 +155,10 @@ class RubyAPIRDocGenerator
   def format_method_source_body(method_doc)
     method_src = CGI.unescapeHTML(ActionView::Base.full_sanitizer.sanitize(method_doc.markup_code))
 
-    lexer = begin
-      if method_doc.token_stream&.any? { |t| t.class.to_s == "RDoc::Parser::RipperStateLex::Token" }
-        Rouge::Lexers::Ruby.new
-      else
-        Rouge::Lexers::C.new
-      end
+    lexer = if method_doc.token_stream&.any? { |t| t.class.to_s == "RDoc::Parser::RipperStateLex::Token" }
+      Rouge::Lexers::Ruby.new
+    else
+      Rouge::Lexers::C.new
     end
 
     html_formatter = Rouge::Formatters::HTML.new

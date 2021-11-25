@@ -10,7 +10,7 @@ pre {
   @apply p-3 rounded bg-gray-300;
 }
 
-.mode-dark {
+.dark {
   pre {
     @apply bg-gray-900;
   }
@@ -73,12 +73,12 @@ code {
   }
 }
 
-.mode-dark .method-src-body {
+.dark .method-src-body {
   background: none;
 }
 
-.mode-dark {
-  code { @apply bg-gray-700 text-gray-400; }
+.dark {
+  code { @apply bg-gray-700 text-gray-300; }
 }
 
 pre:not(.ruby) {
@@ -112,20 +112,6 @@ pre:not(.ruby) {
 
   dt:last-of-type, dd:last-of-type {
     @apply border-0;
-  }
-
-  @screen lg {
-    dt, dd {
-      @apply border-b-2 border-gray-400 text-center;
-    }
-
-    dd {
-      @apply w-10/12 px-3;
-    }
-
-    dt {
-      @apply w-2/12 p-3;
-    }
   }
 
   h1, h2, h3, h4, h5 {

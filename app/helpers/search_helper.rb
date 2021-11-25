@@ -2,10 +2,8 @@
 
 module SearchHelper
   def escape_method_name(method_name)
-    (@escaped_method_names ||= {})[method_name] ||= begin
-      # See https://github.com/ruby/rdoc/blob/c64210219ec6c0f447b4c66c2c3556cfe462993f/lib/rdoc/method_attr.rb#L294
-      CGI.escape(method_name.gsub("-", "-2D")).tr("%", "-").sub(/^-/, "")
-    end
+    # See https://github.com/ruby/rdoc/blob/c64210219ec6c0f447b4c66c2c3556cfe462993f/lib/rdoc/method_attr.rb#L294
+    (@escaped_method_names ||= {})[method_name] ||= CGI.escape(method_name.gsub("-", "-2D")).tr("%", "-").sub(/^-/, "")
   end
 
   def method_anchor(method)

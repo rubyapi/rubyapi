@@ -5,6 +5,7 @@ require_relative 'boot'
 require 'action_controller/railtie'
 require 'action_view/railtie'
 require 'rails/test_unit/railtie'
+require 'active_support/core_ext'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -21,13 +22,13 @@ module RubyApi
     # the framework and any gems in your application.
 
     # default ruby version documentation
-    config.default_ruby_version = '2.7'
+    config.default_ruby_version = '3.0'
 
     config.ruby_versions = %w[
-      3.0-preview1 2.7 2.6 2.5 2.4 2.3 dev
+      3.1-preview 3.0 2.7 2.6 2.5 2.4 2.3 dev
     ]
 
-    config.eol_ruby_versions = %w[2.4 2.3]
+    config.eol_ruby_versions = %w[2.5 2.4 2.3]
 
     config.elasticsearch_shards = ENV.fetch('ELASTICSEARCH_SHARDS', 5).to_i
     config.elasticsearch_replicas = ENV.fetch('ELASTICSEARCH_REPLICAS', 1).to_i

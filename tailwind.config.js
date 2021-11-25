@@ -1,11 +1,9 @@
 const _ = require('lodash')
 
 module.exports = {
+  darkMode: 'class',
   theme: {
     extend: {
-      screens: {
-        xxl: '1680px',
-      },
       colors: {
         code: {
           "header": "#2f3e46",
@@ -26,15 +24,7 @@ module.exports = {
       }
     }
   },
-  variants: {
-    backgroundColor: ['focus', 'hover', 'dark', 'dark-focus', 'dark-hover', 'dark-group-hover', 'dark-even', 'dark-odd'],
-    borderColor: ['focus', 'hover', 'dark', 'dark-focus', 'dark-focus-within'],
-    textColor: ['focus', 'hover', 'dark', 'dark-focus', 'dark-hover', 'dark-active', 'dark-placeholder'],
-    opacity: ['responsive', 'hover', 'focus', 'disabled'],
-    cursor: ['responsive', 'hover', 'focus', 'disabled'],
-  },
   plugins: [
-    require('tailwindcss-dark-mode')(),
     ({ addUtilities, e, theme, }) => {
       addUtilities(_.fromPairs(
         _.map(theme('opacity'), (value, modifier) => {
@@ -49,13 +39,8 @@ module.exports = {
     }
   ],
   purge: {
-    options: {
-      whitelist: ['mode-dark']
-    },
     content: [
-      './app/javascript/controllers/search_controller.js',
-      './app/javascript/controllers/code_example_controller.js',
-      './app/javascript/controllers/method_controller.js',
+      './app/javascript/**/*_controller.js',
       './app/**/*.html.slim',
     ],
   }

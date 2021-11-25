@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - main
     paths-ignore:
       - '**.md'
   pull_request:
@@ -17,11 +17,24 @@ env:
   BUNDLE_PATH: vendor/bundle
 
 jobs:
-  build:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set Up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      
+      - name: Run linting
+        run: ./bin/standardrb --no-fix
+
+  test-import:
     runs-on: ubuntu-latest
     services:
       elasticsearch:
-        image: elasticsearch:7.3.2
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.15.2
         ports:
           - 9200:9200
         env:
@@ -37,14 +50,36 @@ jobs:
 
       - name: Set Up Ruby
         uses: ruby/setup-ruby@v1
-
-      - name: Cache Gems
-        uses: actions/cache@v2
         with:
-          path: vendor/bundle
-          key: bundler-cache-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            bundler-cache-
+          bundler-cache: true
+
+      - name: Test Importing Ruby Documentation
+        env:
+          ELASTICSEARCH_URL: "http://localhost:9200"
+        run: ./bin/rake "import:ruby[dev]"
+
+  test:
+    runs-on: ubuntu-latest
+    services:
+      elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.15.2
+        ports:
+          - 9200:9200
+        env:
+          "discovery.type": "single-node"
+        options: >-
+          --health-cmd "curl --silent --fail localhost:9200/_cluster/health || exit 1"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set Up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
 
       - name: Get Yarn cache directory path
         id: yarn-cache-dir-path
@@ -62,17 +97,13 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get -yqq install chromium-chromedriver
-          gem install bundler --no-doc
           yarn install --frozen-lockfile
-          bundle install --jobs 4 --retry 3
 
       - name: Compile Assets
         run: |
           bundle exec rake webpacker:compile
 
-      - name: Run Tests & Linting
+      - name: Run Tests
         env:
           ELASTICSEARCH_URL: "http://localhost:9200"
-        run: |
-          ./bin/standardrb --no-fix
-          ./bin/rake test
+        run: ./bin/rake test

@@ -25,7 +25,7 @@ class CodeExecuteController < ApplicationController
 
   def version
     v = params[:version].present? ? params[:version] : default_ruby_version
-    v.include?(".") ? Gem::Version.new(v).canonical_segments.join : v
+    v.include?(".") ? Gem::Version.new(v).segments.join : v
   end
 
   def engine

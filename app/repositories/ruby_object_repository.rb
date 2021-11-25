@@ -21,6 +21,11 @@ class RubyObjectRepository
     new(index_name: "ruby_objects_#{version}_#{Rails.env}")
   end
 
+  def bulk_import(objects)
+    payload = objects.flat_map { |o| [{index: {"_id" => o.id}}, o.to_hash] }
+    client.bulk(body: payload, index: index_name)
+  end
+
   def deserialize(document)
     document.deep_symbolize_keys!
     klass.new(document[:_source])

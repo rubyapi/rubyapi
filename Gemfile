@@ -1,20 +1,19 @@
 source "https://rubygems.org"
 
-ruby "~> 2.7.1"
+ruby "~> 3.0"
 
 group :preload, :default do
-  gem "rails", "~> 6.0.3"
+  gem "rails", "~> 6.1.4"
   gem "bootsnap", ">= 1.1.0", require: false
   gem "falcon"
-  gem "webpacker", "~> 5.2"
-  gem "redis", "~> 4.2"
+  gem "webpacker", "~> 5.4"
+  gem "redis", "~> 4.5"
   gem "hiredis"
 
-  gem "async-http-faraday", "~> 0.9.0"
   gem "elasticsearch-persistence"
 
   gem "http"
-  gem "typhoeus"
+  gem "typhoeus", require: false
   gem "kaminari", "~> 1.2.1"
   gem "inline_svg"
   gem "tty-spinner", require: false
@@ -26,7 +25,8 @@ group :preload, :default do
   gem "aws-sdk-s3"
   gem "sitemap_generator"
   gem "meta-tags"
-  gem "sentry-raven"
+  gem "sentry-ruby"
+  gem "sentry-rails"
   gem "rack-attack"
   gem "rdoc", require: false
   gem "trenni-sanitize", require: false
@@ -43,7 +43,7 @@ end
 
 group :development do
   gem "web-console", ">= 3.3.0"
-  gem "listen", ">= 3.0.5", "< 3.3"
+  gem "listen", ">= 3.0.5", "< 3.8"
   gem "standard"
 end
 

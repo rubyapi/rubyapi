@@ -14,7 +14,7 @@ module RubyReleases
 
     attr_accessor :releases
     def initialize
-      @releases = parse_index(release_index).push(dev, ruby_3)
+      @releases = parse_index(release_index).push(dev, ruby_31)
     end
 
     private
@@ -23,12 +23,10 @@ module RubyReleases
       releases = []
 
       CSV.parse(index, col_sep: "\t", headers: true).map do |l|
-        version = begin
-          if l["name"].start_with?("ruby-")
-            l["name"].match(/ruby-(.+)/)[1]
-          else
-            l["name"]
-          end
+        version = if l["name"].start_with?("ruby-")
+          l["name"].match(/ruby-(.+)/)[1]
+        else
+          l["name"]
         end
 
         releases << RubyVersion.new(version, sha512: l["sha512"], source_url: l["url"]) if supported_release_format?(l["url"])
@@ -42,8 +40,8 @@ module RubyReleases
       RubyVersion.new("dev", sha512: "", source_url: RUBY_DEV_ZIP_URL)
     end
 
-    def ruby_3
-      RubyVersion.new("3.0-preview1", source_url: "https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.0-preview1.zip")
+    def ruby_31
+      RubyVersion.new("3.1-preview", source_url: "https://cache.ruby-lang.org/pub/ruby/3.1/ruby-3.1.0-preview1.zip")
     end
 
     def supported_release_format?(url)

@@ -22,13 +22,13 @@ We aim to improve the Ruby ecosystem by being:
 Install dependencies:
 
 ```sh
-$ bundle install && yarn install
+$ ./bin/setup
 ```
 
 Start ElasticSearch:
 
 ```sh
-$ docker-compose up -d
+$ docker compose up -d
 ```
 
 Start the Rails Server
@@ -48,7 +48,7 @@ $ ./bin/webpack-dev-server
 Ruby's documentation can be imported very easily. There's a rake task that will let you import a given versions' documentation:
 
 ```sh
-$ ./bin/rake import:ruby[2.6.4]
+$ ./bin/rake import:ruby[3.0.0]
 ```
 
 or you can easily import the latest versions of all currently supported versions of ruby:
