@@ -36,7 +36,7 @@ class RubyDescriptionCleaner < Trenni::Sanitize::Filter
       uri = URI(url)
       if uri.host.nil? && uri.path.present?
         # Only edit relative paths, but skip anchor-only paths.
-        node.tag.attributes["href"] = PathCleaner.clean(uri, constant: object_constant, version: version)
+        node.tag.attributes["href"] = PathCleaner.clean(uri, constant: object_constant, version:)
       end
     end
 

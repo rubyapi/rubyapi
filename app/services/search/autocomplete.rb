@@ -3,7 +3,7 @@
 module Search
   class Autocomplete
     def self.search(query, version:)
-      new(query, version: version).perform
+      new(query, version:).perform
     end
 
     def initialize(query, version:)
@@ -53,7 +53,7 @@ module Search
       Ruby::CORE_CLASSES.map do |constant, weight|
         {
           filter: {term: {"object_constant" => constant}},
-          weight: weight
+          weight:
         }
       end
     end

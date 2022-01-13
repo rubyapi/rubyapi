@@ -11,7 +11,7 @@ module Search
     class In
       def self.filter_for(value)
         [
-          {term: {object_constant: {value: value}}},
+          {term: {object_constant: {value:}}},
           {term: {type: {value: :method}}}
         ]
       end

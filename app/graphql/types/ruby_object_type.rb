@@ -16,7 +16,7 @@ module Types
 
     def path
       routes = Rails.application.routes.url_helpers
-      routes.object_path version: object.version, object: object
+      routes.object_path version: object.version, object:
     end
   end
 end

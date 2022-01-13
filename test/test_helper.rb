@@ -43,7 +43,7 @@ class ActiveSupport::TestCase
     name = constant.to_s.split("::").first
 
     attributes = {
-      name: name,
+      name:,
       description: "<h1>Hello Object: #{name}</h1>",
       object_type: "#{object_type}_object",
       constant: constant.to_s,

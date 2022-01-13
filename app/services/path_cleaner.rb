@@ -11,7 +11,7 @@ module PathCleaner
     end
 
     Rails.application.routes.url_helpers.object_path({
-      version: version,
+      version:,
       object: class_parts.join("/").downcase,
       anchor: uri.fragment
     })

@@ -83,10 +83,10 @@ class RubyAPIRDocGenerator
       objects << RubyObject.new(
         name: doc.name,
         description: clean_description(doc.full_name, doc.description),
-        methods: methods,
+        methods:,
         constant: doc.full_name,
         object_type: "#{doc.type}_object",
-        superclass: superclass,
+        superclass:,
         included_modules: doc.includes.map(&:name),
         constants: doc.constants.map { |c| {name: c.name, description: clean_description(doc.full_name, c.description)} },
         attributes: doc.attributes.map { |a| {name: a.name, description: clean_description(doc.full_name, a.description), access: READWIRTE_MAPPING[a.rw]} },
@@ -139,7 +139,7 @@ class RubyAPIRDocGenerator
 
   def clean_path(path, constant:)
     return nil unless path.present?
-    PathCleaner.clean(URI(path), constant: constant, version: @version)
+    PathCleaner.clean(URI(path), constant:, version: @version)
   end
 
   def call_sequence_for_method_doc(doc)

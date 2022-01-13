@@ -13,9 +13,9 @@ module SearchHelper
   def result_url(result, version:)
     routes = Rails.application.routes.url_helpers
     if result.is_a?(RubyMethod)
-      routes.object_path version: version, object: result.object_path, anchor: method_anchor(result)
+      routes.object_path version:, object: result.object_path, anchor: method_anchor(result)
     elsif result.is_a?(RubyObject)
-      routes.object_path version: version, object: result.path
+      routes.object_path version:, object: result.path
     end
   end
 end

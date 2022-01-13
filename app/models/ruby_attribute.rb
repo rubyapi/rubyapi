@@ -21,9 +21,9 @@ class RubyAttribute
 
   def to_hash
     {
-      name: name,
-      description: description,
-      access: access
+      name:,
+      description:,
+      access:
     }
   end
 end

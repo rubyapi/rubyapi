@@ -19,7 +19,7 @@ module Search
     RESULTS_PER_PAGE = 25
 
     def self.search(query, version:, page:)
-      new(query, version: version, page: page).search
+      new(query, version:, page:).search
     end
 
     def initialize(query, version:, page:)
@@ -30,7 +30,7 @@ module Search
 
     def search
       response = search_repository.search(elasticsearch_options)
-      Results.new(response: response, query: elasticsearch_options)
+      Results.new(response:, query: elasticsearch_options)
     end
 
     private
@@ -77,7 +77,7 @@ module Search
       Ruby::CORE_CLASSES.each do |constant, weight|
         boosts << {
           filter: {term: {object_constant: constant}},
-          weight: weight
+          weight:
         }
       end
 

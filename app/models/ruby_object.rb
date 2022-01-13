@@ -100,19 +100,19 @@ class RubyObject
 
   def to_hash
     {
-      id: id,
-      name: name,
+      id:,
+      name:,
       type: :object,
-      description: description,
-      autocomplete: autocomplete,
+      description:,
+      autocomplete:,
       methods: ruby_methods.collect(&:to_hash),
-      constant: constant,
+      constant:,
       constants: ruby_constants.collect(&:to_hash),
       attributes: ruby_attributes.collect(&:to_hash),
       superclass: superclass&.constant,
       included_modules: included_modules.map(&:constant),
-      object_type: object_type,
-      metadata: metadata
+      object_type:,
+      metadata:
     }
   end
 end

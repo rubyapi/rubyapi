@@ -20,7 +20,7 @@ class CodeExecuteController < ApplicationController
   end
 
   def repl_path
-    REPL_PATH % {engine: engine}
+    REPL_PATH % {engine:}
   end
 
   def engine

@@ -15,6 +15,6 @@ class AutocompleteResult
   end
 
   def path
-    result_url result, version: version
+    result_url result, version:
   end
 end

@@ -27,7 +27,7 @@ namespace :sitemap do
 
         response.results.each do |o|
           priority = Ruby::CORE_CLASSES.include?(o.constant) ? 0.5 : 0.9
-          add object_path(version: version, object: o.path), changefreq: "monthly", priority: priority
+          add object_path(version:, object: o.path), changefreq: "monthly", priority:
         end
       end
     end

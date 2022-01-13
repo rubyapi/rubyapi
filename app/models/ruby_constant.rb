@@ -15,8 +15,8 @@ class RubyConstant
 
   def to_hash
     {
-      name: name,
-      description: description
+      name:,
+      description:
     }
   end
 end

@@ -20,19 +20,19 @@ module Types
 
     def ruby_object(constant:, version:)
       document = Base64.encode64(constant)
-      ruby_object_repository(version: version).find(document)
+      ruby_object_repository(version:).find(document)
     rescue Elasticsearch::Persistence::Repository::DocumentNotFound
       raise GraphQL::ExecutionError, "Ruby object #{constant.inspect} not found for version #{version}"
     end
 
     def search(query:, version:, page:)
-      search = Search::Documentation.search(query, version: version, page: page)
+      search = Search::Documentation.search(query, version:, page:)
       search.results
     end
 
     def autocomplete(query:, version:)
-      results = Search::Autocomplete.search(query, version: version).first(5)
-      results.map { |r| AutocompleteResult.new(r, version: version) }
+      results = Search::Autocomplete.search(query, version:).first(5)
+      results.map { |r| AutocompleteResult.new(r, version:) }
     end
 
     def ruby_object_repository(version:)
