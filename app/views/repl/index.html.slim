@@ -8,17 +8,12 @@ div class="mt-16" data-controller="repl"
       div class="z-50 absolute top-0 right-0"
         div class="flex"
           select class="appearance-none bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded-lg shadow py-2 mx-2 -ml-2" data-repl-target="versionSelector"
-            option value="mri-30" MRI Ruby 3.0 Preview 1
-            option value="mri-27" selected="selected" MRI Ruby 2.7
-            option value="mri-26" MRI Ruby 2.6
-            option value="mri-25" MRI Ruby 2.5
-            option value="mri-24" MRI Ruby 2.4
-            option value="mri-23" MRI Ruby 2.3
-            option value="mri-dev" MRI Ruby Dev
-            option value="jruby-latest" JRuby
-            option value="mruby-latest" MRuby
-            option value="mruby-dev" MRuby Dev
-            option value="artichokeruby-latest" Artichoke Ruby
+            option value="mri" selected="selected" Ruby 3.1
+            option value="dev" Ruby Dev
+            option value="jruby" jruby
+            option value="mruby" mruby
+            option value="truffleruby" truffleruby
+            option value="artichokeruby" artichokeruby
           button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold px-4 border border-gray-400 rounded-lg shadow py-2 mx-2 -mr-2" data-repl-target="playButton" data-action="click->repl#execute"
             svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"
               path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"

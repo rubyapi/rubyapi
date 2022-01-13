@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CodeExecuteController < ApplicationController
-  REPL_PATH = "exec/%{engine}/%{version}"
+  REPL_PATH = "exec/%{engine}"
 
   def post
     response = HTTP.headers("x-api-key" => repl_api_key).post(repl_endpoint, body: params[:snippet])
@@ -20,12 +20,7 @@ class CodeExecuteController < ApplicationController
   end
 
   def repl_path
-    REPL_PATH % {engine: engine, version: version}
-  end
-
-  def version
-    v = params[:version].present? ? params[:version] : default_ruby_version
-    v.include?(".") ? Gem::Version.new(v).segments.join : v
+    REPL_PATH % {engine: engine}
   end
 
   def engine
