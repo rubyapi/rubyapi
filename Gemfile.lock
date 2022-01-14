@@ -190,7 +190,7 @@ GEM
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
     faraday-retry (1.0.3)
-    ffi (1.15.4)
+    ffi (1.15.5)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
@@ -231,7 +231,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    listen (3.7.0)
+    listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     llhttp-ffi (0.4.0)
