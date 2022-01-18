@@ -16,7 +16,7 @@
     "tailwindcss": "^2.0.1-compat"
   },
   "devDependencies": {
-    "chokidar": "^3.5.2",
+    "chokidar": "^3.5.3",
     "webpack-dev-server": "^3.11.2"
   }
 }
