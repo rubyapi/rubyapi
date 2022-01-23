@@ -6,9 +6,11 @@ group :preload, :default do
   gem "rails", "~> 7.0.0"
   gem "bootsnap", ">= 1.1.0", require: false
   gem "falcon"
-  gem "webpacker", "~> 5.4"
   gem "redis", "~> 4.5"
   gem "hiredis"
+  gem "jsbundling-rails"
+  gem "cssbundling-rails"
+  gem "propshaft"
 
   gem "elasticsearch-persistence"
 
