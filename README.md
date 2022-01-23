@@ -34,13 +34,7 @@ $ docker compose up -d
 Start the Rails Server
 
 ```sh
-$ ./bin/rails server
-```
-
-Optionally, you also may want to start the webpack dev server
-
-```sh
-$ ./bin/webpack-dev-server
+$ ./bin/dev
 ```
 
 ## Importing Documentation
