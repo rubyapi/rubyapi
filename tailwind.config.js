@@ -1,6 +1,11 @@
 const _ = require('lodash')
 
 module.exports = {
+  content: [
+    './app/views/**/*.html.slim',
+    './app/helpers/**/*.rb',
+    './app/javascript/**/*.js'
+  ],
   darkMode: 'class',
   theme: {
     extend: {
@@ -38,10 +43,4 @@ module.exports = {
       ))
     }
   ],
-  purge: {
-    content: [
-      './app/javascript/**/*_controller.js',
-      './app/**/*.html.slim',
-    ],
-  }
 }

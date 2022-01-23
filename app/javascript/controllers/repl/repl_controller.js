@@ -1,4 +1,4 @@
-import { Controller } from "stimulus"
+import { Controller } from "@hotwired/stimulus"
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api.js'
 import hotkeys from "hotkeys-js"
 

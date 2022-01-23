@@ -1,5 +1,5 @@
-import { Controller } from "stimulus"
-import throttle from "lodash/throttle"
+import { Controller } from "@hotwired/stimulus"
+import { throttle } from "lodash"
 import hotkeys from "hotkeys-js"
 import mustache from "mustache"
 
