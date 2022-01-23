@@ -1,4 +1,4 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "stimulus"
 import copy from 'clipboard-copy'
 
 export default class extends Controller {

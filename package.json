@@ -2,7 +2,7 @@
   "name": "ruby-api",
   "private": true,
   "dependencies": {
-    "@hotwired/stimulus": "^3.0.1",
+    "stimulus": "^2.0.0",
     "clipboard-copy": "^4.0.1",
     "esbuild": "^0.14.11",
     "hotkeys-js": "^3.8.7",
