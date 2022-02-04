@@ -7,7 +7,7 @@ group :preload, :default do
   gem "bootsnap", ">= 1.1.0", require: false
   gem "falcon"
   gem "webpacker", "~> 5.4"
-  gem "redis", "~> 4.5"
+  gem "redis", "~> 4.6"
   gem "hiredis"
 
   gem "elasticsearch-persistence"
