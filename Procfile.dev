@@ -1,3 +1,3 @@
-web: bundle exec falcon serve -b http://0.0.0.0:${PORT:-3000} --cache --preload config/preload.rb --count 2
+web: bundle exec rails server -p 3000
 js: yarn build --watch
-css: yarn build:css --watch
+css: yarn css:build --watch

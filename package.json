@@ -2,19 +2,22 @@
   "name": "ruby-api",
   "private": true,
   "dependencies": {
-    "stimulus": "^2.0.0",
     "clipboard-copy": "^4.0.1",
     "esbuild": "^0.14.11",
     "hotkeys-js": "^3.8.7",
     "lodash": "^4.1.1",
     "monaco-editor": "^0.29.1",
     "monaco-editor-webpack-plugin": "^5.0.0",
-    "mustache": "^4.2.0"
+    "mustache": "^4.2.0",
+    "postcss": "^8.4.6",
+    "stimulus": "^2.0.0",
+    "tailwindcss": "^3.0.18"
   },
   "devDependencies": {
     "chokidar": "^3.5.2"
   },
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --loader:.ttf=file --outdir=app/assets/builds"
+    "build": "npx esbuild app/javascript/*.* --bundle --sourcemap --loader:.ttf=file --outdir=app/assets/builds",
+    "css:build": "npx tailwindcss -m -i app/assets/css/application.css -o app/assets/builds/application.css"
   }
 }
