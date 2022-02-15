@@ -42,7 +42,7 @@ $ ./bin/dev
 Ruby's documentation can be imported very easily. There's a rake task that will let you import a given versions' documentation:
 
 ```sh
-$ ./bin/rake import:ruby[3.0.0]
+$ ./bin/rake import:ruby[3.1.0]
 ```
 
 or you can easily import the latest versions of all currently supported versions of ruby:
