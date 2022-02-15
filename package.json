@@ -17,7 +17,7 @@
     "chokidar": "^3.5.3"
   },
   "scripts": {
-    "build": "./bin/yarn run esbuild app/javascript/*.* --bundle --sourcemap --loader:.ttf=file --outdir=app/assets/builds",
-    "css:build": "./bin/yarn run tailwindcss -m -i app/assets/css/application.css -o app/assets/builds/application.css"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --loader:.ttf=file --outdir=app/assets/builds",
+    "build:css": "tailwindcss -m -i app/assets/css/application.css -o app/assets/builds/application.css"
   }
 }
