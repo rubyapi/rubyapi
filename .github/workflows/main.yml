@@ -101,7 +101,7 @@ jobs:
 
       - name: Compile Assets
         run: |
-          bundle exec rake webpacker:compile
+          bundle exec rake assets:precompile
 
       - name: Run Tests
         env:
