@@ -18,9 +18,9 @@ module ApplicationHelper
     version, file, line = ruby_doc.source_location.split(":")
 
     if version == DEV
-    # Not using URI.join, for a performance optimization. URI.join does A LOT of allocations.
-    # We know that our source_location is safe, because we make it in the importer.
-    # Inspiration: https://github.com/rack/rack/pull/1202
+      # Not using URI.join, for a performance optimization. URI.join does A LOT of allocations.
+      # We know that our source_location is safe, because we make it in the importer.
+      # Inspiration: https://github.com/rack/rack/pull/1202
       %(#{GITHUB_REPO}/master/#{file}#{"#L#{line}" if line})
     else
       %(#{GITHUB_REPO}/v#{version.tr(".", "_")}/#{file}#{"#L#{line}" if line})
