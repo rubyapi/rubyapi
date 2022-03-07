@@ -99,10 +99,6 @@ jobs:
           sudo apt-get -yqq install chromium-chromedriver
           yarn install --frozen-lockfile
 
-      - name: Compile Assets
-        run: |
-          bundle exec rake assets:precompile
-
       - name: Run Tests
         env:
           ELASTICSEARCH_URL: "http://localhost:9200"
