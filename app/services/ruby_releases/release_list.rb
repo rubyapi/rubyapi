@@ -14,7 +14,7 @@ module RubyReleases
 
     attr_accessor :releases
     def initialize
-      @releases = parse_index(release_index).push(dev, ruby_31)
+      @releases = parse_index(release_index).push(dev)
     end
 
     private
@@ -38,10 +38,6 @@ module RubyReleases
 
     def dev
       RubyVersion.new("dev", sha512: "", source_url: RUBY_DEV_ZIP_URL)
-    end
-
-    def ruby_31
-      RubyVersion.new("3.1", source_url: "https://cache.ruby-lang.org/pub/ruby/3.1/ruby-3.1.0.zip")
     end
 
     def supported_release_format?(url)
