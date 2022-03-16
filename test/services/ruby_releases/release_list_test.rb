@@ -43,6 +43,6 @@ class RubyReleases::RubyReleasesListTest < ActiveSupport::TestCase
 
   test "fetching ruby releases" do
     releases = RubyReleases::ReleaseList.fetch
-    assert_equal releases.size, 8 # Note: a release for 'dev' & Ruby 3 is automatically added
+    assert_equal releases.size, 7 # Note: a release for 'dev' is automatically added
   end
 end
