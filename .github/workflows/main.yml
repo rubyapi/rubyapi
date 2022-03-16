@@ -102,4 +102,6 @@ jobs:
       - name: Run Tests
         env:
           ELASTICSEARCH_URL: "http://localhost:9200"
-        run: ./bin/rake test
+        run: |
+          ./bin/yarn build && ./bin/yarn build:css
+          ./bin/rails test
