@@ -1,4 +1,4 @@
-import { Controller } from "stimulus"
+import { Controller } from "@hotwired/stimulus"
 import hotkeys from "hotkeys-js"
 
 export default class extends Controller {
