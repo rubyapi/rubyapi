@@ -16,7 +16,7 @@ class RubyDocumentationImporter
 
     @release = release
     @rdoc = RDoc::RDoc.new
-    @rdoc_options = @rdoc.load_options
+    @rdoc_options = RDoc::Options.load_options
 
     ImportUI.reset
   end
