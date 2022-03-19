@@ -34,13 +34,7 @@ $ docker compose up -d
 Start the Rails Server
 
 ```sh
-$ ./bin/rails server
-```
-
-Optionally, you also may want to start the webpack dev server
-
-```sh
-$ ./bin/webpack-dev-server
+$ ./bin/dev
 ```
 
 ## Importing Documentation
@@ -48,7 +42,7 @@ $ ./bin/webpack-dev-server
 Ruby's documentation can be imported very easily. There's a rake task that will let you import a given versions' documentation:
 
 ```sh
-$ ./bin/rake import:ruby[3.0.0]
+$ ./bin/rake import:ruby[3.1.0]
 ```
 
 or you can easily import the latest versions of all currently supported versions of ruby:

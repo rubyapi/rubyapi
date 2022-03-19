@@ -1,9 +1,16 @@
-// Load all the controllers within this directory and all subdirectories.
-// Controller files must be named *_controller.js.
+import { application } from "../application"
+import CodeExampleController from "./code_example_controller"
+import GithubLinksController from "./github_links_controller"
+import HeaderController from "./header_controller"
+import MethodController from "./method_controller"
+import RubyVersionController from "./ruby_version_controller"
+import SearchController from "./search_controller"
+import ThemeSwitchController from "./theme-switch_controller"
 
-import { Application } from "stimulus"
-import { definitionsFromContext } from "stimulus/webpack-helpers"
-
-const application = Application.start()
-const context = require.context("controllers/app", true, /_controller\.js$/)
-application.load(definitionsFromContext(context))
+application.register("code-example", CodeExampleController)
+application.register("github-links", GithubLinksController)
+application.register("header", HeaderController)
+application.register("method", MethodController)
+application.register("ruby-version", RubyVersionController)
+application.register("search", SearchController)
+application.register("theme-switch", ThemeSwitchController)

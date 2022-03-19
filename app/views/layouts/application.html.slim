@@ -5,8 +5,8 @@ html lang="en"
     = display_meta_tags site: "Ruby API (#{dev? ? "dev" : "v" + ruby_version})", reverse: true
     meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
 
-    link rel="mask-icon" href="#{asset_pack_path('media/packs/app/safari-pinned-tab.svg')}" color="#e1175a"
-    link rel="apple-touch-icon" sizes="180x180" href="#{asset_pack_path('media/packs/app/apple-touch-icon.png')}"
+    link rel="mask-icon" href="#{image_path('safari-pinned-tab.svg')}" color="#e1175a"
+    link rel="apple-touch-icon" sizes="180x180" href="#{image_path('apple-touch-icon.png')}"
     link rel="manifest" href="/site.webmanifest"
     link rel="search" type="application/opensearchdescription+xml" title="Ruby API" href="/opensearch.xml"
     meta name="msapplication-TileColor" content="#e1175a"
@@ -14,9 +14,9 @@ html lang="en"
 
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_pack_tag 'application'
-    = javascript_pack_tag 'essentials'
-    = javascript_pack_tag 'application', defer: true
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'essentials'
+    = javascript_include_tag 'application', defer: true
     = yield(:javascript_packs) if content_for?(:javascript_packs)
     = content_for(:head)
 
