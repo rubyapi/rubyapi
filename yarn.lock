@@ -532,10 +532,10 @@ minimist@^1.1.1:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
   integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
 
-monaco-editor@^0.29.1:
-  version "0.29.1"
-  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.29.1.tgz#6ee93d8a5320704d48fd7058204deed72429c020"
-  integrity sha512-rguaEG/zrPQSaKzQB7IfX/PpNa0qxF1FY8ZXRkN4WIl8qZdTQRSRJCtRto7IMcSgrU6H53RXI+fTcywOBC4aVw==
+monaco-editor@^0.33.0:
+  version "0.33.0"
+  resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.33.0.tgz#842e244f3750a2482f8a29c676b5684e75ff34af"
+  integrity sha512-VcRWPSLIUEgQJQIE0pVT8FcGBIgFoxz7jtqctE+IiCxWugD0DwgyQBcZBhdSrdMC84eumoqMZsGl2GTreOzwqw==
 
 mustache@^4.2.0:
   version "4.2.0"
