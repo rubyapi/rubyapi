@@ -5,10 +5,10 @@
 div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
   = render "objects/sidebar"
   div class="w-full mt-16 lg:mt-20 lg:w-3/4"
-    div class="m-3"
-      div class="flex flex-wrap"
+    div class="mx-3 mt-3 mb-8"
+      div class="flex flex-wrap pb-2"
         div class="w-full md:w-6/12"
-          h1 class="lg:text-3xl text-xl text-gray-800 dark:text-gray-200 font-semibold"
+          h1 class="lg:text-4xl text-xl text-gray-800 dark:text-gray-200 font-semibold"
             a href="#{object_url(version: ruby_version, object: @object.path)}"
               | #{@object.constant}
         div class="w-full md:w-6/12 md:text-right mt-2 md:mt-0 cursor-default"
@@ -18,9 +18,11 @@ div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex"
           - elsif @object.module_object?
             span class="py-1 px-3 rounded bg-gray-200 dark:bg-gray-700 text-sm"
               | Module
+      div class="relative"
+        div class="absolute inset-0 flex items-center" aria-hidden="true"
+          div class="w-full border-t border-gray-300"
       div class="ruby-documentation"
         == @object.description
-    hr
     - unless @object.ruby_constants.empty?
       = render "objects/show/constants",
           constants: @object.ruby_constants, title: "Constants"
