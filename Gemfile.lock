@@ -127,7 +127,7 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
-    cssbundling-rails (1.0.0)
+    cssbundling-rails (1.1.0)
       railties (>= 6.0.0)
     digest (3.1.0)
     domain_name (0.5.20190701)
@@ -248,7 +248,7 @@ GEM
       railties (>= 4)
       request_store (~> 1.0)
     logstash-event (1.2.02)
-    loofah (2.14.0)
+    loofah (2.15.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
