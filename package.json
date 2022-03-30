@@ -4,7 +4,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.0.1",
     "clipboard-copy": "^4.0.1",
-    "esbuild": "^0.14.28",
+    "esbuild": "^0.14.29",
     "hotkeys-js": "^3.8.7",
     "lodash": "^4.1.1",
     "monaco-editor": "^0.33.0",
