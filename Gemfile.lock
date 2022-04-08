@@ -388,7 +388,7 @@ GEM
       concurrent-ruby
     sitemap_generator (6.2.1)
       builder (~> 3.0)
-    skylight (5.3.1)
+    skylight (5.3.2)
       activesupport (>= 5.2.0)
     slim (4.1.0)
       temple (>= 0.7.6, < 0.9)
