@@ -23,6 +23,10 @@ class RubyMethod
     body[:object_constant]
   end
 
+  def signitures
+    body[:signitures]
+  end
+
   def class_method?
     method_type == "class_method"
   end
@@ -104,7 +108,8 @@ class RubyMethod
       call_sequence: call_sequence,
       alias: method_alias,
       source_body: source_body,
-      metadata: metadata
+      metadata: metadata,
+      signitures: signitures
     }
   end
 

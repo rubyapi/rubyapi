@@ -22,7 +22,7 @@ class RubyDownloader
     end
 
     fetch_ruby_archive
-    unpack
+    prepare_environment
   end
 
   def rubies_download_path
@@ -58,8 +58,9 @@ class RubyDownloader
     File.exist? extracted_download_path.join "README.md"
   end
 
-  def unpack
+  def prepare_environment
     system "unzip #{download_path} -d #{rubies_download_path} > #{File::NULL}"
+    system "gem unpack --target #{extracted_download_path.join("gems")} #{extracted_download_path.join("gems/rbs-*.gem")}" if release.has_type_signitures?
   end
 
   def setup_paths

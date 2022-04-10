@@ -29,4 +29,8 @@ class RubyVersion
   def dev?
     @version == "dev"
   end
+
+  def has_type_signitures?
+    @version >= "3.0" || dev?
+  end
 end

@@ -40,6 +40,11 @@ class RubyAPIRDocGenerator
   def generate_objects
     objects = []
 
+    if @release.has_type_signitures?
+      require_relative "./ruby_type_signiture_repository"
+      @type_repository = RubyTypeSignitureRepository.new(@options.files.first)
+    end
+
     @documentation.each do |doc|
       if skip_namespace? doc.full_name
         ImportUI.warn "Skipping #{doc.full_name}"
@@ -65,6 +70,18 @@ class RubyAPIRDocGenerator
             depth: constant_depth(doc.full_name)
           }
         }
+
+        if @release.has_type_signitures?
+          signitures = begin
+            if method_doc.type == "instance"
+              @type_repository.signiture_for_object_instance_method(object: doc.name, method: method_doc.name)
+            elsif method_doc.type == "class"
+              @type_repository.signiture_for_object_class_method(object: doc.name, method: method_doc.name)
+            end
+          end
+
+          method[:signitures] = signitures.present? ? signitures.map(&:to_s) : []
+        end
 
         next if methods.any? { |m| m[:name] == method[:name] && m[:method_type] == method[:method_type] }
 
