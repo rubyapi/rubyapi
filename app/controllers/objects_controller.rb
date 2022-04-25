@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ObjectsController < ApplicationController
-  rescue_from Elasticsearch::Persistence::Repository::DocumentNotFound, with: :not_found
+  rescue_from Elasticsearch::Persistence::Repository::DocumentNotFound, with: -> { raise ActionController::RoutingError.new('Not Found') }
 
   before_action :enable_public_cache
 
