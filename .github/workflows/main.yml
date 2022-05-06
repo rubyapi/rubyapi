@@ -41,7 +41,8 @@ jobs:
           "discovery.type": "single-node"
         options: >-
           --health-cmd "curl --silent --fail localhost:9200/_cluster/health || exit 1"
-          --health-interval 30s
+          --health-start-period 30s
+          --health-interval 10s
           --health-timeout 5s
           --health-retries 10
 
@@ -69,6 +70,7 @@ jobs:
           "discovery.type": "single-node"
         options: >-
           --health-cmd "curl --silent --fail localhost:9200/_cluster/health || exit 1"
+          --health-start-period 30s
           --health-interval 10s
           --health-timeout 5s
           --health-retries 10
