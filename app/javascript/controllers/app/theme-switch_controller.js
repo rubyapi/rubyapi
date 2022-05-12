@@ -32,6 +32,7 @@ const setDarkMode = (target) => {
   }
 
   document.documentElement.classList.add("dark")
+  setMetaThemeColor('#374151')
   localStorage.setItem('rubyapi-darkMode', '1')
 }
 
@@ -42,7 +43,15 @@ const setLightMode = (target) => {
   }
 
   document.documentElement.classList.remove("dark")
+  setMetaThemeColor('#e1175a')
   localStorage.setItem('rubyapi-darkMode', '0')
+}
+
+const setMetaThemeColor = (color) => {
+  const meta = document.querySelector('meta[name="theme-color"]')
+  if (meta) {
+    meta.content = color
+  }
 }
 
 export default class extends Controller {
