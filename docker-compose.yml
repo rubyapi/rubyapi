@@ -13,6 +13,10 @@ services:
     depends_on:
       search:
         condition: service_healthy
+  cache:
+    image: redis:6.2-alpine
+    ports:
+    - "6379:6379"
   search:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.2.0
     ports:

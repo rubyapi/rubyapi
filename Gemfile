@@ -2,39 +2,39 @@ source "https://rubygems.org"
 
 ruby "~> 3.0"
 
-group :preload, :default do
-  gem "rails", "~> 7.0.3"
-  gem "bootsnap", ">= 1.1.0", require: false
-  gem "falcon"
-  gem "redis", "~> 4.6"
-  gem "hiredis"
-  gem "jsbundling-rails"
-  gem "cssbundling-rails"
-  gem "propshaft"
+gem "rails", "~> 7.0.2"
+gem "bootsnap", ">= 1.1.0", require: false
+gem "redis", "~> 4.6"
+gem "puma"
+gem "hiredis"
+gem "jsbundling-rails"
+gem "cssbundling-rails"
+gem "propshaft"
 
-  gem "elasticsearch-persistence"
+gem "elasticsearch-persistence"
 
-  gem "http"
-  gem "typhoeus", require: false
-  gem "kaminari", "~> 1.2.2"
-  gem "inline_svg"
-  gem "tty-spinner", require: false
-  gem "skylight", group: :production
-  gem "graphql"
-  gem "graphiql-rails", group: :development
-  gem "lograge"
-  gem "logstash-event"
-  gem "aws-sdk-s3"
-  gem "sitemap_generator"
-  gem "meta-tags"
-  gem "sentry-ruby"
-  gem "sentry-rails"
-  gem "rack-attack"
-  gem "rdoc", require: false
-  gem "trenni-sanitize", require: false
-  gem "pastel", require: false
-  gem "rouge", require: false
-end
+gem "http"
+gem "typhoeus", require: false
+gem "kaminari", "~> 1.2.2"
+gem "inline_svg"
+gem "tty-spinner", require: false
+gem "skylight", group: :production
+gem "graphql"
+gem "graphiql-rails", group: :development
+gem "lograge"
+gem "logstash-event"
+gem "aws-sdk-s3"
+gem "sitemap_generator"
+gem "meta-tags"
+gem "sentry-ruby"
+gem "sentry-rails"
+gem "rack-attack"
+gem "rdoc", require: false
+gem "trenni-sanitize", require: false
+gem "pastel", require: false
+gem "rouge", require: false
+gem "rbs", require: false
+gem "stimulus_reflex", "= 3.5.0.pre9"
 
 gem "slim"
 
