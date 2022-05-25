@@ -10,6 +10,7 @@ gem "hiredis"
 gem "jsbundling-rails"
 gem "cssbundling-rails"
 gem "propshaft"
+gem "pg"
 
 gem "elasticsearch-persistence"
 
