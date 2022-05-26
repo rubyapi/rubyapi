@@ -47,10 +47,19 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 10
-      redis:
-        image: redis
+      cache:
+        image: redis:7-alpine
         options: >-
           --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      database:
+        image: postgres:14.3-alpine
+        env:
+          "POSTGRES_HOST_AUTH_METHOD": "trust"
+        options: >-
+          --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
@@ -85,10 +94,19 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 10
-      redis:
-        image: redis
+      cache:
+        image: redis:7-alpine
         options: >-
           --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      database:
+        image: postgres:14.3-alpine
+        env:
+          POSTGRES_PASSWORD: POSTGRES_HOST_AUTH_METHOD=trust
+        options: >-
+          --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
