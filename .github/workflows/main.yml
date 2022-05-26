@@ -15,6 +15,7 @@ on:
 
 env:
   BUNDLE_PATH: vendor/bundle
+  RAILS_ENV: test
 
 jobs:
   lint:
