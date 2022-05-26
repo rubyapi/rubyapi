@@ -143,5 +143,6 @@ jobs:
         env:
           ELASTICSEARCH_URL: "http://localhost:9200"
         run: |
+          ./bin/rails db:create
           ./bin/yarn build && ./bin/yarn build:css
           ./bin/rails test
