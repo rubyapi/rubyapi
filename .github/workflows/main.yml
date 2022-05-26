@@ -58,6 +58,7 @@ jobs:
         image: postgres:14.3-alpine
         env:
           "POSTGRES_HOST_AUTH_METHOD": "trust"
+          "POSTGRES_USER": "rubyapi"
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -104,7 +105,8 @@ jobs:
       database:
         image: postgres:14.3-alpine
         env:
-          POSTGRES_PASSWORD: POSTGRES_HOST_AUTH_METHOD=trust
+          "POSTGRES_HOST_AUTH_METHOD": "trust"
+          "POSTGRES_USER": "rubyapi"
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
