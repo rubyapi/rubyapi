@@ -10,6 +10,9 @@ Dir.glob(Rails.root.join("lib/*.rb")).each { |f| require_relative f }
 WebMock.disable!
 
 class ActiveSupport::TestCase
+  # Run tests in parallel with specified workers
+  parallelize(workers: :number_of_processors)
+
   # Add more helper methods to be used by all tests here...
   def create_index_for_version!(version)
     search_repository(version).create_index! force: true
