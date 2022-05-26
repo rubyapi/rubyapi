@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@hotwired/stimulus": "^3.0.1",
+    "@rails/actioncable": "^7.0.2-4",
     "clipboard-copy": "^4.0.1",
     "esbuild": "^0.14.39",
     "hotkeys-js": "^3.9.3",
@@ -10,6 +11,8 @@
     "monaco-editor": "^0.33.0",
     "mustache": "^4.2.0",
     "postcss": "^8.4.14",
+    "stimulus-dropdown": "^2.0.0",
+    "stimulus_reflex": "^3.5.0-pre9",
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
