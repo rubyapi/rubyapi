@@ -19,7 +19,8 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: rubyapi
 
 development:
   <<: *default
@@ -82,5 +83,4 @@ test:
 production:
   <<: *default
   database: rubyapi_production
-  username: rubyapi
-  password: <%%= ENV["RUBYAPI_DATABASE_PASSWORD"] %>
+  password: <%= ENV["RUBYAPI_DATABASE_PASSWORD"] %>
