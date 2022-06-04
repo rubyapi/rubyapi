@@ -315,7 +315,7 @@ GEM
     request_store (1.5.1)
       rack (>= 1.4)
     rexml (3.2.5)
-    rouge (3.28.0)
+    rouge (3.29.0)
     rubocop (1.29.1)
       parallel (~> 1.10)
       parser (>= 3.1.0.0)
