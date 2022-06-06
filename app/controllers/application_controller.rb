@@ -45,12 +45,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :home_path
 
-  def skip_session
-    request.session_options[:skip] = true
+  def enable_public_cache
+    expires_in 24.hours, public: true
   end
 
-  def enable_public_cache
-    skip_session
-    expires_in 24.hours, public: true
+  def enable_private_cache
+    expires_in 24.hours, public: false
   end
 end
