@@ -40,9 +40,9 @@ class RubyAPIRDocGenerator
   def generate_objects
     objects = []
 
-    if @release.has_type_signitures?
-      require_relative "./ruby_type_signiture_repository"
-      @type_repository = RubyTypeSignitureRepository.new(@options.files.first)
+    if @release.has_type_signatures?
+      require_relative "./ruby_type_signature_repository"
+      @type_repository = RubyTypeSignatureRepository.new(@options.files.first)
     end
 
     @documentation.each do |doc|
@@ -71,16 +71,14 @@ class RubyAPIRDocGenerator
           }
         }
 
-        if @release.has_type_signitures?
-          signitures = begin
-            if method_doc.type == "instance"
-              @type_repository.signiture_for_object_instance_method(object: doc.name, method: method_doc.name)
-            elsif method_doc.type == "class"
-              @type_repository.signiture_for_object_class_method(object: doc.name, method: method_doc.name)
-            end
+        if @release.has_type_signatures?
+          signatures = if method_doc.type == "instance"
+            @type_repository.signiture_for_object_instance_method(object: doc.name, method: method_doc.name)
+          elsif method_doc.type == "class"
+            @type_repository.signiture_for_object_class_method(object: doc.name, method: method_doc.name)
           end
 
-          method[:signitures] = signitures.present? ? signitures.map(&:to_s) : []
+          method[:signatures] = signatures.present? ? signatures.map(&:to_s) : []
         end
 
         next if methods.any? { |m| m[:name] == method[:name] && m[:method_type] == method[:method_type] }

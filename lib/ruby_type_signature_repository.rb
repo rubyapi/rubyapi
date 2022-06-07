@@ -1,6 +1,6 @@
 require "rbs"
 
-class RubyTypeSignitureRepository
+class RubyTypeSignatureRepository
   STDLIB_PATH = "stdlib"
   CORE_PATH = "core"
   RUBY_SRC_GEMS_FOLDER = "gems"
@@ -26,7 +26,7 @@ class RubyTypeSignitureRepository
 
   def rbs_type_for_object(klass, &block)
     type = RBS::TypeName.new(name: klass.to_sym, namespace: RBS::Namespace.root)
-    yield type if block_given?
+    yield type if block
     type
   end
 
@@ -36,11 +36,9 @@ class RubyTypeSignitureRepository
       method_definition_for_context(@builder.build_instance(type), method)
     when :class
       method_definition_for_context(@builder.build_singleton(type), method)
-    else
-      nil
     end
-  rescue RuntimeError => e
-    return nil
+  rescue RuntimeError
+    nil
   end
 
   def init_rbs_environment
@@ -54,7 +52,7 @@ class RubyTypeSignitureRepository
   def method_definition_for_context(context, method)
     context.methods[method.to_sym]&.method_types
   rescue RuntimeError => e
-    return nil if e.message =~ /unknown name/
+    return nil if /unknown name/.match?(e.message)
     raise
   end
 

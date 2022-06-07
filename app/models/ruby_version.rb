@@ -30,7 +30,7 @@ class RubyVersion
     @version == "dev"
   end
 
-  def has_type_signitures?
+  def has_type_signatures?
     @version >= "3.0" || dev?
   end
 end

@@ -9,11 +9,11 @@ div class="relative"
     a style="display: block; position: relative; top: -80px; visibility: hidden;" id="#{method_anchor m}"
     div class="flex flex-wrap"
       div class="w-full md:w-10/12"
-        - if @show_signatures && m.signitures.any?
+        - if @show_signatures && m.signatures.any?
           a href="##{method_anchor(m)}"
             h4 class="lg:text-2xl text-lg text-gray-900 dark:text-gray-200 font-semibold"= m.name
           div class="py-2"
-            - m.signitures.each do |sig|
+            - m.signatures.each do |sig|
               h4 class="font-mono leading-tight text-gray-900 dark:text-gray-200"= sig
         - else
           a href="##{method_anchor(m)}"

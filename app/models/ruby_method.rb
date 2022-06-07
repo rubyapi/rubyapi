@@ -23,8 +23,8 @@ class RubyMethod
     body[:object_constant]
   end
 
-  def signitures
-    body[:signitures]
+  def signatures
+    body[:signatures]
   end
 
   def class_method?
@@ -109,7 +109,7 @@ class RubyMethod
       alias: method_alias,
       source_body: source_body,
       metadata: metadata,
-      signitures: signitures
+      signatures: signatures
     }
   end
 
