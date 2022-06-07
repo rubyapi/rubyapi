@@ -89,7 +89,10 @@ Rails.application.configure do
   # Disable CSRF protections
   config.action_controller.allow_forgery_protection = false
 
-  config.session_store :cache_store, key: "_sessions_production",
-    compress: true, pool_size: 5, expire_after: 1.month
+  config.session_store :cache_store,
+    key: "_sessions_production",
+    compress: true,
+    pool_size: 5,
+    expire_after: 1.month,
     url: ENV.fetch("REDIS_SESSION_URL") { "redis://localhost:6380/1" }
 end
