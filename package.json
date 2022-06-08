@@ -5,7 +5,7 @@
     "@hotwired/stimulus": "^3.0.1",
     "@rails/actioncable": "^7.0.3",
     "clipboard-copy": "^4.0.1",
-    "esbuild": "^0.14.42",
+    "esbuild": "^0.14.43",
     "hotkeys-js": "^3.9.4",
     "lodash": "^4.1.1",
     "monaco-editor": "^0.33.0",
