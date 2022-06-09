@@ -2,12 +2,12 @@
 
 class ApplicationController < ActionController::Base
   def ruby_version
-    params[:version] || Rails.configuration.default_ruby_version
+    params[:version] || default_ruby_version
   end
   helper_method :ruby_version
 
   def default_ruby_version
-    Rails.configuration.default_ruby_version
+    RubyConfig.default_ruby_version.version
   end
   helper_method :default_ruby_version
 
@@ -17,15 +17,12 @@ class ApplicationController < ActionController::Base
   helper_method :search_query
 
   def supported_ruby_versions
-    ruby_versions = Rails.configuration.ruby_versions.dup
-    other_versions = eol_ruby_versions.dup.push(ruby_version)
-
-    ruby_versions - other_versions
+    RubyConfig.active_ruby_versions.map(&:version)
   end
   helper_method :supported_ruby_versions
 
   def eol_ruby_versions
-    Rails.configuration.eol_ruby_versions
+    RubyConfig.eol_ruby_versions.map(&:version)
   end
   helper_method :eol_ruby_versions
 
@@ -40,7 +37,7 @@ class ApplicationController < ActionController::Base
   helper_method :route_for_version
 
   def home_path
-    return root_path if Rails.configuration.default_ruby_version == ruby_version
+    return root_path if RubyConfig.default_ruby_version.version == ruby_version
     versioned_root_path(version: ruby_version)
   end
   helper_method :home_path

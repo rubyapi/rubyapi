@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 class RubyVersion
-  attr_accessor :version, :sha512, :source_url
+  attr_accessor :version, :sha512, :source_url, :default, :eol
 
-  def initialize(version, sha512: nil, source_url: nil)
+  alias_method :default?, :default
+  alias_method :eol?, :eol
+
+  def initialize(version, sha512: nil, source_url: nil, default: false, eol: false)
     unless version == "dev"
       raise ArgumentError, "invalid version #{version.inspect}" unless Gem::Version.correct?(version)
       @_version = Gem::Version.new(version)
@@ -13,6 +16,8 @@ class RubyVersion
     @version = version
     @sha512 = sha512
     @source_url = URI(source_url) if source_url.present?
+    @default = default
+    @eol = eol
   end
 
   def minor_version
