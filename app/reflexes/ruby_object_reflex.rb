@@ -33,8 +33,8 @@ class RubyObjectReflex < ApplicationReflex
   #
   # Learn more at: https://docs.stimulusreflex.com/rtfm/reflex-classes
 
-  def toggle_signiture
-    @show_signitures = element[:checked]
-    session[:show_signitures] = @show_signitures
+  def toggle_signatures
+    current = ActiveRecord::Type::Boolean.new.cast(session[:show_signatures])
+    @show_signatures = session[:show_signatures] = !current
   end
 end

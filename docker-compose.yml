@@ -37,6 +37,18 @@ services:
       timeout: 5s
       retries: 5
 
+  session:
+    image: redis:7-alpine
+    command:
+    - "--maxmemory-policy noeviction"
+    ports:
+    - "6380:6380"
+    healthcheck:
+      test: ["redis-cli ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   search:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.2.0
     ports:

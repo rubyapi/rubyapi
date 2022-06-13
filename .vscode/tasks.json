@@ -15,7 +15,8 @@
       "label": "app: start",
       "dependsOn": [
         "rails: server",
-        "rails: webpack-dev-server"
+        "yarn: build:watch",
+        "yarn: build:css:watch"
       ],
       "problemMatcher": []
     },
@@ -25,9 +26,25 @@
       "command": "./bin/rails server"
     },
     {
-      "label": "rails: webpack-dev-server",
+      "label": "yarn: build",
       "type": "shell",
-      "command": "./bin/webpack-dev-server"
+      "command": "./bin/yarn build"
+    },
+    {
+      "label": "yarn: build:watch",
+      "type": "shell",
+      "command": "./bin/yarn build --watch"
+    },
+    {
+      "label": "yarn: build:css",
+      "type": "shell",
+
+      "command": "./bin/yarn build:css"
+    },
+    {
+      "label": "yarn: build:css:watch",
+      "type": "shell",
+      "command": "./bin/yarn build:css --watch"
     },
     {
       "label": "rake: import:ruby",

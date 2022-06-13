@@ -42,7 +42,8 @@ Rails.application.configure do
   config.log_tags = [ :request_id ]
 
   # Use a different cache store in production.
-  config.cache_store = :redis_cache_store, { url: ENV['REDIS_URL'] }
+  config.cache_store = :redis_cache_store, 
+    url: ENV.fetch("REDIS_CACHE_URL") { "redis://localhost:6379/1" }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
@@ -87,4 +88,11 @@ Rails.application.configure do
 
   # Disable CSRF protections
   config.action_controller.allow_forgery_protection = false
+
+  config.session_store :cache_store,
+    key: "_sessions_production",
+    compress: true,
+    pool_size: 5,
+    expire_after: 1.month,
+    url: ENV.fetch("REDIS_SESSION_URL") { "redis://localhost:6380/1" }
 end
