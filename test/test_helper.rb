@@ -20,7 +20,7 @@ class ActiveSupport::TestCase
   end
 
   def default_ruby_version
-    Rails.configuration.default_ruby_version
+    RubyConfig.default_ruby_version.version
   end
 
   def index_search(object, version: nil)

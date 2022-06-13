@@ -15,18 +15,22 @@ class RubyVersionTest < ActiveSupport::TestCase
   end
 
   test "#prerelease?" do
-    version = RubyVersion.new("2.7.0-preview3")
-    assert_equal version.prerelease?, true
-
-    version = RubyVersion.new("2.7.0")
-    assert_equal version.prerelease?, false
+    assert RubyVersion.new("2.7.0-preview3").prerelease?
+    refute RubyVersion.new("2.7.0").prerelease?
   end
 
   test "#dev?" do
-    version = RubyVersion.new("dev")
-    assert_equal version.dev?, true
+    assert RubyVersion.new("dev").dev?
+    refute RubyVersion.new("2.4.0").dev?
+  end
 
-    version = RubyVersion.new("2.4.0")
-    assert_equal version.dev?, false
+  test "eol?" do
+    refute RubyVersion.new("3.1", eol: false).eol?
+    assert RubyVersion.new("2.4.0", eol: true).eol?
+  end
+
+  test "default?" do
+    refute RubyVersion.new("3.1", default: false).default?
+    assert RubyVersion.new("3.1", default: true).default?
   end
 end

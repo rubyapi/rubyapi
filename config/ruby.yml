@@ -1,0 +1,23 @@
+default: &default
+  versions:
+    - version: 3.1
+      default: true
+    - version: 3.0
+    - version: 2.7
+    - version: 2.6
+    - version: 2.5
+      eol: true
+    - version: 2.4
+      eol: true
+    - version: 2.3
+      eol: true
+    - version: dev
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

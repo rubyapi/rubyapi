@@ -49,3 +49,6 @@ yarn-debug.log*
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+/config/*.local.yml
+/config/credentials/local.*

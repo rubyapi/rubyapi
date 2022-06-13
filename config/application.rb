@@ -20,6 +20,10 @@ Bundler.require(*Rails.groups)
 
 module RubyApi
   class Application < Rails::Application
+    # Configure the path for configuration classes that should be used before initialization
+    # NOTE: path should be relative to the project root (Rails.root)
+    # config.anyway_config.autoload_static_config_path = "config/configs"
+    #
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
@@ -30,15 +34,6 @@ module RubyApi
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-
-    # default ruby version documentation
-    config.default_ruby_version = '3.1'
-
-    config.ruby_versions = %w[
-      3.1 3.0 2.7 2.6 2.5 2.4 2.3 dev
-    ]
-
-    config.eol_ruby_versions = %w[2.5 2.4 2.3]
 
     config.elasticsearch_shards = ENV.fetch('ELASTICSEARCH_SHARDS', 5).to_i
     config.elasticsearch_replicas = ENV.fetch('ELASTICSEARCH_REPLICAS', 1).to_i

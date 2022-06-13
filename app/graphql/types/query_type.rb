@@ -4,18 +4,18 @@ module Types
   class QueryType < Types::BaseObject
     field :rubyObject, Types::RubyObjectType, null: true, method: :ruby_object do
       argument :constant, String, required: true, description: "Ruby Object constant"
-      argument :version, String, required: false, default_value: Rails.configuration.default_ruby_version
+      argument :version, String, required: false, default_value: RubyConfig.default_ruby_version.version
     end
 
     field :search, [Types::SearchResultType], null: true, method: :search do
       argument :query, String, required: true
-      argument :version, String, required: false, default_value: Rails.configuration.default_ruby_version
+      argument :version, String, required: false, default_value: RubyConfig.default_ruby_version.version
       argument :page, Integer, required: false, default_value: 1
     end
 
     field :autocomplete, [Types::AutocompleteSearchResultType], null: true, method: :autocomplete do
       argument :query, String, required: true
-      argument :version, String, required: false, default_value: Rails.configuration.default_ruby_version
+      argument :version, String, required: false, default_value: RubyConfig.default_ruby_version.version
     end
 
     def ruby_object(constant:, version:)

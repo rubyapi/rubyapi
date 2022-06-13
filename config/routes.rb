@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/ping', to: 'healthcheck#index'
   get '/repl', to: 'repl#index'
 
-  ruby_versions = Rails.configuration.ruby_versions.collect { |v| Regexp.escape(v) }
+  ruby_versions = RubyConfig.ruby_versions.collect { |v| Regexp.escape(v.version) }
 
   scope "(:version)", constraints: { version: /#{ruby_versions.join("|")}/ } do
     root to: "home#index", as: :versioned_root
