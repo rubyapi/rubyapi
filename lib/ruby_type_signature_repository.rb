@@ -11,23 +11,17 @@ class RubyTypeSignatureRepository
   end
 
   def signiture_for_object_instance_method(object:, method:)
-    rbs_type_for_object(object) do |object_type|
-      return lookup_type_method_signiture(object_type, method, method_type: :instance)
-    end
+    lookup_type_method_signiture(rbs_type_for_object(object), method, method_type: :instance)
   end
 
   def signiture_for_object_class_method(object:, method:)
-    rbs_type_for_object(object) do |object_type|
-      return lookup_type_method_signiture(object_type, method, method_type: :class)
-    end
+    lookup_type_method_signiture(rbs_type_for_object(object), method, method_type: :class)
   end
 
   private
 
   def rbs_type_for_object(klass, &block)
-    type = RBS::TypeName.new(name: klass.to_sym, namespace: RBS::Namespace.root)
-    yield type if block
-    type
+    RBS::TypeName.new(name: klass.to_sym, namespace: RBS::Namespace.root)
   end
 
   def lookup_type_method_signiture(type, method, method_type:)
