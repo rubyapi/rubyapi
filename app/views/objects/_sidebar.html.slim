@@ -46,7 +46,7 @@ div class="hidden lg:block w-1/4"
           span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800" Preview
         div class="px-2 py-1 text-sm" id="signatures-description"
           | Show type signatures generated automatically by <a href="https://github.com/ruby/rbs" target="_blank" class="text-blue-600">RBS</a>.
-        div class="px-2 py-1"
+        div class="p-1"
           button type="button" data-reflex="click->RubyObject#toggle_signatures" class="inline-flex items-center px-3 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm leading-4 font-medium rounded-md bg-white hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 dark:focus:ring-gray-900"= @show_signatures ? "Disable Type Signatures" : "Enable Type Signatures"
       - if @object.superclass
         = render "objects/sidebar/section", title: 'Parent' do
