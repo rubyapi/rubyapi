@@ -4,9 +4,8 @@ ruby "~> 3.0"
 
 gem "rails", "~> 7.0.2"
 gem "bootsnap", ">= 1.1.0", require: false
-gem "redis", "~> 4.6"
+gem "redis"
 gem "puma"
-gem "hiredis"
 gem "jsbundling-rails"
 gem "cssbundling-rails"
 gem "propshaft"
