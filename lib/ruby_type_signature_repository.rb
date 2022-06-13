@@ -31,7 +31,7 @@ class RubyTypeSignatureRepository
     when :class
       method_definition_for_context(@builder.build_singleton(type), method)
     end
-  rescue RuntimeError
+  rescue RuntimeError, RBS::BaseError
     nil
   end
 
