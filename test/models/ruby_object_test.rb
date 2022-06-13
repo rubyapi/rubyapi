@@ -32,6 +32,7 @@ class RubyObjectTest < ActiveSupport::TestCase
           method_type: "class_method",
           object_constant: "String",
           source_location: "2.6.4:string.c:L28",
+          signatures: [],
           metadata: {
             depth: 1
           },
@@ -51,6 +52,7 @@ class RubyObjectTest < ActiveSupport::TestCase
           metadata: {
             depth: 1
           },
+          signatures: [],
           call_sequence: <<~G,
             str.to_i # => 1
           G
@@ -142,6 +144,7 @@ class RubyObjectTest < ActiveSupport::TestCase
           identifier: "String::new",
           method_type: "class_method",
           source_location: "2.6.4:string.c:L28",
+          signatures: [],
           metadata: {
             depth: 1
           },
@@ -162,6 +165,7 @@ class RubyObjectTest < ActiveSupport::TestCase
           identifier: "String#to_i",
           method_type: "instance_method",
           source_location: "2.6.4:string.c:L54",
+          signatures: [],
           metadata: {
             depth: 1
           },

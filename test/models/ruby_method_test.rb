@@ -10,6 +10,9 @@ class RubyMethodTest < ActiveSupport::TestCase
       method_type: "instance_method",
       object_constant: "String",
       source_location: "2.6.4:string.c:L54",
+      signatures: [
+        "(?::int base) -> ::Integer"
+      ],
       metadata: {
         depth: 1
       },
@@ -95,6 +98,9 @@ class RubyMethodTest < ActiveSupport::TestCase
         puts "Hello world!"
       SRC
       source_location: "2.6.4:string.c:L54",
+      signatures: [
+        "(?::int base) -> ::Integer"
+      ],
       type: :method
     }
   end
