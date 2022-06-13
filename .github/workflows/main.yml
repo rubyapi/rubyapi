@@ -81,7 +81,7 @@ jobs:
       - name: Test Importing Ruby Documentation
         env:
           ELASTICSEARCH_URL: "http://localhost:9200"
-        run: ./bin/rake "import:ruby[dev]"
+        run: ./bin/rake "import:ruby[3.1.2]"
 
   test:
     runs-on: ubuntu-latest
