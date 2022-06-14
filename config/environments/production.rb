@@ -44,7 +44,9 @@ Rails.application.configure do
   # Use a different cache store in production.
   config.cache_store = :redis_cache_store, {
     url: ENV.fetch("REDIS_CACHE_URL") { "redis://localhost:6379/1" },
-    ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE }
+    ssl_params: {
+      verify_mode: OpenSSL::SSL::VERIFY_NONE
+    }
   }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
