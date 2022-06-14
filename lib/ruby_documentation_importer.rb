@@ -12,7 +12,7 @@ class RubyDocumentationImporter
   end
 
   def initialize(release)
-    raise ArgumentError unless release.is_a?(RubyVersion)
+    raise ArgumentError, "#{release.inspect} is not a RubyVersion" unless release.is_a?(RubyVersion)
 
     @release = release
     @rdoc = RDoc::RDoc.new
