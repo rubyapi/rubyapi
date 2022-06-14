@@ -12,7 +12,7 @@ Rails.application.configure do
     policy.object_src  :none
     policy.script_src  :self, :https
     policy.style_src   :self, :https, :unsafe_inline # Needed by Stimulus Reflex
-    policy.connect_src :self, :https
+    policy.connect_src :self, :https, "wss://rubyapi.org"
     # Specify URI for violation reports
     # policy.report_uri "/csp-violation-report-endpoint"
 
