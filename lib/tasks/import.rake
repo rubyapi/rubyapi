@@ -26,8 +26,8 @@ namespace :import do
     task all: :environment do
       releases = RubyReleases::ReleaseList.fetch
 
-      Rails.configuration.ruby_versions.each do |v|
-        release = releases.select { |r| r.minor_version == v }.max_by(&:version)
+      RubyConfig.ruby_versions.each do |v|
+        release = releases.select { |r| r.minor_version == v.version }.max_by(&:version)
         RubyDocumentationImporter.import release
       end
     end

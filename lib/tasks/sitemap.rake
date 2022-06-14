@@ -21,8 +21,8 @@ namespace :sitemap do
     SitemapGenerator::Sitemap.create do
       add "/", changefreq: "never"
 
-      Rails.configuration.ruby_versions.each do |version|
-        repo = RubyObjectRepository.repository_for_version(version)
+      RubyConfig.ruby_versions.each do |version|
+        repo = RubyObjectRepository.repository_for_version(version.version)
         response = repo.search(query: {match_all: {}}, size: 10_000)
 
         response.results.each do |o|
