@@ -312,6 +312,9 @@ GEM
     rdoc (6.4.0)
       psych (>= 4.0.0)
     redis (4.6.0)
+    redis-session-store (0.11.4)
+      actionpack (>= 3, < 8)
+      redis (>= 3, < 5)
     regexp_parser (2.4.0)
     request_store (1.5.1)
       rack (>= 1.4)
@@ -450,6 +453,7 @@ DEPENDENCIES
   rbs
   rdoc
   redis
+  redis-session-store
   rouge
   selenium-webdriver
   sentry-rails

@@ -37,6 +37,7 @@ gem "rbs", require: false
 gem "stimulus_reflex", "= 3.5.0.pre9"
 gem "anyway_config"
 gem "slim"
+gem "redis-session-store"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
