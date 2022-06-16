@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     # We need the search path to be prefixed with `o/` so that the RDOc links will
     # function correctly
     get "o/s", to: "search#index", as: :search
+    post "o/toggle_signatures", to: "objects#toggle_signatures", as: :toggle_signatures
     get "o/*object", to: "objects#show", as: :object
 
     post "/run", to: "code_execute#post"
