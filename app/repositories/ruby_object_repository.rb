@@ -6,7 +6,7 @@ class RubyObjectRepository
 
   klass RubyObject
 
-  settings number_of_shards: Rails.configuration.elasticsearch_shards, number_of_replicas: Rails.configuration.elasticsearch_replicas do
+  settings number_of_shards: ElasticsearchConfig.number_of_shards, number_of_replicas: ElasticsearchConfig.number_of_replicas do
     mapping do
       indexes :name, type: :text
       indexes :description, type: :text, index: false
