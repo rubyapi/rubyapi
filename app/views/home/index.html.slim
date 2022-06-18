@@ -27,5 +27,10 @@ div class="p-6 max-w-screen-xl mx-auto"
             h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200"
               = tile.name
             p class="py-1 dark:text-gray-400"
-              = group_classes(tile.classes)
+              = tile.description
+            p class="py-1 dark:text-gray-400"
+              - tile.classes.map do |klass|
+                = link_to object_path(object: klass.underscore, version: ruby_version), class: "inline-block py-1 px-1" do
+                  code
+                    = klass
 
