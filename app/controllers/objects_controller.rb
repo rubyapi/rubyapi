@@ -12,7 +12,7 @@ class ObjectsController < ApplicationController
   end
 
   def toggle_signatures
-    session[:show_signatures] = !ActiveRecord::Type::Boolean.new.cast(session[:show_signatures])
+    session[:show_signatures] = !session[:show_signatures]
     redirect_back_or_to root_path
   end
 
