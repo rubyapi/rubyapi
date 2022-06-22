@@ -27,7 +27,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      
+
       - name: Run linting
         run: ./bin/standardrb --no-fix
 
@@ -51,7 +51,7 @@ jobs:
       cache:
         image: redis:7-alpine
         ports:
-          - "6379:6379"
+          - "6381:6381"
         options: >-
           --health-cmd "redis-cli ping"
           --health-interval 10s
@@ -60,7 +60,7 @@ jobs:
       database:
         image: postgres:14.3-alpine
         ports:
-          - "5432:5432"
+          - "5433:5433"
         env:
           "POSTGRES_HOST_AUTH_METHOD": "trust"
           "POSTGRES_USER": "rubyapi"
@@ -103,7 +103,7 @@ jobs:
       cache:
         image: redis:7-alpine
         ports:
-          - "6379:6379"
+          - "6381:6381"
         options: >-
           --health-cmd "redis-cli ping"
           --health-interval 10s
@@ -112,7 +112,7 @@ jobs:
       database:
         image: postgres:14.3-alpine
         ports:
-          - "5432:5432"
+          - "5433:5433"
         env:
           "POSTGRES_HOST_AUTH_METHOD": "trust"
           "POSTGRES_USER": "rubyapi"

@@ -43,7 +43,7 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   config.cache_store = :redis_cache_store, {
-    url: ENV.fetch("REDIS_CACHE_URL") { "redis://localhost:6379/1" },
+    url: ENV.fetch("REDIS_CACHE_URL") { "redis://localhost:6381/1" },
     ssl_params: {
       verify_mode: OpenSSL::SSL::VERIFY_NONE
     }
@@ -101,7 +101,7 @@ Rails.application.configure do
       pool_size: 5,
       expire_after: 1.month,
       url: ENV.fetch("REDIS_SESSION_URL") { "redis://localhost:6380/1" },
-      ssl_params: { 
+      ssl_params: {
         verify_mode: OpenSSL::SSL::VERIFY_NONE
       }
     }
