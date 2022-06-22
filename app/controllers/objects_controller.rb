@@ -11,6 +11,11 @@ class ObjectsController < ApplicationController
     @object = object_repository.find(document_id)
   end
 
+  def toggle_signatures
+    session[:show_signatures] = !session[:show_signatures]
+    redirect_back_or_to root_path
+  end
+
   def not_found
     render plain: "Not found", status: :not_found
   end

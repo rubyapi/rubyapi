@@ -110,4 +110,34 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
     assert_select "h4", "foo(a,b)"
     assert_select "h4", "foo(arg1, arg2)"
   end
+
+  test "toggle signature" do
+    current_object = object_url(object: "string")
+    post toggle_signatures_path, headers: {"HTTP_REFERER" => current_object}
+
+    assert_response :redirect
+    assert_redirected_to current_object
+
+    assert session[:show_signatures]
+  end
+
+  test "toggle signature without return url" do
+    post toggle_signatures_path
+
+    assert_response :redirect
+    assert_redirected_to root_path
+
+    assert session[:show_signatures]
+  end
+
+  test "turn off type signatures" do
+    post toggle_signatures_path
+
+    assert_response :redirect
+    assert session[:show_signatures]
+
+    post toggle_signatures_path
+
+    refute session[:show_signatures]
+  end
 end

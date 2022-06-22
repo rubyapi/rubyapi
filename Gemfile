@@ -34,7 +34,6 @@ gem "trenni-sanitize", require: false
 gem "pastel", require: false
 gem "rouge", require: false
 gem "rbs", require: false
-gem "stimulus_reflex", "= 3.5.0.pre9"
 gem "anyway_config"
 gem "slim"
 gem "redis-session-store"
