@@ -10,41 +10,50 @@ const moonIcon = `
   <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
 </svg>`
 
+const systemDefaultIcon = `
+<svg xmlns="http://www.w3.org/2000/svg" class="inline h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+  <path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z" />
+</svg>`
+
+const supportsAuto = window.matchMedia('(prefers-color-scheme)').matches !== 'not all'
+const supportsLocalStorage = 'localStorage' in window
+
+const modes = [
+  supportsAuto ? { name: 'auto', icon: systemDefaultIcon } : null,
+  { name: 'light', icon: sunIcon },
+  { name: 'dark', icon: moonIcon },
+].filter(Boolean)
+
+const modeNames = modes.map((m) => m.name)
+const defaultMode = supportsAuto ? 'auto' : 'light'
+
+const isDarkMode = (theme) => {
+  return theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+}
+
 export const setTheme = (switchTarget) => {
-  const osDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-  const supportsLocalStorage = 'localStorage' in window
-
   if (supportsLocalStorage) {
-    const darkMode = localStorage.getItem('rubyapi-darkMode')
+    const theme = localStorage.getItem('rubyapi-theme') || defaultMode
 
-    if (darkMode !== null && darkMode === '1') {
-      setDarkMode(switchTarget)
-    } else if (osDarkMode && darkMode === null) {
-      setDarkMode(switchTarget)
-    }
+    setMode(theme, switchTarget)
   }
 }
 
-const setDarkMode = (target) => {
+const setMode = (theme, target) => {
   if (target) {
-    target.setAttribute("data-theme", "dark")
-    target.innerHTML = moonIcon
+    target.setAttribute("data-theme", theme)
+    target.innerHTML = modes.find((mode) => mode.name === theme).icon
   }
 
-  document.documentElement.classList.add("dark")
-  setMetaThemeColor('#374151')
-  localStorage.setItem('rubyapi-darkMode', '1')
-}
-
-const setLightMode = (target) => {
-  if (target) {
-    target.setAttribute("data-theme", "light")
-    target.innerHTML = sunIcon
+  if (isDarkMode(theme)) {
+    document.documentElement.classList.add("dark")
+    setMetaThemeColor('#374151')
+  } else {
+    document.documentElement.classList.remove("dark")
+    setMetaThemeColor('#e1175a')
   }
 
-  document.documentElement.classList.remove("dark")
-  setMetaThemeColor('#e1175a')
-  localStorage.setItem('rubyapi-darkMode', '0')
+  localStorage.setItem('rubyapi-theme', theme)
 }
 
 const setMetaThemeColor = (color) => {
@@ -59,13 +68,16 @@ export default class extends Controller {
 
   connect() {
     setTheme(this.switchTarget)
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      setTheme(this.switchTarget)
+    })
   }
 
   toggle() {
-    if (this.switchTarget.getAttribute("data-theme") == "light") {
-      setDarkMode(this.switchTarget)
-    } else {
-      setLightMode(this.switchTarget)
-    }
+    const currentTheme = this.switchTarget.getAttribute("data-theme") || defaultMode
+    const newTheme = modes[(modeNames.indexOf(currentTheme) + 1) % modeNames.length].name
+
+    setMode(newTheme, this.switchTarget)
   }
 }
