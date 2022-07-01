@@ -303,7 +303,7 @@ GEM
     rbs (2.6.0)
     rdoc (6.4.0)
       psych (>= 4.0.0)
-    redis (4.7.0)
+    redis (4.7.1)
     redis-session-store (0.11.4)
       actionpack (>= 3, < 8)
       redis (>= 3, < 5)
