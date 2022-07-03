@@ -1,0 +1,5 @@
+- if local_assigns[:title]
+  span class="text-gray-600 dark:text-gray-200"
+    | #{title}:
+- classes.map do |klass|
+  = object_link(klass)

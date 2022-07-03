@@ -20,17 +20,98 @@ div class="bg-red-600 dark:bg-gray-700 text-white p-3"
         = render 'layouts/search_form'
 div class="p-6 max-w-screen-xl mx-auto"
   div class="flex flex-wrap"
-    - @tiles.each do |tile|
-      div class="block w-full md:w-6/12 md:p-3 py-3"
-        div class="p-3 h-full border border-gray-300 dark:border-gray-700 rounded flex flex-col justify-between"
-          div
-            h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200"
-              = tile.name
-            p class="py-1 dark:text-gray-400"
-              = tile.description
-            p class="py-1 dark:text-gray-400"
-              - tile.classes.map do |klass|
-                = link_to object_path(object: klass.underscore, version: ruby_version), class: "inline-block py-1 px-1" do
-                  code
-                    = klass
+    = render 'tile', title: "Core" do
+      p
+        | #{object_link('Object')} is the default root of all Ruby objects.
+          Classes and methods are first-class objects—each is an instance of class #{object_link('Class')} and #{object_link('Method')}.
+      p
+        | A #{object_link('Module')} is a collection of methods and constants.
+      p
+        | The  #{object_link('Kernel')} module is included by class Object, so its methods are available in every Ruby object.
+      p
+        | A #{object_link('Proc')} object is an encapsulation of a block of code, which can be stored in a local variable, passed to a method or another Proc, and can be called
+      = render 'classes', classes: %w[Binding]
+
+    = render 'tile', title: "Basic Types" do
+      p
+        | Basic types include #{object_link('String')}, #{object_link('Symbol')}, booleans, regular expressions, and more.
+      ul class="list-disc list-inside"
+        li= render 'classes', title: 'Numbers', classes: %w[BigDecimal Complex Float Integer Numeric Rational]
+        li= render 'classes', title: 'Booleans', classes: %w[FalseClass TrueClass]
+        li= render 'classes', title: 'Date and Time', classes: %w[Date DateTime Time]
+        li= render 'classes', title: 'Regular expressions', classes: %w[Regexp]
+        li= render 'classes', title: 'Regular expressions', classes: %w[NilClass OpenStruct Struct]
+
+    = render 'tile', title: "Collections" do
+      p
+        | Collections group multiple elements together.
+          Use Ruby's built-in collections or create your own using the #{object_link('Enumerable')} module.
+      = render 'classes', classes: %w[Array Hash Range Set]
+
+    = render 'tile', title: "File System and IO" do
+      p
+        | The #{object_link('IO')} class is the basis for all input and output in Ruby.
+        | File and Socket
+      ul class="list-disc list-inside"
+        li= render 'classes', title: 'Files and directories', classes: %w[Dir File FileUtils Find Pathname Tempfile]
+        li= render 'classes', classes: %w[Open3 StringIO]
+        li= render 'classes', classes: %w[Fcntl Zlib]
+        li= render 'classes', title: 'Sockets', classes: %w[IPSocket TCPSocket UDPSocket UNIXSocket]
+      p
+        | Or work with input and output.
+      = render 'classes', classes: %w[Open3 StringIO]
+
+    = render 'tile', title: "Operating System" do
+      p
+        | Make system calls.
+      ul class="list-disc list-inside"
+        li= render 'classes', title: 'Option parsing', classes: %w[GetoptLong OptionParser]
+        li= render 'classes', title: 'Processes', classes: %w[Process Signal]
+        li= render 'classes', classes: %w[ENV Etc PTY Readline Reline Shellwords Syslog]
+
+    = render 'tile', title: "Networking" do
+      p
+        | Create client/server programs.
+      ul class="list-disc list-inside"
+        li= render 'classes', classes: %w[CGI CGI::Cookie]
+        li= render 'classes', title: 'Servers', classes: %w[TCPServer UNIXServer]
+        li= render 'classes', classes: %w[DRb IPAddr OpenURI Net::HTTP Resolv Rinda URI]
+
+    = render 'tile', title: "Serialization" do
+      p
+        | Read and write data in other formats.
+      ul class="list-disc list-inside"
+        li= render 'classes', classes: %w[CSV JSON Marshal YAML]
+        li= render 'classes', classes: %w[ERB ERB::Util]
+        li= render 'classes', classes: %w[Psych Racc Ripper]
+
+    = render 'tile', title: "Mathematics" do
+      p
+        | Bla...
+      = render 'classes', classes: %w[BigMath Math Newton]
+
+    = render 'tile', title: "Cryptography" do
+      p
+        | Built-in support for cryptographic primitives.
+          But you can also use OpenSSL
+      ul class="list-disc list-inside"
+        li= render 'classes', title: 'Digests', classes: %w[Digest::MD5 Digest::RMD160 Digest::SHA1 Digest::SHA2]
+        li= render 'classes', title: 'Pseudo-random number generators', classes: %w[Random SecureRandom]
+
+    = render 'tile', title: "Concurrency and Parallelism" do
+      p
+        | #{object_link('Thread')} implementation for a concurrent programming model.
+      = render 'classes', classes: %w[Monitor Mutex_m Thread::ConditionVariable Thread::Mutex Thread::Queue Thread::SizedQueue ThreadGroup]
+      p
+        | #{object_link('Fiber')} is a primitive for implementing light weight cooperative concurrency.
+      p
+        | #{object_link('Ractor')} is an Actor-model abstraction that provides thread-safe parallel execution.
+
+    = render 'tile', title: "Introspection" do
+      p
+        | Get information about your Ruby code during runtime.
+      ul class="list-disc list-inside"
+        li= render 'classes', title: 'Logging', classes: %w[Logger PP PrettyPrint XMP TracePoint]
+        li= render 'classes', title: 'Performance benchmarking', classes: %w[Benchmark]
+        li= render 'classes', title: 'Garbage Collection', classes: %w[GC ObjectSpace WeakRef]
 
