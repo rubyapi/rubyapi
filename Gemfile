@@ -39,7 +39,7 @@ gem "slim"
 gem "redis-session-store"
 
 group :development, :test do
-  gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  gem "debug"
   gem "dotenv-rails"
 end
 
