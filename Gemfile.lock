@@ -389,6 +389,9 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     unicode-display_width (2.1.0)
+    view_component (2.61.0)
+      activesupport (>= 5.0.0, < 8.0)
+      method_source (~> 1.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -453,6 +456,7 @@ DEPENDENCIES
   trenni-sanitize
   tty-spinner
   typhoeus
+  view_component
   web-console (>= 3.3.0)
   webdrivers
   webmock

@@ -37,6 +37,7 @@ gem "rbs", require: false
 gem "anyway_config"
 gem "slim"
 gem "redis-session-store"
+gem "view_component"
 
 group :development, :test do
   gem "debug"
