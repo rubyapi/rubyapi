@@ -1,29 +1,7 @@
 # frozen_string_literal: true
 
-class RubyAttribute
-  attr_reader :body
-
-  def initialize(body = {})
-    @body = body
-  end
-
-  def name
-    body[:name]
-  end
-
-  def description
-    body[:description]
-  end
-
-  def access
-    body[:access]
-  end
-
-  def to_hash
-    {
-      name:,
-      description:,
-      access:
-    }
-  end
+class RubyAttribute < Dry::Struct
+  attribute :name, Types::String
+  attribute :description, Types::String
+  attribute :access, Types::String.default("public")
 end
