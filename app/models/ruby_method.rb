@@ -1,31 +1,25 @@
 # frozen_string_literal: true
 
-class RubyMethod
-  attr_reader :body
+class RubyMethod < Dry::Struct
+  attribute :name, Types::String
+  attribute :description, Types::String
+  attribute :object_constant, Types::String
+  attribute :method_type, Types::String
+  attribute :source_location, Types::String
+  attribute :call_sequence, Types::Array
+  attribute :source_body, Types::String
+  attribute :signatures, Types::Array
 
-  def initialize(body)
-    @body = body
+  attribute :metadata do
+    attribute :depth, Types::Coercible::Integer.default(1)
   end
 
-  def name
-    body[:name]
+  attribute :method_alias do
+    attribute :name, Types::String.optional
+    attribute :path, Types::String.optional
   end
 
-  def description
-    body[:description]
-  end
-
-  def method_type
-    body[:method_type]
-  end
-
-  def object_constant
-    body[:object_constant]
-  end
-
-  def signatures
-    body[:signatures]
-  end
+  # alias :autocomplete :identifier # for search autocomplete
 
   def class_method?
     method_type == "class_method"
@@ -47,44 +41,12 @@ class RubyMethod
     [object_constant, type_identifier, name].join
   end
 
-  def source_location
-    body[:source_location]
-  end
-
-  def call_sequence
-    body[:call_sequence]
-  end
-
-  def autocomplete
-    identifier
-  end
-
   def object_path
     object_constant&.downcase&.gsub(/::/, "/")
   end
 
-  def metadata
-    body[:metadata]
-  end
-
-  def alias?
-    method_alias.values.any?
-  end
-
-  def alias_path
-    method_alias[:path]
-  end
-
-  def alias_name
-    method_alias[:name]
-  end
-
-  def method_alias
-    body[:alias] || {}
-  end
-
-  def source_body
-    body[:source_body]
+  def is_alias?
+    method_alias.attributes.values.any?
   end
 
   def source_file
@@ -93,24 +55,6 @@ class RubyMethod
 
   def source_line
     source_properties[2]
-  end
-
-  def to_hash
-    {
-      name: name,
-      description: description,
-      type: :method,
-      autocomplete: autocomplete,
-      object_constant: object_constant,
-      identifier: identifier,
-      method_type: method_type,
-      source_location: source_location,
-      call_sequence: call_sequence,
-      alias: method_alias,
-      source_body: source_body,
-      metadata: metadata,
-      signatures: signatures
-    }
   end
 
   private
