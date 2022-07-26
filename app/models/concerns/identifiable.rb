@@ -4,12 +4,13 @@ module Identifiable
   extend ActiveSupport::Concern
 
   included do
-    def id
-      self.class.id_from_path(path)
-    end
-  
-    def path
-      constant&.downcase&.gsub(/::/, "/")
+    attribute :id, Types::String.optional.default(nil) # This field is automatically generated
+    attribute :path, Types::String.optional.default(nil) # This field is automatically generated
+
+    def initialize(attributes)
+      attributes[:path] = attributes[:constant]&.downcase&.gsub(/::/, "/")
+      attributes[:id] = self.class.id_from_path(attributes[:path])
+      super(attributes)
     end
   end
 
