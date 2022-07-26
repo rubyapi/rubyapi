@@ -6,8 +6,8 @@ class SearchFlowTest < ActionDispatch::IntegrationTest
   def setup
     @string = FactoryBot.build(:ruby_object)
     @string.ruby_methods << FactoryBot.build(
-      :ruby_method, 
-      call_sequence: [ 
+      :ruby_method,
+      call_sequence: [
         "foo(a,b)",
         "foo(arg1, arg2)"
       ],

@@ -26,7 +26,7 @@ class RubyMethodTest < ActiveSupport::TestCase
   end
 
   test "method alias" do
-    @aliased_method = FactoryBot.build(:ruby_method, :alias, method_alias: { name: "to_integer", path: "String.html#to_integer" })
+    @aliased_method = FactoryBot.build(:ruby_method, :alias, method_alias: {name: "to_integer", path: "String.html#to_integer"})
 
     assert @aliased_method.is_alias?
     assert_not @method.is_alias?

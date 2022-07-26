@@ -8,7 +8,7 @@ class RubyObject < Dry::Struct
   attribute :object_type, Types::String
   attribute :constant, Types::String
   attribute :superclass, RubyObjectSuperclass.optional.default(nil)
-  
+
   attribute :ruby_methods, Types::Strict::Array.of(RubyMethod)
   attribute :ruby_attributes, Types::Strict::Array.of(RubyAttribute)
   attribute :ruby_constants, Types::Strict::Array.of(RubyConstant)

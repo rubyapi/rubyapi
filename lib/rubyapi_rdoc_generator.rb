@@ -86,7 +86,6 @@ class RubyAPIRDocGenerator
         methods << method
       end
 
-
       objects << RubyObject.new(
         name: doc.name,
         description: clean_description(doc.full_name, doc.description),
@@ -179,9 +178,9 @@ class RubyAPIRDocGenerator
     return if doc.superclass.blank?
 
     if doc.superclass.is_a?(String)
-      { constant: doc.superclass }
+      {constant: doc.superclass}
     else
-      { constant: doc.superclass.name }
+      {constant: doc.superclass.name}
     end
   end
 end

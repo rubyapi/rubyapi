@@ -11,12 +11,12 @@ FactoryBot.define do
     description { "A string is a series of characters." }
     object_type { "class_object" }
     superclass do
-      { constant: "Object" }
+      {constant: "Object"}
     end
     included_modules do
       [
-        { constant: "Comparable" },
-        { constant: "Enumerable" }
+        {constant: "Comparable"},
+        {constant: "Enumerable"}
       ]
     end
 
