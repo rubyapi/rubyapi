@@ -8,7 +8,6 @@ FactoryBot.define do
 
     name { c.to_s }
     constant { c.to_s.demodulize }
-    autocomplete { c.to_s }
     description { "A string is a series of characters." }
     object_type { "class_object" }
     superclass do
