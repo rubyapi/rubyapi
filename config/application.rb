@@ -18,6 +18,8 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+require_relative '../lib/types'
+
 module RubyApi
   class Application < Rails::Application
     # Configure the path for configuration classes that should be used before initialization
