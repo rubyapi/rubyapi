@@ -60,7 +60,7 @@ class RubyAPIRDocGenerator
           object_constant: doc.full_name,
           method_type: "#{method_doc.type}_method",
           source_location: "#{@release.version}:#{method_path(method_doc)}:#{method_doc.line}",
-          alias: {
+          method_alias: {
             path: clean_path(method_doc.is_alias_for&.path, constant: doc.full_name),
             name: method_doc.is_alias_for&.name
           },
@@ -86,25 +86,17 @@ class RubyAPIRDocGenerator
         methods << method
       end
 
-      superclass =
-        if doc.type == "class"
-          case doc.superclass
-          when NilClass then nil
-          when String then doc.superclass
-          else doc.superclass.name
-          end
-        end
 
       objects << RubyObject.new(
         name: doc.name,
         description: clean_description(doc.full_name, doc.description),
-        methods:,
         constant: doc.full_name,
         object_type: "#{doc.type}_object",
-        superclass:,
-        included_modules: doc.includes.map(&:name),
-        constants: doc.constants.map { |c| {name: c.name, description: clean_description(doc.full_name, c.description)} },
-        attributes: doc.attributes.map { |a| {name: a.name, description: clean_description(doc.full_name, a.description), access: READWIRTE_MAPPING[a.rw]} },
+        superclass: superclass_for_doc(doc),
+        included_modules: doc.includes.map { |i| {constant: i.name} },
+        ruby_methods: methods,
+        ruby_constants: doc.constants.map { |c| {name: c.name, description: clean_description(doc.full_name, c.description)} },
+        ruby_attributes: doc.attributes.map { |a| {name: a.name, description: clean_description(doc.full_name, a.description), access: READWIRTE_MAPPING[a.rw]} },
         metadata: {
           depth: constant_depth(doc.full_name)
         }
@@ -180,5 +172,16 @@ class RubyAPIRDocGenerator
     formatter = Rouge::Formatters::HTMLLinewise.new(html_formatter, class: "line")
 
     formatter.format(lexer.lex(method_src))
+  end
+
+  def superclass_for_doc(doc)
+    return unless doc.type == "class"
+    return if doc.superclass.blank?
+
+    if doc.superclass.is_a?(String)
+      { constant: doc.superclass }
+    else
+      { constant: doc.superclass.name }
+    end
   end
 end
