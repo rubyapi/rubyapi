@@ -9,7 +9,7 @@ FactoryBot.define do
     end
     method_type { "instance_method" }
     object_constant { "String" }
-    source_location { "2.6.4:string.c:L54" }
+    source_location { "2.6.4:string.c:54" }
 
     signatures do
       [

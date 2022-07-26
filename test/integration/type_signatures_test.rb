@@ -4,17 +4,10 @@ require "test_helper"
 
 class SearchFlowTest < ActionDispatch::IntegrationTest
   def setup
-    string_info = ruby_object(String).to_hash
-
-    string_info[:methods] << {
-      name: "foo",
-      description: "<h1>Hello World</h1>",
-      method_type: "class_method",
-      object_constant: "String",
-      superclass: "Object",
-      included_modules: [],
-      source_location: "2.6.4:string.c:L1",
-      call_sequence: [
+    @string = FactoryBot.build(:ruby_object)
+    @string.ruby_methods << FactoryBot.build(
+      :ruby_method, 
+      call_sequence: [ 
         "foo(a,b)",
         "foo(arg1, arg2)"
       ],
@@ -22,19 +15,7 @@ class SearchFlowTest < ActionDispatch::IntegrationTest
         "(::string other) -> ::Integer",
         "(untyped other) -> ::Integer?"
       ]
-    }
-    string_info[:methods] << {
-      name: "bar",
-      description: "<h1>Hello World</h1>",
-      method_type: "instance_method",
-      object_constant: "String",
-      superclass: "Object",
-      included_modules: [],
-      source_location: "2.6.4:string.c:L3",
-      call_sequence: []
-    }
-
-    @string = RubyObject.new(string_info)
+    )
 
     index_object @string
   end
