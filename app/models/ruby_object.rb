@@ -7,8 +7,7 @@ class RubyObject < Dry::Struct
   attribute :description, Types::String
   attribute :object_type, Types::String
   attribute :constant, Types::String
-  attribute :autocomplete, Types::String
-  attribute :superclass, RubyObjectSuperclass
+  attribute :superclass, RubyObjectSuperclass.optional.default(nil)
   
   attribute :ruby_methods, Types::Strict::Array.of(RubyMethod)
   attribute :ruby_attributes, Types::Strict::Array.of(RubyAttribute)
@@ -18,6 +17,8 @@ class RubyObject < Dry::Struct
   attribute :metadata, Dry::Struct.meta(omittable: true) do
     attribute :depth, Types::Integer
   end
+
+  alias_method :autocomplete, :constant
 
   def class_object?
     object_type == "class_object"
