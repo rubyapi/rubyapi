@@ -391,8 +391,9 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     unicode-display_width (2.2.0)
-    view_component (2.61.0)
+    view_component (2.64.0)
       activesupport (>= 5.0.0, < 8.0)
+      concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
     web-console (4.2.0)
       actionview (>= 6.0.0)
