@@ -2,9 +2,10 @@ const _ = require('lodash')
 
 module.exports = {
   content: [
-    './app/views/**/*.html.slim',
+    './app/views/**/*.html.(slim|erb)',
     './app/helpers/**/*.rb',
-    './app/javascript/**/*.js'
+    './app/javascript/**/*.js',
+    './app/components/**/*.html.(slim|erb)',
   ],
   darkMode: 'class',
   theme: {
