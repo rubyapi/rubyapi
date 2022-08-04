@@ -16,26 +16,6 @@ class ApplicationController < ActionController::Base
   end
   helper_method :search_query
 
-  def supported_ruby_versions
-    RubyConfig.active_ruby_versions.map(&:version)
-  end
-  helper_method :supported_ruby_versions
-
-  def eol_ruby_versions
-    RubyConfig.eol_ruby_versions.map(&:version)
-  end
-  helper_method :eol_ruby_versions
-
-  def route_for_version(version)
-    route = Rails.application.routes.recognize_path request.url
-    route[:only_path] = true
-    route[:version] = version
-    route.merge! request.query_parameters
-
-    url_for route
-  end
-  helper_method :route_for_version
-
   def home_path
     return root_path if RubyConfig.default_ruby_version.version == ruby_version
     versioned_root_path(version: ruby_version)
