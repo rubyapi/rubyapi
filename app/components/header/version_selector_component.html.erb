@@ -8,13 +8,13 @@
   </button>
   <div
     data-dropdown-target="menu"
-    class="hidden transition transform origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white overflow-hidden ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
+    class="hidden transition transform origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white dark:bg-gray-900 dark:text-gray-400 overflow-hidden ring-1 ring-black ring-opacity-5 focus:outline-none z-50" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"
     data-transition-leave-from="opacity-100 scale-100"
     data-transition-leave-to="opacity-0 scale-95">
     <% @ruby_versions.each do |v| %>
-      <a href="<%= route_for_version(v) %>" class="flex justify-between items-center text-left space-x-1 px-4 py-2 text-gray-700 hover:bg-gray-200 dark:hover:bg-gray-800 <%= "text-blue-800 bg-blue-200" if v.version == @current_version %>" role="menuitem" tabindex="-1">
+      <a href="<%= route_for_version(v) %>" class="flex justify-between items-center text-left space-x-1 px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 <%= "text-blue-800 bg-blue-200 dark:bg-gray-800 dark:text-gray-200" if v.version == @current_version %>" role="menuitem" tabindex="-1">
         <span class="text-l font-semibold"><%= v.version %></span>
         <span>
           <% if v.version == @current_version %>
