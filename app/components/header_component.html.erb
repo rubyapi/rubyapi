@@ -18,7 +18,7 @@
           </button>
         </div>
         <div class="hidden md:flex md:space-x-4">
-          <%= render Header::VersionSelectorComponent.new(current_version: "3.1", versions: RubyConfig.ruby_versions) %>
+          <%= render Header::VersionSelectorComponent.new(current_version: @current_ruby_version, versions: RubyConfig.ruby_versions) %>
           <%= render 'layouts/theme_selector' %>
         </div>
       </div>
