@@ -15,7 +15,6 @@
     "tailwindcss": "^3.1.8"
   },
   "devDependencies": {
-    "chokidar": "^3.5.3"
   },
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --loader:.ttf=file --outdir=app/assets/builds --minify",
