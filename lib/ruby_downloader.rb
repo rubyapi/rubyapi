@@ -47,8 +47,12 @@ class RubyDownloader
   private
 
   def fetch_ruby_archive
-    file = File.new download_path, "wb"
-    request = HTTP.get release.source_url.to_s
+    chunked_fetch download_path, release.source_url.to_s
+  end
+
+  def chunked_fetch(path, url)
+    file = File.new path, "wb"
+    request = HTTP.get url
 
     while (chunk = request.readpartial)
       file.write chunk
@@ -57,13 +61,33 @@ class RubyDownloader
     file.close
   end
 
+  def gems_path
+    extracted_download_path.join("gems")
+  end
+
+  def fetch_bundled_gems
+    # The cache.ruby-lang.org stable release zips include the .gem files for each bundled gem,
+    # but the github master branch .zip does not.
+    gems_path.join("bundled_gems")
+      .read
+      .scan(/(?<name>\w+)\s+(?<version>[\d.]+).*/) do |name, version|
+        file_name = "#{name}-#{version}.gem"
+        path = gems_path.join(file_name)
+
+        next if path.exist?
+
+        chunked_fetch path, "https://rubygems.org/downloads/#{file_name}"
+      end
+  end
+
   def already_fetched?
     File.exist? extracted_download_path.join "README.md"
   end
 
   def prepare_environment
     system "unzip #{download_path} -d #{rubies_download_path} > #{File::NULL}"
-    system "gem unpack --target #{extracted_download_path.join("gems")} #{extracted_download_path.join("gems/rbs-*.gem")}" if release.has_type_signatures?
+    fetch_bundled_gems
+    system "gem unpack --target #{gems_path} #{gems_path.join("rbs-*.gem")}" if release.has_type_signatures?
   end
 
   def setup_paths
