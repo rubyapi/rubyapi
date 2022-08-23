@@ -15,7 +15,10 @@ class RubyDownloader
   def download
     setup_paths
 
-    if already_fetched?
+    if release.dev?
+      # Don't cache dev, since it changes frequently
+      extracted_download_path.rmtree if extracted_download_path.exist?
+    elsif already_fetched?
       puts "Found previously extracted download for " \
         "#{release.version}, skipping"
       return
