@@ -26,4 +26,10 @@ module ApplicationHelper
       %(#{GITHUB_REPO}/v#{version.tr(".", "_")}/#{file}#{"#L#{line}" if line})
     end
   end
+
+  def object_link(class_name)
+    link_to object_path(object: class_name.underscore, version: ruby_version), class: "inline-block" do
+      content_tag(:code, class_name)
+    end
+  end
 end
