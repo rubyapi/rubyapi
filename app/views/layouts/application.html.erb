@@ -20,7 +20,7 @@
     <%= content_for(:head) %>
   </head>
   <body class="bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-300">
-    <%= render HeaderComponent.new(fixed_nav: !homepage?, show_search: !homepage?) %>
+    <%= render HeaderComponent.new(current_ruby_version: ruby_version, fixed_nav: !homepage?, show_search: !homepage?) %>
     <%= yield %>
     <%=  render "layouts/footer" %>
   </body>
