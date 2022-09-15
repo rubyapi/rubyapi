@@ -38,12 +38,12 @@ gem "anyway_config"
 gem "slim"
 gem "redis-session-store"
 gem "dry-struct"
-gem "factory_bot"
 gem "view_component"
 
 group :development, :test do
   gem "debug"
   gem "dotenv-rails"
+  gem "factory_bot"
 end
 
 group :development do
