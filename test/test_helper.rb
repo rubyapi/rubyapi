@@ -11,8 +11,6 @@ Dir.glob(Rails.root.join("test/factories/*.rb")).each { |f| require_relative f }
 WebMock.disable!
 
 class ActiveSupport::TestCase
-  include FactoryBot::Syntax::Methods
-
   # Run tests in parallel with specified workers
   # parallelize(workers: :number_of_processors)
 
