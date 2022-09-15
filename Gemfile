@@ -39,6 +39,7 @@ gem "slim"
 gem "redis-session-store"
 gem "dry-struct"
 gem "factory_bot"
+gem "view_component"
 
 group :development, :test do
   gem "debug"

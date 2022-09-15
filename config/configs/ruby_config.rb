@@ -14,14 +14,6 @@ class RubyConfig < ApplicationConfig
     @default_ruby_version ||= ruby_versions.find(&:default?)
   end
 
-  def active_ruby_versions
-    @active_ruby_versions ||= ruby_versions.reject(&:eol?)
-  end
-
-  def eol_ruby_versions
-    @eol_ruby_verisons ||= ruby_versions.select(&:eol?)
-  end
-
   private
 
   def ensure_default_version
