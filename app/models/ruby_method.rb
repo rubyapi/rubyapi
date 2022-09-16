@@ -19,8 +19,6 @@ class RubyMethod < Dry::Struct
     attribute :path, Types::String.optional
   end
 
-  # alias :autocomplete :identifier # for search autocomplete
-
   def class_method?
     method_type == "class_method"
   end
@@ -41,6 +39,8 @@ class RubyMethod < Dry::Struct
     [object_constant, type_identifier, name].join
   end
 
+  alias_method :autocomplete, :identifier
+
   def object_path
     object_constant&.downcase&.gsub(/::/, "/")
   end
@@ -55,6 +55,16 @@ class RubyMethod < Dry::Struct
 
   def source_line
     source_properties[2]
+  end
+
+   # Similar to #to_h, but only the nessessary attributes are included
+   def to_search
+    {
+      type: :method,
+      autocomplete:,
+      name:,
+      method_type:
+    }
   end
 
   private
