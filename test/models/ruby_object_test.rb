@@ -33,6 +33,6 @@ class RubyObjectTest < ActiveSupport::TestCase
   end
 
   test "to search" do
-    assert_equal @object.to_search, {type: :object, autocomplete: "String", name: "String", object_type: "class_object"}
+    assert_equal @object.to_search, {type: :object, autocomplete: "String", name: "String", object_type: "class_object", description: "A string is a series of characters."}
   end
 end

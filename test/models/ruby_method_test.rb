@@ -36,6 +36,6 @@ class RubyMethodTest < ActiveSupport::TestCase
   end
 
   test "to search" do
-    assert_equal @method.to_search, {type: :method, autocomplete: "String#to_s", name: "to_s", method_type: "instance_method"}
+    assert_equal @method.to_search, {type: :method, autocomplete: "String#to_s", name: "to_s", method_type: "instance_method", description: "<p>Returns the result of interpreting leading characters in self as an integer in the given base (which must be in (2..36)):</p>"}
   end
 end
