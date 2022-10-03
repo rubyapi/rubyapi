@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Header
   class SearchComponent < ViewComponent::Base
     def initialize(ruby_version:)
