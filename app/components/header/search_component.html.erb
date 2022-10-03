@@ -1,4 +1,4 @@
-<div class="relative" data-controller="search" data-search-version="#{@ruby_version}" data-search-url="#{graphql_path}">
+<div class="relative" data-controller="search" data-search-version="<%= @ruby_version %>" data-search-url="<%= graphql_path %>">
   <%= form_tag(search_url(version: @ruby_version), method: :get, class: "m-0") do %>
     <div class="relative">
       <button type="submit" class="block absolute left inset-y-0 px-4 #{'text-gray-700 fill-current' if homepage?}" aria-label="search">
@@ -21,13 +21,15 @@
               title="Search"
               <% if homepage? %>
               value="<%= search_query %>"
-              class="bg-white shadow-md z-0 text-gray-800 placeholder-gray-600 rounded px-3 pl-10 py-2 w-full outline-none placeholder-opacity-100"
+              class="bg-white shadow-md py-3 z-0 text-gray-800 placeholder-gray-600 rounded px-3 pl-10 py-2 w-full outline-none placeholder-opacity-100"
               autofocus
               <% else %>
               class="bg-red-800 focus:bg-white focus:text-black dark:focus:bg-white dark:focus:text-black dark:bg-gray-800 py-2 placeholder-white rounded px-3 pl-10 w-full outline-none placeholder-opacity-100"
               <% end %>
               />
-      <div data-search-target="autocomplete" class="w-full bg-white absolute shadow-lg rounded-bl rounded-br -mt-1 #{'text-left' if homepage?}"></div>
+      <div data-search-target="autocomplete"
+           class="w-full bg-white absolute shadow-lg rounded-bl rounded-br -mt-1 <%= "text-left" if homepage? %>">
+      </div>
     </div>
   <% end %>
 </div>
