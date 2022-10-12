@@ -35,7 +35,6 @@ gem "pastel", require: false
 gem "rouge", require: false
 gem "rbs", require: false
 gem "anyway_config"
-gem "slim"
 gem "redis-session-store"
 gem "view_component"
 
