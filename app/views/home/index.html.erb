@@ -1,16 +1,16 @@
 <% description "Easily find and browse Ruby classes, modules and methods" %>
 <% content_for :head do %>
   <script type="application/ld+json">
-      | {
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "url": "<%= request.base_url %>",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "<%= search_url %>?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          }
-        }
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "url": "<%= request.base_url %>",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "<%= search_url %>?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
   </script>
 <% end %>
 
