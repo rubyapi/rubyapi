@@ -14,8 +14,7 @@
     "stimulus-dropdown": "^2.0.0",
     "tailwindcss": "^3.1.8"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --loader:.ttf=file --outdir=app/assets/builds --minify",
     "build:css": "tailwindcss -m -i app/assets/css/application.css -o app/assets/builds/application.css"
