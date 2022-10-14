@@ -33,7 +33,7 @@
     {
       "label": "npm: build:watch",
       "type": "shell",
-      "command": "npm run build --watch"
+      "command": "npm run build:watch"
     },
     {
       "label": "npm: build:css",
@@ -44,7 +44,7 @@
     {
       "label": "npm: build:css:watch",
       "type": "shell",
-      "command": "npm run build:css --watch"
+      "command": "npm run build:css:watch"
     },
     {
       "label": "rake: import:ruby",
