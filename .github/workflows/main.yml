@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       search:
-        image: docker.elastic.co/elasticsearch/elasticsearch:8.2.0
+        image: docker.elastic.co/elasticsearch/elasticsearch:8.4.3
         ports:
           - 9200:9200
         env:
@@ -87,7 +87,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       search:
-        image: docker.elastic.co/elasticsearch/elasticsearch:8.2.0
+        image: docker.elastic.co/elasticsearch/elasticsearch:8.4.3
         ports:
           - 9200:9200
         env:
