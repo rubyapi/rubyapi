@@ -87,11 +87,11 @@ class SearchRepository
     klass_for_document(document).new(document[:_source])
   end
 
-  def bulk_import(records)
+  def bulk_import(records, wait_for_refresh: false)
     records.each_slice(500) do |slice|
       entries = slice.each_with_object([]) { |o, arr| arr.push(o.to_hash, *o.ruby_methods.map(&:to_hash)) }
       payload = entries.flat_map { |o| [{index: {}}, o.to_hash] }
-      client.bulk(body: payload, index: index_name)
+      client.bulk(body: payload, index: index_name, refresh: wait_for_refresh)
     end
   end
 

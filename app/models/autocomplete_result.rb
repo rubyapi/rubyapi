@@ -17,4 +17,11 @@ class AutocompleteResult
   def path
     result_url result, version:
   end
+
+  def to_hash
+    {
+      text: autocomplete,
+      path: path
+    }
+  end
 end
