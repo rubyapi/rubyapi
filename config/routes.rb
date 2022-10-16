@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get "o/s", to: "search#index", as: :search
     post "o/toggle_signatures", to: "objects#toggle_signatures", as: :toggle_signatures
     get "o/*object", to: "objects#show", as: :object
+    get "a", to: "autocomplete#index", as: :autocomplete, default: {format: :json}
 
     post "/run", to: "code_execute#post"
   end
