@@ -154,6 +154,9 @@ jobs:
           sudo apt-get -yqq install chromium-chromedriver
           npm install
 
+      - name: Test Zeitwerk
+        run: ./bin/rails zeitwerk:check
+
       - name: Run Tests
         env:
           ELASTICSEARCH_URL: "http://localhost:9200"
