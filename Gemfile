@@ -19,8 +19,6 @@ gem "kaminari", "~> 1.2.2"
 gem "inline_svg"
 gem "tty-spinner", require: false
 gem "skylight", group: :production
-gem "graphql"
-gem "graphiql-rails", group: :development
 gem "lograge"
 gem "logstash-event"
 gem "aws-sdk-s3"
