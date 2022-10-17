@@ -16,6 +16,12 @@ class SearchController < ApplicationController
 
   helper_method :pagination
 
+  def search_query
+    params[:q] || ""
+  end
+
+  helper_method :search_query
+
   private
 
   def results_per_page

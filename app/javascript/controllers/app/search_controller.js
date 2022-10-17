@@ -123,26 +123,19 @@ export default class extends Controller {
   async autocomplete(query, version, path) {
     this.suggestionIndex = 0
 
-    fetch(path, {
-      method: "post",
+    const queryParam = new URLSearchParams({q: query})
+    const url = `${path}?${queryParam.toString()}`
+
+    fetch(url , {
+      method: "get",
       headers: {
         'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: `
-        query GetAutocompleteResults($query: String!, $version: String = "2.6") {
-          autocomplete(query: $query, version: $version) {
-            text
-            path
-          }
-        }`,
-        variables: { query, version }
-      })
+      }
     })
       .then((response) => { return response.json() })
       .then((results) => {
         const render = mustache.render(this.autocompleteTemplate, {
-          results: results.data.autocomplete
+          results: results
         })
         this.autocompleteTarget.innerHTML = render
       })

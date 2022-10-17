@@ -24,6 +24,10 @@ class ActiveSupport::TestCase
     RubyConfig.default_ruby_version.version
   end
 
+  def bulk_index_search(objects, version: nil, wait_for_refresh: false)
+    search_repository(version).bulk_import(objects, wait_for_refresh: wait_for_refresh)
+  end
+
   def index_search(object, version: nil)
     search_repository(version).save object
   end

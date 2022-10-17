@@ -6,7 +6,7 @@
       </div>
       <% if @show_search %>
         <div class="flex-auto md:max-w-lg">
-          <%= render 'layouts/search_form' %>
+          <%= render Header::SearchComponent.new(ruby_version: @current_ruby_version) %>
         </div>
       <% end %>
       <div class="flex-none">

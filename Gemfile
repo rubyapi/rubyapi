@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby "~> 3.0"
 
-gem "rails", "~> 7.0.3"
+gem "rails", "~> 7.0.4"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "redis"
 gem "puma"
@@ -19,8 +19,6 @@ gem "kaminari", "~> 1.2.2"
 gem "inline_svg"
 gem "tty-spinner", require: false
 gem "skylight", group: :production
-gem "graphql"
-gem "graphiql-rails", group: :development
 gem "lograge"
 gem "logstash-event"
 gem "aws-sdk-s3"
@@ -35,7 +33,6 @@ gem "pastel", require: false
 gem "rouge", require: false
 gem "rbs", require: false
 gem "anyway_config"
-gem "slim"
 gem "redis-session-store"
 gem "dry-struct"
 gem "view_component"

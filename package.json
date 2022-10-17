@@ -1,23 +1,27 @@
 {
   "name": "ruby-api",
   "private": true,
+  "engines": {
+    "node": "18.10.x"
+  },
   "dependencies": {
     "@hotwired/stimulus": "^3.1.0",
-    "@rails/actioncable": "^7.0.3",
+    "@rails/actioncable": "^7.0.4",
     "clipboard-copy": "^4.0.1",
-    "esbuild": "^0.15.7",
+    "esbuild": "^0.15.11",
     "hotkeys-js": "^3.10.0",
     "lodash": "^4.1.1",
     "monaco-editor": "^0.34.0",
     "mustache": "^4.2.0",
-    "postcss": "^8.4.16",
+    "postcss": "^8.4.18",
     "stimulus-dropdown": "^2.0.0",
     "tailwindcss": "^3.1.8"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --sourcemap --loader:.ttf=file --outdir=app/assets/builds --minify",
-    "build:css": "tailwindcss -m -i app/assets/css/application.css -o app/assets/builds/application.css"
+    "build:watch": "esbuild app/javascript/*.* --bundle --sourcemap --loader:.ttf=file --outdir=app/assets/builds --minify --watch",
+    "build:css": "tailwindcss -m -i app/assets/css/application.css -o app/assets/builds/application.css",
+    "build:css:watch": "tailwindcss -m -i app/assets/css/application.css -o app/assets/builds/application.css --watch"
   }
 }

@@ -22,7 +22,6 @@
 !/storage/.keep
 
 /node_modules
-/yarn-error.log
 
 /public/assets
 .byebug_history
@@ -32,8 +31,6 @@
 /public/packs
 /public/packs-test
 /node_modules
-yarn-debug.log*
-.yarn-integrity
 
 # Ignore code coverage reports
 /coverage
@@ -43,9 +40,6 @@ yarn-debug.log*
 /public/sitemaps
 /public/sitemap*
 /node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
 
 /app/assets/builds/*
 !/app/assets/builds/.keep

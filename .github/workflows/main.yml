@@ -27,7 +27,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      
+
       - name: Run linting
         run: ./bin/standardrb --no-fix
 
@@ -35,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       search:
-        image: docker.elastic.co/elasticsearch/elasticsearch:8.2.0
+        image: docker.elastic.co/elasticsearch/elasticsearch:8.4.3
         ports:
           - 9200:9200
         env:
@@ -87,7 +87,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       search:
-        image: docker.elastic.co/elasticsearch/elasticsearch:8.2.0
+        image: docker.elastic.co/elasticsearch/elasticsearch:8.4.3
         ports:
           - 9200:9200
         env:
@@ -130,27 +130,36 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Get Yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Cache Yarn
-        uses: actions/cache@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          node-version-file: .node-version
+
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
+
+      - uses: actions/cache@v3
+        id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-node-
 
       - name: Install Dependencies
         run: |
           sudo apt-get update -qq
           sudo apt-get -yqq install chromium-chromedriver
-          yarn install --frozen-lockfile
+          npm install
+
+      - name: Test Zeitwerk
+        run: ./bin/rails zeitwerk:check
 
       - name: Run Tests
         env:
           ELASTICSEARCH_URL: "http://localhost:9200"
         run: |
-          ./bin/yarn build && ./bin/yarn build:css
+          npm run build && npm run build:css
           ./bin/rails test
