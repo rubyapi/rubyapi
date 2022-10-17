@@ -42,13 +42,7 @@ class RubyObject < Dry::Struct
       ruby_methods.select(&:instance_method?).sort_by(&:name)
   end
 
-  # Similar to #to_h, but only the nessessary attributes are included
   def to_search
-    {
-      type: :object,
-      autocomplete:,
-      name:,
-      object_type:
-    }
+    to_h.merge(type: :object, autocomplete:)
   end
 end

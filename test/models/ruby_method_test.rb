@@ -34,8 +34,4 @@ class RubyMethodTest < ActiveSupport::TestCase
     assert_equal @aliased_method.method_alias.name, "to_integer"
     assert_equal @aliased_method.method_alias.path, "String.html#to_integer"
   end
-
-  test "to search" do
-    assert_equal @method.to_search, {type: :method, autocomplete: "String#to_s", name: "to_s", method_type: "instance_method", description: "<p>Returns the result of interpreting leading characters in self as an integer in the given base (which must be in (2..36)):</p>"}
-  end
 end

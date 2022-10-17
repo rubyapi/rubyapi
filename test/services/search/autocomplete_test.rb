@@ -4,18 +4,16 @@ require "test_helper"
 
 class Search::AutocompleteTest < ActiveSupport::TestCase
   def setup
-    create_index_for_version! "3.1"
+    create_index_for_version! default_ruby_version
 
-    @objects = []
-    [String, Array, Hash, Integer, Float, Symbol].each do |klass|
-      @objects << FactoryBot.build(:search_result, :method, c: klass )
-    end
+    method = FactoryBot.build :ruby_method, name: "foo"
 
-    @objects.each { |o| index_search(o, version: "3.1") }
+    objects = [String, Array, Integer, Symbol, Hash].map { |klass| FactoryBot.build(:ruby_object, c: klass, ruby_methods: [method]) }
+    bulk_index_search objects, version: default_ruby_version, wait_for_refresh: true
   end
 
   test "search for a method" do
-    search = Search::Autocomplete.search "to_s", version: "3.1"
+    search = Search::Autocomplete.search "foo", version: default_ruby_version
     assert_equal 5, search.results.size
   end
 end

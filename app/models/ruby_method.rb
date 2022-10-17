@@ -57,14 +57,9 @@ class RubyMethod < Dry::Struct
     source_properties[2]
   end
 
-   # Similar to #to_h, but only the nessessary attributes are included
-   def to_search
-    {
-      type: :method,
-      autocomplete:,
-      name:,
-      method_type:
-    }
+  # Similar to #to_h, but only the nessessary attributes are included
+  def to_search
+    to_h.merge(type: :method, autocomplete:)
   end
 
   private

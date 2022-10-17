@@ -31,8 +31,4 @@ class RubyObjectTest < ActiveSupport::TestCase
     assert_equal 3, ruby_object.ruby_class_methods.size
     assert_equal 2, ruby_object.ruby_instance_methods.size
   end
-
-  test "to search" do
-    assert_equal @object.to_search, {type: :object, autocomplete: "String", name: "String", object_type: "class_object", description: "A string is a series of characters."}
-  end
 end

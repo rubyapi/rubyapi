@@ -6,7 +6,9 @@ class AutocompleteControllerTest < ActionDispatch::IntegrationTest
   def setup
     create_index_for_version! default_ruby_version
 
-    objects = [String, Array, Integer, Symbol, Hash].map { |klass| ruby_object(klass) }
+    method = FactoryBot.build :ruby_method, name: "foo"
+
+    objects = [String, Array, Integer, Symbol, Hash].map { |klass| FactoryBot.build(:ruby_object, c: klass, ruby_methods: [method]) }
     bulk_index_search objects, version: default_ruby_version, wait_for_refresh: true
   end
 
@@ -16,7 +18,7 @@ class AutocompleteControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should render results" do
-    get autocomplete_path(q: "to_i")
+    get autocomplete_path(q: "foo")
     assert_equal 5, response.parsed_body.length
   end
 
