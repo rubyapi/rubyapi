@@ -27,7 +27,7 @@
           <% @object.ruby_constants.each do |constant| %>
             <li>
               <%= render "objects/sidebar/section/link",
-                  title: constant.name, href: "##{constant.name}" %>
+                  title: constant.name, href: "#<%= constant.name %>" %>
             </li>
           <% end %>
         </ul>
@@ -39,7 +39,7 @@
           <% @object.ruby_class_methods.each do |m| %>
             <li>
               <%= render "objects/sidebar/section/link",
-                  title: ":: #{m.name}", href: "##{method_anchor(m)}" %>
+                  title: ":: <%= m.name %>", href: "#<%= method_anchor(m) %>" %>
             </li>
           <% end %>
         </ul>
@@ -51,7 +51,7 @@
           <% @object.ruby_instance_methods.each do |m| %>
             <li>
               <%= render "objects/sidebar/section/link",
-                  title: "# #{m.name}", href: "##{method_anchor(m)}" %>
+                  title: "# <%= m.name %>", href: "#<%= method_anchor(m) %>" %>
             </li>
           <% end %>
         </ul>
@@ -71,7 +71,7 @@
         <div class="px-2 py-1 text-sm" id="signatures-description">
           Show type signatures generated automatically by <a href="https://github.com/ruby/rbs" target="_blank" class="text-blue-600">RBS</a>.
         </div>
-        <form class="p-1" action="#{toggle_signatures_path}" method="post">
+        <form class="p-1" action="<%= toggle_signatures_path %>" method="post">
           <button type="submit" class="inline-flex items-center px-3 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm leading-4 font-medium rounded-md bg-white hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 dark:focus:ring-gray-900">
             <%= @show_signatures ? "Disable Type Signatures" : "Enable Type Signatures" %>
           </button>
@@ -104,7 +104,7 @@
             <% @object.ruby_constants.each do |constant| %>
               <li>
                 <%= render "objects/sidebar/section/link",
-                    title: constant.name, href: "##{constant.name}" %>
+                    title: constant.name, href: "#<%= constant.name %>" %>
               </li>
             <% end %>
           </ul>
@@ -116,7 +116,7 @@
             <% @object.ruby_attributes.each do |constant| %>
               <li>
                 <%= render "objects/sidebar/section/link",
-                    title: constant.name, href: "##{constant.name}" %>
+                    title: constant.name, href: "#<%= constant.name %>" %>
               </li>
             <% end %>
           </ul>
@@ -128,7 +128,7 @@
             <% @object.ruby_class_methods.each do |m| %>
               <li>
                 <%= render "objects/sidebar/section/link",
-                    title: ":: #{m.name}", href: "##{method_anchor(m)}" %>
+                    title: ":: <%= m.name %>", href: "#<%= method_anchor(m) %>" %>
               </li>
             <% end %>
           </ul>
@@ -140,7 +140,7 @@
             <% @object.ruby_instance_methods.each do |m| %>
               <li>
                 <%= render "objects/sidebar/section/link",
-                    title: "# #{m.name}", href: "##{method_anchor(m)}" %>
+                    title: "# <%= m.name %>", href: "#<%= method_anchor(m) %>" %>
               </li>
             <% end %>
           </ul>

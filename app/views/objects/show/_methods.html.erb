@@ -60,7 +60,7 @@
     </div>
     <div class="ruby-documentation py-1">
       <% if m.alias? %>
-        <div>An alias for <a href="#{m.alias_path}" class="font-bold">#{m.alias_name}</a></div>
+        <div>An alias for <a href="<%= m.alias_path %>" class="font-bold"><%= m.alias_name %></a></div>
       <% elsif m.description.empty? %>
         <div>No documentation available</div>
       <% else %>
