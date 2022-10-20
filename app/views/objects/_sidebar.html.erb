@@ -27,7 +27,7 @@
           <% @object.ruby_constants.each do |constant| %>
             <li>
               <%= render "objects/sidebar/section/link",
-                  title: constant.name, href: "#<%= constant.name %>" %>
+                  title: constant.name, href: "##{constant.name}" %>
             </li>
           <% end %>
         </ul>
@@ -39,7 +39,7 @@
           <% @object.ruby_class_methods.each do |m| %>
             <li>
               <%= render "objects/sidebar/section/link",
-                  title: ":: <%= m.name %>", href: "#<%= method_anchor(m) %>" %>
+                  title: ":: #{m.name}", href: "##{method_anchor(m)}" %>
             </li>
           <% end %>
         </ul>
@@ -51,7 +51,7 @@
           <% @object.ruby_instance_methods.each do |m| %>
             <li>
               <%= render "objects/sidebar/section/link",
-                  title: "# <%= m.name %>", href: "#<%= method_anchor(m) %>" %>
+                  title: "# #{m.name}", href: "##{method_anchor(m)}" %>
             </li>
           <% end %>
         </ul>
@@ -104,7 +104,7 @@
             <% @object.ruby_constants.each do |constant| %>
               <li>
                 <%= render "objects/sidebar/section/link",
-                    title: constant.name, href: "#<%= constant.name %>" %>
+                    title: constant.name, href: "##{constant.name}" %>
               </li>
             <% end %>
           </ul>
@@ -116,7 +116,7 @@
             <% @object.ruby_attributes.each do |constant| %>
               <li>
                 <%= render "objects/sidebar/section/link",
-                    title: constant.name, href: "#<%= constant.name %>" %>
+                    title: constant.name, href: "##{constant.name}" %>
               </li>
             <% end %>
           </ul>
@@ -128,7 +128,7 @@
             <% @object.ruby_class_methods.each do |m| %>
               <li>
                 <%= render "objects/sidebar/section/link",
-                    title: ":: <%= m.name %>", href: "#<%= method_anchor(m) %>" %>
+                    title: ":: #{m.name}", href: "##{method_anchor(m)}" %>
               </li>
             <% end %>
           </ul>
@@ -140,7 +140,7 @@
             <% @object.ruby_instance_methods.each do |m| %>
               <li>
                 <%= render "objects/sidebar/section/link",
-                    title: "# <%= m.name %>", href: "#<%= method_anchor(m) %>" %>
+                    title: "# #{m.name}", href: "##{method_anchor(m)}" %>
               </li>
             <% end %>
           </ul>
