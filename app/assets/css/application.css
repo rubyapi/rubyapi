@@ -70,6 +70,7 @@ pre:not(.ruby) {
 
 .ruby-documentation ul { @apply pl-4; }
 .ruby-documentation ul li { @apply list-disc; }
+.ruby-documentation ol li { @apply list-decimal; }
 .ruby-documentation dd, .ruby-documentation dt { @apply w-full text-center; }
 .ruby-documentation dl { @apply flex flex-wrap border-2 border-gray-400; }
 .ruby-documentation dd { @apply px-3; }
