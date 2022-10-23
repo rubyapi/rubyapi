@@ -71,7 +71,7 @@
         <div class="px-2 py-1 text-sm" id="signatures-description">
           Show type signatures generated automatically by <a href="https://github.com/ruby/rbs" target="_blank" class="text-blue-600">RBS</a>.
         </div>
-        <form class="p-1" action="#{toggle_signatures_path}" method="post">
+        <form class="p-1" action="<%= toggle_signatures_path %>" method="post">
           <button type="submit" class="inline-flex items-center px-3 py-2 border border-gray-300 dark:border-gray-600 shadow-sm text-sm leading-4 font-medium rounded-md bg-white hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 dark:focus:ring-gray-900">
             <%= @show_signatures ? "Disable Type Signatures" : "Enable Type Signatures" %>
           </button>
