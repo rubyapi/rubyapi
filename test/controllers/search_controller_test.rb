@@ -6,7 +6,7 @@ class SearchControllerTest < ActionDispatch::IntegrationTest
   def setup
     create_index_for_version! default_ruby_version
 
-    string = ruby_object String
+    string = FactoryBot.build(:ruby_object)
     index_search string
   end
 

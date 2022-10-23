@@ -34,11 +34,13 @@ gem "rouge", require: false
 gem "rbs", require: false
 gem "anyway_config"
 gem "redis-session-store"
+gem "dry-struct"
 gem "view_component"
 
 group :development, :test do
   gem "debug"
   gem "dotenv-rails"
+  gem "factory_bot"
 end
 
 group :development do

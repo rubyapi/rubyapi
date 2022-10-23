@@ -71,8 +71,6 @@ class SearchRepository
           analyzer: "name3gram"
         }
       }
-      indexes :object_constant, type: :text, analyzer: :keyword
-      indexes :method_identifier, type: :keyword, normalizer: :lowercase
       indexes :object_type, type: :keyword
       indexes :method_type, type: :keyword
     end
@@ -89,7 +87,7 @@ class SearchRepository
 
   def bulk_import(records, wait_for_refresh: false)
     records.each_slice(500) do |slice|
-      entries = slice.each_with_object([]) { |o, arr| arr.push(o.to_hash, *o.ruby_methods.map(&:to_hash)) }
+      entries = slice.each_with_object([]) { |o, arr| arr.push(o.to_search, *o.ruby_methods.map(&:to_search)) }
       payload = entries.flat_map { |o| [{index: {}}, o.to_hash] }
       client.bulk(body: payload, index: index_name, refresh: wait_for_refresh)
     end

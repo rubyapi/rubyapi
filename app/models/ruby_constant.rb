@@ -1,22 +1,6 @@
-class RubyConstant
-  attr_reader :body
+# frozen_string_literal: true
 
-  def initialize(body = {})
-    @body = body
-  end
-
-  def name
-    body[:name]
-  end
-
-  def description
-    body[:description]
-  end
-
-  def to_hash
-    {
-      name:,
-      description:
-    }
-  end
+class RubyConstant < Dry::Struct
+  attribute :name, Types::String
+  attribute :description, Types::String
 end

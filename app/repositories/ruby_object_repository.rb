@@ -10,9 +10,9 @@ class RubyObjectRepository
     mapping do
       indexes :name, type: :text
       indexes :description, type: :text, index: false
-      indexes :methods, type: :nested
-      indexes :superclass, type: :text
-      indexes :included_modules, type: :text
+      indexes :ruby_methods, type: :nested
+      indexes :superclass, type: :nested
+      indexes :included_modules, type: :nested
       indexes :metadata, type: :nested
     end
   end

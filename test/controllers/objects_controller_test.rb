@@ -4,14 +4,13 @@ require "test_helper"
 
 class ObjectsControllerTest < ActionDispatch::IntegrationTest
   def setup
+    @string = FactoryBot.build(:ruby_object)
     create_index_for_version! default_ruby_version
+    index_object @string
   end
 
   test "should get show" do
-    string = ruby_object String
-    index_object string
-
-    get object_url object: string.path
+    get object_url object: @string.path
     assert_response :success
   end
 
@@ -24,95 +23,61 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
   test "different ruby version" do
     create_index_for_version! "2.5"
 
-    string = ruby_object String
-    index_object string, version: "2.5"
+    index_object @string, version: "2.5"
 
-    get object_url object: string.path, version: "2.5"
+    get object_url object: @string.path, version: "2.5"
     assert_response :success
   end
 
   test "object not found on different ruby version" do
+    other_object = FactoryBot.build(:ruby_object, c: Hash)
+
     create_index_for_version! "2.3"
 
-    string = ruby_object String
-    index_object string, version: "2.3"
+    index_object other_object, version: "2.3"
 
     assert_raises(ActionController::RoutingError) do
-      get object_url object: string.path
+      get object_url object: other_object.path, verison: default_ruby_version
     end
   end
 
   test "show method sequence" do
-    string = ruby_object String
-    index_object string
-
-    get object_url object: string.path
+    get object_url object: @string.path
 
     assert_select "h4", "str.to_i # => 1"
   end
 
-  test "show method name" do
-    string_info = ruby_object(String).to_hash
+  test "show method name when signatures are enabled" do
+    post toggle_signatures_path
 
-    string_info[:methods] << {
-      name: "foo",
-      description: "<h1>Hello World</h1>",
-      method_type: "instance_method",
-      object_constant: "String",
-      superclass: "Object",
-      included_modules: [],
-      source_location: "2.6.4:string.c:L1",
-      call_sequence: ["foo(a,b)"]
-    }
+    @string.ruby_methods << FactoryBot.build(:ruby_method, name: "foo")
+    index_object @string
 
-    string = RubyObject.new(string_info)
+    get object_url object: @string.path
 
-    index_object string
-
-    get object_url object: string.path
-
-    assert_select "h4", "foo(a,b)"
+    assert_select "h4", "foo"
   end
 
   test "multiline call sequence" do
-    string_info = ruby_object(String).to_hash
-
-    string_info[:methods] << {
+    @string.ruby_methods << FactoryBot.build(
+      :ruby_method,
       name: "foo",
-      description: "<h1>Hello World</h1>",
-      method_type: "class_method",
-      object_constant: "String",
-      superclass: "Object",
-      included_modules: [],
-      source_location: "2.6.4:string.c:L1",
       call_sequence: [
         "foo(a,b)",
         "foo(arg1, arg2)"
       ]
-    }
-    string_info[:methods] << {
-      name: "bar",
-      description: "<h1>Hello World</h1>",
-      method_type: "instance_method",
-      object_constant: "String",
-      superclass: "Object",
-      included_modules: [],
-      source_location: "2.6.4:string.c:L3",
-      call_sequence: []
-    }
+    )
 
-    string = RubyObject.new(string_info)
+    index_object @string
 
-    index_object string
-
-    get object_url object: string.path
+    get object_url object: @string.path
 
     assert_select "h4", "foo(a,b)"
     assert_select "h4", "foo(arg1, arg2)"
   end
 
   test "toggle signature" do
-    current_object = object_url(object: "string")
+    current_object = object_url(object: @string.path)
     post toggle_signatures_path, headers: {"HTTP_REFERER" => current_object}
 
     assert_response :redirect

@@ -18,8 +18,8 @@ module Search
   class Documentation
     RESULTS_PER_PAGE = 25
 
-    def self.search(query, version:, page:)
-      new(query, version:, page:).search
+    def self.search(...)
+      new(...).search
     end
 
     def initialize(query, version:, page:)
@@ -48,14 +48,14 @@ module Search
               bool: {
                 should: [
                   {match: {type: {query: :object, boost: 3.7}}},
-                  {match: {identifier: {query: @query.terms, boost: 5}}}
+                  {match: {autocomplete: {query: @query.terms, boost: 5}}}
                 ],
                 must: [
                   multi_match: {
                     query: @query.terms,
                     type: :bool_prefix,
                     fields: [
-                      "identifier",
+                      "autocomplete",
                       "name",
                       "name.2gram"
                     ]
