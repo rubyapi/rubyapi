@@ -34,4 +34,23 @@ class RubyMethodTest < ActiveSupport::TestCase
     assert_equal @aliased_method.method_alias.name, "to_integer"
     assert_equal @aliased_method.method_alias.path, "String.html#to_integer"
   end
+
+  test "default signature" do
+    method = RubyMethod.new(
+      name: "to_s",
+      object_constant: "String",
+      description: "Returns the string representation of obj.",
+      method_type: "instance_method",
+      source_location: "string.rb:1",
+      call_sequence: ["String#to_s"],
+      source_body: "def to_s",
+      metadata: {},
+      method_alias: {
+        name: nil,
+        path: nil
+      }
+    )
+
+    assert_equal method.signatures, []
+  end
 end

@@ -8,7 +8,7 @@ class RubyMethod < Dry::Struct
   attribute :source_location, Types::String
   attribute :call_sequence, Types::Array
   attribute :source_body, Types::String
-  attribute :signatures, Types::Array
+  attribute :signatures, Types::Array.default([].freeze)
 
   attribute :metadata do
     attribute :depth, Types::Coercible::Integer.default(1)
