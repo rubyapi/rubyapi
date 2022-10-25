@@ -68,9 +68,10 @@ pre:not(.ruby) {
   @apply overflow-auto font-mono;
 }
 
-.ruby-documentation ul { @apply pl-4; }
-.ruby-documentation ul li { @apply list-disc; }
-.ruby-documentation ol li { @apply list-decimal; }
+.ruby-documentation ul { @apply list-disc list-inside; }
+.ruby-documentation ul li p { @apply inline-block my-1; }
+.ruby-documentation ol { @apply list-decimal list-inside; }
+.ruby-documentation ol li p { @apply inline-block my-1; }
 .ruby-documentation dd, .ruby-documentation dt { @apply w-full text-center; }
 .ruby-documentation dl { @apply flex flex-wrap border-2 border-gray-400; }
 .ruby-documentation dd { @apply px-3; }
