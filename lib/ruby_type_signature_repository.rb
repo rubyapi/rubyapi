@@ -5,6 +5,8 @@ class RubyTypeSignatureRepository
   CORE_PATH = "core"
   RUBY_SRC_GEMS_FOLDER = "gems"
 
+  SKIP_STD_LIBS = %w[fiber] # Some libs do not have signatures and causes RBS to throw errors
+
   def initialize(ruby_src_dir)
     @ruby_dir = Pathname(ruby_src_dir)
     init_rbs_environment
@@ -37,7 +39,10 @@ class RubyTypeSignatureRepository
 
   def init_rbs_environment
     @loader = RBS::EnvironmentLoader.new(core_root: rbs_gem_path.join(CORE_PATH))
-    repository.gems.keys.each { |lib| @loader.add library: lib }
+    repository.gems.keys.each do |lib|
+      next if SKIP_STD_LIBS.include?(lib)
+      @loader.add library: lib
+    end
 
     @environment = RBS::Environment.from_loader(@loader).resolve_type_names
     @builder = RBS::DefinitionBuilder.new(env: @environment)
