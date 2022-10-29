@@ -24,7 +24,7 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
   config.public_file_server.headers = {
-    "Cache-Control" => "public, s-maxage=#{1.month.to_i} max-age=#{1.month.to_i}",
+    "Cache-Control" => "public, s-maxage=#{1.month.to_i}, max-age=#{1.month.to_i}",
     'Expires' => "#{1.month.from_now.to_formatted_s(:rfc822)}"
   }
 
