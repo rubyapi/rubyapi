@@ -3,7 +3,6 @@
 require "test_helper"
 
 class RubyVersionTest < ActiveSupport::TestCase
-
   test "invalid version" do
     assert_raises(ArgumentError) do
       RubyVersion.new(
