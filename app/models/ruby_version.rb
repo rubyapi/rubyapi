@@ -1,41 +1,43 @@
 # frozen_string_literal: true
 
-class RubyVersion
-  attr_accessor :version, :sha512, :source_url, :default, :eol
+class RubyVersion < Dry::Struct
+  attribute :version, Types::String
+  attribute :url, Types::String
+  attribute :sha256, Types::String
+
+  attribute :default, Types::Bool.default(false) # The latest stable version of Ruby
+  attribute :eol, Types::Bool.default(false) # Versions of Ruby that have reached end-of-life
+  attribute :prerelease, Types::Bool.default(false) # Versions of Ruby that are not yet released
 
   alias_method :default?, :default
   alias_method :eol?, :eol
 
-  def initialize(version, sha512: nil, source_url: nil, default: false, eol: false)
-    unless version == "dev"
-      raise ArgumentError, "invalid version #{version.inspect}" unless Gem::Version.correct?(version)
-      @_version = Gem::Version.new(version)
+  def initialize(attributes = {})
+    raise ArgumentError, "version is required" unless attributes[:version].present?
+
+    if attributes[:version] == "dev"
+      @_version = "dev"
+    else
+      raise ArgumentError, "version must be valid" unless Gem::Version.correct?(attributes[:version])
+      @_version = Gem::Version.new(attributes[:version])
     end
 
-    # RubyGems::Version changes the version string if it has a `-`, we want to keep the original
-    @version = version
-    @sha512 = sha512
-    @source_url = URI(source_url) if source_url.present?
-    @default = default
-    @eol = eol
-  end
-
-  def minor_version
-    return @version if prerelease?
-    return "dev" if dev?
-    @_version.segments[0..1].join(".")
+    super
   end
 
   def prerelease?
-    return true if dev?
-    @_version.prerelease?
+    dev? || prerelease
   end
 
   def dev?
-    @version == "dev"
+    version == "dev"
   end
 
   def has_type_signatures?
-    @version >= "3.0" || dev?
+    @_version >= "3.0" || dev?
+  end
+
+  def to_s
+    version
   end
 end

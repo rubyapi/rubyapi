@@ -3,34 +3,53 @@
 require "test_helper"
 
 class RubyVersionTest < ActiveSupport::TestCase
-  test "#initialize" do
-    assert_raises ArgumentError do
-      RubyVersion.new("invalid-version")
+
+  test "invalid version" do
+    assert_raises(ArgumentError) do
+      RubyVersion.new(
+        version: "abc",
+        url: "https://example.com",
+        sha256: SecureRandom.hex(32)
+      )
+    end
+
+    assert_raises(ArgumentError) do
+      RubyVersion.new(
+        version: "",
+        url: "https://example.com",
+        sha256: SecureRandom.hex(32)
+      )
     end
   end
 
-  test "#minor_version" do
-    version = RubyVersion.new("2.4.0")
-    assert_equal version.minor_version, "2.4"
+  test "eol verison" do
+    ruby_version = FactoryBot.build(:ruby_version, eol: true)
+    assert ruby_version.eol?
   end
 
-  test "#prerelease?" do
-    assert RubyVersion.new("2.7.0-preview3").prerelease?
-    refute RubyVersion.new("2.7.0").prerelease?
+  test "dev version" do
+    ruby_version = FactoryBot.build(:ruby_version, version: "dev")
+    assert ruby_version.dev?
   end
 
-  test "#dev?" do
-    assert RubyVersion.new("dev").dev?
-    refute RubyVersion.new("2.4.0").dev?
+  test "type signatures" do
+    ruby_version = FactoryBot.build(:ruby_version, version: "3.0")
+    assert ruby_version.has_type_signatures?
+
+    ruby_version = FactoryBot.build(:ruby_version, version: "2.7")
+    refute ruby_version.has_type_signatures?
   end
 
-  test "eol?" do
-    refute RubyVersion.new("3.1", eol: false).eol?
-    assert RubyVersion.new("2.4.0", eol: true).eol?
+  test "prerelease version" do
+    ruby_version = FactoryBot.build(:ruby_version, prerelease: true)
+    assert ruby_version.prerelease?
+
+    ruby_version = FactoryBot.build(:ruby_version, version: "dev")
+    assert ruby_version.prerelease?
   end
 
-  test "default?" do
-    refute RubyVersion.new("3.1", default: false).default?
-    assert RubyVersion.new("3.1", default: true).default?
+  test "to string" do
+    ruby_version = FactoryBot.build(:ruby_version, version: "3.1")
+    assert_equal "3.1", ruby_version.to_s
   end
 end
