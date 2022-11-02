@@ -8,13 +8,9 @@ namespace :import do
   task :ruby, [:version] => :environment do |t, args|
     args.with_defaults version: RubyConfig.default_ruby_version.version
 
-    release = RubyReleases::ReleaseList.fetch.find { |r| r.version.to_s == args.version }
+    release = RubyConfig.ruby_versions.find { |v| v.version == args.version }
 
-    if ENV["FORCE_RUBY_DOWNLOAD_URL"].present?
-      release = RubyVersion.new(args.version, source_url: ENV["FORCE_RUBY_DOWNLOAD_URL"])
-    end
-
-    unless release
+    unless release.present?
       puts "Could not find MRI release for version #{args.version}"
       exit 1
     end
@@ -24,12 +20,7 @@ namespace :import do
 
   namespace :ruby do
     task all: :environment do
-      releases = RubyReleases::ReleaseList.fetch
-
-      RubyConfig.ruby_versions.each do |v|
-        release = releases.select { |r| r.minor_version == v.version }.max_by(&:version)
-        RubyDocumentationImporter.import release
-      end
+      RubyConfig.ruby_versions.each { |release| RubyDocumentationImporter.import release }
     end
   end
 end

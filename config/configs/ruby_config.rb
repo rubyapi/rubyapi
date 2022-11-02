@@ -25,9 +25,12 @@ class RubyConfig < ApplicationConfig
       raise "Missing Ruby Version" unless v[:version].present?
 
       RubyVersion.new(
-        v[:version].to_s,
-        default: v[:default],
-        eol: v[:eol]
+        version: v[:version].to_s,
+        url: v[:url],
+        sha256: v[:sha256] || "",
+        default: v[:default] || false,
+        eol: v[:eol] || false,
+        prerelease: v[:prerelease] || false
       )
     end
   end

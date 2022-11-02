@@ -7,8 +7,8 @@ require_relative "import_ui"
 class RubyDocumentationImporter
   attr_reader :release
 
-  def self.import(release)
-    new(release).import
+  def self.import(...)
+    new(...).import
   end
 
   def initialize(release)
