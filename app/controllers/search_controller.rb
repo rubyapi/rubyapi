@@ -7,7 +7,7 @@ class SearchController < ApplicationController
   before_action :index, -> { head :bad_request if search_query.length >= MAX_SEARCH_QUERY_LENGTH }
 
   def index
-    @search = Search::Documentation.search search_query, version: ruby_version, page: current_page
+    @search = Search::Documentation.search search_query, version: Current.ruby_version, page: current_page
   end
 
   def pagination

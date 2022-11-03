@@ -31,7 +31,7 @@ class ObjectsController < ApplicationController
   end
 
   def object_repository
-    @repository ||= RubyObjectRepository.repository_for_version(ruby_version)
+    @repository ||= RubyObjectRepository.repository_for_version(Current.ruby_version)
   end
 
   def document_id

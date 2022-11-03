@@ -1,18 +1,17 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  def ruby_version
-    params[:version] || default_ruby_version
-  end
-  helper_method :ruby_version
+  before_action :set_ruby_version
 
-  def default_ruby_version
-    RubyConfig.default_ruby_version.version
+  def set_ruby_version
+    version = RubyConfig.version_for(params[:version]) || RubyConfig.default_ruby_version
+
+    Current.ruby_version = version
+    Current.default_ruby_version = RubyConfig.default_ruby_version
   end
-  helper_method :default_ruby_version
 
   def home_path
-    return root_path if RubyConfig.default_ruby_version.version == ruby_version
+    return root_path if Current.ruby_version.default?
     versioned_root_path(version: ruby_version)
   end
   helper_method :home_path

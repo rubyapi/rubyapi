@@ -6,7 +6,7 @@
       </div>
       <% if @show_search %>
         <div class="flex-auto md:max-w-lg">
-          <%= render Header::SearchComponent.new(ruby_version: @current_ruby_version) %>
+          <%= render Header::SearchComponent.new %>
         </div>
       <% end %>
       <div class="flex-none">
@@ -18,7 +18,7 @@
           </button>
         </div>
         <div class="hidden md:flex md:space-x-4">
-          <%= render Header::VersionSelectorComponent.new(current_version: @current_ruby_version, versions: RubyConfig.ruby_versions) %>
+          <%= render Header::VersionSelectorComponent.new(versions: RubyConfig.ruby_versions) %>
           <%= render 'layouts/theme_selector' %>
         </div>
       </div>
@@ -35,7 +35,7 @@
         </div>
         <div class="flex justify-between space-x-4 items-center">
           <div class="flex justify-between items-center space-x-4">
-            <%= render Header::VersionSelectorComponent.new(current_version: "3.1", versions: RubyConfig.ruby_versions) %>
+            <%= render Header::VersionSelectorComponent.new(versions: RubyConfig.ruby_versions) %>
             <%= render 'layouts/theme_selector' %>
           </div>
           <button data-action="click->header#toggleMobileMenu" class="group px-2 py-1 -my-1 border border-solid border-gray-300 dark:border-gray-500 text-xl curser-pointer rounded-lg inline-flex items-center justify-center focus:outline-none hover:bg-gray-200 dark:hover:bg-gray-500">

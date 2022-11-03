@@ -1,5 +1,5 @@
 <% title @object.constant %>
-<% set_meta_tags canonical: object_url(object: @object.path, version: default_ruby_version) if default_ruby_version != ruby_version %>
+<% set_meta_tags canonical: object_url(object: @object.path, version: Current.default_ruby_version) unless Current.ruby_version.default? %>
 
 <div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex">
   <%= render "objects/sidebar" %>
@@ -8,9 +8,7 @@
       <div class="flex flex-wrap pb-2">
         <div class="w-full md:w-6/12">
           <h1 class="lg:text-4xl text-xl text-gray-800 dark:text-gray-200 font-semibold">
-            <a href="<%= object_url(version: ruby_version, object: @object.path) %>">
-              <%= @object.constant %>
-            </a>
+            <%= link_to @object.constant, object_url(version: Current.ruby_version, object: @object.path) %>
           </h1>
         </div>
         <div class="w-full md:w-6/12 md:text-right mt-2 md:mt-0 cursor-default">

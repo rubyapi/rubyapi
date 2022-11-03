@@ -14,6 +14,11 @@ class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
   # parallelize(workers: :number_of_processors)
 
+  def setup
+    Current.ruby_version = FactoryBot.build(:ruby_version, version: "3.1")
+    Current.default_ruby_version = FactoryBot.build(:ruby_version, version: "3.1")
+  end
+
   # Add more helper methods to be used by all tests here...
   def create_index_for_version!(version)
     search_repository(version).create_index! force: true
