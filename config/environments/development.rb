@@ -63,11 +63,4 @@ Rails.application.configure do
   # Site doesn't have a login, so the CSRF protection isn't helpful
   # In fact, it's problematic because the varying CSRF tokens means you can't get a consistent ETag
   config.action_controller.allow_forgery_protection = false
-
-  config.session_store :cache_store,
-    key: "_sessions_development",
-    compress: true,
-    pool_size: 5,
-    expire_after: 1.month,
-    url: ENV.fetch("REDIS_SESSION_URL") { "redis://localhost:6380/1" }
 end

@@ -33,7 +33,6 @@ gem "pastel", require: false
 gem "rouge", require: false
 gem "rbs", require: false
 gem "anyway_config"
-gem "redis-session-store"
 gem "dry-struct"
 gem "view_component"
 
