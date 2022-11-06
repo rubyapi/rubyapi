@@ -15,7 +15,7 @@ namespace :import do
       version = version.segments[0..1].join(".")
     end
 
-    release = RubyConfig.ruby_versions.find { |v| v.version == version }
+    release = RubyConfig.ruby_versions.find { |v| v.version == version.to_s }
 
     unless release.present?
       puts "Could not find MRI release for version #{args.version}"
