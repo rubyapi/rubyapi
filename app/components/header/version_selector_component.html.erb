@@ -14,9 +14,9 @@
     data-transition-leave-from="opacity-100 scale-100"
     data-transition-leave-to="opacity-0 scale-95">
     <% @ruby_versions.each do |v| %>
-      <a href="<%= route_for_version(v.version) %>" class="flex justify-between items-center text-left space-x-1 px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 <%= "text-blue-800 bg-blue-200 dark:bg-gray-800 dark:text-gray-200" if v.version == @current_version %>" role="menuitem" tabindex="-1">
-        <span class="text-l font-semibold"><%= v.version %></span>
-        <% if v.version == @current_version %>
+      <a href="<%= route_for_version(v.version) %>" class="flex justify-between items-center text-left space-x-1 px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 <%= "text-blue-800 bg-blue-200 dark:bg-gray-800 dark:text-gray-200" if v == @current_version %>" role="menuitem" tabindex="-1">
+        <span class="text-l font-semibold"><%= v %></span>
+        <% if v == @current_version %>
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
         </svg>

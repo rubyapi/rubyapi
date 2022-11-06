@@ -6,6 +6,10 @@ class RubyConfig < ApplicationConfig
 
   on_load :ensure_default_version
 
+  def version_for(version)
+    ruby_versions.find { |v| v.version == version }
+  end
+
   def ruby_versions
     @ruby_versions ||= build_ruby_versions
   end
