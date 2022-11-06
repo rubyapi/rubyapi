@@ -33,21 +33,22 @@ class RubyDownloader
   end
 
   def download_path
-    rubies_download_path.join File.basename(release.source_url.path)
+    rubies_download_path.join File.basename(release.url)
   end
 
   def extracted_download_path
     if release.dev?
       rubies_download_path.join "ruby-master"
     else
-      rubies_download_path.join File.basename(release.source_url.path, ".zip")
+      rubies_download_path.join File.basename(release.url, ".zip")
     end
   end
 
   private
 
   def fetch_ruby_archive
-    chunked_fetch download_path, release.source_url.to_s
+    chunked_fetch download_path, release.url
+    verify_file_integerity download_path
   end
 
   def chunked_fetch(path, url)
@@ -93,5 +94,11 @@ class RubyDownloader
   def setup_paths
     FileUtils.mkdir(rubies_download_path)
   rescue Errno::EEXIST
+  end
+
+  def verify_file_integerity(downloaded_file_path)
+    downloaded_file_hash = Digest::SHA256.file downloaded_file_path
+    raise "SHA256 mismatch. Expected #{release.sha256}, but calculated: #{downloaded_file_hash.hexdigest}" \
+      unless downloaded_file_hash.hexdigest == release.sha256
   end
 end

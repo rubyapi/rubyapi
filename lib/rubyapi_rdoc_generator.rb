@@ -28,7 +28,7 @@ class RubyAPIRDocGenerator
     @store = store
     @options = options
     @release = options.generator_options.pop
-    @version = @release.minor_version
+    @version = @release.version
     @documentation = store.all_classes_and_modules
   end
 
