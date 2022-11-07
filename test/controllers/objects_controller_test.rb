@@ -47,11 +47,31 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
     assert_select "h4", "str.to_i # => 1"
   end
 
-  test "show method name when signatures are enabled" do
+  test "show method type signature" do
+    @string.ruby_methods << FactoryBot.build(:ruby_method, name: "signature_test_1", signatures: ["(::String input) -> ::String"])
+    index_object @string
+
     post toggle_signatures_path
 
+    get object_url object: @string.path
+
+    assert_select "h4", "(::String input) -> ::String"
+  end
+
+  test "show method type signature with Faslty header" do
+    @string.ruby_methods << FactoryBot.build(:ruby_method, name: "signature_test_2", signatures: ["(::String input) -> ::Hash"])
+    index_object @string
+
+    get object_url(object: @string.path), headers: {"Fastly-Signatures" => "true"}
+
+    assert_select "h4", "(::String input) -> ::Hash"
+  end
+
+  test "show method name when signatures are enabled" do
     @string.ruby_methods << FactoryBot.build(:ruby_method, name: "foo")
     index_object @string
+
+    post toggle_signatures_path
 
     get object_url object: @string.path
 

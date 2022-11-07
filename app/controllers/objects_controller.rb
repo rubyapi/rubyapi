@@ -6,7 +6,7 @@ class ObjectsController < ApplicationController
   before_action :enable_public_cache, only: [:show]
 
   def show
-    @show_signatures = ActiveModel::Type::Boolean.new.cast(cookies[:signatures])
+    @show_signatures = ActiveModel::Type::Boolean.new.cast(cookies[:signatures]) || request.env["HTTP_FASTLY_SIGNATURES"].present?
     @object = object_repository.find(document_id)
   end
 
@@ -15,6 +15,8 @@ class ObjectsController < ApplicationController
 
     redirect_back_or_to root_path
   end
+
+  private
 
   def not_found
     render plain: "Not found", status: :not_found
