@@ -3,31 +3,21 @@
 class ObjectsController < ApplicationController
   rescue_from Elasticsearch::Persistence::Repository::DocumentNotFound, with: -> { raise ActionController::RoutingError.new("Not Found") }
 
-  before_action :set_cache
+  before_action :enable_public_cache, only: [:show]
 
   def show
-    session[:show_signatures] ||= false
-    @show_signatures = session[:show_signatures]
+    @show_signatures = ActiveModel::Type::Boolean.new.cast(cookies[:signatures])
     @object = object_repository.find(document_id)
   end
 
   def toggle_signatures
-    session[:show_signatures] = !session[:show_signatures]
+    cookies.permanent[:signatures] = !ActiveModel::Type::Boolean.new.cast(cookies[:signatures])
+
     redirect_back_or_to root_path
   end
 
   def not_found
     render plain: "Not found", status: :not_found
-  end
-
-  private
-
-  def set_cache
-    signatures_enabled? ? enable_private_cache : enable_public_cache
-  end
-
-  def signatures_enabled?
-    !!session[:show_signatures]
   end
 
   def object_repository

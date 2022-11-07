@@ -83,7 +83,7 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     assert_redirected_to current_object
 
-    assert session[:show_signatures]
+    assert_equal cookies[:signatures], "true", "Signatures should be enabled"
   end
 
   test "toggle signature without return url" do
@@ -92,17 +92,17 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     assert_redirected_to root_path
 
-    assert session[:show_signatures]
+    assert_equal cookies[:signatures], "true", "Cookie should be set to true"
   end
 
   test "turn off type signatures" do
     post toggle_signatures_path
 
     assert_response :redirect
-    assert session[:show_signatures]
+    assert_equal cookies[:signatures], "true", "Signatures should be enabled"
 
     post toggle_signatures_path
 
-    refute session[:show_signatures]
+    assert_equal cookies[:signatures], "false", "Signatures should be disabled"
   end
 end
