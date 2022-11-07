@@ -15,7 +15,7 @@ class ObjectsController < ApplicationController
 
     cookies.permanent[:signatures] = {
       value: !enable_signatures?,
-      secure: true,
+      secure: Rails.env.production?,
       httponly: true
     }
 
