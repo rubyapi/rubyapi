@@ -4,17 +4,29 @@ class ObjectsController < ApplicationController
   rescue_from Elasticsearch::Persistence::Repository::DocumentNotFound, with: -> { raise ActionController::RoutingError.new("Not Found") }
 
   def show
-    @show_signatures = ActiveModel::Type::Boolean.new.cast(cookies[:signatures]) || request.env["HTTP_FASTLY_SIGNATURES"].present?
+    expires_in 24.hours, public: true, must_revalidate: true
+
+    @show_signatures = enable_signatures?
     @object = object_repository.find(document_id)
   end
 
   def toggle_signatures
-    cookies.permanent[:signatures] = !ActiveModel::Type::Boolean.new.cast(cookies[:signatures])
+    expires_in 0, public: false
+
+    cookies.permanent[:signatures] = {
+      value: !enable_signatures?,
+      secure: true,
+      httponly: true
+    }
 
     redirect_back_or_to root_path
   end
 
   private
+
+  def enable_signatures?
+    ActiveModel::Type::Boolean.new.cast(cookies[:signatures] || request.env["HTTP_FASTLY_SIGNATURES"])
+  end
 
   def not_found
     render plain: "Not found", status: :not_found
