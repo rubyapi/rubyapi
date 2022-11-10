@@ -67,6 +67,20 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
     assert_select "h4", "(::String input) -> ::Hash"
   end
 
+  test "toggle Vary headers" do
+    get object_url object: @string.path
+
+    assert_nil response.headers["Vary"], "Vary header should not be set"
+    assert_nil response.headers["Signatures"], "Signatures header should not be set"
+
+    cookies[:signatures] = "true"
+
+    get object_url(object: @string.path)
+
+    assert_equal headers["Vary"], "Signatures", "Vary header should be set"
+    assert_equal headers["Signatures"], "true", "Signatures header should be set"
+  end
+
   test "show method name when signatures are enabled" do
     @string.ruby_methods << FactoryBot.build(:ruby_method, name: "foo")
     index_object @string

@@ -6,6 +6,11 @@ class ObjectsController < ApplicationController
   def show
     expires_in 24.hours, public: true, must_revalidate: true
 
+    if enable_signatures?
+      headers["Signatures"] = "true"
+      headers["Vary"] = "Signatures"
+    end
+
     @show_signatures = enable_signatures?
     @object = object_repository.find(document_id)
   end
