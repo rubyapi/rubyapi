@@ -14,7 +14,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application' %>
-    <%= javascript_include_tag 'essentials' %>
     <%= javascript_include_tag 'application', defer: true %>
     <%= yield(:javascript_packs) if content_for?(:javascript_packs) %>
     <%= content_for(:head) %>
