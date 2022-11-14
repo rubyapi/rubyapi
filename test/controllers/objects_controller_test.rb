@@ -58,27 +58,13 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
     assert_select "h4", "(::String input) -> ::String"
   end
 
-  test "show method type signature with Faslty header" do
+  test "show method type signature with RubyAPI Feature header" do
     @string.ruby_methods << FactoryBot.build(:ruby_method, name: "signature_test_2", signatures: ["(::String input) -> ::Hash"])
     index_object @string
 
-    get object_url(object: @string.path), headers: {"Fastly-Signatures" => "true"}
+    get object_url(object: @string.path), headers: {"X-RubyAPI-Signatures" => "true"}
 
     assert_select "h4", "(::String input) -> ::Hash"
-  end
-
-  test "toggle Vary headers" do
-    get object_url object: @string.path
-
-    assert_nil response.headers["Vary"], "Vary header should not be set"
-    assert_nil response.headers["Signatures"], "Signatures header should not be set"
-
-    cookies[:signatures] = "true"
-
-    get object_url(object: @string.path)
-
-    # assert_equal headers["Vary"], "Signatures", "Vary header should be set"
-    # assert_equal headers["Signatures"], "true", "Signatures header should be set"
   end
 
   test "show method name when signatures are enabled" do

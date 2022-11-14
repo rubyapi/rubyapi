@@ -5,13 +5,6 @@ class ObjectsController < ApplicationController
 
   def show
     expires_in 24.hours, public: true, must_revalidate: true
-
-    # if enable_signatures?
-    #   headers["Signatures"] = "true"
-    #   headers["Vary"] = "Signatures"
-    # end
-
-    @show_signatures = enable_signatures?
     @object = object_repository.find(document_id)
   end
 
@@ -19,7 +12,7 @@ class ObjectsController < ApplicationController
     expires_in 0, public: false
 
     cookies.permanent[:signatures] = {
-      value: !enable_signatures?,
+      value: !@show_signatures,
       secure: Rails.env.production?,
       httponly: true
     }
@@ -28,10 +21,6 @@ class ObjectsController < ApplicationController
   end
 
   private
-
-  def enable_signatures?
-    ActiveModel::Type::Boolean.new.cast(cookies[:signatures] || request.env["HTTP_FASTLY_SIGNATURES"])
-  end
 
   def not_found
     render plain: "Not found", status: :not_found
