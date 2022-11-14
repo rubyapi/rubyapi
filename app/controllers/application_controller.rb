@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_feature_flags
-    @show_signatures = ActiveModel::Type::Boolean.new.cast(cookies[:signatures] || request.env["HTTP_X_RUBYAPI_SIGNATURES"])
+    @show_signatures = ActiveModel::Type::Boolean.new.cast(cookies[:signatures] || request.env["HTTP_X_RUBYAPI_SIGNATURES"] || false)
   end
 
   def set_feature_headers
