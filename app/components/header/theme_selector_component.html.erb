@@ -16,19 +16,21 @@
     data-transition-leave-to="opacity-0 scale-95">
 
     <% @themes.each do |theme| %>
-      <a href="#" class="flex space-x-4 px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800" role="menuitem" tabindex="-1">
-        <div class="flex-none">
-          <%= raw theme.icon %>
-        </div>
-        <span class="grow text-l font-semibold"><%= theme.name.titleize %></span>
-        <% if Current.theme == theme.name %>
-        <div class="flex-none">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-          </svg>
-        </div>
-        <% end %>
-      </a>
+      <%= form_tag set_theme_path do %>
+        <button type="submit" name="theme" value="<%= theme.name %>" class="flex space-x-4 px-4 w-full py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800" role="menuitem" tabindex="-1">
+          <div class="flex-none">
+            <%= raw theme.icon %>
+          </div>
+          <span class="grow text-l text-left font-semibold"><%= theme.name.titleize %></span>
+          <% if Current.theme == theme.name %>
+          <div class="flex-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <% end %>
+        </button>
+      <% end %>
     <% end %>
   </div>
 </div>
