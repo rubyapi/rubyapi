@@ -1,6 +1,6 @@
 
 <div data-controller="dropdown" class="relative">
-  <div id="theme-icon-container" class="flex align-middle">
+  <div id="theme-icon-container" class="flex">
     <button type="button" data-action="dropdown#toggle click@window->dropdown#hide">
       <%= raw @current_theme.icon %>
     </button>
@@ -19,7 +19,7 @@
           <div class="flex-none">
             <%= raw theme.icon %>
           </div>
-          <span class="grow text-l text-left font-semibold"><%= theme.name.titleize %></span>
+          <span class="grow text-left font-semibold"><%= theme.name.titleize %></span>
           <% if @current_theme == theme %>
           <div class="flex-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
