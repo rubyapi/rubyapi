@@ -20,12 +20,6 @@ class ApplicationController < ActionController::Base
     headers["Vary"] = "X-RubyAPI-Signatures"
   end
 
-  def home_path
-    return root_path if Current.ruby_version.default?
-    versioned_root_path(version: ruby_version)
-  end
-  helper_method :home_path
-
   def enable_public_cache
     expires_in 24.hours, public: true
   end
