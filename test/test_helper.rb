@@ -16,6 +16,7 @@ class ActiveSupport::TestCase
 
   def setup
     Current.ruby_version = FactoryBot.build(:ruby_version, version: "3.1")
+    Current.theme = ThemeConfig.theme_for("light")
     Current.default_ruby_version = FactoryBot.build(:ruby_version, version: "3.1")
   end
 
