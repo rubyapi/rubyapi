@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def set_feature_flags
     Current.enable_method_signatures = ActiveModel::Type::Boolean.new.cast(cookies[:signatures] || request.env["HTTP_X_RUBYAPI_SIGNATURES"] || false)
-    Current.theme = cookies[:theme] || request.env["HTTP_X_RUBYAPI_THEME"] || "system"
+    Current.theme = ThemeConfig.theme_for(cookies[:theme] || request.env["HTTP_X_RUBYAPI_THEME"] || "system")
   end
   helper_method :ruby_version
 
