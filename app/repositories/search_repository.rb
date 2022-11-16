@@ -49,7 +49,7 @@ class SearchRepository
         },
         :autocomplete => {
           type: :pattern,
-          pattern: "(\:\:)|(#)|(_)"
+          pattern: "(::)|(#)|(_)"
         }
       }
     }
