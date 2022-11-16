@@ -21,7 +21,7 @@ class Header::ThemeSelectorComponentTest < ViewComponent::TestCase
 
   def test_component_renders_active_theme
     render_inline(Header::ThemeSelectorComponent.new(themes: [@dark_theme, @light_theme], current_theme: @dark_theme))
-    assert_selector('button.text-blue-800.bg-blue-200', text: "Dark")
-    assert_selector('button:not(.text-blue-800.bg-blue-200)', text: "Light")
+    assert_selector("button.text-blue-800.bg-blue-200", text: "Dark")
+    assert_selector("button:not(.text-blue-800.bg-blue-200)", text: "Light")
   end
 end
