@@ -1,7 +1,7 @@
 
 <div data-controller="dropdown" class="relative">
   <div id="theme-icon-container" class="flex">
-    <button type="button" data-action="dropdown#toggle click@window->dropdown#hide">
+    <button type="button" title="Select Theme" data-action="dropdown#toggle click@window->dropdown#hide">
       <%= raw @current_theme.icon %>
     </button>
   </div>
@@ -15,7 +15,7 @@
 
     <% @themes.each do |theme| %>
       <%= form_tag set_theme_path do %>
-        <button type="submit" name="theme" value="<%= theme.name %>" class="flex space-x-4 px-4 w-full py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 <%= "text-blue-800 bg-blue-200 dark:bg-gray-800 dark:text-gray-200" if @current_theme == theme %>" role="menuitem" tabindex="-1">
+        <button type="submit" title="<%= theme.name.titleize %> Theme" name="theme" value="<%= theme.name %>" class="flex space-x-4 px-4 w-full py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 <%= "text-blue-800 bg-blue-200 dark:bg-gray-800 dark:text-gray-200" if @current_theme == theme %>" role="menuitem" tabindex="-1">
           <div class="flex-none">
             <%= raw theme.icon %>
           </div>
