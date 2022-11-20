@@ -21,6 +21,8 @@ We aim to improve the Ruby ecosystem by being:
 
 Install dependencies:
 
+_Note: This command can also be used to quickly update the application dependencies_
+
 ```sh
 bin/setup
 ```
@@ -32,8 +34,6 @@ docker compose up -d
 ```
 
 Start the Rails Server
-
-_Note: This command can also be used to quickly update the application dependencies_
 
 ```sh
 bin/dev
