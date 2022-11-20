@@ -7,6 +7,8 @@ services:
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
       - POSTGRES_USER=rubyapi
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
     healthcheck:
       test: ["pg_isready"]
       interval: 10s
@@ -45,8 +47,14 @@ services:
       - ES_JAVA_OPTS=-Xms512m -Xmx512m
       - discovery.type=single-node
       - xpack.security.enabled=false
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
     healthcheck:
       test: [ "CMD-SHELL", "curl --fail --silent http://localhost:9200/_cluster/health?wait_for_status=green&timeout=50s || exit 1 " ]
       retries: 3
       interval: 5s
       timeout: 3s
+
+volumes:
+  elasticsearch-data: {}
+  postgresql-data: {}
