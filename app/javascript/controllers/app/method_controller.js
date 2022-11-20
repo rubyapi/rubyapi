@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["srcBody", "showSrcBodyButton"]
 
-  toggleShowSource(event) {
+  toggleShowSource (event) {
     event.preventDefault()
     this.showSrcBodyButtonTarget.classList.toggle("bg-blue-600")
     this.showSrcBodyButtonTarget.classList.toggle("text-white")

@@ -11,13 +11,13 @@ const moonIcon = `
 </svg>`
 
 export const setTheme = (switchTarget) => {
-  const osDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-  const supportsLocalStorage = 'localStorage' in window
+  const osDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
+  const supportsLocalStorage = "localStorage" in window
 
   if (supportsLocalStorage) {
-    const darkMode = localStorage.getItem('rubyapi-darkMode')
+    const darkMode = localStorage.getItem("rubyapi-darkMode")
 
-    if (darkMode !== null && darkMode === '1') {
+    if (darkMode !== null && darkMode === "1") {
       setDarkMode(switchTarget)
     } else if (osDarkMode && darkMode === null) {
       setDarkMode(switchTarget)
@@ -32,8 +32,8 @@ const setDarkMode = (target) => {
   }
 
   document.documentElement.classList.add("dark")
-  setMetaThemeColor('#374151')
-  localStorage.setItem('rubyapi-darkMode', '1')
+  setMetaThemeColor("#374151")
+  localStorage.setItem("rubyapi-darkMode", "1")
 }
 
 const setLightMode = (target) => {
@@ -43,12 +43,12 @@ const setLightMode = (target) => {
   }
 
   document.documentElement.classList.remove("dark")
-  setMetaThemeColor('#e1175a')
-  localStorage.setItem('rubyapi-darkMode', '0')
+  setMetaThemeColor("#e1175a")
+  localStorage.setItem("rubyapi-darkMode", "0")
 }
 
 const setMetaThemeColor = (color) => {
-  const meta = document.querySelector('meta[name="theme-color"]')
+  const meta = document.querySelector("meta[name=\"theme-color\"]")
   if (meta) {
     meta.content = color
   }
@@ -57,12 +57,12 @@ const setMetaThemeColor = (color) => {
 export default class extends Controller {
   static targets = ["switch"]
 
-  connect() {
+  connect () {
     setTheme(this.switchTarget)
   }
 
-  toggle() {
-    if (this.switchTarget.getAttribute("data-theme") == "light") {
+  toggle () {
+    if (this.switchTarget.getAttribute("data-theme") === "light") {
       setDarkMode(this.switchTarget)
     } else {
       setLightMode(this.switchTarget)
