@@ -33,6 +33,8 @@ docker compose up -d
 
 Start the Rails Server
 
+_Note: This command can also be used to quickly update the application dependencies_
+
 ```sh
 bin/dev
 ```
