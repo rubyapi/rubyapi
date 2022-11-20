@@ -29,16 +29,6 @@ services:
       search:
         condition: service_healthy
 
-  cache:
-    image: redis:7-alpine
-    ports:
-    - "6379:6379"
-    healthcheck:
-      test: ["redis-cli ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
   search:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.4.3
     ports:
