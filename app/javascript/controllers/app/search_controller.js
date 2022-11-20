@@ -6,7 +6,7 @@ import mustache from "mustache"
 export default class extends Controller {
   static targets = ["input", "autocomplete", "button"]
 
-  initialize() {
+  initialize () {
     this.searchHotKey = "/"
     this.autocompleteTemplate = `
     <ul class="lg:px-2 py-2 text-gray-800 overflow-auto">
@@ -31,7 +31,7 @@ export default class extends Controller {
     this.suggestionIndex = 0
   }
 
-  connect() {
+  connect () {
     hotkeys(this.searchHotKey, (event, handler) => {
       event.preventDefault()
       this.inputTarget.focus()
@@ -53,21 +53,18 @@ export default class extends Controller {
     })
 
     window.addEventListener("mousedown", (e) => {
-      if(!this.autocompleteTarget.contains(e.target))
-        return
+      if (!this.autocompleteTarget.contains(e.target)) { return }
 
       let link = e.target
-      if (link.tagName != "A")
-        link = e.target.parentElement
+      if (link.tagName !== "A") { link = e.target.parentElement }
 
-      if(link.tagName != "A")
-        return
+      if (link.tagName !== "A") { return }
 
-      window.location.assign(link.href);
+      window.location.assign(link.href)
     })
   }
 
-  disconnect() {
+  disconnect () {
     hotkeys.unbind(this.searchHotKey)
     this.inputTarget.removeEventListener("focusin")
     this.inputTarget.removeEventListener("blur")
@@ -75,12 +72,12 @@ export default class extends Controller {
     window.removeEventListener("mousedown")
   }
 
-  async onKeyup(event) {
+  async onKeyup (event) {
     const query = this.inputTarget.value
     const version = this.data.get("version")
     const path = this.data.get("url")
 
-    if (query.length == 0) {
+    if (query.length === 0) {
       this.autocompleteTarget.innerHTML = ""
       return
     }
@@ -94,16 +91,16 @@ export default class extends Controller {
     await this.autocomplete(query, version, path)
   }
 
-  async onKeydown(event) {
+  async onKeydown (event) {
     if (event.key.startsWith("Arrow")) {
       this.handleArrowKey(event)
     } else if (event.key === "Enter" && this.suggestionIndex !== 0) {
       event.preventDefault()
-      this.getSelectedSuggestion().querySelector('a').click()
+      this.getSelectedSuggestion().querySelector("a").click()
     }
   }
 
-  handleArrowKey(event) {
+  handleArrowKey (event) {
     this.clearSelectedSuggestion()
 
     if (event.key === "ArrowUp") {
@@ -120,22 +117,22 @@ export default class extends Controller {
     this.highlightSelectedSuggestion()
   }
 
-  async autocomplete(query, version, path) {
+  async autocomplete (query, version, path) {
     this.suggestionIndex = 0
 
-    const queryParam = new URLSearchParams({q: query})
+    const queryParam = new URLSearchParams({ q: query })
     const url = `${path}?${queryParam.toString()}`
 
-    fetch(url , {
+    fetch(url, {
       method: "get",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json"
       }
     })
       .then((response) => { return response.json() })
       .then((results) => {
         const render = mustache.render(this.autocompleteTemplate, {
-          results: results
+          results
         })
         this.autocompleteTarget.innerHTML = render
       })
@@ -144,26 +141,26 @@ export default class extends Controller {
       })
   }
 
-  wrap(value, max) {
+  wrap (value, max) {
     return value < 0 ? max : (value > max ? 0 : value)
   }
 
-  suggestionsLength() {
+  suggestionsLength () {
     return this.autocompleteTarget.querySelectorAll("li").length
   }
 
-  getSelectedSuggestion() {
+  getSelectedSuggestion () {
     return this.autocompleteTarget.querySelector(`li:nth-child(${this.suggestionIndex})`)
   }
 
-  clearSelectedSuggestion() {
+  clearSelectedSuggestion () {
     const suggestion = this.getSelectedSuggestion()
     if (suggestion) {
       suggestion.classList.remove("bg-gray-200")
     }
   }
 
-  highlightSelectedSuggestion() {
+  highlightSelectedSuggestion () {
     const suggestion = this.getSelectedSuggestion()
     if (suggestion) {
       suggestion.classList.add("bg-gray-200")

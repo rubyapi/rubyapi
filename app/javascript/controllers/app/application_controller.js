@@ -1,5 +1,5 @@
-import { Controller } from '@hotwired/stimulus'
-import StimulusReflex from 'stimulus_reflex'
+import { Controller } from "@hotwired/stimulus"
+import StimulusReflex from "stimulus_reflex"
 
 /* This is your ApplicationController.
  * All StimulusReflex controllers should inherit from this class.

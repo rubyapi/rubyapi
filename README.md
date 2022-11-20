@@ -21,20 +21,22 @@ We aim to improve the Ruby ecosystem by being:
 
 Install dependencies:
 
+_Note: This command can also be used to quickly update the application dependencies_
+
 ```sh
-$ ./bin/setup
+bin/setup
 ```
 
 Start ElasticSearch:
 
 ```sh
-$ docker compose up -d
+docker compose up -d
 ```
 
 Start the Rails Server
 
 ```sh
-$ ./bin/dev
+bin/dev
 ```
 
 ## Importing Documentation
@@ -42,13 +44,13 @@ $ ./bin/dev
 Ruby's documentation can be imported very easily. There's a rake task that will let you import a given versions' documentation:
 
 ```sh
-$ ./bin/rake import:ruby[3.1]
+bin/rails import:ruby[3.1]
 ```
 
 or you can easily import the latest versions of all currently supported versions of ruby:
 
 ```sh
-$ ./bin/rake import:ruby:all
+bin/rails import:ruby:all
 ```
 
 ## Running tests
@@ -56,7 +58,7 @@ $ ./bin/rake import:ruby:all
 The test suite can be executed with:
 
 ```sh
-$ ./bin/rake test
+bin/rails test
 ```
 
 ## Linting code
@@ -66,7 +68,7 @@ This project uses [StandardRB](https://github.com/testdouble/standard) for linti
 StandardRB can be executed with:
 
 ```sh
-$ ./bin/standardrb
+bin/standardrb
 ```
 
 _Note: This command may make changes to your code, to make it conform to the formatting rules of

@@ -5,4 +5,3 @@ import { application } from "../application"
 import ReplController from "./repl_controller"
 
 application.register("repl", ReplController)
-

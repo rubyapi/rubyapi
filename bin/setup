@@ -18,6 +18,9 @@ FileUtils.chdir APP_ROOT do
   system("bundle check") || system!("bundle install")
   system! "npm i"
 
+  puts "\n== Updating Docker images =="
+  system("docker compose pull")
+
   puts "\n== Removing old logs and tempfiles =="
   system! "bin/rails log:clear tmp:clear"
 
