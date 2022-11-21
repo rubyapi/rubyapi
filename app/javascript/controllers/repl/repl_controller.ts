@@ -5,6 +5,13 @@ import hotkeys from "hotkeys-js"
 export default class extends Controller {
   static targets = ["editorContainer", "resultsWindow", "playButton", "versionSelector"]
 
+  declare readonly editorContainerTarget: HTMLElement
+  declare readonly resultsWindowTarget: HTMLElement
+  declare readonly playButtonTarget: HTMLElement
+  declare readonly versionSelectorTarget: HTMLSelectElement
+  declare executeShortcut: string
+  declare editor: monaco.editor.IStandaloneCodeEditor
+
   initialize () {
     this.executeShortcut = "ctrl+enter,cmd+k"
   }
@@ -22,7 +29,7 @@ export default class extends Controller {
         enabled: false
       },
       automaticLayout: true,
-      fontSize: "16px",
+      fontSize: 16,
       scrollBeyondLastLine: false,
       hideCursorInOverviewRuler: true,
       renderLineHighlight: "none",
@@ -30,7 +37,7 @@ export default class extends Controller {
       overviewRulerBorder: false
     })
 
-    this.editor.addCommand(monaco.KeyMod.chord(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter), () => {
+    this.editor.addCommand(monaco.KeyMod.chord(monaco.KeyMod.CtrlCmd, monaco.KeyCode.Enter), () => {
       this.execute()
     })
   }

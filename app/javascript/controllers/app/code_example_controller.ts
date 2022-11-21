@@ -2,7 +2,11 @@ import { Controller } from "@hotwired/stimulus"
 import copy from "clipboard-copy"
 
 export default class extends Controller {
-  static targets = ["block", "copy", "run"]
+  static targets: string[] = ["block", "copy", "run"]
+
+  declare readonly blockTarget: HTMLDivElement
+  declare readonly copyTarget: HTMLSpanElement
+  declare readonly runTarget: HTMLSpanElement
 
   connect () {
     const codeBar = document.createElement("div")
@@ -20,7 +24,7 @@ export default class extends Controller {
     fetch("/run", {
       method: "POST",
       body: JSON.stringify({
-        snippet: snippet.textContent,
+        snippet: snippet?.textContent,
         version
       }),
       headers: {
@@ -38,7 +42,7 @@ export default class extends Controller {
         resultDiv.classList.add("w-full", "my-2", "p-3", "rounded", "bg-gray-300", "text-gray-700", "dark:bg-gray-900", "dark:text-gray-200", "font-mono", "relative")
 
         resultDiv.innerHTML = output.concat(data.output)
-        snippet.insertAdjacentElement("afterend", resultDiv)
+        snippet?.insertAdjacentElement("afterend", resultDiv)
 
         this.runTarget.innerHTML = "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-5 w-5\" viewBox=\"0 0 20 20\" fill=\"currentColor\"><path fill-rule=\"evenodd\" d=\"M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z\" clip-rule=\"evenodd\" /></svg>"
       })
@@ -49,7 +53,7 @@ export default class extends Controller {
 
   copy () {
     const snippet = this.element.nextElementSibling
-    copy(snippet.textContent)
+    copy(snippet?.textContent || "")
       .then(() => {
         this.copyTarget.innerHTML = "<svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-5 w-5\" viewBox=\"0 0 20 20\" fill=\"currentColor\"><path fill-rule=\"evenodd\" d=\"M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z\" clip-rule=\"evenodd\" /></svg>"
         setTimeout(() => {

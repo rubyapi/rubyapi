@@ -6,6 +6,15 @@ import mustache from "mustache"
 export default class extends Controller {
   static targets = ["input", "autocomplete", "button"]
 
+  declare readonly inputTarget: HTMLInputElement
+  declare readonly autocompleteTarget: HTMLElement
+  declare readonly buttonTarget: HTMLElement
+
+  declare lastQuery: string
+  declare suggestionIndex: number
+  declare searchHotKey: string
+  declare autocompleteTemplate: string
+
   initialize () {
     this.searchHotKey = "/"
     this.autocompleteTemplate = `
@@ -52,11 +61,16 @@ export default class extends Controller {
       this.suggestionIndex = 0
     })
 
-    window.addEventListener("mousedown", (e) => {
-      if (!this.autocompleteTarget.contains(e.target)) { return }
+    window.addEventListener("mousedown", (e: MouseEvent) => {
+      let link = e.target as HTMLElement
 
-      let link = e.target
-      if (link.tagName !== "A") { link = e.target.parentElement }
+      if (!this.autocompleteTarget.contains(link)) { return }
+
+      if (link.tagName !== "A") {
+        const element = e.target as HTMLElement
+        if(element.parentElement)
+          link = element.parentElement
+      }
 
       if (link.tagName !== "A") { return }
 
@@ -72,7 +86,7 @@ export default class extends Controller {
     window.removeEventListener("mousedown")
   }
 
-  async onKeyup (event) {
+  async onKeyup (_event: KeyboardEvent) {
     const query = this.inputTarget.value
     const version = this.data.get("version")
     const path = this.data.get("url")
@@ -91,16 +105,17 @@ export default class extends Controller {
     await this.autocomplete(query, version, path)
   }
 
-  async onKeydown (event) {
+  async onKeydown (event: KeyboardEvent) {
     if (event.key.startsWith("Arrow")) {
       this.handleArrowKey(event)
     } else if (event.key === "Enter" && this.suggestionIndex !== 0) {
       event.preventDefault()
-      this.getSelectedSuggestion().querySelector("a").click()
+      const currentSuggestion = this.getSelectedSuggestion()
+      currentSuggestion?.querySelector("a")?.click()
     }
   }
 
-  handleArrowKey (event) {
+  handleArrowKey (event: KeyboardEvent) {
     this.clearSelectedSuggestion()
 
     if (event.key === "ArrowUp") {
@@ -141,26 +156,26 @@ export default class extends Controller {
       })
   }
 
-  wrap (value, max) {
+  wrap (value: number, max: number) {
     return value < 0 ? max : (value > max ? 0 : value)
   }
 
-  suggestionsLength () {
+  suggestionsLength (): number {
     return this.autocompleteTarget.querySelectorAll("li").length
   }
 
-  getSelectedSuggestion () {
+  getSelectedSuggestion (): HTMLElement | null {
     return this.autocompleteTarget.querySelector(`li:nth-child(${this.suggestionIndex})`)
   }
 
-  clearSelectedSuggestion () {
+  clearSelectedSuggestion (): void {
     const suggestion = this.getSelectedSuggestion()
     if (suggestion) {
       suggestion.classList.remove("bg-gray-200")
     }
   }
 
-  highlightSelectedSuggestion () {
+  highlightSelectedSuggestion (): void {
     const suggestion = this.getSelectedSuggestion()
     if (suggestion) {
       suggestion.classList.add("bg-gray-200")
