@@ -7,7 +7,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     get root_url
 
     assert_equal false, response.headers["X-RubyAPI-Signatures"]
-    assert_equal "light", response.headers["X-RubyAPI-Theme"]
+    assert_equal "system", response.headers["X-RubyAPI-Theme"]
     assert_equal "X-RubyAPI-Signatures, X-RubyAPI-Theme", response.headers["Vary"]
   end
 
