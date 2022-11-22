@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def set_feature_headers
     headers["X-RubyAPI-Signatures"] = Current.enable_method_signatures
-    headers["X-RubyAPI-Theme"] = Current.theme.name
+    headers["X-RubyAPI-Theme"] = Current.theme
     headers["Vary"] = "X-RubyAPI-Signatures, X-RubyAPI-Theme"
   end
 
