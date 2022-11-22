@@ -11,7 +11,7 @@
     <a class="block relative invisible -top-24" id="<%= method_anchor m %>"></a>
     <div class="flex flex-wrap">
       <div class="w-full md:w-10/12">
-        <% if Current.enable_method_signatures && m.signatures&.any? %>
+        <% if @show_signatures && m.signatures&.any? %>
           <a href="#<%= method_anchor(m) %>">
             <h4 class="lg:text-2xl text-lg text-gray-900 dark:text-gray-200 font-semibold"><%= m.name %></h4>
           </a>

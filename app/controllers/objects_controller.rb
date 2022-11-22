@@ -12,7 +12,7 @@ class ObjectsController < ApplicationController
     expires_in 0, public: false
 
     cookies.permanent[:signatures] = {
-      value: !Current.enable_method_signatures,
+      value: !@show_signatures,
       secure: Rails.env.production?,
       httponly: true
     }

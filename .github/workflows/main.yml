@@ -29,7 +29,7 @@ jobs:
           bundler-cache: true
 
       - name: Run linting
-        run: bin/standardrb --no-fix
+        run: ./bin/standardrb --no-fix
 
   test-import:
     runs-on: ubuntu-latest
@@ -81,75 +81,9 @@ jobs:
       - name: Test Importing Ruby Documentation
         env:
           ELASTICSEARCH_URL: "http://localhost:9200"
-        run: bin/rails "import:ruby[3.1.2]"
+        run: ./bin/rake "import:ruby[3.1.2]"
 
   test:
-    runs-on: ubuntu-latest
-    services:
-      search:
-        image: docker.elastic.co/elasticsearch/elasticsearch:8.4.3
-        ports:
-          - 9200:9200
-        env:
-          "discovery.type": "single-node"
-          "ES_JAVA_OPTS": "-Xms512m -Xmx512m"
-          "xpack.security.enabled": "false"
-        options: >-
-          --health-cmd "curl --silent --fail http://localhost:9200/_cluster/health || exit 1"
-          --health-start-period 30s
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 10
-      cache:
-        image: redis:7-alpine
-        ports:
-          - "6379:6379"
-        options: >-
-          --health-cmd "redis-cli ping"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-      database:
-        image: postgres:14.3-alpine
-        ports:
-          - "5432:5432"
-        env:
-          "POSTGRES_HOST_AUTH_METHOD": "trust"
-          "POSTGRES_USER": "rubyapi"
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Set Up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          bundler-cache: true
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: .node-version
-          cache: "npm"
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Test Zeitwerk
-        run: ./bin/rails zeitwerk:check
-
-      - name: Run Tests
-        env:
-          ELASTICSEARCH_URL: "http://localhost:9200"
-        run: |
-          npm run build && npm run build:css
-          bin/rails test
-
-  test-system:
     runs-on: ubuntu-latest
     services:
       search:
@@ -208,9 +142,12 @@ jobs:
           sudo apt-get -yqq install chromium-chromedriver
           npm install
 
+      - name: Test Zeitwerk
+        run: ./bin/rails zeitwerk:check
+
       - name: Run Tests
         env:
           ELASTICSEARCH_URL: "http://localhost:9200"
         run: |
           npm run build && npm run build:css
-          bin/rails test:system
+          ./bin/rails test
