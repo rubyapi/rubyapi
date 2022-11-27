@@ -16,6 +16,7 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application' %>
     <%= javascript_include_tag 'application', defer: true %>
+    <%= javascript_include_tag 'theme' if Current.theme.dynamic? %>
     <%= yield(:javascript_packs) if content_for?(:javascript_packs) %>
     <%= content_for(:head) %>
   </head>
