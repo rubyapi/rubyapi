@@ -12,14 +12,14 @@
       <div class="flex-none">
         <div class="block md:hidden">
           <button data-action="click->header#toggleMobileMenu" data-header-target="mobileMenuButton" class="group p-2 curser-pointer rounded inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 hover:bg-red-800 active:bg-red-800 dark:hover:bg-gray-800 dark:active:bg-gray-800">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
             </svg>
           </button>
         </div>
-        <div class="hidden md:flex md:space-x-4">
+        <div class="hidden md:flex items-center md:space-x-4">
           <%= render Header::VersionSelectorComponent.new(versions: RubyConfig.ruby_versions) %>
-          <%= render 'layouts/theme_selector' %>
+          <%= render Header::ThemeSelectorComponent.new %>
         </div>
       </div>
     </div>
@@ -36,7 +36,7 @@
         <div class="flex justify-between space-x-4 items-center">
           <div class="flex justify-between items-center space-x-4">
             <%= render Header::VersionSelectorComponent.new(versions: RubyConfig.ruby_versions) %>
-            <%= render 'layouts/theme_selector' %>
+            <%= render Header::ThemeSelectorComponent.new %>
           </div>
           <button data-action="click->header#toggleMobileMenu" class="group px-2 py-1 -my-1 border border-solid border-gray-300 dark:border-gray-500 text-xl curser-pointer rounded-lg inline-flex items-center justify-center focus:outline-none hover:bg-gray-200 dark:hover:bg-gray-500">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

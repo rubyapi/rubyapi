@@ -3,6 +3,18 @@
 class HomeController < ApplicationController
   before_action :enable_public_cache
 
+  def set_theme
+    theme = ThemeConfig.theme_for(params[:theme])
+
+    unless theme.present?
+      return head :bad_request
+    end
+
+    cookies[:theme] = theme.name
+
+    redirect_back_or_to root_path
+  end
+
   def index
     @tiles = [
       {
