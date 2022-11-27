@@ -25,6 +25,8 @@ class ThemeConfig < ApplicationConfig
       Theme.new(
         name: t[:name],
         icon: t[:icon],
+        meta: t[:meta],
+        dynamic: t[:dynamic] || false,
         default: t[:default] || false
       )
     end
