@@ -12,12 +12,15 @@ class ApplicationController < ActionController::Base
   end
 
   def set_feature_flags
-    @show_signatures = ActiveModel::Type::Boolean.new.cast(cookies[:signatures] || request.env["HTTP_X_RUBYAPI_SIGNATURES"] || false)
+    Current.enable_method_signatures = ActiveModel::Type::Boolean.new.cast(cookies[:signatures] || request.env["HTTP_X_RUBYAPI_SIGNATURES"] || false)
+    Current.theme = ThemeConfig.theme_for(cookies[:theme] || request.env["HTTP_X_RUBYAPI_THEME"] || "system")
   end
+  helper_method :ruby_version
 
   def set_feature_headers
-    headers["X-RubyAPI-Signatures"] = @show_signatures
-    headers["Vary"] = "X-RubyAPI-Signatures"
+    headers["X-RubyAPI-Signatures"] = Current.enable_method_signatures
+    headers["X-RubyAPI-Theme"] = Current.theme.name
+    headers["Vary"] = "X-RubyAPI-Signatures, X-RubyAPI-Theme"
   end
 
   def enable_public_cache
