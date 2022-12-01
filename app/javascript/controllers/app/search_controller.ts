@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import { DebouncedFunc } from "lodash"
 import throttle from "lodash/throttle"
 import hotkeys from "hotkeys-js"
 import mustache from "mustache"
@@ -10,6 +11,7 @@ export default class extends Controller {
   declare readonly autocompleteTarget: HTMLElement
   declare readonly buttonTarget: HTMLElement
 
+  declare autocomplete: DebouncedFunc<(query: string, version: string, path: string) => Promise<void>>
   declare lastQuery: string
   declare suggestionIndex: number
   declare searchHotKey: string
@@ -35,7 +37,7 @@ export default class extends Controller {
     </ul>
   `
 
-    this.autocomplete = throttle(this.autocomplete, 300)
+    this.autocomplete = throttle(this.fetchAutocompleteResults, 300)
     this.lastQuery = ""
     this.suggestionIndex = 0
   }
@@ -46,50 +48,56 @@ export default class extends Controller {
       this.inputTarget.focus()
     })
 
-    this.inputTarget.addEventListener("focusin", () => {
-      this.buttonTarget.classList.add("text-gray-700")
-      this.autocompleteTarget.classList.remove("hidden")
-    })
+    this.inputTarget.addEventListener("focusin", this.onFocusIn.bind(this))
+    this.inputTarget.addEventListener("focusout", this.onFocusOut.bind(this))
+    this.autocompleteTarget.addEventListener("mousemove", this.onMouseMove.bind(this))
 
-    this.inputTarget.addEventListener("focusout", () => {
-      this.autocompleteTarget.classList.add("hidden")
-      this.buttonTarget.classList.remove("text-gray-700")
-    })
+    window.addEventListener("mousedown", this.onMouseDown.bind(this))
+  }
 
-    this.autocompleteTarget.addEventListener("mousemove", () => {
-      this.clearSelectedSuggestion()
-      this.suggestionIndex = 0
-    })
+  onMouseDown (e: MouseEvent) {
+    let link = e.target as HTMLAnchorElement
 
-    window.addEventListener("mousedown", (e: MouseEvent) => {
-      let link = e.target as HTMLElement
+    if (!this.autocompleteTarget.contains(link)) { return }
 
-      if (!this.autocompleteTarget.contains(link)) { return }
+    if (link.tagName !== "A") {
+      const element = e.target as HTMLElement
+      if(element.parentElement)
+        link = element.parentElement as HTMLAnchorElement
+    }
 
-      if (link.tagName !== "A") {
-        const element = e.target as HTMLElement
-        if(element.parentElement)
-          link = element.parentElement
-      }
+    if (link.tagName !== "A") { return }
 
-      if (link.tagName !== "A") { return }
+    window.location.assign(link.href)
+  }
 
-      window.location.assign(link.href)
-    })
+  onMouseMove () {
+    this.clearSelectedSuggestion()
+    this.suggestionIndex = 0
+  }
+
+  onFocusOut () {
+    this.autocompleteTarget.classList.add("hidden")
+    this.buttonTarget.classList.remove("text-gray-700")
+  }
+
+  onFocusIn () {
+    this.buttonTarget.classList.add("text-gray-700")
+    this.autocompleteTarget.classList.remove("hidden")
   }
 
   disconnect () {
     hotkeys.unbind(this.searchHotKey)
-    this.inputTarget.removeEventListener("focusin")
-    this.inputTarget.removeEventListener("blur")
-    this.autocompleteTarget.removeEventListener("mousemove")
-    window.removeEventListener("mousedown")
+    this.inputTarget.removeEventListener("focusin", this.onFocusIn)
+    this.inputTarget.removeEventListener("focusout", this.onFocusOut)
+    this.autocompleteTarget.removeEventListener("mousemove", this.onMouseMove)
+    window.removeEventListener("mousedown", this.onMouseDown)
   }
 
   async onKeyup (_event: KeyboardEvent) {
     const query = this.inputTarget.value
-    const version = this.data.get("version")
-    const path = this.data.get("url")
+    const version = this.data.get("version") || ""
+    const path = this.data.get("url") || ""
 
     if (query.length === 0) {
       this.autocompleteTarget.innerHTML = ""
@@ -132,7 +140,7 @@ export default class extends Controller {
     this.highlightSelectedSuggestion()
   }
 
-  async autocomplete (query, version, path) {
+  async fetchAutocompleteResults (query: string, version: string, path: string) {
     this.suggestionIndex = 0
 
     const queryParam = new URLSearchParams({ q: query })
