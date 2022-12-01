@@ -1,9 +1,12 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["mobileMenuButton", "mobileMenu"]
+  static targets: string[] = ["mobileMenuButton", "mobileMenu"]
 
-  toggleMobileMenu () {
+  declare readonly mobileMenuButtonTarget: HTMLButtonElement
+  declare readonly mobileMenuTarget: HTMLDivElement
+
+  toggleMobileMenu (): void {
     this.mobileMenuTarget.classList.toggle("hidden")
     this.mobileMenuButtonTarget.classList.toggle("active")
   }

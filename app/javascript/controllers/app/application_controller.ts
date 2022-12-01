@@ -1,5 +1,4 @@
 import { Controller } from "@hotwired/stimulus"
-import StimulusReflex from "stimulus_reflex"
 
 /* This is your ApplicationController.
  * All StimulusReflex controllers should inherit from this class.
@@ -13,8 +12,7 @@ import StimulusReflex from "stimulus_reflex"
  * Learn more at: https://docs.stimulusreflex.com
  */
 export default class extends Controller {
-  connect () {
-    StimulusReflex.register(this)
+  connect (): void {
   }
 
   /* Application-wide lifecycle methods
@@ -34,27 +32,27 @@ export default class extends Controller {
    *   reflexId - a UUID4 or developer-provided unique identifier for each Reflex
    */
 
-  beforeReflex (element, reflex, noop, reflexId) {
+  beforeReflex (element, reflex, noop, reflexId): void {
     // document.body.classList.add('wait')
   }
 
-  reflexSuccess (element, reflex, noop, reflexId) {
+  reflexSuccess (element, reflex, noop, reflexId): void {
     // show success message
   }
 
-  reflexError (element, reflex, error, reflexId) {
+  reflexError (element, reflex, error, reflexId): void {
     // show error message
   }
 
-  reflexHalted (element, reflex, error, reflexId) {
+  reflexHalted (element, reflex, error, reflexId): void {
     // handle aborted Reflex action
   }
 
-  afterReflex (element, reflex, noop, reflexId) {
+  afterReflex (element, reflex, noop, reflexId): void {
     // document.body.classList.remove('wait')
   }
 
-  finalizeReflex (element, reflex, noop, reflexId) {
+  finalizeReflex (element, reflex, noop, reflexId): void {
     // all operations have completed, animation etc is now safe
   }
 }

@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "rebornix.ruby",
-    "ms-azuretools.vscode-docker"
+    "ms-azuretools.vscode-docker",
+    "dbaeumer.vscode-eslint"
   ]
 }

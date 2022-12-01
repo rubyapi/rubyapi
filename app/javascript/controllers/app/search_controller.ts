@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import { DebouncedFunc } from "lodash"
 import throttle from "lodash/throttle"
 import hotkeys from "hotkeys-js"
 import mustache from "mustache"
@@ -6,7 +7,17 @@ import mustache from "mustache"
 export default class extends Controller {
   static targets = ["input", "autocomplete", "button"]
 
-  initialize () {
+  declare readonly inputTarget: HTMLInputElement
+  declare readonly autocompleteTarget: HTMLElement
+  declare readonly buttonTarget: HTMLElement
+
+  declare autocomplete: DebouncedFunc<(query: string, version: string, path: string) => Promise<void>>
+  declare lastQuery: string
+  declare suggestionIndex: number
+  declare searchHotKey: string
+  declare autocompleteTemplate: string
+
+  initialize (): void {
     this.searchHotKey = "/"
     this.autocompleteTemplate = `
     <ul class="lg:px-2 py-2 text-gray-800 overflow-auto">
@@ -26,56 +37,66 @@ export default class extends Controller {
     </ul>
   `
 
-    this.autocomplete = throttle(this.autocomplete, 300)
+    this.autocomplete = throttle(this.fetchAutocompleteResults, 300)
     this.lastQuery = ""
     this.suggestionIndex = 0
   }
 
-  connect () {
+  connect (): void {
     hotkeys(this.searchHotKey, (event, handler) => {
       event.preventDefault()
       this.inputTarget.focus()
     })
 
-    this.inputTarget.addEventListener("focusin", () => {
-      this.buttonTarget.classList.add("text-gray-700")
-      this.autocompleteTarget.classList.remove("hidden")
-    })
+    this.inputTarget.addEventListener("focusin", this.onFocusIn.bind(this))
+    this.inputTarget.addEventListener("focusout", this.onFocusOut.bind(this))
+    this.autocompleteTarget.addEventListener("mousemove", this.onMouseMove.bind(this))
 
-    this.inputTarget.addEventListener("focusout", () => {
-      this.autocompleteTarget.classList.add("hidden")
-      this.buttonTarget.classList.remove("text-gray-700")
-    })
-
-    this.autocompleteTarget.addEventListener("mousemove", () => {
-      this.clearSelectedSuggestion()
-      this.suggestionIndex = 0
-    })
-
-    window.addEventListener("mousedown", (e) => {
-      if (!this.autocompleteTarget.contains(e.target)) { return }
-
-      let link = e.target
-      if (link.tagName !== "A") { link = e.target.parentElement }
-
-      if (link.tagName !== "A") { return }
-
-      window.location.assign(link.href)
-    })
+    window.addEventListener("mousedown", this.onMouseDown.bind(this))
   }
 
-  disconnect () {
+  onMouseDown (e: MouseEvent): void {
+    let link = e.target as HTMLAnchorElement
+
+    if (!this.autocompleteTarget.contains(link)) { return }
+
+    if (link.tagName !== "A") {
+      const element = e.target as HTMLElement
+      if (element.parentElement != null) { link = element.parentElement as HTMLAnchorElement }
+    }
+
+    if (link.tagName !== "A") { return }
+
+    window.location.assign(link.href)
+  }
+
+  onMouseMove (): void {
+    this.clearSelectedSuggestion()
+    this.suggestionIndex = 0
+  }
+
+  onFocusOut (): void {
+    this.autocompleteTarget.classList.add("hidden")
+    this.buttonTarget.classList.remove("text-gray-700")
+  }
+
+  onFocusIn (): void {
+    this.buttonTarget.classList.add("text-gray-700")
+    this.autocompleteTarget.classList.remove("hidden")
+  }
+
+  disconnect (): void {
     hotkeys.unbind(this.searchHotKey)
-    this.inputTarget.removeEventListener("focusin")
-    this.inputTarget.removeEventListener("blur")
-    this.autocompleteTarget.removeEventListener("mousemove")
-    window.removeEventListener("mousedown")
+    this.inputTarget.removeEventListener("focusin", this.onFocusIn)
+    this.inputTarget.removeEventListener("focusout", this.onFocusOut)
+    this.autocompleteTarget.removeEventListener("mousemove", this.onMouseMove)
+    window.removeEventListener("mousedown", this.onMouseDown)
   }
 
-  async onKeyup (event) {
+  onKeyup (): void {
     const query = this.inputTarget.value
-    const version = this.data.get("version")
-    const path = this.data.get("url")
+    const version = this.data.get("version") ?? ""
+    const path = this.data.get("url") ?? ""
 
     if (query.length === 0) {
       this.autocompleteTarget.innerHTML = ""
@@ -88,19 +109,21 @@ export default class extends Controller {
 
     this.lastQuery = query
 
-    await this.autocomplete(query, version, path)
+    this.autocomplete(query, version, path)
+      ?.catch(() => {})
   }
 
-  async onKeydown (event) {
+  onKeydown (event: KeyboardEvent): void {
     if (event.key.startsWith("Arrow")) {
       this.handleArrowKey(event)
     } else if (event.key === "Enter" && this.suggestionIndex !== 0) {
       event.preventDefault()
-      this.getSelectedSuggestion().querySelector("a").click()
+      const currentSuggestion = this.getSelectedSuggestion()
+      currentSuggestion?.querySelector("a")?.click()
     }
   }
 
-  handleArrowKey (event) {
+  handleArrowKey (event: KeyboardEvent): void {
     this.clearSelectedSuggestion()
 
     if (event.key === "ArrowUp") {
@@ -117,7 +140,7 @@ export default class extends Controller {
     this.highlightSelectedSuggestion()
   }
 
-  async autocomplete (query, version, path) {
+  fetchAutocompleteResults (query: string, version: string, path: string): void {
     this.suggestionIndex = 0
 
     const queryParam = new URLSearchParams({ q: query })
@@ -129,7 +152,7 @@ export default class extends Controller {
         "Content-Type": "application/json"
       }
     })
-      .then((response) => { return response.json() })
+      .then(async (response) => { return await response.json() })
       .then((results) => {
         const render = mustache.render(this.autocompleteTemplate, {
           results
@@ -141,28 +164,28 @@ export default class extends Controller {
       })
   }
 
-  wrap (value, max) {
+  wrap (value: number, max: number): number {
     return value < 0 ? max : (value > max ? 0 : value)
   }
 
-  suggestionsLength () {
+  suggestionsLength (): number {
     return this.autocompleteTarget.querySelectorAll("li").length
   }
 
-  getSelectedSuggestion () {
+  getSelectedSuggestion (): HTMLElement | null {
     return this.autocompleteTarget.querySelector(`li:nth-child(${this.suggestionIndex})`)
   }
 
-  clearSelectedSuggestion () {
+  clearSelectedSuggestion (): void {
     const suggestion = this.getSelectedSuggestion()
-    if (suggestion) {
+    if (suggestion != null) {
       suggestion.classList.remove("bg-gray-200")
     }
   }
 
-  highlightSelectedSuggestion () {
+  highlightSelectedSuggestion (): void {
     const suggestion = this.getSelectedSuggestion()
-    if (suggestion) {
+    if (suggestion != null) {
       suggestion.classList.add("bg-gray-200")
     }
   }
