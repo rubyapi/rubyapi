@@ -17,7 +17,7 @@ export default class extends Controller {
   declare searchHotKey: string
   declare autocompleteTemplate: string
 
-  initialize () {
+  initialize (): void {
     this.searchHotKey = "/"
     this.autocompleteTemplate = `
     <ul class="lg:px-2 py-2 text-gray-800 overflow-auto">
@@ -42,7 +42,7 @@ export default class extends Controller {
     this.suggestionIndex = 0
   }
 
-  connect () {
+  connect (): void {
     hotkeys(this.searchHotKey, (event, handler) => {
       event.preventDefault()
       this.inputTarget.focus()
@@ -55,15 +55,14 @@ export default class extends Controller {
     window.addEventListener("mousedown", this.onMouseDown.bind(this))
   }
 
-  onMouseDown (e: MouseEvent) {
+  onMouseDown (e: MouseEvent): void {
     let link = e.target as HTMLAnchorElement
 
     if (!this.autocompleteTarget.contains(link)) { return }
 
     if (link.tagName !== "A") {
       const element = e.target as HTMLElement
-      if(element.parentElement)
-        link = element.parentElement as HTMLAnchorElement
+      if (element.parentElement != null) { link = element.parentElement as HTMLAnchorElement }
     }
 
     if (link.tagName !== "A") { return }
@@ -71,22 +70,22 @@ export default class extends Controller {
     window.location.assign(link.href)
   }
 
-  onMouseMove () {
+  onMouseMove (): void {
     this.clearSelectedSuggestion()
     this.suggestionIndex = 0
   }
 
-  onFocusOut () {
+  onFocusOut (): void {
     this.autocompleteTarget.classList.add("hidden")
     this.buttonTarget.classList.remove("text-gray-700")
   }
 
-  onFocusIn () {
+  onFocusIn (): void {
     this.buttonTarget.classList.add("text-gray-700")
     this.autocompleteTarget.classList.remove("hidden")
   }
 
-  disconnect () {
+  disconnect (): void {
     hotkeys.unbind(this.searchHotKey)
     this.inputTarget.removeEventListener("focusin", this.onFocusIn)
     this.inputTarget.removeEventListener("focusout", this.onFocusOut)
@@ -94,10 +93,10 @@ export default class extends Controller {
     window.removeEventListener("mousedown", this.onMouseDown)
   }
 
-  async onKeyup (_event: KeyboardEvent) {
+  onKeyup (): void {
     const query = this.inputTarget.value
-    const version = this.data.get("version") || ""
-    const path = this.data.get("url") || ""
+    const version = this.data.get("version") ?? ""
+    const path = this.data.get("url") ?? ""
 
     if (query.length === 0) {
       this.autocompleteTarget.innerHTML = ""
@@ -110,10 +109,11 @@ export default class extends Controller {
 
     this.lastQuery = query
 
-    await this.autocomplete(query, version, path)
+    this.autocomplete(query, version, path)
+      ?.catch(() => {})
   }
 
-  async onKeydown (event: KeyboardEvent) {
+  onKeydown (event: KeyboardEvent): void {
     if (event.key.startsWith("Arrow")) {
       this.handleArrowKey(event)
     } else if (event.key === "Enter" && this.suggestionIndex !== 0) {
@@ -123,7 +123,7 @@ export default class extends Controller {
     }
   }
 
-  handleArrowKey (event: KeyboardEvent) {
+  handleArrowKey (event: KeyboardEvent): void {
     this.clearSelectedSuggestion()
 
     if (event.key === "ArrowUp") {
@@ -140,7 +140,7 @@ export default class extends Controller {
     this.highlightSelectedSuggestion()
   }
 
-  async fetchAutocompleteResults (query: string, version: string, path: string) {
+  fetchAutocompleteResults (query: string, version: string, path: string): void {
     this.suggestionIndex = 0
 
     const queryParam = new URLSearchParams({ q: query })
@@ -152,7 +152,7 @@ export default class extends Controller {
         "Content-Type": "application/json"
       }
     })
-      .then((response) => { return response.json() })
+      .then(async (response) => { return await response.json() })
       .then((results) => {
         const render = mustache.render(this.autocompleteTemplate, {
           results
@@ -164,7 +164,7 @@ export default class extends Controller {
       })
   }
 
-  wrap (value: number, max: number) {
+  wrap (value: number, max: number): number {
     return value < 0 ? max : (value > max ? 0 : value)
   }
 
@@ -178,14 +178,14 @@ export default class extends Controller {
 
   clearSelectedSuggestion (): void {
     const suggestion = this.getSelectedSuggestion()
-    if (suggestion) {
+    if (suggestion != null) {
       suggestion.classList.remove("bg-gray-200")
     }
   }
 
   highlightSelectedSuggestion (): void {
     const suggestion = this.getSelectedSuggestion()
-    if (suggestion) {
+    if (suggestion != null) {
       suggestion.classList.add("bg-gray-200")
     }
   }

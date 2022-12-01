@@ -12,11 +12,11 @@ export default class extends Controller {
   declare executeShortcut: string
   declare editor: monaco.editor.IStandaloneCodeEditor
 
-  initialize () {
+  initialize (): void {
     this.executeShortcut = "ctrl+enter,cmd+k"
   }
 
-  connect () {
+  connect (): void {
     hotkeys("ctrl+enter,cmd+enter", (event, handler) => {
       event.preventDefault()
       this.execute()
@@ -42,11 +42,11 @@ export default class extends Controller {
     })
   }
 
-  disconnect () {
+  disconnect (): void {
     hotkeys.unbind(this.executeShortcut)
   }
 
-  execute () {
+  execute (): void {
     this.playButtonTarget.innerHTML = `
     <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
       <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -73,7 +73,7 @@ export default class extends Controller {
       cache: "no-cache",
       credentials: "same-origin"
     })
-      .then((response) => response.json())
+      .then(async (response) => await response.json())
       .then((data) => {
         const output = data.output.concat("\n", data.error)
         this.resultsWindowTarget.innerHTML = output
