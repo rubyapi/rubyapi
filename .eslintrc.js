@@ -12,8 +12,12 @@ module.exports = {
     project: './tsconfig.json'
   },
   rules: {
-    "quotes": [
-      "error", "double"
+    "@typescript-eslint/quotes": [
+      "error",
+      "double",
+      {
+        "allowTemplateLiterals": true
+      }
     ]
   }
 }
