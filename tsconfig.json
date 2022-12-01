@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "target": "ES6",
-    "removeComments": true
+    "target": "es2021",
+    "removeComments": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   }
 }
