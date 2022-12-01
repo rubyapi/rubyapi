@@ -34,6 +34,8 @@ jobs:
         with:
           bundler-cache: true
 
+      - run: npm ci
+
       - name: Run Ruby linting
         run: bin/standardrb --no-fix
 
