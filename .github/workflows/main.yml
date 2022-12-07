@@ -13,10 +13,6 @@ on:
     paths-ignore:
       - '**.md'
 
-env:
-  BUNDLE_PATH: vendor/bundle
-  RAILS_ENV: test
-
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -148,14 +144,9 @@ jobs:
           cache: "npm"
 
       - name: Install Dependencies
-        run: npm install
-
-      - name: Test Zeitwerk
-        run: ./bin/rails zeitwerk:check
+        run: npm ci
 
       - name: Run Tests
-        env:
-          ELASTICSEARCH_URL: "http://localhost:9200"
         run: |
           npm run build && npm run build:css
           bin/rails test
@@ -214,14 +205,9 @@ jobs:
           cache: "npm"
 
       - name: Install Dependencies
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get -yqq install chromium-chromedriver
-          npm install
+        run: npm ci
 
       - name: Run Tests
-        env:
-          ELASTICSEARCH_URL: "http://localhost:9200"
         run: |
           npm run build && npm run build:css
           bin/rails test:system
