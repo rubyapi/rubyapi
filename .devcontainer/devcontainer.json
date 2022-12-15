@@ -1,0 +1,44 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/alpine
+{
+  "name": "Ruby API",
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  "features": {
+    "ghcr.io/devcontainers/features/ruby:1": {},
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [
+    3000, // Rails
+    5601 // Kibana
+  ],
+  // Use 'workspaceFolder' to bind mount a folder in the container. More info: https://code.visualstudio.com/docs/remote/containers-advanced#_developing-inside-a-container-workspace-folder
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  // Use 'dockerComposeFile' property to list the compose files this dev container should use. More info: https://code.visualstudio.com/docs/remote/containers-advanced#_developing-inside-a-container-compose-file
+  "dockerComposeFile": [
+    "docker-compose.yml",
+    "../docker-compose.yml",
+  ],
+  // Use 'service' property to list services to start as part of the container. More info: https://code.visualstudio.com/docs/remote/containers-advanced#_developing-inside-a-container-service
+  "service": "app",
+  // Use 'service' property to list services to start as part of the container. More info: https://code.visualstudio.com/docs/remote/containers-advanced#_developing-inside-a-container-service
+  "runServices": [
+    "database",
+    "kibana",
+    "search"
+  ],
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "bin/devcontainer-setup",
+  // Use 'postStartCommand' to run commands after the container is started.
+  "postStartCommand": "bin/dev",
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "rebornix.ruby",
+        "ms-azuretools.vscode-docker",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  },
+}

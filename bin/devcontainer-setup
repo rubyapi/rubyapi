@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# This script is used to setup a devcontainer for the project.
+# It is run as the user "vscode" inside the container.
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+RUBY_VERSION="$(cat .ruby-version)"
+NODE_VERSION="$(cat .node-version)"
+NVM_DIR=${NVM_DIR:-"/usr/local/share/nvm"}
+
+
+# Install NodeJS version from .node-version
+. "${NVM_DIR}/nvm.sh"
+
+# check if current version of
+if ! [ -x "$(command -v node)" ]; then
+    echo "Installing Node version ${NODE_VERSION}..."
+    nvm install "${NODE_VERSION}" &>/dev/null
+else
+    echo "Node already installed, skipping..."
+fi
+
+if ! [ -x "$(command -v node)" ]; then
+    echo "Installing Ruby version ${RUBY_VERSION}..."
+    rbenv install "${RUBY_VERSION}" &>/dev/null
+else
+    echo "Ruby already installed, skipping"
+fi
+
+# Install required libs
+sudo apt update -qq && sudo apt install -y libpq-dev
+
+bin/setup
