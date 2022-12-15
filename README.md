@@ -19,6 +19,16 @@ We aim to improve the Ruby ecosystem by being:
 
 ## Getting started
 
+### Github Dev Container
+
+For an quick, easy and automated way to get started, you can use the [Github Dev Container](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/introduction-to-dev-containers).
+
+Github Dev Containers will automatically install all the dependencies and start the application.
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=165846166&machine=basicLinux32gb&devcontainer_path=.devcontainer%2Fdevcontainer.json&location=EastUs)
+
+### Local Machine
+
 Install dependencies:
 
 _Note: This command can also be used to quickly update the application dependencies_
