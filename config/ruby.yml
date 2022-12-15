@@ -1,15 +1,15 @@
 default: &default
   versions:
     - version: 3.2
-      sha256: cf49aa70e7ebd8abebffd5e49cd3bd92e5b9f3782d587cc7ed88c98dd5f17069
-      url: https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.0-preview3.zip
+      sha256: 7ff32473be108534548e401aaa9092c37a27f73323ea4091c33901c714c87ee5
+      url: https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.0-rc1.zip
     - version: 3.1
       default: true
-      sha256: f2bb80de50bcc17c29c1995d87d657d461ede6a73e71db44c0cf77f65f32e9b6
-      url: https://cache.ruby-lang.org/pub/ruby/3.1/ruby-3.1.2.zip
+      sha256: 9e5de00a1d259a2c6947605825ecf6742d5216bd389af28f9ed366854e59b09e
+      url: https://cache.ruby-lang.org/pub/ruby/3.1/ruby-3.1.3.zip
     - version: 3.0
-      sha256: d4ce9fd565a81ce138ea26382c8880f0456883b2539e18510e1d845293a095cb
-      url: https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.4.zip
+      sha256: 4b63c59ebdc0abcea139a561d67dfa9770af2d9619390f34b8a53f9625a1090d
+      url: https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.5.zip
     - version: 2.7
       url: https://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.6.zip
       sha256: 2ead329cfb9a5975348d2fdcfa0cb60bb3ba47a6693e93afd52db7a0ba01ac4c
