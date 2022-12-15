@@ -33,6 +33,11 @@
   "postStartCommand": "bin/dev",
   // Configure tool-specific properties.
   "customizations": {
+    "codespaces": {
+      "openFiles": [
+        "README.md"
+      ]
+    },
     "vscode": {
       "extensions": [
         "rebornix.ruby",
