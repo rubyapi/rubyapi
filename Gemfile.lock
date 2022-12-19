@@ -190,7 +190,7 @@ GEM
       activesupport (>= 5.0)
     hashdiff (1.0.1)
     hashie (5.0.0)
-    http (5.1.0)
+    http (5.1.1)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
@@ -289,7 +289,7 @@ GEM
       railties (>= 7.0.0)
     psych (4.0.3)
       stringio
-    public_suffix (5.0.0)
+    public_suffix (5.0.1)
     puma (6.0.0)
       nio4r (~> 2.0)
     racc (1.6.1)
