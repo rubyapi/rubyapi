@@ -5,3 +5,6 @@ services:
     command: /bin/sh -c "while sleep 1000; do :; done"
     volumes:
       - ../..:/workspaces:cached
+    environment:
+      - ELASTICSEARCH_URL=http://search:9200
+      - DATABASE_URL=postgres://postgres@database:5432

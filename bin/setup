@@ -18,8 +18,11 @@ FileUtils.chdir APP_ROOT do
   system("bundle check") || system!("bundle install")
   system! "npm i"
 
-  puts "\n== Updating Docker images =="
-  system("docker compose pull")
+  # Do docker compose in Github CodeSpaces
+  unless ENV["CODESPACES"].present?
+    puts "\n== Updating Docker images =="
+    system("docker compose pull")
+  end
 
   puts "\n== Removing old logs and tempfiles =="
   system! "bin/rails log:clear tmp:clear"
