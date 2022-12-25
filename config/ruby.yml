@@ -1,8 +1,8 @@
 default: &default
   versions:
     - version: 3.2
-      sha256: 7ff32473be108534548e401aaa9092c37a27f73323ea4091c33901c714c87ee5
-      url: https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.0-rc1.zip
+      sha256: cca9ddbc958431ff77f61948cb67afa569f01f99c9389d2bbedfa92986c9ef09
+      url: https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.0.zip
     - version: 3.1
       default: true
       sha256: 9e5de00a1d259a2c6947605825ecf6742d5216bd389af28f9ed366854e59b09e
