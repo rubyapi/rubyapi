@@ -19,7 +19,7 @@ FileUtils.chdir APP_ROOT do
   system! "npm i"
 
   # Do docker compose in Github CodeSpaces
-  unless ENV["CODESPACES"].present?
+  unless ENV["CODESPACES"]&.empty?
     puts "\n== Updating Docker images =="
     system("docker compose pull")
   end
