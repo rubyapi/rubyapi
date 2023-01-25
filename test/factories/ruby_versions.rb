@@ -7,6 +7,13 @@ FactoryBot.define do
     sha256 { "61843112389f02b735428b53bb64cf988ad9fb81858b8248e22e57336f24a83e" }
     default { false }
 
+    git do
+      {
+        branch: "ruby_3_1",
+        tag: "v3_1_0"
+      }
+    end
+
     trait :default do
       default { true }
     end
@@ -15,6 +22,12 @@ FactoryBot.define do
       version { "dev" }
       url { "https://github.com/ruby/ruby/archive/master.zip" }
       sha256 { "" }
+      git do
+        {
+          branch: "master",
+          tag: ""
+        }
+      end
     end
   end
 end

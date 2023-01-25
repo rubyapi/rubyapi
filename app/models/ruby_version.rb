@@ -4,6 +4,7 @@ class RubyVersion < Dry::Struct
   attribute :version, Types::String
   attribute :url, Types::String
   attribute :sha256, Types::String
+  attribute :git, Types::Hash.default({}.freeze) # Git repository information
 
   attribute :default, Types::Bool.default(false) # The latest stable version of Ruby
   attribute :eol, Types::Bool.default(false) # Versions of Ruby that have reached end-of-life
@@ -27,6 +28,18 @@ class RubyVersion < Dry::Struct
 
   def prerelease?
     dev? || prerelease
+  end
+
+  def git_ref
+    git_tag.present? ? git_tag : git_branch
+  end
+
+  def git_branch
+    git[:branch]
+  end
+
+  def git_tag
+    git[:tag]
   end
 
   def dev?
