@@ -31,7 +31,7 @@ class RubyVersion < Dry::Struct
   end
 
   def git_ref
-    git_tag.present? ? git_tag : git_branch
+    git_tag.presence || git_branch
   end
 
   def git_branch
