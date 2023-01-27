@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { DebouncedFunc } from "lodash"
+import type { DebouncedFunc } from "lodash"
 import throttle from "lodash/throttle"
 import hotkeys from "hotkeys-js"
 import mustache from "mustache"
