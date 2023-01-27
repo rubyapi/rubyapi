@@ -1,6 +1,6 @@
 require "application_system_test_case"
 
-class ThemeConroller < ApplicationSystemTestCase
+class ThemeTest < ApplicationSystemTestCase
   def setup
     @string = FactoryBot.build(:ruby_object)
     create_index_for_version! default_ruby_version
