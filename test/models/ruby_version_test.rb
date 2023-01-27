@@ -47,6 +47,24 @@ class RubyVersionTest < ActiveSupport::TestCase
     assert ruby_version.prerelease?
   end
 
+  test "git ref" do
+    ruby_version = FactoryBot.build(:ruby_version, git: {branch: "master"})
+    assert_equal "master", ruby_version.git_ref
+
+    ruby_version = FactoryBot.build(:ruby_version, git: {tag: "v1.0"})
+    assert_equal "v1.0", ruby_version.git_ref
+  end
+
+  test "git branch" do
+    ruby_version = FactoryBot.build(:ruby_version, git: {branch: "master"})
+    assert_equal "master", ruby_version.git_branch
+  end
+
+  test "git tag" do
+    ruby_version = FactoryBot.build(:ruby_version, git: {tag: "v1.0"})
+    assert_equal "v1.0", ruby_version.git_tag
+  end
+
   test "to string" do
     ruby_version = FactoryBot.build(:ruby_version, version: "3.1")
     assert_equal "3.1", ruby_version.to_s

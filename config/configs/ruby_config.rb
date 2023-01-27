@@ -34,7 +34,8 @@ class RubyConfig < ApplicationConfig
         sha256: v[:sha256] || "",
         default: v[:default] || false,
         eol: v[:eol] || false,
-        prerelease: v[:prerelease] || false
+        prerelease: v[:prerelease] || false,
+        git: v[:git] || {}
       )
     end
   end

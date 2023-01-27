@@ -4,33 +4,59 @@ default: &default
       default: true
       sha256: cca9ddbc958431ff77f61948cb67afa569f01f99c9389d2bbedfa92986c9ef09
       url: https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.0.zip
+      git:
+        tag: v3_2_0
+        branch: ruby_3_2
     - version: 3.1
       sha256: 9e5de00a1d259a2c6947605825ecf6742d5216bd389af28f9ed366854e59b09e
       url: https://cache.ruby-lang.org/pub/ruby/3.1/ruby-3.1.3.zip
+      git:
+        tag: v3_1_3
+        branch: ruby_3_1
     - version: 3.0
       sha256: 4b63c59ebdc0abcea139a561d67dfa9770af2d9619390f34b8a53f9625a1090d
       url: https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.5.zip
+      git:
+        tag: v3_0_5
+        branch: ruby_3_0
     - version: 2.7
       url: https://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.6.zip
       sha256: 2ead329cfb9a5975348d2fdcfa0cb60bb3ba47a6693e93afd52db7a0ba01ac4c
+      git:
+        tag: v2_7_6
+        branch: ruby_2_7
     - version: 2.6
       url: https://cache.ruby-lang.org/pub/ruby/2.6/ruby-2.6.10.zip
       sha256: 381e62de1cbac80b356c2fa77ee1906a169bb8cde4a9ec64541a41db32db046d
+      git:
+        tag: v2_6_10
+        branch: ruby_2_6
     - version: 2.5
       url: https://cache.ruby-lang.org/pub/ruby/2.5/ruby-2.5.9.zip
       sha256: 14db683c6ba6a863ef126718269758de537571b675231ec43f03b987739e3ce1
       eol: true
+      git:
+        tag: v2_5_9
+        branch: ruby_2_5
     - version: 2.4
       url: https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.10.zip
       sha256: 3babcf264a22b52951974ed4c5232c3fe14f2ada72daad47bf8b73639a7eec50
       eol: true
+      git:
+        tag: v2_4_10
+        branch: ruby_2_4
     - version: 2.3
       url: https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.8.zip
       sha256: ec9792d0473a22954ad25cd0c531fc672679c1a5eaeefa08caf9e1288852796f
       eol: true
+      git:
+        tag: v2_3_8
+        branch: ruby_2_3
     - version: dev
       url: https://github.com/ruby/ruby/archive/master.zip
       sha256:
+      git:
+        branch: master
 
 development:
   <<: *default
