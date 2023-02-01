@@ -14,7 +14,8 @@ class ThemeTest < ApplicationSystemTestCase
 
     click_button "Dark Theme"
 
-    assert_selector "html.dark"
+    htmlElement = page.find("html")
+    assert htmlElement[:class].include?("dark")
   end
 
   test "setting dark mode and changing page" do
@@ -26,7 +27,8 @@ class ThemeTest < ApplicationSystemTestCase
 
     visit object_url object: @string.path
 
-    assert_selector "html.dark"
+    htmlElement = page.find("html")
+    assert htmlElement[:class].include?("dark")
   end
 
   test "setting dark mode and then light mode" do
