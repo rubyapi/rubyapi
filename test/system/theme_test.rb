@@ -7,26 +7,15 @@ class ThemeTest < ApplicationSystemTestCase
     index_object @string
   end
 
-  test "setting dark mode" do
-    skip "This test is flaky"
-
+  test "setting dark mode and going to new page" do
     visit root_path
 
     click_button "Select Theme"
-
     click_button "Dark Theme"
 
     assert_selector "html.dark"
-  end
 
-  test "setting dark mode and changing page" do
-    visit root_path
-
-    click_button "Select Theme"
-
-    click_button "Dark Theme"
-
-    visit object_url object: @string.path
+    click_link "Read more", match: :first
 
     assert_selector "html.dark"
   end
