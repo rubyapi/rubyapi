@@ -342,7 +342,7 @@ GEM
     request_store (1.5.1)
       rack (>= 1.4)
     rexml (3.2.5)
-    rouge (4.0.1)
+    rouge (4.1.0)
     rubocop (1.44.1)
       json (~> 2.3)
       parallel (~> 1.10)
