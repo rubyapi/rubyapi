@@ -1,5 +1,3 @@
-const _ = require('lodash')
-
 module.exports = {
   content: [
     './app/views/**/*.html.(slim|erb)',
@@ -30,18 +28,4 @@ module.exports = {
       }
     }
   },
-  plugins: [
-    ({ addUtilities, e, theme, }) => {
-      addUtilities(_.fromPairs(
-        _.map(theme('opacity'), (value, modifier) => {
-          return [
-            `.${e(`placeholder-opacity-${modifier}`)}::placeholder`,
-            {
-              opacity: value,
-            },
-          ]
-        })
-      ))
-    }
-  ],
 }
