@@ -97,6 +97,8 @@ class RubyDownloader
   end
 
   def verify_file_integrity(downloaded_file_path)
+    return if release.sha256.empty?
+
     downloaded_file_hash = Digest::SHA256.file downloaded_file_path
     raise "SHA256 mismatch. Expected #{release.sha256}, but calculated: #{downloaded_file_hash.hexdigest}" \
       unless downloaded_file_hash.hexdigest == release.sha256

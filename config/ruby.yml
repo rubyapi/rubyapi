@@ -53,7 +53,7 @@ default: &default
         tag: v2_3_8
         branch: ruby_2_3
     - version: dev
-      url: https://github.com/ruby/ruby/archive/master.zip
+      url: https://codeload.github.com/ruby/ruby/zip/refs/heads/master
       sha256:
       git:
         branch: master
