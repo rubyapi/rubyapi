@@ -42,11 +42,16 @@ Start ElasticSearch:
 ```sh
 docker compose up -d
 ```
-or if you are using podman:
+
+<details>
+<summary>Alternatives to Docker</summary>
+
+We only officially support Docker, but you can try with [Podman](https://podman.io) instead:
 
 ```sh
 podman-compose up -d
 ```
+</details>
 
 Start the Rails Server
 
