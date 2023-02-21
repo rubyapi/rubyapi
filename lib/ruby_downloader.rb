@@ -48,7 +48,7 @@ class RubyDownloader
 
   def fetch_ruby_archive
     chunked_fetch download_path, release.url
-    verify_file_integerity download_path
+    verify_file_integrity download_path
   end
 
   def chunked_fetch(path, url)
@@ -96,7 +96,7 @@ class RubyDownloader
   rescue Errno::EEXIST
   end
 
-  def verify_file_integerity(downloaded_file_path)
+  def verify_file_integrity(downloaded_file_path)
     downloaded_file_hash = Digest::SHA256.file downloaded_file_path
     raise "SHA256 mismatch. Expected #{release.sha256}, but calculated: #{downloaded_file_hash.hexdigest}" \
       unless downloaded_file_hash.hexdigest == release.sha256
