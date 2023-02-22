@@ -5,6 +5,11 @@ class ApplicationController < ActionController::Base
   after_action :set_feature_headers
 
   def set_ruby_version
+    if params[:version] == "current"
+      redirect_to request.path.sub(%r{^/current}, "/#{RubyConfig.default_ruby_version.version}")
+      return
+    end
+
     version = RubyConfig.version_for(params[:version]) || RubyConfig.default_ruby_version
 
     Current.ruby_version = version
