@@ -6,7 +6,8 @@ class ApplicationController < ActionController::Base
 
   def set_ruby_version
     if params[:version] == "current"
-      redirect_to request.path.sub(%r{^/current}, "/#{RubyConfig.default_ruby_version.version}")
+      permitted_params = params.permit(:object, :engine, :q, :page, :theme)
+      redirect_to permitted_params.merge(version: RubyConfig.default_ruby_version.version)
       return
     end
 
