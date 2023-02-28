@@ -288,7 +288,7 @@ GEM
     psych (5.0.2)
       stringio
     public_suffix (5.0.1)
-    puma (6.1.0)
+    puma (6.1.1)
       nio4r (~> 2.0)
     racc (1.6.2)
     rack (2.2.6.2)
