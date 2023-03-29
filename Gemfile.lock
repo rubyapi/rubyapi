@@ -201,7 +201,7 @@ GEM
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
-    inline_svg (1.8.0)
+    inline_svg (1.9.0)
       activesupport (>= 3.0)
       nokogiri (>= 1.6)
     io-console (0.6.0)
