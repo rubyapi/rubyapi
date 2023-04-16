@@ -9,7 +9,7 @@
     "@rails/actioncable": "^7.0.4",
     "clipboard-copy": "^4.0.1",
     "esbuild": "^0.17.15",
-    "hotkeys-js": "^3.10.1",
+    "hotkeys-js": "^3.10.2",
     "lodash": "^4.1.1",
     "monaco-editor": "^0.37.1",
     "mustache": "^4.2.0",
