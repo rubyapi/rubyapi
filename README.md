@@ -96,6 +96,17 @@ this project._
 
 For instructions on running StandardRB in your editor, [check out StandardRB's Documentation](https://github.com/testdouble/standard#how-do-i-run-standard-in-my-editor).
 
+
+## Sponsorship
+
+<a href="https://rubycentral.org/"><img src="https://rubycentral.org/content/images/size/w256h256/format/png/2022/11/Ruby-Central-logo.svg" height=110></a><br/>
+
+[RubyGems.org](https://rubygems.org) is managed by [Ruby Central](https://rubycentral.org), a non-profit organization that supports the Ruby community through projects like this one, as well as [RubyConf](https://rubyconf.org), [RailsConf](https://railsconf.org), and [Bundler](https://bundler.io). You can support Ruby Central by attending or [sponsoring](sponsors@rubycentral.org) a conference, or by [joining as a supporting member](https://rubycentral.org/#/portal/signup).
+
+Hosting is donated by [Amazon Web Services](https://aws.amazon.com), with CDN service donated by [Fastly](https://fastly.com).
+
+[Learn more about our sponsors and how they work together.](https://rubygems.org/pages/sponsors)
+
 ## Code Of Conduct
 
 Everyone interacting with the source code, issue trackers, chat rooms, and mailing lists is expected to follow the [Code Of Conduct](https://github.com/rubyapi/rubyapi/blob/master/CODE_OF_CONDUCT.md)
