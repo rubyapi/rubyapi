@@ -13,7 +13,7 @@
     "lodash": "^4.1.1",
     "monaco-editor": "^0.37.1",
     "mustache": "^4.2.0",
-    "postcss": "^8.4.22",
+    "postcss": "^8.4.23",
     "stimulus-dropdown": "^2.1.0",
     "tailwindcss": "^3.3.1"
   },
