@@ -384,11 +384,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sentry-rails (5.9.0)
-      railties (>= 5.0)
-      sentry-ruby (~> 5.9.0)
-    sentry-ruby (5.9.0)
-      concurrent-ruby (~> 1.0, >= 1.0.2)
     sitemap_generator (6.3.0)
       builder (~> 3.0)
     standard (1.28.0)
@@ -486,8 +481,6 @@ DEPENDENCIES
   redis
   rouge
   selenium-webdriver
-  sentry-rails
-  sentry-ruby
   sitemap_generator
   standard
   trenni-sanitize
