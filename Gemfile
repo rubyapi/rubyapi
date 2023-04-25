@@ -18,7 +18,6 @@ gem "typhoeus", require: false
 gem "kaminari", "~> 1.2.2"
 gem "inline_svg"
 gem "tty-spinner", require: false
-gem "skylight", group: :production
 gem "lograge"
 gem "logstash-event"
 gem "aws-sdk-s3"
@@ -53,4 +52,8 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
   gem "webmock"
+end
+
+group :production do
+  gem "ddtrace", require: "ddtrace/auto_instrument"
 end
