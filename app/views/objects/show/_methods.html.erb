@@ -1,71 +1,73 @@
-<div class="relative">
-  <div class="absolute inset-0 flex items-center" aria-hidden="true">
-    <div class="w-full border-t border-gray-300"></div>
+<section>
+  <div class="relative">
+    <div class="absolute inset-0 flex items-center" aria-hidden="true">
+      <div class="w-full border-t border-gray-300"></div>
+    </div>
+    <div class="relative flex justify-center">
+      <span class="px-3 bg-white text-2xl font-medium text-gray-900"><%= title %></span>
+    </div>
   </div>
-  <div class="relative flex justify-center">
-    <span class="px-3 bg-white text-2xl font-medium text-gray-900"><%= title %></span>
-  </div>
-</div>
-<% methods.each do |m| %>
-  <div class="md:px-3 my-3" data-controller="method">
-    <a class="block relative invisible -top-24" id="<%= method_anchor m %>"></a>
-    <div class="flex flex-wrap">
-      <div class="w-full md:w-10/12">
-        <% if Current.enable_method_signatures && m.signatures&.any? %>
-          <a href="#<%= method_anchor(m) %>">
-            <h4 class="lg:text-2xl text-lg text-gray-900 dark:text-gray-200 font-semibold"><%= m.name %></h4>
+  <% methods.each do |m| %>
+    <div class="md:px-3 my-3" data-controller="method">
+      <div class="block relative invisible -top-24" id="<%= method_anchor m %>"></div>
+      <div class="flex flex-wrap">
+        <div class="w-full md:w-10/12">
+          <% if Current.enable_method_signatures && m.signatures&.any? %>
+            <a href="#<%= method_anchor(m) %>">
+              <h4 class="lg:text-2xl text-lg text-gray-900 dark:text-gray-200 font-semibold"><%= m.name %></h4>
+            </a>
+            <div class="py-2">
+              <% m.signatures.each do |sig| %>
+                <h4 class="font-mono leading-tight text-gray-900 dark:text-gray-200"><%= sig %></h4>
+              <% end %>
+            </div>
+          <% else %>
+            <a href="#<%= method_anchor(m) %>">
+              <% m.call_sequence.each do |seq| %>
+                <h4 class="lg:text-2xl text-lg text-gray-900 dark:text-gray-200 font-semibold"><%= seq %></h4>
+              <% end %>
+            </a>
+          <% end %>
+        </div>
+        <div class="flex md:justify-end w-full md:w-2/12 mt-3 md:mt-0 font-mono">
+          <span class="px-2 h-6 inline-block rounded bg-gray-200 dark:bg-gray-700 algin-middle cursor-default" title="<%= m.method_type.capitalize %> Method">
+            <%= m.type_identifier %>
+          </span>
+          <button class="px-1 ml-2 h-6 inline-block rounded bg-gray-200 dark:bg-gray-700 align-middle hover:bg-gray-300 dark-hover:bg-gray-900 dark-hover:text-gray-400 hover:fill-current disabled:opacity-50 disabled:cursor-default" title="Show Source Code" data-method-target="showSrcBodyButton" <%= "disabled" if m.is_alias? %> data-action="click->method#toggleShowSource">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="hidden my-2" data-method-target="srcBody">
+        <div class="w-full px-3 py-2 bg-code-header dark:bg-gray-700 items-center flex justify-between font-mono rounded-t">
+          <span class="text-gray-300 text-sm">
+            <%= m.source_file %>
+          </span>
+          <a class="text-gray-300 text-sm hover:text-gray-400" href="<%= github_url m %>" target="_blank" rel="noopener" title="View source on GitHub">
+            View on GitHub
+            <svg xmlns="http://www.w3.org/2000/svg" class="inline h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
+              <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
+            </svg>
           </a>
-          <div class="py-2">
-            <% m.signatures.each do |sig| %>
-              <h4 class="font-mono leading-tight text-gray-900 dark:text-gray-200"><%= sig %></h4>
-            <% end %>
-          </div>
+        </div>
+        <pre class="p-3 rounded-t-none bg-code-background">
+          <code class="method-src-body text-code-text">
+            <%= raw m.source_body %>
+          </code>
+        </pre>
+      </div>
+      <div class="ruby-documentation py-1">
+        <% if m.is_alias? %>
+          <div>An alias for <a href="<%= m.method_alias.path %>" class="font-bold"><%= m.method_alias.name %></a></div>
+        <% elsif m.description.empty? %>
+          <div>No documentation available</div>
         <% else %>
-          <a href="#<%= method_anchor(m) %>">
-            <% m.call_sequence.each do |seq| %>
-              <h4 class="lg:text-2xl text-lg text-gray-900 dark:text-gray-200 font-semibold"><%= seq %></h4>
-            <% end %>
-          </a>
+          <%= raw m.description %>
         <% end %>
       </div>
-      <div class="flex md:justify-end w-full md:w-2/12 mt-3 md:mt-0 font-mono">
-        <span class="px-2 h-6 inline-block rounded bg-gray-200 dark:bg-gray-700 algin-middle cursor-default" title="<%= m.method_type.capitalize %> Method">
-          <%= m.type_identifier %>
-        </span>
-        <button class="px-1 ml-2 h-6 inline-block rounded bg-gray-200 dark:bg-gray-700 align-middle hover:bg-gray-300 dark-hover:bg-gray-900 dark-hover:text-gray-400 hover:fill-current disabled:opacity-50 disabled:cursor-default" title="Show Source Code" data-method-target="showSrcBodyButton" <%= "disabled" if m.is_alias? %> data-action="click->method#toggleShowSource">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-          </svg>
-        </button>
-      </div>
     </div>
-    <div class="hidden my-2" data-method-target="srcBody">
-      <div class="w-full px-3 py-2 bg-code-header dark:bg-gray-700 items-center flex justify-between font-mono rounded-t">
-        <span class="text-gray-300 text-sm">
-          <%= m.source_file %>
-        </span>
-        <a class="text-gray-300 text-sm hover:text-gray-400" href="<%= github_url m %>" target="_blank" rel="noopener" title="View source on GitHub">
-          View on GitHub
-          <svg xmlns="http://www.w3.org/2000/svg" class="inline h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
-            <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path>
-          </svg>
-        </a>
-      </div>
-      <pre class="p-3 rounded-t-none bg-code-background">
-        <code class="method-src-body text-code-text">
-          <%= raw m.source_body %>
-        </code>
-      </pre>
-    </div>
-    <div class="ruby-documentation py-1">
-      <% if m.is_alias? %>
-        <div>An alias for <a href="<%= m.method_alias.path %>" class="font-bold"><%= m.method_alias.name %></a></div>
-      <% elsif m.description.empty? %>
-        <div>No documentation available</div>
-      <% else %>
-        <%= raw m.description %>
-      <% end %>
-    </div>
-  </div>
-<% end %>
+  <% end %>
+</section>
