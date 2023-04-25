@@ -2,7 +2,7 @@
 <% set_meta_tags canonical: object_url(object: @object.path, version: Current.default_ruby_version) unless Current.ruby_version.default? %>
 
 <% content_for :mobile_menu do %>
-  <div class="sticky">
+  <nav class="sticky">
     <% if @object.superclass %>
       <div class="mb-3">
         <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Parent</h3>
@@ -27,6 +27,16 @@
         </ul>
       </div>
     <% end %>
+    <% unless @object.ruby_attributes.empty? %>
+      <div class="mb-3">
+        <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Attributes</h3>
+        <ul class="font-mono text-sm">
+          <% @object.ruby_attributes.each do |attribute| %>
+            <li><%= link_to attribute.name, "##{attribute.name}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <% unless @object.ruby_class_methods.empty? %>
       <div class="mb-3">
         <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Class Methods</h3>
@@ -47,7 +57,7 @@
         </ul>
       </div>
     <% end %>
-  </div>
+  </nav>
 <% end %>
 
 <div class="max-w-screen-xl mx-auto px-3 md:px-0 lg:flex">
@@ -95,7 +105,20 @@
           <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Constants</h3>
           <ul class="font-mono text-sm">
             <% @object.ruby_constants.each do |constant| %>
-              <li><%= link_to constant.name, object_path(object: constant.name), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %></li>
+              <li><%= link_to constant.name, "##{constant.name}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% unless @object.ruby_attributes.empty? %>
+      <% component.with_section do %>
+        <div class="mb-3">
+          <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Attributes</h3>
+          <ul class="font-mono text-sm">
+            <% @object.ruby_attributes.each do |attribute| %>
+              <li><%= link_to attribute.name, "##{attribute.name}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %></li>
             <% end %>
           </ul>
         </div>
@@ -130,7 +153,7 @@
   <% end %>
 
   <main class="w-full mt-16 lg:mt-20 lg:w-3/4">
-    <div class="mx-3 mt-3 mb-8">
+    <section class="mx-3 mt-3 mb-8">
       <div class="flex flex-wrap pb-2">
         <div class="w-full md:w-6/12">
           <h1 class="lg:text-4xl text-xl text-gray-800 dark:text-gray-200 font-semibold">
@@ -153,7 +176,7 @@
       <div class="ruby-documentation">
         <%= raw @object.description %>
       </div>
-    </div>
+    </section>
     <% unless @object.ruby_constants.empty? %>
       <%= render "objects/show/constants",
           constants: @object.ruby_constants, title: "Constants" %>
