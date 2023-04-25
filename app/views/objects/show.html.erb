@@ -154,13 +154,11 @@
 
   <main class="w-full mt-16 lg:mt-20 lg:w-3/4">
     <section class="mx-3 mt-3 mb-8">
-      <div class="flex flex-wrap pb-2">
-        <div class="w-full md:w-6/12">
-          <h1 class="lg:text-4xl text-xl text-gray-800 dark:text-gray-200 font-semibold">
-            <%= link_to @object.constant, object_url(version: Current.ruby_version, object: @object.path) %>
-          </h1>
+      <div class="md:flex py-3 md:items-center md:justify-between">
+        <div class="min-w-0 flex-1">
+          <h1 class="text-2xl font-bold leading-7 text-gray-800 dark:text-gray-200 sm:truncate sm:text-3xl sm:tracking-tight"><%= link_to @object.constant, object_url(version: Current.ruby_version, object: @object.path) %></h1>
         </div>
-        <div class="w-full md:w-6/12 md:text-right mt-2 md:mt-0 cursor-default">
+        <div class="mt-4 flex md:ml-4 md:mt-0">
           <% if @object.class_object? %>
             <span class="py-1 px-2 rounded bg-gray-200 dark:bg-gray-700 text-sm">Class</span>
           <% elsif @object.module_object? %>
