@@ -34,6 +34,7 @@ gem "rbs", require: false
 gem "anyway_config"
 gem "dry-struct"
 gem "view_component"
+gem "dogstatsd-ruby"
 
 group :development, :test do
   gem "debug"
