@@ -9,7 +9,7 @@
   </div>
   <% methods.each do |m| %>
     <div class="md:px-3 my-3" data-controller="method">
-      <a class="block relative invisible -top-24" id="<%= method_anchor m %>"></a>
+      <div class="block relative invisible -top-24" id="<%= method_anchor m %>"></div>
       <div class="flex flex-wrap">
         <div class="w-full md:w-10/12">
           <% if Current.enable_method_signatures && m.signatures&.any? %>
