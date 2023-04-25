@@ -92,8 +92,6 @@ Rails.application.configure do
     }
   end
 
-  config.skylight.probes += %w(elasticsearch redis)
-
   # Disable CSRF protections
   config.action_controller.allow_forgery_protection = false
 end
