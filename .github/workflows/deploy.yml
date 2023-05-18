@@ -1,0 +1,44 @@
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup pack command
+        uses: buildpacks/github-actions/setup-pack@v5.0.0
+
+      - name: Build application image
+        run: pack build rubyapi --path . --builder heroku/builder:22 --tag ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:${{ github.sha }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Inspect application image
+        run: pack inspect-image rubyapi
+
+      - name: Push Image
+        run: docker push ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:${{ github.sha }}

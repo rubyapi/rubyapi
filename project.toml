@@ -1,0 +1,22 @@
+[_]
+id = "rubyapi/rubyapi"
+name = "Ruby API"
+version = "1.0.0"
+
+[[io.buildpacks.build.env]]
+name = "RAILS_ENV"
+value = "production"
+
+[[io.buildpacks.build.env]]
+name = "NODE_ENV"
+value = "production"
+
+[[io.buildpacks.group]]
+uri = "urn:cnb:registry:heroku/nodejs"
+
+[[io.buildpacks.group]]
+uri = "urn:cnb:registry:heroku/nodejs-npm"
+
+[[io.buildpacks.group]]
+uri = "urn:cnb:registry:heroku/ruby"
+
