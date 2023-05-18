@@ -1,11 +1,14 @@
 name: Deploy
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows:
       - Test
     types:
       - completed
+    branches:
+      - main
 
 env:
   REGISTRY: ghcr.io
