@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 ruby "~> 3.0"
 
-gem "rails", "~> 7.0.4"
+gem "rails", "~> 7.0.5"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "redis"
 gem "puma"
