@@ -37,12 +37,6 @@ jobs:
       - name: Build application image
         run: pack build rubyapi --path . --builder heroku/builder:22 --tag ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:${{ github.sha }}
 
-      - name: Extract metadata (tags, labels) for Docker
-        id: meta
-        uses: docker/metadata-action@c4ee3adeed93b1fa6a762f209fb01608c1a22f1e
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-
       - name: Inspect application image
         run: pack inspect-image rubyapi
 
