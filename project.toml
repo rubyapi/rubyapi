@@ -15,8 +15,4 @@ value = "production"
 uri = "urn:cnb:registry:heroku/nodejs"
 
 [[io.buildpacks.group]]
-uri = "urn:cnb:registry:heroku/nodejs-npm"
-
-[[io.buildpacks.group]]
 uri = "urn:cnb:registry:heroku/ruby"
-
