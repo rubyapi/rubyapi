@@ -37,10 +37,10 @@ jobs:
         uses: buildpacks/github-actions/setup-pack@v5.2.0
 
       - name: Build application image
-        run: pack build rubyapi --path . --builder heroku/builder:22 --tag ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest,ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:${{ github.sha }}
+        run: pack build rubyapi --path . --builder heroku/builder:22 --tag ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
 
       - name: Inspect application image
         run: pack inspect-image rubyapi
 
       - name: Push Image
-        run: docker push --all-tags ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:${{ github.sha }}
+        run: docker push ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
