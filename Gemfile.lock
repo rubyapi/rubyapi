@@ -376,6 +376,10 @@ GEM
     rubocop-performance (1.16.0)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
+    rubocop-rails (2.19.1)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.33.0, < 2.0)
     ruby-next-core (0.15.3)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
@@ -397,6 +401,9 @@ GEM
     standard-performance (1.0.1)
       lint_roller (~> 1.0)
       rubocop-performance (~> 1.16.0)
+    standard-rails (0.1.0)
+      lint_roller (~> 1.0)
+      rubocop-rails (~> 2.19.0)
     stringio (3.0.4)
     thor (1.2.2)
     timeout (0.3.2)
@@ -483,6 +490,7 @@ DEPENDENCIES
   selenium-webdriver
   sitemap_generator
   standard
+  standard-rails
   trenni-sanitize
   tty-spinner
   typhoeus

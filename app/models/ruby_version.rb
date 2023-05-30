@@ -14,7 +14,7 @@ class RubyVersion < Dry::Struct
   alias_method :eol?, :eol
 
   def initialize(attributes = {})
-    raise ArgumentError, "version is required" unless attributes[:version].present?
+    raise ArgumentError, "version is required" if attributes[:version].blank?
 
     if attributes[:version] == "dev"
       @_version = "dev"

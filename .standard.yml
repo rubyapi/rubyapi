@@ -5,3 +5,6 @@ default_ignores: true
 
 ignore:
   - 'config/**/*.rb'
+
+plugins:
+  - standard-rails

@@ -10,7 +10,7 @@ namespace :import do
 
     release = RubyConfig.ruby_versions.find { |v| v.version == args[:version] }
 
-    unless release.present?
+    if release.blank?
       puts "Could not find MRI release for version #{args.version}"
       exit 1
     end

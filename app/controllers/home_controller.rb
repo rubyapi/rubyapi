@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   def set_theme
     theme = ThemeConfig.theme_for(params[:theme])
 
-    unless theme.present?
+    if theme.blank?
       return head :bad_request
     end
 

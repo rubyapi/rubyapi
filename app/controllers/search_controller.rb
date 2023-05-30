@@ -3,7 +3,7 @@
 class SearchController < ApplicationController
   MAX_SEARCH_QUERY_LENGTH = 255
 
-  before_action :index, -> { redirect_to root_path unless search_query.present? }
+  before_action :index, -> { redirect_to root_path if search_query.blank? }
   before_action :index, -> { head :bad_request if search_query.length >= MAX_SEARCH_QUERY_LENGTH }
 
   def index

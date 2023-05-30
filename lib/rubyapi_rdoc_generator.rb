@@ -144,7 +144,7 @@ class RubyAPIRDocGenerator
   end
 
   def clean_path(path, constant:)
-    return nil unless path.present?
+    return nil if path.blank?
     PathCleaner.clean(URI(path), constant:, version: @version)
   end
 
