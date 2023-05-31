@@ -2,6 +2,7 @@
   "recommendations": [
     "rebornix.ruby",
     "ms-azuretools.vscode-docker",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "testdouble.vscode-standard-ruby"
   ]
 }
