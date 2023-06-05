@@ -7,14 +7,11 @@ namespace :sitemap do
     SitemapGenerator::Sitemap.default_host = "https://rubyapi.org"
 
     if Rails.env.production?
-      require "aws-sdk-s3"
-
-      SitemapGenerator::Sitemap.sitemaps_host = "https://#{ENV["AWS_BUCKET_NAME"]}.s3.amazonaws.com/"
+      SitemapGenerator::Sitemap.sitemaps_host = "https://#{SitemapConfig.bucket_name}.s3.amazonaws.com/"
       SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new(
-        ENV["AWS_BUCKET_NAME"],
-        aws_access_key_id: ENV["AWS_KEY_ID"],
-        aws_secret_access_key: ENV["AWS_KEY_SECRET"],
-        aws_region: ENV["AWS_REGION"]
+        options: {
+          credentials: AwsConfig.credentials
+        }
       )
     end
 
