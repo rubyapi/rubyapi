@@ -5,8 +5,8 @@ class SearchRepository
   include Elasticsearch::Persistence::Repository::DSL
 
   settings(
-    number_of_shards: ElasticsearchConfig.number_of_shards,
-    number_of_replicas: ElasticsearchConfig.number_of_replicas,
+    number_of_shards: SearchConfig.number_of_shards,
+    number_of_replicas: SearchConfig.number_of_replicas,
     analysis: {
       normalizer: {
         lowercase: {
@@ -77,7 +77,7 @@ class SearchRepository
   end
 
   def self.repository_for_version(version)
-    new(index_name: "search_#{version}_#{Rails.env}")
+    new(client: SearchConfig.client, index_name: "search_#{version}_#{Rails.env}")
   end
 
   def deserialize(document)

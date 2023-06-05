@@ -6,7 +6,7 @@ class RubyObjectRepository
 
   klass RubyObject
 
-  settings number_of_shards: ElasticsearchConfig.number_of_shards, number_of_replicas: ElasticsearchConfig.number_of_replicas do
+  settings number_of_shards: SearchConfig.number_of_shards, number_of_replicas: SearchConfig.number_of_replicas do
     mapping do
       indexes :name, type: :text
       indexes :description, type: :text, index: false
@@ -18,7 +18,7 @@ class RubyObjectRepository
   end
 
   def self.repository_for_version(version)
-    new(index_name: "ruby_objects_#{version}_#{Rails.env}")
+    new(client: SearchConfig.client, index_name: "ruby_objects_#{version}_#{Rails.env}")
   end
 
   def bulk_import(objects)
