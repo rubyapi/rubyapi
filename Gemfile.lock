@@ -292,6 +292,17 @@ GEM
       racc (~> 1.4)
     nokogiri (1.15.2-x86_64-linux)
       racc (~> 1.4)
+    opensearch-api (2.2.0)
+      multi_json
+    opensearch-aws-sigv4 (1.2.0)
+      aws-sigv4 (~> 1)
+      opensearch-ruby (>= 1.0.1)
+    opensearch-ruby (2.1.0)
+      opensearch-api (~> 2.1)
+      opensearch-transport (~> 2.0)
+    opensearch-transport (2.1.0)
+      faraday (>= 1.0, < 3)
+      multi_json
     parallel (1.23.0)
     parser (3.2.2.1)
       ast (~> 2.4.1)
@@ -477,6 +488,8 @@ DEPENDENCIES
   lograge
   logstash-event
   meta-tags
+  opensearch-aws-sigv4
+  opensearch-ruby
   pastel
   pg
   propshaft

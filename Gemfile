@@ -12,6 +12,8 @@ gem "propshaft"
 gem "pg"
 
 gem "elasticsearch-persistence"
+gem "opensearch-aws-sigv4"
+gem "opensearch-ruby"
 
 gem "http"
 gem "typhoeus", require: false
