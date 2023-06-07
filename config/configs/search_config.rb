@@ -31,4 +31,20 @@ class SearchConfig < ApplicationConfig
   def sigv4_enabled?
     sigv4.present?
   end
+
+  def transport_options
+    transport_options: { ssl: ssl_options }
+  end
+
+  def ssl_options
+    {
+      verify: {
+        enabled: require_ssl_verification?,
+      }
+    }
+  end
+
+  def require_ssl_verification?
+    Rails.env.production?
+  end
 end
