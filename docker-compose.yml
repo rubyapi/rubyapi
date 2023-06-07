@@ -22,7 +22,6 @@ services:
       - "9200:9200"
     environment:
       - discovery.type=single-node
-      - plugins.security.disabled=true
     volumes:
       - search-data:/usr/share/opensearch/data
     healthcheck:
@@ -40,12 +39,12 @@ services:
     ports:
       - "5601:5601"
     environment:
-      OPENSEARCH_HOSTS: https://search:9200
+      OPENSEARCH_HOSTS: '["https://search:9200"]'
     healthcheck:
       test:
         [
           "CMD-SHELL",
-          "curl --fail --silent http://localhost:5601/api/status || exit 1"
+          "curl -u admin:admin --fail --silent http://localhost:5601/api/status || exit 1"
         ]
       interval: 5s
       timeout: 3s
