@@ -1,9 +1,16 @@
 class SearchConfig < ApplicationConfig
   attr_accessor :client
 
+
+  attr_config driver: "elasticsearch"
   attr_config url: "http://localhost:9200", number_of_shards: 1, number_of_replicas: 1, sigv4: false
+  attr_config user: "admin", password: "admin"
 
   on_load :set_client
+
+  def driver
+    values[:driver].inquiry
+  end
 
   private
 
@@ -12,10 +19,14 @@ class SearchConfig < ApplicationConfig
   end
 
   def search_client
-    if sigv4_enabled?
-      OpenSearch::Aws::Sigv4Client.new({host: url, log: true}, signer)
-    else
-      OpenSearch::Client.new(url: url)
+    if driver.elasticsearch?
+      Elasticsearch::Client.new(host: url)
+    elsif driver.opensearch?
+      if sigv4_enabled?
+        OpenSearch::Aws::Sigv4Client.new({host: url, transport_options: transport_options, log: true}, signer)
+      else
+        OpenSearch::Client.new(host: url, user: user, password: password, transport_options: transport_options)
+      end
     end
   end
 
@@ -33,14 +44,12 @@ class SearchConfig < ApplicationConfig
   end
 
   def transport_options
-    transport_options: { ssl: ssl_options }
+    { ssl: ssl_options }
   end
 
   def ssl_options
     {
-      verify: {
-        enabled: require_ssl_verification?,
-      }
+      verify: require_ssl_verification?,
     }
   end
 
