@@ -42,15 +42,13 @@ jobs:
     runs-on: ubuntu-latest
     services:
       search:
-        image: opensearchproject/opensearch:2.7.0
+        image: docker.elastic.co/elasticsearch/elasticsearch:8.4.3
         ports:
-          - "9600:9600"
-          - "9200:9200"
+          - 9200:9200
         env:
           "discovery.type": "single-node"
-          "plugins.security.disabled": "true"
-        volumes:
-          - search-data:/usr/share/opensearch/data
+          "ES_JAVA_OPTS": "-Xms512m -Xmx512m"
+          "xpack.security.enabled": "false"
         options: >-
           --health-cmd "curl --silent --fail http://localhost:9200/_cluster/health || exit 1"
           --health-start-period 30s
@@ -67,7 +65,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
       database:
-        image: postgres:15-alpine
+        image: postgres:14.3-alpine
         ports:
           - "5432:5432"
         env:
@@ -96,23 +94,30 @@ jobs:
     runs-on: ubuntu-latest
     services:
       search:
-        image: opensearchproject/opensearch:2.7.0
+        image: docker.elastic.co/elasticsearch/elasticsearch:8.4.3
         ports:
-          - "9600:9600"
-          - "9200:9200"
+          - 9200:9200
         env:
           "discovery.type": "single-node"
-          "plugins.security.disabled": "true"
-        volumes:
-          - search-data:/usr/share/opensearch/data
+          "ES_JAVA_OPTS": "-Xms512m -Xmx512m"
+          "xpack.security.enabled": "false"
         options: >-
           --health-cmd "curl --silent --fail http://localhost:9200/_cluster/health || exit 1"
           --health-start-period 30s
           --health-interval 10s
           --health-timeout 5s
           --health-retries 10
+      cache:
+        image: redis:7-alpine
+        ports:
+          - "6379:6379"
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
       database:
-        image: postgres:15-alpine
+        image: postgres:14.3-alpine
         ports:
           - "5432:5432"
         env:
@@ -150,15 +155,13 @@ jobs:
     runs-on: ubuntu-latest
     services:
       search:
-        image: opensearchproject/opensearch:2.7.0
+        image: docker.elastic.co/elasticsearch/elasticsearch:8.4.3
         ports:
-          - "9600:9600"
-          - "9200:9200"
+          - 9200:9200
         env:
           "discovery.type": "single-node"
-          "plugins.security.disabled": "true"
-        volumes:
-          - search-data:/usr/share/opensearch/data
+          "ES_JAVA_OPTS": "-Xms512m -Xmx512m"
+          "xpack.security.enabled": "false"
         options: >-
           --health-cmd "curl --silent --fail http://localhost:9200/_cluster/health || exit 1"
           --health-start-period 30s
@@ -175,7 +178,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
       database:
-        image: postgres:15-alpine
+        image: postgres:14.3-alpine
         ports:
           - "5432:5432"
         env:
