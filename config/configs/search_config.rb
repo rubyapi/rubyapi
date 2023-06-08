@@ -22,7 +22,7 @@ class SearchConfig < ApplicationConfig
     if driver.elasticsearch?
       Elasticsearch::Client.new(host: url)
     elsif driver.opensearch?
-      if sigv4_enabled?
+      if sigv4?
         OpenSearch::Aws::Sigv4Client.new({host: url, transport_options: transport_options, log: true}, signer)
       else
         OpenSearch::Client.new(host: url, user: user, password: password, transport_options: transport_options)
@@ -37,10 +37,6 @@ class SearchConfig < ApplicationConfig
       access_key_id: AwsConfig.credentials.access_key_id,
       secret_access_key: AwsConfig.credentials.secret_access_key,
     )
-  end
-
-  def sigv4_enabled?
-    sigv4.present?
   end
 
   def transport_options
