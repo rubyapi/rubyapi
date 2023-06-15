@@ -23,7 +23,7 @@ class AwsConfig < ApplicationConfig
     when "static"
       Aws::Credentials.new(self.access_key_id, self.secret_access_key, self.session_token)
     when "ecs"
-      Aws::ECSCredentials.new(ecs_credential_options)
+      Aws::ECSCredentials.new(ecs_credential_options).credentials
     else
       raise "Invalid AWS credential provider: #{provider}"
     end
