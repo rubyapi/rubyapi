@@ -24,7 +24,7 @@ class AwsConfigTest < ActiveSupport::TestCase
       "AWS_AUTHENTICATION_PROVIDER" => "ecs"
     ) do
       credentials = AwsConfig.new.credentials
-      assert_kind_of Aws::ECSCredentials, credentials
+      assert_kind_of Aws::Credentials, credentials
     end
   end
 end
