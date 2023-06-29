@@ -215,7 +215,7 @@ GEM
     irb (1.6.4)
       reline (>= 0.3.0)
     jmespath (1.6.2)
-    jsbundling-rails (1.1.1)
+    jsbundling-rails (1.1.2)
       railties (>= 6.0.0)
     json (2.6.3)
     kaminari (1.2.2)
