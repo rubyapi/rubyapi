@@ -83,5 +83,9 @@ test:
 #
 production:
   <<: *default
-  database: rubyapi_production
-  password: <%= ENV["RUBYAPI_DATABASE_PASSWORD"] %>
+  database: <%= ENV["PGDATABASE"] %>
+  host: <%= ENV["PGHOST"] %>
+  username: <%= ENV["PGUSER"] %>
+  password: <%= ENV["PGHOST"] %>
+  port: <%= ENV["PGPORT"] %>
+  password: <%= ENV["PGPASSWORD"] %>
