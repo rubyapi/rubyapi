@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
-    "@rails/actioncable": "^7.0.6",
+    "@rails/actioncable": "^7.0.7",
     "clipboard-copy": "^4.0.1",
     "esbuild": "^0.19.0",
     "hotkeys-js": "^3.12.0",
