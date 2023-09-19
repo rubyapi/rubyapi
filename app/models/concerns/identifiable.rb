@@ -23,7 +23,7 @@ module Identifiable
     end
 
     def path_from_constant(constant)
-      constant&.downcase&.gsub(/::/, "/")
+      constant&.downcase&.gsub("::", "/")
     end
   end
 end
