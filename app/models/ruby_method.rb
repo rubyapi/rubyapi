@@ -42,7 +42,7 @@ class RubyMethod < Dry::Struct
   alias_method :autocomplete, :identifier
 
   def object_path
-    object_constant&.downcase&.gsub(/::/, "/")
+    object_constant&.downcase&.gsub("::", "/")
   end
 
   def is_alias?

@@ -16,7 +16,7 @@ class RubyAPIRDocGenerator
     "RW" => "Read & Write"
   }.freeze
 
-  SKIP_NAMESPACE_REGEX = /^(#{SKIP_NAMESPACES.join('|')})($|::.+)/
+  SKIP_NAMESPACE_REGEX = /^(#{SKIP_NAMESPACES.join("|")})($|::.+)/
 
   def class_dir
   end
@@ -41,7 +41,7 @@ class RubyAPIRDocGenerator
     objects = []
 
     if @release.has_type_signatures?
-      require_relative "./ruby_type_signature_repository"
+      require_relative "ruby_type_signature_repository"
       @type_repository = RubyTypeSignatureRepository.new(@options.files.first)
     end
 
