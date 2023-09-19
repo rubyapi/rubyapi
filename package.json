@@ -20,7 +20,7 @@
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.60.1",
     "@types/lodash": "^4.14.198",
-    "eslint": "^8.48.0",
+    "eslint": "^8.49.0",
     "eslint-config-standard-with-typescript": "^37.0.0",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-n": "^16.1.0",
