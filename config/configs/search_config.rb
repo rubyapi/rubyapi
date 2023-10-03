@@ -34,8 +34,7 @@ class SearchConfig < ApplicationConfig
     Aws::Sigv4::Signer.new(
       service: 'es',
       region: AwsConfig.region,
-      access_key_id: AwsConfig.credentials.access_key_id,
-      secret_access_key: AwsConfig.credentials.secret_access_key,
+      credentials_provider: AwsConfig.authentication_provider
     )
   end
 
