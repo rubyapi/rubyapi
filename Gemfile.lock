@@ -227,7 +227,7 @@ GEM
       activesupport (>= 3.0)
       nokogiri (>= 1.6)
     io-console (0.6.0)
-    irb (1.8.1)
+    irb (1.8.3)
       rdoc
       reline (>= 0.3.8)
     jmespath (1.6.2)
@@ -284,7 +284,7 @@ GEM
       actionpack (>= 3.2.0, < 7.2)
     method_source (1.0.0)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.4)
+    mini_portile2 (2.8.5)
     minitest (5.20.0)
     msgpack (1.7.2)
     multi_json (1.15.0)
@@ -322,12 +322,12 @@ GEM
     pastel (0.8.0)
       tty-color (~> 0.5)
     pg (1.5.4)
-    propshaft (0.7.0)
+    propshaft (0.8.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
       rack
       railties (>= 7.0.0)
-    psych (5.0.2)
+    psych (5.1.1.1)
       stringio
     public_suffix (5.0.3)
     puma (6.4.0)
@@ -439,8 +439,8 @@ GEM
     standard-rails (0.2.0)
       lint_roller (~> 1.0)
       rubocop-rails (~> 2.20.2)
-    stringio (3.0.4)
-    thor (1.2.2)
+    stringio (3.0.8)
+    thor (1.3.0)
     timeout (0.4.0)
     trenni (3.13.1)
       rake-compiler
