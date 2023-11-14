@@ -47,7 +47,7 @@ jobs:
           - 9200:9200
         env:
           "discovery.type": "single-node"
-          "xpack.security.enabled": "false"
+          "plugins.security.disabled": "true"
         options: >-
           --health-cmd "curl --silent --fail http://localhost:9200/_cluster/health || exit 1"
           --health-start-period 30s
@@ -98,7 +98,7 @@ jobs:
           - 9200:9200
         env:
           "discovery.type": "single-node"
-          "xpack.security.enabled": "false"
+          "plugins.security.disabled": "true"
         options: >-
           --health-cmd "curl --silent --fail http://localhost:9200/_cluster/health || exit 1"
           --health-start-period 30s
@@ -158,8 +158,7 @@ jobs:
           - 9200:9200
         env:
           "discovery.type": "single-node"
-          "ES_JAVA_OPTS": "-Xms512m -Xmx512m"
-          "xpack.security.enabled": "false"
+          "plugins.security.disabled": "true"
         options: >-
           --health-cmd "curl --silent --fail http://localhost:9200/_cluster/health || exit 1"
           --health-start-period 30s
