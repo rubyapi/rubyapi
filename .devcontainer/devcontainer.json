@@ -2,11 +2,6 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/alpine
 {
   "name": "Ruby API",
-  // Features to add to the dev container. More info: https://containers.dev/features.
-  "features": {
-    "ghcr.io/devcontainers/features/ruby:1": {},
-    "ghcr.io/devcontainers/features/node:1": {}
-  },
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [
     3000, // Rails
@@ -29,9 +24,9 @@
     "search"
   ],
   // Use 'postCreateCommand' to run commands after the container is created.
-  "postCreateCommand": "bin/devcontainer-setup",
+  "onCreateCommand": "bin/setup",
   // Use 'postStartCommand' to run commands after the container is started.
-  "postStartCommand": "bin/dev",
+  "updateContentCommand": "bin/setup",
   // Configure tool-specific properties.
   "customizations": {
     "codespaces": {
@@ -41,10 +36,8 @@
     },
     "vscode": {
       "extensions": [
-        "rebornix.ruby",
-        "ms-azuretools.vscode-docker",
-        "dbaeumer.vscode-eslint"
+        "Shopify.ruby-lsp"
       ]
     }
-  },
+  }
 }
