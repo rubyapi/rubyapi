@@ -20,8 +20,8 @@
   // Use 'service' property to list services to start as part of the container. More info: https://code.visualstudio.com/docs/remote/containers-advanced#_developing-inside-a-container-service
   "runServices": [
     "database",
-    "kibana",
-    "search"
+    "search",
+    "search-console"
   ],
   // Use 'postCreateCommand' to run commands after the container is created.
   "onCreateCommand": "bin/setup",

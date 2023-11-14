@@ -8,5 +8,6 @@ services:
     volumes:
       - ../..:/workspaces:cached
     environment:
-      - ELASTICSEARCH_URL=http://search:9200
+      - SEARCH_URL=http://search:9200
+      - SEARCH_DRIVER=opensearch
       - DATABASE_URL=postgres://postgres@database:5432
