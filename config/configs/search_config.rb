@@ -1,8 +1,7 @@
 class SearchConfig < ApplicationConfig
   attr_accessor :client
 
-
-  attr_config driver: "elasticsearch"
+  attr_config driver: "opensearch"
   attr_config url: "http://localhost:9200", number_of_shards: 1, number_of_replicas: 1, sigv4: false
   attr_config user: "admin", password: "admin"
 
