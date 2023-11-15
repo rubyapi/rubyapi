@@ -29,17 +29,22 @@ module Search
     end
 
     def search
-      response = search_repository.search(elasticsearch_options)
-      Results.new(response:, query: elasticsearch_options)
+      Elasticsearch::Persistence::Repository::Response::Results.new(
+        search_repository, search_repository.client.search(index:, body:)
+      )
     end
 
     private
+
+    def index
+      search_repository.index_name
+    end
 
     def search_repository
       @search_repository ||= SearchRepository.repository_for_version(@version)
     end
 
-    def elasticsearch_options
+    def body
       {
         query: {
           function_score: {

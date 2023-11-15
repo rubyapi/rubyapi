@@ -12,16 +12,24 @@ module Search
     end
 
     def perform
-      search_repository.search(elasticsearch_query)
+      Elasticsearch::Persistence::Repository::Response::Results.new(search_repository, client.search(index:, body:))
     end
 
     private
+
+    def client
+      SearchConfig.client
+    end
+
+    def index
+      search_repository.index_name
+    end
 
     def search_repository
       @search_repository ||= SearchRepository.repository_for_version(@version)
     end
 
-    def elasticsearch_query
+    def body
       {
         query: {
           function_score: {
