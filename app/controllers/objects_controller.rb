@@ -2,8 +2,8 @@
 
 class ObjectsController < ApplicationController
   rescue_from Elasticsearch::Persistence::Repository::DocumentNotFound,
-              OpenSearch::Transport::Transport::Errors::NotFound,
-              with: -> { raise ActionController::RoutingError.new("Not Found") }
+    OpenSearch::Transport::Transport::Errors::NotFound,
+    with: -> { raise ActionController::RoutingError.new("Not Found") }
 
   def show
     expires_in 24.hours, public: true, must_revalidate: true
