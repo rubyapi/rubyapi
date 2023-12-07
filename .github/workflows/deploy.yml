@@ -33,14 +33,8 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup pack command
-        uses: buildpacks/github-actions/setup-pack@v5.5.1
-
-      - name: Build application image
-        run: pack build rubyapi --path . --builder heroku/builder:22 --tag ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
-
-      - name: Inspect application image
-        run: pack inspect-image rubyapi
-
-      - name: Push Image
-        run: docker push ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
