@@ -3,8 +3,9 @@
 ---
 options:
   cache: true
+  ci: true
   parallel: true
-  postgresql: false
+  prepare: false
   procfile: Procfile
   sudo: true
   yjit: true
