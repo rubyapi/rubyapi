@@ -9,9 +9,6 @@ console_command = "/rails/bin/rails console"
 
 [build]
 
-[deploy]
-  release_command = "./bin/rails db:prepare"
-
 [http_service]
   internal_port = 3000
   force_https = true
