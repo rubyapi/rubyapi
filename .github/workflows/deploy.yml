@@ -3,38 +3,21 @@ name: Deploy
 on:
   workflow_dispatch:
   workflow_run:
-    workflows:
-      - Test
-    types:
-      - completed
-    branches:
-      - main
+    workflows: ["Test"]
+    types: ["completed"]
+    branches: ["main"]
 
 env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
 concurrency: production_deploy
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-
+    if: github.event.workflow_run.conclusion == 'success'
     steps:
       - uses: actions/checkout@v4
-
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
+      - uses: superfly/flyctl-actions@1.4
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and push
-        uses: docker/build-push-action@v5
-        with:
-          push: true
-          tags: ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
+          args: "deploy --app rubyapi --wait-timeout 180 -e GIT_SHA=$GITHUB_SHA"
