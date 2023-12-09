@@ -4,7 +4,7 @@
 options:
   cache: true
   parallel: true
-  postgresql: true
+  postgresql: false
   procfile: Procfile
   sudo: true
   yjit: true
