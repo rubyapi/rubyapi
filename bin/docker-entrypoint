@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-# if [ "${*}" == "foreman start --procfile=Procfile" ]; then
-  # ./bin/rails db:prepare
-# fi
+# Add any container initialization steps here
 
 exec "${@}"
