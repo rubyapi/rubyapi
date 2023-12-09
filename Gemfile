@@ -47,6 +47,7 @@ group :development do
   gem "listen", ">= 3.0.5", "< 3.9"
   gem "standard"
   gem "standard-rails"
+  gem "dockerfile-rails"
 end
 
 group :test do
