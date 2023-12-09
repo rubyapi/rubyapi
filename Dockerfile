@@ -57,6 +57,7 @@ RUN bundle exec bootsnap precompile app/ lib/
 # We need to run precompile twice so Propshaft sees the newly compiled assets
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 
 # Final stage for app image
