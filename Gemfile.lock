@@ -128,9 +128,9 @@ GEM
       libddwaf (~> 1.14.0.0.0)
       msgpack
     debase-ruby_core_source (3.2.2)
-    debug (1.8.0)
-      irb (>= 1.5.0)
-      reline (>= 0.3.1)
+    debug (1.9.0)
+      irb (~> 1.10)
+      reline (>= 0.3.8)
     dockerfile-rails (1.5.14)
       rails (>= 3.0.0)
     dogstatsd-ruby (5.6.1)
@@ -230,7 +230,7 @@ GEM
       activesupport (>= 3.0)
       nokogiri (>= 1.6)
     io-console (0.6.0)
-    irb (1.9.0)
+    irb (1.10.1)
       rdoc
       reline (>= 0.3.8)
     jmespath (1.6.2)
@@ -395,7 +395,7 @@ GEM
     redis-client (0.17.1)
       connection_pool
     regexp_parser (2.8.3)
-    reline (0.4.0)
+    reline (0.4.1)
       io-console (~> 0.5)
     request_store (1.5.1)
       rack (>= 1.4)
