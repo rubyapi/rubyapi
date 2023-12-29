@@ -1,10 +1,10 @@
 default: &default
   versions:
     - version: 3.3
-      sha256: 6ecafecf83f2cacf446b2326012f2b6ee1a0614d8dd29bb1fb3f105c27e2c553
-      url: https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.0-preview1.zip
+      sha256: 0e6563f679dd3694732eb3addf9de681c67b584602ac574376b60e7a509d2cd8
+      url: https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.0.zip
       git:
-        tag: v3_3_0_preview1
+        tag: v3_3_0
         branch: ruby_3_3
     - version: 3.2
       default: true
