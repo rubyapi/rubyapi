@@ -15,7 +15,7 @@ namespace :sitemap do
       )
     end
 
-    SitemapGenerator::Sitemap.create do
+    SitemapGenerator::Sitemap.create! do
       add "/", changefreq: "never"
 
       RubyConfig.ruby_versions.each do |version|

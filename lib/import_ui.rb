@@ -27,12 +27,12 @@ module ImportUI
 
   def self.info(message)
     clear_line
-    puts message
+    Rails.logger.debug message
   end
 
   def self.warn(message)
     clear_line
-    puts color.yellow message
+    Rails.logger.debug color.yellow message
   end
 
   def self.color
