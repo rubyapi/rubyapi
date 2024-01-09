@@ -20,6 +20,6 @@ class CodeExecuteController < ApplicationController
   end
 
   def engine
-    params[:engine].present? ? params[:engine] : "mri"
+    params[:engine].presence || "mri"
   end
 end

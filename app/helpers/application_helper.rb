@@ -4,8 +4,7 @@ module ApplicationHelper
   GITHUB_REPO = "https://github.com/ruby/ruby/blob"
 
   def homepage?
-    return(@is_homepage) if defined?(@is_homepage)
-    @is_homepage = current_page?(root_path) || current_page?(versioned_root_path(version: Current.ruby_version))
+    current_page?(root_path) || current_page?(versioned_root_path(version: Current.ruby_version))
   end
 
   # Map a method source file into a url to Github.com

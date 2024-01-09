@@ -5,8 +5,8 @@ require_relative "../config/environment"
 require "rails/test_help"
 require "webmock/minitest"
 
-Dir.glob(Rails.root.join("lib/*.rb")).each { |f| require_relative f }
-Dir.glob(Rails.root.join("test/factories/*.rb")).each { |f| require_relative f }
+Rails.root.glob("lib/*.rb").each { |f| require_relative f }
+Rails.root.glob("test/factories/*.rb").each { |f| require_relative f }
 
 WebMock.disable!
 

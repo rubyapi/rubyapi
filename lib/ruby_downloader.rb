@@ -19,8 +19,10 @@ class RubyDownloader
       # Don't cache dev, since it changes frequently
       extracted_download_path.rmtree if extracted_download_path.exist?
     elsif already_fetched?
-      puts "Found previously extracted download for " \
+      Rails.logger.debug {
+        "Found previously extracted download for " \
         "#{release.version}, skipping"
+      }
       return
     end
 
@@ -29,7 +31,7 @@ class RubyDownloader
   end
 
   def rubies_download_path
-    Rails.root.join "tmp", "rubies"
+    Rails.root.join "tmp/rubies"
   end
 
   def download_path
