@@ -234,7 +234,7 @@ GEM
       rdoc
       reline (>= 0.3.8)
     jmespath (1.6.2)
-    jsbundling-rails (1.2.1)
+    jsbundling-rails (1.2.2)
       railties (>= 6.0.0)
     json (2.7.1)
     kaminari (1.2.2)
