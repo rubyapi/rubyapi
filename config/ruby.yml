@@ -1,6 +1,7 @@
 default: &default
   versions:
     - version: 3.3
+      default: true
       sha256: 0e6563f679dd3694732eb3addf9de681c67b584602ac574376b60e7a509d2cd8
       url: https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.0.zip
       signatures: false
@@ -8,7 +9,6 @@ default: &default
         tag: v3_3_0
         branch: ruby_3_3
     - version: 3.2
-      default: true
       sha256: cca9ddbc958431ff77f61948cb67afa569f01f99c9389d2bbedfa92986c9ef09
       url: https://cache.ruby-lang.org/pub/ruby/3.2/ruby-3.2.0.zip
       signatures: true
