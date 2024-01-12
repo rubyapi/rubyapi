@@ -32,10 +32,10 @@ class RubyVersionTest < ActiveSupport::TestCase
   end
 
   test "type signatures" do
-    ruby_version = FactoryBot.build(:ruby_version, version: "3.0")
+    ruby_version = FactoryBot.build(:ruby_version, version: "3.0", signatures: true)
     assert ruby_version.has_type_signatures?
 
-    ruby_version = FactoryBot.build(:ruby_version, version: "2.7")
+    ruby_version = FactoryBot.build(:ruby_version, version: "2.7", signatures: false)
     refute ruby_version.has_type_signatures?
   end
 
