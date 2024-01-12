@@ -1,3 +1,5 @@
+return if Rails.env.development? || Rails.env.test?
+
 require 'datadog/statsd'
 require 'ddtrace'
 
