@@ -5,6 +5,7 @@ class RubyVersion < Dry::Struct
   attribute :url, Types::String
   attribute :sha256, Types::String
   attribute :git, Types::Hash.default({}.freeze) # Git repository information
+  attribute :signatures, Types::Bool.default(false) # Whether or not this version has type signatures
 
   attribute :default, Types::Bool.default(false) # The latest stable version of Ruby
   attribute :eol, Types::Bool.default(false) # Versions of Ruby that have reached end-of-life
@@ -12,6 +13,7 @@ class RubyVersion < Dry::Struct
 
   alias_method :default?, :default
   alias_method :eol?, :eol
+  alias_method :has_type_signatures?, :signatures
 
   def initialize(attributes = {})
     raise ArgumentError, "version is required" if attributes[:version].blank?
@@ -44,10 +46,6 @@ class RubyVersion < Dry::Struct
 
   def dev?
     version == "dev"
-  end
-
-  def has_type_signatures?
-    @_version >= "3.0" || dev?
   end
 
   def to_s

@@ -35,7 +35,8 @@ class RubyConfig < ApplicationConfig
         default: v[:default] || false,
         eol: v[:eol] || false,
         prerelease: v[:prerelease] || false,
-        git: v[:git] || {}
+        git: v[:git] || {},
+        signatures: v[:signatures] || false,
       )
     end
   end
