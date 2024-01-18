@@ -25,14 +25,14 @@ default: &default
     - version: 3.0
       sha256: 4b63c59ebdc0abcea139a561d67dfa9770af2d9619390f34b8a53f9625a1090d
       url: https://cache.ruby-lang.org/pub/ruby/3.0/ruby-3.0.5.zip
-      signatures: true
+      signatures: false
       git:
         tag: v3_0_5
         branch: ruby_3_0
     - version: 2.7
       url: https://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.6.zip
       sha256: 2ead329cfb9a5975348d2fdcfa0cb60bb3ba47a6693e93afd52db7a0ba01ac4c
-      signatures: true
+      signatures: false
       git:
         tag: v2_7_6
         branch: ruby_2_7
