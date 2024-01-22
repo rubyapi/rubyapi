@@ -329,7 +329,6 @@ GEM
       racc
     pastel (0.8.0)
       tty-color (~> 0.5)
-    pg (1.5.4)
     propshaft (0.8.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -522,7 +521,6 @@ DEPENDENCIES
   opensearch-aws-sigv4
   opensearch-ruby
   pastel
-  pg
   propshaft
   puma
   rack-attack
