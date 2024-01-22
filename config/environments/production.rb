@@ -79,18 +79,6 @@ Rails.application.configure do
 
   # Format Rails logs
   config.lograge.enabled = true
-  config.lograge.formatter = Lograge::Formatters::Logstash.new
-  config.lograge.custom_options = lambda do |event|
-    { search: event.payload[:searchkick_runtime] } if event.payload[:searchkick_runtime].to_f.positive?
-  end
-
-  config.lograge.custom_payload do |controller|
-    {
-      params: controller.request.filtered_parameters.except('controller', 'action', 'q'),
-      client_ip: controller.request.ip,
-      user_agent: controller.request.user_agent,
-    }
-  end
 
   # Disable CSRF protections
   config.action_controller.allow_forgery_protection = false

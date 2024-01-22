@@ -1,0 +1,70 @@
+# fly.toml app configuration file generated for rubyapi on 2023-12-08T18:52:52-08:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "rubyapi"
+primary_region = "iad"
+console_command = "bundle exec rails console"
+kill_signal = "SIGINT"
+kill_timeout = 5
+
+[env]
+PORT = "3000"
+RAILS_ENV = "production"
+RAILS_LOG_TO_STDOUT = "true"
+WEB_CONCURRENCY = "2"
+TS_DEBUG_FIREWALL_MODE = "nftables"
+SEARCH_DRIVER = "opensearch"
+DD_APM_INSTRUMENTATION_ENABLED = "host"
+DD_APM_ENABLED = "true"
+DD_PROFILING_ENABLED = "true"
+DD_PROCESS_AGENT_PROCESS_COLLECTION_ENABLED = "true"
+DD_APM_NON_LOCAL_TRAFFIC = "true"
+
+[[services]]
+internal_port = 3000
+protocol = "tcp"
+
+[services.concurrency]
+hard_limit = 25
+soft_limit = 20
+
+[[services.ports]]
+handlers = ["http"]
+port = 80
+force_https = true
+
+[[services.ports]]
+handlers = ["tls", "http"]
+port = 443
+
+[[services.http_checks]]
+grace_period = "20s"
+interval = "30s"
+method = "GET"
+timeout = "2s"
+protocol = "http"
+path = "/ping"
+
+[services.http_checks.headers]
+X-Forwarded-Proto = "https"
+
+# [[http_service.checks]]
+# grace_period = "10s"
+# interval = "30s"
+# method = "GET"
+# timeout = "5s"
+# path = "/"
+
+[deploy]
+strategy = "rolling"
+
+[[vm]]
+cpu_kind = "performance"
+cpus = 2
+memory = "4gb"
+
+[[statics]]
+guest_path = "/rails/public"
+url_prefix = "/"
