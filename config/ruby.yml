@@ -70,7 +70,7 @@ default: &default
     - version: dev
       url: https://codeload.github.com/ruby/ruby/zip/refs/heads/master
       sha256:
-      signatures: true
+      signatures: false
       git:
         branch: master
 
