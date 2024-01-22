@@ -1,20 +1,5 @@
-version: '3'
+version: "3"
 services:
-  database:
-    image: postgres:15-alpine
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_HOST_AUTH_METHOD=trust
-      - POSTGRES_USER=rubyapi
-    volumes:
-      - database-data:/var/lib/postgresql/data
-    healthcheck:
-      test: [ "CMD-SHELL", "pg_isready" ]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-
   search:
     image: opensearchproject/opensearch:2.11.0
     ports:
@@ -29,7 +14,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "curl --fail --silent http://localhost:9600/_cluster/health?wait_for_status=green&timeout=50s || exit 1 "
+          "curl --fail --silent http://localhost:9600/_cluster/health?wait_for_status=green&timeout=50s || exit 1 ",
         ]
       retries: 3
       interval: 5s
@@ -45,7 +30,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "curl -u admin:admin --fail --silent http://localhost:5601/api/status || exit 1"
+          "curl -u admin:admin --fail --silent http://localhost:5601/api/status || exit 1",
         ]
       interval: 5s
       timeout: 3s
@@ -55,4 +40,3 @@ services:
 
 volumes:
   search-data: {}
-  database-data: {}
