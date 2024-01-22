@@ -10,4 +10,3 @@ services:
     environment:
       - SEARCH_URL=http://search:9200
       - SEARCH_DRIVER=opensearch
-      - DATABASE_URL=postgres://postgres@database:5432
