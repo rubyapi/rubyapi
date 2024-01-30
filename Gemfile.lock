@@ -99,7 +99,7 @@ GEM
     base64 (0.2.0)
     bigdecimal (3.1.5)
     bindex (0.8.1)
-    bootsnap (1.17.1)
+    bootsnap (1.18.1)
       msgpack (~> 1.2)
     builder (3.2.4)
     capybara (3.39.2)
