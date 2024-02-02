@@ -9,6 +9,7 @@ gem "puma"
 gem "jsbundling-rails"
 gem "cssbundling-rails"
 gem "propshaft"
+gem "sqlite3"
 
 gem "elasticsearch-persistence"
 gem "opensearch-aws-sigv4"
