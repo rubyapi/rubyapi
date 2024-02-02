@@ -15,9 +15,8 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "object not found" do
-    assert_raises(ActionController::RoutingError) do
-      get object_url object: "invalid"
-    end
+    get object_url object: "invalid"
+    assert_response :not_found
   end
 
   test "different ruby version" do
@@ -36,9 +35,9 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
 
     index_object other_object, version: "2.3"
 
-    assert_raises(ActionController::RoutingError) do
-      get object_url object: other_object.path, verison: default_ruby_version
-    end
+    get object_url object: other_object.path, verison: default_ruby_version
+
+    assert_response :not_found
   end
 
   test "show method sequence" do
