@@ -6,7 +6,7 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  config.cache_classes = false
+  config.enable_reloading = true
 
   # Do not eager load code on boot.
   config.eager_load = false
@@ -23,6 +23,7 @@ Rails.application.configure do
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
+    config.cache_store = :memory_store
     config.public_file_server.headers = {
       "Cache-Control" => "public, max-age=#{2.days.to_i}"
     }
@@ -31,6 +32,14 @@ Rails.application.configure do
 
     config.cache_store = :null_store
   end
+
+  # Store uploaded files on the local file system (see config/storage.yml for options).
+  # config.active_storage.service = :local
+
+  # Don't care if the mailer can't send.
+  # config.action_mailer.raise_delivery_errors = false
+
+  # config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -42,10 +51,16 @@ Rails.application.configure do
   config.active_support.disallowed_deprecation_warnings = []
 
   # Raise an error on page load if there are pending migrations.
-  # config.active_record.migration_error = :page_load
+  config.active_record.migration_error = :page_load
 
   # Highlight code that triggered database queries in logs.
-  # config.active_record.verbose_query_logs = true
+  config.active_record.verbose_query_logs = true
+
+  # Highlight code that enqueued background job in logs.
+  config.active_job.verbose_enqueue_logs = true
+
+  # Suppress logger output for asset requests.
+  config.assets.quiet = true
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
@@ -56,7 +71,6 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  # Site doesn't have a login, so the CSRF protection isn't helpful
-  # In fact, it's problematic because the varying CSRF tokens means you can't get a consistent ETag
-  config.action_controller.allow_forgery_protection = false
+  # Raise error when a before_action's only/except options reference missing actions
+  config.action_controller.raise_on_missing_callback_actions = true
 end
