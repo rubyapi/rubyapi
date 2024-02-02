@@ -2,9 +2,9 @@ require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
-# require "active_model/railtie"
+require "active_model/railtie"
 require "active_job/railtie"
-# require "active_record/railtie"
+require "active_record/railtie"
 # require "active_storage/engine"
 require "action_controller/railtie"
 # require "action_mailer/railtie"
@@ -25,7 +25,12 @@ module RubyApi
     # config.anyway_config.autoload_static_config_path = "config/configs"
     #
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 7.1
+
+    # Please, add to the `ignore` list any other `lib` subdirectories that do
+    # not contain `.rb` files, or that should not be reloaded or eager loaded.
+    # Common ones are `templates`, `generators`, or `middleware`, for example.
+    config.autoload_lib(ignore: %w(tasks))
 
     # Configuration for the application, engines, and railties goes here.
     #
