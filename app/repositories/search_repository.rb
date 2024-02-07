@@ -93,6 +93,11 @@ class SearchRepository
     end
   end
 
+  def search(query_or_definition, options={})
+    request = { index: index_name, body: query_or_definition.to_hash }
+    Response::Results.new(self, client.search(request.merge(options)))
+  end
+
   private
 
   def klass_for_document(document)
