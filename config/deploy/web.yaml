@@ -1,0 +1,137 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    app.kubernetes.io/app: rubyapi
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/app: rubyapi
+      app.kubernetes.io/process: web
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/app: rubyapi
+        app.kubernetes.io/process: web
+    spec:
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: topology.kubernetes.io/zone
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/app: rubyapi
+              app.kubernetes.io/process: web
+      containers:
+        - name: web
+          image: ghcr.io/rubyapi/rubyapi/rubyapi:latest
+          ports:
+            - containerPort: 3000
+          imagePullPolicy: Always
+          command: ["/bin/sh", "-c"]
+          args: ["bundle exec rails server -p 3000 -b 0.0.0.0"]
+          env:
+            - name: RAILS_ENV
+              value: production
+            - name: RAILS_LOG_TO_STDOUT
+              value: "true"
+            - name: RAILS_SERVE_STATIC_FILES
+              value: "true"
+            - name: WEB_CONCURRENCY
+              value: "2"
+            - name: RAILS_MASTER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: secret-key-base
+                  key: master-key
+            - name: SEARCH_DRIVER
+              value: "opensearch"
+            - name: SEARCH_URL
+              valueFrom:
+                secretKeyRef:
+                  name: rubyapi-opensearch
+                  key: search-url
+            - name: SEARCH_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: rubyapi-opensearch
+                  key: search-user
+            - name: SEARCH_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: rubyapi-opensearch
+                  key: search-password
+          resources:
+            requests:
+              cpu: 1000m
+              memory: 1024Mi
+            limits:
+              cpu: 1250m
+              memory: 1280Mi
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: 3000
+              httpHeaders:
+                - name: X-Forwarded-Proto
+                  value: https
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rubyapi-web
+  labels:
+    app.kubernetes.io/project: rubyapi
+    app.kubernetes.io/app: rubyapi
+    app.kubernetes.io/process: web
+spec:
+  type: NodePort
+  selector:
+    app.kubernetes.io/project: rubyapi
+    app.kubernetes.io/app: rubyapi
+    app.kubernetes.io/process: web
+  ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rubyapi-web-ingress
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: rubyapp-web.app.aws.rubyapi.org
+    alb.ingress.kubernetes.io/load-balancer-name: rubyapi-web
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-path: /ping
+    alb.ingress.kubernetes.io/healthcheck-port: traffic-port
+    alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
+    alb.ingress.kubernetes.io/healthcheck-interval-seconds: "30"
+    alb.ingress.kubernetes.io/healthcheck-timeout-seconds: "5"
+    alb.ingress.kubernetes.io/success-codes: "200"
+    alb.ingress.kubernetes.io/healthy-threshold-count: "2"
+    alb.ingress.kubernetes.io/unhealthy-threshold-count: "2"
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:048268392960:certificate/ea563376-3b6a-44e0-af53-1a45b61f7b1c
+    alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
+spec:
+  ingressClassName: alb
+  rules:
+    - host: rubyapi-web.aws.rubyapi.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: rubyapi-web
+                port:
+                  number: 3000
