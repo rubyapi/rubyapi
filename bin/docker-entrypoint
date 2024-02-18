@@ -2,19 +2,6 @@
 
 if [ "${*}" == "foreman start --procfile=Procfile" ]; then
   # check if running in production mode
-  if [[ ! -z "${FLY_APP_NAME}" ]]; then
-    # Start Up Tailscale
-    sudo /usr/bin/tailscaled --state=/var/lib/tailscale/tailscaled.state --socket=/var/run/tailscale/tailscaled.sock &
-    sleep 3
-    echo "Connecting to tailscale network"
-    sudo /usr/bin/tailscale up --authkey=${TAILSCALE_AUTH_KEY} --hostname=${FLY_MACHINE_ID} --accept-routes
-    sleep 1
-
-    echo "Starting Datadog Agent"
-    sudo /opt/datadog-agent/bin/agent/agent run -p /opt/datadog-agent/run/agent.pid &
-    sudo /opt/datadog-agent/embedded/bin/trace-agent --config /etc/datadog-agent/datadog.yaml --pidfile /opt/datadog-agent/run/trace-agent.pid &
-    sudo /opt/datadog-agent/embedded/bin/process-agent --cfgpath=/etc/datadog-agent/datadog.yaml --sysprobe-config=/etc/datadog-agent/system-probe.yaml --pid=/opt/datadog-agent/run/process-a &
-  fi
 fi
 
 exec "${@}"

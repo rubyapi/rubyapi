@@ -73,27 +73,11 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 # Final stage for app image
 FROM base
 
-# Use dummy Datadog API Key to complete installation
-ARG DD_API_KEY="123" \
-  DD_AGENT_MAJOR_VERSION="7" \
-  DD_INSTALL_ONLY="true" \
-  DD_AGENT_FLAVOR="datadog-agent"
-
 # Install packages needed for deployment
 RUN --mount=type=cache,id=dev-apt-cache,sharing=locked,target=/var/cache/apt \
   --mount=type=cache,id=dev-apt-lib,sharing=locked,target=/var/lib/apt \
   apt-get update -qq && \
   apt-get install --no-install-recommends -y curl postgresql-client ruby-foreman sudo unzip
-
-# Import Tailscale binary
-COPY --from=docker.io/tailscale/tailscale:stable /usr/local/bin/tailscaled /usr/bin/tailscaled
-COPY --from=docker.io/tailscale/tailscale:stable /usr/local/bin/tailscale /usr/bin/tailscale
-RUN mkdir -p /var/run/tailscale /var/cache/tailscale /var/lib/tailscale
-
-# Install the Datadog Agent & Dogstatsd packages
-RUN curl -sS -L "https://raw.githubusercontent.com/DataDog/datadog-agent/master/cmd/agent/install_script.sh" | bash
-RUN mkdir -p /etc/datadog-agent && \
-  touch /etc/datadog-agent/datadog.yaml
 
 # Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle
@@ -112,9 +96,7 @@ RUN groupadd --system --gid 1000 rails && \
 USER 1000:1000
 
 # Deployment options
-ENV RUBY_YJIT_ENABLE="1" \
-  DD_HOSTNAME="" \
-  DD_TAGS=""
+ENV RUBY_YJIT_ENABLE="1"
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
