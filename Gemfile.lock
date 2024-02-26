@@ -265,7 +265,7 @@ GEM
     libddwaf (1.14.0.0.0-x86_64-linux)
       ffi (~> 1.0)
     lint_roller (1.1.0)
-    listen (3.8.0)
+    listen (3.9.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     llhttp-ffi (0.5.0)
@@ -518,7 +518,7 @@ DEPENDENCIES
   inline_svg
   jsbundling-rails
   kaminari (~> 1.2.2)
-  listen (>= 3.0.5, < 3.9)
+  listen (>= 3.0.5, < 3.10)
   lograge
   logstash-event
   meta-tags
