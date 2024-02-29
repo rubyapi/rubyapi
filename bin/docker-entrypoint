@@ -1,7 +1,8 @@
 #!/bin/bash -e
 
-if [ "${*}" == "foreman start --procfile=Procfile" ]; then
-  # check if running in production mode
-fi
+# If running the rails server then create or migrate existing database
+# if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
+#   ./bin/rails db:prepare
+# fi
 
 exec "${@}"
