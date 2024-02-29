@@ -33,6 +33,8 @@ jobs:
         with:
           images: ghcr.io/${{ github.repository_owner }}/${{ github.repository }}
           tags: |
+            # set latest tag for default branch
+            type=raw,value=latest,enable={{is_default_branch}}
             type=sha
 
       - name: Set up QEMU
