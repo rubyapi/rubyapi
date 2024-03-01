@@ -48,3 +48,5 @@
 /config/credentials/local.*
 
 /config/credentials/production.key
+
+/config/credentials/preview.key
