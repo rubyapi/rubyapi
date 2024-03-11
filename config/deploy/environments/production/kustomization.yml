@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: production
 resources:
   - ../../base
-  - namespace.yml
   - service.yml
   - ingress.yml
 patchesStrategicMerge:
