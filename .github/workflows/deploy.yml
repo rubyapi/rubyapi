@@ -35,6 +35,7 @@ jobs:
           tags: |
             # set latest tag for default branch
             type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value=app,enable={{is_default_branch}}
             type=edge,enable=true,branch=$repo.default_branch
             type=sha,format=long,enable=true
 
