@@ -5,6 +5,15 @@ metadata:
 spec:
   template:
     spec:
+      containers:
+        - name: web
+          volumeMounts:
+            - name: rails-storage
+              mountPath: /rails/storage
+      volumes:
+        - name: rails-storage
+          persistentVolumeClaim:
+            claimName: rails-storage-claim
       topologySpreadConstraints:
         - maxSkew: 1
           topologyKey: topology.kubernetes.io/zone
