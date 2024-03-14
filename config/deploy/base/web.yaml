@@ -83,10 +83,8 @@ spec:
               httpHeaders:
                 - name: X-Forwarded-Proto
                   value: https
-      initContainers:
         - name: nginx
           image: nginx:latest
-          restartPolicy: Always
           resources:
             requests:
               cpu: 100m
