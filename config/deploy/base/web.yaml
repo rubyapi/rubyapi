@@ -73,7 +73,7 @@ spec:
           livenessProbe:
             exec:
               command:
-                - bin/pumactl status
+                - bundle exec pumactl status
               initialDelaySeconds: 5
               periodSeconds: 5
           readinessProbe:
