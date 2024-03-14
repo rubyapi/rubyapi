@@ -83,3 +83,20 @@ spec:
               httpHeaders:
                 - name: X-Forwarded-Proto
                   value: https
+      initContainers:
+        - name: nginx
+          image: nginx:latest
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: nginx-configmap

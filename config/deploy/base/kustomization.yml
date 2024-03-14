@@ -11,3 +11,6 @@ configMapGenerator:
   - name: rails-configmap
     files:
       - .env
+  - name: nginx-configmap
+    files:
+      - nginx.conf
