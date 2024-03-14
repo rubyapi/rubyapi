@@ -86,6 +86,7 @@ spec:
       initContainers:
         - name: nginx
           image: nginx:latest
+          restartPolicy: Always
           resources:
             requests:
               cpu: 100m
