@@ -87,11 +87,6 @@ COPY --from=build /rails /rails
 RUN groupadd --system --gid 1000 rails && \
   useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
   sed -i 's/env_reset/env_keep="*"/' /etc/sudoers && \
-  echo "rails ALL=(ALL) NOPASSWD: /usr/bin/tailscaled" >> /etc/sudoers && \
-  echo "rails ALL=(ALL) NOPASSWD: /usr/bin/tailscale" >> /etc/sudoers && \
-  echo "rails ALL=(ALL) NOPASSWD: /opt/datadog-agent/bin/agent/agent*" >> /etc/sudoers && \
-  echo "rails ALL=(ALL) NOPASSWD: /opt/datadog-agent/embedded/bin/trace-agent*" >> /etc/sudoers && \
-  echo "rails ALL=(ALL) NOPASSWD: /opt/datadog-agent/embedded/bin/process-agent*" >> /etc/sudoers && \
   chown -R 1000:1000 db log tmp
 USER 1000:1000
 
