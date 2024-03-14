@@ -70,6 +70,12 @@ spec:
             limits:
               cpu: 1250m
               memory: 1280Mi
+          livenessProbe:
+            exec:
+              command:
+                - bin/pumactl status
+              initialDelaySeconds: 5
+              periodSeconds: 5
           readinessProbe:
             httpGet:
               path: /ping

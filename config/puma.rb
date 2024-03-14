@@ -55,4 +55,6 @@ if rails_env == "development"
   # Specifies a very generous `worker_timeout` so that the worker
   # isn't killed by Puma when suspended by a debugger.
   worker_timeout 3600
+elsif rails_env == "production"
+  activate_control_app "tcp://127.0.0.1:9293", no_token: true
 end
