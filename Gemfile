@@ -57,5 +57,5 @@ group :test do
 end
 
 group :production do
-  gem "ddtrace", require: "ddtrace/auto_instrument"
+  gem "ddtrace"
 end
