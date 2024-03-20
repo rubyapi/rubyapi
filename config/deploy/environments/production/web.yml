@@ -8,12 +8,12 @@ spec:
       containers:
         - name: web
           volumeMounts:
-            - name: rails-storage
-              mountPath: /rails/storage
+            - name: rails-sitemaps
+              mountPath: /rails/public/sitemaps
       volumes:
-        - name: rails-storage
+        - name: rails-sitemaps
           persistentVolumeClaim:
-            claimName: rails-storage-claim
+            claimName: rails-sitemaps-claim
       topologySpreadConstraints:
         - maxSkew: 1
           topologyKey: topology.kubernetes.io/zone

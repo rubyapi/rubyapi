@@ -20,6 +20,4 @@ Rails.application.routes.draw do
 
     post "/run", to: "code_execute#post"
   end
-
-  get "sitemap.xml.gz", to: redirect("https://#{ENV["AWS_BUCKET_NAME"]}.s3-us-west-2.amazonaws.com/sitemap.xml.gz")
 end
