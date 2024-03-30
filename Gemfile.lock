@@ -129,7 +129,7 @@ GEM
       libddwaf (~> 1.14.0.0.0)
       msgpack
     debase-ruby_core_source (3.3.1)
-    debug (1.9.1)
+    debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
     dockerfile-rails (1.6.7)
@@ -394,7 +394,7 @@ GEM
     redis-client (0.19.1)
       connection_pool
     regexp_parser (2.9.0)
-    reline (0.4.3)
+    reline (0.5.0)
       io-console (~> 0.5)
     request_store (1.5.1)
       rack (>= 1.4)
