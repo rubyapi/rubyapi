@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ObjectsController < ApplicationController
+  skip_forgery_protection only: [:toggle_signatures]
+
   rescue_from Elasticsearch::Persistence::Repository::DocumentNotFound,
     OpenSearch::Transport::Transport::Errors::NotFound,
     with: -> { raise ActionController::RoutingError.new("Not Found") }

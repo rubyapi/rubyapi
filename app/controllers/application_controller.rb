@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :set_ruby_version, :set_feature_flags
   after_action :set_feature_headers
 
+  protect_from_forgery with: :exception
+
   def set_ruby_version
     version = RubyConfig.version_for(params[:version]) || RubyConfig.default_ruby_version
 
