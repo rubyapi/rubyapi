@@ -389,10 +389,6 @@ GEM
     rbs (3.1.3)
     rdoc (6.6.3.1)
       psych (>= 4.0.0)
-    redis (5.1.0)
-      redis-client (>= 0.17.0)
-    redis-client (0.19.1)
-      connection_pool
     regexp_parser (2.9.0)
     reline (0.5.1)
       io-console (~> 0.5)
@@ -432,12 +428,12 @@ GEM
       websocket (~> 1.0)
     sitemap_generator (6.3.0)
       builder (~> 3.0)
-    sqlite3 (1.7.2)
+    sqlite3 (1.7.3)
       mini_portile2 (~> 2.8.0)
-    sqlite3 (1.7.2-aarch64-linux)
-    sqlite3 (1.7.2-arm64-darwin)
-    sqlite3 (1.7.2-x86_64-darwin)
-    sqlite3 (1.7.2-x86_64-linux)
+    sqlite3 (1.7.3-aarch64-linux)
+    sqlite3 (1.7.3-arm64-darwin)
+    sqlite3 (1.7.3-x86_64-darwin)
+    sqlite3 (1.7.3-x86_64-linux)
     standard (1.35.1)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
@@ -531,7 +527,6 @@ DEPENDENCIES
   rails
   rbs
   rdoc
-  redis
   rouge
   selenium-webdriver
   sitemap_generator
