@@ -23,8 +23,10 @@ class AwsConfigTest < ActiveSupport::TestCase
     with_env(
       "AWS_AUTHENTICATION_PROVIDER" => "ecs"
     ) do
-      credentials = AwsConfig.new.credentials
-      assert_kind_of Aws::Credentials, credentials
+      capture_subprocess_io do
+        credentials = AwsConfig.new.credentials
+        assert_kind_of Aws::Credentials, credentials
+      end
     end
   end
 end
