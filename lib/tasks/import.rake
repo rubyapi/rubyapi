@@ -8,7 +8,11 @@ namespace :import do
   task :ruby, [:version] => :environment do |t, args|
     args.with_defaults version: RubyConfig.default_ruby_version.version
 
-    release = RubyConfig.ruby_versions.find { |v| v.version == args[:version] }
+    release = if args.present?
+      RubyConfig.ruby_versions.find { |v| v.version == args[:version] }
+    else
+      RubyConfig.default_ruby_version
+    end
 
     if release.blank?
       puts "Could not find MRI release for version #{args.version}"
