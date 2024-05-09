@@ -122,7 +122,7 @@ GEM
     datadog-ci (0.8.3)
       msgpack
     date (3.3.4)
-    ddtrace (1.22.0)
+    ddtrace (1.23.0)
       datadog-ci (~> 0.8.1)
       debase-ruby_core_source (= 3.3.1)
       libdatadog (~> 7.0.0.1.0)
