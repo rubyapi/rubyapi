@@ -63,4 +63,14 @@ class SearchConfigTest < ActiveSupport::TestCase
       assert_equal 2, SearchConfig.new.number_of_replicas
     end
   end
+
+  test "setting the CA path" do
+    with_env(
+      "SEARCH_CA_PATH" => "/etc/ssl/certs/ca-certificates.crt"
+    ) do
+
+      assert_equal "/etc/ssl/certs/ca-certificates.crt", SearchConfig.new.ca_path
+      assert SearchConfig.new.client.transport.transport.options[:transport_options][:ssl][:ca_path]
+    end
+  end
 end
