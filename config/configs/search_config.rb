@@ -4,7 +4,7 @@ class SearchConfig < ApplicationConfig
   attr_config driver: "opensearch"
   attr_config url: "http://localhost:9200", number_of_shards: 1, number_of_replicas: 1, sigv4: false
   attr_config user: "admin", password: "admin"
-  attr_config ca_path: "" # set a custom path to the OpenSearch CA
+  attr_config ca_file: "" # set a custom OpenSearch CA
 
   on_load :set_client
 
@@ -45,7 +45,7 @@ class SearchConfig < ApplicationConfig
   def ssl_options
     {
       verify: require_ssl_verification?,
-      ca_path: ca_path
+      ca_file: ca_file
     }
   end
 

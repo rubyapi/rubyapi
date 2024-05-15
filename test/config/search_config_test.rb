@@ -66,10 +66,10 @@ class SearchConfigTest < ActiveSupport::TestCase
 
   test "setting the CA path" do
     with_env(
-      "SEARCH_CA_PATH" => "/etc/ssl/certs/ca-certificates.crt"
+      "SEARCH_CA_FILE" => "/etc/ssl/certs/ca-certificates.crt"
     ) do
-      assert_equal "/etc/ssl/certs/ca-certificates.crt", SearchConfig.new.ca_path
-      assert SearchConfig.new.client.transport.transport.options[:transport_options][:ssl][:ca_path]
+      assert_equal "/etc/ssl/certs/ca-certificates.crt", SearchConfig.new.ca_file
+      assert SearchConfig.new.client.transport.transport.options[:transport_options][:ssl][:ca_file]
     end
   end
 end
