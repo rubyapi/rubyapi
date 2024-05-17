@@ -4,7 +4,7 @@ default: &default
       default: false
       sha256: bd2a6c0e8396698e6f6768c00b0f155510859bb6fb92420f7b7abec610e71dbb
       url: https://cache.ruby-lang.org/pub/ruby/3.4/ruby-3.4.0-preview1.zip
-      signatures: true
+      signatures: false
       git:
         tag: v3_4_0_preview_1
         branch: ruby_3_3
