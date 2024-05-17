@@ -132,7 +132,7 @@ GEM
     debug (1.9.2)
       irb (~> 1.10)
       reline (>= 0.3.8)
-    dockerfile-rails (1.6.12)
+    dockerfile-rails (1.6.13)
       rails (>= 3.0.0)
     dogstatsd-ruby (5.6.1)
     domain_name (0.6.20240107)
