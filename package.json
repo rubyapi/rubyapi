@@ -2,7 +2,7 @@
   "name": "ruby-api",
   "private": true,
   "engines": {
-    "node": "21.x.x"
+    "node": "22.x.x"
   },
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
