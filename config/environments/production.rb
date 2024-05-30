@@ -97,4 +97,5 @@ Rails.application.configure do
 
   # Enable lograge for JSON-formatted logs.
   config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Json.new
 end
