@@ -296,7 +296,7 @@ GEM
     multi_json (1.15.0)
     multipart-post (2.4.0)
     mutex_m (0.2.0)
-    net-imap (0.4.11)
+    net-imap (0.4.12)
       date
       net-protocol
     net-pop (0.1.2)
@@ -390,7 +390,7 @@ GEM
     rdoc (6.7.0)
       psych (>= 4.0.0)
     regexp_parser (2.9.1)
-    reline (0.5.7)
+    reline (0.5.8)
       io-console (~> 0.5)
     request_store (1.5.1)
       rack (>= 1.4)
