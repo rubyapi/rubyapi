@@ -21,7 +21,7 @@ We aim to improve the Ruby ecosystem by being:
 
 ### Github Dev Container
 
-For an quick, easy and automated way to get started, you can use the [Github Dev Container](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/introduction-to-dev-containers).
+For a quick, easy and automated way to get started, you can use the [Github Dev Container](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/introduction-to-dev-containers).
 
 Github Dev Containers will automatically install all the dependencies and start the application.
 
@@ -67,7 +67,7 @@ Ruby's documentation can be imported very easily. There's a rake task that will 
 bin/rails import:ruby[3.1]
 ```
 
-or you can easily import the latest versions of all currently supported versions of ruby:
+or you can easily import the latest versions of all currently supported versions of Ruby:
 
 ```sh
 bin/rails import:ruby:all
