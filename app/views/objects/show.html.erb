@@ -22,7 +22,7 @@
         <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Constants</h3>
         <ul class="font-mono text-sm">
           <% @object.ruby_constants.each do |constant| %>
-            <li><%= link_to constant.name, object_path(object: constant.name), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %></li>
+            <li><%= link_to constant.name, "##{constant.name}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %></li>
           <% end %>
         </ul>
       </div>
