@@ -398,8 +398,8 @@ GEM
       io-console (~> 0.5)
     request_store (1.5.1)
       rack (>= 1.4)
-    rexml (3.2.8)
-      strscan (>= 3.0.9)
+    rexml (3.3.3)
+      strscan
     rouge (4.3.0)
     rubocop (1.63.5)
       json (~> 2.3)
