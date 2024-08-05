@@ -13,7 +13,7 @@ module Identifiable
       attributes[:path] = self.class.path_from_constant(attributes[:constant])
       attributes[:id] = self.class.id_from_path(attributes[:path])
 
-      super(attributes)
+      super
     end
   end
 
