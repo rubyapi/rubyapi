@@ -24,7 +24,7 @@
     "eslint-config-standard-with-typescript": "^37.0.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-n": "^16.6.2",
-    "eslint-plugin-promise": "^6.2.0",
+    "eslint-plugin-promise": "^6.6.0",
     "typescript": "^5.5.4"
   },
   "scripts": {
