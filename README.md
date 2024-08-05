@@ -83,7 +83,7 @@ bin/rails test
 
 ## Linting code
 
-This project uses [StandardRB](https://github.com/testdouble/standard) for linting.
+This project uses [StandardRB](https://github.com/standardrb/standard) for linting.
 
 StandardRB can be executed with:
 
