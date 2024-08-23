@@ -11,7 +11,7 @@
     "esbuild": "^0.23.1",
     "hotkeys-js": "^3.13.7",
     "lodash": "^4.1.1",
-    "monaco-editor": "^0.50.0",
+    "monaco-editor": "^0.51.0",
     "mustache": "^4.2.0",
     "postcss": "^8.4.41",
     "stimulus-dropdown": "^2.1.0",
