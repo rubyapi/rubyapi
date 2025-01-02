@@ -66,7 +66,7 @@ jobs:
       - name: Test Importing Ruby Documentation
         env:
           SEARCH_URL: "http://localhost:9200"
-        run: bin/rails "import:ruby[3.2]"
+        run: bin/rails "import:ruby[3.4]"
 
   test:
     runs-on: ubuntu-latest
