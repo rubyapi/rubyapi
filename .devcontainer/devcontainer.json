@@ -13,13 +13,12 @@
   // Use 'dockerComposeFile' property to list the compose files this dev container should use. More info: https://code.visualstudio.com/docs/remote/containers-advanced#_developing-inside-a-container-compose-file
   "dockerComposeFile": [
     "docker-compose.yml",
-    "../docker-compose.yml",
+    "../docker-compose.yml"
   ],
   // Use 'service' property to list services to start as part of the container. More info: https://code.visualstudio.com/docs/remote/containers-advanced#_developing-inside-a-container-service
   "service": "app",
   // Use 'service' property to list services to start as part of the container. More info: https://code.visualstudio.com/docs/remote/containers-advanced#_developing-inside-a-container-service
   "runServices": [
-    "database",
     "search",
     "search-console"
   ],
