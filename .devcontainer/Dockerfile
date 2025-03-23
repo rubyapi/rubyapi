@@ -1,6 +1,6 @@
 # syntax = docker/dockerfile:1.4
 
-ARG RUBY_VERSION=3.2
+ARG RUBY_VERSION=3.4
 
 FROM ruby:${RUBY_VERSION}-alpine
 
@@ -21,6 +21,8 @@ RUN apk update && apk add --no-cache \
   libmagic \
   nodejs \
   npm \
+  libffi-dev \
+  yaml-dev \
   sudo
 
 # create non-root group and user
