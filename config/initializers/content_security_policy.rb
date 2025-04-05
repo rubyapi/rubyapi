@@ -19,7 +19,7 @@ Rails.application.configure do
     if Rails.env.development?
       policy.connect_src :self, :https, "http://localhost:3035", "ws://localhost:3035"
       policy.style_src   :self, :blob, :unsafe_inline
-      policy.script_src  :self, :blob, :unsafe_inline, "https://plausible.io"
+      policy.script_src  :self, :blob, :unsafe_inline
     end
   end
 #

@@ -2,48 +2,14 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "type": "rake",
-      "task": "test",
-      "group": {
-        "kind": "test",
-        "isDefault": true
-      },
-      "problemMatcher": [],
-      "label": "rake: test"
+      "label": "rails: test",
+      "type": "shell",
+      "command": "./bin/rails test",
     },
     {
       "label": "app: start",
-      "dependsOn": [
-        "rails: server",
-        "npm: build:watch",
-        "npm: build:css:watch"
-      ],
-      "problemMatcher": []
-    },
-    {
-      "label": "rails: server",
       "type": "shell",
-      "command": "./bin/rails server"
-    },
-    {
-      "label": "npm: build",
-      "type": "shell",
-      "command": "npm run build"
-    },
-    {
-      "label": "npm: build:watch",
-      "type": "shell",
-      "command": "npm run build:watch"
-    },
-    {
-      "label": "npm: build:css",
-      "type": "shell",
-      "command": "npm run build:css"
-    },
-    {
-      "label": "npm: build:css:watch",
-      "type": "shell",
-      "command": "npm run build:css:watch"
+      "command": "./bin/dev",
     },
     {
       "label": "rake: import:ruby",

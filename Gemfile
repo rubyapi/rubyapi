@@ -24,7 +24,6 @@ gem "logstash-event"
 gem "aws-sdk-s3"
 gem "sitemap_generator"
 gem "meta-tags"
-gem "rack-attack"
 gem "rdoc", require: false
 gem "trenni-sanitize", require: false
 gem "pastel", require: false
