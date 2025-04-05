@@ -6,12 +6,6 @@
     <h1 class="md:text-3xl text-xl font-semibold text-gray-800 dark:text-gray-200">
       Results for: "<%= search_query %>"
     </h1>
-    <% if Rails.env.development? %>
-      <details class="border border-gray-200 p-3 mt-1 bg-gray-100 dark:bg-gray-700 dark:border-gray-500">
-        <summary class="focus:outline-none">ElasticSearch Query</summary>
-        <pre><%= JSON.pretty_generate @search.query %></pre>
-      </details>
-    <% end %>
   </div>
   <% @search.results.each do |r| %>
     <div class="md:p-3 py-3 my-1 rounded dark:text-gray-500">

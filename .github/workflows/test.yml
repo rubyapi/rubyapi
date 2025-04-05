@@ -19,24 +19,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .node-version
-          cache: "npm"
-
       - name: Set Up Ruby
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
 
-      - run: npm ci
-
       - name: Run Ruby linting
         run: bin/standardrb --no-fix
-
-      - name: Run Typescript Linting
-        run: npm run lint
 
   test-import:
     runs-on: ubuntu-latest
@@ -93,19 +82,8 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .node-version
-          cache: "npm"
-
-      - name: Install Dependencies
-        run: npm ci
-
       - name: Run Tests
-        run: |
-          npm run build && npm run build:css
-          bin/rails test
+        run: bin/rails test
 
   test-system:
     runs-on: ubuntu-latest
@@ -132,16 +110,5 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: .node-version
-          cache: "npm"
-
-      - name: Install Dependencies
-        run: npm ci
-
       - name: Run Tests
-        run: |
-          npm run build && npm run build:css
-          bin/rails test:system
+        run: bin/rails test:system

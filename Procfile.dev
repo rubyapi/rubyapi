@@ -1,3 +1,2 @@
 web: bundle exec rails server -p 3000
-js: npm run build:watch
-css: npm run build:css:watch
+css: bin/rails tailwindcss:watch

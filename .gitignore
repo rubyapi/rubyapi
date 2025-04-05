@@ -21,8 +21,6 @@
 /storage/*
 !/storage/.keep
 
-/node_modules
-
 /public/assets
 .byebug_history
 
@@ -30,7 +28,6 @@
 /config/master.key
 /public/packs
 /public/packs-test
-/node_modules
 
 # Ignore code coverage reports
 /coverage
@@ -39,7 +36,6 @@
 /public/packs-test
 /public/sitemaps
 /public/sitemap*
-/node_modules
 
 /app/assets/builds/*
 !/app/assets/builds/.keep

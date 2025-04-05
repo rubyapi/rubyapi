@@ -19,8 +19,6 @@ RUN apk update && apk add --no-cache \
   tzdata \
   libpq-dev \
   libmagic \
-  nodejs \
-  npm \
   libffi-dev \
   yaml-dev \
   sudo

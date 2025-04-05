@@ -38,7 +38,6 @@
     {
       "label": "npm: build:css",
       "type": "shell",
-
       "command": "npm run build:css"
     },
     {

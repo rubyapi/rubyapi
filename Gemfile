@@ -34,6 +34,9 @@ gem "anyway_config"
 gem "dry-struct"
 gem "view_component"
 gem "dogstatsd-ruby"
+gem "importmap-rails"
+gem "tailwindcss-rails"
+gem "stimulus-rails"
 
 group :development, :test do
   gem "debug"

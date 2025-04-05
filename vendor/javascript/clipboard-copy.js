@@ -1,0 +1,4 @@
+// clipboard-copy@4.0.1 downloaded from https://ga.jspm.io/npm:clipboard-copy@4.0.1/index.js
+
+var e={};e=clipboardCopy;function makeError(){return new DOMException("The request is not allowed","NotAllowedError")}async function copyClipboardApi(e){if(!navigator.clipboard)throw makeError();return navigator.clipboard.writeText(e)}async function copyExecCommand(e){const o=document.createElement("span");o.textContent=e;o.style.whiteSpace="pre";o.style.webkitUserSelect="auto";o.style.userSelect="all";document.body.appendChild(o);const t=window.getSelection();const r=window.document.createRange();t.removeAllRanges();r.selectNode(o);t.addRange(r);let a=false;try{a=window.document.execCommand("copy")}finally{t.removeAllRanges();window.document.body.removeChild(o)}if(!a)throw makeError()}async function clipboardCopy(e){try{await copyClipboardApi(e)}catch(o){try{await copyExecCommand(e)}catch(e){throw e||o||makeError()}}}var o=e;export default o;
+

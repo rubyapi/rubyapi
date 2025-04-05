@@ -8,16 +8,6 @@ updates:
   labels:
   - ruby
   - dependencies
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
-  labels:
-  - javascript
-  - dependencies
-  ignore:
-  - dependency-name: "@fortawesome/*"
 - package-ecosystem: "github-actions"
   directory: "/"
   schedule:

@@ -19,26 +19,11 @@ RUN gem update --system --no-document && \
 # Throw-away build stages to reduce size of final image
 FROM base as prebuild
 
-# Install packages needed to build gems and node modules
+# Install packages needed to build gems
 RUN --mount=type=cache,id=dev-apt-cache,sharing=locked,target=/var/cache/apt \
   --mount=type=cache,id=dev-apt-lib,sharing=locked,target=/var/lib/apt \
   apt-get update -qq && \
-  apt-get install --no-install-recommends -y build-essential curl libpq-dev node-gyp pkg-config python-is-python3
-
-
-FROM prebuild as node
-
-# Install Node.js
-ARG NODE_VERSION=21.2.0
-ENV PATH=/usr/local/node/bin:$PATH
-RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
-  /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
-  rm -rf /tmp/node-build-master
-
-# Install node modules
-COPY --link package.json ./
-RUN --mount=type=cache,id=bld-npm-cache,target=/root/.npm \
-  npm install
+  apt-get install --no-install-recommends -y build-essential curl libpq-dev pkg-config python-is-python3
 
 FROM prebuild as build
 
@@ -53,11 +38,6 @@ RUN --mount=type=cache,id=bld-gem-cache,sharing=locked,target=/srv/vendor \
   mkdir -p vendor && \
   bundle config set path vendor && \
   cp -ar /srv/vendor .
-
-# Copy node modules
-COPY --from=node /rails/node_modules /rails/node_modules
-COPY --from=node /usr/local/node /usr/local/node
-ENV PATH=/usr/local/node/bin:$PATH
 
 # Copy application code
 COPY --link . .

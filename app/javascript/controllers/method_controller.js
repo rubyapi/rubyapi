@@ -1,12 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets: string[] = ["srcBody", "showSrcBodyButton"]
+  static targets = ["srcBody", "showSrcBodyButton"]
 
-  declare readonly srcBodyTarget: HTMLDivElement
-  declare readonly showSrcBodyButtonTarget: HTMLButtonElement
-
-  toggleShowSource (event: Event): void {
+  toggleShowSource(event) {
     event.preventDefault()
 
     this.showSrcBodyButtonTarget.classList.toggle("bg-blue-600")

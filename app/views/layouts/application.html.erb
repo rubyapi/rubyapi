@@ -14,11 +14,10 @@
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application' %>
-    <%= javascript_include_tag 'application', defer: true %>
-    <%= javascript_include_tag 'theme' if Current.theme.dynamic? %>
-    <%= yield(:javascript_packs) if content_for?(:javascript_packs) %>
     <%= content_for(:head) %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "theme" if Current.theme.dynamic? %>
   </head>
   <body class="bg-white text-gray-700 dark:bg-gray-800 dark:text-gray-300">
     <%= render HeaderComponent.new(fixed_nav: !homepage?, show_search: !homepage?) %>

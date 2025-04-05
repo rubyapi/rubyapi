@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@theme {
+    --color-red-100: #f2d7d8;
+    --color-red-200: #f3b8bc;
+    --color-red-300: #f399a5;
+    --color-red-400: #f0667f;
+    --color-red-500: #ea3a66;
+    --color-red-600: #e1175a;
+    --color-red-700: #d10f4a;
+    --color-red-800: #bb0c3f;
+    --color-red-900: #a20c36;
+
+    --color-code-header: #2f3e46;
+    --color-code-background: #282c34;
+    --color-code-text: #dcdfe4;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+pre.ruby {
+    @apply p-3 mb-3 rounded-b rounded-t-none overflow-auto font-mono bg-code-background text-code-text;
+}
+
+pre {
+    @apply p-3 rounded bg-gray-300;
+}
+
+.dark pre {
+    @apply bg-gray-900;
+}
+
+.dark .ruby-documentation dt {
+    @apply bg-gray-900;
+}
+
+.dark .ruby-documentation dl,
+.dark .ruby-documentation dt,
+.dark .ruby-documentation dd {
+    @apply bg-gray-700;
+}
+
+.ruby-string {
+    color: #99C794;
+}
+
+.ruby-keyword,
+.k,
+.kt {
+    color: #c678dd;
+}
+
+.ruby-comment,
+.c1 {
+    color: #65737e;
+}
+
+.ruby-constant,
+.mi {
+    color: #e5c07b;
+}
+
+.ruby-identifier,
+.o {
+    color: #ec5f67;
+}
+
+.ruby-value {
+    color: #F99157;
+}
+
+.ruby-regexp,
+.sr {
+    color: #98c379;
+}
+
+.ruby-operator,
+.nf {
+    color: #61afef;
+}
+
+p {
+    @apply my-3;
+}
+
+.overflow-wrap-break-word {
+    overflow-wrap: break-word;
+}
+
+.h-93 {
+    height: calc(100vh - 7rem) !important;
+}
+
+.h-94 {
+    height: calc(100vh - 6rem) !important;
+}
+
+code {
+    padding: 0.15rem;
+    @apply bg-gray-300 rounded leading-relaxed text-sm text-gray-700;
+}
+
+.method-src-body {
+    padding: 0;
+    background: none;
+    counter-reset: listing;
+}
+
+.method-src-body .line {
+    counter-increment: listing;
+}
+
+.method-src-body .line:before {
+    @apply pr-2 mr-3 w-8 text-center border-r-2 border-gray-600 text-gray-600;
+    user-select: none;
+    display: inline-block;
+    content: counter(listing);
+}
+
+.dark .method-src-body {
+    background: none;
+}
+
+.dark code {
+    @apply bg-gray-700 text-gray-300;
+}
+
+pre:not(.ruby) {
+    @apply overflow-auto font-mono;
+}
+
+.ruby-documentation ul {
+    @apply list-disc list-inside;
+}
+
+.ruby-documentation ul li p {
+    @apply inline-block my-1;
+}
+
+.ruby-documentation ol {
+    @apply list-decimal list-inside;
+}
+
+.ruby-documentation ol li p {
+    @apply inline-block my-1;
+}
+
+.ruby-documentation dd,
+.ruby-documentation dt {
+    @apply w-full text-center;
+}
+
+.ruby-documentation dl {
+    @apply flex flex-wrap border-2 border-gray-400;
+}
+
+.ruby-documentation dd {
+    @apply px-3;
+}
+
+.ruby-documentation dt {
+    @apply py-3 bg-gray-300;
+}
+
+.ruby-documentation dt:last-of-type,
+.ruby-documentation dd:last-of-type {
+    @apply border-0;
+}
+
+.ruby-documentation h1,
+.ruby-documentation h2,
+.ruby-documentation h3,
+.ruby-documentation h4,
+.ruby-documentation h5 {
+    @apply font-semibold text-lg py-1;
+}
