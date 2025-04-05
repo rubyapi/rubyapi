@@ -5,8 +5,6 @@ ruby "~> 3.0"
 gem "rails"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "puma"
-gem "jsbundling-rails"
-gem "cssbundling-rails"
 gem "propshaft"
 gem "sqlite3"
 
