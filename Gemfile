@@ -19,8 +19,6 @@ gem "inline_svg"
 gem "tty-spinner", require: false
 gem "lograge"
 gem "logstash-event"
-gem "aws-sdk-s3"
-gem "sitemap_generator"
 gem "meta-tags"
 gem "rdoc", require: false
 gem "trenni-sanitize", require: false
