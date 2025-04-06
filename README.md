@@ -1,8 +1,5 @@
 # Ruby API: Easily Find Ruby documentation
 
-[![View performance data on Skylight](https://badges.skylight.io/status/k1noEyWLdXuJ.svg)](https://oss.skylight.io/app/applications/k1noEyWLdXuJ)
-[![CI](https://github.com/rubyapi/rubyapi/workflows/CI/badge.svg?branch=main)](https://github.com/rubyapi/rubyapi/actions?query=workflow%3ACI+branch%3Amain)
-
 Ruby API makes it easy and fast to search or browse the Ruby language API docs.
 
 ## Why?
