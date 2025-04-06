@@ -32,6 +32,7 @@ gem "dogstatsd-ruby"
 gem "importmap-rails"
 gem "tailwindcss-rails"
 gem "stimulus-rails"
+gem "aws-sdk-core"
 
 group :development, :test do
   gem "debug"
