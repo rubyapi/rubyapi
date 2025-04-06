@@ -3,8 +3,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "home#index"
-  get '/ping', to: 'healthcheck#index'
-  get '/repl', to: 'repl#index'
+  get "up" => "rails/health#show", as: :rails_health_check
 
   ruby_versions = RubyConfig.ruby_versions.collect { |v| Regexp.escape(v.version) }
 
