@@ -1,34 +1,7 @@
-# syntax = docker/dockerfile:1.4
+# Make sure RUBY_VERSION matches the Ruby version in .ruby-version
+ARG RUBY_VERSION=3.4.2
+FROM ghcr.io/rails/devcontainer/images/ruby:$RUBY_VERSION
 
-ARG RUBY_VERSION=3.4
-
-FROM ruby:${RUBY_VERSION}-alpine
-
-ENV USERNAME=vscode \
-  UID=1000 \
-  GID=1000
-
-# Install the git-credential-manager package via the dotnet tooling to
-RUN apk update && apk add --no-cache \
-  github-cli \
-  git \
-  build-base \
-  bash \
-  mandoc \
-  man-pages \
-  tzdata \
-  libpq-dev \
-  libmagic \
-  libffi-dev \
-  yaml-dev \
-  sudo
-
-# create non-root group and user
-RUN addgroup -g $GID $USERNAME \
-  && adduser -s /bin/bash -u $UID -G $USERNAME $USERNAME --disabled-password --gecos ""
-
-# set sudo permissions for vscode user
-RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME
-RUN chmod 0440 /etc/sudoers.d/$USERNAME
-
-USER $USERNAME
+# Ensure binding is always 0.0.0.0
+# Binds the server to all IP addresses of the container, so it can be accessed from outside the container.
+ENV BINDING="0.0.0.0"
