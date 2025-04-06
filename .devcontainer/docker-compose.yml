@@ -1,12 +1,11 @@
 version: "3"
 services:
-  app:
+  rails-app:
     build:
       dockerfile: Dockerfile
       context: .
     command: /bin/sh -c "while sleep 1000; do :; done"
     volumes:
       - ../..:/workspaces:cached
-    environment:
-      - SEARCH_URL=http://search:9200
-      - SEARCH_DRIVER=opensearch
+  selenium:
+    image: selenium/standalone-chromium

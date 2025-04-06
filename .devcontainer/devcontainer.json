@@ -16,12 +16,20 @@
     "../docker-compose.yml"
   ],
   // Use 'service' property to list services to start as part of the container. More info: https://code.visualstudio.com/docs/remote/containers-advanced#_developing-inside-a-container-service
-  "service": "app",
+  "service": "rails-app",
   // Use 'service' property to list services to start as part of the container. More info: https://code.visualstudio.com/docs/remote/containers-advanced#_developing-inside-a-container-service
   "runServices": [
     "search",
-    "search-console"
+    "search-console",
+    "selenium"
   ],
+  "containerEnv": {
+    "DEVCONTAINER_APP_HOST": "http://rails-app",
+    "CAPYBARA_SERVER_PORT": "45678",
+    "SELENIUM_URL": "http://selenium:4444/wd/hub",
+    "SEARCH_URL": "http://search:9200",
+    "SEARCH_DRIVER": "opensearch"
+  },
   // Use 'postCreateCommand' to run commands after the container is created.
   "onCreateCommand": "bin/setup",
   // Use 'postStartCommand' to run commands after the container is started.
