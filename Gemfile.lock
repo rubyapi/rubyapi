@@ -423,6 +423,8 @@ GEM
     unicode-display_width (2.5.0)
     uri (1.0.3)
     useragent (0.16.11)
+    vcr (6.3.1)
+      base64
     view_component (3.21.0)
       activesupport (>= 5.2.0, < 8.1)
       concurrent-ruby (~> 1.0)
@@ -493,6 +495,7 @@ DEPENDENCIES
   trenni-sanitize
   tty-spinner
   typhoeus
+  vcr
   view_component
   web-console (>= 3.3.0)
   webmock

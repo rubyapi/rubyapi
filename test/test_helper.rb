@@ -4,6 +4,14 @@ ENV["RAILS_ENV"] ||= "test"
 require_relative "../config/environment"
 require "rails/test_help"
 require "webmock/minitest"
+require "vcr"
+
+Rails.root.glob("lib/*.rb").each { |f| require_relative f }
+
+VCR.configure do |config|
+  config.cassette_library_dir = "fixtures/vcr_cassettes"
+  config.hook_into :webmock
+end
 
 WebMock.disable!
 

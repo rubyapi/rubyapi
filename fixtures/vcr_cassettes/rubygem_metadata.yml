@@ -1,0 +1,102 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/rails.json
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - rubygems.org
+      User-Agent:
+      - http.rb/5.2.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '2096'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - 'default-src ''self''; font-src ''self'' https://fonts.gstatic.com; img-src
+        ''self'' data: https://secure.gaug.es https://gravatar.com https://www.gravatar.com
+        https://secure.gravatar.com https://*.fastly-insights.com https://avatars.githubusercontent.com;
+        object-src ''none''; script-src ''self'' ''sha256-lAw7vDoVAlP471TK7wBPiQPPQs7xUovlJcoBrYWGM48=''
+        https://secure.gaug.es https://www.fastly-insights.com ''nonce-2c9da5cc65fe8622a2a339f126d40f2a'';
+        style-src ''self'' ''unsafe-inline'' https://fonts.googleapis.com; connect-src
+        ''self'' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        ''self'' https://github.com/login/oauth/authorize; frame-ancestors ''self'';
+        base-uri ''self''; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3A8caa6c11e8d858183650bda457f7671cfe425dab%2Cenv%3Aproduction%2Ctrace_id%3A67f3a422000000000f0d0ce290b6474f'
+      X-Request-Id:
+      - 1ba9ee18-8456-48e9-ac54-0b9263cf082b
+      X-Runtime:
+      - '0.030077'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Backend:
+      - F_Rails 54.187.166.186:443
+      Accept-Ranges:
+      - bytes
+      Age:
+      - '0'
+      Date:
+      - Mon, 07 Apr 2025 10:08:34 GMT
+      Via:
+      - 1.1 varnish
+      X-Served-By:
+      - cache-mel11238-MEL
+      X-Cache:
+      - MISS
+      X-Cache-Hits:
+      - '0'
+      X-Timer:
+      - S1744020514.598466,VS0,VE564
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"3d403cca3fe725492c89d69316b955e0"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: UTF-8
+      string: '{"name":"rails","downloads":603151433,"version":"8.0.2","version_created_at":"2025-03-12T03:09:11.097Z","version_downloads":552367,"platform":"ruby","authors":"David
+        Heinemeier Hansson","info":"Ruby on Rails is a full-stack web framework optimized
+        for programmer happiness and sustainable productivity. It encourages beautiful
+        code by favoring convention over configuration.","licenses":["MIT"],"metadata":{"changelog_uri":"https://github.com/rails/rails/releases/tag/v8.0.2","bug_tracker_uri":"https://github.com/rails/rails/issues","source_code_uri":"https://github.com/rails/rails/tree/v8.0.2","mailing_list_uri":"https://discuss.rubyonrails.org/c/rubyonrails-talk","documentation_uri":"https://api.rubyonrails.org/v8.0.2/","rubygems_mfa_required":"true"},"yanked":false,"sha":"fdfaa5a83ec0388e02864e88d515959caedc88053b5f701c4deb1652d8f164c6","spec_sha":"2da4a6b10a044943a0124063abdfe505408e904b7e02e95b2f206255d8903b79","project_uri":"https://rubygems.org/gems/rails","gem_uri":"https://rubygems.org/gems/rails-8.0.2.gem","homepage_uri":"https://rubyonrails.org","wiki_uri":null,"documentation_uri":"https://api.rubyonrails.org/v8.0.2/","mailing_list_uri":"https://discuss.rubyonrails.org/c/rubyonrails-talk","source_code_uri":"https://github.com/rails/rails/tree/v8.0.2","bug_tracker_uri":"https://github.com/rails/rails/issues","changelog_uri":"https://github.com/rails/rails/releases/tag/v8.0.2","funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"actioncable","requirements":"=
+        8.0.2"},{"name":"actionmailbox","requirements":"= 8.0.2"},{"name":"actionmailer","requirements":"=
+        8.0.2"},{"name":"actionpack","requirements":"= 8.0.2"},{"name":"actiontext","requirements":"=
+        8.0.2"},{"name":"actionview","requirements":"= 8.0.2"},{"name":"activejob","requirements":"=
+        8.0.2"},{"name":"activemodel","requirements":"= 8.0.2"},{"name":"activerecord","requirements":"=
+        8.0.2"},{"name":"activestorage","requirements":"= 8.0.2"},{"name":"activesupport","requirements":"=
+        8.0.2"},{"name":"bundler","requirements":"\u003e= 1.15.0"},{"name":"railties","requirements":"=
+        8.0.2"}]}}'
+  recorded_at: Mon, 07 Apr 2025 10:08:34 GMT
+recorded_with: VCR 6.3.1
