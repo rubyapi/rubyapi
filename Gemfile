@@ -9,6 +9,7 @@ gem "propshaft"
 gem "thruster"
 gem "pg"
 gem "strong_migrations"
+gem "solid_queue"
 
 gem "searchkick"
 gem "opensearch-ruby"
