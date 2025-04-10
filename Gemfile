@@ -37,7 +37,6 @@ gem "aws-sdk-core"
 
 group :development, :test do
   gem "debug"
-  gem "dotenv-rails"
   gem "factory_bot"
 end
 
