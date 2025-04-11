@@ -1,4 +1,25 @@
 services:
+
+  database:
+    image: postgres:17-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U postgres -d postgres -h localhost -p 5432 || exit 1",
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+
   search:
     image: opensearchproject/opensearch:2.11.0
     ports:
@@ -39,3 +60,4 @@ services:
 
 volumes:
   search-data: {}
+  db-data: {}

@@ -6,8 +6,9 @@ gem "rails"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "puma"
 gem "propshaft"
-gem "sqlite3"
 gem "thruster"
+gem "pg"
+gem "strong_migrations"
 
 gem "elasticsearch-persistence"
 gem "opensearch-aws-sigv4"
