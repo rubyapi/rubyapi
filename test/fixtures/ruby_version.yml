@@ -1,0 +1,21 @@
+latest:
+  version: 3.4.2
+  url: https://cache.ruby-lang.org/pub/ruby/3.4/ruby-3.4.1.zip
+  sha256: a0c62089fb75c47e392bc96778dd76bd7ad1baa40a7ed040372c805de20bccc8
+  git_tag: v3_4_2
+  git_branch: ruby_3_4
+  signatures: true
+  default: true
+  eol: false
+  prerelease: false
+
+legacy:
+  version: 2.7.6
+  url: https://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.6.zip
+  sha256: 2ead329cfb9a5975348d2fdcfa0cb60bb3ba47a6693e93afd52db7a0ba01ac4c
+  git_tag: v2_7_6
+  git_branch: ruby_2_7
+  signatures: false
+  default: false
+  eol: true
+  prerelease: false

@@ -23,6 +23,24 @@ namespace :import do
   end
 
   namespace :ruby do
+    task versions: :environment do
+      versions = RubyConfig.versions.map do |v|  
+        {
+          version: v[:version].to_s,
+          url: v[:url],
+          sha256: v[:sha256] || "",
+          default: v[:default] || false,
+          eol: v[:eol] || false,
+          prerelease: v[:prerelease] || false,
+          git: v[:git] || {},
+          signatures: v[:signatures] || false,
+        }
+      end
+
+      RubyVersion.upsert_all(versions, unique_by: :version)
+    end
+
+
     task all: :environment do
       RubyConfig.ruby_versions.each { |release| RubyDocumentationImporter.import release }
     end

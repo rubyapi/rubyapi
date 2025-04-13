@@ -90,7 +90,7 @@ class RubyDownloader
   def prepare_environment
     system "unzip #{download_path} -d #{rubies_download_path} > #{File::NULL}"
     fetch_bundled_gems
-    system "gem unpack --target #{gems_path} #{gems_path.join("rbs-*.gem")}" if release.has_type_signatures?
+    system "gem unpack --target #{gems_path} #{gems_path.join("rbs-*.gem")}" if release.signatures?
   end
 
   def setup_paths

@@ -14,10 +14,12 @@ class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
   # parallelize(workers: :number_of_processors)
 
+  fixtures :all
+
   def setup
     Current.theme = ThemeConfig.theme_for("light")
-    Current.ruby_version = FactoryBot.build(:ruby_version, version: "3.1", default: true)
-    Current.default_ruby_version = FactoryBot.build(:ruby_version, version: "3.1", default: true)
+    Current.ruby_version = ruby_version(:latest)
+    Current.default_ruby_version = ruby_version(:latest)
   end
 
   # Add more helper methods to be used by all tests here...
