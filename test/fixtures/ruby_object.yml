@@ -1,0 +1,20 @@
+string:
+  ruby_version: latest
+  name: String
+  path: string
+  description: <p>A sequence of characters.</p>
+  object_type: class_object
+  constant: String
+  superclass: Object
+  metadata:
+    depth: 1
+
+comparable:
+  ruby_version: latest
+  name: Comparable
+  path: comparable
+  description: <p>Provides comparison methods for classes.</p>
+  object_type: module_object
+  constant: Comparable
+  metadata:
+    depth: 1

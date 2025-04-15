@@ -18,7 +18,7 @@
           </button>
         </div>
         <div class="hidden md:flex items-center md:space-x-4">
-          <%= render Header::VersionSelectorComponent.new(versions: RubyConfig.ruby_versions) %>
+          <%= render Header::VersionSelectorComponent.new(versions: RubyVersion.all) %>
           <%= render Header::ThemeSelectorComponent.new %>
         </div>
       </div>
@@ -35,7 +35,7 @@
         </div>
         <div class="flex justify-between space-x-4 items-center">
           <div class="flex justify-between items-center space-x-4">
-            <%= render Header::VersionSelectorComponent.new(versions: RubyConfig.ruby_versions) %>
+            <%= render Header::VersionSelectorComponent.new(versions: RubyVersion.all) %>
             <%= render Header::ThemeSelectorComponent.new %>
           </div>
           <button data-action="click->header#toggleMobileMenu" class="group px-2 py-1 -my-1 border border-solid border-gray-300 dark:border-gray-500 text-xl curser-pointer rounded-lg inline-flex items-center justify-center focus:outline-none hover:bg-gray-200 dark:hover:bg-gray-500">

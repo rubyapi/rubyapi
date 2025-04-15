@@ -1,21 +1,23 @@
 # frozen_string_literal: true
 
+require "test_helper"
+
 class ApplicationHelperTest < ActionView::TestCase
   test "github_url" do
-    ruby_version = FactoryBot.build(:ruby_version)
-    method = FactoryBot.build(:ruby_method, source_location: "3.1.0:string.c:3")
+    Current.ruby_version = ruby_version(:latest)
 
-    Current.ruby_version = ruby_version
+    method = ruby_method(:instance_method)
+    method.source_location = "3.1.0:string.c:3"
 
-    assert_equal github_url(method), "https://github.com/ruby/ruby/blob/v3_1_0/string.c#L3"
+    assert_equal github_url(method), "https://github.com/ruby/ruby/blob/#{Current.ruby_version.git_tag}/string.c#L3"
   end
 
   test "github_url for ruby dev" do
-    ruby_version = FactoryBot.build(:ruby_version, :dev)
-    method = FactoryBot.build(:ruby_method, source_location: "dev:string.c:3")
+    Current.ruby_version = ruby_version(:dev)
 
-    Current.ruby_version = ruby_version
+    method = ruby_method(:instance_method)
+    method.source_location = "dev:string.c:3"
 
-    assert_equal github_url(method), "https://github.com/ruby/ruby/blob/master/string.c#L3"
+    assert_equal github_url(method), "https://github.com/ruby/ruby/blob/#{Current.ruby_version.git_branch}/string.c#L3"
   end
 end

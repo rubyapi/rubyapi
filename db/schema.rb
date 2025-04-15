@@ -10,9 +10,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_13_022851) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_13_070539) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "ruby_attributes", force: :cascade do |t|
+    t.bigint "ruby_object_id", null: false
+    t.string "name", null: false
+    t.string "description"
+    t.string "access", default: "public"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ruby_object_id"], name: "index_ruby_attributes_on_ruby_object_id"
+  end
+
+  create_table "ruby_constants", force: :cascade do |t|
+    t.bigint "ruby_object_id", null: false
+    t.string "name", null: false
+    t.string "description"
+    t.string "constant"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ruby_object_id"], name: "index_ruby_constants_on_ruby_object_id"
+  end
+
+  create_table "ruby_methods", force: :cascade do |t|
+    t.bigint "ruby_object_id", null: false
+    t.string "name", null: false
+    t.string "description"
+    t.string "method_type"
+    t.string "source_location"
+    t.string "constant"
+    t.string "call_sequences", default: [], array: true
+    t.string "source_body"
+    t.string "method_alias"
+    t.string "signatures", default: [], array: true
+    t.jsonb "metadata", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ruby_object_id"], name: "index_ruby_methods_on_ruby_object_id"
+  end
+
+  create_table "ruby_objects", force: :cascade do |t|
+    t.bigint "ruby_version_id", null: false
+    t.string "name", null: false
+    t.string "path", null: false
+    t.string "description"
+    t.string "object_type"
+    t.string "constant"
+    t.string "superclass"
+    t.string "included_modules", default: [], array: true
+    t.jsonb "metadata", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_ruby_objects_on_name"
+    t.index ["path"], name: "index_ruby_objects_on_path"
+    t.index ["ruby_version_id"], name: "index_ruby_objects_on_ruby_version_id"
+  end
 
   create_table "ruby_versions", force: :cascade do |t|
     t.string "version", null: false
@@ -28,4 +82,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_13_022851) do
     t.datetime "updated_at", null: false
     t.index ["version"], name: "index_ruby_versions_on_version", unique: true
   end
+
+  add_foreign_key "ruby_attributes", "ruby_objects", on_delete: :cascade
+  add_foreign_key "ruby_constants", "ruby_objects", on_delete: :cascade
+  add_foreign_key "ruby_methods", "ruby_objects", on_delete: :cascade
+  add_foreign_key "ruby_objects", "ruby_versions", on_delete: :cascade
 end

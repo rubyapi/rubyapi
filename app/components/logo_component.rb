@@ -3,6 +3,6 @@
 class LogoComponent < ViewComponent::Base
   def home_path
     return root_path if Current.ruby_version.default?
-    versioned_root_path(version: Current.ruby_version)
+    versioned_root_path(version: Current.ruby_version.version)
   end
 end

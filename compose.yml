@@ -21,27 +21,27 @@ services:
       retries: 3
 
   search:
-    image: opensearchproject/opensearch:2.11.0
+    image: opensearchproject/opensearch:2.19.1
     ports:
       - "9600:9600"
       - "9200:9200"
     environment:
+      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=Howcoq-kinhin-timxi6
       - discovery.type=single-node
-      - plugins.security.disabled=true
     volumes:
       - search-data:/usr/share/opensearch/data
     healthcheck:
       test:
         [
           "CMD-SHELL",
-          "curl --fail --silent http://localhost:9600/_cluster/health?wait_for_status=green&timeout=50s || exit 1 ",
+          "curl --fail -k --silent https://admin:Howcoq-kinhin-timxi6@localhost:9200/_cluster/health?wait_for_status=yellow&timeout=5s || exit 1 ",
         ]
       retries: 3
       interval: 5s
       timeout: 3s
 
   search-console:
-    image: opensearchproject/opensearch-dashboards:2.11.0
+    image: opensearchproject/opensearch-dashboards:2.19.1
     ports:
       - "5601:5601"
     environment:
@@ -50,7 +50,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "curl -u admin:admin --fail --silent http://localhost:5601/api/status || exit 1",
+          "curl --fail -k --silent http://admin:Howcoq-kinhin-timxi6@localhost:5601/api/status || exit 1",
         ]
       interval: 5s
       timeout: 3s

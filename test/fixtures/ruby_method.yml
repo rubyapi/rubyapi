@@ -1,0 +1,50 @@
+instance_method:
+  ruby_object: string
+  name: to_s
+  constant: String#to_s
+  call_sequences:
+    - "to_s → self or string"
+  description: <p>Returns a string representation of the object.</p>
+  method_type: instance_method
+  source_location: 3.4.2:string.c:54
+  source_body: |
+    VALUE
+    rb_str_to_s(VALUE str)
+    {
+        return str;
+    }
+  signatures:
+    - "(?::int base) -> ::Integer"
+  metadata:
+    depth: 1
+
+aliased_method:
+  ruby_object: string
+  name: to_str
+  constant: String#to_str
+  method_type: instance_method
+  source_location: 3.4.2:string.c:54
+  method_alias: to_s
+
+  signatures:
+    - "(?::int base) -> ::Integer"
+  metadata:
+    depth: 1
+
+class_method:
+  ruby_object: string
+  name: new
+  constant: String.new
+  description: <p>Creates a new instance of the class.</p>
+  method_type: class_method
+  source_location: 3.4.2:string.c:54
+  source_body: |
+    VALUE
+    rb_str_new(VALUE klass)
+    {
+        return rb_str_new_cstr("");
+    }
+  signatures:
+    - "(?::int base) -> ::Integer"
+  metadata:
+    depth: 1

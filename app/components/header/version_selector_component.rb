@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Header::VersionSelectorComponent < ViewComponent::Base
-  def initialize(versions: RubyConfig.ruby_versions)
+  def initialize(versions: RubyVersion.all)
     @current_version = Current.ruby_version
     @ruby_versions = versions
   end

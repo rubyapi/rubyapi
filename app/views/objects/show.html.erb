@@ -3,14 +3,14 @@
 
 <% content_for :mobile_menu do %>
   <nav class="sticky">
-    <% if @object.superclass %>
+    <% if @superclass.present? %>
       <div class="mb-3">
         <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Parent</h3>
-        <%= link_to @object.superclass.constant, object_path(object: @object.superclass.path), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-mono text-sm" %>
+        <%= link_to @superclass.constant, object_path(object: @superclass.path), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-mono text-sm" %>
       </div>
     <% end %>
-    <% unless @object.included_modules.empty? %>
-      <% @object.included_modules.each do |included_module| %>
+    <% unless @included_modules.empty? %>
+      <% @included_modules.each do |included_module| %>
         <div class="mb-3">
           <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Included Modules</h3>
           <%= link_to included_module.constant, object_path(object: included_module.path), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-mono text-sm" %>
@@ -37,21 +37,21 @@
         </ul>
       </div>
     <% end %>
-    <% unless @object.ruby_class_methods.empty? %>
+    <% unless @object.ruby_methods.class_methods.empty? %>
       <div class="mb-3">
         <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Class Methods</h3>
         <ul class="font-mono text-sm">
-          <% @object.ruby_class_methods.each do |m| %>
+          <% @object.ruby_methods.class_methods.each do |m| %>
             <li><%= link_to ":: #{m.name}", "##{method_anchor(m)}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %></li>
           <% end %>
         </ul>
       </div>
     <% end %>
-    <% unless @object.ruby_instance_methods.empty? %>
+    <% unless @object.ruby_methods.instance_methods.empty? %>
       <div class="mb-3">
         <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Instance Methods</h3>
         <ul class="font-mono text-sm">
-          <% @object.ruby_instance_methods.each do |m| %>
+          <% @object.ruby_methods.instance_methods.each do |m| %>
             <li><%= link_to "# #{m.name}", "##{method_anchor(m)}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %></li>
           <% end %>
         </ul>
@@ -79,18 +79,18 @@
       </div>
     <% end %>
 
-    <% if @object.superclass %>
+    <% if @superclass.present? %>
       <% component.with_section do %>
         <div class="mb-3">
           <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Parent</h3>
-          <%= link_to @object.superclass.constant, object_path(object: @object.superclass.path), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-mono text-sm" %>
+          <%= link_to @superclass.constant, object_path(object: @superclass.path), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-mono text-sm" %>
         </div>
       <% end %>
     <% end %>
 
-    <% unless @object.included_modules.empty? %>
+    <% unless @included_modules.empty? %>
       <% component.with_section do %>
-        <% @object.included_modules.each do |included_module| %>
+        <% @included_modules.each do |included_module| %>
           <div class="mb-3">
             <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Included Modules</h3>
             <%= link_to included_module.constant, object_path(object: included_module.path), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-mono text-sm" %>
@@ -125,12 +125,12 @@
       <% end %>
     <% end %>
 
-    <% unless @object.ruby_class_methods.empty? %>
+    <% unless @object.ruby_methods.class_methods.empty? %>
       <% component.with_section do %>
         <div class="mb-3">
           <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Class Methods</h3>
           <ul class="font-mono text-sm">
-            <% @object.ruby_class_methods.each do |m| %>
+            <% @object.ruby_methods.class_methods.each do |m| %>
               <li><%= link_to ":: #{m.name}", "##{method_anchor(m)}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %></li>
             <% end %>
           </ul>
@@ -138,12 +138,12 @@
       <% end %>
     <% end %>
 
-    <% unless @object.ruby_instance_methods.empty? %>
+    <% unless @object.ruby_methods.instance_methods.empty? %>
       <% component.with_section do %>
         <div class="mb-3">
           <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Instance Methods</h3>
           <ul class="font-mono text-sm">
-            <% @object.ruby_instance_methods.each do |m| %>
+            <% @object.ruby_methods.instance_methods.each do |m| %>
               <li><%= link_to "# #{m.name}", "##{method_anchor(m)}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %></li>
             <% end %>
           </ul>
@@ -183,13 +183,13 @@
       <%= render "objects/show/attributes",
           attributes: @object.ruby_attributes, title: "Attributes" %>
     <% end %>
-    <% unless @object.ruby_class_methods.empty? %>
+    <% unless @object.ruby_methods.class_methods.empty? %>
       <%= render "objects/show/methods",
-          methods: @object.ruby_class_methods, title: "Class Methods" %>
+          methods: @object.ruby_methods.class_methods, title: "Class Methods" %>
     <% end %>
-    <% unless @object.ruby_instance_methods.empty? %>
+    <% unless @object.ruby_methods.instance_methods.empty? %>
       <%= render "objects/show/methods",
-          methods: @object.ruby_instance_methods, title: "Instance Methods" %>
+          methods: @object.ruby_methods.instance_methods, title: "Instance Methods" %>
     <% end %>
   </main>
 </div>

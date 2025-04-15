@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 class RubyVersion < ApplicationRecord
+  has_many :ruby_objects, dependent: :destroy
+
   validates :version, presence: true
   validate :check_version
+  
+  scope :default, -> { where(default: true).first }
 
   def prerelease?
     dev? || prerelease

@@ -4,12 +4,10 @@ require "test_helper"
 
 class AutocompleteControllerTest < ActionDispatch::IntegrationTest
   def setup
-    create_index_for_version! default_ruby_version
+    @string = ruby_object(:string)
 
-    method = FactoryBot.build :ruby_method, name: "foo"
-
-    objects = [String, Array, Integer, Symbol, Hash].map { |klass| FactoryBot.build(:ruby_object, c: klass, ruby_methods: [method]) }
-    bulk_index_search objects, version: default_ruby_version, wait_for_refresh: true
+    RubyObject.search_index.refresh
+    RubyMethod.search_index.refresh
   end
 
   test "should get index" do
@@ -18,12 +16,12 @@ class AutocompleteControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should render results" do
-    get autocomplete_path(q: "foo")
+    get autocomplete_path(q: "new")
     assert_equal 5, response.parsed_body.length
   end
 
   test "should cache responses" do
-    get autocomplete_path(q: "view")
+    get autocomplete_path(q: "new")
     assert_equal response.headers["Cache-Control"], "max-age=86400, public"
   end
 

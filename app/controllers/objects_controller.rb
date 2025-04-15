@@ -3,13 +3,12 @@
 class ObjectsController < ApplicationController
   skip_forgery_protection only: [:toggle_signatures]
 
-  rescue_from Elasticsearch::Persistence::Repository::DocumentNotFound,
-    OpenSearch::Transport::Transport::Errors::NotFound,
-    with: -> { raise ActionController::RoutingError.new("Not Found") }
-
   def show
     expires_in 24.hours, public: true, must_revalidate: true
-    @object = object_repository.find(document_id)
+
+    @object = RubyObject.find_by!(path: object, ruby_version: Current.ruby_version)
+    @superclass = RubyObject.find_by(path: @object.superclass, ruby_version: Current.ruby_version) if @object&.superclass.present?
+    @included_modules = RubyObject.where(path: @object.included_modules, ruby_version: Current.ruby_version)
   end
 
   def toggle_signatures
@@ -28,14 +27,6 @@ class ObjectsController < ApplicationController
 
   def not_found
     render plain: "Not found", status: :not_found
-  end
-
-  def object_repository
-    @repository ||= RubyObjectRepository.repository_for_version(Current.ruby_version)
-  end
-
-  def document_id
-    RubyObject.id_from_path(object)
   end
 
   def object

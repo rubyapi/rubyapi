@@ -6,20 +6,18 @@ require_relative "../ruby_documentation_importer"
 namespace :import do
   desc "import Ruby documentation for given version"
   task :ruby, [:version] => :environment do |t, args|
-    args.with_defaults version: RubyConfig.default_ruby_version.version
-
-    release = if args.present?
-      RubyConfig.ruby_versions.find { |v| v.version == args[:version] }
-    else
-      RubyConfig.default_ruby_version
-    end
+    release = args.version.present? ? RubyVersion.find_by(version: args.version) : RubyVersion.default
+    Current.ruby_version = release
 
     if release.blank?
       puts "Could not find MRI release for version #{args.version}"
       exit 1
     end
 
-    RubyDocumentationImporter.import release
+    ActiveRecord::Base.transaction do
+      release.ruby_objects.delete_all
+      RubyDocumentationImporter.import release
+    end
   end
 
   namespace :ruby do
@@ -32,17 +30,19 @@ namespace :import do
           default: v[:default] || false,
           eol: v[:eol] || false,
           prerelease: v[:prerelease] || false,
-          git: v[:git] || {},
+          git_tag: v[:git][:tag] || "",
+          git_branch: v[:git][:branch] || "",
           signatures: v[:signatures] || false,
         }
       end
 
       RubyVersion.upsert_all(versions, unique_by: :version)
+      puts "#{versions.size} Ruby versions imported"
     end
 
 
     task all: :environment do
-      RubyConfig.ruby_versions.each { |release| RubyDocumentationImporter.import release }
+      RubyVersion.all.each { |release| RubyDocumentationImporter.import release }
     end
   end
 end

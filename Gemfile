@@ -10,13 +10,11 @@ gem "thruster"
 gem "pg"
 gem "strong_migrations"
 
-gem "elasticsearch-persistence"
-gem "opensearch-aws-sigv4"
+gem "searchkick"
 gem "opensearch-ruby"
 
 gem "http"
-gem "typhoeus", require: false
-gem "kaminari", "~> 1.2.2"
+gem "typhoeus"
 gem "inline_svg"
 gem "tty-spinner", require: false
 gem "lograge"

@@ -1,52 +1,45 @@
 # frozen_string_literal: true
 
-class RubyMethod < Dry::Struct
-  attribute :name, Types::String
-  attribute :description, Types::String
-  attribute :object_constant, Types::String
-  attribute :method_type, Types::String
-  attribute :source_location, Types::String
-  attribute :call_sequence, Types::Array
-  attribute :source_body, Types::String
-  attribute :signatures, Types::Array.default([].freeze)
+class RubyMethod < ApplicationRecord
+  validates :name, presence: true
 
-  attribute :metadata do
-    attribute :depth, Types::Coercible::Integer.default(1)
-  end
+  belongs_to :ruby_object
 
-  attribute :method_alias do
-    attribute :name, Types::String.optional
-    attribute :path, Types::String.optional
-  end
+  scope :class_methods, -> { where(method_type: "class_method") }
+  scope :instance_methods, -> { where(method_type: "instance_method") }
 
-  def class_method?
-    method_type == "class_method"
+  searchkick searchable: [:name, :description, :constant],
+    word_start: [:name],
+    word_middle: [:constant],
+    filterable: [:ruby_version]
+
+  def search_data
+    {
+      ruby_version: ruby_object.ruby_version.version,
+      name: name,
+      description: description,
+      constant: constant,
+    }
   end
 
   def instance_method?
     method_type == "instance_method"
   end
 
+  def class_method?
+    method_type == "class_method"
+  end
+
   def type_identifier
-    if class_method? then "::"
-    elsif instance_method? then "#"
-    else
-      raise "Unknown type of method: #{method_type}"
+    if instance_method?
+      "#"
+    elsif class_method?
+      "::"
     end
   end
 
-  def identifier
-    [object_constant, type_identifier, name].join
-  end
-
-  alias_method :autocomplete, :identifier
-
-  def object_path
-    object_constant&.downcase&.gsub("::", "/")
-  end
-
   def is_alias?
-    method_alias.attributes.values.any?
+    method_alias.present?
   end
 
   def source_file
@@ -55,11 +48,6 @@ class RubyMethod < Dry::Struct
 
   def source_line
     source_properties[2]
-  end
-
-  # Similar to #to_h, but only the nessessary attributes are included
-  def to_search
-    to_h.merge(type: :method, autocomplete:)
   end
 
   private

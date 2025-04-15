@@ -3,7 +3,7 @@
 module Header
   class SearchComponent < ViewComponent::Base
     def initialize(version: Current.ruby_version)
-      @ruby_version = version.to_s
+      @ruby_version = version
     end
 
     def homepage?
