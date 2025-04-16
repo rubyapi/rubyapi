@@ -34,6 +34,32 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_13_070539) do
     t.index ["ruby_object_id"], name: "index_ruby_constants_on_ruby_object_id"
   end
 
+  create_table "ruby_gem_versions", force: :cascade do |t|
+    t.bigint "ruby_gems_id", null: false
+    t.string "version", null: false
+    t.string "description"
+    t.string "platform"
+    t.boolean "prerelease", default: false
+    t.boolean "yanked", default: false
+    t.integer "downloads", default: 0
+    t.string "sha"
+    t.string "authors", default: [], array: true
+    t.string "licenses", default: [], array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ruby_gems_id"], name: "index_ruby_gem_versions_on_ruby_gems_id"
+  end
+
+  create_table "ruby_gems", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "latest_version"
+    t.integer "downloads", default: 0
+    t.boolean "yanked", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_ruby_gems_on_name", unique: true
+  end
+
   create_table "ruby_methods", force: :cascade do |t|
     t.bigint "ruby_object_id", null: false
     t.string "name", null: false
@@ -85,6 +111,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_13_070539) do
 
   add_foreign_key "ruby_attributes", "ruby_objects", on_delete: :cascade
   add_foreign_key "ruby_constants", "ruby_objects", on_delete: :cascade
+  add_foreign_key "ruby_gem_versions", "ruby_gems", column: "ruby_gems_id"
   add_foreign_key "ruby_methods", "ruby_objects", on_delete: :cascade
   add_foreign_key "ruby_objects", "ruby_versions", on_delete: :cascade
 end
