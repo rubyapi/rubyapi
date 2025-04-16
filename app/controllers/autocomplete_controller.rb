@@ -8,8 +8,8 @@ class AutocompleteController < ApplicationController
   def index
     results = Searchkick.search(
       params[:q],
-      models: [RubyObject, RubyMethod, RubyConstant],
-      fields: [{ name: :word_start}, :description, {constant: :word_middle}],
+      models: [ RubyObject, RubyMethod, RubyConstant ],
+      fields: [ { name: :word_start }, :description, { constant: :word_middle } ],
       where: { ruby_version: Current.ruby_version.version }
     )
 

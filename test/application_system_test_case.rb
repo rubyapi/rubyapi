@@ -3,8 +3,8 @@
 require "test_helper"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  options = ENV["DEVCONTAINER_APP_HOST"].present? ? {browser: :remote, url: ENV["SELENIUM_URL"]} : {}
-  driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400], options: options
+  options = ENV["DEVCONTAINER_APP_HOST"].present? ? { browser: :remote, url: ENV["SELENIUM_URL"] } : {}
+  driven_by :selenium, using: :headless_chrome, screen_size: [ 1400, 1400 ], options: options
 end
 
 if ENV["DEVCONTAINER_APP_HOST"].present?

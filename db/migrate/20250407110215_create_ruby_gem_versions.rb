@@ -18,6 +18,6 @@ class CreateRubyGemVersions < ActiveRecord::Migration[8.0]
       t.timestamps
     end
 
-    add_index :ruby_gem_versions, [:ruby_gem_id, :version], unique: true
+    add_index :ruby_gem_versions, [ :ruby_gem_id, :version ], unique: true
   end
 end

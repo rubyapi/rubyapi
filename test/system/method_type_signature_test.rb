@@ -3,7 +3,7 @@ require "application_system_test_case"
 class MethodTypeSignatureTest < ApplicationSystemTestCase
   def setup
     @string = FactoryBot.build(:ruby_object)
-    @method = FactoryBot.build(:ruby_method, name: "signature_test_1", signatures: ["(::String input) -> ::String"])
+    @method = FactoryBot.build(:ruby_method, name: "signature_test_1", signatures: [ "(::String input) -> ::String" ])
     @string.ruby_methods << @method
 
     create_index_for_version! default_ruby_version

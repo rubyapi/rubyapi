@@ -2,7 +2,7 @@
 
 class RubyConfig < ApplicationConfig
   attr_config :versions
-  coerce_types versions: {type: nil, array: true}
+  coerce_types versions: { type: nil, array: true }
 
   on_load :ensure_default_version
 

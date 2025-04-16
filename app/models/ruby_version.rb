@@ -5,7 +5,7 @@ class RubyVersion < ApplicationRecord
 
   validates :version, presence: true
   validate :check_version
-  
+
   scope :default, -> { where(default: true).first }
 
   def prerelease?

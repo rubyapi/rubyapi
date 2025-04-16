@@ -33,7 +33,7 @@ class RubyDocumentationImporter
       r.quiet = true
       r.visibility = :private
       r.op_dir = Rails.root.join("tmp/rdoc")
-      r.generator_options = [release]
+      r.generator_options = [ release ]
     end
 
     @rdoc.document @rdoc_options

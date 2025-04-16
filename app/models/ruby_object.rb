@@ -31,10 +31,10 @@ class RubyObject < ApplicationRecord
   validates :name, :path, presence: true
   validates :object_type, inclusion: { in: %w[class_object module_object] }
 
-  searchkick searchable: [:name, :description],
-    word_start: [:name],
-    word_middle: [:constant],
-    filterable: [:ruby_version]
+  searchkick searchable: [ :name, :description ],
+    word_start: [ :name ],
+    word_middle: [ :constant ],
+    filterable: [ :ruby_version ]
 
   def search_data
     {

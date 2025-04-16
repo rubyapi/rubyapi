@@ -19,7 +19,7 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "set theme with referer" do
-    post set_theme_path(theme: "light"), headers: {"Referer" => "/3.1/object"}
+    post set_theme_path(theme: "light"), headers: { "Referer" => "/3.1/object" }
 
     assert_redirected_to "/3.1/object"
   end

@@ -8,17 +8,17 @@ class RubyMethod < ApplicationRecord
   scope :class_methods, -> { where(method_type: "class_method") }
   scope :instance_methods, -> { where(method_type: "instance_method") }
 
-  searchkick searchable: [:name, :description, :constant],
-    word_start: [:name],
-    word_middle: [:constant],
-    filterable: [:ruby_version]
+  searchkick searchable: [ :name, :description, :constant ],
+    word_start: [ :name ],
+    word_middle: [ :constant ],
+    filterable: [ :ruby_version ]
 
   def search_data
     {
       ruby_version: ruby_object.ruby_version.version,
       name: name,
       description: description,
-      constant: constant,
+      constant: constant
     }
   end
 

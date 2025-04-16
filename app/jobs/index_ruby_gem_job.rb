@@ -8,9 +8,9 @@ class IndexRubyGemJob < ApplicationJob
 
     RubyGemVersion.upsert_all(
       index_versions,
-      unique_by: [:ruby_gem_id, :version],
-      returning: [:id],
-      on_duplicate: { conflict_target: [:ruby_gem_id, :version], update: [:downloads] }
+      unique_by: [ :ruby_gem_id, :version ],
+      returning: [ :id ],
+      on_duplicate: { conflict_target: [ :ruby_gem_id, :version ], update: [ :downloads ] }
     )
   end
 
@@ -33,7 +33,7 @@ class IndexRubyGemJob < ApplicationJob
       licenses: version_payload["licenses"],
       sha256: version_payload["sha"],
       published_at: version_payload["created_at"],
-      built_at: version_payload["built_at"],
+      built_at: version_payload["built_at"]
     }
   end
 

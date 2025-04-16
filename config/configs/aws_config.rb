@@ -1,7 +1,6 @@
 # fozen_string_literal: true
 
 class AwsConfig < ApplicationConfig
-
   DEFAULT_AUTHENTICATION_PROVIDER = "static"
   CREDENTIAL_PROVIDERS = %w[static ecs].freeze
 

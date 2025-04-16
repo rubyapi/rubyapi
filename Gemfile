@@ -2,57 +2,56 @@ source "https://rubygems.org"
 
 ruby "~> 3.0"
 
-gem "rails"
-gem "bootsnap", ">= 1.1.0", require: false
-gem "puma"
-gem "propshaft"
-gem "thruster"
+gem "bootsnap", require: false
 gem "pg"
-gem "strong_migrations"
-gem "solid_queue"
+gem "propshaft"
+gem "puma"
+gem "rails"
 gem "solid_cache"
+gem "solid_queue"
+gem "strong_migrations"
+gem "thruster", require: false
 
-gem "searchkick"
 gem "opensearch-ruby"
+gem "searchkick"
 
+gem "anyway_config"
+gem "aws-sdk-core"
+gem "dogstatsd-ruby"
 gem "http"
-gem "typhoeus"
+gem "importmap-rails"
 gem "inline_svg"
-gem "tty-spinner", require: false
 gem "lograge"
 gem "logstash-event"
 gem "meta-tags"
-gem "rdoc", require: false
-gem "trenni-sanitize", require: false
 gem "pastel", require: false
-gem "rouge", require: false
 gem "rbs", require: false
-gem "anyway_config"
-gem "view_component"
-gem "dogstatsd-ruby"
-gem "importmap-rails"
-gem "tailwindcss-rails"
+gem "rdoc", require: false
+gem "rouge", require: false
 gem "stimulus-rails"
-gem "aws-sdk-core"
+gem "tailwindcss-rails"
+gem "trenni-sanitize", require: false
+gem "tty-spinner", require: false
+gem "typhoeus"
+gem "view_component"
 
 group :development, :test do
-  gem "debug"
-  gem "factory_bot"
+  gem "brakeman", require: false
+  gem "bundler-audit", require: false
+  gem "debug", platforms: %i[mri windows], require: "debug/prelude"
+  gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
-  gem "web-console", ">= 3.3.0"
-  gem "listen", ">= 3.0.5", "< 3.10"
-  gem "standard"
-  gem "standard-rails"
   gem "dockerfile-rails"
+  gem "web-console"
 end
 
 group :test do
-  gem "capybara", ">= 2.15"
+  gem "capybara"
   gem "selenium-webdriver"
-  gem "webmock"
   gem "vcr"
+  gem "webmock"
 end
 
 group :production do

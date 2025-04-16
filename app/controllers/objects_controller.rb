@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ObjectsController < ApplicationController
-  skip_forgery_protection only: [:toggle_signatures]
+  skip_forgery_protection only: [ :toggle_signatures ]
 
   def show
     expires_in 24.hours, public: true, must_revalidate: true

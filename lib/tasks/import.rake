@@ -5,7 +5,7 @@ require_relative "../ruby_documentation_importer"
 
 namespace :import do
   desc "import Ruby documentation for given version"
-  task :ruby, [:version] => :environment do |t, args|
+  task :ruby, [ :version ] => :environment do |t, args|
     release = args.version.present? ? RubyVersion.find_by(version: args.version) : RubyVersion.default
     Current.ruby_version = release
 
@@ -27,7 +27,7 @@ namespace :import do
 
   namespace :ruby do
     task versions: :environment do
-      versions = RubyConfig.versions.map do |v|  
+      versions = RubyConfig.versions.map do |v|
         {
           version: v[:version].to_s,
           url: v[:url],
@@ -37,7 +37,7 @@ namespace :import do
           prerelease: v[:prerelease] || false,
           git_tag: v[:git][:tag] || "",
           git_branch: v[:git][:branch] || "",
-          signatures: v[:signatures] || false,
+          signatures: v[:signatures] || false
         }
       end
 

@@ -49,7 +49,6 @@ class RubyAPIRDocGenerator
       methods = []
 
       doc.method_list.each do |method_doc|
-
         type_identifier = case method_doc.type
         in "class" then "."
         in "instance" then "#"
@@ -59,7 +58,7 @@ class RubyAPIRDocGenerator
           name: method_doc.name,
           description: clean_description(doc.full_name, method_doc.description),
           method_type: "#{method_doc.type}_method",
-          constant: [doc.full_name, type_identifier, method_doc.name].join,
+          constant: [ doc.full_name, type_identifier, method_doc.name ].join,
           source_location: "#{@release.version}:#{method_path(method_doc)}:#{method_doc.line}",
           method_alias: method_doc.is_alias_for&.name,
           call_sequences: call_sequence_for_method_doc(method_doc),
@@ -94,7 +93,7 @@ class RubyAPIRDocGenerator
         superclass: superclass_for_doc(doc)&.downcase&.gsub("::", "/"),
         included_modules: doc.includes.map { |it| it.name.downcase.gsub("::", "/") },
         ruby_methods: methods,
-        ruby_constants: doc.constants.map { |constant| RubyConstant.new(name: constant.name, description: clean_description(doc.full_name, constant.description), constant: [doc.full_name, "::", constant.name]) },
+        ruby_constants: doc.constants.map { |constant| RubyConstant.new(name: constant.name, description: clean_description(doc.full_name, constant.description), constant: [ doc.full_name, "::", constant.name ]) },
         ruby_attributes: doc.attributes.map { |attribute| RubyAttribute.new(name: attribute.name, description: clean_description(doc.full_name, attribute.description), access: READWIRTE_MAPPING[attribute.rw]) },
         metadata: {
           depth: constant_depth(doc.full_name)
@@ -135,9 +134,9 @@ class RubyAPIRDocGenerator
     if doc.call_seq.present?
       doc.call_seq.strip.split("\n").map { |s| s.gsub "->", "→" }
     elsif doc.arglists.present? && doc.arglists != "#{doc.name}()"
-      [doc.arglists.strip]
+      [ doc.arglists.strip ]
     else
-      [doc.name]
+      [ doc.name ]
     end
   end
 

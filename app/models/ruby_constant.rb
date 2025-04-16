@@ -5,17 +5,17 @@ class RubyConstant < ApplicationRecord
 
   validates :name, presence: true
 
-  searchkick searchable: [:name, :description, :constant],
-    word_start: [:name],
-    word_middle: [:constant],
-    filterable: [:ruby_version]
+  searchkick searchable: [ :name, :description, :constant ],
+    word_start: [ :name ],
+    word_middle: [ :constant ],
+    filterable: [ :ruby_version ]
 
   def search_data
     {
       ruby_version: ruby_object.ruby_version.version,
       name: name,
       description: description,
-      constant: constant,
+      constant: constant
     }
   end
 end

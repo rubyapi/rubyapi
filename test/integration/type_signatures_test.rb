@@ -12,7 +12,7 @@ class SearchFlowTest < ActionDispatch::IntegrationTest
 
     assert_select "h4", "to_s → self or string"
 
-    post toggle_signatures_url, headers: {"HTTP_REFERER" => object_url(object: @string.path)}
+    post toggle_signatures_url, headers: { "HTTP_REFERER" => object_url(object: @string.path) }
 
     follow_redirect!
 

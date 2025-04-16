@@ -1,7 +1,7 @@
 return if Rails.env.development? || Rails.env.test?
 
-require 'datadog/statsd'
-require 'ddtrace'
+require "datadog/statsd"
+require "ddtrace"
 
 Datadog.configure do |c|
   # To enable runtime metrics collection, set `true`. Defaults to `false`

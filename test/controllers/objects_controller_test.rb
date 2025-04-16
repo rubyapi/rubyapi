@@ -32,7 +32,7 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show method type signature with RubyAPI Feature header" do
-    get object_url(object: @string.path), headers: {"X-RubyAPI-Signatures" => "true"}
+    get object_url(object: @string.path), headers: { "X-RubyAPI-Signatures" => "true" }
 
     assert_select "h4", "(?::int base) -> ::Integer"
   end
@@ -47,7 +47,7 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "set signature cookie" do
     current_object = object_url(object: @string.path)
-    post toggle_signatures_path, headers: {"HTTP_REFERER" => current_object}
+    post toggle_signatures_path, headers: { "HTTP_REFERER" => current_object }
 
     assert_response :redirect
     assert_redirected_to current_object
