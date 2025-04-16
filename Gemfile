@@ -10,6 +10,7 @@ gem "thruster"
 gem "pg"
 gem "strong_migrations"
 gem "solid_queue"
+gem "solid_cache"
 
 gem "searchkick"
 gem "opensearch-ruby"
