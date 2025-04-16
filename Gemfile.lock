@@ -122,28 +122,6 @@ GEM
     dogstatsd-ruby (5.6.1)
     domain_name (0.6.20240107)
     drb (2.2.1)
-    dry-core (1.1.0)
-      concurrent-ruby (~> 1.0)
-      logger
-      zeitwerk (~> 2.6)
-    dry-inflector (1.2.0)
-    dry-logic (1.6.0)
-      bigdecimal
-      concurrent-ruby (~> 1.0)
-      dry-core (~> 1.1)
-      zeitwerk (~> 2.6)
-    dry-struct (1.8.0)
-      dry-core (~> 1.1)
-      dry-types (~> 1.8, >= 1.8.2)
-      ice_nine (~> 0.11)
-      zeitwerk (~> 2.6)
-    dry-types (1.8.2)
-      bigdecimal (~> 3.0)
-      concurrent-ruby (~> 1.0)
-      dry-core (~> 1.0)
-      dry-inflector (~> 1.0)
-      dry-logic (~> 1.4)
-      zeitwerk (~> 2.6)
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
@@ -183,7 +161,6 @@ GEM
     http-form_data (2.3.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
-    ice_nine (0.11.2)
     importmap-rails (2.1.0)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -465,7 +442,6 @@ DEPENDENCIES
   debug
   dockerfile-rails
   dogstatsd-ruby
-  dry-struct
   factory_bot
   http
   importmap-rails
