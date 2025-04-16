@@ -20,6 +20,11 @@ namespace :import do
     end
   end
 
+  task rubygems: :environment do
+    CatalogueRubygemsJob.perform_later
+    puts "RubyGems catalogue import started"
+  end
+
   namespace :ruby do
     task versions: :environment do
       versions = RubyConfig.versions.map do |v|  

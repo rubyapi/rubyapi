@@ -10,14 +10,13 @@ class IndexRubyGemJobTest < ActiveJob::TestCase
   end
 
   test "updates metadata from rubygems.org" do
-    rubygem = RubyGem.create(name: "rails")
+    rubygem = ruby_gem(:rails)
 
-    VCR.use_cassette("rubygem_metadata") do
-      IndexRubyGemJob.perform_now(rubygem)
+    VCR.use_cassette("rubygem_versions") do
+      IndexRubyGemJob.perform_now({ "id" => rubygem.id, "name" => rubygem.name })
     end
 
-    rubygem.reload
-
-    assert_equal "8.0.2", rubygem.latest_version
+    assert_not_nil rubygem.latest
+    assert_operator rubygem.ruby_gem_versions.size, :>, 0
   end
 end

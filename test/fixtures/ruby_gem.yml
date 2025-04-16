@@ -1,0 +1,17 @@
+rails:
+  name: rails
+  latest_version: 8.0.0
+  downloads: 1_000_000
+  yanked: false
+
+bundler:
+  name: bundler
+  latest_version: 3.0.0
+  downloads: 500_000
+  yanked: false
+
+yanked_gem:
+  name: yanked_gem
+  latest_version: 1.0.0
+  downloads: 100_000
+  yanked: true

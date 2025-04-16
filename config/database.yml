@@ -23,8 +23,13 @@ default: &default
   password: postgres
 
 development:
-  <<: *default
-  database: rubyapi_development
+  primary: &development_primary
+    <<: *default
+    database: rubyapi_development
+  queue:
+    <<: *development_primary
+    database: rubyapi_development_queue
+    migrations_paths: db/queue_migrate
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -86,15 +91,7 @@ production:
     database: rubyapi_production
     username: rubyapi
     password: <%= ENV["RUBYAPI_DATABASE_PASSWORD"] %>
-  cache:
-    <<: *primary_production
-    database: rubyapi_production_cache
-    migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
     database: rubyapi_production_queue
     migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: rubyapi_production_cable
-    migrations_paths: db/cable_migrate

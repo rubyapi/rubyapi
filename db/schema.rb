@@ -15,7 +15,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_13_070539) do
   enable_extension "pg_catalog.plpgsql"
 
   create_table "ruby_attributes", force: :cascade do |t|
-    t.bigint "ruby_object_id", null: false
+    t.bigint "ruby_object_id"
     t.string "name", null: false
     t.string "description"
     t.string "access", default: "public"
@@ -25,7 +25,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_13_070539) do
   end
 
   create_table "ruby_constants", force: :cascade do |t|
-    t.bigint "ruby_object_id", null: false
+    t.bigint "ruby_object_id"
     t.string "name", null: false
     t.string "description"
     t.string "constant"
@@ -35,19 +35,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_13_070539) do
   end
 
   create_table "ruby_gem_versions", force: :cascade do |t|
-    t.bigint "ruby_gems_id", null: false
+    t.bigint "ruby_gem_id"
     t.string "version", null: false
     t.string "description"
+    t.string "summary"
     t.string "platform"
     t.boolean "prerelease", default: false
     t.boolean "yanked", default: false
     t.integer "downloads", default: 0
-    t.string "sha"
-    t.string "authors", default: [], array: true
+    t.string "sha256"
+    t.string "authors"
     t.string "licenses", default: [], array: true
+    t.datetime "published_at"
+    t.datetime "built_at"
+    t.jsonb "metadata", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ruby_gems_id"], name: "index_ruby_gem_versions_on_ruby_gems_id"
+    t.index ["ruby_gem_id", "version"], name: "index_ruby_gem_versions_on_ruby_gem_id_and_version", unique: true
+    t.index ["ruby_gem_id"], name: "index_ruby_gem_versions_on_ruby_gem_id"
   end
 
   create_table "ruby_gems", force: :cascade do |t|
@@ -61,7 +66,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_13_070539) do
   end
 
   create_table "ruby_methods", force: :cascade do |t|
-    t.bigint "ruby_object_id", null: false
+    t.bigint "ruby_object_id"
     t.string "name", null: false
     t.string "description"
     t.string "method_type"
@@ -78,7 +83,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_13_070539) do
   end
 
   create_table "ruby_objects", force: :cascade do |t|
-    t.bigint "ruby_version_id", null: false
+    t.bigint "ruby_version_id"
     t.string "name", null: false
     t.string "path", null: false
     t.string "description"
@@ -111,7 +116,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_13_070539) do
 
   add_foreign_key "ruby_attributes", "ruby_objects", on_delete: :cascade
   add_foreign_key "ruby_constants", "ruby_objects", on_delete: :cascade
-  add_foreign_key "ruby_gem_versions", "ruby_gems", column: "ruby_gems_id"
+  add_foreign_key "ruby_gem_versions", "ruby_gems", on_delete: :cascade
   add_foreign_key "ruby_methods", "ruby_objects", on_delete: :cascade
   add_foreign_key "ruby_objects", "ruby_versions", on_delete: :cascade
 end

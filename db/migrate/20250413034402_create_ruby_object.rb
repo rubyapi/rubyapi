@@ -1,7 +1,7 @@
 class CreateRubyObject < ActiveRecord::Migration[8.0]
   def change
     create_table :ruby_objects do |t|
-      t.references :ruby_version, null: false, foreign_key: { on_delete: :cascade }
+      t.belongs_to :ruby_version, index: true, foreign_key: { on_delete: :cascade }
       t.string :name, null: false
       t.string :path, null: false
       t.string :description

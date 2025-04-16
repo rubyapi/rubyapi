@@ -5,9 +5,9 @@ class CatalogueRubygemsJob < ApplicationJob
 
   discard_on HTTP::ResponseError
 
-  def perform(*args)
+  def perform
     result = RubyGem.upsert_all(build_catalogue, unique_by: :name, returning: [:id, :name])
-    jobs = result.map { IndexRubygemJob.perform_later(it) }
+    jobs = result.map { IndexRubyGemJob.perform_later(it) }
     ActiveJob.perform_all_later(jobs)
   end
 

@@ -9,7 +9,7 @@ require "vcr"
 Rails.root.glob("lib/*.rb").each { |f| require_relative f }
 
 VCR.configure do |config|
-  config.cassette_library_dir = Rails.root.join("test/fixtures/vcr_cassetes")
+  config.cassette_library_dir = Rails.root.join("test/vcr_cassettes")
   config.hook_into :webmock
 end
 
