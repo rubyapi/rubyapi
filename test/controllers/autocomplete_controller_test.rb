@@ -6,8 +6,7 @@ class AutocompleteControllerTest < ActionDispatch::IntegrationTest
   def setup
     @string = ruby_object(:string)
 
-    RubyObject.search_index.refresh
-    RubyMethod.search_index.refresh
+    [ RubyMethod, RubyObject, RubyConstant ].each { it.reindex }
   end
 
   test "should get index" do
@@ -17,7 +16,7 @@ class AutocompleteControllerTest < ActionDispatch::IntegrationTest
 
   test "should render results" do
     get autocomplete_path(q: "new")
-    assert_equal 5, response.parsed_body.length
+    assert_equal 1, response.parsed_body.length
   end
 
   test "should cache responses" do

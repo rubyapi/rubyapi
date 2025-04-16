@@ -10,12 +10,18 @@ module SearchHelper
     "method-#{method.instance_method? ? "i" : "c"}-#{escape_method_name(method.name)}"
   end
 
-  def result_url(result)
+  def constant_anchor(constant)
+    constant.name
+  end
+
+  def result_url(result, ruby_version:)
     routes = Rails.application.routes.url_helpers
     if result.is_a?(RubyMethod)
-      routes.object_path version: result.ruby_version.version, object: result.object_path, anchor: method_anchor(result)
+      routes.object_path version: ruby_version.version, object: result.ruby_object.path, anchor: method_anchor(result)
     elsif result.is_a?(RubyObject)
-      routes.object_path version: result.ruby_version.version, object: result.path
+      routes.object_path version: ruby_version.version, object: result.path, anchor: nil
+    elsif result.is_a?(RubyConstant)
+      routes.object_path version: ruby_version.version, object: result.ruby_object.path, anchor: constant_anchor(result)
     end
   end
 end

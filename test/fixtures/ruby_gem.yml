@@ -10,6 +10,12 @@ bundler:
   downloads: 500_000
   yanked: false
 
+rake:
+  name: rake
+  latest_version: 13.0.0
+  downloads: 2_000_000
+  yanked: false
+
 yanked_gem:
   name: yanked_gem
   latest_version: 1.0.0

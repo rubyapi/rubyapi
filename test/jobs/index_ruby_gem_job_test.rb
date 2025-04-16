@@ -10,7 +10,7 @@ class IndexRubyGemJobTest < ActiveJob::TestCase
   end
 
   test "updates metadata from rubygems.org" do
-    rubygem = ruby_gem(:rails)
+    rubygem = ruby_gem(:rake)
 
     VCR.use_cassette("rubygem_versions") do
       IndexRubyGemJob.perform_now({ "id" => rubygem.id, "name" => rubygem.name })

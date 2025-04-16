@@ -21,7 +21,7 @@ class AutocompleteController < ApplicationController
   def render_autocomplete_result(result)
     {
       text: result.constant,
-      path: result_url(result)
+      path: result_url(result, ruby_version: Current.ruby_version)
     }
   end
 end

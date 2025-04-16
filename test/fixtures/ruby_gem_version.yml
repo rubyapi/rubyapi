@@ -1,0 +1,22 @@
+rails:
+  ruby_gem: rails
+  version: 8.0.0
+  description: <p>A web application framework for Ruby.</p>
+  summary: <p>A web application framework for Ruby.</p>
+  platform: ruby
+  prerelease: false
+  yanked: false
+  downloads: 1_000_000
+  sha256: 1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef
+  authors: "John Doe"
+  licenses: 
+    - MIT
+  published_at: 2023-01-01
+  built_at: 2023-01-01
+  metadata:
+    changelog_uri: https://github.com/rails/rails/releases/tag/v8.0.2,
+    bug_tracker_uri: https://github.com/rails/rails/issues,
+    source_code_uri: https://github.com/rails/rails/tree/v8.0.2,
+    mailing_list_uri: https://discuss.rubyonrails.org/c/rubyonrails-talk,
+    documentation_uri: https://api.rubyonrails.org/v8.0.2/,
+    rubygems_mfa_required: true
