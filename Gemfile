@@ -40,6 +40,7 @@ group :development, :test do
   gem "bundler-audit", require: false
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
   gem "rubocop-rails-omakase", require: false
+  gem "bullet"
 end
 
 group :development do
