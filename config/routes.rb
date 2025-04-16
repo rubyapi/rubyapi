@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: "home#index"
   get "up" => "rails/health#show", as: :rails_health_check
 
-  ruby_versions = RubyVersion.all.map { Regexp.escape(it.version) }
+  ruby_versions = RubyConfig.versions.map { Regexp.escape(it[:version].to_s) }
 
   scope "(:version)", constraints: { version: /#{ruby_versions.join("|")}/ } do
     root to: "home#index", as: :versioned_root

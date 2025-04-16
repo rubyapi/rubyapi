@@ -25,7 +25,7 @@ FROM base as build
 RUN --mount=type=cache,id=dev-apt-cache,sharing=locked,target=/var/cache/apt \
     --mount=type=cache,id=dev-apt-lib,sharing=locked,target=/var/lib/apt \
     apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential libpq-dev libyaml-dev pkg-config
+    apt-get install --no-install-recommends -y build-essential libcurl4 libpq-dev
 
 # Install application gems
 COPY --link Gemfile Gemfile.lock ./
@@ -56,7 +56,7 @@ FROM base
 RUN --mount=type=cache,id=dev-apt-cache,sharing=locked,target=/var/cache/apt \
     --mount=type=cache,id=dev-apt-lib,sharing=locked,target=/var/lib/apt \
     apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libsqlite3-0 libyaml-dev postgresql-client ruby-foreman sudo
+    apt-get install --no-install-recommends -y curl libjemalloc2 postgresql-client ruby-foreman sudo
 
 # Copy built artifacts: gems, application
 COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"

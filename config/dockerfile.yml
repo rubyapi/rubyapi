@@ -12,6 +12,4 @@ options:
   yjit: true
   packages:
     build:
-    - libyaml-dev
-    deploy:
-    - libyaml-dev
+    - libcurl4
