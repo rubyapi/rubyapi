@@ -23,6 +23,7 @@ class ActiveSupport::TestCase
 
   parallelize_setup do |worker|
     Searchkick.index_suffix = worker
+    RubyGemDownloader.prefix = worker
 
     RubyObject.reindex
     RubyMethod.reindex

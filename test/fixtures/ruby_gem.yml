@@ -16,6 +16,12 @@ rake:
   downloads: 2_000_000
   yanked: false
 
+rdoc:
+  name: rdoc
+  latest_version: 6.13.1
+  downloads: 3_000_000
+  yanked: false
+
 yanked_gem:
   name: yanked_gem
   latest_version: 1.0.0

@@ -7,6 +7,8 @@ class RubyGemDownloader
 
   attr_reader :rubygem_version
 
+  class_attribute :prefix
+
   def self.download(rubygem_version)
     new(rubygem_version).tap(&:download)
   end
@@ -16,7 +18,7 @@ class RubyGemDownloader
   end
 
   def download_path
-    RUBYGEMS_DOWNLOAD_DIR.join(@rubygem_version.slug)
+    RUBYGEMS_DOWNLOAD_DIR.join(prefix.to_s, @rubygem_version.slug)
   end
 
   def download

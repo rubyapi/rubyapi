@@ -8,21 +8,21 @@ class RubyGemDownloaderTest < ActiveSupport::TestCase
     @rubygem_import = ruby_gem_import(:rails)
 
     VCR.use_cassette("download_rubygem") do
-      RubyGemDownloader.download(@rubygem_version)
+    @download = RubyGemDownloader.download(@rubygem_version)
     end
   end
 
   teardown do
-    FileUtils.rm_rf(RubyGemDownloader::RUBYGEMS_DOWNLOAD_DIR)
+    FileUtils.rm_rf(@download.download_path)
     WebMock.disable!
   end
 
   test "create the folder to download and unpack the gem into" do
-    assert File.exist?(RubyGemDownloader::RUBYGEMS_DOWNLOAD_DIR.join("#{@rubygem_version.slug}"))
+    assert File.exist?(@download.download_path)
   end
 
   test "downloads the correct rubygem from rubygems.org" do
-    assert File.exist?(RubyGemDownloader::RUBYGEMS_DOWNLOAD_DIR.join("#{@rubygem_version.slug}/#{@rubygem_version.slug}.gem"))
+    assert File.exist?(@download.download_path.join("#{@rubygem_version.slug}.gem"))
   end
 
   test "checks the sha256 hash of the downloaded gem file" do
