@@ -26,7 +26,7 @@ jobs:
           bundler-cache: true
 
       - name: Run Ruby linting
-        run: bin/standardrb --no-fix
+        run: bin/rubocop
 
   test-import:
     runs-on: ubuntu-latest
@@ -44,6 +44,20 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 10
+      database:
+        image: postgres:17.4
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        options: >-
+          --health-cmd "pg_isready -U postgres -d postgres -h localhost -p 5432 || exit 1"
+          --health-start-period 30s
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
 
     steps:
       - uses: actions/checkout@v4
@@ -53,10 +67,17 @@ jobs:
         with:
           bundler-cache: true
 
+      - name: Setup Rails Application
+        env:
+          OPENSEARCH_URL: "http://search:9200"
+          DB_HOST: database
+        run: bin/setup --skip-server
+
       - name: Test Importing Ruby Documentation
         env:
-          SEARCH_URL: "http://localhost:9200"
-        run: bin/rails "import:ruby[3.4]"
+          OPENSEARCH_URL: "http://search:9200"
+          DB_HOST: database
+        run: bin/rails import:ruby
 
   test:
     runs-on: ubuntu-latest
@@ -74,7 +95,20 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 10
-
+      database:
+        image: postgres:17.4
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        options: >-
+          --health-cmd "pg_isready -U postgres -d postgres -h localhost -p 5432 || exit 1"
+          --health-start-period 30s
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
     steps:
       - uses: actions/checkout@v4
 
@@ -83,7 +117,16 @@ jobs:
         with:
           bundler-cache: true
 
+      - name: Setup Rails Application
+        env:
+          OPENSEARCH_URL: "http://search:9200"
+          DB_HOST: database
+        run: bin/setup --skip-server
+
       - name: Run Tests
+        env:
+          OPENSEARCH_URL: "http://search:9200"
+          DB_HOST: database
         run: bin/rails test
 
   test-system:
@@ -110,6 +153,9 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+
+      - name: Setup Rails Application
+        run: bin/setup --skip-server
 
       - name: Run Tests
         run: bin/rails test:system
