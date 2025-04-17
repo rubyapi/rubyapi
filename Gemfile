@@ -24,14 +24,12 @@ gem "inline_svg"
 gem "lograge"
 gem "logstash-event"
 gem "meta-tags"
-gem "pastel", require: false
 gem "rbs", require: false
 gem "rdoc", require: false
 gem "rouge", require: false
 gem "stimulus-rails"
 gem "tailwindcss-rails"
 gem "trenni-sanitize", require: false
-gem "tty-spinner", require: false
 gem "typhoeus"
 gem "view_component"
 

@@ -239,8 +239,6 @@ GEM
     parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
-    pastel (0.8.0)
-      tty-color (~> 0.5)
     pg (1.5.9)
     pp (0.6.2)
       prettyprint
@@ -388,10 +386,6 @@ GEM
       rake-compiler
     trenni-sanitize (0.6.1)
       trenni (~> 3.5)
-    tty-color (0.5.1)
-    tty-cursor (0.7.1)
-    tty-spinner (0.9.3)
-      tty-cursor (~> 0.7)
     typhoeus (1.4.1)
       ethon (>= 0.9.0)
     tzinfo (2.0.6)
@@ -454,7 +448,6 @@ DEPENDENCIES
   logstash-event
   meta-tags
   opensearch-ruby
-  pastel
   pg
   propshaft
   puma
@@ -472,7 +465,6 @@ DEPENDENCIES
   tailwindcss-rails
   thruster
   trenni-sanitize
-  tty-spinner
   typhoeus
   vcr
   view_component

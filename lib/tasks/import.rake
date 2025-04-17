@@ -1,13 +1,9 @@
 # frozen_string_literal: true
 
-require_relative "../ruby_downloader"
-require_relative "../ruby_documentation_importer"
-
 namespace :import do
   desc "import Ruby documentation for given version"
   task :ruby, [ :version ] => :environment do |t, args|
     release = args.version.present? ? RubyVersion.find_by(version: args.version) : RubyVersion.default
-    Current.ruby_version = release
 
     if release.blank?
       puts "Could not find MRI release for version #{args.version}"
@@ -16,8 +12,10 @@ namespace :import do
 
     ActiveRecord::Base.transaction do
       release.ruby_objects.delete_all
-      RubyDocumentationImporter.import release
+      GenerateRubyDocsJob.perform_now(release.version)
     end
+
+    puts "Successfully imported Ruby documentation for version #{release.version}"
   end
 
   task rubygems: :environment do

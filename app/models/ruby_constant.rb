@@ -12,7 +12,9 @@ class RubyConstant < ApplicationRecord
 
   def search_data
     {
-      ruby_version: ruby_object.ruby_version.version,
+      ruby_version: ruby_object&.ruby_version&.version,
+      ruby_gem_version: ruby_object&.ruby_gem_version&.version,
+      ruby_gem: ruby_object&.ruby_gem_version&.ruby_gem&.name,
       name: name,
       description: description,
       constant: constant

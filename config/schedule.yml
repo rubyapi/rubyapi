@@ -1,0 +1,5 @@
+production:
+  catalogue_rubygems:
+    class: CatalogueRubygemsJob
+    args: []
+    schedule: every 15 minutes

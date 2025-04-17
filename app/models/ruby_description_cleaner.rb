@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "trenni/sanitize"
-require_relative "import_ui"
 
 class RubyDescriptionCleaner < Trenni::Sanitize::Filter
   def self.clean(version, object_constant, description)
@@ -25,8 +24,7 @@ class RubyDescriptionCleaner < Trenni::Sanitize::Filter
 
     delegate.output
   rescue Trenni::ParseError
-    ImportUI.warn "#{object_constant} contains unparsable HTML"
-    description
+    Rails.logger.warn "#{object_constant} contains unparsable HTML"
   end
 
   attr_accessor :version, :object_constant
@@ -42,7 +40,7 @@ class RubyDescriptionCleaner < Trenni::Sanitize::Filter
 
     node.accept!
   rescue URI::InvalidURIError
-    ImportUI.warn "#{object_constant} contains invalid href: #{url}"
+    Rails.logger.warn "#{object_constant} contains invalid href: #{url}"
     # Not a valid URL, so get rid of the <a> and just return the content.
     # EG: '<a href=":ssl">options</a>' becomes 'options'
     node.skip!(TAG)

@@ -26,7 +26,8 @@ class RubyObject < ApplicationRecord
   has_many :ruby_constants, dependent: :destroy
   has_many :ruby_attributes, dependent: :destroy
 
-  belongs_to :ruby_version, dependent: :destroy
+  belongs_to :ruby_version, optional: true, dependent: :destroy
+  belongs_to :ruby_gem_version, optional: true, dependent: :destroy
 
   validates :name, :path, presence: true
   validates :object_type, inclusion: { in: %w[class_object module_object] }
@@ -38,7 +39,9 @@ class RubyObject < ApplicationRecord
 
   def search_data
     {
-      ruby_version: ruby_version.version,
+      ruby_version: ruby_version&.version,
+      ruby_gem_version: ruby_gem_version&.version,
+      ruby_gem: ruby_gem_version&.ruby_gem&.name,
       path: path,
       name: name,
       description: description,

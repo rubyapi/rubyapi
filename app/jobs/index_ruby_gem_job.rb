@@ -6,12 +6,15 @@ class IndexRubyGemJob < ApplicationJob
   def perform(*args)
     @rubygem = RubyGem.find(args.first["id"])
 
-    RubyGemVersion.upsert_all(
+    new_versions = RubyGemVersion.upsert_all(
       index_versions,
       unique_by: [ :ruby_gem_id, :version ],
       returning: [ :id ],
       on_duplicate: { conflict_target: [ :ruby_gem_id, :version ], update: [ :downloads ] }
     )
+
+    jobs = new_versions.map { GenerateRubyGemDocsJob.perform_later(it) }
+    ActiveJob.perform_all_later(jobs)
   end
 
   private

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "ruby_description_cleaner"
 require "rouge"
 
 class RubyAPIRDocGenerator
@@ -24,25 +23,27 @@ class RubyAPIRDocGenerator
   def file_dir
   end
 
+  def rubygem?
+    @owner.is_a?(RubyGemVersion)
+  end
+
+  def ruby?
+    @owner.is_a?(RubyVersion)
+  end
+
   def initialize(store, options)
     @store = store
     @options = options
-    @release = options.generator_options.pop
-    @version = @release.version
+    @owner = options.generator_options.pop
     @documentation = store.all_classes_and_modules
   end
 
   def generate
     objects = []
 
-    if @release.signatures?
-      require_relative "ruby_type_signature_repository"
-      @type_repository = RubyTypeSignatureRepository.new(@options.files.first)
-    end
-
     @documentation.each do |doc|
-      if skip_namespace? doc.full_name
-        ImportUI.warn "Skipping #{doc.full_name}"
+      if ruby? && skip_namespace?(doc.full_name)
+        Rails.logger.warn "Skipping #{doc.full_name}"
         next
       end
 
@@ -59,7 +60,7 @@ class RubyAPIRDocGenerator
           description: clean_description(doc.full_name, method_doc.description),
           method_type: "#{method_doc.type}_method",
           constant: [ doc.full_name, type_identifier, method_doc.name ].join,
-          source_location: "#{@release.version}:#{method_path(method_doc)}:#{method_doc.line}",
+          source_location: ruby? ? "#{@release.version}:#{method_path(method_doc)}:#{method_doc.line}" : "#{method_path(method_doc)}:#{method_doc.line}",
           method_alias: method_doc.is_alias_for&.name,
           call_sequences: call_sequence_for_method_doc(method_doc),
           source_body: format_method_source_body(method_doc),
@@ -68,23 +69,14 @@ class RubyAPIRDocGenerator
           }
         )
 
-        if @release.signatures?
-          signatures = if method_doc.type == "instance"
-            @type_repository.signiture_for_object_instance_method(object: doc.name, method: method_doc.name)
-          elsif method_doc.type == "class"
-            @type_repository.signiture_for_object_class_method(object: doc.name, method: method_doc.name)
-          end
-
-          method.signatures = signatures.present? ? signatures.map(&:to_s) : []
-        end
-
         next if methods.any? { |m| m.name == method.name && m.method_type == method.method_type }
 
         methods << method
       end
 
       objects << RubyObject.create!(
-        ruby_version: @release,
+        ruby_version: ruby? ? @owner : nil,
+        ruby_gem_version: rubygem? ? @owner : nil,
         name: doc.name,
         path: doc.full_name.downcase.gsub("::", "/"),
         description: clean_description(doc.full_name, doc.description),
