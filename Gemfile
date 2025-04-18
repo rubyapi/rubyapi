@@ -34,6 +34,7 @@ gem "typhoeus"
 gem "view_component"
 
 gem "maintenance_tasks"
+gem "mission_control-jobs"
 
 group :development, :test do
   gem "brakeman", require: false

@@ -8,7 +8,7 @@ class RubyGemDownloaderTest < ActiveSupport::TestCase
     @rubygem_import = ruby_gem_import(:rails)
 
     VCR.use_cassette("download_rubygem") do
-    @download = RubyGemDownloader.download(@rubygem_version)
+      @download = RubyGemDownloader.download(@rubygem_version)
     end
   end
 

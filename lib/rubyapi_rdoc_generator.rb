@@ -60,7 +60,7 @@ class RubyAPIRDocGenerator
           description: clean_description(doc.full_name, method_doc.description),
           method_type: "#{method_doc.type}_method",
           constant: [ doc.full_name, type_identifier, method_doc.name ].join,
-          source_location: ruby? ? "#{@release.version}:#{method_path(method_doc)}:#{method_doc.line}" : "#{method_path(method_doc)}:#{method_doc.line}",
+          source_location: ruby? ? "#{@owner.version}:#{method_path(method_doc)}:#{method_doc.line}" : "#{method_path(method_doc)}:#{method_doc.line}",
           method_alias: method_doc.is_alias_for&.name,
           call_sequences: call_sequence_for_method_doc(method_doc),
           source_body: format_method_source_body(method_doc),

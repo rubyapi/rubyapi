@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # strong_migrations: disable
 
 # This migration comes from maintenance_tasks (originally 20210517131953)

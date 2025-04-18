@@ -1,0 +1,948 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/gems/rdoc.json
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - rubygems.org
+      User-Agent:
+      - http.rb/5.2.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '1255'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Max-Age:
+      - '1728000'
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - 'default-src ''self''; font-src ''self'' https://fonts.gstatic.com; img-src
+        ''self'' data: https://secure.gaug.es https://gravatar.com https://www.gravatar.com
+        https://secure.gravatar.com https://*.fastly-insights.com https://avatars.githubusercontent.com;
+        object-src ''none''; script-src ''self'' ''sha256-lAw7vDoVAlP471TK7wBPiQPPQs7xUovlJcoBrYWGM48=''
+        https://secure.gaug.es https://www.fastly-insights.com ''nonce-b7024c5f2d86f6797eba9c6bd47cf28e'';
+        style-src ''self'' ''unsafe-inline'' https://fonts.googleapis.com; connect-src
+        ''self'' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        ''self'' https://github.com/login/oauth/authorize; frame-ancestors ''self'';
+        base-uri ''self''; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3A1942407ce1a03e205c2ac749a035d5b409edd5a4%2Cenv%3Aproduction%2Ctrace_id%3A6801e5ba0000000021e69076d0803527'
+      X-Request-Id:
+      - 54d27365-40c6-447a-913f-af06d4962fdd
+      X-Runtime:
+      - '0.018782'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Backend:
+      - F_Rails 52.10.202.29:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Fri, 18 Apr 2025 05:41:05 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '55'
+      X-Served-By:
+      - cache-itm1220037-ITM
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1744954866.829017,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"2c1924d89f09bc3ee205fe0825116fe6"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: UTF-8
+      string: '{"name":"rdoc","downloads":193524957,"version":"6.13.1","version_created_at":"2025-03-29T15:08:13.203Z","version_downloads":1852493,"platform":"ruby","authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","info":"RDoc produces HTML and command-line documentation
+        for Ruby projects.\nRDoc includes the +rdoc+ and +ri+ tools for generating
+        and displaying documentation from the command-line.\n","licenses":["Ruby"],"metadata":{"homepage_uri":"https://ruby.github.io/rdoc","changelog_uri":"https://github.com/ruby/rdoc/releases","source_code_uri":"https://github.com/ruby/rdoc"},"yanked":false,"sha":"62a0dac99493c94e8eb7a3fb44e55aefcb4cecb119f7991f25bddc5ed8d472f7","spec_sha":"0a3e36ab44e3e37ec07b955c68e06302b7750c4a1bee7754cedd6f470c0ae03d","project_uri":"https://rubygems.org/gems/rdoc","gem_uri":"https://rubygems.org/gems/rdoc-6.13.1.gem","homepage_uri":"https://ruby.github.io/rdoc","wiki_uri":null,"documentation_uri":null,"mailing_list_uri":null,"source_code_uri":"https://github.com/ruby/rdoc","bug_tracker_uri":null,"changelog_uri":"https://github.com/ruby/rdoc/releases","funding_uri":null,"dependencies":{"development":[],"runtime":[{"name":"psych","requirements":"\u003e=
+        4.0.0"}]}}'
+  recorded_at: Fri, 18 Apr 2025 05:41:05 GMT
+- request:
+    method: get
+    uri: https://rubygems.org/api/v1/versions/rdoc.json
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - rubygems.org
+      User-Agent:
+      - http.rb/5.2.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - close
+      Content-Length:
+      - '109041'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - '0'
+      X-Content-Type-Options:
+      - nosniff
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Cross-Origin-Opener-Policy:
+      - same-origin
+      Last-Modified:
+      - Sat, 29 Mar 2025 15:08:14 GMT
+      Cache-Control:
+      - max-age=60, public
+      Content-Security-Policy:
+      - 'default-src ''self''; font-src ''self'' https://fonts.gstatic.com; img-src
+        ''self'' data: https://secure.gaug.es https://gravatar.com https://www.gravatar.com
+        https://secure.gravatar.com https://*.fastly-insights.com https://avatars.githubusercontent.com;
+        object-src ''none''; script-src ''self'' ''sha256-lAw7vDoVAlP471TK7wBPiQPPQs7xUovlJcoBrYWGM48=''
+        https://secure.gaug.es https://www.fastly-insights.com ''nonce-cfcf67ed317581b3e35f91840f6e4d0e'';
+        style-src ''self'' ''unsafe-inline'' https://fonts.googleapis.com; connect-src
+        ''self'' https://s3-us-west-2.amazonaws.com/rubygems-dumps/ https://*.fastly-insights.com
+        https://fastly-insights.com https://api.github.com http://localhost:*; form-action
+        ''self'' https://github.com/login/oauth/authorize; frame-ancestors ''self'';
+        base-uri ''self''; report-uri https://csp-report.browser-intake-datadoghq.com/api/v2/logs?dd-api-key=pub852fa3e2312391fafa5640b60784e660&dd-evp-origin=content-security-policy&ddsource=csp-report&ddtags=service%3Arubygems.org%2Cversion%3A1942407ce1a03e205c2ac749a035d5b409edd5a4%2Cenv%3Aproduction%2Ctrace_id%3A6801e5f1000000000740d4317484778c'
+      X-Request-Id:
+      - c6a89111-430f-4004-92e2-fd9a8e185249
+      X-Runtime:
+      - '0.022740'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Backend:
+      - F_Rails 52.36.103.250:443
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Fri, 18 Apr 2025 05:41:05 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '1'
+      X-Served-By:
+      - cache-itm1220058-ITM
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '1'
+      X-Timer:
+      - S1744954866.937678,VS0,VE1
+      Vary:
+      - Accept-Encoding
+      Etag:
+      - '"6888a1e8f21086effbecb2d7026dd14a"'
+      Server:
+      - RubyGems.org
+    body:
+      encoding: UTF-8
+      string: '[{"authors":"Eric Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss,
+        Zachary Scott, Hiroshi SHIBATA, ITOYANAGI Sakura","built_at":"2025-03-29T00:00:00.000Z","created_at":"2025-03-29T15:08:13.203Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":1852493,"metadata":{"homepage_uri":"https://ruby.github.io/rdoc","changelog_uri":"https://github.com/ruby/rdoc/releases","source_code_uri":"https://github.com/ruby/rdoc"},"number":"6.13.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.6.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"62a0dac99493c94e8eb7a3fb44e55aefcb4cecb119f7991f25bddc5ed8d472f7","spec_sha":"0a3e36ab44e3e37ec07b955c68e06302b7750c4a1bee7754cedd6f470c0ae03d"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2025-03-23T00:00:00.000Z","created_at":"2025-03-23T19:04:56.966Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":719638,"metadata":{"homepage_uri":"https://ruby.github.io/rdoc","changelog_uri":"https://github.com/ruby/rdoc/releases","source_code_uri":"https://github.com/ruby/rdoc"},"number":"6.13.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.6.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"32c2139ae43ed91b7c43032fe5423d21d57718829cc5a11e5c9710d2aa5e0329","spec_sha":"709ab4b75c94f998d8ad5c1ec74ec707d48618ff8043295b9be1fcd54f2472a1"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2025-02-06T00:00:00.000Z","created_at":"2025-02-06T11:41:36.998Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":5680212,"metadata":{"homepage_uri":"https://ruby.github.io/rdoc","changelog_uri":"https://github.com/ruby/rdoc/releases","source_code_uri":"https://github.com/ruby/rdoc"},"number":"6.12.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.6.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"7d6f706e070bffa5d18a448f24076cbfb34923a99c1eab842aa18e6ca69f56e0","spec_sha":"de74420b4485b9b51a42b061b13ad129295e9da79aa7a4ceef18d8661dd94633"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2025-01-16T00:00:00.000Z","created_at":"2025-01-16T11:37:16.004Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":2599684,"metadata":{"homepage_uri":"https://ruby.github.io/rdoc","changelog_uri":"https://github.com/ruby/rdoc/releases","source_code_uri":"https://github.com/ruby/rdoc"},"number":"6.11.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.6.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"bec66fb9b019be64f7ba7d2cd2aecb283a3a01fef23a95b33e2349c6d1aa0040","spec_sha":"3629aaf550cf1ede4f2b5fa521ee4204ce00dd578091658dc83978f91b830c96"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2024-12-18T00:00:00.000Z","created_at":"2024-12-18T09:59:29.214Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":3170921,"metadata":{"homepage_uri":"https://ruby.github.io/rdoc","changelog_uri":"https://github.com/ruby/rdoc/releases","source_code_uri":"https://github.com/ruby/rdoc"},"number":"6.10.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.6.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"db665021883ac9df3ba29cdf71aece960749888db1bf9615b4a584cfa3fa3eda","spec_sha":"52e5bbe55a57cf77b4e071107de4f9bd5dd67725295d648cea42933487cc5ffd"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2024-12-16T00:00:00.000Z","created_at":"2024-12-16T12:50:09.024Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":324932,"metadata":{"homepage_uri":"https://ruby.github.io/rdoc","changelog_uri":"https://github.com/ruby/rdoc/releases","source_code_uri":"https://github.com/ruby/rdoc"},"number":"6.9.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.6.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"3344bf498a46b701aba70ccdd5cdfa8be37e68493984c1bf8c579f06c3442c9f","spec_sha":"016eab5fb7422ad8fa38f9048f085a0c643473ee0665d61d990baff1b0f22691"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2024-12-13T00:00:00.000Z","created_at":"2024-12-13T16:15:17.789Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":300493,"metadata":{"homepage_uri":"https://ruby.github.io/rdoc","changelog_uri":"https://github.com/ruby/rdoc/releases","source_code_uri":"https://github.com/ruby/rdoc"},"number":"6.9.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.6.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"91a9d213ac66a3c2d8c7f4e8b38eafde0ae3dd2a96c9f9f6a2620644ea54b209","spec_sha":"ebb81c9bc7f0c0ac067177bb60b29a8c98794615a14a242f212ecd1a75da1e44"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2024-11-19T00:00:00.000Z","created_at":"2024-11-19T11:52:17.914Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":2782665,"metadata":{"homepage_uri":"https://ruby.github.io/rdoc","changelog_uri":"https://github.com/ruby/rdoc/releases","source_code_uri":"https://github.com/ruby/rdoc"},"number":"6.8.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.6.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"0128002d1bfc4892bdd780940841e4ca41275f63781fd832d11bc8ba4461462c","spec_sha":"2bb95173da3dc7213fbf0f3367790f503814c29d4d8fd8983374dd7eb52d99aa"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2024-11-19T00:00:00.000Z","created_at":"2024-11-19T05:48:26.407Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":51941,"metadata":{"homepage_uri":"https://ruby.github.io/rdoc","changelog_uri":"https://github.com/ruby/rdoc/releases","source_code_uri":"https://github.com/ruby/rdoc"},"number":"6.8.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.6.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"240f74512777e821a42562c9b383070e0e795c99d74694c8882ba226b7546044","spec_sha":"fb0582c776339771287c19128b77d63c61493648c8a0fd900c1c233629fc8c7f"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2024-05-23T00:00:00.000Z","created_at":"2024-05-23T01:17:40.402Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":16752997,"metadata":{"homepage_uri":"https://ruby.github.io/rdoc","changelog_uri":"https://github.com/ruby/rdoc/releases","source_code_uri":"https://github.com/ruby/rdoc"},"number":"6.7.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.6.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"b17d5f0f57b0853d7b880d4360a32c7caf8dbb81f8503a36426df809e617f379","spec_sha":"d3179a3bcefa89525095b29e4804be73725c85d8b51acb255b1a13a817008678"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2024-03-21T00:00:00.000Z","created_at":"2024-03-21T04:31:55.398Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":7311220,"metadata":{"homepage_uri":"https://ruby.github.io/rdoc","changelog_uri":"https://github.com/ruby/rdoc/releases","source_code_uri":"https://github.com/ruby/rdoc"},"number":"6.6.3.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.6.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"39f7b749229ab5ad9d21c81586151c1dd7a549fa8be4070ee09b524f9c656345","spec_sha":"32973a7d85bf6f310acf0f5b7c4a21bd40e769bf7b14c037c4946ed9b740808e"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2023-12-16T00:00:00.000Z","created_at":"2023-12-16T03:40:10.355Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":5322894,"metadata":{"homepage_uri":"https://ruby.github.io/rdoc","changelog_uri":"https://github.com/ruby/rdoc/releases","source_code_uri":"https://github.com/ruby/rdoc"},"number":"6.6.2","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.6.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"f763dbec81079236bcccded19d69680471bd55da8f731ea6f583d019dacd9693","spec_sha":"effec4bf87180e3d28852c7c1d70b3aca3698a1a51837fb36bca55d8cdaa755d"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2023-12-05T00:00:00.000Z","created_at":"2023-12-05T07:37:13.951Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":817308,"metadata":{"homepage_uri":"https://ruby.github.io/rdoc","changelog_uri":"https://github.com/ruby/rdoc/releases","source_code_uri":"https://github.com/ruby/rdoc"},"number":"6.6.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.6.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"d9d46f8f9bef79cfe45d9bea2b6b7f4d0a1c02bc9582135175faf6d5afcc4afd","spec_sha":"9fcaef962f735134c40a96835d25e9487ea152c3747e6c6c93c321daa347592c"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2023-11-06T00:00:00.000Z","created_at":"2023-11-06T08:30:17.239Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":1900865,"metadata":{"homepage_uri":"https://ruby.github.io/rdoc","changelog_uri":"https://github.com/ruby/rdoc/releases","source_code_uri":"https://github.com/ruby/rdoc"},"number":"6.6.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.6.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"10bff3fb916454ad47afa2b2471b2154896ff65bb808b616f221d22da67dd3de","spec_sha":"f839d51440f32f759010150edb6e5b9a342573de63cdd79505fa2d0306097213"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2024-03-21T00:00:00.000Z","created_at":"2024-03-21T04:31:43.782Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":80375,"metadata":{},"number":"6.5.1.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"39e4903cd6d45c215749cb2ef901bc1cfd647b44d1f15184d3b5196d1abdc3e0","spec_sha":"72fa6793f8130af875ecd2b1a22e233dc26c51c46c32a93bddc11e836990c204"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2022-12-05T00:00:00.000Z","created_at":"2022-12-05T05:00:49.335Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":2563435,"metadata":{},"number":"6.5.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"95b98a0b087fcd9ab59e05864fab605b1ead12bab4212eb1d2295fc574672217","spec_sha":"223942106c68f9dd5a616ae008f5f74703dcf078d3f469b99f46c79416a76800"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2024-03-21T00:00:00.000Z","created_at":"2024-03-21T04:31:33.565Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":227915,"metadata":{},"number":"6.4.1.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"79d740d4b5a04cc8c9d65c4ecfb966ffec51471b086ca75df9d80c5c32104131","spec_sha":"59e6090600841143b233bdf0502791baa680bd616080c5d0661c25470c20b53b"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2021-12-24T00:00:00.000Z","created_at":"2021-12-24T08:03:38.826Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":1293250,"metadata":{},"number":"6.4.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.5.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"5e3f949c52db3e1361ab14b1672ae284254cd40eff2df0fbb361d5bcfb66bfaf","spec_sha":"904952330db0d9497cdcf41d088f534cd0afa23b838dc09ce3fc03fa4e106fba"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2024-03-21T00:00:00.000Z","created_at":"2024-03-21T04:31:22.757Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":2576034,"metadata":{},"number":"6.3.4.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.4.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"0e1c30d007ed66b25698dea49bbdb5b50e6b25a04a851023d9b9d0317c0dc083","spec_sha":"0e6ccff5a5551389ae5dc847be7a3a27c33424c4928f1ca27f28beff1bf83b79"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2021-11-11T00:00:00.000Z","created_at":"2021-11-11T08:57:38.601Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":2998593,"metadata":{},"number":"6.3.3","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.4.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"5bd7010d76e259794f24713d5650406611854226bb6186460b49d3229bd74635","spec_sha":"7779d2e2e671cd7e7023636508bfced074c0462c324fa019e27e8774769b7c1d"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2021-07-05T00:00:00.000Z","created_at":"2021-07-05T10:33:22.703Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":18330533,"metadata":{},"number":"6.3.2","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.4.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"def4a720235c27d56c176ae73555e647eb04ea58a8bbaa927f8f9f79de7805a6","spec_sha":"af5e8d3a2da57cdfd0331d128264644d4348878cd3890b276fe58fecf9051ec8"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2021-05-02T00:00:00.000Z","created_at":"2021-05-02T14:07:57.025Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":5498094,"metadata":{},"number":"6.3.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.4.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"cc4db725baa9a4a32da7a0ece99f86cfeb586fd416002c3143ed2a47b6b08b1a","spec_sha":"472a7c1ca8e963516e9553f37cb14c14fe17fc0db70ea6f7ac09fc05c6ba3f9a"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2020-12-21T00:00:00.000Z","created_at":"2020-12-21T07:05:37.654Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":760562,"metadata":{},"number":"6.3.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.4.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"847dd20651136ceb7ce1bfcf12cec7b681ad9e4195ebcf71300105d74422e1e7","spec_sha":"ba2f3e5f628d29d5a561654f269776193106ef7460c2cd7235485dca784a6e86"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2019-12-23T00:00:00.000Z","created_at":"2019-12-23T23:09:05.710Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":2757653,"metadata":{},"number":"6.2.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.4.0","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"0c3a458ce536b907839125263129bd9d488ec5be44552ec643b29c1272150621","spec_sha":"f1ee3df9cdd7aa4ea29500febdfcbcfaa71d307fac533e33c2dcc90099dae01e"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2019-08-28T00:00:00.000Z","created_at":"2019-08-28T10:47:04.149Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":6180657,"metadata":{},"number":"6.2.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"292ec1e7cc1ac2dc7828bbd66180c53d64800a660105907ea22f93d607d307be","spec_sha":"edc023d28abc2099f555c23887b1c42bbb57ae9777c8c54132400f9a76558080"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2021-09-06T00:00:00.000Z","created_at":"2021-09-06T07:23:51.253Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":167738,"metadata":{},"number":"6.1.2.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"e3c7a2165d7e46fb4c0ee425f03b9d380a2a815644860c3467bea7d6981491c7","spec_sha":"33c617f8a280ca0c055d9975ecce2b74630154bd5141c489f5fd14473e94218f"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2019-08-28T00:00:00.000Z","created_at":"2019-08-28T10:44:50.989Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":3384282,"metadata":{},"number":"6.1.2","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"eb137e70b3dc012cb5550c4dd9d0b8083502cacc4b07b514891052ac6f4b037e","spec_sha":"e723ea783531640adf6ecc4c599626cf2a528e5995b1cbd0d66dc5a22f7bc749"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2018-12-26T00:00:00.000Z","created_at":"2018-12-26T22:12:54.747Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":1766651,"metadata":{},"number":"6.1.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"774ea15fbf4f8284a9bea4530810ed973773e3eb506316d5d45e686a0553671d","spec_sha":"850fc3247f641a0a4999f80ebf7e35de067db52ea8f3cac534ed04dd653e6557"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2018-12-23T00:00:00.000Z","created_at":"2018-12-23T12:48:37.364Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":32944,"metadata":{},"number":"6.1.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"ace0c97e0805bfdc3583cc774c38bc0d138c93d22f3e3f3c742e0d1dc9d08697","spec_sha":"c97ec052515640f4e0e0ddd9d34845091c031f048b4b229231667d47e3df545d"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2018-12-08T00:00:00.000Z","created_at":"2018-12-08T17:19:03.001Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":1907,"metadata":{},"number":"6.1.0.beta3","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":true,"licenses":["Ruby"],"requirements":[],"sha":"79e45baf5c9acfbfb492c9bb68bf2cda28878f79f719f9745290170d25461327","spec_sha":"f741f5a5e7e630d225f50f99b7cf532c172a25cdbe3f2787e0f972260e73fc12"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2018-10-17T00:00:00.000Z","created_at":"2018-10-17T06:06:58.257Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":1904,"metadata":{},"number":"6.1.0.beta2","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":true,"licenses":["Ruby"],"requirements":[],"sha":"da99d7c6d90312fe9e1285f0e393b26bdee241e6e9e88b0961dee4104ebbf6de","spec_sha":"648590a7426717418258448b3fc7032695977cfa3026f3540db9a976a77fe2fb"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2018-10-17T00:00:00.000Z","created_at":"2018-10-17T05:57:09.351Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":1984,"metadata":{},"number":"6.1.0.beta1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":true,"licenses":["Ruby"],"requirements":[],"sha":"6e4ae4d7eec1ec08d61c41701f515279bd7fc3b9547c1f56ab2103f143e1573a","spec_sha":"634784b91e34f25ff2c4edc26cc3322e407fa8db9f83a7572d75d49510f75013"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2018-05-04T00:00:00.000Z","created_at":"2018-05-04T10:04:31.511Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":2485029,"metadata":{},"number":"6.0.4","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"27b33aab87e61bf6fffe7ef82c188865ab578fdab91a342c798635869920db2a","spec_sha":"8855af853103e8a5e85a233cdc401407304014e686aed75336ec1670e3975b9e"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2018-03-26T00:00:00.000Z","created_at":"2018-03-26T05:10:28.896Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":1461548,"metadata":{},"number":"6.0.3","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"0af90ff46a89fffaf9ac504a96bd8f055bc0c979cc7a3264127572eb087e4645","spec_sha":"8269f1fa7332debb3d79ef204e73219d5541a987582cb5d7d150f4c5181301b2"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2018-03-17T00:00:00.000Z","created_at":"2018-03-17T05:23:06.989Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":59398,"metadata":{},"number":"6.0.2","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"2782a49fac65d3195cd4e7e620dcf09dd6df03830ff69e79edc98a6b7c69b52f","spec_sha":"fd8759b00a02bbbc2a7d241efc4c233585bd8c402784f3227f2c2908a702cc95"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2017-12-24T00:00:00.000Z","created_at":"2019-08-28T10:43:00.152Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":6282,"metadata":{},"number":"6.0.1.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"e510ecb2f8cffe96c44096215f6b50663884d7b18063ba0e7c2f7f79fadd035e","spec_sha":"82cd424555a6e04ee7c8d617710568357b72303b21a36e1d091a96f3e725fda1"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2017-12-24T00:00:00.000Z","created_at":"2017-12-23T23:25:24.171Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":342622,"metadata":{},"number":"6.0.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"d2bb4ddd97dc3bbf667cdb9ca75326e349d8f53f0436544457d19c4b09d8f0ef","spec_sha":"c5fee8fbf630217a8b58e8dd828b785a7ca4e3d6a551f2b81d8e6fca30a2670d"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2017-12-05T00:00:00.000Z","created_at":"2017-12-05T11:05:18.961Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":50994,"metadata":{},"number":"6.0.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"a0655f1dc72c3afc6132575dc88093543570011d8877948397b03ba220f5c706","spec_sha":"1c45669c1da0c570d291fe8fef9674f487f7a42aa869d1ef5865382dd8b3bde7"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2017-11-27T00:00:00.000Z","created_at":"2017-11-27T10:17:44.760Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":2259,"metadata":{},"number":"6.0.0.beta4","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":true,"licenses":["Ruby"],"requirements":[],"sha":"fbd8070901fe6ab5c4174e560e13a73c134a7418074c091f090b74a7ebdb25be","spec_sha":"b7133eec448e68fe0d0733c40c8474cd59b4e1390c8dfcba85869b93a62210c6"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA,
+        ITOYANAGI Sakura","built_at":"2017-10-10T00:00:00.000Z","created_at":"2017-10-10T01:46:55.608Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":2085,"metadata":{},"number":"6.0.0.beta3","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":true,"licenses":["Ruby"],"requirements":[],"sha":"44b2f54dcfee5e099cd9bd74381d560e18fb17d02452413b59f83d49e5dbd685","spec_sha":"cec14d615bf226fa1df8512a7eea69b2e45e229bb392ee245f376ab40249a17a"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA","built_at":"2017-09-12T00:00:00.000Z","created_at":"2017-09-12T03:33:41.518Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":2084,"metadata":{},"number":"6.0.0.beta2","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":true,"licenses":["Ruby"],"requirements":[],"sha":"75c1b93dd743c8a51c685fb532f64421f27552298f67cab0b6a9a2fcdcf29645","spec_sha":"a54732c37410d58e18723b8ff22db7ef822110cbd12afe514357a16039fc7f77"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA","built_at":"2017-08-29T00:00:00.000Z","created_at":"2017-08-29T11:30:54.549Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":2067,"metadata":{},"number":"6.0.0.beta1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 2.2.2","prerelease":true,"licenses":["Ruby"],"requirements":[],"sha":"13dc15c9ddc903c25de7fe4bcdf7231f9d2cad3e42e50b916753b295b0969d8b","spec_sha":"5173297b778ca4382613fe6abdc879590870da4ccbdb84b43b2206db7f25c710"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA","built_at":"2017-02-24T00:00:00.000Z","created_at":"2017-02-24T07:28:48.851Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":1269532,"metadata":{},"number":"5.1.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 1.9.3","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"195090065b9afc6d64600e3686b8ab39be7d2eeaa9d98bad5160ce66276e94dc","spec_sha":"81110f74e55f68a82d567036ef5788a6a3d3f8be70f48c7ea742daf4ca220290"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA","built_at":"2019-08-28T00:00:00.000Z","created_at":"2019-08-28T10:40:58.898Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":14876,"metadata":{},"number":"5.0.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 1.9.3","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"fd33dd346feb97c56db6869a2b568aa9420d70aad25b05f965824e68826d1b22","spec_sha":"d19d68d8e17b2941b4eb61d89cb7197f624eef3c18ac4d3d38e361c25227ee0f"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA","built_at":"2016-11-05T00:00:00.000Z","created_at":"2016-11-05T08:28:23.956Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":367443,"metadata":{},"number":"5.0.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        2.2","ruby_version":"\u003e= 1.9.3","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"86fae3ac44b858e7abdb8809620232296f9a8cc6815c98b4cc1ed21ca9ffb0d1","spec_sha":"1b9894396664ff681800ce79011f8dd5ac26e9d6e8cc99546fac5f1fefe22a62"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA","built_at":"2016-09-07T00:00:00.000Z","created_at":"2016-09-07T22:05:59.484Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":9967,"metadata":{},"number":"5.0.0.beta2","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.9.3","prerelease":true,"licenses":["Ruby"],"requirements":[],"sha":"9e2076fad1cbd88cde508707c881c8d180b3b0d38612440160f0246b1220937a","spec_sha":"2ee10d856e355ac9710a2c799b5f11dc3e8654ee1dadab72064ffc92af221cf1"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss, Zachary Scott, Hiroshi SHIBATA","built_at":"2016-09-07T00:00:00.000Z","created_at":"2016-09-07T02:28:40.021Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.\nRDoc includes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation from
+        the command-line.\n","downloads_count":2301,"metadata":{},"number":"5.0.0.beta1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.9.3","prerelease":true,"licenses":["Ruby"],"requirements":[],"sha":"521f09c7a75ebd18e32679e616aa62a18ff0243594bca12b6c68620748096dad","spec_sha":"472f6e892ee6ece8139a7578ad64732c90db08495fc596b3f7e0e66aef32c3e9"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2016-11-05T00:00:00.000Z","created_at":"2016-11-05T02:50:32.425Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation\nfrom
+        the command-line.","downloads_count":26408936,"metadata":{},"number":"4.3.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.9.3","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"8cd820f70ec4b315ffff8e0653c8ce46cc9e444f3f8e7ed21c57338c61156a8d","spec_sha":"39c7c4040cbbde5820b8fd8c1cfb3e574fef7f026e3a54c9ddfdf4daf74a6e7f"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2016-02-09T00:00:00.000Z","created_at":"2016-02-09T02:23:07.762Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation\nfrom
+        the command-line.","downloads_count":7814880,"metadata":{},"number":"4.2.2","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"f3341c252b1547be6ba042f5ca1ce1fc5c52e3c27d8e0d485d0486173edfed08","spec_sha":"2bb0b8ba627e8c5a172f7b4a67a8677f7795963d36e74a466fe31dcccbeac1da"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2015-12-22T00:00:00.000Z","created_at":"2015-12-22T11:57:26.950Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation\nfrom
+        the command-line.","downloads_count":816515,"metadata":{},"number":"4.2.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"81207a9d3ef9e60fc42bf3c6569373cb32397a16af370ca6be6dc71b358df839","spec_sha":"f0e6deea462c14b03c418a5045a88e9b2a567ffc587a69115f6f1d2d072557c3"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2014-12-07T00:00:00.000Z","created_at":"2014-12-07T01:14:55.066Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation\nfrom
+        the command-line.","downloads_count":5980409,"metadata":{},"number":"4.2.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"391bfe3484a69db2cfa0fa32eed9010a7878b33ae645d67558d1806c847290cc","spec_sha":"d2de5a99aabb58f993379f2207ac01642ff414fcb1d5560b6697b24dfec4d9a9"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2014-09-10T00:00:00.000Z","created_at":"2014-09-10T20:42:14.565Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation\nfrom
+        the command-line.","downloads_count":2257093,"metadata":{},"number":"4.1.2","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"8623c640083f0e06085636a6a719cac993dcccceba5f3f7344ed14c35b941033","spec_sha":"a0a288cc3075c1b8573333883e82321f01192f24d4af02b4ac26d6747d1594c9"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2014-01-09T00:00:00.000Z","created_at":"2014-01-09T20:20:42.114Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation\nfrom
+        the command-line.","downloads_count":4126398,"metadata":{},"number":"4.1.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"fc41a834055ed4de6a2adabb78953f7783cd4d67c2239229a71e09dd308a8725","spec_sha":"d218e322ff86946fd2e4bdbd0ce5725e1c485ade339ead1f022f7f404a8f7885"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2013-12-26T00:00:00.000Z","created_at":"2013-12-26T19:21:05.796Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation\nfrom
+        the command-line.","downloads_count":50585,"metadata":{},"number":"4.1.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":["Ruby"],"requirements":[],"sha":"b06b4391705304a6cc121f81e51e77c7d19008adb0d6040ac6e58d79b9225321","spec_sha":"0226a7d266f70048c1f4d22868fd853cbac2ee8d146c126e808d547bb0f9612d"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2013-12-03T00:00:00.000Z","created_at":"2013-12-03T04:13:40.590Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation\nfrom
+        the command-line.","downloads_count":4130,"metadata":{},"number":"4.1.0.preview.3","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":true,"licenses":["Ruby"],"requirements":[],"sha":"fa3e80d2e60033135b71d472ce23283ad345c7376527a2b294e5765258bd95bf","spec_sha":"e6459a34ad7572b9a1ea4e6ab066587745882c37606943c0ce7d927ca5386cfa"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2013-03-27T00:00:00.000Z","created_at":"2013-03-27T22:48:15.144Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation\nfrom
+        the command-line.","downloads_count":625959,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"4.0.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":["Ruby"],"requirements":null,"sha":"b712d56c266a8568362bbebcdc385b102b1494ceea099161c71e02f420d716ba","spec_sha":"5c0f75cd8d49877775ff946af9054d169b3898f25c3c1ed6dfc2213aab184c6f"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2013-02-24T00:00:00.000Z","created_at":"2013-02-24T17:26:58.865Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation\nfrom
+        the command-line.","downloads_count":124504,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"4.0.0","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":["Ruby"],"requirements":null,"sha":"ea9b6f501b973bf3d05f1d906f3967d5b4b98b2a2e20cca5ac9590430f39c4cc","spec_sha":"2b87474e905bed60113bfa28f67ad15140c5d489d3922a6197049818c5ffbee9"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2013-02-08T00:00:00.000Z","created_at":"2013-02-08T22:57:16.258Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation\nfrom
+        the command-line.","downloads_count":3689,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"4.0.0.rc.2.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":true,"licenses":["Ruby"],"requirements":null,"sha":"ac55d7097f5309e9f5b32004bb66fd90b7f9c55e9e92efb976855c25c72d43b3","spec_sha":"f1230289f8e46d9af43161c6b94929a574973f2dac60d3043b66653ae5dcf6a8"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2013-02-06T00:00:00.000Z","created_at":"2013-02-06T08:15:23.379Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation\nfrom
+        the command-line.","downloads_count":3200,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"4.0.0.rc.2","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":true,"licenses":["Ruby"],"requirements":null,"sha":"aff2b991b171b450ea2e24e87322b464ad53caf85dfb0540f74c1d9c5b3a1916","spec_sha":"4bb403b5bf9bce0560d1834f45dffc4f2457d6ffbb9f9265d9bd2f0ca62e0777"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2012-12-15T00:00:00.000Z","created_at":"2012-12-15T05:46:11.497Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation\nfrom
+        the command-line.","downloads_count":4432,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"4.0.0.preview2.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":true,"licenses":["Ruby"],"requirements":null,"sha":"d4d2aeeda46f7465e3c78defda50636fd9d9f8a44a0e450304f8834ee13b2fdb","spec_sha":"b83da8b53697daef91776348635b05e3eaa4557b96640e4fe93321615071ae91"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2012-12-01T00:00:00.000Z","created_at":"2012-12-01T20:42:56.613Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying documentation\nfrom
+        the command-line.","downloads_count":3178,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"4.0.0.preview2","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":true,"licenses":["Ruby"],"requirements":null,"sha":"41b4df8523919ddd706a4186369504d671c60a2932e26cab599b503f738b9746","spec_sha":"24f799295299efcdadc8816fc823bb8bee223709a67e28c2f038b489164aa550"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2013-02-25T00:00:00.000Z","created_at":"2013-02-25T06:23:50.909Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":28087177,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.12.2","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":[],"requirements":null,"sha":"a8e2b78f7e5ec4cc4716cd863975645f2f2377dc6db267a15e427e5fae2633ed","spec_sha":"68a884e48c0973f8d59c71631ce90b9027d273c76d7ce2ff05973ebb5872ca0f"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2013-02-06T00:00:00.000Z","created_at":"2013-02-06T08:11:48.458Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":870259,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.12.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":[],"requirements":null,"sha":"8ffc43aa68671ff20615b77eb3e0339204b6a297e148de261add53b0057fd4c1","spec_sha":"448a16bf1e5cbdcfaa1ff3ba18c97864ec8f1704d159218e4fb21bde807ff9a2"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-12-15T00:00:00.000Z","created_at":"2011-12-15T21:53:49.301Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":7919310,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.12","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":null,"requirements":null,"sha":"77b6deba13ca090fb4608c218ec5d5c05d78e841cb0b53cb31f91fb56686a431","spec_sha":"bab44f35171ff580c7474aec213f1a6459b45c884afc852d7eac2f4a240bf0ac"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-10-17T00:00:00.000Z","created_at":"2011-10-17T22:49:09.527Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":883146,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.11","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":null,"requirements":null,"sha":"353b31c71315bb9ceb69185bc9a2d5aa83a5195dd717fbb865fd06b18b280873","spec_sha":"15c9caa3c51977f8210d6cc113c9cc4077365237026a764eb94f42062e873eb0"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-10-08T00:00:00.000Z","created_at":"2011-10-08T23:09:28.665Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":150423,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.10","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":null,"requirements":null,"sha":"33d8eb14960b02cf48ed1e34666ab5fc5893db21a9fd8ba89731e9c44f199d99","spec_sha":"7613a0ad0cfc95fe17683414153709a97097094cf9124b0d8db7b03c04d8200f"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-10-01T00:00:00.000Z","created_at":"2011-10-01T00:04:36.738Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":3379,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.10.pre.3","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":true,"licenses":null,"requirements":null,"sha":"c007c25178eba25c790ed8d9c7a32278fedcf78d9eb796b6eafeeaa631f06890","spec_sha":"4c3d2cc85b19e44fe007a4d052d266dd7df4c203c213e0825d854d22e62460a7"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-09-28T00:00:00.000Z","created_at":"2011-09-28T03:43:54.014Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":3202,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.10.pre.2","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":true,"licenses":null,"requirements":null,"sha":"e25dcfcc615d4d6079e36111814070da1886c436e95704cdb2c7ed49c6b46eec","spec_sha":"4dd8c6bc583cd4f063a09568605624ce848d09e66bf6b47f60088939a42d7f33"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-09-27T00:00:00.000Z","created_at":"2011-09-27T21:51:19.493Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":3066,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.10.pre.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":true,"licenses":null,"requirements":null,"sha":"2a29f852e2d037cceffa753b3e43524f4b19504523b3a85a418b45841ed2d071","spec_sha":"d6a9773791cdfa165c47465384a29397927f8f848c4b6235b8264cf805bad41f"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2013-02-06T00:00:00.000Z","created_at":"2013-02-06T08:09:47.015Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":555631,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.9.5","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":[],"requirements":null,"sha":"1eb0e14d423a9c5ba4e505671ac9437c4e0ca49c9bbb570aaee324825a8c0a7c","spec_sha":"94983c9f268fba149bd2ff91b8d36c1c1714871917e8ec81ee1c36b11301a0bd"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-08-26T00:00:00.000Z","created_at":"2011-08-26T23:37:09.414Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":741873,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.9.4","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":null,"requirements":null,"sha":"c55589d297a884b4fccfd2f487441ead6cb677030b158dc6ac7750ac752fd77e","spec_sha":"5080e27cb1873d3310c0edd9c261c848b4f25b59b1699d13ae45e1ef1e57ab54"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-08-23T00:00:00.000Z","created_at":"2011-08-23T23:52:24.527Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":44094,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.9.3","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":null,"requirements":null,"sha":"11d67b615531496712158304f553e75f1e49b9759b4ffd7b4c6a091815f80404","spec_sha":"08ff1c4ec36185a21fcf78384ccd00190d1ec2b666d6b8f9bf2ed2684b667e6c"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-08-11T00:00:00.000Z","created_at":"2011-08-11T18:18:32.356Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":162510,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.9.2","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":null,"requirements":null,"sha":"16257cfdfa57b81262b2c1f458263c2019d08c12956ad8a0be35f09836b0c22b","spec_sha":"fe0749f80326e7f9c5041320597432e6ab72ee95c773d301c275b188e8da465c"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-07-31T00:00:00.000Z","created_at":"2011-07-31T22:49:16.181Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":130391,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.9.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":null,"requirements":null,"sha":"b0a0c92f8c2ad3ebd7faa5a7a0a9a7988f8f6ee03e7cc797748536b0dcae7483","spec_sha":"8ece46c00d5b5dcfe1fcd446a2ea6df3c8d4f98703b057a191cc8ec38fbff093"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-07-30T00:00:00.000Z","created_at":"2011-07-30T23:37:26.556Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":12544,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.9","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":null,"requirements":null,"sha":"a56b0fcb2fcca1cb914b94ddc8a6074d6c864f9c005e4f2dce1d5ff24ef0be93","spec_sha":"d840529793feeef76316eef340a0cf7384d32a13042818b717ca74552b050526"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-06-29T00:00:00.000Z","created_at":"2011-06-29T20:45:23.251Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":300646,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.8","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":null,"requirements":null,"sha":"bc38506a7eddd01b3979cf1596c2526ab57777d9063a2dc410d6c649fbaeb804","spec_sha":"81b402670d1cd9e5d00aaa13ff0328393c1de175a0db67981e6a23c0f2220ca4"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-06-27T00:00:00.000Z","created_at":"2011-06-27T23:15:41.167Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":29711,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.7","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":null,"requirements":null,"sha":"87ad861048810a9a606552eb9b7680cf88c1bb64c94a94e90b1eb7b35cef9d7a","spec_sha":"2424e9f0341eebaf222e8a1153ef4eef82b4526e575577910dc242821c475a5e"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-05-15T00:00:00.000Z","created_at":"2011-05-15T22:53:33.711Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":192522,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.6.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":null,"requirements":null,"sha":"05dd4662a6ef0008de3b13368b6a705a418b53925142e0dcde0cadc168378f43","spec_sha":"f2182de4b36a5280c863d7a0bab1e0117c92e8871a2c609810fb9140d343c408"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-05-14T00:00:00.000Z","created_at":"2011-05-14T00:24:27.340Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":6034,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.6","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":null,"requirements":null,"sha":"900a50e9fadce88c8af441fb348baa3fb5e74bb7eb79c5acf0311e42b4da46dd","spec_sha":"c6451f8c6c45dde349e2d32aae6dac153bf7da33ddcc0037fa80075310130706"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-02-06T08:00:00.000Z","created_at":"2011-02-07T06:50:15.633Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":94645,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.5.3","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":null,"requirements":null,"sha":"c1f3580cab4089d8327c2893d68abb76498ee10e2e8a20456a185f3c6a937140","spec_sha":"603032662de15fe2bc32937aebb31181940bf5a82c3947d7cd29b91b5688932d"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-02-04T08:00:00.000Z","created_at":"2011-02-05T05:24:59.451Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":7157,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.5.2","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":"\u003e= 1.8.7","prerelease":false,"licenses":null,"requirements":null,"sha":"065e00b1e33f37a57557a1a1d6ae49527b91f853e56258a30f4e408e71b14cee","spec_sha":"4ff5020006e6695c4d9236383369e53047a65fb7ccf1921ca3764462e7e7f667"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-01-30T08:00:00.000Z","created_at":"2011-01-30T22:24:16.050Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":14906,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.5.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"d7385cd97461114942403ff597641ea02095c7ecfbbed67a673f8188c88a9457","spec_sha":"8827e488fbc704a49580c0c53b552f07fb1141c42315c9a34fe059041e2eb3d6"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-01-29T08:00:00.000Z","created_at":"2011-01-29T21:24:35.902Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":6320,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.5","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"663a281f2eca38b4c0ea2bea0aeb4f3e2f9ed9d5301830795b9de396fa6d736e","spec_sha":"e3522c1cee29d5189b365283b8332a2df88dc3a2dfd61f4129d4d599b6119357"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-01-06T08:00:00.000Z","created_at":"2011-01-06T23:26:21.650Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":41034,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.4","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"67281755b812b7218e19fb1c39dbf15fa0369f5f2818e22cb5ab07f5a993e237","spec_sha":"3980b453a03741020a8e76fd0bc383d00a708ccecd638a67aef9351b3fdb6cf3"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2011-01-03T08:00:00.000Z","created_at":"2011-01-03T18:53:57.540Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":9793,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.3","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"d74876e9515e6ecb2250755e8eebc7a43b117395cd290a863a1cf7b38dba1309","spec_sha":"528b075fa5bbaaa8472b5b8682f0aa24d08212b607a6c79a0725f4d0f96fac45"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2010-12-29T08:00:00.000Z","created_at":"2010-12-29T22:30:27.582Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":10340,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.2","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"a840b819c9d18ad40cbdecdbd558047c3168ace98765df9c2ae9089d965ea7a5","spec_sha":"c312826ab76ff90504cf50be17d5c43c9faaa2d70a815d9144a016112c66311e"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2010-12-28T08:00:00.000Z","created_at":"2010-12-28T18:24:22.721Z","description":"RDoc
+        produces HTML and command-line documentation for Ruby projects.  RDoc\nincludes
+        the +rdoc+ and +ri+ tools for generating and displaying online\ndocumentation.\n\nSee
+        RDoc for a description of RDoc''s markup and basic use.","downloads_count":7089,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.1","summary":"RDoc
+        produces HTML and command-line documentation for Ruby projects","platform":"ruby","rubygems_version":"\u003e=
+        1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"c8dcf6120e975e8446ecbe41a45262ef22a45aa48ed06ba48d554ec712d7e869","spec_sha":"6e39177f33b0c3e99ae4a0c88f6a483393eb97f5eedfefc81500867ab34f5114"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2010-12-19T08:00:00.000Z","created_at":"2010-12-20T03:39:22.558Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source\nfiles.  RDoc
+        includes the +rdoc+ and +ri+ tools for generating and displaying\nonline documentation.\n\nAt
+        this point in time, RDoc 2.x is a work in progress and may incur further\nAPI
+        changes beyond what has been made to RDoc 1.0.1.  Command-line tools are\nlargely
+        unaffected, but internal APIs may shift rapidly.\n\nSee RDoc for a description
+        of RDoc''s markup and basic use.","downloads_count":14792,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.0.1","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"626b4cce2c8d30fca411509bcbc04b7d66e2bfab4a1383da6c66151b6d3ddc13","spec_sha":"e46b9c63085f75094fb019bdaec5d8a9b40f16cceb0b54dcc053ad95cc35774e"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2010-12-19T08:00:00.000Z","created_at":"2010-12-20T03:26:13.323Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source\nfiles.  RDoc
+        includes the +rdoc+ and +ri+ tools for generating and displaying\nonline documentation.\n\nAt
+        this point in time, RDoc 2.x is a work in progress and may incur further\nAPI
+        changes beyond what has been made to RDoc 1.0.1.  Command-line tools are\nlargely
+        unaffected, but internal APIs may shift rapidly.\n\nSee RDoc for a description
+        of RDoc''s markup and basic use.","downloads_count":5698,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"3.0","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"c313deb6d3475de4be1ac599665945e12afb6fc906b9fca61feb58bac1e7dafd","spec_sha":"4493f894945274c39e26e6b435bfe189e58776887aade21327ca56f02f963d71"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2010-08-20T07:00:00.000Z","created_at":"2010-08-20T21:43:10.822Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source\nfiles.  RDoc
+        includes the +rdoc+ and +ri+ tools for generating and displaying\nonline documentation.\n\nAt
+        this point in time, RDoc 2.x is a work in progress and may incur further\nAPI
+        changes beyond what has been made to RDoc 1.0.1.  Command-line tools are\nlargely
+        unaffected, but internal APIs may shift rapidly.\n\nSee RDoc for a description
+        of RDoc''s markup and basic use.","downloads_count":179777,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.5.11","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"8f45be63d5cd73e97f34427f055cd5ad24ec7c193131c342c529babd98589421","spec_sha":"382951870e4e8acb5561e07ec276cd50aa953516ea3922eea8c68401e2d42612"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2010-08-17T07:00:00.000Z","created_at":"2010-08-18T05:59:28.104Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source\nfiles.  RDoc
+        includes the +rdoc+ and +ri+ tools for generating and displaying\nonline documentation.\n\nAt
+        this point in time, RDoc 2.x is a work in progress and may incur further\nAPI
+        changes beyond what has been made to RDoc 1.0.1.  Command-line tools are\nlargely
+        unaffected, but internal APIs may shift rapidly.\n\nSee RDoc for a description
+        of RDoc''s markup and basic use.","downloads_count":11792,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.5.10","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"ea0060912adfba39fb4f60f64ab9fcd3c719b3c433a69cacbbef70fa1e679a79","spec_sha":"0bd8f8dd84a55ea2a779b8ac16a4c0799e85acebc060160aec870d6ba942462f"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2010-07-06T07:00:00.000Z","created_at":"2010-07-07T02:36:09.411Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source\nfiles.  RDoc
+        includes the +rdoc+ and +ri+ tools for generating and displaying\nonline documentation.\n\nAt
+        this point in time, RDoc 2.x is a work in progress and may incur further\nAPI
+        changes beyond what has been made to RDoc 1.0.1.  Command-line tools are\nlargely
+        unaffected, but internal APIs may shift rapidly.\n\nSee RDoc for a description
+        of RDoc''s markup and basic use.","downloads_count":57955,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.5.9","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"b53961cab2547b4912a443876c78928f8baf31c5390f4ab91c5eefedd49b9162","spec_sha":"b699ea30bac5c3ffb0ae0a81cdf192548cb986f00a5987f238cdc1f058459a07"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2010-04-27T07:00:00.000Z","created_at":"2010-04-28T04:47:32.129Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source\nfiles.  RDoc
+        includes the +rdoc+ and +ri+ tools for generating and displaying\nonline documentation.\n\nAt
+        this point in time, RDoc 2.x is a work in progress and may incur further\nAPI
+        changes beyond what has been made to RDoc 1.0.1.  Command-line tools are\nlargely
+        unaffected, but internal APIs may shift rapidly.\n\nSee RDoc for a description
+        of RDoc''s markup and basic use.","downloads_count":159638,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.5.8","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"0bc707198deb6b7e66b11c1462c0518aac49e6f03bc9f85a48ea4ddbe1a27016","spec_sha":"c60686d014ed698a81f71bb8971d8b4c3e1abbca8f37050afcaacafc6dc0b637"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2010-04-26T07:00:00.000Z","created_at":"2010-04-27T03:02:57.626Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source\nfiles.  RDoc
+        includes the +rdoc+ and +ri+ tools for generating and displaying\nonline documentation.\n\nAt
+        this point in time, RDoc 2.x is a work in progress and may incur further\nAPI
+        changes beyond what has been made to RDoc 1.0.1.  Command-line tools are\nlargely
+        unaffected, but internal APIs may shift rapidly.\n\nSee RDoc for a description
+        of RDoc''s markup and basic use.","downloads_count":5919,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.5.7","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"975f0affde92843170f58b489d656dbd0504091a5a9e03104b366eabeed3b219","spec_sha":"6d6579d48aa80d59f25df8b10eedd204958e5410e0b53697bdc12159ee1a1c0f"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2010-04-22T07:00:00.000Z","created_at":"2010-04-23T02:08:46.917Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source\nfiles.  RDoc
+        includes the +rdoc+ and +ri+ tools for generating and displaying\nonline documentation.\n\nAt
+        this point in time, RDoc 2.x is a work in progress and may incur further\nAPI
+        changes beyond what has been made to RDoc 1.0.1.  Command-line tools are\nlargely
+        unaffected, but internal APIs may shift rapidly.\n\nSee RDoc for a description
+        of RDoc''s markup and basic use.","downloads_count":7617,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.5.6","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"a744a9013449fc52a95ba47fe23899ffc3890077101f44f4c6e75c8f6e3f8dd9","spec_sha":"4300820581248d76191919f6fbd63e646b8bd6fd87785d17ae626128c20bfd5f"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2010-04-19T07:00:00.000Z","created_at":"2010-04-19T21:39:17.799Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source\nfiles.  RDoc
+        includes the +rdoc+ and +ri+ tools for generating and displaying\nonline documentation.\n\nAt
+        this point in time, RDoc 2.x is a work in progress and may incur further\nAPI
+        changes beyond what has been made to RDoc 1.0.1.  Command-line tools are\nlargely
+        unaffected, but internal APIs may shift rapidly.\n\nSee RDoc for a description
+        of RDoc''s markup and basic use.","downloads_count":8693,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.5.5","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"8ef522ec69cabfb757a8778692c2d206090e51d4e9f1d254654f6de5ffb0cd7b","spec_sha":"c294a84688cca4e2527e984b470d40f0ea8c36c64db78de074676b0a715a490a"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2010-04-18T07:00:00.000Z","created_at":"2010-04-19T04:30:03.154Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source\nfiles.  RDoc
+        includes the +rdoc+ and +ri+ tools for generating and displaying\nonline documentation.\n\nAt
+        this point in time, RDoc 2.x is a work in progress and may incur further\nAPI
+        changes beyond what has been made to RDoc 1.0.1.  Command-line tools are\nlargely
+        unaffected, but internal APIs may shift rapidly.\n\nSee RDoc for a description
+        of RDoc''s markup and basic use.","downloads_count":5730,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.5.4","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"f7606ebb9f1ab6284ed79ba7b456832d34a6db2a86ebe752e2275f436df3055d","spec_sha":"da94075b7500af26d0b89414af8ec2bbde09c4429e7ce48ed5ef4e089b65f2e5"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2010-04-10T07:00:00.000Z","created_at":"2010-04-11T01:15:15.496Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source\nfiles.  RDoc
+        includes the +rdoc+ and +ri+ tools for generating and displaying\nonline documentation.\n\nAt
+        this point in time, RDoc 2.x is a work in progress and may incur further\nAPI
+        changes beyond what has been made to RDoc 1.0.1.  Command-line tools are\nlargely
+        unaffected, but internal APIs may shift rapidly.\n\nSee RDoc for a description
+        of RDoc''s markup and basic use.","downloads_count":10967,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.5.3","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"a27de3a0cc084c3ccbbb688379f573596da0ee72907700b86a98094150ecc3fe","spec_sha":"3fe6049150ffe373f6bb828f5c12beeda3635192807eddb3358bc22452523d50"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2010-04-09T07:00:00.000Z","created_at":"2010-04-09T22:26:10.591Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source\nfiles.  RDoc
+        includes the +rdoc+ and +ri+ tools for generating and displaying\nonline documentation.\n\nAt
+        this point in time, RDoc 2.x is a work in progress and may incur further\nAPI
+        changes beyond what has been made to RDoc 1.0.1.  Command-line tools are\nlargely
+        unaffected, but internal APIs may shift rapidly.\n\nSee RDoc for a description
+        of RDoc''s markup and basic use.","downloads_count":5332,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.5.2","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"3133f79ec174623c8fff1b4260a9f6da8585a725482081b556d14569fc1200d1","spec_sha":"3471ed8f8f5edba704a9bbddfc765757d56391b006427705fc4ff26ee1952d5e"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2010-04-06T07:00:00.000Z","created_at":"2010-04-07T02:49:29.501Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source\nfiles.  RDoc
+        includes the +rdoc+ and +ri+ tools for generating and displaying\nonline documentation.\n\nAt
+        this point in time, RDoc 2.x is a work in progress and may incur further\nAPI
+        changes beyond what has been made to RDoc 1.0.1.  Command-line tools are\nlargely
+        unaffected, but internal APIs may shift rapidly.\n\nSee RDoc for a description
+        of RDoc''s markup and basic use.","downloads_count":6810,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.5.1","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"5582ab05847b289579548ea6c681e35cac849a04d92f471fae1db72192257079","spec_sha":"816192b4cbbcd41953c8f94ea0368b6257ad9bffd9d4f2bd47c21fbec3818c75"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2010-03-31T07:00:00.000Z","created_at":"2010-04-01T06:09:01.865Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source\nfiles.  RDoc
+        includes the +rdoc+ and +ri+ tools for generating and displaying\nonline documentation.\n\nAt
+        this point in time, RDoc 2.x is a work in progress and may incur further\nAPI
+        changes beyond what has been made to RDoc 1.0.1.  Command-line tools are\nlargely
+        unaffected, but internal APIs may shift rapidly.\n\nSee RDoc for a description
+        of RDoc''s markup and basic use.","downloads_count":8413,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.5","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"00e86a489a318910c133d94bf280488c3fa1dfbc95dd0214a662e31a0a3880fb","spec_sha":"c0d70f9a8dd320c8e547b2df6807250db758b329ee044615d5209a727f41ce2d"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2009-04-01T07:00:00.000Z","created_at":"2009-07-25T18:00:32.000Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source\nfiles.  RDoc
+        includes the +rdoc+ and +ri+ tools for generating and displaying\nonline documentation.\n\nAt
+        this point in time, RDoc 2.x is a work in progress and may incur further\nAPI
+        changes beyond what has been made to RDoc 1.0.1.  Command-line tools are\nlargely
+        unaffected, but internal APIs may shift rapidly.\n\nSee RDoc for a description
+        of RDoc''s markup and basic use.","downloads_count":94297,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.4.3","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"a3c60e87590144b9f9564447b812bb0b8e4f4e3176c9fd9682c40cbb0158436a","spec_sha":"18ac3b45bdbb1eabad9364214ad206b06936c8bdd9016a0ec14767c2f0cd8837"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2009-03-25T07:00:00.000Z","created_at":"2009-07-25T18:00:32.000Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source\nfiles.  RDoc
+        includes the +rdoc+ and +ri+ tools for generating and displaying\nonline documentation.\n\nAt
+        this point in time, RDoc 2.x is a work in progress and may incur further\nAPI
+        changes beyond what has been made to RDoc 1.0.1.  Command-line tools are\nlargely
+        unaffected, but internal APIs may shift rapidly.\n\nSee RDoc for a description
+        of RDoc''s markup and basic use.","downloads_count":73109,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.4.2","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"cba009b5771cc9ef025ee6f867d8bbce77ac4fbc8c1f7ed9912915235eaab0b4","spec_sha":"68187e4e03b912d56ed32689dd8113d4352af1d30a16606acacfec0b189a8c3c"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2009-02-26T08:00:00.000Z","created_at":"2009-07-25T18:00:32.000Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files.  RDoc includes the +rdoc+ and +ri+ tools for generating and displaying
+        online documentation.  At this point in time, RDoc 2.x is a work in progress
+        and may incur further API changes beyond what has been made to RDoc 1.0.1.  Command-line
+        tools are largely unaffected, but internal APIs may shift rapidly.  See RDoc
+        for a description of RDoc''s markup and basic use.","downloads_count":5343,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.4.1","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"315ce95edac08c05a69eefaae94a91d207208302474045658f7f5fbbb16551b9","spec_sha":"15234947729895945aa44e9fbe8b7d3e7f649af53c6c6b77d337d82d1696f38c"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2009-02-24T08:00:00.000Z","created_at":"2009-07-25T18:00:32.000Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files.  RDoc includes the +rdoc+ and +ri+ tools for generating and displaying
+        online documentation.  At this point in time, RDoc 2.x is a work in progress
+        and may incur further API changes beyond what has been made to RDoc 1.0.1.  Command-line
+        tools are largely unaffected, but internal APIs may shift rapidly.  See RDoc
+        for a description of RDoc''s markup and basic use.","downloads_count":5228,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.4.0","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"beb05edfa30ae25341993dfc82fa6b56f44ce5036c356fb09ae1b8129e8c14ec","spec_sha":"1d05fbece9163e382a83d55fb32b9f32c057eca2e186d10014c48f63b5174ad3"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2009-01-28T08:00:00.000Z","created_at":"2009-07-25T18:00:32.000Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files.  RDoc includes the +rdoc+ and +ri+ tools for generating and displaying
+        online documentation.  At this point in time, RDoc 2.x is a work in progress
+        and may incur further API changes beyond what has been made to RDoc 1.0.1.  Command-line
+        tools are largely unaffected, but internal APIs may shift rapidly.  See RDoc
+        for a description of RDoc''s markup and basic use.","downloads_count":29436,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.3.0","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 1.3","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"9394d9a2711286a39d366b4f2e39e99f3d5becc2d66fe34ebbededf9d728c243","spec_sha":"1ec4c7bb57a8d89986ccd097ec29f502730758e60267a34077887252229c6b3a"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2008-09-24T04:00:00.000Z","created_at":"2009-07-25T18:00:32.000Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files.  RDoc includes the +rdoc+ and +ri+ tools for generating and displaying
+        online documentation.  At this point in time, RDoc 2.x is a work in progress
+        and may incur further API changes beyond what has been made to the RDoc 1.0.1.  Command-line
+        tools are largely unaffected, but internal APIs may shift rapidly.  See RDoc
+        for a description of RDoc''s markup and basic use.","downloads_count":5461,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.2.1","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"38ee6882b2cdca1343b5ff60b1ed197c736d52194972fe308d86d7bfd2aaf278","spec_sha":"e05a898c3d24300c999f0c61df13dec5a577304be969cb781ba145d29d36e70b"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg, Tony Strauss","built_at":"2008-09-19T04:00:00.000Z","created_at":"2009-07-25T18:00:32.000Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files.  RDoc includes the +rdoc+ and +ri+ tools for generating and displaying
+        online documentation.  At this point in time, RDoc 2.x is a work in progress
+        and may incur further API changes beyond what has been made to the RDoc 1.0.1.  Command-line
+        tools are largely unaffected, but internal APIs may shift rapidly.  See RDoc
+        for a description of RDoc''s markup and basic use.","downloads_count":7750,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.2.0","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"54f555117e17520f89c6d5ac3d0a999d180a8d6ebbf737308badb80586c16af6","spec_sha":"860db28c02c78d7a6eb19a533d24dfaa5bf909350c44992dc3e49fe79eb7ef72"},{"authors":"Eric
+        Hodel, Dave Thomas, Phil Hagelberg","built_at":"2008-07-20T07:00:00.000Z","created_at":"2009-07-25T18:00:32.000Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files.  RDoc includes the `rdoc` and `ri` tools for generating and displaying
+        online documentation.  At this point in time, RDoc 2.x is a work in progress
+        and may incur further API changes beyond what has been made to the RDoc 1.0.1.  Command-line
+        tools are largely unaffected, but internal APIs may shift rapidly.","downloads_count":6857,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.1.0","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"ec98f5607bf5694544bc0085daee98a0d37cd3744e03c96fa16b49a42182a884","spec_sha":"f4fabfa0639f45b7426a424fcc78e143805cd8070f3f73e847ccf52d240c63a3"},{"authors":"Eric
+        Hodel, Dave Thomas","built_at":"2008-04-10T07:00:00.000Z","created_at":"2009-07-25T18:00:33.000Z","description":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files.  RDoc includes the `rdoc` and `ri` tools for generating and displaying
+        online documentation.  At this point in time, RDoc 2.x is a work in progress
+        and may incur further API changes beyond what has been made to the RDoc 1.0.1.  Command-line
+        tools are largely unaffected, but internal APIs may shift rapidly.","downloads_count":4764,"metadata":{"wiki_uri":"","homepage_uri":"https://ruby.github.io/rdoc","bug_tracker_uri":"https://github.com/ruby/rdoc/issues","source_code_uri":"https://github.com/ruby/rdoc","mailing_list_uri":"","documentation_uri":"https://ruby.github.io/rdoc"},"number":"2.0.0","summary":"RDoc
+        is an application that produces documentation for one or more Ruby source
+        files","platform":"ruby","rubygems_version":"\u003e= 0","ruby_version":null,"prerelease":false,"licenses":null,"requirements":null,"sha":"4a1801a890375c69e05cf077fee5bdfb0a791c300b97c423f911f7f596b08d16","spec_sha":"8df0321a849a07c5c6c83a45e08ef7cd358b85cc36710512dcbd331b5ca5df70"}]'
+  recorded_at: Fri, 18 Apr 2025 05:41:05 GMT
+recorded_with: VCR 6.3.1

@@ -1,6 +1,8 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
+  # Settings specified here will take precedence over those in config/application.rb.
+
   config.after_initialize do
     Bullet.enable        = true
     Bullet.alert         = true
@@ -10,7 +12,8 @@ Rails.application.configure do
     Bullet.add_footer    = true
   end
 
-  # Settings specified here will take precedence over those in config/application.rb.
+  # Disable Mission Control UI in development
+  config.mission_control.jobs.http_basic_auth_enabled = false
 
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true

@@ -2,6 +2,8 @@
 
 Rails.application.routes.draw do
   mount MaintenanceTasks::Engine, at: "/maintenance_tasks"
+  mount MissionControl::Jobs::Engine, at: "/jobs"
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "home#index"
   get "up" => "rails/health#show", as: :rails_health_check

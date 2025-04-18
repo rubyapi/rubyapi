@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # strong_migrations: disable
 
 # This migration comes from maintenance_tasks (originally 20201211151756)
@@ -19,7 +20,7 @@ class CreateMaintenanceTasksRuns < ActiveRecord::Migration[6.0]
       t.text(:backtrace)
       t.timestamps
       t.index(:task_name)
-      t.index([:task_name, :created_at], order: { created_at: :desc })
+      t.index([ :task_name, :created_at ], order: { created_at: :desc })
     end
   end
 end
