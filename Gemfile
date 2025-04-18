@@ -33,6 +33,8 @@ gem "trenni-sanitize", require: false
 gem "typhoeus"
 gem "view_component"
 
+gem "maintenance_tasks"
+
 group :development, :test do
   gem "brakeman", require: false
   gem "bundler-audit", require: false

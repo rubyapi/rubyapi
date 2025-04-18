@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount MaintenanceTasks::Engine, at: "/maintenance_tasks"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "home#index"
   get "up" => "rails/health#show", as: :rails_health_check
