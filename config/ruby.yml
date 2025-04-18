@@ -1,5 +1,15 @@
 default: &default
   versions:
+    - version: 3.5
+      default: false
+      sha256: 3e1d9df578c69976a01a69b961819d00c4e8942f8b5fe4fb8e135fca4f7e7e5e
+      url: https://cache.ruby-lang.org/pub/ruby/3.5/ruby-3.5.0-preview1.zip
+      signatures: false
+      prerelease: true
+      git:
+        tag: v3_5_0_preview1
+        branch: master
+
     - version: 3.4
       default: true
       sha256: a0c62089fb75c47e392bc96778dd76bd7ad1baa40a7ed040372c805de20bccc8
