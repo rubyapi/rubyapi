@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_18_050711) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_18_100942) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -134,6 +134,18 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_18_050711) do
     t.index ["ruby_version_id"], name: "index_ruby_objects_on_ruby_version_id"
   end
 
+  create_table "ruby_pages", force: :cascade do |t|
+    t.bigint "ruby_version_id"
+    t.bigint "ruby_gem_version_id"
+    t.string "name"
+    t.string "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_ruby_pages_on_name"
+    t.index ["ruby_gem_version_id"], name: "index_ruby_pages_on_ruby_gem_version_id"
+    t.index ["ruby_version_id"], name: "index_ruby_pages_on_ruby_version_id"
+  end
+
   create_table "ruby_versions", force: :cascade do |t|
     t.string "version", null: false
     t.string "url"
@@ -156,4 +168,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_18_050711) do
   add_foreign_key "ruby_methods", "ruby_objects", on_delete: :cascade
   add_foreign_key "ruby_objects", "ruby_gem_versions", on_delete: :cascade
   add_foreign_key "ruby_objects", "ruby_versions", on_delete: :cascade
+  add_foreign_key "ruby_pages", "ruby_gem_versions", on_delete: :cascade
+  add_foreign_key "ruby_pages", "ruby_versions", on_delete: :cascade
 end

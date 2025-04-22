@@ -36,10 +36,21 @@ class RubyAPIRDocGenerator
     @options = options
     @owner = options.generator_options.pop
     @documentation = store.all_classes_and_modules
+    @files = store.all_files.select(&:text?)
+    @main_page = @files.find { _1.full_name == options.main_page }
   end
 
   def generate
     objects = []
+
+    @files.each do |page|
+      RubyPage.create!(
+        ruby_version: ruby? ? @owner : nil,
+        ruby_gem_version: rubygem? ? @owner : nil,
+        name: page.page_name,
+        body: page.description,
+      )
+    end
 
     @documentation.each do |doc|
       if ruby? && skip_namespace?(doc.full_name)
