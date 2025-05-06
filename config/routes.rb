@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   ruby_versions = RubyConfig.ruby_versions.collect { |v| Regexp.escape(v.version) }
 
-  scope "(:version)", constraints: { version: /#{ruby_versions.join("|")}/ } do
+  scope "(:version)", constraints: { version: /#{ruby_versions.join("|")}|current/ } do
     root to: "home#index", as: :versioned_root
     post '/set_theme', to: 'home#set_theme'
     # We need the search path to be prefixed with `o/` so that the RDOc links will
