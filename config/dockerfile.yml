@@ -3,10 +3,8 @@
 ---
 options:
   cache: true
-  jemalloc: true
   parallel: true
   postgresql: true
-  procfile: Procfile
   sudo: true
   thruster: true
   yjit: true
@@ -15,3 +13,4 @@ options:
     - libyaml-dev
     deploy:
     - libyaml-dev
+    - unzip
