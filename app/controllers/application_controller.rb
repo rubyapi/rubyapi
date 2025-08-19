@@ -7,6 +7,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def set_ruby_version
+    if params[:version] == "current"
+      permitted_params = params.permit(:object, :engine, :q, :page, :theme)
+      redirect_to permitted_params.merge(version: RubyConfig.default_ruby_version.version)
+      return
+    end
+
     version = RubyConfig.version_for(params[:version]) || RubyConfig.default_ruby_version
 
     Current.ruby_version = version
