@@ -3,15 +3,31 @@ updates:
 - package-ecosystem: bundler
   directory: "/"
   schedule:
-    interval: daily
+    interval: weekly
   open-pull-requests-limit: 10
   labels:
   - ruby
   - dependencies
+  groups:
+    rails:
+      patterns:
+      - "rails"
+      - "actioncable"
+      - "actionmailbox"
+      - "actionmailer"
+      - "actionpack"
+      - "actiontext"
+      - "actionview"
+      - "activejob"
+      - "activemodel"
+      - "activerecord"
+      - "activestorage"
+      - "activesupport"
+      - "railties"
 - package-ecosystem: "github-actions"
   directory: "/"
   schedule:
-    interval: daily
+    interval: weekly
   labels:
   - actions
   - dependencies
