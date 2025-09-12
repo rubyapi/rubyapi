@@ -9,6 +9,7 @@ gem "puma-plugin-statsd"
 gem "propshaft"
 gem "sqlite3"
 gem "thruster"
+gem "pg"
 
 gem "elasticsearch-persistence"
 gem "opensearch-aws-sigv4"

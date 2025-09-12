@@ -46,3 +46,5 @@
 /config/credentials/production.key
 
 /config/credentials/preview.key
+
+/config/database.yml
