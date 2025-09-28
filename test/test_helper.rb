@@ -13,8 +13,8 @@ WebMock.disable!
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
   # parallelize(workers: :number_of_processors)
-  # 
-  
+  #
+
   fixtures :all
 
   def setup

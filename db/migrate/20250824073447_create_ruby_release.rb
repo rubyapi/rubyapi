@@ -3,14 +3,14 @@ class CreateRubyRelease < ActiveRecord::Migration[8.0]
     create_table :ruby_releases do |t|
       t.string :version, null: false
       t.virtual :version_key,
-               type: :integer,
-               array: true,
-               as: <<~SQL.squish,
-                 CASE
-                   WHEN version ~ '^[0-9]+\.[0-9]+$' THEN string_to_array(version, '.')::int[]
-                 END
-               SQL
-               stored: true
+        type: :integer,
+        array: true,
+        as: <<~SQL.squish,
+          CASE
+            WHEN version ~ '^[0-9]+.[0-9]+$' THEN string_to_array(version, '.')::int[]
+          END
+        SQL
+        stored: true
       t.string :url
       t.string :sha256
       t.string :git_branch

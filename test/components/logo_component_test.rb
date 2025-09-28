@@ -9,8 +9,8 @@ class LogoComponentTest < ViewComponent::TestCase
     assert_link "", href: "/"
   end
 
-  test "render link for non-default release" do 
-    render_preview(:default, params: { release: ruby_releases(:legacy) })
+  test "render link for non-default release" do
+    render_preview(:default, params: {release: ruby_releases(:legacy)})
 
     assert_link "", href: "/2.7"
   end

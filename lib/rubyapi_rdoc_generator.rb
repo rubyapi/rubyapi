@@ -28,7 +28,6 @@ class RubyAPIRDocGenerator
     @store = store
     @options = options
     @release = options.generator_options.pop
-    @version = @release.version
     @documentation = store.all_classes_and_modules
   end
 
@@ -40,7 +39,7 @@ class RubyAPIRDocGenerator
   def generate_objects
     objects = []
 
-    if @release.has_type_signatures?
+    if @release.signatures?
       require_relative "ruby_type_signature_repository"
       @type_repository = RubyTypeSignatureRepository.new(@options.files.first)
     end
@@ -71,7 +70,7 @@ class RubyAPIRDocGenerator
           }
         }
 
-        if @release.has_type_signatures?
+        if @release.signatures?
           signatures = if method_doc.type == "instance"
             @type_repository.signiture_for_object_instance_method(object: doc.name, method: method_doc.name)
           elsif method_doc.type == "class"
@@ -112,11 +111,11 @@ class RubyAPIRDocGenerator
   end
 
   def object_repository
-    @object_repository ||= RubyObjectRepository.repository_for_version(@version)
+    @object_repository ||= RubyObjectRepository.repository_for_release(@release)
   end
 
   def search_repository
-    @search_repository ||= SearchRepository.repository_for_version(@version)
+    @search_repository ||= SearchRepository.repository_for_release(@release)
   end
 
   def reset_indexes!
@@ -140,12 +139,12 @@ class RubyAPIRDocGenerator
   end
 
   def clean_description(method_class, description)
-    RubyDescriptionCleaner.clean(@version, method_class, description)
+    RubyDescriptionCleaner.clean(@release.version, method_class, description)
   end
 
   def clean_path(path, constant:)
     return nil if path.blank?
-    PathCleaner.clean(URI(path), constant:, version: @version)
+    PathCleaner.clean(URI(path), constant:, version: @release.version)
   end
 
   def call_sequence_for_method_doc(doc)
