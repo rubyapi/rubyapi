@@ -56,7 +56,9 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 10
-
+    env:
+      SEARCH_URL: "http://localhost:9200"
+      DATABASE_URL: "postgresql://rubyapi:rubyapi_password@localhost:5432/rubyapi_test"
     steps:
       - uses: actions/checkout@v5
 
@@ -65,9 +67,10 @@ jobs:
         with:
           bundler-cache: true
 
+      - name: Setup Database
+        run: bin/rails db:setup
+
       - name: Test Importing Ruby Documentation
-        env:
-          SEARCH_URL: "http://localhost:9200"
         run: bin/rails "import:ruby[3.4]"
 
   test:
@@ -99,7 +102,9 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 10
-
+    env:
+      SEARCH_URL: "http://localhost:9200"
+      DATABASE_URL: "postgresql://rubyapi:rubyapi_password@localhost:5432/rubyapi_test"
     steps:
       - uses: actions/checkout@v5
 
@@ -140,7 +145,9 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 10
-
+    env:
+      SEARCH_URL: "http://localhost:9200"
+      DATABASE_URL: "postgresql://rubyapi:rubyapi_password@localhost:5432/rubyapi_test"
     steps:
       - uses: actions/checkout@v5
 
