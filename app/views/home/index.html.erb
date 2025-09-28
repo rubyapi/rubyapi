@@ -38,7 +38,7 @@
             <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200"><%= tile[:class_name] %></h2>
             <p class="py-1 dark:text-gray-400"><%= tile[:description] %></p>
           </div>
-          <div><%= link_to "Read more", object_path(object: tile[:object_path], version: Current.ruby_release), class: "text-blue-400 hover:underline" %></div>
+          <div><%= link_to "Read more", object_path(object: tile[:object_path], version: Current.ruby_release.version), class: "text-blue-400 hover:underline" %></div>
         </div>
       </div>
     <% end %>
