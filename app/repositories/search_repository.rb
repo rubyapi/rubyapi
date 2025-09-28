@@ -76,8 +76,8 @@ class SearchRepository
     end
   end
 
-  def self.repository_for_version(version)
-    new(client: SearchConfig.client, index_name: "search_#{version}_#{Rails.env}")
+  def self.repository_for_release(release)
+    new(client: SearchConfig.client, index_name: "search_#{release.version}_#{Rails.env}")
   end
 
   def deserialize(document)

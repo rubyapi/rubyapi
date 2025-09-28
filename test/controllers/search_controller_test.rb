@@ -4,7 +4,7 @@ require "test_helper"
 
 class SearchControllerTest < ActionDispatch::IntegrationTest
   def setup
-    create_index_for_version! default_ruby_version
+    create_index_for_release! default_ruby_release
 
     string = FactoryBot.build(:ruby_object)
     index_search string

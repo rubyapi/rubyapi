@@ -2,13 +2,13 @@
 
 module Search
   class Autocomplete
-    def self.search(query, version:)
-      new(query, version:).perform
+    def self.search(query, release:)
+      new(query, release:).perform
     end
 
-    def initialize(query, version:)
+    def initialize(query, release:)
       @query = Search::Query.new(query)
-      @version = version
+      @release = release
     end
 
     def perform
@@ -26,7 +26,7 @@ module Search
     end
 
     def search_repository
-      @search_repository ||= SearchRepository.repository_for_version(@version)
+      @search_repository ||= SearchRepository.repository_for_release(@release)
     end
 
     def body

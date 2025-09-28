@@ -17,8 +17,8 @@ class RubyObjectRepository
     end
   end
 
-  def self.repository_for_version(version)
-    new(client: SearchConfig.client, index_name: "ruby_objects_#{version}_#{Rails.env}")
+  def self.repository_for_release(release)
+    new(client: SearchConfig.client, index_name: "ruby_objects_#{release.version}_#{Rails.env}")
   end
 
   def bulk_import(objects)

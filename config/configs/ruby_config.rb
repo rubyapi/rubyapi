@@ -28,14 +28,15 @@ class RubyConfig < ApplicationConfig
     versions.map do |v|
       raise "Missing Ruby Version" unless v[:version].present?
 
-      RubyVersion.new(
+      RubyRelease.new(
         version: v[:version].to_s,
         url: v[:url],
         sha256: v[:sha256] || "",
         default: v[:default] || false,
         eol: v[:eol] || false,
         prerelease: v[:prerelease] || false,
-        git: v[:git] || {},
+        git_branch: v[:git][:branch] || "",
+        git_tag: v[:git][:tag] || "",
         signatures: v[:signatures] || false,
       )
     end

@@ -2,12 +2,12 @@
 
 module Header
   class SearchComponent < ViewComponent::Base
-    def initialize(version: Current.ruby_version)
-      @ruby_version = version.to_s
+    def initialize(release: Current.ruby_release)
+      @ruby_release = release
     end
 
     def homepage?
-      current_page?(root_path) || current_page?(versioned_root_path(version: Current.ruby_version))
+      current_page?(root_path) || current_page?(versioned_root_path(release: Current.ruby_release.version))
     end
 
     def search_query

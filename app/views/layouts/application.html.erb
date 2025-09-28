@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" class="<%= Current.theme.name %>">
   <head>
-    <%= display_meta_tags site: "Ruby API (#{Current.ruby_version.dev? ? "dev" : "v" + Current.ruby_version.to_s})", reverse: true %>
+    <%= display_meta_tags site: "Ruby API (#{Current.ruby_release.dev? ? "dev" : "v" + Current.ruby_release.to_s})", reverse: true %>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
     <link rel="mask-icon" href="<%= image_path('safari-pinned-tab.svg') %>" color="#e1175a" />

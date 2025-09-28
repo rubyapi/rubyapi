@@ -7,10 +7,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def set_ruby_version
-    version = RubyConfig.version_for(params[:version]) || RubyConfig.default_ruby_version
-
-    Current.ruby_version = version
-    Current.default_ruby_version = RubyConfig.default_ruby_version
+    Current.default_ruby_release = RubyRelease.latest
+    Current.ruby_release = RubyRelease.find_by(version: params[:version]) || Current.default_ruby_release
   end
 
   def set_feature_flags

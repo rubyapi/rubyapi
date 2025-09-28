@@ -5,7 +5,7 @@ require "test_helper"
 class ObjectsControllerTest < ActionDispatch::IntegrationTest
   def setup
     @string = FactoryBot.build(:ruby_object)
-    create_index_for_version! default_ruby_version
+    create_index_for_release! default_ruby_release
     index_object @string
   end
 
@@ -20,22 +20,22 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "different ruby version" do
-    create_index_for_version! "2.5"
+    create_index_for_release! ruby_releases(:legacy)
 
-    index_object @string, version: "2.5"
+    index_object @string, release: ruby_releases(:legacy)
 
-    get object_url object: @string.path, version: "2.5"
+    get object_url object: @string.path, version: ruby_releases(:legacy).version
     assert_response :success
   end
 
   test "object not found on different ruby version" do
     other_object = FactoryBot.build(:ruby_object, c: Hash)
 
-    create_index_for_version! "2.3"
+    create_index_for_release! ruby_releases(:legacy)
 
-    index_object other_object, version: "2.3"
+    index_object other_object, release: ruby_releases(:legacy)
 
-    get object_url object: other_object.path, verison: default_ruby_version
+    get object_url object: other_object.path, version: default_ruby_release.version
 
     assert_response :not_found
   end

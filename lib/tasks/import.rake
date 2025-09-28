@@ -6,12 +6,10 @@ require_relative "../ruby_documentation_importer"
 namespace :import do
   desc "import Ruby documentation for given version"
   task :ruby, [:version] => :environment do |t, args|
-    args.with_defaults version: RubyConfig.default_ruby_version.version
+    args.with_defaults version: RubyRelease.default.version
 
     release = if args.present?
-      RubyConfig.ruby_versions.find { |v| v.version == args[:version] }
-    else
-      RubyConfig.default_ruby_version
+      RubyRelease.version_for(args[:version])
     end
 
     if release.blank?
@@ -24,7 +22,9 @@ namespace :import do
 
   namespace :ruby do
     task all: :environment do
-      RubyConfig.ruby_versions.each { |release| RubyDocumentationImporter.import release }
+      RubyRelease.each do |version|
+        RubyDocumentationImporter.import version
+      end
     end
   end
 end
