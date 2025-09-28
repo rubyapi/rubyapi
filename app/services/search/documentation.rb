@@ -22,9 +22,9 @@ module Search
       new(...).search
     end
 
-    def initialize(query, version:, page:)
+    def initialize(query, release:, page:)
       @query = Search::Query.new(query)
-      @version = version
+      @release = release
       @page = [page.to_i, 1].max
     end
 
@@ -41,7 +41,7 @@ module Search
     end
 
     def search_repository
-      @search_repository ||= SearchRepository.repository_for_version(@version)
+      @search_repository ||= SearchRepository.repository_for_release(@release)
     end
 
     def body

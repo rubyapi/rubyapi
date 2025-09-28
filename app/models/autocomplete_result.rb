@@ -3,11 +3,11 @@
 class AutocompleteResult
   include SearchHelper
 
-  attr_reader :result, :version
+  attr_reader :result, :release
 
-  def initialize(result, version:)
+  def initialize(result, release:)
     @result = result
-    @version = version
+    @release = release
   end
 
   def autocomplete
@@ -15,7 +15,7 @@ class AutocompleteResult
   end
 
   def path
-    result_url result, version:
+    result_url result, version: release.version
   end
 
   def to_hash

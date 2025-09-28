@@ -4,7 +4,7 @@ module ApplicationHelper
   GITHUB_REPO = "https://github.com/ruby/ruby/blob"
 
   def homepage?
-    current_page?(root_path) || current_page?(versioned_root_path(version: Current.ruby_version))
+    current_page?(root_path) || current_page?(versioned_root_path(version: Current.ruby_release.version))
   end
 
   # Map a method source file into a url to Github.com
@@ -14,6 +14,6 @@ module ApplicationHelper
     # Not using URI.join, for a performance optimization. URI.join does A LOT of allocations.
     # We know that our source_location is safe, because we make it in the importer.
     # Inspiration: https://github.com/rack/rack/pull/1202
-    %(#{GITHUB_REPO}/#{Current.ruby_version.git_ref}/#{file}#{"#L#{line}" if line})
+    %(#{GITHUB_REPO}/#{Current.ruby_release.git_ref}/#{file}#{"#L#{line}" if line})
   end
 end

@@ -3,16 +3,14 @@
 require "test_helper"
 
 class LogoComponentTest < ViewComponent::TestCase
-  def test_component_renders_root_link
-    render_inline(LogoComponent.new)
+  test "render link for current default release" do
+    render_preview(:default)
 
     assert_link "", href: "/"
   end
 
-  def test_componentn_renders_versioned_root_link
-    Current.ruby_version = FactoryBot.build(:ruby_version, version: "2.7")
-
-    render_inline(LogoComponent.new)
+  test "render link for non-default release" do 
+    render_preview(:default, params: { release: ruby_releases(:legacy) })
 
     assert_link "", href: "/2.7"
   end

@@ -5,7 +5,7 @@ SitemapGenerator::Sitemap.public_path = "public/sitemaps"
 SitemapGenerator::Sitemap.create do
   add "/", changefreq: "never"
 
-  RubyConfig.ruby_versions.each do |version|
+  RubyConfig.ruby_releases.each do |version|
     repo = RubyObjectRepository.repository_for_version(version.version)
     response = repo.search(query: {match_all: {}}, size: 10_000)
 

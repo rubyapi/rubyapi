@@ -4,12 +4,12 @@ require "test_helper"
 
 class AutocompleteControllerTest < ActionDispatch::IntegrationTest
   def setup
-    create_index_for_version! default_ruby_version
+    create_index_for_release! default_ruby_release
 
     method = FactoryBot.build :ruby_method, name: "foo"
 
     objects = [String, Array, Integer, Symbol, Hash].map { |klass| FactoryBot.build(:ruby_object, c: klass, ruby_methods: [method]) }
-    bulk_index_search objects, version: default_ruby_version, wait_for_refresh: true
+    bulk_index_search objects, release: default_ruby_release, wait_for_refresh: true
   end
 
   test "should get index" do

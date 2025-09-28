@@ -1,5 +1,5 @@
 <% title @object.constant %>
-<% set_meta_tags canonical: object_url(object: @object.path, version: Current.default_ruby_version) unless Current.ruby_version.default? %>
+<% set_meta_tags canonical: object_url(object: @object.path, version: Current.default_ruby_release) unless Current.ruby_release.default? %>
 
 <% content_for :mobile_menu do %>
   <nav class="sticky">
@@ -156,7 +156,7 @@
     <section class="mx-3 mt-3 mb-8">
       <div class="md:flex py-3 md:items-center md:justify-between">
         <div class="min-w-0 flex-1">
-          <h1 class="inline-block text-2xl font-extrabold tracking-tight text-gray-800 dark:text-gray-200 sm:truncate sm:text-3xl sm:tracking-tight"><%= link_to @object.constant, object_url(version: Current.ruby_version, object: @object.path) %></h1>
+          <h1 class="inline-block text-2xl font-extrabold tracking-tight text-gray-800 dark:text-gray-200 sm:truncate sm:text-3xl sm:tracking-tight"><%= link_to @object.constant, object_url(version: Current.ruby_release, object: @object.path) %></h1>
         </div>
         <div class="mt-4 flex md:ml-4 md:mt-0">
           <% if @object.class_object? %>
