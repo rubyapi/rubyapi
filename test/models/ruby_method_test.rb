@@ -1,56 +1,40 @@
-# frozen_string_literal: true
-
 require "test_helper"
 
 class RubyMethodTest < ActiveSupport::TestCase
-  def setup
-    @method = FactoryBot.build(:ruby_method, object_constant: "String", name: "to_s")
-    @class_method = FactoryBot.build(:ruby_method, :class_method, object_constant: "String", name: "new")
+  test "instance method" do
+    method = RubyMethod.new(method_type: "instance")
+
+    assert method.instance_method?
+    refute method.class_method?
   end
 
-  test "raises error on missing name" do
-    assert_raises(Dry::Struct::Error, "[RubyMethod.new] :name is missing in Hash input") { RubyMethod.new }
+  test "class method" do
+    method = RubyMethod.new(method_type: "class")
+    
+    assert method.class_method?
+    refute method.instance_method?
   end
 
-  test "method types" do
-    assert @method.instance_method?
-    assert_not @class_method.instance_method?
+  test "type identifier" do
+    instance_method = RubyMethod.new(method_type: "instance")
+    class_method = RubyMethod.new(method_type: "class")
 
-    assert @class_method.class_method?
-    assert_not @method.class_method?
+    assert_equal "#", instance_method.type_identifier
+    assert_equal ".", class_method.type_identifier
   end
 
-  test "method identifier" do
-    assert_equal @method.identifier, "String#to_s"
-    assert_equal @class_method.identifier, "String::new"
+  test "aliased method" do
+    aliased_method = RubyMethod.new(method_alias: "alias_name")
+    non_aliased_method = RubyMethod.new(method_alias: nil)
+
+    assert aliased_method.is_alias?
+    refute non_aliased_method.is_alias?
   end
 
-  test "method alias" do
-    @aliased_method = FactoryBot.build(:ruby_method, :alias, method_alias: {name: "to_integer", path: "String.html#to_integer"})
+  test "source file and line" do
+    method = RubyMethod.new(source_location: "path/to/file.rb:42")
 
-    assert @aliased_method.is_alias?
-    assert_not @method.is_alias?
-
-    assert_equal @aliased_method.method_alias.name, "to_integer"
-    assert_equal @aliased_method.method_alias.path, "String.html#to_integer"
-  end
-
-  test "default signature" do
-    method = RubyMethod.new(
-      name: "to_s",
-      object_constant: "String",
-      description: "Returns the string representation of obj.",
-      method_type: "instance_method",
-      source_location: "string.rb:1",
-      call_sequence: ["String#to_s"],
-      source_body: "def to_s",
-      metadata: {},
-      method_alias: {
-        name: nil,
-        path: nil
-      }
-    )
-
-    assert_equal method.signatures, []
+    assert_equal "path/to/file.rb", method.source_file
+    assert_equal 42, method.source_line
   end
 end

@@ -4,8 +4,25 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+string:
+  name: String
+  path: string
+  description: Class for manipulating strings of characters.
+  object_type: class
+  constant: String
+  superclass: Object
+
+integer:
+  name: Integer
+  path: integer
+  description: Class for manipulating integer numbers.
+  object_type: class
+  constant: Integer
+  superclass: Numeric
+
+enumerable:
+  name: Enumerable
+  path: enumerable
+  description: Module providing collection traversal and searching methods.
+  object_type: module
+  constant: Enumerable
