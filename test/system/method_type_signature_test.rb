@@ -6,7 +6,7 @@ class MethodTypeSignatureTest < ApplicationSystemTestCase
     @method = FactoryBot.build(:ruby_method, name: "signature_test_1", signatures: ["(::String input) -> ::String"])
     @string.ruby_methods << @method
 
-    create_index_for_version! default_ruby_version
+    create_index_for_release! default_ruby_release
     index_object @string
   end
 

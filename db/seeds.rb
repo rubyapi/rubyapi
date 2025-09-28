@@ -8,19 +8,4 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-
-versions = RubyConfig.versions.map do |v|
-  {
-    version: v[:version].to_s,
-    url: v[:url],
-    sha256: v[:sha256] || "",
-    default: v[:default] || false,
-    eol: v[:eol] || false,
-    prerelease: v[:prerelease] || false,
-    git_tag: v[:git][:tag] || "",
-    git_branch: v[:git][:branch] || "",
-    signatures: v[:signatures] || false
-  }
-end
-
-RubyRelease.upsert_all(versions, unique_by: :version)
+RubyRelease.syndicate!

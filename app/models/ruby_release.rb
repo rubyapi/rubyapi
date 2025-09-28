@@ -11,6 +11,10 @@ class RubyRelease < ApplicationRecord
     RubyRelease.find_by(version: version)
   end
 
+  def self.syndicate!
+    RubyRelease.upsert_all(RubyConfig.ruby_releases, unique_by: :version)
+  end
+
   def prerelease?
     dev? || prerelease
   end
