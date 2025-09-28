@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: "home#index"
   get "up" => "rails/health#show", as: :rails_health_check
 
-  scope "(:version)", version: /[0-9]+\.[0-9]+/ do
+  scope "(:version)", version: /[0-9]+\.[0-9]+|dev/ do
     root to: "home#index", as: :versioned_root
     post '/set_theme', to: 'home#set_theme'
     # We need the search path to be prefixed with `o/` so that the RDOc links will
