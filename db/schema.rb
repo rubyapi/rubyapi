@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_29_002850) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_29_005300) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -65,6 +65,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_29_002850) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["documentable_type", "documentable_id"], name: "index_ruby_objects_on_documentable"
+  end
+
+  create_table "ruby_pages", force: :cascade do |t|
+    t.string "documentable_type"
+    t.bigint "documentable_id"
+    t.string "name", null: false
+    t.text "body"
+    t.jsonb "chapters", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["documentable_type", "documentable_id"], name: "index_ruby_pages_on_documentable"
   end
 
   create_table "ruby_releases", force: :cascade do |t|
