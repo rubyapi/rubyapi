@@ -17,7 +17,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_29_002850) do
   create_table "ruby_attributes", force: :cascade do |t|
     t.bigint "ruby_object_id"
     t.string "name", null: false
-    t.string "description"
+    t.text "description"
     t.string "access", default: "rw"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_29_002850) do
   create_table "ruby_methods", force: :cascade do |t|
     t.bigint "ruby_object_id"
     t.string "name", null: false
-    t.string "description"
+    t.text "description"
     t.string "method_type"
     t.string "source_location"
     t.string "constant"
@@ -56,7 +56,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_29_002850) do
     t.bigint "documentable_id"
     t.string "name", null: false
     t.string "path", null: false
-    t.string "description"
+    t.text "description"
     t.string "object_type", null: false
     t.string "constant", null: false
     t.string "superclass"

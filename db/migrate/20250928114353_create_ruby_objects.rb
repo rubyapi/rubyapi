@@ -4,7 +4,7 @@ class CreateRubyObjects < ActiveRecord::Migration[8.0]
       t.belongs_to :documentable, polymorphic: true
       t.string :name, null: false
       t.string :path, null: false
-      t.string :description
+      t.text :description
       t.string :object_type, null: false
       t.string :constant, null: false
       t.string :superclass
