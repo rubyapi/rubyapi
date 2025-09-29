@@ -3,6 +3,8 @@ class RubyObject < ApplicationRecord
   has_many :ruby_attributes, dependent: :destroy
   has_many :ruby_constants, dependent: :destroy
 
+  belongs_to :documentable, polymorphic: true
+
   def class_object?
     object_type == "class"
   end
