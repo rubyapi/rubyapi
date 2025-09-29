@@ -15,7 +15,7 @@ class AutocompleteResult
   end
 
   def path
-    result_url result, version: release.version
+    result_url result, release: release
   end
 
   def to_hash
