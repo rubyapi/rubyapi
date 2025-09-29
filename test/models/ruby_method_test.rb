@@ -10,7 +10,7 @@ class RubyMethodTest < ActiveSupport::TestCase
 
   test "class method" do
     method = RubyMethod.new(method_type: "class")
-    
+
     assert method.class_method?
     refute method.instance_method?
   end

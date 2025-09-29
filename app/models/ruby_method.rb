@@ -3,19 +3,19 @@ class RubyMethod < ApplicationRecord
 
   belongs_to :ruby_object
 
-  scope :class_methods, -> { where(method_type: 'class') }
-  scope :instance_methods, -> { where(method_type: 'instance') }
+  scope :class_methods, -> { where(method_type: "class") }
+  scope :instance_methods, -> { where(method_type: "instance") }
 
   def instance_method?
-    method_type == 'instance'
+    method_type == "instance"
   end
 
   def class_method?
-    method_type == 'class'
+    method_type == "class"
   end
 
   def type_identifier
-    instance_method? ? '#' : '.'
+    instance_method? ? "#" : "."
   end
 
   def is_alias?
@@ -29,7 +29,7 @@ class RubyMethod < ApplicationRecord
   def source_line
     source_properties.second.to_i
   end
-    
+
   private
 
   def source_properties
