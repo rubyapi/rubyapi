@@ -1,6 +1,6 @@
-# frozen_string_literal: true
+class RubyConstant < ApplicationRecord
+  belongs_to :ruby_object
 
-class RubyConstant < Dry::Struct
-  attribute :name, Types::String
-  attribute :description, Types::String
+  validates :name, presence: true
+  validates :constant, presence: true
 end
