@@ -26,3 +26,10 @@ enumerable:
   description: Module providing collection traversal and searching methods.
   object_type: module
   constant: Enumerable
+
+net_http:
+  name: HTTP
+  path: net/http
+  description: Class Net::HTTP provides a rich library that implements the client in a client-server model that uses the HTTP request-response protocol.
+  object_type: class
+  constant: Net::HTTP

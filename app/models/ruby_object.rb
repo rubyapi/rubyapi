@@ -1,5 +1,6 @@
 class RubyObject < ApplicationRecord
   has_many :ruby_methods, dependent: :destroy
+  has_many :ruby_attributes, dependent: :destroy
 
   def class_object?
     object_type == "class"

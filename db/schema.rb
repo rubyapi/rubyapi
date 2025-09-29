@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_28_122931) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_28_235718) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "ruby_attributes", force: :cascade do |t|
+    t.bigint "ruby_object_id"
+    t.string "name", null: false
+    t.string "description"
+    t.string "access", default: "rw"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ruby_object_id"], name: "index_ruby_attributes_on_ruby_object_id"
+  end
 
   create_table "ruby_methods", force: :cascade do |t|
     t.bigint "ruby_object_id"
@@ -64,5 +74,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_28_122931) do
     t.index ["version_key"], name: "index_ruby_releases_on_version_key", where: "(version_key IS NOT NULL)"
   end
 
+  add_foreign_key "ruby_attributes", "ruby_objects", on_delete: :cascade
   add_foreign_key "ruby_methods", "ruby_objects", on_delete: :cascade
 end
