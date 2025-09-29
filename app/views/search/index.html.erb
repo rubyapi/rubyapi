@@ -13,11 +13,11 @@
         <div class="w-full">
           <% if r.is_a? RubyMethod %>
             <h4 class="md:text-2xl text-lg overflow-wrap-break-word font-semibold text-gray-800 dark:text-white">
-              <%= link_to r.identifier, result_url(r, version: Current.ruby_release) %>
+              <%= link_to r.identifier, result_url(r, release: Current.ruby_release) %>
             </h4>
           <% else %>
             <h4 class="md:text-2xl text-lg overflow-wrap-break-word font-semibold text-gray-800 dark:text-white">
-              <%= link_to r.constant, result_url(r, version: Current.ruby_release) %>
+              <%= link_to r.constant, result_url(r, release: Current.ruby_release) %>
             </h4>
           <% end %>
         </div>
