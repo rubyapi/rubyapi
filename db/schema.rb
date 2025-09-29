@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_28_235718) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_29_002850) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -22,6 +22,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_28_235718) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ruby_object_id"], name: "index_ruby_attributes_on_ruby_object_id"
+  end
+
+  create_table "ruby_constants", force: :cascade do |t|
+    t.bigint "ruby_object_id"
+    t.string "name", null: false
+    t.text "description"
+    t.string "constant", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ruby_object_id"], name: "index_ruby_constants_on_ruby_object_id"
   end
 
   create_table "ruby_methods", force: :cascade do |t|
@@ -75,5 +85,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_28_235718) do
   end
 
   add_foreign_key "ruby_attributes", "ruby_objects", on_delete: :cascade
+  add_foreign_key "ruby_constants", "ruby_objects", on_delete: :cascade
   add_foreign_key "ruby_methods", "ruby_objects", on_delete: :cascade
 end
