@@ -1,2 +1,0 @@
-ignored_endpoints:
-  - HealthcheckController#index
