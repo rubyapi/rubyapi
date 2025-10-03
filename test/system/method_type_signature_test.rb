@@ -2,12 +2,8 @@ require "application_system_test_case"
 
 class MethodTypeSignatureTest < ApplicationSystemTestCase
   def setup
-    @string = FactoryBot.build(:ruby_object)
-    @method = FactoryBot.build(:ruby_method, name: "signature_test_1", signatures: ["(::String input) -> ::String"])
-    @string.ruby_methods << @method
-
-    create_index_for_release! default_ruby_release
-    index_object @string
+    @string = ruby_objects(:string)
+    @method = ruby_methods(:to_i)
   end
 
   test "toggle type signatures" do
@@ -21,6 +17,6 @@ class MethodTypeSignatureTest < ApplicationSystemTestCase
     click_button "Disable Type Signatures"
 
     assert_selector :button, text: "Enable Type Signatures"
-    assert_selector "h4", text: @method.call_sequence.first
+    assert_selector "h4", text: @method.call_sequences.first
   end
 end

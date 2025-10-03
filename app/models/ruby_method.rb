@@ -6,6 +6,18 @@ class RubyMethod < ApplicationRecord
   scope :class_methods, -> { where(method_type: "class") }
   scope :instance_methods, -> { where(method_type: "instance") }
 
+  searchkick searchable: [ :name, :description, :constant ],
+    word_start: [ :name ],
+    word_middle: [ :constant ]
+
+  def search_data
+    {
+      name: name,
+      description: description,
+      constant: constant
+    }
+  end
+
   def instance_method?
     method_type == "instance"
   end

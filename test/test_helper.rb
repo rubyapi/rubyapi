@@ -21,6 +21,14 @@ class ActiveSupport::TestCase
     Current.theme = ThemeConfig.theme_for("light")
     Current.ruby_release = ruby_releases(:latest)
     Current.default_ruby_release = ruby_releases(:latest)
+
+    # reindex models
+    RubyObject.reindex
+    RubyMethod.reindex
+    RubyConstant.reindex
+
+    # and disable callbacks
+    Searchkick.disable_callbacks
   end
 
   # Add more helper methods to be used by all tests here...
@@ -31,27 +39,5 @@ class ActiveSupport::TestCase
 
   def default_ruby_release
     ruby_releases(:latest)
-  end
-
-  def bulk_index_search(objects, release: nil, wait_for_refresh: false)
-    search_repository(release).bulk_import(objects, wait_for_refresh: wait_for_refresh)
-  end
-
-  def index_search(object, release: nil)
-    search_repository(release).save object
-  end
-
-  def index_object(object, release: nil)
-    ruby_object_repository(release).save object
-  end
-
-  def search_repository(release = nil)
-    release ||= default_ruby_release
-    SearchRepository.repository_for_release(release)
-  end
-
-  def ruby_object_repository(release = nil)
-    release ||= default_ruby_release
-    RubyObjectRepository.repository_for_release(release)
   end
 end

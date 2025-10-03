@@ -7,8 +7,8 @@ class CreateRubyObjects < ActiveRecord::Migration[8.0]
       t.text :description
       t.string :object_type, null: false
       t.string :constant, null: false
-      t.string :superclass
-      t.string :included_modules, array: true, default: []
+      t.string :superclass_constant
+      t.string :included_module_constants, array: true, default: []
       t.jsonb :metadata, default: {}
       t.timestamps
     end

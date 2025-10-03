@@ -8,12 +8,10 @@ module ApplicationHelper
   end
 
   # Map a method source file into a url to Github.com
-  def github_url(ruby_doc)
-    _version, file, line = ruby_doc.source_location.split(":")
-
+  def github_url(ruby_doc, release:)
     # Not using URI.join, for a performance optimization. URI.join does A LOT of allocations.
     # We know that our source_location is safe, because we make it in the importer.
     # Inspiration: https://github.com/rack/rack/pull/1202
-    %(#{GITHUB_REPO}/#{Current.ruby_release.git_ref}/#{file}#{"#L#{line}" if line})
+    %(#{GITHUB_REPO}/#{release.git_ref}/#{ruby_doc.source_file}#{"#L#{ruby_doc.source_line}" if ruby_doc.source_line.present?})
   end
 end
