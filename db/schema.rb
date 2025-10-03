@@ -59,8 +59,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_29_005300) do
     t.text "description"
     t.string "object_type", null: false
     t.string "constant", null: false
-    t.string "superclass"
-    t.string "included_modules", default: [], array: true
+    t.string "superclass_constant"
+    t.string "included_module_constants", default: [], array: true
     t.jsonb "metadata", default: {}
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

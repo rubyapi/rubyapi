@@ -5,22 +5,25 @@
 # below each fixture, per the syntax in the comments below
 #
 string:
+  documentable: latest (RubyRelease)
   name: String
   path: string
   description: Class for manipulating strings of characters.
   object_type: class
   constant: String
-  superclass: Object
+  superclass_constant: Object
 
 integer:
+  documentable: latest (RubyRelease)
   name: Integer
   path: integer
   description: Class for manipulating integer numbers.
   object_type: class
   constant: Integer
-  superclass: Numeric
+  superclass_constant: Numeric
 
 enumerable:
+  documentable: latest (RubyRelease)
   name: Enumerable
   path: enumerable
   description: Module providing collection traversal and searching methods.
@@ -28,6 +31,7 @@ enumerable:
   constant: Enumerable
 
 net_http:
+  documentable: latest (RubyRelease)
   name: HTTP
   path: net/http
   description: Class Net::HTTP provides a rich library that implements the client in a client-server model that uses the HTTP request-response protocol.

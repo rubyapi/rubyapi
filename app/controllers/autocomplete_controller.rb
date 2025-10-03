@@ -4,8 +4,8 @@ class AutocompleteController < ApplicationController
   before_action :enable_public_cache
 
   def index
-    search_results = Search::Autocomplete.search(search_query, release: Current.ruby_release).first(5)
-    render json: search_results.map { |r| AutocompleteResult.new(r, release: Current.ruby_release) }
+    search = Searchkick.search(search_query, models: [RubyObject, RubyMethod, RubyConstant])
+    render json: search.results
   end
 
   def search_query
