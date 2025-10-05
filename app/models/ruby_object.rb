@@ -1,31 +1,36 @@
 class RubyObject < ApplicationRecord
   CORE_CLASSES = {
-    # Tier 1 (1.5x): The "Big 4" - Most searched Ruby classes
-    "String" => 1.5,
-    "Array" => 1.5,
-    "Hash" => 1.5,
-    "Integer" => 1.5,
+    # Tier 1: The "Big 4" + Kernel - Most searched Ruby classes
+    # Using much larger values because function_score adds these (not multiplies)
+    "String" => 100.0,
+    "Array" => 100.0,
+    "Hash" => 100.0,
+    "Integer" => 100.0,
+    "Kernel" => 100.0,  # Fundamental Ruby module with puts, print, raise, etc.
 
-    # Tier 2 (1.3x): Very common, but slightly less frequent
-    "Enumerable" => 1.3,
-    "Time" => 1.3,
-    "Regexp" => 1.3,
-    "Range" => 1.3,
-    "File" => 1.3,
-    "Dir" => 1.3,
-    "Symbol" => 1.3,
-    "Float" => 1.3,
-    "Numeric" => 1.3,
-    "Object" => 1.3,
+    # Tier 2: Very common for method searches
+    "Enumerable" => 75.0,
+    "Time" => 75.0,
+    "Regexp" => 75.0,
+    "Range" => 75.0,
+    "Object" => 75.0,  # Promoted - base class with important methods
+    "Date" => 75.0,    # Common stdlib class for date handling
+    "JSON" => 75.0,    # Common stdlib module for JSON parsing
+    "BasicObject" => 50.0,
+    "Symbol" => 50.0,
+    "Float" => 50.0,
+    "Numeric" => 50.0,
 
-    # Tier 3 (1.1x): Used, but less frequently searched
-    "IO" => 1.1,
-    "Thread" => 1.1,
-    "Struct" => 1.1,
-    "Set" => 1.1,
-    "Module" => 1.1,
-    "Class" => 1.1,
-    "Proc" => 1.1
+    # Tier 3: Used, but less frequently searched
+    "IO" => 10.0,
+    "Thread" => 10.0,
+    "Struct" => 10.0,
+    "Set" => 10.0,
+    "Module" => 10.0,
+    "Class" => 10.0,
+    "Proc" => 10.0,
+    "File" => 10.0,
+    "Dir" => 10.0
   }.freeze
   
   has_many :ruby_methods, dependent: :destroy
@@ -38,8 +43,8 @@ class RubyObject < ApplicationRecord
   has_many :included_modules, ->(obj) { where(constant: obj.included_module_constants) }, foreign_key: :id, class_name: "RubyObject"
   belongs_to :documentable, polymorphic: true
 
-  searchkick searchable: [ :name, :description, :constant ],
-    word_start: [ :name, :constant ],
+  searchkick searchable: [ :name, :description, :constant, :constant_prefix ],
+    word_start: [ :name, :constant, :constant_prefix ],
     word_middle: [ :constant ],
     filterable: [ :documentable_type, :documentable_id ]
 
@@ -55,8 +60,9 @@ class RubyObject < ApplicationRecord
       documentable_name: documentable&.version,
       object_type: object_type,
       popularity_boost: CORE_CLASSES[constant] || 1.0,
-      type_boost: CORE_CLASSES[constant] ? 2.0 : 1.1,
-      depth: depth
+      type_boost: CORE_CLASSES[constant] ? 100.0 : 1.0,
+      depth: depth,
+      depth_boost: 1.0 / depth
     }
   end
 
