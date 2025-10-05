@@ -9,7 +9,7 @@ class CreateRubyMethods < ActiveRecord::Migration[8.0]
       t.string :constant
       t.string :call_sequences, array: true, default: []
       t.string :source_body
-      t.string :method_alias
+      t.jsonb :method_alias, default: {}
       t.string :signatures, array: true, default: []
       t.jsonb :metadata, default: {}
       t.timestamps
