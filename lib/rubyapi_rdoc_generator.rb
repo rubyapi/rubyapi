@@ -55,7 +55,7 @@ class RubyAPIRDocGenerator
         method = RubyMethod.new(
           name: method_doc.name,
           description: clean_description(doc.full_name, method_doc.description),
-          constant: doc.full_name,
+          constant: method_doc.type.first == "c" ? "#{doc.full_name}##{method_doc.name}" : "#{doc.full_name}.#{method_doc.name}",
           method_type: "#{method_doc.type}_method",
           source_location: "#{@release.version}:#{method_path(method_doc)}:#{method_doc.line}",
           method_alias: {
@@ -92,9 +92,9 @@ class RubyAPIRDocGenerator
         constant: doc.full_name,
         object_type: "#{doc.type}_object",
         superclass_constant: superclass_for_doc(doc),
-        included_module_constants: doc.includes.map { |i| [i.name] },
+        included_module_constants: doc.includes.map(&:name),
         ruby_methods: methods,
-        ruby_constants: doc.constants.map { |c| RubyConstant.new(name: c.name, constant: c.name, description: clean_description(doc.full_name, c.description)) },
+        ruby_constants: doc.constants.map { |c| RubyConstant.new(name: c.name, constant: "#{doc.full_name}::#{c.name}", description: clean_description(doc.full_name, c.description)) },
         ruby_attributes: doc.attributes.map { |a| RubyAttribute.new(name: a.name, description: clean_description(doc.full_name, a.description), access: READWIRTE_MAPPING[a.rw]) },
         metadata: {
           depth: constant_depth(doc.full_name)

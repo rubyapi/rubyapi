@@ -17,7 +17,11 @@ namespace :import do
       exit 1
     end
 
-    RubyDocumentationImporter.import release
+    ActiveRecord::Base.transaction do
+      RubyObject.where(documentable: release).delete_all
+
+      RubyDocumentationImporter.import release
+    end
   end
 
   namespace :ruby do
