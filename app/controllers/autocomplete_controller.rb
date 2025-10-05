@@ -12,8 +12,8 @@ class AutocompleteController < ApplicationController
       fields: ["constant_prefix^10", "constant^5", "name^3", "description"],
       match: :word_start,
       boost_by: {
-        popularity_boost: {factor: 1},
-        type_boost: {factor: 1}
+        popularity_boost: {factor: 1, modifier: "none"},
+        type_boost: {factor: 1, modifier: "none"}
       },
       where: {
         documentable_type: Current.ruby_release.class.name,
