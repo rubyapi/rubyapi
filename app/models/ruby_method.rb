@@ -6,6 +6,8 @@ class RubyMethod < ApplicationRecord
   scope :class_methods, -> { where(method_type: "class") }
   scope :instance_methods, -> { where(method_type: "instance") }
 
+  scope :ordered, -> { order(:name) }
+
   searchkick searchable: [ :name, :description, :constant, :constant_prefix ],
     word_start: [ :name, :constant, :constant_prefix ],
     word_middle: [ :constant ],

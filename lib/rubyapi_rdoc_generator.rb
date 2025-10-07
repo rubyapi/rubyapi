@@ -58,16 +58,19 @@ class RubyAPIRDocGenerator
           constant: method_doc.type.first == "c" ? "#{doc.full_name}##{method_doc.name}" : "#{doc.full_name}.#{method_doc.name}",
           method_type: "#{method_doc.type}_method",
           source_location: "#{@release.version}:#{method_path(method_doc)}:#{method_doc.line}",
-          method_alias: {
-            path: clean_path(method_doc.is_alias_for&.path, constant: doc.full_name),
-            name: method_doc.is_alias_for&.name
-          },
           call_sequences: call_sequence_for_method_doc(method_doc),
           source_body: format_method_source_body(method_doc),
           metadata: {
             depth: constant_depth(doc.full_name)
           }
         )
+
+        if method_doc.is_alias_for.present?
+          method.method_alias = {
+            path: clean_path(method_doc.is_alias_for&.path, constant: doc.full_name),
+            name: method_doc.is_alias_for&.name
+          }
+        end
 
         if @release.signatures?
           signatures = if method_doc.type == "instance"
@@ -161,9 +164,9 @@ class RubyAPIRDocGenerator
     return if doc.superclass.blank?
 
     if doc.superclass.is_a?(String)
-      {constant: doc.superclass}
+      doc.superclass
     else
-      {constant: doc.superclass.name}
+      doc.superclass.name
     end
   end
 end

@@ -40,7 +40,6 @@ class RubyObject < ApplicationRecord
   has_many :ruby_constants, dependent: :destroy
 
   belongs_to :superclass, class_name: "RubyObject", foreign_key: "superclass_constant", primary_key: :constant, optional: true
-  has_many :included_modules, ->(obj) { where(constant: obj.included_module_constants) }, foreign_key: :id, class_name: "RubyObject"
   belongs_to :documentable, polymorphic: true
 
   searchkick searchable: [ :name, :description, :constant, :constant_prefix ],
@@ -64,6 +63,12 @@ class RubyObject < ApplicationRecord
       depth: depth,
       depth_boost: 1.0 / depth
     }
+  end
+
+  def included_modules
+    return RubyObject.none if included_module_constants.blank?
+    
+    RubyObject.where(constant: included_module_constants)
   end
 
   def class_object?
