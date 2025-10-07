@@ -4,6 +4,8 @@ class RubyConstant < ApplicationRecord
   validates :name, presence: true
   validates :constant, presence: true
 
+  scope :ordered, -> { order(:name) }
+
   searchkick searchable: [ :name, :description, :constant, :constant_prefix ],
     word_start: [ :name, :constant, :constant_prefix ],
     word_middle: [ :constant ],

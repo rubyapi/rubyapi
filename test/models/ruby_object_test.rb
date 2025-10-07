@@ -11,4 +11,13 @@ class RubyObjectTest < ActiveSupport::TestCase
     assert module_object.module_object?
     refute module_object.class_object?
   end
+
+  test "included modules" do
+    object = ruby_objects(:string)
+    included_module = ruby_objects(:enumerable)
+
+    object.update(included_module_constants: ["Enumerable"])
+
+    assert_includes object.included_modules, included_module
+  end
 end
