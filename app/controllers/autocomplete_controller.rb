@@ -19,7 +19,7 @@ class AutocompleteController < ApplicationController
         documentable_type: Current.ruby_release.class.name,
         documentable_id: Current.ruby_release.id
       },
-      limit: 10
+      limit: 5
     )
 
     normalized_results = search.results.map do |result|
