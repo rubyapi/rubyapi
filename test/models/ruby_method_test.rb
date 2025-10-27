@@ -1,7 +1,6 @@
 require "test_helper"
 
 class RubyMethodTest < ActiveSupport::TestCase
-
   test "method type validation" do
     method = RubyMethod.new(method_type: "invalid_type")
     refute method.valid?

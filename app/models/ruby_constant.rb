@@ -6,10 +6,10 @@ class RubyConstant < ApplicationRecord
 
   scope :ordered, -> { order(:name) }
 
-  searchkick searchable: [ :name, :description, :constant, :constant_prefix ],
-    word_start: [ :name, :constant, :constant_prefix ],
-    word_middle: [ :constant ],
-    filterable: [ :documentable_type, :documentable_id ]
+  searchkick searchable: [:name, :description, :constant, :constant_prefix],
+    word_start: [:name, :constant, :constant_prefix],
+    word_middle: [:constant],
+    filterable: [:documentable_type, :documentable_id]
 
   def search_data
     {

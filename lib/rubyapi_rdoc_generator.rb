@@ -51,12 +51,12 @@ class RubyAPIRDocGenerator
 
       methods = []
 
-      doc.method_list.each do |method_doc| 
+      doc.method_list.each do |method_doc|
         method = RubyMethod.new(
           name: method_doc.name,
           description: clean_description(doc.full_name, method_doc.description),
-          constant: method_doc.type == "instance" ? "#{doc.full_name}##{method_doc.name}" : "#{doc.full_name}.#{method_doc.name}",
-          method_type: "#{method_doc.type}",
+          constant: (method_doc.type == "instance") ? "#{doc.full_name}##{method_doc.name}" : "#{doc.full_name}.#{method_doc.name}",
+          method_type: method_doc.type.to_s,
           source_location: "#{@release.version}:#{method_path(method_doc)}:#{method_doc.line}",
           call_sequences: call_sequence_for_method_doc(method_doc),
           source_body: format_method_source_body(method_doc),

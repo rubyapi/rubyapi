@@ -32,7 +32,7 @@ class RubyObject < ApplicationRecord
     "File" => 10.0,
     "Dir" => 10.0
   }.freeze
-  
+
   has_many :ruby_methods, dependent: :destroy
   has_many :ruby_class_methods, -> { where(method_type: "class") }, class_name: "RubyMethod", inverse_of: :ruby_object
   has_many :ruby_instance_methods, -> { where(method_type: "instance") }, class_name: "RubyMethod", inverse_of: :ruby_object
@@ -42,10 +42,10 @@ class RubyObject < ApplicationRecord
   belongs_to :superclass, class_name: "RubyObject", foreign_key: "superclass_constant", primary_key: :constant, optional: true
   belongs_to :documentable, polymorphic: true
 
-  searchkick searchable: [ :name, :description, :constant, :constant_prefix ],
-    word_start: [ :name, :constant, :constant_prefix ],
-    word_middle: [ :constant ],
-    filterable: [ :documentable_type, :documentable_id ]
+  searchkick searchable: [:name, :description, :constant, :constant_prefix],
+    word_start: [:name, :constant, :constant_prefix],
+    word_middle: [:constant],
+    filterable: [:documentable_type, :documentable_id]
 
   def search_data
     {
@@ -67,7 +67,7 @@ class RubyObject < ApplicationRecord
 
   def included_modules
     return RubyObject.none if included_module_constants.blank?
-    
+
     RubyObject.where(constant: included_module_constants)
   end
 

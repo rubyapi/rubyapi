@@ -14,7 +14,8 @@ to_i:
   call_sequences:
     - "str.to_i # => 1"
   signatures:
-    - "(?::int radix) -> ::Integer"
+    - "(::string other) -> ::Integer"
+    - "(untyped other) -> ::Integer?"
   source_body: |
     def to_i
     end
