@@ -13,6 +13,8 @@ class RubyMethod < ApplicationRecord
     word_middle: [ :constant ],
     filterable: [ :documentable_type, :documentable_id ]
 
+  validates :method_type, inclusion: { in: %w[instance class] }
+
   def search_data
     {
       name: name,

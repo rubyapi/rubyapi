@@ -9,7 +9,7 @@ class AutocompleteControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should render results" do
-    get autocomplete_path(q: "foo")
+    get autocomplete_path(q: "new")
     assert response.parsed_body.size > 1
   end
 

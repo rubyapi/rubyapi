@@ -34,8 +34,8 @@ class RubyObject < ApplicationRecord
   }.freeze
   
   has_many :ruby_methods, dependent: :destroy
-  has_many :ruby_class_methods, -> { where(method_type: "class_method") }, class_name: "RubyMethod", inverse_of: :ruby_object
-  has_many :ruby_instance_methods, -> { where(method_type: "instance_method") }, class_name: "RubyMethod", inverse_of: :ruby_object
+  has_many :ruby_class_methods, -> { where(method_type: "class") }, class_name: "RubyMethod", inverse_of: :ruby_object
+  has_many :ruby_instance_methods, -> { where(method_type: "instance") }, class_name: "RubyMethod", inverse_of: :ruby_object
   has_many :ruby_attributes, dependent: :destroy
   has_many :ruby_constants, dependent: :destroy
 

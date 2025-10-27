@@ -6,7 +6,7 @@ class AutocompleteController < ApplicationController
   before_action :enable_public_cache
 
   def index
-    search = Searchkick.search(
+    results = Searchkick.search(
       search_query,
       models: [RubyObject, RubyMethod, RubyConstant],
       fields: ["constant_prefix^10", "constant^5", "name^3", "description"],
@@ -22,7 +22,7 @@ class AutocompleteController < ApplicationController
       limit: 5
     )
 
-    normalized_results = search.results.map do |result|
+    normalized_results = results.map do |result|
       {
         text: result.constant,
         path: result_url(result, release: Current.ruby_release)

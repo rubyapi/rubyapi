@@ -1,6 +1,13 @@
 require "test_helper"
 
 class RubyMethodTest < ActiveSupport::TestCase
+
+  test "method type validation" do
+    method = RubyMethod.new(method_type: "invalid_type")
+    refute method.valid?
+    assert_includes method.errors[:method_type], "is not included in the list"
+  end
+
   test "instance method" do
     method = RubyMethod.new(method_type: "instance")
 

@@ -56,7 +56,7 @@ class RubyAPIRDocGenerator
           name: method_doc.name,
           description: clean_description(doc.full_name, method_doc.description),
           constant: method_doc.type == "instance" ? "#{doc.full_name}##{method_doc.name}" : "#{doc.full_name}.#{method_doc.name}",
-          method_type: "#{method_doc.type}_method",
+          method_type: "#{method_doc.type}",
           source_location: "#{@release.version}:#{method_path(method_doc)}:#{method_doc.line}",
           call_sequences: call_sequence_for_method_doc(method_doc),
           source_body: format_method_source_body(method_doc),
