@@ -4,33 +4,16 @@ require "test_helper"
 
 class SearchFlowTest < ActionDispatch::IntegrationTest
   def setup
-    @string = FactoryBot.build(:ruby_object)
-    @string.ruby_methods << FactoryBot.build(
-      :ruby_method,
-      call_sequence: [
-        "foo(a,b)",
-        "foo(arg1, arg2)"
-      ],
-      signatures: [
-        "(::string other) -> ::Integer",
-        "(untyped other) -> ::Integer?"
-      ]
-    )
-
-    index_object @string
+    @object = ruby_objects(:string)
   end
 
-  test "turn on type signatures" do
-    get object_url object: @string.path
+  test "show type signatures" do
+    cookies[:signatures] = "enabled"
+    get object_url object: @object.path
 
-    assert_select "h4", "foo(a,b)"
-    assert_select "h4", "foo(arg1, arg2)"
-
-    post toggle_signatures_url, headers: {"HTTP_REFERER" => object_url(object: @string.path)}
-
-    follow_redirect!
-
-    assert_select "h4", "(::string other) -> ::Integer"
-    assert_select "h4", "(untyped other) -> ::Integer?"
+    assert_response :success
+    assert_dom "button", "Disable Type Signatures"
+    assert_dom "h4", "(::string other) -> ::Integer"
+    assert_dom "h4", "(untyped other) -> ::Integer?"
   end
 end

@@ -3,19 +3,17 @@
 require "test_helper"
 
 class ApplicationHelperTest < ActionView::TestCase
+  setup do
+    @object = ruby_objects(:string)
+    @method = ruby_methods(:to_i)
+  end
+
   test "github_url" do
-    method = FactoryBot.build(:ruby_method, source_location: "3.1.0:string.c:3")
-
-    Current.ruby_release = ruby_releases(:latest)
-
-    assert_equal github_url(method), "https://github.com/ruby/ruby/blob/v3_4_2/string.c#L3"
+    assert_equal github_url(@method, release: ruby_releases(:latest)), "https://github.com/ruby/ruby/blob/v3_4_2/string.c#L123"
   end
 
   test "github_url for ruby dev" do
-    method = FactoryBot.build(:ruby_method, source_location: "dev:string.c:3")
-
-    Current.ruby_release = ruby_releases(:dev)
-
-    assert_equal github_url(method), "https://github.com/ruby/ruby/blob/master/string.c#L3"
+    @object.update(documentable: ruby_releases(:dev))
+    assert_equal github_url(@method, release: ruby_releases(:dev)), "https://github.com/ruby/ruby/blob/master/string.c#L123"
   end
 end

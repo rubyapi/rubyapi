@@ -7,17 +7,12 @@ gem "bootsnap", ">= 1.1.0", require: false
 gem "puma"
 gem "puma-plugin-statsd"
 gem "propshaft"
-gem "sqlite3"
 gem "thruster"
 gem "pg"
-
-gem "elasticsearch-persistence"
-gem "opensearch-aws-sigv4"
 gem "opensearch-ruby"
-
+gem "searchkick"
 gem "http"
 gem "typhoeus", require: false
-gem "kaminari", "~> 1.2.2"
 gem "inline_svg"
 gem "tty-spinner", require: false
 gem "lograge"
@@ -29,7 +24,6 @@ gem "pastel", require: false
 gem "rouge", require: false
 gem "rbs", require: false
 gem "anyway_config"
-gem "dry-struct"
 gem "view_component"
 gem "dogstatsd-ruby"
 gem "importmap-rails"
@@ -39,7 +33,6 @@ gem "aws-sdk-core"
 
 group :development, :test do
   gem "debug"
-  gem "factory_bot"
 end
 
 group :development do

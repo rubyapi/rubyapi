@@ -1,65 +1,60 @@
-# frozen_string_literal: true
+class RubyMethod < ApplicationRecord
+  validates :name, presence: true
 
-class RubyMethod < Dry::Struct
-  attribute :name, Types::String
-  attribute :description, Types::String
-  attribute :object_constant, Types::String
-  attribute :method_type, Types::String
-  attribute :source_location, Types::String
-  attribute :call_sequence, Types::Array
-  attribute :source_body, Types::String
-  attribute :signatures, Types::Array.default([].freeze)
+  belongs_to :ruby_object
 
-  attribute :metadata do
-    attribute :depth, Types::Coercible::Integer.default(1)
-  end
+  scope :class_methods, -> { where(method_type: "class") }
+  scope :instance_methods, -> { where(method_type: "instance") }
 
-  attribute :method_alias do
-    attribute :name, Types::String.optional
-    attribute :path, Types::String.optional
-  end
+  scope :ordered, -> { order(:name) }
 
-  def class_method?
-    method_type == "class_method"
+  searchkick searchable: [:name, :description, :constant, :constant_prefix],
+    word_start: [:name, :constant, :constant_prefix],
+    word_middle: [:constant],
+    filterable: [:documentable_type, :documentable_id]
+
+  validates :method_type, inclusion: {in: %w[instance class]}
+
+  def search_data
+    {
+      name: name,
+      description: description,
+      constant: constant,
+      constant_prefix: constant.downcase,
+      documentable_type: ruby_object.documentable_type,
+      documentable_id: ruby_object.documentable_id,
+      documentable_name: ruby_object.documentable&.version,
+      method_type: method_type,
+      object_constant: ruby_object.constant,
+      popularity_boost: RubyObject::CORE_CLASSES[ruby_object.constant] || 1.0,
+      type_boost: 1.0,
+      depth: ruby_object.depth,
+      depth_boost: 1.0 / ruby_object.depth
+    }
   end
 
   def instance_method?
-    method_type == "instance_method"
+    method_type == "instance"
+  end
+
+  def class_method?
+    method_type == "class"
   end
 
   def type_identifier
-    if class_method? then "::"
-    elsif instance_method? then "#"
-    else
-      raise "Unknown type of method: #{method_type}"
-    end
-  end
-
-  def identifier
-    [object_constant, type_identifier, name].join
-  end
-
-  alias_method :autocomplete, :identifier
-
-  def object_path
-    object_constant&.downcase&.gsub("::", "/")
+    instance_method? ? "#" : "."
   end
 
   def is_alias?
-    method_alias.attributes.values.any?
+    method_alias.present?
   end
 
   def source_file
-    source_properties[1]
+    source_properties.first
   end
 
   def source_line
-    source_properties[2]
-  end
-
-  # Similar to #to_h, but only the nessessary attributes are included
-  def to_search
-    to_h.merge(type: :method, autocomplete:)
+    source_properties.second.to_i
   end
 
   private

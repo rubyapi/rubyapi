@@ -23,7 +23,7 @@
             </div>
           <% else %>
             <a href="#<%= method_anchor(m) %>">
-              <% m.call_sequence.each do |seq| %>
+              <% m.call_sequences.each do |seq| %>
                 <h4 class="lg:text-2xl text-lg text-gray-900 dark:text-gray-200 font-semibold"><%= seq %></h4>
               <% end %>
             </a>
@@ -45,7 +45,7 @@
           <span class="text-gray-300 text-sm">
             <%= m.source_file %>
           </span>
-          <a class="text-gray-300 text-sm hover:text-gray-400" href="<%= github_url m %>" target="_blank" rel="noopener" title="View source on GitHub">
+          <a class="text-gray-300 text-sm hover:text-gray-400" href="<%= github_url(m, release: Current.ruby_release) %>" target="_blank" rel="noopener" title="View source on GitHub">
             View on GitHub
             <svg xmlns="http://www.w3.org/2000/svg" class="inline h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path>
@@ -61,7 +61,7 @@
       </div>
       <div class="ruby-documentation py-1">
         <% if m.is_alias? %>
-          <div>An alias for <a href="<%= m.method_alias.path %>" class="font-bold"><%= m.method_alias.name %></a></div>
+          <div>An alias for <a href="<%= m.method_alias[:path] %>" class="font-bold"><%= m.method_alias[:name] %></a></div>
         <% elsif m.description.empty? %>
           <div>No documentation available</div>
         <% else %>

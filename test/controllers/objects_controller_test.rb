@@ -3,10 +3,8 @@
 require "test_helper"
 
 class ObjectsControllerTest < ActionDispatch::IntegrationTest
-  def setup
-    @string = FactoryBot.build(:ruby_object)
-    create_index_for_release! default_ruby_release
-    index_object @string
+  setup do
+    @string = ruby_objects(:string)
   end
 
   test "should get show" do
@@ -20,22 +18,17 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "different ruby version" do
-    create_index_for_release! ruby_releases(:legacy)
+    string = ruby_objects(:string)
+    legacy_version = ruby_releases(:legacy)
 
-    index_object @string, release: ruby_releases(:legacy)
+    string.update(documentable: legacy_version)
 
-    get object_url object: @string.path, version: ruby_releases(:legacy).version
+    get object_url object: string.path, version: legacy_version.version
     assert_response :success
   end
 
   test "object not found on different ruby version" do
-    other_object = FactoryBot.build(:ruby_object, c: Hash)
-
-    create_index_for_release! ruby_releases(:legacy)
-
-    index_object other_object, release: ruby_releases(:legacy)
-
-    get object_url object: other_object.path, version: default_ruby_release.version
+    get object_url object: "/o/invalid-object", version: ruby_releases(:legacy).version
 
     assert_response :not_found
   end
@@ -47,47 +40,38 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show method type signature" do
-    @string.ruby_methods << FactoryBot.build(:ruby_method, name: "signature_test_1", signatures: ["(::String input) -> ::String"])
-    index_object @string
+    method = ruby_methods(:to_i)
+    method.update(signatures: ["(?::int radix) -> ::Integer"])
 
     post toggle_signatures_path
 
     get object_url object: @string.path
 
-    assert_select "h4", "(::String input) -> ::String"
+    assert_select "h4", "(?::int radix) -> ::Integer"
   end
 
   test "show method type signature with RubyAPI Feature header" do
-    @string.ruby_methods << FactoryBot.build(:ruby_method, name: "signature_test_2", signatures: ["(::String input) -> ::Hash"])
-    index_object @string
+    method = ruby_methods(:to_i)
+    method.update(signatures: ["(?::int radix) -> ::Integer"])
 
     get object_url(object: @string.path), headers: {"X-RubyAPI-Signatures" => "true"}
 
-    assert_select "h4", "(::String input) -> ::Hash"
+    assert_select "h4", "(?::int radix) -> ::Integer"
   end
 
-  test "show method name when signatures are enabled" do
-    @string.ruby_methods << FactoryBot.build(:ruby_method, name: "foo")
-    index_object @string
+  test "show method sequences when signatures are enabled" do
+    method = ruby_methods(:to_i)
 
     post toggle_signatures_path
 
     get object_url object: @string.path
 
-    assert_select "h4", "foo"
+    assert_select "h4", method.name
   end
 
   test "multiline call sequence" do
-    @string.ruby_methods << FactoryBot.build(
-      :ruby_method,
-      name: "foo",
-      call_sequence: [
-        "foo(a,b)",
-        "foo(arg1, arg2)"
-      ]
-    )
-
-    index_object @string
+    method = ruby_methods(:to_i)
+    method.update(call_sequences: ["foo(a,b)", "foo(arg1, arg2)"])
 
     get object_url object: @string.path
 

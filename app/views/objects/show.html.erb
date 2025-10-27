@@ -104,7 +104,7 @@
         <div class="mb-3">
           <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Constants</h3>
           <ul class="font-mono text-sm">
-            <% @object.ruby_constants.each do |constant| %>
+            <% @object.ruby_constants.ordered.each do |constant| %>
               <li><%= link_to constant.name, "##{constant.name}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %></li>
             <% end %>
           </ul>
@@ -117,7 +117,7 @@
         <div class="mb-3">
           <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Attributes</h3>
           <ul class="font-mono text-sm">
-            <% @object.ruby_attributes.each do |attribute| %>
+            <% @object.ruby_attributes.ordered.each do |attribute| %>
               <li><%= link_to attribute.name, "##{attribute.name}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %></li>
             <% end %>
           </ul>
@@ -130,7 +130,7 @@
         <div class="mb-3">
           <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Class Methods</h3>
           <ul class="font-mono text-sm">
-            <% @object.ruby_class_methods.each do |m| %>
+            <% @object.ruby_class_methods.ordered.each do |m| %>
               <li><%= link_to ":: #{m.name}", "##{method_anchor(m)}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %></li>
             <% end %>
           </ul>
@@ -143,7 +143,7 @@
         <div class="mb-3">
           <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Instance Methods</h3>
           <ul class="font-mono text-sm">
-            <% @object.ruby_instance_methods.each do |m| %>
+            <% @object.ruby_instance_methods.ordered.each do |m| %>
               <li><%= link_to "# #{m.name}", "##{method_anchor(m)}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %></li>
             <% end %>
           </ul>
@@ -177,19 +177,19 @@
     </section>
     <% unless @object.ruby_constants.empty? %>
       <%= render "objects/show/constants",
-          constants: @object.ruby_constants, title: "Constants" %>
+          constants: @object.ruby_constants.ordered, title: "Constants" %>
     <% end %>
     <% unless @object.ruby_attributes.empty? %>
       <%= render "objects/show/attributes",
-          attributes: @object.ruby_attributes, title: "Attributes" %>
+          attributes: @object.ruby_attributes.ordered, title: "Attributes" %>
     <% end %>
     <% unless @object.ruby_class_methods.empty? %>
       <%= render "objects/show/methods",
-          methods: @object.ruby_class_methods, title: "Class Methods" %>
+          methods: @object.ruby_class_methods.ordered, title: "Class Methods" %>
     <% end %>
     <% unless @object.ruby_instance_methods.empty? %>
       <%= render "objects/show/methods",
-          methods: @object.ruby_instance_methods, title: "Instance Methods" %>
+          methods: @object.ruby_instance_methods.ordered, title: "Instance Methods" %>
     <% end %>
   </main>
 </div>

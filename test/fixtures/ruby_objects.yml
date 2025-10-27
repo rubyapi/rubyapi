@@ -1,0 +1,39 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+string:
+  documentable: latest (RubyRelease)
+  name: String
+  path: string
+  description: Class for manipulating strings of characters.
+  object_type: class
+  constant: String
+  superclass_constant: Object
+
+integer:
+  documentable: latest (RubyRelease)
+  name: Integer
+  path: integer
+  description: Class for manipulating integer numbers.
+  object_type: class
+  constant: Integer
+  superclass_constant: Numeric
+
+enumerable:
+  documentable: latest (RubyRelease)
+  name: Enumerable
+  path: enumerable
+  description: Module providing collection traversal and searching methods.
+  object_type: module
+  constant: Enumerable
+
+net_http:
+  documentable: latest (RubyRelease)
+  name: HTTP
+  path: net/http
+  description: Class Net::HTTP provides a rich library that implements the client in a client-server model that uses the HTTP request-response protocol.
+  object_type: class
+  constant: Net::HTTP

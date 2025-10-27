@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+
+# https://docs.ruby-lang.org/en/3.4/Net/HTTP.html#attribute-c-default_configuration
+default_configuration: 
+  name: default_configuration
+  ruby_object: net_http
+  description: Allows to set the default configuration that will be used when creating a new connection.
+  access: rw

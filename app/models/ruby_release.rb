@@ -7,6 +7,8 @@ class RubyRelease < ApplicationRecord
   scope :latest, -> { where(default: true).first }
   scope :ordered, -> { order(Arel.sql("version_key IS NULL, version_key DESC, version DESC")) }
 
+  has_many :ruby_objects, as: :documentable, dependent: :destroy
+
   def self.version_for(version)
     RubyRelease.find_by(version: version)
   end

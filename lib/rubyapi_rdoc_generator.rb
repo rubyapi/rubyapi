@@ -32,8 +32,7 @@ class RubyAPIRDocGenerator
   end
 
   def generate
-    reset_indexes!
-    index generate_objects
+    generate_objects
   end
 
   def generate_objects
@@ -53,22 +52,25 @@ class RubyAPIRDocGenerator
       methods = []
 
       doc.method_list.each do |method_doc|
-        method = {
+        method = RubyMethod.new(
           name: method_doc.name,
           description: clean_description(doc.full_name, method_doc.description),
-          object_constant: doc.full_name,
-          method_type: "#{method_doc.type}_method",
+          constant: (method_doc.type == "instance") ? "#{doc.full_name}##{method_doc.name}" : "#{doc.full_name}.#{method_doc.name}",
+          method_type: method_doc.type.to_s,
           source_location: "#{@release.version}:#{method_path(method_doc)}:#{method_doc.line}",
-          method_alias: {
-            path: clean_path(method_doc.is_alias_for&.path, constant: doc.full_name),
-            name: method_doc.is_alias_for&.name
-          },
-          call_sequence: call_sequence_for_method_doc(method_doc),
+          call_sequences: call_sequence_for_method_doc(method_doc),
           source_body: format_method_source_body(method_doc),
           metadata: {
             depth: constant_depth(doc.full_name)
           }
-        }
+        )
+
+        if method_doc.is_alias_for.present?
+          method.method_alias = {
+            path: clean_path(method_doc.is_alias_for&.path, constant: doc.full_name),
+            name: method_doc.is_alias_for&.name
+          }
+        end
 
         if @release.signatures?
           signatures = if method_doc.type == "instance"
@@ -77,24 +79,26 @@ class RubyAPIRDocGenerator
             @type_repository.signiture_for_object_class_method(object: doc.name, method: method_doc.name)
           end
 
-          method[:signatures] = signatures.present? ? signatures.map(&:to_s) : []
+          method.signatures = signatures.present? ? signatures.map(&:to_s) : []
         end
 
-        next if methods.any? { |m| m[:name] == method[:name] && m[:method_type] == method[:method_type] }
+        next if methods.any? { |m| m.name == method.name && m.method_type == method.method_type }
 
         methods << method
       end
 
-      objects << RubyObject.new(
+      objects << RubyObject.create!(
+        documentable: @release,
         name: doc.name,
+        path: doc.full_name&.downcase&.gsub("::", "/"),
         description: clean_description(doc.full_name, doc.description),
         constant: doc.full_name,
         object_type: "#{doc.type}_object",
-        superclass: superclass_for_doc(doc),
-        included_modules: doc.includes.map { |i| {constant: i.name} },
+        superclass_constant: superclass_for_doc(doc),
+        included_module_constants: doc.includes.map(&:name),
         ruby_methods: methods,
-        ruby_constants: doc.constants.map { |c| {name: c.name, description: clean_description(doc.full_name, c.description)} },
-        ruby_attributes: doc.attributes.map { |a| {name: a.name, description: clean_description(doc.full_name, a.description), access: READWIRTE_MAPPING[a.rw]} },
+        ruby_constants: doc.constants.map { |c| RubyConstant.new(name: c.name, constant: "#{doc.full_name}::#{c.name}", description: clean_description(doc.full_name, c.description)) },
+        ruby_attributes: doc.attributes.map { |a| RubyAttribute.new(name: a.name, description: clean_description(doc.full_name, a.description), access: READWIRTE_MAPPING[a.rw]) },
         metadata: {
           depth: constant_depth(doc.full_name)
         }
@@ -105,23 +109,6 @@ class RubyAPIRDocGenerator
   end
 
   private
-
-  def index(objects)
-    [object_repository, search_repository].each { |repo| repo.bulk_import(objects) }
-  end
-
-  def object_repository
-    @object_repository ||= RubyObjectRepository.repository_for_release(@release)
-  end
-
-  def search_repository
-    @search_repository ||= SearchRepository.repository_for_release(@release)
-  end
-
-  def reset_indexes!
-    object_repository.create_index! force: true
-    search_repository.create_index! force: true
-  end
 
   def method_path(method_doc)
     base_ruby_dir = Pathname.new @options.files.first
@@ -177,9 +164,9 @@ class RubyAPIRDocGenerator
     return if doc.superclass.blank?
 
     if doc.superclass.is_a?(String)
-      {constant: doc.superclass}
+      doc.superclass
     else
-      {constant: doc.superclass.name}
+      doc.superclass.name
     end
   end
 end
