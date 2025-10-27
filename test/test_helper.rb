@@ -31,12 +31,6 @@ class ActiveSupport::TestCase
     Searchkick.disable_callbacks
   end
 
-  # Add more helper methods to be used by all tests here...
-  def create_index_for_release!(release)
-    search_repository(release).create_index! force: true
-    ruby_object_repository(release).create_index! force: true
-  end
-
   def default_ruby_release
     ruby_releases(:latest)
   end
