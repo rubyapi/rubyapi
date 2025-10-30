@@ -26,7 +26,7 @@ namespace :import do
 
   namespace :ruby do
     task all: :environment do
-      RubyRelease.each do |version|
+      RubyRelease.find_each do |version|
         RubyDocumentationImporter.import version
       end
     end
