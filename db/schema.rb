@@ -10,87 +10,87 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_29_005300) do
+ActiveRecord::Schema[8.1].define(version: 2025_09_29_005300) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "ruby_attributes", force: :cascade do |t|
-    t.bigint "ruby_object_id"
-    t.string "name", null: false
-    t.text "description"
     t.string "access", default: "rw"
     t.datetime "created_at", null: false
+    t.text "description"
+    t.string "name", null: false
+    t.bigint "ruby_object_id"
     t.datetime "updated_at", null: false
     t.index ["ruby_object_id"], name: "index_ruby_attributes_on_ruby_object_id"
   end
 
   create_table "ruby_constants", force: :cascade do |t|
-    t.bigint "ruby_object_id"
-    t.string "name", null: false
-    t.text "description"
     t.string "constant", null: false
     t.datetime "created_at", null: false
+    t.text "description"
+    t.string "name", null: false
+    t.bigint "ruby_object_id"
     t.datetime "updated_at", null: false
     t.index ["ruby_object_id"], name: "index_ruby_constants_on_ruby_object_id"
   end
 
   create_table "ruby_methods", force: :cascade do |t|
-    t.bigint "ruby_object_id"
-    t.string "name", null: false
-    t.text "description"
-    t.string "method_type"
-    t.string "source_location"
-    t.string "constant"
     t.string "call_sequences", default: [], array: true
-    t.string "source_body"
-    t.jsonb "method_alias", default: {}
-    t.string "signatures", default: [], array: true
-    t.jsonb "metadata", default: {}
+    t.string "constant"
     t.datetime "created_at", null: false
+    t.text "description"
+    t.jsonb "metadata", default: {}
+    t.jsonb "method_alias", default: {}
+    t.string "method_type"
+    t.string "name", null: false
+    t.bigint "ruby_object_id"
+    t.string "signatures", default: [], array: true
+    t.string "source_body"
+    t.string "source_location"
     t.datetime "updated_at", null: false
     t.index ["ruby_object_id"], name: "index_ruby_methods_on_ruby_object_id"
   end
 
   create_table "ruby_objects", force: :cascade do |t|
-    t.string "documentable_type"
-    t.bigint "documentable_id"
-    t.string "name", null: false
-    t.string "path", null: false
-    t.text "description"
-    t.string "object_type", null: false
     t.string "constant", null: false
-    t.string "superclass_constant"
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.bigint "documentable_id"
+    t.string "documentable_type"
     t.string "included_module_constants", default: [], array: true
     t.jsonb "metadata", default: {}
-    t.datetime "created_at", null: false
+    t.string "name", null: false
+    t.string "object_type", null: false
+    t.string "path", null: false
+    t.string "superclass_constant"
     t.datetime "updated_at", null: false
     t.index ["documentable_type", "documentable_id"], name: "index_ruby_objects_on_documentable"
   end
 
   create_table "ruby_pages", force: :cascade do |t|
-    t.string "documentable_type"
-    t.bigint "documentable_id"
-    t.string "name", null: false
     t.text "body"
     t.jsonb "chapters", default: {}
     t.datetime "created_at", null: false
+    t.bigint "documentable_id"
+    t.string "documentable_type"
+    t.string "name", null: false
     t.datetime "updated_at", null: false
     t.index ["documentable_type", "documentable_id"], name: "index_ruby_pages_on_documentable"
   end
 
   create_table "ruby_releases", force: :cascade do |t|
-    t.string "version", null: false
-    t.virtual "version_key", type: :integer, array: true, as: "\nCASE\n    WHEN ((version)::text ~ '^[0-9]+.[0-9]+$'::text) THEN (string_to_array((version)::text, '.'::text))::integer[]\n    ELSE NULL::integer[]\nEND", stored: true
-    t.string "url"
-    t.string "sha256"
-    t.string "git_branch"
-    t.string "git_tag"
-    t.boolean "signatures", default: false
+    t.datetime "created_at", null: false
     t.boolean "default", default: false
     t.boolean "eol", default: false
+    t.string "git_branch"
+    t.string "git_tag"
     t.boolean "prerelease", default: false
-    t.datetime "created_at", null: false
+    t.string "sha256"
+    t.boolean "signatures", default: false
     t.datetime "updated_at", null: false
+    t.string "url"
+    t.string "version", null: false
+    t.virtual "version_key", type: :integer, array: true, as: "\nCASE\n    WHEN ((version)::text ~ '^[0-9]+.[0-9]+$'::text) THEN (string_to_array((version)::text, '.'::text))::integer[]\n    ELSE NULL::integer[]\nEND", stored: true
     t.index ["version"], name: "index_ruby_releases_on_version", unique: true
     t.index ["version_key"], name: "index_ruby_releases_on_version_key", where: "(version_key IS NOT NULL)"
   end

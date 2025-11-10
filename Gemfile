@@ -11,6 +11,7 @@ gem "thruster"
 gem "pg"
 gem "opensearch-ruby"
 gem "searchkick"
+gem "solid_queue", "~> 1.2"
 gem "http"
 gem "typhoeus", require: false
 gem "inline_svg"

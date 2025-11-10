@@ -28,6 +28,10 @@ Rails.application.configure do
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false
 
+  # Replace the default in-process and non-durable queuing backend for Active Job.
+  config.active_job.queue_adapter = :solid_queue
+  config.solid_queue.connects_to = { database: { writing: :queue } }
+
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 

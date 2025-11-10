@@ -17,15 +17,21 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  <% if ENV["DB_HOST"] %>
   host: <%= ENV["DB_HOST"] %>
   username: postgres
   password: postgres
+  <% end %>
 
 development:
-  primary: &development_primary
+  primary: &primary_development
     <<: *default
     database: rubyapi_development
+  queue:
+    <<: *primary_development
+    database: rubyapi_development_queue
+    migrations_paths: db/queue_migrate
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
@@ -58,8 +64,13 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: rubyapi_test
+  primary: &primary_test
+    <<: *default
+    database: rubyapi_test
+  queue:
+    <<: *primary_test
+    database: rubyapi_test_queue
+    migrations_paths: db/queue_migrate
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -76,7 +87,13 @@ test:
 # URL environment variable explicitly:
 #
 #   production:
-#     url: <%= ENV["MY_APP_DATABASE_URL"] %>
+#     url: <%%= ENV["MY_APP_DATABASE_URL"] %>
+#
+# Connection URLs for non-primary databases can also be configured using
+# environment variables. The variable name is formed by concatenating the
+# connection name with `_DATABASE_URL`. For example:
+#
+#   CACHE_DATABASE_URL="postgres://cacheuser:cachepass@localhost/cachedatabase"
 #
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
@@ -87,3 +104,7 @@ production:
     database: rubyapi_production
     username: rubyapi
     password: <%= ENV["RUBYAPI_DATABASE_PASSWORD"] %>
+  queue:
+    <<: *primary_production
+    database: rubyapi_production_queue
+    migrations_paths: db/queue_migrate
