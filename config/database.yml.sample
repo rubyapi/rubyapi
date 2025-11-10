@@ -18,6 +18,7 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  gssencmode: <%= RUBY_PLATFORM =~ /darwin/ ? "disable" : "prefer" %>
   <% if ENV["DB_HOST"] %>
   host: <%= ENV["DB_HOST"] %>
   username: postgres
@@ -28,6 +29,10 @@ development:
   primary: &primary_development
     <<: *default
     database: rubyapi_development
+  cache:
+    <<: *primary_development
+    database: rubyapi_development_cache
+    migrations_paths: db/cache_migrate
   queue:
     <<: *primary_development
     database: rubyapi_development_queue
@@ -104,6 +109,10 @@ production:
     database: rubyapi_production
     username: rubyapi
     password: <%= ENV["RUBYAPI_DATABASE_PASSWORD"] %>
+  cache:
+    <<: *primary_production
+    database: rubyapi_production_cache
+    migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
     database: rubyapi_production_queue
