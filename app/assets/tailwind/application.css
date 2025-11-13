@@ -133,8 +133,12 @@ pre:not(.ruby) {
     @apply list-disc list-inside;
 }
 
+.ruby-documentation ul li {
+    @apply my-1;
+}
+
 .ruby-documentation ul li p {
-    @apply inline-block my-1;
+    @apply inline;
 }
 
 .ruby-documentation ol {
