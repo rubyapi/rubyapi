@@ -45,7 +45,8 @@ class RubyObject < ApplicationRecord
   searchkick searchable: [:name, :description, :constant, :constant_prefix],
     word_start: [:name, :constant, :constant_prefix],
     word_middle: [:constant],
-    filterable: [:documentable_type, :documentable_id]
+    filterable: [:documentable_type, :documentable_id],
+    callbacks: :async
 
   def search_data
     {
