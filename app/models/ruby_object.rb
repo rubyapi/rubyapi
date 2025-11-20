@@ -68,7 +68,7 @@ class RubyObject < ApplicationRecord
   def included_modules
     return RubyObject.none if included_module_constants.blank?
 
-    RubyObject.where(constant: included_module_constants)
+    RubyObject.where(constant: included_module_constants, documentable: documentable)
   end
 
   def class_object?

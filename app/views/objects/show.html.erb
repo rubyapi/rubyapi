@@ -10,12 +10,12 @@
       </div>
     <% end %>
     <% unless @object.included_modules.empty? %>
-      <% @object.included_modules.each do |included_module| %>
-        <div class="mb-3">
-          <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Included Modules</h3>
+      <div class="mb-3">
+        <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">Included Modules</h3>
+        <% @object.included_modules.each do |included_module| %>
           <%= link_to included_module.constant, object_path(object: included_module.path), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-mono text-sm" %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
     <% unless @object.ruby_constants.empty? %>
       <div class="mb-3">
