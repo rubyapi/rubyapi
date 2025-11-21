@@ -3,28 +3,37 @@
     <div class="absolute inset-0 flex items-center" aria-hidden="true">
       <div class="w-full border-t border-gray-300"></div>
     </div>
+
     <div class="relative flex justify-center">
-      <span class="px-3 bg-white text-2xl font-medium text-gray-900"><%= title %></span>
+      <span class="px-3 bg-white text-2xl font-medium text-gray-900">
+        <%= title %>
+      </span>
     </div>
   </div>
+
   <% constants.each do |c| %>
     <div class="md:p-3 py-3 my-3">
       <div class="block relative invisible -top-24" id="<%= c.name %>"></div>
+
       <div class="flex flex-wrap">
         <div class="w-full md:w-10/12">
-          <h4 class="lg:text-2xl text-lg text-gray-900 dark:text-gray-200 font-semibold">
+          <h4
+            class="
+              lg:text-2xl text-lg text-gray-900 dark:text-gray-200
+              font-semibold
+            "
+          >
             <a href="#<%= c.name %>"><%= c.name %></a>
           </h4>
         </div>
       </div>
+
       <% if c.description.empty? %>
         <div class="ruby-documentation py-1">
           No documentation available
         </div>
       <% else %>
-        <div class="ruby-documentation py-1">
-          <%= raw c.description %>
-        </div>
+        <div class="ruby-documentation py-1"><%= raw c.description %></div>
       <% end %>
     </div>
   <% end %>

@@ -1,22 +1,49 @@
-<header data-controller="header" class="flex items-center h-16 text-white bg-red-600 dark:bg-gray-700 <%= "fixed inset-x-0 z-50 top-0" if @fixed_nav %>">
-  <nav class="w-full max-w-screen-xl mx-auto px-3" role="navigation" aria-label="main navigation">
+<header
+  data-controller="header"
+  class="flex items-center h-16 text-white bg-red-600 dark:bg-gray-700 <%= "fixed inset-x-0 z-50 top-0" if @fixed_nav %>"
+>
+  <nav
+    class="w-full max-w-7xl mx-auto px-3"
+    role="navigation"
+    aria-label="Main navigation"
+  >
     <div class="flex items-center justify-between space-x-4">
-      <div class="flex-none -mx-1">
-        <%= render LogoComponent.new %>
-      </div>
+      <div class="flex-none -mx-1"><%= render LogoComponent.new %></div>
+
       <% if @show_search %>
         <div class="flex-auto md:max-w-lg">
           <%= render Header::SearchComponent.new %>
         </div>
       <% end %>
+
       <div class="flex-none">
         <div class="block md:hidden">
-          <button data-action="click->header#toggleMobileMenu" data-header-target="mobileMenuButton" class="group p-2 curser-pointer rounded inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 hover:bg-red-800 active:bg-red-800 dark:hover:bg-gray-800 dark:active:bg-gray-800">
-            <svg xmlns="http://www.w3.org/2000/svg" class="inline h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+          <button
+            data-action="click->header#toggleMobileMenu"
+            data-header-target="mobileMenuButton"
+            class="
+              group p-2 curser-pointer rounded inline-flex items-center
+              justify-center focus:outline-none focus:ring-2
+              focus:ring-inset focus:ring-indigo-500 hover:bg-red-800
+              active:bg-red-800 dark:hover:bg-gray-800
+              dark:active:bg-gray-800
+            "
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="inline h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                clip-rule="evenodd"
+              ></path>
             </svg>
           </button>
         </div>
+
         <div class="hidden md:flex items-center md:space-x-4">
           <%= render Header::VersionSelectorComponent.new %>
           <%= render Header::ThemeSelectorComponent.new %>
@@ -24,8 +51,17 @@
       </div>
     </div>
   </nav>
-  <div data-header-target="mobileMenu" class="hidden absolute p-2 inset-x-0 top-0">
-    <div class="px-2 py-4 rounded shadow-lg ring-1 ring-gray-200 ring-opacity-5 bg-white dark:bg-gray-600 text-white">
+
+  <div
+    data-header-target="mobileMenu"
+    class="hidden absolute p-2 inset-x-0 top-0"
+  >
+    <div
+      class="
+        px-2 py-4 rounded shadow-lg ring-1 ring-gray-200 ring-opacity-5
+        bg-white dark:bg-gray-600 text-white
+      "
+    >
       <div class="flex items-center justify-between text-gray-600 dark:text-gray-200">
         <div class="flex-none">
           <%= link_to root_path do %>
@@ -33,20 +69,47 @@
             <%= helpers.inline_svg_tag "logo-plain.svg", class: "h-8 w-auto text-red-600 dark:text-white fill-current" %>
           <% end %>
         </div>
+
         <div class="flex justify-between space-x-4 items-center">
           <div class="flex justify-between items-center space-x-4">
             <%= render Header::VersionSelectorComponent.new %>
             <%= render Header::ThemeSelectorComponent.new %>
           </div>
-          <button data-action="click->header#toggleMobileMenu" class="group px-2 py-1 -my-1 border border-solid border-gray-300 dark:border-gray-500 text-xl curser-pointer rounded-lg inline-flex items-center justify-center focus:outline-none hover:bg-gray-200 dark:hover:bg-gray-500">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+
+          <button
+            data-action="click->header#toggleMobileMenu"
+            class="
+              group px-2 py-1 -my-1 border border-solid border-gray-300
+              dark:border-gray-500 text-xl curser-pointer rounded-lg
+              inline-flex items-center justify-center focus:outline-none
+              hover:bg-gray-200 dark:hover:bg-gray-500
+            "
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
             </svg>
           </button>
         </div>
       </div>
-      <% if content_for? :mobile_menu  %>
-        <div div class="mt-4 pt-2 h-96 overflow-y-auto border-t border-solid text-gray-600 dark:text-gray-200 border-gray-300 dark:border-gray-700">
+
+      <% if content_for? :mobile_menu %>
+        <div
+          div
+          class="
+            mt-4 pt-2 h-96 overflow-y-auto border-t border-solid
+            text-gray-600 dark:text-gray-200 border-gray-300
+            dark:border-gray-700
+          "
+        >
           <%= content_for :mobile_menu %>
         </div>
       <% end %>
