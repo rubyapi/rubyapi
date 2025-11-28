@@ -237,7 +237,7 @@
               sm:tracking-tight
             "
           >
-            <%= link_to @object.constant, object_url(version: Current.ruby_release, object: @object.path) %>
+            <%= link_to @object.constant, object_url(version: Current.ruby_release.version, object: @object.path) %>
           </h1>
         </div>
 
