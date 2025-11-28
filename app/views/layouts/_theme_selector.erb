@@ -7,7 +7,7 @@
       class="cursor-pointer"
       data-action="dropdown#toggle click@window->dropdown#hide"
     >
-      <%= raw @current_theme.icon %>
+      <%= raw Current.theme.icon %>
     </button>
   </div>
 
@@ -28,14 +28,14 @@
     data-transition-leave-from="opacity-100 scale-100"
     data-transition-leave-to="opacity-0 scale-95"
   >
-    <% @themes.each do |theme| %>
+    <% themes.each do |theme| %>
       <%= form_tag(set_theme_path, authenticity_token: false) do %>
         <button
           type="submit"
           title="<%= theme.name.titleize %> Theme"
           name="theme"
           value="<%= theme.name %>"
-          class="flex space-x-4 px-4 w-full py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 <%= "text-blue-800 bg-blue-200 dark:bg-gray-800 dark:text-gray-200" if @current_theme == theme %>"
+          class="flex space-x-4 px-4 w-full py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 <%= "text-blue-800 bg-blue-200 dark:bg-gray-800 dark:text-gray-200" if Current.theme == theme %>"
           role="menuitem"
           tabindex="-1"
         >
@@ -45,7 +45,7 @@
             <%= theme.name.titleize %>
           </span>
 
-          <% if @current_theme == theme %>
+          <% if Current.theme == theme %>
             <div class="flex-none">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

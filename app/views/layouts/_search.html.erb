@@ -1,8 +1,8 @@
 <div
   class="relative"
   data-controller="search"
-  data-search-version="<%= @ruby_release.version %>"
-  data-search-url="<%= autocomplete_path(version: @ruby_release.version) %>"
+  data-search-version="<%= Current.ruby_release.version %>"
+  data-search-url="<%= autocomplete_path(version: Current.ruby_release.version) %>"
 >
   <div class="relative">
     <button

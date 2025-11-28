@@ -92,145 +92,139 @@
 <% end %>
 
 <div class="max-w-7xl mx-auto px-3 md:px-0 lg:flex">
-  <%= render SidebarComponent.new do |component| %>
-    <% component.with_section do %>
-      <div class="mb-3">
-        <div class="flex items-center space-x-2 px-2 overflow-visible">
-          <h3 class="font-bold text-gray-700 dark:text-gray-200">
-            Type Signatures
-          </h3>
-
-          <span
-            class="
-              inline-flex items-center px-2.5 py-1 rounded-full text-xs
-              font-medium bg-yellow-100 text-yellow-800
-            "
-          >
-            Preview
-          </span>
-        </div>
-
-        <div class="px-2 py-1 text-sm" id="signatures-description">
-          Show type signatures generated automatically by
-          <a href="https://github.com/ruby/rbs" target="_blank" class="text-blue-600">RBS</a>.
-        </div>
-
-        <form class="p-1" action="<%= toggle_signatures_path %>" method="post">
-          <button
-            type="submit"
-            class="
-              inline-flex items-center px-3 py-2 border border-gray-300
-              dark:border-gray-600 shadow-sm text-sm leading-4 font-medium
-              rounded-md bg-white hover:bg-gray-50 dark:bg-gray-700
-              dark:hover:bg-gray-600 focus:outline-none focus:ring-2
-              focus:ring-offset-2 focus:ring-blue-600
-              dark:focus:ring-gray-900
-            "
-          >
-            <%= Current.enable_method_signatures ? "Disable Type Signatures" : "Enable Type Signatures" %>
-          </button>
-        </form>
-      </div>
-    <% end %>
-
-    <% if @object.superclass %>
-      <% component.with_section do %>
+  <nav class="hidden lg:block w-1/4">
+    <div class="hidden lg:block lg:sticky pt-1 top-0">
+      <div class="overflow-y-auto mt-24 pl-3 pr-6 h-93">
         <div class="mb-3">
-          <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">
-            Parent
-          </h3>
-
-          <%= link_to @object.superclass.constant, object_path(object: @object.superclass.path), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-mono text-sm" %>
-        </div>
-      <% end %>
-    <% end %>
-
-    <% unless @object.included_modules.empty? %>
-      <% component.with_section do %>
-        <% @object.included_modules.each do |included_module| %>
-          <div class="mb-3">
-            <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">
-              Included Modules
+          <div class="flex items-center space-x-2 px-2 overflow-visible">
+            <h3 class="font-bold text-gray-700 dark:text-gray-200">
+              Type Signatures
             </h3>
 
-            <%= link_to included_module.constant, object_path(object: included_module.path), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-mono text-sm" %>
+            <span
+              class="
+                inline-flex items-center px-2.5 py-1 rounded-full text-xs
+                font-medium bg-yellow-100 text-yellow-800
+              "
+            >
+              Preview
+            </span>
+          </div>
+
+          <div class="px-2 py-1 text-sm" id="signatures-description">
+            Show type signatures generated automatically by
+            <a href="https://github.com/ruby/rbs" target="_blank" class="text-blue-600">RBS</a>.
+          </div>
+
+          <form
+            class="p-1"
+            action="<%= toggle_signatures_path %>"
+            method="post"
+          >
+            <button
+              type="submit"
+              class="
+                inline-flex items-center px-3 py-2 border border-gray-300
+                dark:border-gray-600 shadow-sm text-sm leading-4 font-medium
+                rounded-md bg-white hover:bg-gray-50 dark:bg-gray-700
+                dark:hover:bg-gray-600 focus:outline-none focus:ring-2
+                focus:ring-offset-2 focus:ring-blue-600
+                dark:focus:ring-gray-900
+              "
+            >
+              <%= Current.enable_method_signatures ? "Disable Type Signatures" : "Enable Type Signatures" %>
+            </button>
+          </form>
+        </div>
+
+        <% if @object.superclass %>
+          <div class="mb-3">
+            <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">
+              Parent
+            </h3>
+
+            <%= link_to @object.superclass.constant, object_path(object: @object.superclass.path), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-mono text-sm" %>
           </div>
         <% end %>
-      <% end %>
-    <% end %>
 
-    <% unless @object.ruby_constants.empty? %>
-      <% component.with_section do %>
-        <div class="mb-3">
-          <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">
-            Constants
-          </h3>
+        <% unless @object.included_modules.empty? %>
+          <% @object.included_modules.each do |included_module| %>
+            <div class="mb-3">
+              <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">
+                Included Modules
+              </h3>
 
-          <ul class="font-mono text-sm">
-            <% @object.ruby_constants.ordered.each do |constant| %>
-              <li>
-                <%= link_to constant.name, "##{constant.name}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-    <% end %>
+              <%= link_to included_module.constant, object_path(object: included_module.path), class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 font-mono text-sm" %>
+            </div>
+          <% end %>
+        <% end %>
 
-    <% unless @object.ruby_attributes.empty? %>
-      <% component.with_section do %>
-        <div class="mb-3">
-          <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">
-            Attributes
-          </h3>
+        <% unless @object.ruby_constants.empty? %>
+          <div class="mb-3">
+            <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">
+              Constants
+            </h3>
 
-          <ul class="font-mono text-sm">
-            <% @object.ruby_attributes.ordered.each do |attribute| %>
-              <li>
-                <%= link_to attribute.name, "##{attribute.name}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-    <% end %>
+            <ul class="font-mono text-sm">
+              <% @object.ruby_constants.ordered.each do |constant| %>
+                <li>
+                  <%= link_to constant.name, "##{constant.name}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-    <% unless @object.ruby_class_methods.empty? %>
-      <% component.with_section do %>
-        <div class="mb-3">
-          <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">
-            Class Methods
-          </h3>
+        <% unless @object.ruby_attributes.empty? %>
+          <div class="mb-3">
+            <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">
+              Attributes
+            </h3>
 
-          <ul class="font-mono text-sm">
-            <% @object.ruby_class_methods.ordered.each do |m| %>
-              <li>
-                <%= link_to ":: #{m.name}", "##{method_anchor(m)}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-    <% end %>
+            <ul class="font-mono text-sm">
+              <% @object.ruby_attributes.ordered.each do |attribute| %>
+                <li>
+                  <%= link_to attribute.name, "##{attribute.name}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
 
-    <% unless @object.ruby_instance_methods.empty? %>
-      <% component.with_section do %>
-        <div class="mb-3">
-          <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">
-            Instance Methods
-          </h3>
+        <% unless @object.ruby_class_methods.empty? %>
+          <div class="mb-3">
+            <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">
+              Class Methods
+            </h3>
 
-          <ul class="font-mono text-sm">
-            <% @object.ruby_instance_methods.ordered.each do |m| %>
-              <li>
-                <%= link_to "# #{m.name}", "##{method_anchor(m)}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-    <% end %>
-  <% end %>
+            <ul class="font-mono text-sm">
+              <% @object.ruby_class_methods.ordered.each do |m| %>
+                <li>
+                  <%= link_to ":: #{m.name}", "##{method_anchor(m)}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <% unless @object.ruby_instance_methods.empty? %>
+          <div class="mb-3">
+            <h3 class="font-bold text-gray-700 dark:text-gray-200 p-1 px-2">
+              Instance Methods
+            </h3>
+
+            <ul class="font-mono text-sm">
+              <% @object.ruby_instance_methods.ordered.each do |m| %>
+                <li>
+                  <%= link_to "# #{m.name}", "##{method_anchor(m)}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </nav>
 
   <main class="w-full mt-16 lg:mt-20 lg:w-3/4">
     <section class="mx-3 mt-3 mb-8">

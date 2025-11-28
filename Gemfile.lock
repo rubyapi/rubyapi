@@ -421,9 +421,6 @@ GEM
     unicode-emoji (4.1.0)
     uri (1.1.1)
     useragent (0.16.11)
-    view_component (4.1.0)
-      activesupport (>= 7.1.0, < 8.2)
-      concurrent-ruby (~> 1)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -491,7 +488,6 @@ DEPENDENCIES
   trenni-sanitize
   tty-spinner
   typhoeus
-  view_component
   web-console (>= 3.3.0)
   webmock
 

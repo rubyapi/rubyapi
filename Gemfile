@@ -26,7 +26,6 @@ gem "pastel", require: false
 gem "rouge", require: false
 gem "rbs", require: false
 gem "anyway_config"
-gem "view_component"
 gem "reactionview"
 gem "dogstatsd-ruby"
 gem "importmap-rails"
