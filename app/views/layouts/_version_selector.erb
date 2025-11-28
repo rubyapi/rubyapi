@@ -37,7 +37,7 @@
     data-transition-leave-from="opacity-100 scale-100"
     data-transition-leave-to="opacity-0 scale-95"
   >
-    <% ruby_releases.each do |release| %>
+    <% releases.each do |release| %>
       <a
         href="<%= route_for_ruby_release(release) %>"
         class="flex justify-between items-center text-left space-x-1 px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-800 <%= "text-blue-800 bg-blue-200 dark:bg-gray-800 dark:text-gray-200" if release == Current.ruby_release %>"

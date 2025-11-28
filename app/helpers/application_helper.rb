@@ -28,7 +28,7 @@ module ApplicationHelper
     params[:q] || ""
   end
 
-  def ruby_releases
+  def releases
     RubyRelease.ordered
   end
 
