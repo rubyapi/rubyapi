@@ -59,6 +59,8 @@ jobs:
     env:
       SEARCH_URL: "http://localhost:9200"
       DATABASE_URL: "postgresql://rubyapi:rubyapi_password@localhost:5432/rubyapi_test"
+      QUEUE_DATABASE_URL: "postgresql://rubyapi:rubyapi_password@localhost:5432/rubyapi_test_queue"
+      RAILS_ENV: test
     steps:
       - uses: actions/checkout@v5
 
@@ -66,6 +68,9 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+
+      - name: Setup database config
+        run: cp config/database.yml.sample config/database.yml
 
       - name: Setup Database
         run: bin/rails db:setup
