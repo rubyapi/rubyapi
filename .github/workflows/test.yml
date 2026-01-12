@@ -17,7 +17,7 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Set Up Ruby
         uses: ruby/setup-ruby@v1
@@ -62,7 +62,7 @@ jobs:
       QUEUE_DATABASE_URL: "postgresql://rubyapi:rubyapi_password@localhost:5432/rubyapi_test_queue"
       RAILS_ENV: test
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Set Up Ruby
         uses: ruby/setup-ruby@v1
@@ -111,7 +111,7 @@ jobs:
       SEARCH_URL: "http://localhost:9200"
       DATABASE_URL: "postgresql://rubyapi:rubyapi_password@localhost:5432/rubyapi_test"
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
       - name: Set Up Ruby
         uses: ruby/setup-ruby@v1
