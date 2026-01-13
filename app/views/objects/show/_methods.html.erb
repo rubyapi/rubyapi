@@ -119,15 +119,17 @@
       </div>
 
       <div class="ruby-documentation py-1">
+        <% if m.description.empty? %>
+          <div>No documentation available</div>
+        <% else %>
+          <%= raw m.description %>
+        <% end %>
+
         <% if m.is_alias? %>
           <div>
             An alias for
             <a href="<%= m.method_alias[:path] %>" class="font-bold"><%= m.method_alias[:name] %></a>
           </div>
-        <% elsif m.description.empty? %>
-          <div>No documentation available</div>
-        <% else %>
-          <%= raw m.description %>
         <% end %>
       </div>
     </div>
