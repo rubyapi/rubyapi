@@ -1,6 +1,6 @@
 service: rubyapi
 
-image: 794038216860.dkr.ecr.us-east-1.amazonaws.com/rubyapi
+image: rubyapi
 
 servers:
   web:
@@ -19,7 +19,9 @@ registry:
 
 ssh:
   user: ubuntu
-  proxy_command: aws ec2-instance-connect send-ssh-public-key --profile rubyapi --region us-east-1 --instance-id %h --instance-os-user ubuntu --ssh-public-key file://~/.ssh/id_rsa.pub > /dev/null & aws ssm start-session --profile rubyapi --region us-east-1 --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=22'
+  proxy_command: aws ec2-instance-connect send-ssh-public-key --profile rubyapi --region us-east-1 --instance-id %h --instance-os-user ubuntu --ssh-public-key file://~/.ssh/kamal.pub > /dev/null & aws ssm start-session --profile rubyapi --region us-east-1 --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=22'
+  keys:
+    - ~/.ssh/kamal
 
 env:
   secret:
@@ -49,4 +51,4 @@ accessories:
       secret:
         - POSTGRES_PASSWORD
     directories:
-      - /data/postgres:/var/lib/postgresql/data
+      - /data/postgres:/var/lib/postgresql
