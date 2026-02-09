@@ -1,0 +1,52 @@
+service: rubyapi
+
+image: 794038216860.dkr.ecr.us-east-1.amazonaws.com/rubyapi
+
+servers:
+  web:
+    hosts:
+      - <%= %x(aws ec2 describe-instances --profile rubyapi --region us-east-1 --filters "Name=tag:Name,Values=rubyapi" "Name=instance-state-name,Values=running" --query "Reservations[0].Instances[0].InstanceId" --output text).strip %>
+
+proxy:
+  ssl: true
+  host: ingress.internal.rubyapi.org
+
+registry:
+  server: 794038216860.dkr.ecr.us-east-1.amazonaws.com
+  username: AWS
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+ssh:
+  user: ubuntu
+  proxy_command: aws ec2-instance-connect send-ssh-public-key --profile rubyapi --region us-east-1 --instance-id %h --instance-os-user ubuntu --ssh-public-key file://~/.ssh/id_rsa.pub > /dev/null & aws ssm start-session --profile rubyapi --region us-east-1 --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=22'
+
+env:
+  secret:
+    - RAILS_MASTER_KEY
+    - DATABASE_URL
+    - CACHE_DATABASE_URL
+    - QUEUE_DATABASE_URL
+
+builder:
+  arch: arm64
+
+accessories:
+  db:
+    image: postgres:18
+    host: <%= %x(aws ec2 describe-instances --profile rubyapi --region us-east-1 --filters "Name=tag:Name,Values=rubyapi" "Name=instance-state-name,Values=running" --query "Reservations[0].Instances[0].InstanceId" --output text).strip %>
+    port: "127.0.0.1:5432:5432"
+    cmd: >-
+      -c shared_buffers=1536MB
+      -c effective_cache_size=3GB
+      -c work_mem=16MB
+      -c maintenance_work_mem=256MB
+      -c wal_buffers=48MB
+      -c checkpoint_completion_target=0.9
+    env:
+      clear:
+        POSTGRES_DB: rubyapi_production
+      secret:
+        - POSTGRES_PASSWORD
+    directories:
+      - /data/postgres:/var/lib/postgresql/data

@@ -32,6 +32,7 @@ gem "importmap-rails"
 gem "tailwindcss-rails"
 gem "stimulus-rails"
 gem "aws-sdk-core"
+gem "kamal", require: false
 
 group :development, :test do
   gem "debug"

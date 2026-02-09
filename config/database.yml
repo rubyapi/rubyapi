@@ -106,12 +106,14 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    url: <%= ENV.fetch("DATABASE_URL") %>
+    database: rubyapi_production
+    username: rubyapi
+    password: <%= ENV["RUBYAPI_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
-    url: <%= ENV.fetch("CACHE_DATABASE_URL") %>
+    database: rubyapi_production_cache
     migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
-    url: <%= ENV.fetch("QUEUE_DATABASE_URL") %>
+    database: rubyapi_production_queue
     migrations_paths: db/queue_migrate
