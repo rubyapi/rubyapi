@@ -24,6 +24,8 @@ ssh:
     - ~/.ssh/kamal
 
 env:
+  clear:
+    SOLID_QUEUE_IN_PUMA: true
   secret:
     - RAILS_MASTER_KEY
     - DATABASE_URL
