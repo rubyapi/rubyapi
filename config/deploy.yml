@@ -5,6 +5,8 @@ servers:
   web:
     hosts:
       - rubyapi
+    options:
+      add-host: host.docker.internal:host-gateway
 
 proxy:
   ssl: true
