@@ -28,7 +28,8 @@ env:
     DD_TRACE_AGENT_PORT: "8126"
     DD_DOGSTATSD_PORT: "8125"
     DD_ENV: production
-    DD_SERVICE: rubyapi
+    DD_SERVICE: rubyapi.org
+    DD_VERSION: <%= `git rev-parse --short HEAD`.strip %>
   secret:
     - RAILS_MASTER_KEY
     - DATABASE_URL
