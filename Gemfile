@@ -2,48 +2,48 @@ source "https://rubygems.org"
 
 ruby "~> 3.0"
 
-gem "rails"
+gem "anyway_config"
+gem "aws-sdk-core"
 gem "bootsnap", ">= 1.1.0", require: false
-gem "puma"
-gem "puma-plugin-statsd"
-gem "propshaft"
-gem "thruster"
-gem "pg"
-gem "opensearch-ruby"
-gem "searchkick"
-gem "solid_queue"
-gem "solid_cache"
+gem "dogstatsd-ruby"
 gem "http"
-gem "typhoeus", require: false
+gem "importmap-rails"
 gem "inline_svg"
-gem "tty-spinner", require: false
+gem "kamal", require: false
 gem "lograge"
 gem "logstash-event"
 gem "meta-tags"
-gem "rdoc", require: false
-gem "trenni-sanitize", require: false
+gem "opensearch-ruby"
 gem "pastel", require: false
-gem "rouge", require: false
+gem "pg"
+gem "propshaft"
+gem "puma"
+gem "puma-plugin-statsd"
+gem "rails"
 gem "rbs", require: false
-gem "anyway_config"
+gem "rdoc", require: false
 gem "reactionview"
-gem "dogstatsd-ruby"
-gem "importmap-rails"
-gem "tailwindcss-rails"
+gem "rouge", require: false
+gem "searchkick"
+gem "solid_cache"
+gem "solid_queue"
 gem "stimulus-rails"
-gem "aws-sdk-core"
-gem "kamal", require: false
+gem "tailwindcss-rails"
+gem "thruster"
+gem "trenni-sanitize", require: false
+gem "tty-spinner", require: false
+gem "typhoeus", require: false
 
 group :development, :test do
+  gem "bundler-audit", require: false
+  gem "rubocop-rails-omakase", require: false
   gem "debug"
 end
 
 group :development do
-  gem "web-console", ">= 3.3.0"
-  gem "listen", ">= 3.0.5", "< 3.10"
-  gem "standard"
-  gem "standard-rails"
   gem "dockerfile-rails"
+  gem "listen", ">= 3.0.5", "< 3.10"
+  gem "web-console", ">= 3.3.0"
 end
 
 group :test do
