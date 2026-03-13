@@ -5,7 +5,7 @@ require_relative "../ruby_documentation_importer"
 
 namespace :import do
   desc "import Ruby documentation for given version"
-  task :ruby, [:version] => :environment do |t, args|
+  task :ruby, [ :version ] => :environment do |t, args|
     args.with_defaults version: RubyRelease.latest.version
 
     release = if args.present?

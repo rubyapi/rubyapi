@@ -16,7 +16,7 @@ class RubyObjectTest < ActiveSupport::TestCase
     object = ruby_objects(:string)
     included_module = ruby_objects(:enumerable)
 
-    object.update(included_module_constants: ["Enumerable"])
+    object.update(included_module_constants: [ "Enumerable" ])
 
     assert_includes object.included_modules, included_module
   end

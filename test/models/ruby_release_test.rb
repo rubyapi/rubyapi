@@ -18,6 +18,6 @@ class RubyReleaseTest < ActiveSupport::TestCase
   end
 
   test "ordered scope" do
-    assert_equal ["3.4", "2.7", "dev"], RubyRelease.ordered.map(&:version)
+    assert_equal [ "3.4", "2.7", "dev" ], RubyRelease.ordered.map(&:version)
   end
 end

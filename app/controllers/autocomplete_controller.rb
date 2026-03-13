@@ -8,12 +8,12 @@ class AutocompleteController < ApplicationController
   def index
     results = Searchkick.search(
       search_query,
-      models: [RubyObject, RubyMethod, RubyConstant],
-      fields: ["constant_prefix^10", "constant^5", "name^3", "description"],
+      models: [ RubyObject, RubyMethod, RubyConstant ],
+      fields: [ "constant_prefix^10", "constant^5", "name^3", "description" ],
       match: :word_start,
       boost_by: {
-        popularity_boost: {factor: 1, modifier: "none"},
-        type_boost: {factor: 1, modifier: "none"}
+        popularity_boost: { factor: 1, modifier: "none" },
+        type_boost: { factor: 1, modifier: "none" }
       },
       where: {
         documentable_type: Current.ruby_release.class.name,

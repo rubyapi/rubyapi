@@ -7,11 +7,11 @@ Rails.application.routes.draw do
 
   scope "(:version)", version: /[0-9]+\.[0-9]+|dev/ do
     root to: "home#index", as: :versioned_root
-    post '/set_theme', to: 'home#set_theme'
+    post "/set_theme", to: "home#set_theme"
     # We need the search path to be prefixed with `o/` so that the RDOc links will
     # function correctly
     post "o/toggle_signatures", to: "objects#toggle_signatures", as: :toggle_signatures
     get "o/*object", to: "objects#show", as: :object
-    get "a", to: "autocomplete#index", as: :autocomplete, default: {format: :json}
+    get "a", to: "autocomplete#index", as: :autocomplete, default: { format: :json }
   end
 end

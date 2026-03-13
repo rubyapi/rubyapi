@@ -41,7 +41,7 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "show method type signature" do
     method = ruby_methods(:to_i)
-    method.update(signatures: ["(?::int radix) -> ::Integer"])
+    method.update(signatures: [ "(?::int radix) -> ::Integer" ])
 
     post toggle_signatures_path
 
@@ -52,9 +52,9 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "show method type signature with RubyAPI Feature header" do
     method = ruby_methods(:to_i)
-    method.update(signatures: ["(?::int radix) -> ::Integer"])
+    method.update(signatures: [ "(?::int radix) -> ::Integer" ])
 
-    get object_url(object: @string.path), headers: {"X-RubyAPI-Signatures" => "true"}
+    get object_url(object: @string.path), headers: { "X-RubyAPI-Signatures" => "true" }
 
     assert_select "h4", "(?::int radix) -> ::Integer"
   end
@@ -71,7 +71,7 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "multiline call sequence" do
     method = ruby_methods(:to_i)
-    method.update(call_sequences: ["foo(a,b)", "foo(arg1, arg2)"])
+    method.update(call_sequences: [ "foo(a,b)", "foo(arg1, arg2)" ])
 
     get object_url object: @string.path
 
@@ -81,7 +81,7 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "toggle signature" do
     current_object = object_url(object: @string.path)
-    post toggle_signatures_path, headers: {"HTTP_REFERER" => current_object}
+    post toggle_signatures_path, headers: { "HTTP_REFERER" => current_object }
 
     assert_response :redirect
     assert_redirected_to current_object

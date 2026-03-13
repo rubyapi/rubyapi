@@ -3,7 +3,7 @@
 class HomeController < ApplicationController
   before_action :enable_public_cache
 
-  skip_forgery_protection only: [:set_theme]
+  skip_forgery_protection only: [ :set_theme ]
 
   def set_theme
     theme = ThemeConfig.theme_for(params[:theme])

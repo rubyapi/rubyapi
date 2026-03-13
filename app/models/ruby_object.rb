@@ -42,10 +42,10 @@ class RubyObject < ApplicationRecord
   belongs_to :superclass, class_name: "RubyObject", foreign_key: "superclass_constant", primary_key: :constant, optional: true
   belongs_to :documentable, polymorphic: true
 
-  searchkick searchable: [:name, :description, :constant, :constant_prefix],
-    word_start: [:name, :constant, :constant_prefix],
-    word_middle: [:constant],
-    filterable: [:documentable_type, :documentable_id],
+  searchkick searchable: [ :name, :description, :constant, :constant_prefix ],
+    word_start: [ :name, :constant, :constant_prefix ],
+    word_middle: [ :constant ],
+    filterable: [ :documentable_type, :documentable_id ],
     callbacks: :async
 
   def search_data

@@ -7,7 +7,7 @@ SitemapGenerator::Sitemap.create do
 
   RubyConfig.ruby_releases.each do |version|
     repo = RubyObjectRepository.repository_for_version(version.version)
-    response = repo.search(query: {match_all: {}}, size: 10_000)
+    response = repo.search(query: { match_all: {} }, size: 10_000)
 
     response.results.each do |o|
       priority = Ruby::CORE_CLASSES.include?(o.constant) ? 0.5 : 0.9

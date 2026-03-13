@@ -2,7 +2,7 @@
 
 class RubyConfig < ApplicationConfig
   attr_config :versions
-  coerce_types versions: {type: nil, array: true}
+  coerce_types versions: { type: nil, array: true }
 
   on_load :ensure_default_version
 
@@ -33,7 +33,7 @@ class RubyConfig < ApplicationConfig
         prerelease: v[:prerelease] || false,
         git_branch: v[:git][:branch] || "",
         git_tag: v[:git][:tag] || "",
-        signatures: v[:signatures] || false,
+        signatures: v[:signatures] || false
       }
     end
   end

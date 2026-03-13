@@ -138,9 +138,9 @@ class RubyAPIRDocGenerator
     if doc.call_seq.present?
       doc.call_seq.strip.split("\n").map { |s| s.gsub "->", "→" }
     elsif doc.arglists.present? && doc.arglists != "#{doc.name}()"
-      [doc.arglists.strip]
+      [ doc.arglists.strip ]
     else
-      [doc.name]
+      [ doc.name ]
     end
   end
 

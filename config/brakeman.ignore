@@ -1,0 +1,18 @@
+{
+  "ignored_warnings": [
+    {
+      "fingerprint": "0cb11090e3f1febc2e0f7c8a61bd79188749e23b7854e176de0a073498fafbdb",
+      "note": "Theme icon is trusted SVG from application config, not user input"
+    },
+    {
+      "fingerprint": "70ef55cb03c6cd2c4a1fdc5293f723b276c56c717327cee2e8f2479c18268b1e",
+      "note": "Theme meta tags are trusted HTML from application config, not user input"
+    },
+    {
+      "fingerprint": "8508dd31daab493318b28f3de7d8602d22442f7a097c098b6714ea3ba96d4abb",
+      "note": "Object description is RDoc-generated HTML from Ruby source documentation"
+    }
+  ],
+  "updated": "2026-03-13",
+  "brakeman_version": "8.0.4"
+}
