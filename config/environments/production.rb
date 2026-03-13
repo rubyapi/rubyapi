@@ -66,6 +66,10 @@ Rails.application.configure do
   #   /.*\.example\.com/ # Allow requests from subdomains like `www.example.com`
   # ]
   #
+  # Set default URL options so _url helpers use the public domain
+  # instead of the internal ingress host set by the reverse proxy.
+  Rails.application.routes.default_url_options = { host: "rubyapi.org", protocol: "https" }
+
   # Skip DNS rebinding protection for the default health check endpoint.
   config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 end
