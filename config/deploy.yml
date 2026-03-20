@@ -11,6 +11,7 @@ servers:
 proxy:
   ssl: true
   host: ingress.internal.rubyapi.org
+  forward_headers: true
 
 registry:
   server: 794038216860.dkr.ecr.us-east-1.amazonaws.com
