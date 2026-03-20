@@ -25,7 +25,7 @@ jobs:
           bundler-cache: true
 
       - name: Run Ruby linting
-        run: bin/standardrb --no-fix
+        run: bin/rubocop
 
   test-import:
     runs-on: ubuntu-latest
