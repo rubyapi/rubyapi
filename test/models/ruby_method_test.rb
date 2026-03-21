@@ -30,7 +30,7 @@ class RubyMethodTest < ActiveSupport::TestCase
   end
 
   test "aliased method" do
-    aliased_method = RubyMethod.new(method_alias: "alias_name")
+    aliased_method = RubyMethod.new(method_alias: {"name" => "to_s", "path" => "/3.4/o/string#method-i-to_s"})
     non_aliased_method = RubyMethod.new(method_alias: nil)
 
     assert aliased_method.is_alias?

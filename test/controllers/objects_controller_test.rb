@@ -79,6 +79,12 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
     assert_select "h4", "foo(arg1, arg2)"
   end
 
+  test "alias method renders link to aliased method" do
+    get object_url object: @string.path
+
+    assert_select "a[href='/3.4/o/string#method-i-to_s']", text: "to_s"
+  end
+
   test "toggle signature" do
     current_object = object_url(object: @string.path)
     post toggle_signatures_path, headers: { "HTTP_REFERER" => current_object }

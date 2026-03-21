@@ -19,3 +19,17 @@ to_i:
   source_body: |
     def to_i
     end
+
+to_str:
+  ruby_object: string
+  name: to_str
+  description: Returns self if self is a String.
+  method_type: instance
+  source_location: string.c:456
+  constant: String#to_str
+  call_sequences:
+    - "to_str"
+  method_alias:
+    name: to_s
+    path: "/3.4/o/string#method-i-to_s"
+  source_body: ""
