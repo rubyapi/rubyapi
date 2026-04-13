@@ -1,5 +1,5 @@
 <% title @object.constant %>
-<% set_meta_tags canonical: object_url(object: @object.path, version: Current.default_ruby_release) unless Current.ruby_release.default? %>
+<% set_meta_tags canonical: object_url(object: @object.path, version: Current.default_ruby_release.version) unless Current.ruby_release.default? %>
 
 <% content_for :mobile_menu do %>
   <nav class="sticky">
