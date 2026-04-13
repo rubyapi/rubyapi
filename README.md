@@ -34,10 +34,10 @@ _Note: This command can also be used to quickly update the application dependenc
 bin/setup
 ```
 
-Start ElasticSearch:
+Start all services (Postgres, OpenSearch, and OpenSearch Dashboards):
 
 ```sh
-docker compose up -d
+docker compose up
 ```
 
 <details>
@@ -61,7 +61,7 @@ bin/dev
 Ruby's documentation can be imported very easily. There's a rake task that will let you import a given versions' documentation:
 
 ```sh
-bin/rails import:ruby[3.1]
+bin/rails "import:ruby[4.0]"
 ```
 
 or you can easily import the latest versions of all currently supported versions of Ruby:
