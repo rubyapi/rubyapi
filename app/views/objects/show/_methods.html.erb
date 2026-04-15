@@ -62,7 +62,26 @@
             <%= m.type_identifier %>
           </span>
 
-          <%= button_tag class: "px-1 ml-2 h-6 inline-block rounded bg-gray-200 dark:bg-gray-700 align-middle hover:bg-gray-300 dark-hover:bg-gray-900 dark-hover:text-gray-400 hover:fill-current disabled:opacity-50 disabled:cursor-default", title: "Show Source Code", disabled: m.is_alias?, data: { "method-target" => "showSrcBodyButton", "action" => "click->method#toggleShowSource" } do %>
+          <button
+            class="
+              bg-gray-200 px-1 ml-2 h-6 inline-block rounded align-middle cursor-pointer
+              hover:bg-gray-300 hover:fill-current
+              aria-pressed:text-white aria-pressed:bg-gray-500 aria-pressed:hover:bg-gray-500
+              disabled:opacity-50 disabled:bg-gray-300 disabled:cursor-default
+              dark:bg-gray-700 dark:disabled:bg-gray-700 dark:hover:bg-gray-600
+              dark:aria-pressed:text-white dark:aria-pressed:bg-gray-900 dark:aria-pressed:hover:bg-gray-900
+            "
+            type="button"
+            aria-pressed="false"
+            <% if m.is_alias? %>
+              title="No Source Code"
+              disabled=""
+            <% else %>
+              title="Show Source Code"
+              data-action="click->method#toggleShowSource"
+              data-method-target="showSrcBodyButton"
+            <% end %>
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5"
@@ -75,11 +94,11 @@
                 clip-rule="evenodd"
               ></path>
             </svg>
-          <% end %>
+          </button>
         </div>
       </div>
 
-      <div class="hidden my-2" data-method-target="srcBody">
+      <div class="hidden data-open:block my-2" data-method-target="srcBody">
         <div
           class="
             w-full px-3 py-2 bg-code-header dark:bg-gray-700 items-center
@@ -98,7 +117,7 @@
             View on GitHub
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="inline h-5 w-5"
+              class="inline h-5 w-5 mb-1"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
