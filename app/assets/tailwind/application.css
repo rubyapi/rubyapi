@@ -83,16 +83,8 @@ p {
     @apply my-3;
 }
 
-.overflow-wrap-break-word {
-    overflow-wrap: break-word;
-}
-
 .h-93 {
     height: calc(100vh - 7rem) !important;
-}
-
-.h-94 {
-    height: calc(100vh - 6rem) !important;
 }
 
 code {
