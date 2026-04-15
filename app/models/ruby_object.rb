@@ -73,11 +73,11 @@ class RubyObject < ApplicationRecord
   end
 
   def class_object?
-    object_type == "class"
+    object_type == "class_object"
   end
 
   def module_object?
-    object_type == "module"
+    object_type == "module_object"
   end
 
   def depth

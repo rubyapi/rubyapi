@@ -33,6 +33,14 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
     assert_response :not_found
   end
 
+  test "show object type (class/module)" do
+    get object_url object: @string.path
+    assert_select "#object-type-label", "Class"
+
+    get object_url object: ruby_objects(:enumerable).path
+    assert_select "#object-type-label", "Module"
+  end
+
   test "show method sequence" do
     get object_url object: @string.path
 
