@@ -132,54 +132,55 @@
         @apply font-semibold text-lg py-1;
     }
 
-    code {
+    /* Inline code */
+    .ruby-documentation code {
         padding: 0.15rem;
         @apply bg-gray-300 rounded leading-relaxed text-sm text-gray-700;
+        @variant dark {
+            @apply bg-gray-700 text-gray-300;
+        }
     }
 
-    .dark code {
-        @apply bg-gray-700 text-gray-300;
+    /* Code block (for unstyled code) */
+    .ruby-documentation pre {
+        @apply p-3 rounded bg-gray-300 overflow-auto font-mono;
+        @variant dark {
+            @apply bg-gray-900;
+        }
     }
 
-    pre {
-        @apply p-3 rounded bg-gray-300;
+    /* Code block (for highlighted code) */
+    .code-block,
+    .ruby-documentation pre.ruby {
+        @apply p-3 mb-3 rounded rounded-t-none overflow-auto font-mono bg-code-background text-code-text;
+        @variant dark {
+            @apply bg-gray-900;
+        }
     }
+}
 
-    .dark pre {
-        @apply bg-gray-900;
-    }
-
-    pre.ruby {
-        @apply p-3 mb-3 rounded-b rounded-t-none overflow-auto font-mono bg-code-background text-code-text;
-    }
-
-    pre:not(.ruby) {
-        @apply overflow-auto font-mono;
-    }
-
+@layer components {
     /*
-     * Method source
+     * Line Numbers (for code blocks)
+     *
+     * Variables:
+     *   --line-numbers-start (optional, default: 1)
+     *
+     * Example:
+     *   <pre class="line-numbers" style="--line-numbers-start: <%= num %>">
+     *     <div class="line">def hello</div>
+     *     <div class="line">  puts "world"</div>
+     *     <div class="line">end</div>
+     *   </pre>
      */
-
-    .method-src-body {
-        padding: 0;
-        background: none;
-        counter-reset: listing;
-    }
-
-    .method-src-body .line {
-        counter-increment: listing;
-    }
-
-    .method-src-body .line:before {
-        @apply pr-2 mr-3 w-8 text-center border-r-2 border-gray-600 text-gray-600;
-        user-select: none;
-        display: inline-block;
-        content: counter(listing);
-    }
-
-    .dark .method-src-body {
-        background: none;
+    .line-numbers {
+        counter-reset: lines calc(max(var(--line-numbers-start, 1), 1) - 1);
+        & .line::before {
+            counter-increment: lines;
+            content: counter(lines);
+            min-width: 5ch;
+            @apply pr-2 mr-3 text-right border-r-2 border-gray-600 text-gray-600 select-none inline-block;
+        }
     }
 }
 

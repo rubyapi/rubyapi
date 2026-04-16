@@ -113,9 +113,10 @@
           </a>
         </div>
 
-        <pre class="p-3 rounded-t-none bg-code-background">
-          <code class="method-src-body text-code-text"><%= raw m.source_body %>        </code>
-        </pre>
+        <pre
+          class="code-block line-numbers py-4 text-sm"
+          style="--line-numbers-start: <%= m.source_line %>"
+        ><code><%= raw m.source_body %></code></pre>
       </div>
 
       <div class="ruby-documentation py-1">
