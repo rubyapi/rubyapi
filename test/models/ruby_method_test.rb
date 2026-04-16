@@ -38,7 +38,7 @@ class RubyMethodTest < ActiveSupport::TestCase
   end
 
   test "source file and line" do
-    method = RubyMethod.new(source_location: "path/to/file.rb:42")
+    method = RubyMethod.new(source_location: "3.4:path/to/file.rb:42")
 
     assert_equal "path/to/file.rb", method.source_file
     assert_equal 42, method.source_line
