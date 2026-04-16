@@ -24,29 +24,10 @@
     }
 }
 
+/*
+ * Code syntax theme
+ */
 @layer components {
-    pre.ruby {
-        @apply p-3 mb-3 rounded-b rounded-t-none overflow-auto font-mono bg-code-background text-code-text;
-    }
-
-    pre {
-        @apply p-3 rounded bg-gray-300;
-    }
-
-    .dark pre {
-        @apply bg-gray-900;
-    }
-
-    .dark .ruby-documentation dt {
-        @apply bg-gray-900;
-    }
-
-    .dark .ruby-documentation dl,
-    .dark .ruby-documentation dt,
-    .dark .ruby-documentation dd {
-        @apply bg-gray-700;
-    }
-
     .ruby-string {
         color: #99C794;
     }
@@ -85,41 +66,12 @@
     .nf {
         color: #61afef;
     }
+}
 
-    code {
-        padding: 0.15rem;
-        @apply bg-gray-300 rounded leading-relaxed text-sm text-gray-700;
-    }
-
-    .method-src-body {
-        padding: 0;
-        background: none;
-        counter-reset: listing;
-    }
-
-    .method-src-body .line {
-        counter-increment: listing;
-    }
-
-    .method-src-body .line:before {
-        @apply pr-2 mr-3 w-8 text-center border-r-2 border-gray-600 text-gray-600;
-        user-select: none;
-        display: inline-block;
-        content: counter(listing);
-    }
-
-    .dark .method-src-body {
-        background: none;
-    }
-
-    .dark code {
-        @apply bg-gray-700 text-gray-300;
-    }
-
-    pre:not(.ruby) {
-        @apply overflow-auto font-mono;
-    }
-
+/*
+ * RDoc styles
+ */
+@layer components {
     .ruby-documentation ul {
         @apply list-disc list-inside;
     }
@@ -162,12 +114,72 @@
         @apply border-0;
     }
 
+    .dark .ruby-documentation dt {
+        @apply bg-gray-900;
+    }
+
+    .dark .ruby-documentation dl,
+    .dark .ruby-documentation dt,
+    .dark .ruby-documentation dd {
+        @apply bg-gray-700;
+    }
+
     .ruby-documentation h1,
     .ruby-documentation h2,
     .ruby-documentation h3,
     .ruby-documentation h4,
     .ruby-documentation h5 {
         @apply font-semibold text-lg py-1;
+    }
+
+    code {
+        padding: 0.15rem;
+        @apply bg-gray-300 rounded leading-relaxed text-sm text-gray-700;
+    }
+
+    .dark code {
+        @apply bg-gray-700 text-gray-300;
+    }
+
+    pre {
+        @apply p-3 rounded bg-gray-300;
+    }
+
+    .dark pre {
+        @apply bg-gray-900;
+    }
+
+    pre.ruby {
+        @apply p-3 mb-3 rounded-b rounded-t-none overflow-auto font-mono bg-code-background text-code-text;
+    }
+
+    pre:not(.ruby) {
+        @apply overflow-auto font-mono;
+    }
+
+    /*
+     * Method source
+     */
+
+    .method-src-body {
+        padding: 0;
+        background: none;
+        counter-reset: listing;
+    }
+
+    .method-src-body .line {
+        counter-increment: listing;
+    }
+
+    .method-src-body .line:before {
+        @apply pr-2 mr-3 w-8 text-center border-r-2 border-gray-600 text-gray-600;
+        user-select: none;
+        display: inline-block;
+        content: counter(listing);
+    }
+
+    .dark .method-src-body {
+        background: none;
     }
 }
 
