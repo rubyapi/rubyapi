@@ -9,17 +9,17 @@ export default class extends Controller {
   initialize() {
     this.searchHotKey = "/"
     this.autocompleteTemplate = `
-    <ul class="lg:px-2 py-2 text-gray-800 overflow-auto">
+    <ul class="lg:px-2 py-2 overflow-auto" role="presentation">
       {{#results}}
-      <li class="my-2 py-1 px-2 rounded hover:bg-gray-200">
+      <li id="search-option-{{index}}" role="option" aria-selected="false" class="my-2 py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700">
         <a href="{{path}}" class="w-full inline-block whitespace-nowrap">
-          <svg xmlns="http://www.w3.org/2000/svg" class="inline h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" class="inline h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" /></svg>
           <span class="lg:pl-2">{{text}}</span>
         </a>
       </li>
       {{/results}}
       {{^results}}
-      <li class="my-2 py-1 px-2">
+      <li class="my-2 py-1 px-2" role="presentation">
         No Results
       </li>
       {{/results}}
@@ -67,11 +67,14 @@ export default class extends Controller {
   onFocusOut() {
     this.autocompleteTarget.classList.add("hidden")
     this.buttonTarget.classList.remove("text-gray-700")
+    this.inputTarget.setAttribute("aria-expanded", "false")
+    this.inputTarget.removeAttribute("aria-activedescendant")
   }
 
   onFocusIn() {
     this.buttonTarget.classList.add("text-gray-700")
     this.autocompleteTarget.classList.remove("hidden")
+    this.inputTarget.setAttribute("aria-expanded", "true")
   }
 
   disconnect() {
@@ -143,10 +146,12 @@ export default class extends Controller {
     })
       .then(async (response) => { return await response.json() })
       .then((results) => {
+        const indexed = results.map((result, i) => ({ ...result, index: i + 1 }))
         const render = mustache.render(this.autocompleteTemplate, {
-          results
+          results: indexed
         })
         this.autocompleteTarget.innerHTML = render
+        this.inputTarget.removeAttribute("aria-activedescendant")
       })
       .catch(() => {
 
@@ -162,20 +167,26 @@ export default class extends Controller {
   }
 
   getSelectedSuggestion() {
-    return this.autocompleteTarget.querySelector(`li:nth-child(${this.suggestionIndex})`)
+    return this.autocompleteTarget.querySelector(`li[role="option"]:nth-of-type(${this.suggestionIndex})`)
   }
 
   clearSelectedSuggestion() {
     const suggestion = this.getSelectedSuggestion()
     if (suggestion != null) {
-      suggestion.classList.remove("bg-gray-200")
+      suggestion.classList.remove("bg-gray-200", "dark:bg-gray-700")
+      suggestion.setAttribute("aria-selected", "false")
     }
+    this.inputTarget.removeAttribute("aria-activedescendant")
   }
 
   highlightSelectedSuggestion() {
     const suggestion = this.getSelectedSuggestion()
     if (suggestion != null) {
-      suggestion.classList.add("bg-gray-200")
+      suggestion.classList.add("bg-gray-200", "dark:bg-gray-700")
+      suggestion.setAttribute("aria-selected", "true")
+      if (suggestion.id) {
+        this.inputTarget.setAttribute("aria-activedescendant", suggestion.id)
+      }
     }
   }
 }

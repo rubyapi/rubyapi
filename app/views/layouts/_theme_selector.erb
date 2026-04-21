@@ -4,7 +4,14 @@
       id="theme-selector-button"
       type="button"
       title="Select Theme"
-      class="cursor-pointer"
+      aria-label="Select theme"
+      aria-haspopup="menu"
+      aria-expanded="false"
+      data-dropdown-target="trigger"
+      class="
+        cursor-pointer inline-flex items-center justify-center p-2 rounded
+        min-h-11 min-w-11 hover:bg-red-800 dark:hover:bg-gray-800
+      "
       data-action="dropdown#toggle click@window->dropdown#hide"
     >
       <%= raw Current.theme.icon %>
@@ -21,7 +28,7 @@
     "
     role="menu"
     aria-orientation="vertical"
-    aria-labelledby="user-menu-button"
+    aria-labelledby="theme-selector-button"
     tabindex="-1"
     data-transition-enter-from="opacity-0 scale-95"
     data-transition-enter-to="opacity-100 scale-100"

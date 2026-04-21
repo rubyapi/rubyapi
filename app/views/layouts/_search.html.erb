@@ -40,25 +40,35 @@
       placeholder="Search Ruby Documentation"
       aria-label="Search"
       title="Search"
+      role="combobox"
+      aria-controls="search-autocomplete"
+      aria-expanded="false"
+      aria-autocomplete="list"
       <% if homepage? %>
         value="<%= search_query %>"
         class="
           bg-white shadow-md py-3 z-0 text-gray-800 placeholder-gray-600
-          rounded px-3 pl-10 w-full outline-none
+          rounded px-3 pl-10 w-full focus:outline-none focus-visible:ring-2
+          focus-visible:ring-red-400
         "
         autofocus
       <% else %>
         class="
           bg-red-800 focus:bg-white focus:text-black dark:focus:bg-white
-          dark:focus:text-black dark:bg-gray-800 py-2 placeholder-white
-          rounded px-3 pl-10 w-full outline-none
+          dark:focus:text-black dark:bg-gray-800 py-2 placeholder-red-100
+          dark:placeholder-gray-400 rounded px-3 pl-10 w-full
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-red-300
+          dark:focus-visible:ring-red-500
         "
       <% end %>
     >
 
     <div
+      id="search-autocomplete"
       data-search-target="autocomplete"
-      class="w-full bg-white absolute shadow-lg rounded-bl rounded-br -mt-1 <%= "text-left" if homepage? %>"
+      role="listbox"
+      aria-label="Search suggestions"
+      class="w-full bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 absolute shadow-lg rounded-bl rounded-br -mt-1 <%= "text-left" if homepage? %>"
     ></div>
   </div>
 </div>
