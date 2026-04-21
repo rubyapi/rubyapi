@@ -27,6 +27,15 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "canonical link to latest version" do
+    legacy_version = ruby_releases(:legacy)
+    @string.update(documentable: legacy_version)
+
+    get object_url object: @string.path, version: legacy_version.version
+
+    assert_select 'link[rel=canonical][href*="/3.4/o/string"]'
+  end
+
   test "object not found on different ruby version" do
     get object_url object: "/o/invalid-object", version: ruby_releases(:legacy).version
 
