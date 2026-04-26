@@ -12,8 +12,11 @@ WebMock.disable!
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
-  # parallelize(workers: :number_of_processors)
-  #
+  parallelize(workers: :number_of_processors)
+
+  parallelize_setup do |worker|
+    Searchkick.index_suffix = "test-worker-#{worker}"
+  end
 
   fixtures :all
 
