@@ -17,17 +17,21 @@ namespace :import do
       exit 1
     end
 
-    ActiveRecord::Base.transaction do
-      RubyObject.where(documentable: release).delete_all
+    Searchkick.callbacks(:bulk) do
+      ActiveRecord::Base.transaction do
+        RubyObject.where(documentable: release).delete_all
 
-      RubyDocumentationImporter.import release
+        RubyDocumentationImporter.import release
+      end
     end
   end
 
   namespace :ruby do
     task all: :environment do
       RubyRelease.find_each do |version|
-        RubyDocumentationImporter.import version
+        Searchkick.callbacks(:bulk) do
+          RubyDocumentationImporter.import version
+        end
       end
     end
   end
