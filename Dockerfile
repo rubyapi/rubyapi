@@ -73,7 +73,7 @@ COPY --from=build /rails /rails
 RUN groupadd --system --gid 1000 rails && \
     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
     sed -i 's/env_reset/env_keep="*"/' /etc/sudoers && \
-    chown -R 1000:1000 db log storage tmp
+    chown -R 1000:1000 db log storage tmp public
 USER 1000:1000
 
 # Deployment options

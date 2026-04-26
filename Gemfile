@@ -25,6 +25,7 @@ gem "rdoc", require: false
 gem "reactionview"
 gem "rouge", require: false
 gem "searchkick"
+gem "sitemap_generator"
 gem "solid_cache"
 gem "solid_queue"
 gem "stimulus-rails"
