@@ -83,8 +83,8 @@ Hosting is donated by [Amazon Web Services](https://aws.amazon.com), and CDN ser
 
 ## Code Of Conduct
 
-Everyone interacting with the source code, issue trackers, and chat rooms is expected to follow the [Code of Conduct](https://github.com/rubyapi/rubyapi/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting with the source code, issue trackers, and chat rooms is expected to follow the [Code of Conduct](https://github.com/rubyapi/rubyapi/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
-MIT. See [LICENSE.md](https://github.com/rubyapi/rubyapi/blob/master/LICENSE.md).
+MIT. See [LICENSE.md](https://github.com/rubyapi/rubyapi/blob/main/LICENSE.md).
