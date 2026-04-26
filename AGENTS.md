@@ -21,7 +21,6 @@ A fast, mobile-friendly documentation browser for the Ruby standard library and 
 - **Background jobs:** SolidQueue (runs in Puma process in production via `SOLID_QUEUE_IN_PUMA=true`)
 - **Assets:** Propshaft + importmap-rails + TailwindCSS (tailwindcss-rails)
 - **Frontend:** Stimulus controllers, no React/Vue
-- **Admin:** Avo 3.0 at `/avo`, IP-restricted to Tailscale range (`100.64.0.0/10`)
 - **Config:** `anyway_config` gem, config classes in `config/configs/`, YAML in `config/ruby.yml` and `config/theme.yml`
 - **Deployment:** Kamal to AWS ECR. Production uses Thruster (HTTP/2, asset caching) wrapping Puma
 
