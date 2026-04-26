@@ -249,7 +249,7 @@ GEM
       net-smtp
     marcel (1.1.0)
     matrix (0.4.3)
-    mcp (0.8.0)
+    mcp (0.9.2)
       json-schema (>= 4.1)
     meta-tags (2.23.0)
       actionpack (>= 6.0.0)
