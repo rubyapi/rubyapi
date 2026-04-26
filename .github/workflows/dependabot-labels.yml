@@ -3,6 +3,8 @@ name: Dependabot security label
 on: pull_request_target
 
 permissions:
+  contents: read
+  issues: write
   pull-requests: write
 
 jobs:
