@@ -1,7 +1,7 @@
 # See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
 User-agent: *
 Disallow: /up
-Disallow: /*/a
+Disallow: /*/a$
 Disallow: /*/a/
 
 Sitemap: https://rubyapi.org/sitemap.xml.gz
