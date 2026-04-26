@@ -1,33 +1,39 @@
 version: 2
 updates:
-- package-ecosystem: bundler
-  directory: "/"
-  schedule:
-    interval: weekly
-  open-pull-requests-limit: 10
-  labels:
-  - ruby
-  - dependencies
-  groups:
-    rails:
-      patterns:
-      - "rails"
-      - "actioncable"
-      - "actionmailbox"
-      - "actionmailer"
-      - "actionpack"
-      - "actiontext"
-      - "actionview"
-      - "activejob"
-      - "activemodel"
-      - "activerecord"
-      - "activestorage"
-      - "activesupport"
-      - "railties"
-- package-ecosystem: "github-actions"
-  directory: "/"
-  schedule:
-    interval: weekly
-  labels:
-  - actions
-  - dependencies
+  - package-ecosystem: bundler
+    directory: "/"
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 5
+    labels:
+      - ruby
+      - dependencies
+    groups:
+      rails:
+        patterns:
+          - "rails"
+          - "actionpack"
+          - "actionview"
+          - "activejob"
+          - "activemodel"
+          - "activerecord"
+          - "activesupport"
+          - "railties"
+      minor-and-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: monthly
+    labels:
+      - actions
+      - dependencies
+    groups:
+      actions:
+        patterns:
+          - "*"
