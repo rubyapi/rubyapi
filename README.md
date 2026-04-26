@@ -80,18 +80,16 @@ bin/rails test
 
 ## Linting code
 
-This project uses [StandardRB](https://github.com/standardrb/standard) for linting.
+This project uses [RuboCop](https://github.com/rubocop/rubocop) for linting.
 
-StandardRB can be executed with:
+RuboCop can be executed with:
 
 ```sh
-bin/standardrb
+bin/rubocop
 ```
 
 _Note: This command may make changes to your code, to make it conform to the formatting rules of
 this project._
-
-For instructions on running StandardRB in your editor, [check out StandardRB's Documentation](https://github.com/testdouble/standard#how-do-i-run-standard-in-my-editor).
 
 
 ## Sponsorship
