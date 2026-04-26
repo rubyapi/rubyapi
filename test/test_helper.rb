@@ -6,7 +6,6 @@ require "rails/test_help"
 require "webmock/minitest"
 
 Rails.root.glob("lib/*.rb").each { |f| require_relative f }
-Rails.root.glob("test/factories/*.rb").each { |f| require_relative f }
 
 WebMock.disable!
 
