@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "~> 3.0"
+ruby "~> 4.0"
 
 gem "anyway_config"
 gem "aws-sdk-core"
