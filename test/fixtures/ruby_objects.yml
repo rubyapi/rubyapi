@@ -9,7 +9,7 @@ string:
   name: String
   path: string
   description: Class for manipulating strings of characters.
-  object_type: class
+  object_type: class_object
   constant: String
   superclass_constant: Object
 
@@ -18,7 +18,7 @@ integer:
   name: Integer
   path: integer
   description: Class for manipulating integer numbers.
-  object_type: class
+  object_type: class_object
   constant: Integer
   superclass_constant: Numeric
 
@@ -27,7 +27,7 @@ enumerable:
   name: Enumerable
   path: enumerable
   description: Module providing collection traversal and searching methods.
-  object_type: module
+  object_type: module_object
   constant: Enumerable
 
 net_http:
@@ -35,5 +35,5 @@ net_http:
   name: HTTP
   path: net/http
   description: Class Net::HTTP provides a rich library that implements the client in a client-server model that uses the HTTP request-response protocol.
-  object_type: class
+  object_type: class_object
   constant: Net::HTTP

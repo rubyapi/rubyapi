@@ -38,6 +38,7 @@ plugin :statsd
 
 # Enable Solid Queue integration with Puma
 plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"] || Rails.env.development?
+plugin :tailwindcss if ENV["TAILWINDCSS_IN_PUMA"] || Rails.env.development?
 
 # Specify the PID file. Defaults to tmp/pids/server.pid in development.
 # In other environments, only set the PID file if requested.

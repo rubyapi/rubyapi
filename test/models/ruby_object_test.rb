@@ -2,8 +2,8 @@ require "test_helper"
 
 class RubyObjectTest < ActiveSupport::TestCase
   test "object types" do
-    class_object = RubyObject.new(object_type: "class")
-    module_object = RubyObject.new(object_type: "module")
+    class_object = ruby_objects(:string)
+    module_object = ruby_objects(:enumerable)
 
     assert class_object.class_object?
     refute class_object.module_object?
