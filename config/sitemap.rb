@@ -2,23 +2,33 @@
 
 SitemapGenerator::Sitemap.default_host = "https://rubyapi.org"
 SitemapGenerator::Sitemap.public_path = "public"
-SitemapGenerator::Sitemap.sitemaps_path = "sitemaps/"
+SitemapGenerator::Sitemap.sitemaps_path = ""
 SitemapGenerator::Sitemap.compress = true
 
 SitemapGenerator::Sitemap.create(include_root: false) do
-  add "/", changefreq: "weekly", priority: 1.0
+  releases = RubyRelease.ordered.where(prerelease: false).where.not(version: "dev").to_a
 
-  RubyRelease.ordered.find_each do |release|
-    add versioned_root_path(version: release.version),
-      changefreq: "monthly",
-      priority: release.default ? 0.9 : 0.7
+  group(filename: :core, sitemaps_path: "sitemaps/") do
+    add "/", changefreq: nil, priority: nil, lastmod: nil
 
-    RubyObject.where(documentable: release).find_each do |obj|
-      core = RubyObject::CORE_CLASSES.key?(obj.constant)
-      add object_path(version: release.version, object: obj.path),
-        changefreq: "monthly",
-        priority: core ? 0.8 : 0.5,
-        lastmod: obj.updated_at
+    releases.each do |release|
+      add versioned_root_path(version: release.version),
+        changefreq: nil,
+        priority: nil,
+        lastmod: release.ruby_objects.maximum(:updated_at)
+    end
+  end
+
+  releases.each do |release|
+    next unless release.ruby_objects.exists?
+
+    group(filename: :"ruby-#{release.version}", sitemaps_path: "sitemaps/") do
+      release.ruby_objects.find_each do |obj|
+        add object_path(version: release.version, object: obj.path),
+          changefreq: nil,
+          priority: nil,
+          lastmod: nil
+      end
     end
   end
 end
