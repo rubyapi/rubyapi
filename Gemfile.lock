@@ -311,10 +311,10 @@ GEM
       date
       stringio
     public_suffix (7.0.5)
-    puma (7.2.0)
+    puma (8.0.0)
       nio4r (~> 2.0)
-    puma-plugin-statsd (2.7.0)
-      puma (>= 5.0, < 8)
+    puma-plugin-statsd (2.8.0)
+      puma (>= 5.0, < 9)
     raabro (1.4.0)
     racc (1.8.1)
     rack (3.2.5)
