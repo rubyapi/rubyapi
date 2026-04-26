@@ -1,24 +1,24 @@
-# Set the host name for URL creation
+# frozen_string_literal: true
+
 SitemapGenerator::Sitemap.default_host = "https://rubyapi.org"
-SitemapGenerator::Sitemap.public_path = "public/sitemaps"
+SitemapGenerator::Sitemap.public_path = "public"
+SitemapGenerator::Sitemap.sitemaps_path = "sitemaps/"
+SitemapGenerator::Sitemap.compress = true
 
-SitemapGenerator::Sitemap.create do
-  add "/", changefreq: "never"
+SitemapGenerator::Sitemap.create(include_root: false) do
+  add "/", changefreq: "weekly", priority: 1.0
 
-  RubyConfig.ruby_releases.each do |version|
-    repo = RubyObjectRepository.repository_for_version(version.version)
-    response = repo.search(query: { match_all: {} }, size: 10_000)
+  RubyRelease.ordered.find_each do |release|
+    add versioned_root_path(version: release.version),
+      changefreq: "monthly",
+      priority: release.default ? 0.9 : 0.7
 
-    response.results.each do |o|
-      priority = Ruby::CORE_CLASSES.include?(o.constant) ? 0.5 : 0.9
-      add object_path(version:, object: o.path), changefreq: "monthly", priority:
-    end
-  rescue OpenSearch::Transport::Transport::Errors::NotFound => e
-    # Index does not exist
-    if Rails.env.local?
-      next
-    else
-      raise e
+    RubyObject.where(documentable: release).find_each do |obj|
+      core = RubyObject::CORE_CLASSES.key?(obj.constant)
+      add object_path(version: release.version, object: obj.path),
+        changefreq: "monthly",
+        priority: core ? 0.8 : 0.5,
+        lastmod: obj.updated_at
     end
   end
 end

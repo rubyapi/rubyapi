@@ -24,6 +24,8 @@ namespace :import do
         RubyDocumentationImporter.import release
       end
     end
+
+    SitemapRefreshJob.perform_later
   end
 
   namespace :ruby do
@@ -33,6 +35,8 @@ namespace :import do
           RubyDocumentationImporter.import version
         end
       end
+
+      SitemapRefreshJob.perform_later
     end
   end
 end
