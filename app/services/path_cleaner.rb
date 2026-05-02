@@ -5,7 +5,7 @@ module PathCleaner
     uri.path.delete_suffix(".html").split("/").each do |path_part|
       if path_part == ".."
         class_parts.pop
-      else
+      elsif !class_parts.include?(path_part)
         class_parts.push(path_part)
       end
     end
