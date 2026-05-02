@@ -11,7 +11,7 @@ A fast, mobile-friendly documentation browser for the Ruby standard library and 
 - `bin/rubocop` — lint with RuboCop (rubocop-rails-omakase config)
 - `bin/ci` — full CI suite (rubocop, bundler-audit, importmap audit, brakeman, tests, seed replant)
 - `bin/rails import:ruby[3.4]` — import documentation for a specific Ruby version
-- `docker compose up -d` — start PostgreSQL 17 + OpenSearch 2.11. Canonical local setup; running them via Homebrew services also works if you already do that.
+- `docker compose up -d` — start PostgreSQL 17 + OpenSearch 3.6. Canonical local setup; running them via Homebrew services also works if you already do that.
 
 ## Architecture
 
