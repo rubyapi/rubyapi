@@ -4,8 +4,11 @@ class RubyRelease < ApplicationRecord
   validates :version, presence: true
   validate :check_version
 
-  scope :latest, -> { where(default: true).first }
   scope :ordered, -> { order(Arel.sql("version_key IS NULL, version_key DESC, version DESC")) }
+
+  def self.latest
+    find_by(default: true)
+  end
 
   has_many :ruby_objects, as: :documentable, dependent: :destroy
 
