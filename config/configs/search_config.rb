@@ -1,7 +1,10 @@
 class SearchConfig < ApplicationConfig
-  # host URL configuration is set through the OPENSEARCH_URL environment variable
-  attr_config number_of_shards: 1, number_of_replicas: 1
-  attr_config ca_file: nil
+  config_name :opensearch
+
+  attr_config :url,
+    number_of_shards: 1,
+    number_of_replicas: 1,
+    ca_file: nil
 
   def transport_options
     { ssl: ssl_options }
