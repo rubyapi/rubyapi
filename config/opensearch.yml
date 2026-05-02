@@ -1,0 +1,5 @@
+development:
+  url: http://localhost:9200
+
+test:
+  url: http://localhost:9200

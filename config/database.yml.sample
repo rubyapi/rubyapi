@@ -19,11 +19,10 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   gssencmode: <%= RUBY_PLATFORM =~ /darwin/ ? "disable" : "prefer" %>
-  <% if ENV["DB_HOST"] %>
-  host: <%= ENV["DB_HOST"] %>
-  username: postgres
-  password: postgres
-  <% end %>
+  host: <%= ENV.fetch("DB_HOST") { "127.0.0.1" } %>
+  port: <%= ENV.fetch("DB_PORT") { 5432 } %>
+  username: <%= ENV.fetch("DB_USERNAME") { "rubyapi" } %>
+  password: <%= ENV.fetch("DB_PASSWORD") { "rubyapi_password" } %>
 
 development:
   primary: &primary_development

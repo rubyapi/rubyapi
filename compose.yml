@@ -6,14 +6,13 @@ services:
       - "9200:9200"
     environment:
       - discovery.type=single-node
-      - plugins.security.disabled=true
     volumes:
       - search-data:/usr/share/opensearch/data
     healthcheck:
       test:
         [
           "CMD-SHELL",
-          "curl --fail --silent http://localhost:9600/_cluster/health?wait_for_status=green&timeout=50s || exit 1 ",
+          "curl -u admin:admin --fail --silent --insecure https://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=50s || exit 1",
         ]
       retries: 3
       interval: 5s
@@ -40,7 +39,7 @@ services:
   postgres:
     image: postgres:17-alpine
     ports:
-      - "5432:5432"
+      - "${DB_PORT:-5432}:5432"
     environment:
       POSTGRES_USER: rubyapi
       POSTGRES_PASSWORD: rubyapi_password
@@ -48,7 +47,7 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U rubyapi"]
+      test: ["CMD-SHELL", "pg_isready -U rubyapi -d rubyapi_development"]
       interval: 5s
       timeout: 5s
       retries: 5
