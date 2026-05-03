@@ -54,14 +54,9 @@ class RubyDownloader
   end
 
   def chunked_fetch(path, url)
-    file = File.new path, "wb"
-    request = HTTP.get url
-
-    while (chunk = request.readpartial)
-      file.write chunk
+    File.open(path, "wb") do |file|
+      HTTP.get(url).body.each { |chunk| file.write chunk }
     end
-
-    file.close
   end
 
   def gems_path
