@@ -56,7 +56,6 @@ jobs:
           --health-timeout 5s
           --health-retries 10
     env:
-      OPENSEARCH_URL: "https://admin:admin@localhost:9200"
       DATABASE_URL: "postgresql://rubyapi:rubyapi_password@localhost:5432/rubyapi_test"
       QUEUE_DATABASE_URL: "postgresql://rubyapi:rubyapi_password@localhost:5432/rubyapi_test_queue"
       RAILS_ENV: test
@@ -106,7 +105,6 @@ jobs:
           --health-timeout 5s
           --health-retries 10
     env:
-      OPENSEARCH_URL: "https://admin:admin@localhost:9200"
       DATABASE_URL: "postgresql://rubyapi:rubyapi_password@localhost:5432/rubyapi_test"
       QUEUE_DATABASE_URL: "postgresql://rubyapi:rubyapi_password@localhost:5432/rubyapi_test_queue"
       RAILS_ENV: test
