@@ -25,8 +25,8 @@ The fastest way to try the project is GitHub Codespaces, which boots a fully con
 To run locally, you need Ruby 4 and Docker. PostgreSQL and OpenSearch run in containers. Then:
 
 ```sh
-bin/setup            # install gems, copy database.yml, prepare the database
 docker compose up -d # start PostgreSQL and OpenSearch
+bin/setup            # install gems, copy database.yml, prepare the database
 bin/dev              # start the Rails server on port 3000
 ```
 
