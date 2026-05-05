@@ -50,6 +50,13 @@ class ObjectsControllerTest < ActionDispatch::IntegrationTest
     assert_select "#object-type-label", "Module"
   end
 
+  test "constant anchor" do
+    get object_url object: ruby_objects(:net_http).path
+
+    assert_select 'a[href="#constant-SSL_ATTRIBUTES"]', text: "SSL_ATTRIBUTES"
+    assert_select "#constant-SSL_ATTRIBUTES"
+  end
+
   test "show method sequence" do
     get object_url object: @string.path
 

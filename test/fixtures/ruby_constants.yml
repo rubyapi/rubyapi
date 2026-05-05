@@ -8,5 +8,5 @@
 ssl_attributes:
   name: SSL_ATTRIBUTES
   description: SSL Configuration
-  constant: NET::HTTP::SSL_ATTRIBUTES
+  constant: Net::HTTP::SSL_ATTRIBUTES
   ruby_object: net_http

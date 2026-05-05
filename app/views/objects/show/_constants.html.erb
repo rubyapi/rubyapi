@@ -13,7 +13,7 @@
 
   <% constants.each do |c| %>
     <div class="md:p-3 py-3 my-3">
-      <div class="block relative invisible -top-24" id="<%= c.name %>"></div>
+      <div class="block relative invisible -top-24" id="<%= constant_anchor(c) %>"></div>
 
       <div class="flex flex-wrap">
         <div class="w-full md:w-10/12">
@@ -23,7 +23,7 @@
               font-semibold
             "
           >
-            <a href="#<%= c.name %>"><%= c.name %></a>
+            <a href="#<%= constant_anchor(c) %>"><%= c.name %></a>
           </h4>
         </div>
       </div>
