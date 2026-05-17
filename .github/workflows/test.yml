@@ -44,13 +44,15 @@ jobs:
           --health-timeout 5s
           --health-retries 5
       search:
-        image: opensearchproject/opensearch:2.11.0
+        image: opensearchproject/opensearch:3.6.0
         ports:
           - 9200:9200
         env:
           "discovery.type": "single-node"
+          DISABLE_INSTALL_DEMO_CONFIG: "true"
+          DISABLE_SECURITY_PLUGIN: "true"
         options: >-
-          --health-cmd "curl -u admin:admin --silent --fail --insecure https://localhost:9200/_cluster/health || exit 1"
+          --health-cmd "curl --silent --fail http://localhost:9200/_cluster/health || exit 1"
           --health-start-period 30s
           --health-interval 10s
           --health-timeout 5s
@@ -93,13 +95,15 @@ jobs:
           --health-timeout 5s
           --health-retries 5
       search:
-        image: opensearchproject/opensearch:2.11.0
+        image: opensearchproject/opensearch:3.6.0
         ports:
           - 9200:9200
         env:
           "discovery.type": "single-node"
+          DISABLE_INSTALL_DEMO_CONFIG: "true"
+          DISABLE_SECURITY_PLUGIN: "true"
         options: >-
-          --health-cmd "curl -u admin:admin --silent --fail --insecure https://localhost:9200/_cluster/health || exit 1"
+          --health-cmd "curl --silent --fail http://localhost:9200/_cluster/health || exit 1"
           --health-start-period 30s
           --health-interval 10s
           --health-timeout 5s

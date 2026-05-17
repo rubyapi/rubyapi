@@ -1,5 +1,5 @@
 development:
-  url: https://admin:admin@localhost:9200
+  url: http://localhost:9200
 
 test:
-  url: https://admin:admin@localhost:9200
+  url: http://localhost:9200
