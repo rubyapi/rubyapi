@@ -49,9 +49,10 @@ jobs:
           - 9200:9200
         env:
           "discovery.type": "single-node"
-          OPENSEARCH_INITIAL_ADMIN_PASSWORD: RubyApi-Local-OpenSearch-2026!
+          DISABLE_INSTALL_DEMO_CONFIG: "true"
+          DISABLE_SECURITY_PLUGIN: "true"
         options: >-
-          --health-cmd "curl -u admin:RubyApi-Local-OpenSearch-2026! --silent --fail --insecure https://localhost:9200/_cluster/health || exit 1"
+          --health-cmd "curl --silent --fail http://localhost:9200/_cluster/health || exit 1"
           --health-start-period 30s
           --health-interval 10s
           --health-timeout 5s
@@ -99,9 +100,10 @@ jobs:
           - 9200:9200
         env:
           "discovery.type": "single-node"
-          OPENSEARCH_INITIAL_ADMIN_PASSWORD: RubyApi-Local-OpenSearch-2026!
+          DISABLE_INSTALL_DEMO_CONFIG: "true"
+          DISABLE_SECURITY_PLUGIN: "true"
         options: >-
-          --health-cmd "curl -u admin:RubyApi-Local-OpenSearch-2026! --silent --fail --insecure https://localhost:9200/_cluster/health || exit 1"
+          --health-cmd "curl --silent --fail http://localhost:9200/_cluster/health || exit 1"
           --health-start-period 30s
           --health-interval 10s
           --health-timeout 5s

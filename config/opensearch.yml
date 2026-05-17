@@ -1,5 +1,5 @@
 development:
-  url: https://admin:RubyApi-Local-OpenSearch-2026!@localhost:9200
+  url: http://localhost:9200
 
 test:
-  url: https://admin:RubyApi-Local-OpenSearch-2026!@localhost:9200
+  url: http://localhost:9200

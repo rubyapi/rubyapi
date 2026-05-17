@@ -6,14 +6,15 @@ services:
       - "9200:9200"
     environment:
       - discovery.type=single-node
-      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=RubyApi-Local-OpenSearch-2026!
+      - DISABLE_INSTALL_DEMO_CONFIG=true
+      - DISABLE_SECURITY_PLUGIN=true
     volumes:
       - search-data:/usr/share/opensearch/data
     healthcheck:
       test:
         [
           "CMD-SHELL",
-          "curl -u admin:RubyApi-Local-OpenSearch-2026! --fail --silent --insecure https://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=50s || exit 1",
+          "curl --fail --silent http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=50s || exit 1",
         ]
       retries: 3
       interval: 5s
@@ -24,14 +25,13 @@ services:
     ports:
       - "5601:5601"
     environment:
-      OPENSEARCH_HOSTS: '["https://search:9200"]'
-      OPENSEARCH_USERNAME: admin
-      OPENSEARCH_PASSWORD: RubyApi-Local-OpenSearch-2026!
+      OPENSEARCH_HOSTS: '["http://search:9200"]'
+      DISABLE_SECURITY_DASHBOARDS_PLUGIN: "true"
     healthcheck:
       test:
         [
           "CMD-SHELL",
-          "curl -u admin:RubyApi-Local-OpenSearch-2026! --fail --silent http://localhost:5601/api/status || exit 1",
+          "curl --fail --silent http://localhost:5601/api/status || exit 1",
         ]
       interval: 5s
       timeout: 3s
