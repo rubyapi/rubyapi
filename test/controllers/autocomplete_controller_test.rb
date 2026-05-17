@@ -22,4 +22,12 @@ class AutocompleteControllerTest < ActionDispatch::IntegrationTest
     get autocomplete_path(q: "")
     assert_equal [], response.parsed_body
   end
+
+  test "constant anchor" do
+    get autocomplete_path(q: "SSL_ATTRIBUTES")
+    assert_includes response.parsed_body, {
+      "text" => "Net::HTTP::SSL_ATTRIBUTES",
+      "path" => "/3.4/o/net/http#constant-SSL_ATTRIBUTES"
+    }
+  end
 end

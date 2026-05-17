@@ -34,7 +34,7 @@
         <ul class="font-mono text-sm">
           <% @object.ruby_constants.each do |constant| %>
             <li>
-              <%= link_to constant.name, "##{constant.name}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %>
+              <%= link_to constant.name, "##{constant_anchor(constant)}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %>
             </li>
           <% end %>
         </ul>
@@ -168,7 +168,7 @@
             <ul class="font-mono text-sm">
               <% @object.ruby_constants.ordered.each do |constant| %>
                 <li>
-                  <%= link_to constant.name, "##{constant.name}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %>
+                  <%= link_to constant.name, "##{constant_anchor(constant)}", class: "inline-block w-full py-1 px-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700" %>
                 </li>
               <% end %>
             </ul>
