@@ -2,7 +2,7 @@
 # check=error=true
 
 # Make sure RUBY_VERSION matches the Ruby version in .ruby-version
-ARG RUBY_VERSION=4.0.3
+ARG RUBY_VERSION=4.0.4
 FROM ruby:$RUBY_VERSION-slim AS base
 
 # Rails app lives here
