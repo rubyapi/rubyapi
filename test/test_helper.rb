@@ -7,7 +7,7 @@ require "webmock/minitest"
 
 Rails.root.glob("lib/*.rb").each { |f| require_relative f }
 
-WebMock.disable!
+WebMock.disable_net_connect!(allow_localhost: true)
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
