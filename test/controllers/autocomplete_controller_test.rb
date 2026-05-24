@@ -3,6 +3,14 @@
 require "test_helper"
 
 class AutocompleteControllerTest < ActionDispatch::IntegrationTest
+  setup do
+    reindex_search_models
+  end
+
+  teardown do
+    delete_search_index
+  end
+
   test "should get index" do
     get autocomplete_path(q: "new")
     assert_response :success

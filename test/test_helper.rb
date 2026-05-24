@@ -19,21 +19,16 @@ class ActiveSupport::TestCase
 
   fixtures :all
 
-  def setup
-    Current.theme = ThemeConfig.theme_for("light")
-    Current.ruby_release = ruby_releases(:latest)
-    Current.default_ruby_release = ruby_releases(:latest)
+  SEARCH_MODELS = [ RubyObject, RubyMethod, RubyConstant ].freeze
 
-    # reindex models
-    RubyObject.reindex
-    RubyMethod.reindex
-    RubyConstant.reindex
-
-    # and disable callbacks
+  def reindex_search_models
+    SEARCH_MODELS.each(&:reindex)
     Searchkick.disable_callbacks
   end
 
-  def default_ruby_release
-    ruby_releases(:latest)
+  def delete_search_index
+    SEARCH_MODELS.each do |model|
+      model.search_index.delete
+    end
   end
 end
