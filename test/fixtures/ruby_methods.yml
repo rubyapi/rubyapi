@@ -9,7 +9,7 @@ to_i:
   name: to_i
   description: Returns the integer representation of the object.
   method_type: instance
-  source_location: string.c:123
+  source_location: 3.4:string.c:123
   constant: String#to_i
   call_sequences:
     - "str.to_i # => 1"
@@ -25,7 +25,7 @@ to_str:
   name: to_str
   description: Returns self if self is a String.
   method_type: instance
-  source_location: string.c:456
+  source_location: 3.4:string.c:456
   constant: String#to_str
   call_sequences:
     - "to_str"

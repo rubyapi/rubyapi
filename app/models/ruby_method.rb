@@ -51,11 +51,11 @@ class RubyMethod < ApplicationRecord
   end
 
   def source_file
-    source_properties.first
+    source_properties.second
   end
 
   def source_line
-    source_properties.second.to_i
+    source_properties.third.to_i
   end
 
   private
