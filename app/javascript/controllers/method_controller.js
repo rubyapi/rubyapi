@@ -5,12 +5,20 @@ export default class extends Controller {
 
   toggleShowSource(event) {
     event.preventDefault()
+    this.#toggleAttrValue(this.showSrcBodyButtonTarget, "aria-pressed", "true", "false")
+    this.srcBodyTarget.toggleAttribute("data-open")
+  }
 
-    this.showSrcBodyButtonTarget.classList.toggle("bg-blue-600")
-    this.showSrcBodyButtonTarget.classList.toggle("text-white")
-    this.showSrcBodyButtonTarget.classList.toggle("hover:bg-blue-700")
-    this.showSrcBodyButtonTarget.classList.toggle("hover:text-white-300")
-    this.showSrcBodyButtonTarget.classList.toggle("dark:bg-gray-900")
-    this.srcBodyTarget.classList.toggle("hidden")
+  // Toggles an attribute between two values.
+  //
+  //   this.#toggleAttrValue(el, "data-state", "active", "inactive")
+  //
+  #toggleAttrValue(element, attr, toggleValue, initValue) {
+    const shouldToggle = element.getAttribute(attr) !== toggleValue
+    if (shouldToggle) {
+      element.setAttribute(attr, toggleValue)
+    } else {
+      element.setAttribute(attr, initValue)
+    }
   }
 }
