@@ -20,13 +20,23 @@ class AwsConfigTest < ActiveSupport::TestCase
   end
 
   test "with ecs aws credential provider" do
+    stub_request(:get, "http://169.254.170.2/test/path").to_return(
+      status: 200,
+      body: {
+        AccessKeyId: "<access_key_id>",
+        SecretAccessKey: "<secret_access_key>",
+        Token: "<session_token>"
+      }.to_json
+    )
+
     with_env(
       "AWS_AUTHENTICATION_PROVIDER" => "ecs"
     ) do
-      capture_subprocess_io do
-        credentials = AwsConfig.new.credentials
-        assert_kind_of Aws::Credentials, credentials
-      end
+      credentials = AwsConfig.new.credentials
+      assert_kind_of Aws::Credentials, credentials
+      assert_equal "<access_key_id>", credentials.access_key_id
+      assert_equal "<secret_access_key>", credentials.secret_access_key
+      assert_equal "<session_token>", credentials.session_token
     end
   end
 end
