@@ -8,6 +8,7 @@ require "webmock/minitest"
 Rails.root.glob("lib/*.rb").each { |f| require_relative f }
 
 WebMock.disable_net_connect!(allow_localhost: true)
+Searchkick.disable_callbacks
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
@@ -23,7 +24,6 @@ class ActiveSupport::TestCase
 
   def reindex_search_models
     SEARCH_MODELS.each(&:reindex)
-    Searchkick.disable_callbacks
   end
 
   def delete_search_index
