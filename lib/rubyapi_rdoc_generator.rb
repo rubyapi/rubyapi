@@ -166,7 +166,7 @@ class RubyAPIRDocGenerator
     if doc.superclass.is_a?(String)
       doc.superclass
     else
-      doc.superclass.name
+      doc.superclass.full_name
     end
   end
 end
