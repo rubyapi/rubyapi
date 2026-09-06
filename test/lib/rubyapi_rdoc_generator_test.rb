@@ -8,40 +8,22 @@ class RubyAPIRDocGeneratorTest < ActiveSupport::TestCase
     object = RubyObject.find_by!(constant: "Namespaced::Child")
 
     assert_equal "Namespaced::Parent", object.superclass_constant
-    assert object.superclass
+    assert_equal RubyObject.find_by!(constant: "Namespaced::Parent"), object.superclass
   end
 
   private
 
-  # Documents files with RubyAPIRDocGenerator.
-  #
-  #   document "test_class.rb"
-  #   assert RubyObject.find_by(constant: "TestClass")
-  #
-  # Returns an RDoc::RDoc instance.
-  #
-  #   rdoc = document "test_class.rb"
-  #   rdoc.store.all_classes_and_modules
-  #
-  def document(
-    path, # file, dir, glob
-    release: RubyRelease.new(version: "test", signatures: false),
-    root: "test/fixtures/doc",
-    visibility: :private, # :private, :protected
-    verbosity: 0 # 0, 1, 2
-  )
+  def document(filename)
     opts = RDoc::Options.load_options.tap do |options|
       options.generator = RubyAPIRDocGenerator
-      options.generator_options = [ release ]
-      options.root = Rails.root.join(root).to_s
-      options.files = Rails.root.join(root).glob(path).map(&:to_s)
+      options.generator_options = [ RubyRelease.new(version: "test", signatures: false) ]
+      options.root = Rails.root.join("test/fixtures/doc").to_s
+      options.files = [ Rails.root.join("test/fixtures/doc", filename).to_s ]
       options.op_dir = Rails.root.join("tmp/rdoc_test").to_s
-      options.visibility = visibility
-      options.verbosity = verbosity
+      options.visibility = :private
+      options.verbosity = 0
       options.template = ""
     end
-    RDoc::RDoc.new.tap do |rdoc|
-      rdoc.document(opts)
-    end
+    RDoc::RDoc.new.document(opts)
   end
 end
