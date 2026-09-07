@@ -30,11 +30,9 @@ bin/setup            # install gems, copy database.yml, prepare the database
 bin/dev              # start the Rails server on port 3000
 ```
 
-The local OpenSearch API is available at `https://localhost:9200`, and OpenSearch
+OpenSearch is available at `https://localhost:9200`, and OpenSearch
 Dashboards is available at `http://localhost:5601`. Both use the username `admin`
-and password `RubyApi-Local-OpenSearch-2026!`. These credentials are only for
-local development; the services are bound to the loopback interface and must not
-be exposed publicly.
+and password `RubyApi-Local-OpenSearch-2026!`.
 
 `bin/setup` is also what you run when you pull updates: it refreshes gems and applies new migrations.
 
