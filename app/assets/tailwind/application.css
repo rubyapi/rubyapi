@@ -18,163 +18,175 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-pre.ruby {
-    @apply p-3 mb-3 rounded-b rounded-t-none overflow-auto font-mono bg-code-background text-code-text;
+@layer base {
+    p {
+        @apply my-3;
+    }
 }
 
-pre {
-    @apply p-3 rounded bg-gray-300;
+/*
+ * Code syntax theme
+ */
+@layer components {
+    .ruby-string {
+        color: #99C794;
+    }
+
+    .ruby-keyword,
+    .k,
+    .kt {
+        color: #c678dd;
+    }
+
+    .ruby-comment,
+    .c1 {
+        color: #65737e;
+    }
+
+    .ruby-constant,
+    .mi {
+        color: #e5c07b;
+    }
+
+    .ruby-identifier,
+    .o {
+        color: #ec5f67;
+    }
+
+    .ruby-value {
+        color: #F99157;
+    }
+
+    .ruby-regexp,
+    .sr {
+        color: #98c379;
+    }
+
+    .ruby-operator,
+    .nf {
+        color: #61afef;
+    }
 }
 
-.dark pre {
-    @apply bg-gray-900;
+/*
+ * RDoc styles
+ */
+@layer components {
+    .ruby-documentation ul {
+        @apply list-disc list-inside;
+    }
+
+    .ruby-documentation ul li {
+        @apply my-1;
+    }
+
+    .ruby-documentation ul li p {
+        @apply inline;
+    }
+
+    .ruby-documentation ol {
+        @apply list-decimal list-inside;
+    }
+
+    .ruby-documentation ol li p {
+        @apply inline-block my-1;
+    }
+
+    .ruby-documentation dd,
+    .ruby-documentation dt {
+        @apply w-full text-center;
+    }
+
+    .ruby-documentation dl {
+        @apply flex flex-wrap border-2 border-gray-400;
+    }
+
+    .ruby-documentation dd {
+        @apply px-3;
+    }
+
+    .ruby-documentation dt {
+        @apply py-3 bg-gray-300;
+    }
+
+    .ruby-documentation dt:last-of-type,
+    .ruby-documentation dd:last-of-type {
+        @apply border-0;
+    }
+
+    .dark .ruby-documentation dt {
+        @apply bg-gray-900;
+    }
+
+    .dark .ruby-documentation dl,
+    .dark .ruby-documentation dt,
+    .dark .ruby-documentation dd {
+        @apply bg-gray-700;
+    }
+
+    .ruby-documentation h1,
+    .ruby-documentation h2,
+    .ruby-documentation h3,
+    .ruby-documentation h4,
+    .ruby-documentation h5 {
+        @apply font-semibold text-lg py-1;
+    }
+
+    /* Inline code */
+    .ruby-documentation code {
+        padding: 0.15rem;
+        @apply bg-gray-300 rounded leading-relaxed text-sm text-gray-700;
+        @variant dark {
+            @apply bg-gray-700 text-gray-300;
+        }
+    }
+
+    /* Code block (for unstyled code) */
+    .ruby-documentation pre {
+        @apply p-3 rounded bg-gray-300 overflow-auto font-mono;
+        @variant dark {
+            @apply bg-gray-900;
+        }
+    }
+
+    /* Code block (for highlighted code) */
+    .code-block,
+    .ruby-documentation pre.ruby {
+        @apply p-3 mb-3 rounded rounded-t-none overflow-auto font-mono bg-code-background text-code-text;
+        @variant dark {
+            @apply bg-gray-900;
+        }
+    }
 }
 
-.dark .ruby-documentation dt {
-    @apply bg-gray-900;
+@layer components {
+    /*
+     * Line Numbers (for code blocks)
+     *
+     * Variables:
+     *   --line-numbers-start (optional, default: 1)
+     *
+     * Example:
+     *   <pre class="line-numbers" style="--line-numbers-start: <%= num %>">
+     *     <div class="line">def hello</div>
+     *     <div class="line">  puts "world"</div>
+     *     <div class="line">end</div>
+     *   </pre>
+     */
+    .line-numbers {
+        counter-reset: lines calc(max(var(--line-numbers-start, 1), 1) - 1);
+        & .line::before {
+            counter-increment: lines;
+            content: counter(lines);
+            min-width: 5ch;
+            @apply pr-2 mr-3 text-right border-r-2 border-gray-600 text-gray-600 select-none inline-block;
+        }
+    }
 }
 
-.dark .ruby-documentation dl,
-.dark .ruby-documentation dt,
-.dark .ruby-documentation dd {
-    @apply bg-gray-700;
-}
-
-.ruby-string {
-    color: #99C794;
-}
-
-.ruby-keyword,
-.k,
-.kt {
-    color: #c678dd;
-}
-
-.ruby-comment,
-.c1 {
-    color: #65737e;
-}
-
-.ruby-constant,
-.mi {
-    color: #e5c07b;
-}
-
-.ruby-identifier,
-.o {
-    color: #ec5f67;
-}
-
-.ruby-value {
-    color: #F99157;
-}
-
-.ruby-regexp,
-.sr {
-    color: #98c379;
-}
-
-.ruby-operator,
-.nf {
-    color: #61afef;
-}
-
-p {
-    @apply my-3;
-}
-
-.overflow-wrap-break-word {
-    overflow-wrap: break-word;
-}
-
-.h-93 {
-    height: calc(100vh - 7rem) !important;
-}
-
-.h-94 {
-    height: calc(100vh - 6rem) !important;
-}
-
-code {
-    padding: 0.15rem;
-    @apply bg-gray-300 rounded leading-relaxed text-sm text-gray-700;
-}
-
-.method-src-body {
-    padding: 0;
-    background: none;
-    counter-reset: listing;
-}
-
-.method-src-body .line {
-    counter-increment: listing;
-}
-
-.method-src-body .line:before {
-    @apply pr-2 mr-3 w-8 text-center border-r-2 border-gray-600 text-gray-600;
-    user-select: none;
-    display: inline-block;
-    content: counter(listing);
-}
-
-.dark .method-src-body {
-    background: none;
-}
-
-.dark code {
-    @apply bg-gray-700 text-gray-300;
-}
-
-pre:not(.ruby) {
-    @apply overflow-auto font-mono;
-}
-
-.ruby-documentation ul {
-    @apply list-disc list-inside;
-}
-
-.ruby-documentation ul li {
-    @apply my-1;
-}
-
-.ruby-documentation ul li p {
-    @apply inline;
-}
-
-.ruby-documentation ol {
-    @apply list-decimal list-inside;
-}
-
-.ruby-documentation ol li p {
-    @apply inline-block my-1;
-}
-
-.ruby-documentation dd,
-.ruby-documentation dt {
-    @apply w-full text-center;
-}
-
-.ruby-documentation dl {
-    @apply flex flex-wrap border-2 border-gray-400;
-}
-
-.ruby-documentation dd {
-    @apply px-3;
-}
-
-.ruby-documentation dt {
-    @apply py-3 bg-gray-300;
-}
-
-.ruby-documentation dt:last-of-type,
-.ruby-documentation dd:last-of-type {
-    @apply border-0;
-}
-
-.ruby-documentation h1,
-.ruby-documentation h2,
-.ruby-documentation h3,
-.ruby-documentation h4,
-.ruby-documentation h5 {
-    @apply font-semibold text-lg py-1;
+@layer utilities {
+    /* sidebar height */
+    .h-93 {
+        height: calc(100vh - 7rem) !important;
+    }
 }
