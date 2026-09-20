@@ -178,3 +178,13 @@ pre:not(.ruby) {
 .ruby-documentation h5 {
     @apply font-semibold text-lg py-1;
 }
+
+.ruby-documentation a {
+  @apply underline;
+  @variant hover {
+    @apply text-gray-500 dark:text-white;
+    & code {
+      @apply text-inherit;
+    }
+  }
+}
