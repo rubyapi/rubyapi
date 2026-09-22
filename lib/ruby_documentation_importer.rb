@@ -36,6 +36,10 @@ class RubyDocumentationImporter
         options.visibility = :private
         options.verbosity = 0
         options.template = ""
+
+        # Older releases:
+        options.page_dir ||= "doc" # missing page_dir in .rdoc_options
+        options.files << "doc/date" if File.directory?("doc/date") # missing Date pages in doc/.document.
       end
 
       @rdoc = RDoc::RDoc.new

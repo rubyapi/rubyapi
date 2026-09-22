@@ -15,7 +15,7 @@ class RubyAPIRDocGeneratorTest < ActiveSupport::TestCase
     document "lib/source_location.rb"
     method = RubyMethod.find_by!(constant: "SourceLocation#example")
 
-    assert_equal "test:lib/source_location.rb:4", method.source_location
+    assert_equal "2.7:lib/source_location.rb:4", method.source_location
   end
 
   test ":include: and rdoc-ref: directives" do
@@ -23,7 +23,19 @@ class RubyAPIRDocGeneratorTest < ActiveSupport::TestCase
     object = RubyObject.find_by!(constant: "Directives")
 
     assert_includes object.description, "<p>Included documentation from the source root.</p>"
-    assert_includes object.description, '<a href="/test/o/language/bsearch_rdoc">binary search guide</a>'
+    assert_includes object.description, '<a href="/2.7/p/language/bsearch">binary search guide</a>'
+  end
+
+  test "import pages" do
+    document "pages"
+    pages = ruby_releases(:legacy).ruby_pages
+
+    copying = pages.find_by!(path: "copying")
+    assert_equal "COPYING", copying.name
+
+    bsearch = pages.find_by!(path: "language/bsearch")
+    assert_equal "bsearch", bsearch.name
+    assert_includes bsearch.body, "<p>Binary search finds a value in a sorted collection.</p>"
   end
 
   private
@@ -33,7 +45,7 @@ class RubyAPIRDocGeneratorTest < ActiveSupport::TestCase
     Dir.chdir(root) do
       opts = RDoc::Options.load_options.tap do |options|
         options.generator = RubyAPIRDocGenerator
-        options.generator_options = [ RubyRelease.new(version: "test", signatures: false) ]
+        options.generator_options = [ ruby_releases(:legacy) ]
         options.root = root.to_s
         options.files = [ filename ]
         options.op_dir = Rails.root.join("tmp/rdoc_test").to_s

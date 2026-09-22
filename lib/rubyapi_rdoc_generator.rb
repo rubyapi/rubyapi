@@ -29,10 +29,25 @@ class RubyAPIRDocGenerator
     @options = options
     @release = options.generator_options.pop
     @documentation = store.all_classes_and_modules
+
+    @page_paths = build_page_paths
   end
 
   def generate
+    generate_pages
     generate_objects
+  end
+
+  def generate_pages
+    text_files = @store.all_files.select(&:text?)
+    text_files.each do |file|
+      RubyPage.create!(
+        documentable: @release,
+        path: @page_paths.fetch(file.path),
+        name: file.page_name,
+        body: clean_description(file.path, file.description)
+      )
+    end
   end
 
   def generate_objects
@@ -110,6 +125,16 @@ class RubyAPIRDocGenerator
 
   private
 
+  def build_page_paths # => {"syntax/methods_rdoc.html" => "syntax/methods", **}
+    @store.all_files.select(&:text?).each_with_object({}) do |file, h|
+      h[file.path] = file.relative_name
+        .sub(/\.(?:rdoc|md|txt)\z/i, "")
+        .split("/")
+        .map { it.tr("_", "-").parameterize }
+        .join("/")
+    end
+  end
+
   def skip_namespace?(constant)
     SKIP_NAMESPACE_REGEX.match?(constant)
   end
@@ -119,7 +144,7 @@ class RubyAPIRDocGenerator
   end
 
   def clean_description(method_class, description)
-    RubyDescriptionCleaner.clean(@release.version, method_class, description)
+    RubyDescriptionCleaner.clean(@release.version, method_class, description, page_paths: @page_paths)
   end
 
   def clean_path(path, constant:)
