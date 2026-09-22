@@ -11,6 +11,13 @@ class RubyAPIRDocGeneratorTest < ActiveSupport::TestCase
     assert_equal RubyObject.find_by!(constant: "Namespaced::Parent"), object.superclass
   end
 
+  test "method alias not duplicating path segments" do
+    document "namespaced_method_alias.rb"
+    method = RubyMethod.find_by!(constant: "Thread::Queue#shift")
+
+    assert_equal({ "name" => "pop", "path" => "/test/o/thread/queue#method-i-pop" }, method.method_alias)
+  end
+
   private
 
   def document(filename)
