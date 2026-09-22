@@ -46,7 +46,12 @@ class RubyAPIRDocGenerator
         path: @page_paths.fetch(file.path),
         name: file.page_name,
         body: clean_description(file.path, file.description)
-      )
+      ) do |ruby_page|
+        extract_page_name(ruby_page.body) do |name, body|
+          ruby_page.name = name
+          ruby_page.body = body
+        end
+      end
     end
   end
 
@@ -133,6 +138,26 @@ class RubyAPIRDocGenerator
         .map { it.tr("_", "-").parameterize }
         .join("/")
     end
+  end
+
+  def extract_page_name(body)
+    body = Nokogiri::HTML.fragment(body)
+
+    heading = body.at_css("h1, h2")
+    return unless heading
+
+    name = heading.text.strip.presence
+    return unless name
+
+    # Keep the heading ID as a fragment target.
+    if heading["id"]
+      anchor = Nokogiri::XML::Node.new("span", body.document)
+      anchor["id"] = heading["id"]
+      heading.add_previous_sibling(anchor)
+    end
+
+    heading.remove
+    yield name, body
   end
 
   def skip_namespace?(constant)

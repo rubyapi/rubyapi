@@ -34,8 +34,13 @@ class RubyAPIRDocGeneratorTest < ActiveSupport::TestCase
     assert_equal "COPYING", copying.name
 
     bsearch = pages.find_by!(path: "language/bsearch")
-    assert_equal "bsearch", bsearch.name
-    assert_includes bsearch.body, "<p>Binary search finds a value in a sorted collection.</p>"
+    assert_equal "Binary Search", bsearch.name
+
+    bsearch_doc = Nokogiri::HTML.fragment(bsearch.body)
+    assert_equal "Binary search finds a value in a sorted collection.", bsearch_doc.at_css("p").text
+    assert_empty bsearch_doc.css("h1"), "Expected the title heading to be removed"
+    assert bsearch_doc.at_css('[id="binary-search"]'), "Missing title anchor"
+    assert bsearch_doc.at_css('[id="label-Binary+Search"]'), "Missing legacy title anchor"
   end
 
   private
