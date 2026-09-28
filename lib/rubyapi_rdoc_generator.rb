@@ -29,10 +29,30 @@ class RubyAPIRDocGenerator
     @options = options
     @release = options.generator_options.pop
     @documentation = store.all_classes_and_modules
+
+    @page_paths = build_page_paths
   end
 
   def generate
+    generate_pages
     generate_objects
+  end
+
+  def generate_pages
+    text_files = @store.all_files.select(&:text?)
+    text_files.each do |file|
+      RubyPage.create!(
+        documentable: @release,
+        path: @page_paths.fetch(file.path),
+        name: file.page_name,
+        body: clean_description(file.path, file.description)
+      ) do |ruby_page|
+        extract_page_name(ruby_page.body) do |name, body|
+          ruby_page.name = name
+          ruby_page.body = body
+        end
+      end
+    end
   end
 
   def generate_objects
@@ -40,7 +60,7 @@ class RubyAPIRDocGenerator
 
     if @release.signatures?
       require_relative "ruby_type_signature_repository"
-      @type_repository = RubyTypeSignatureRepository.new(@options.files.first)
+      @type_repository = RubyTypeSignatureRepository.new(@options.root)
     end
 
     @documentation.each do |doc|
@@ -57,7 +77,7 @@ class RubyAPIRDocGenerator
           description: clean_description(doc.full_name, method_doc.description),
           constant: (method_doc.type == "instance") ? "#{doc.full_name}##{method_doc.name}" : "#{doc.full_name}.#{method_doc.name}",
           method_type: method_doc.type.to_s,
-          source_location: "#{@release.version}:#{method_path(method_doc)}:#{method_doc.line}",
+          source_location: "#{@release.version}:#{method_doc.file.relative_name}:#{method_doc.line}",
           call_sequences: call_sequence_for_method_doc(method_doc),
           source_body: format_method_source_body(method_doc),
           metadata: {
@@ -110,11 +130,34 @@ class RubyAPIRDocGenerator
 
   private
 
-  def method_path(method_doc)
-    base_ruby_dir = Pathname.new @options.files.first
-    method_file = Pathname.new Rails.root.join(method_doc.file.relative_name)
+  def build_page_paths # => {"syntax/methods_rdoc.html" => "syntax/methods", **}
+    @store.all_files.select(&:text?).each_with_object({}) do |file, h|
+      h[file.path] = file.relative_name
+        .sub(/\.(?:rdoc|md|txt)\z/i, "")
+        .split("/")
+        .map { it.tr("_", "-").parameterize }
+        .join("/")
+    end
+  end
 
-    method_file.relative_path_from(base_ruby_dir).to_s
+  def extract_page_name(body)
+    body = Nokogiri::HTML.fragment(body)
+
+    heading = body.at_css("h1, h2")
+    return unless heading
+
+    name = heading.text.strip.presence
+    return unless name
+
+    # Keep the heading ID as a fragment target.
+    if heading["id"]
+      anchor = Nokogiri::XML::Node.new("span", body.document)
+      anchor["id"] = heading["id"]
+      heading.add_previous_sibling(anchor)
+    end
+
+    heading.remove
+    yield name, body
   end
 
   def skip_namespace?(constant)
@@ -126,7 +169,7 @@ class RubyAPIRDocGenerator
   end
 
   def clean_description(method_class, description)
-    RubyDescriptionCleaner.clean(@release.version, method_class, description)
+    RubyDescriptionCleaner.clean(@release.version, method_class, description, page_paths: @page_paths)
   end
 
   def clean_path(path, constant:)
