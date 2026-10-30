@@ -53,7 +53,7 @@ services:
         condition: service_healthy
 
   postgres:
-    image: postgres:17-alpine
+    image: postgres:18-alpine
     ports:
       - "127.0.0.1:${DB_PORT:-5432}:5432"
     environment:
@@ -61,7 +61,7 @@ services:
       POSTGRES_PASSWORD: rubyapi_password
       POSTGRES_DB: rubyapi_development
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U rubyapi -d rubyapi_development"]
       interval: 5s
