@@ -1,0 +1,37 @@
+<% title @page.name %>
+
+<div class="max-w-7xl mx-auto px-3 md:px-0 lg:flex justify-center">
+  <main class="w-full min-w-0 mt-16 lg:mt-20 lg:w-3/4">
+    <section class="mx-3 mt-3 mb-8">
+      <div class="md:flex py-3 md:items-center md:justify-between">
+        <div class="min-w-0 flex-1">
+          <h1
+            class="
+              inline-block text-2xl font-extrabold tracking-tight
+              text-gray-800 dark:text-gray-200 sm:truncate sm:text-3xl
+              sm:tracking-tight
+            "
+          >
+            <%= link_to @page.name, page_path(version: Current.ruby_release.version, page: @page.path) %>
+          </h1>
+        </div>
+
+        <div class="mt-4 flex md:ml-4 md:mt-0" id="object-type-label">
+          <span class="py-1 px-2 rounded bg-gray-200 dark:bg-gray-700 text-sm">
+            Page
+          </span>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="absolute inset-0 flex items-center" aria-hidden="true">
+          <div class="w-full border-t border-gray-300"></div>
+        </div>
+      </div>
+
+      <article class="ruby-documentation ruby-page overflow-wrap-break-word">
+        <%= raw @page.body %>
+      </article>
+    </section>
+  </main>
+</div>

@@ -178,3 +178,55 @@ pre:not(.ruby) {
 .ruby-documentation h5 {
     @apply font-semibold text-lg py-1;
 }
+
+.ruby-page [id] {
+    @apply scroll-mt-20;
+}
+
+.ruby-page :is(h1, h2, h3, h4, h5, h6) {
+    @apply font-semibold mt-6 mb-2;
+}
+
+.ruby-page h1 {
+    @apply text-2xl sm:text-3xl;
+}
+
+.ruby-page h2 {
+    @apply text-xl sm:text-2xl;
+}
+
+.ruby-page h3 {
+    @apply text-lg sm:text-xl;
+}
+
+.ruby-page ul,
+.ruby-page ol {
+    @apply list-outside ps-5;
+}
+
+.ruby-page ol > li {
+    @apply ps-2;
+    &::marker {
+        @apply font-bold;
+    }
+}
+
+.ruby-page a[href] {
+    @apply text-inherit underline decoration-gray-400 underline-offset-2;
+    @variant hover {
+        @apply text-black dark:text-gray-100;
+    }
+    code {
+        @apply text-inherit;
+    }
+}
+
+.ruby-page :is(h1, h2, h3, h4, h5, h6)  {
+    a[href] {
+        @apply no-underline;
+    }
+}
+
+.ruby-page [data-controller~="code-example"] {
+    @apply mt-3;
+}

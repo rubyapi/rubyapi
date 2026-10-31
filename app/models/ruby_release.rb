@@ -11,6 +11,7 @@ class RubyRelease < ApplicationRecord
   end
 
   has_many :ruby_objects, as: :documentable, dependent: :destroy
+  has_many :ruby_pages, as: :documentable, dependent: :destroy
 
   def self.version_for(version)
     RubyRelease.find_by(version: version)

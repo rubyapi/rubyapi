@@ -1,0 +1,3 @@
+= Binary Search
+
+Binary search finds a value in a sorted collection.
