@@ -67,7 +67,7 @@ class RubyAPIRDocGenerator
 
         if method_doc.is_alias_for.present?
           method.method_alias = {
-            path: clean_path(method_doc.is_alias_for&.path, constant: doc.full_name),
+            path: clean_path(method_doc.is_alias_for&.path, constant: ""),
             name: method_doc.is_alias_for&.name
           }
         end
