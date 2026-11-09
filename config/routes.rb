@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     # function correctly
     post "o/toggle_signatures", to: "objects#toggle_signatures", as: :toggle_signatures
     get "o/*object", to: "objects#show", as: :object
+    get "p/*page", to: "pages#show", as: :page, format: false
     get "a", to: "autocomplete#index", as: :autocomplete, default: { format: :json }
   end
 end

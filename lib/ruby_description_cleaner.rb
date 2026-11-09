@@ -4,7 +4,7 @@ require "trenni/sanitize"
 require_relative "import_ui"
 
 class RubyDescriptionCleaner < Trenni::Sanitize::Filter
-  def self.clean(version, object_constant, description)
+  def self.clean(version, object_constant, description, page_paths: {})
     # Most of this method is copy/pasted from Trenni::Sanitize::Filter.parse
     # https://github.com/ioquatix/trenni-sanitize/blob/c8e08d2717b98a2268da89f8196fdb1eb93725bf/lib/trenni/sanitize/filter.rb#L40
 
@@ -20,6 +20,7 @@ class RubyDescriptionCleaner < Trenni::Sanitize::Filter
     delegate = new(output, entities)
     delegate.version = version
     delegate.object_constant = object_constant
+    delegate.page_paths = page_paths
 
     delegate.parse!(input)
 
@@ -29,14 +30,14 @@ class RubyDescriptionCleaner < Trenni::Sanitize::Filter
     description
   end
 
-  attr_accessor :version, :object_constant
+  attr_accessor :version, :object_constant, :page_paths
 
   def filter(node)
     if node.name == "a" && (url = node.tag.attributes["href"])
       uri = URI(url)
       if uri.host.nil? && uri.path.present?
         # Only edit relative paths, but skip anchor-only paths.
-        node.tag.attributes["href"] = PathCleaner.clean(uri, constant: object_constant, version:)
+        node.tag.attributes["href"] = PathCleaner.clean(uri, constant: object_constant, version:, page_paths:)
       end
     end
 

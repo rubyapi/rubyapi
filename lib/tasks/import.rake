@@ -19,6 +19,7 @@ namespace :import do
 
     Searchkick.callbacks(:bulk) do
       ActiveRecord::Base.transaction do
+        RubyPage.where(documentable: release).delete_all
         RubyObject.where(documentable: release).delete_all
 
         RubyDocumentationImporter.import release
@@ -30,9 +31,12 @@ namespace :import do
 
   namespace :ruby do
     task all: :environment do
-      RubyRelease.find_each do |version|
+      RubyRelease.find_each do |release|
         Searchkick.callbacks(:bulk) do
-          RubyDocumentationImporter.import version
+          RubyPage.where(documentable: release).delete_all
+          RubyObject.where(documentable: release).delete_all
+
+          RubyDocumentationImporter.import release
         end
       end
 

@@ -6,6 +6,8 @@
 #
 
 readme:
+  documentable: latest (RubyRelease)
+  path: readme
   name: README
   body: |
     What is Ruby?
