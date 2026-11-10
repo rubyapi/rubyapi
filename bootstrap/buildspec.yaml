@@ -1,0 +1,16 @@
+version: 0.2
+env:
+  shell: bash
+phases:
+  build:
+    commands:
+      - |
+        set -euo pipefail
+        : "${BUNDLE_KEY:?}" "${BUNDLE_VERSION:?}" "${BUNDLE_SHA256:?}"
+        [[ "$BUNDLE_KEY" == bootstrap/* ]]
+        [[ "$BUNDLE_SHA256" =~ ^[a-f0-9]{64}$ ]]
+        aws s3api get-object --bucket "$BOOTSTRAP_BUCKET" --key "$BUNDLE_KEY" --version-id "$BUNDLE_VERSION" /tmp/bootstrap.tgz >/dev/null
+        printf '%s  /tmp/bootstrap.tgz\n' "$BUNDLE_SHA256" | sha256sum -c -
+        mkdir /tmp/rubyapi-bootstrap
+        tar -xzf /tmp/bootstrap.tgz -C /tmp/rubyapi-bootstrap
+        bash /tmp/rubyapi-bootstrap/bootstrap/run.sh

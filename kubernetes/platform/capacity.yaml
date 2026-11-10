@@ -1,0 +1,55 @@
+apiVersion: eks.amazonaws.com/v1
+kind: NodeClass
+metadata:
+  name: rubyapi
+spec:
+  role: rubyapi-prod-nodes
+  subnetSelectorTerms:
+    - id: subnet-0ff74aa9c088c5d39
+    - id: subnet-0fe359f707234d186
+  securityGroupSelectorTerms:
+    - id: sg-02f65781e4bb02026
+  advancedNetworking:
+    associatePublicIPAddress: false
+  networkPolicy: DefaultAllow
+  networkPolicyEventLogs: Enabled
+  ephemeralStorage:
+    size: 80Gi
+    iops: 3000
+    throughput: 125
+---
+apiVersion: karpenter.sh/v1
+kind: NodePool
+metadata:
+  name: rubyapi
+spec:
+  template:
+    spec:
+      nodeClassRef:
+        group: eks.amazonaws.com
+        kind: NodeClass
+        name: rubyapi
+      requirements:
+        - key: kubernetes.io/arch
+          operator: In
+          values: [arm64]
+        - key: kubernetes.io/os
+          operator: In
+          values: [linux]
+        - key: node.kubernetes.io/instance-type
+          operator: In
+          values: [c9g.xlarge]
+        - key: karpenter.sh/capacity-type
+          operator: In
+          values: [on-demand]
+      expireAfter: 336h
+      terminationGracePeriod: 1h
+  # Proposed bootstrap envelope: two xlarge equivalents, not a hard billing cap.
+  limits:
+    cpu: '8'
+    memory: 16Gi
+  disruption:
+    consolidationPolicy: WhenEmptyOrUnderutilized
+    consolidateAfter: 5m
+    budgets:
+      - nodes: '1'

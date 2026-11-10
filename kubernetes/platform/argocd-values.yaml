@@ -1,0 +1,53 @@
+# Temporary non-HA bootstrap; no public UI, human account or application sync.
+global:
+  image:
+    tag: v3.6.1@sha256:296e3d74f449b2ce45265613fcb68c18ed7366488360c8ea32f5f2a93d2e5c54
+  nodeSelector:
+    kubernetes.io/os: linux
+    kubernetes.io/arch: arm64
+    karpenter.sh/nodepool: rubyapi
+  affinity:
+    podAntiAffinity: soft
+configs:
+  cm:
+    admin.enabled: false
+    exec.enabled: false
+  rbac:
+    policy.default: ''
+controller:
+  replicas: 1
+  resources:
+    requests: {cpu: 250m, memory: 512Mi}
+    limits: {memory: 1Gi}
+repoServer:
+  replicas: 1
+  resources:
+    requests: {cpu: 100m, memory: 256Mi}
+    limits: {memory: 512Mi}
+server:
+  replicas: 1
+  service:
+    type: ClusterIP
+  ingress:
+    enabled: false
+  resources:
+    requests: {cpu: 100m, memory: 128Mi}
+    limits: {memory: 256Mi}
+dex:
+  enabled: false
+applicationSet:
+  # This chart has no applicationSet.enabled switch.
+  replicas: 0
+notifications:
+  enabled: false
+redis:
+  image:
+    repository: public.ecr.aws/docker/library/redis
+    tag: 8.6.4-alpine@sha256:2cc044fc5a07c9b701f8f1255a309ae9ad7856e694ac03513bf3648c01e40763
+  resources:
+    requests: {cpu: 100m, memory: 128Mi}
+    limits: {memory: 256Mi}
+redisSecretInit:
+  resources:
+    requests: {cpu: 50m, memory: 64Mi}
+    limits: {memory: 128Mi}

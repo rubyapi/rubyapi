@@ -1,0 +1,23 @@
+{
+  "stack": "rubyapi-prod-edge",
+  "baseline_sha256": "0d2615a0c460fce93ef2c98c0469956bcaceeec1a2c47eeb31a45cc18f640a0c",
+  "template_sha256": "37cb68e5cce8d9e43dbf93bacbfc94c88eb952e423eb9fe09f67e5e8f2ce55ad",
+  "resources_before": 51,
+  "resources_after": 62,
+  "additions": {
+    "NodeRole": "AWS::IAM::Role",
+    "NodeAccess": "AWS::EKS::AccessEntry",
+    "ReleaseBundleBucket": "AWS::S3::Bucket",
+    "ReleaseBundleBucketPolicy": "AWS::S3::BucketPolicy",
+    "ReleaseLogs": "AWS::Logs::LogGroup",
+    "ReleaseSecurityGroup": "AWS::EC2::SecurityGroup",
+    "ReleaseApiIngress": "AWS::EC2::SecurityGroupIngress",
+    "ReleaseConnection": "AWS::CodeConnections::Connection",
+    "ReleaseRole": "AWS::IAM::Role",
+    "ReleaseAccessEntry": "AWS::EKS::AccessEntry",
+    "ReleaseProject": "AWS::CodeBuild::Project"
+  },
+  "existing_resource_changes": [],
+  "human_access": false,
+  "production_sql_or_cutover": false
+}

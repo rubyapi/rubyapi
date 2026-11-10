@@ -1,0 +1,231 @@
+Parameters:
+  BootstrapAccess:
+    Type: String
+    Default: disabled
+    AllowedValues: [enabled, disabled]
+    Description: Temporary machine-only cluster admin. Disable before enabling the Actions runner.
+  ReleaseRunner:
+    Type: String
+    Default: disabled
+    AllowedValues: [enabled, disabled]
+    Description: Enable only after connection authorization, trusted Git source and release RBAC verification.
+Conditions:
+  BootstrapAccessEnabled: !Equals [!Ref BootstrapAccess, enabled]
+  ReleaseRunnerEnabled: !Equals [!Ref ReleaseRunner, enabled]
+Rules:
+  NoBootstrapAdminOnActionsRunner:
+    Assertions:
+      - Assert: !Not
+          - !And
+            - !Equals [!Ref BootstrapAccess, enabled]
+            - !Equals [!Ref ReleaseRunner, enabled]
+        AssertDescription: The GitHub runner must never hold bootstrap cluster-admin access.
+Resources:
+  NodeRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub ${ClusterName}-nodes
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: {Service: ec2.amazonaws.com}
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - !Sub arn:${AWS::Partition}:iam::aws:policy/AmazonEKSWorkerNodeMinimalPolicy
+        - !Sub arn:${AWS::Partition}:iam::aws:policy/AmazonEC2ContainerRegistryPullOnly
+  NodeAccess:
+    Type: AWS::EKS::AccessEntry
+    Properties:
+      ClusterName: !Ref Cluster
+      PrincipalArn: !GetAtt NodeRole.Arn
+      Type: EC2
+      AccessPolicies:
+        - PolicyArn: !Sub arn:${AWS::Partition}:eks::aws:cluster-access-policy/AmazonEKSAutoNodePolicy
+          AccessScope: {Type: cluster}
+  ReleaseBundleBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      OwnershipControls:
+        Rules: [{ObjectOwnership: BucketOwnerEnforced}]
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault: {SSEAlgorithm: AES256}
+      VersioningConfiguration: {Status: Enabled}
+  ReleaseBundleBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref ReleaseBundleBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Deny
+            Principal: '*'
+            Action: s3:*
+            Resource:
+              - !GetAtt ReleaseBundleBucket.Arn
+              - !Sub ${ReleaseBundleBucket.Arn}/*
+            Condition:
+              Bool: {aws:SecureTransport: 'false'}
+  ReleaseLogs:
+    Type: AWS::Logs::LogGroup
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      LogGroupName: !Sub /aws/codebuild/${ClusterName}-release
+      RetentionInDays: 30
+  ReleaseSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Outbound-only private EKS machine executor; no human client
+      VpcId: !Ref VpcId
+      SecurityGroupEgress:
+        - IpProtocol: tcp
+          FromPort: 443
+          ToPort: 443
+          CidrIp: 0.0.0.0/0
+  ReleaseApiIngress:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      GroupId: !GetAtt Cluster.ClusterSecurityGroupId
+      SourceSecurityGroupId: !Ref ReleaseSecurityGroup
+      IpProtocol: tcp
+      FromPort: 443
+      ToPort: 443
+      Description: Private machine executor only
+  ReleaseConnection:
+    Type: AWS::CodeConnections::Connection
+    Properties:
+      ConnectionName: rubyapi-release
+      ProviderType: GitHub
+  ReleaseRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: {Service: codebuild.amazonaws.com}
+            Action: sts:AssumeRole
+            Condition:
+              StringEquals: {aws:SourceAccount: !Ref 'AWS::AccountId'}
+              ArnEquals:
+                aws:SourceArn: !Sub arn:${AWS::Partition}:codebuild:${AWS::Region}:${AWS::AccountId}:project/${ClusterName}-release
+      Policies:
+        - PolicyName: PrivateReleaseExecutor
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: [logs:CreateLogStream, logs:PutLogEvents]
+                Resource: !GetAtt ReleaseLogs.Arn
+              - Effect: Allow
+                Action: [s3:GetObject, s3:GetObjectVersion]
+                Resource: !Sub ${ReleaseBundleBucket.Arn}/bootstrap/*
+              - Effect: Allow
+                Action: eks:DescribeCluster
+                Resource: !GetAtt Cluster.Arn
+              - !If
+                - ReleaseRunnerEnabled
+                - Effect: Allow
+                  Action: [codeconnections:GetConnection, codeconnections:GetConnectionToken]
+                  Resource: !GetAtt ReleaseConnection.ConnectionArn
+                - !Ref AWS::NoValue
+              - Effect: Allow
+                Action: [ec2:CreateNetworkInterface, ec2:DeleteNetworkInterface]
+                Resource: '*'
+              - Effect: Allow
+                Action: [ec2:DescribeNetworkInterfaces, ec2:DescribeSubnets, ec2:DescribeSecurityGroups, ec2:DescribeDhcpOptions, ec2:DescribeVpcs]
+                Resource: '*'
+              - Effect: Allow
+                Action: ec2:CreateNetworkInterfacePermission
+                Resource: !Sub arn:${AWS::Partition}:ec2:${AWS::Region}:${AWS::AccountId}:network-interface/*
+                Condition:
+                  StringEquals: {ec2:AuthorizedService: codebuild.amazonaws.com}
+                  ArnEquals:
+                    ec2:Subnet:
+                      - !Sub arn:${AWS::Partition}:ec2:${AWS::Region}:${AWS::AccountId}:subnet/${EksPrivateSubnetA}
+                      - !Sub arn:${AWS::Partition}:ec2:${AWS::Region}:${AWS::AccountId}:subnet/${EksPrivateSubnetB}
+  ReleaseAccessEntry:
+    Type: AWS::EKS::AccessEntry
+    Properties:
+      ClusterName: !Ref Cluster
+      PrincipalArn: !GetAtt ReleaseRole.Arn
+      Type: STANDARD
+      KubernetesGroups: [rubyapi-release]
+      AccessPolicies: !If
+        - BootstrapAccessEnabled
+        - - PolicyArn: !Sub arn:${AWS::Partition}:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy
+            AccessScope: {Type: cluster}
+        - []
+  ReleaseProject:
+    Type: AWS::CodeBuild::Project
+    DependsOn: ReleaseAccessEntry
+    Properties:
+      Name: !Sub ${ClusterName}-release
+      Description: One private machine executor; bootstrap first, trusted RubyAPI release Actions runner afterward.
+      ServiceRole: !GetAtt ReleaseRole.Arn
+      ConcurrentBuildLimit: 1
+      TimeoutInMinutes: 60
+      QueuedTimeoutInMinutes: 5
+      Artifacts: {Type: NO_ARTIFACTS}
+      Source: !If
+        - ReleaseRunnerEnabled
+        - Type: GITHUB
+          Location: https://github.com/rubyapi/rubyapi
+          Auth:
+            Type: CODECONNECTIONS
+            Resource: !GetAtt ReleaseConnection.ConnectionArn
+        - Type: NO_SOURCE
+          BuildSpec: |
+            version: 0.2
+            phases:
+              build:
+                commands:
+                  - echo 'Supply the reviewed bootstrap buildspec and versioned bundle explicitly.'
+                  - exit 1
+      Triggers: !If
+        - ReleaseRunnerEnabled
+        - Webhook: true
+          FilterGroups:
+            - - Type: EVENT
+                Pattern: WORKFLOW_JOB_QUEUED
+              - Type: WORKFLOW_NAME
+                Pattern: ^RubyAPI production release$
+        - !Ref AWS::NoValue
+      Environment:
+        Type: LINUX_CONTAINER
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/standard:7.0
+        PrivilegedMode: false
+        EnvironmentVariables:
+          - Name: BOOTSTRAP_BUCKET
+            Type: PLAINTEXT
+            Value: !Ref ReleaseBundleBucket
+          - Name: CLUSTER_NAME
+            Type: PLAINTEXT
+            Value: !Ref Cluster
+          - Name: EXPECTED_ROLE_ARN
+            Type: PLAINTEXT
+            Value: !GetAtt ReleaseRole.Arn
+      VpcConfig:
+        VpcId: !Ref VpcId
+        Subnets: [!Ref EksPrivateSubnetA, !Ref EksPrivateSubnetB]
+        SecurityGroupIds: [!Ref ReleaseSecurityGroup]
+      LogsConfig:
+        CloudWatchLogs:
+          Status: ENABLED
+          GroupName: !Ref ReleaseLogs
+Outputs:
+  NodeRoleName: {Value: !Ref NodeRole}
+  ReleaseProjectName: {Value: !Ref ReleaseProject}
+  ReleaseBundleBucketName: {Value: !Ref ReleaseBundleBucket}
+  ReleaseRoleArn: {Value: !GetAtt ReleaseRole.Arn}
+  ReleaseConnectionArn: {Value: !GetAtt ReleaseConnection.ConnectionArn}
